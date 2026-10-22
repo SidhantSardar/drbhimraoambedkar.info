@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import '../styles/skin-ai.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { SITE, url } from '../lib/site';
@@ -12,12 +13,14 @@ interface Props {
   noindex?: boolean;
 }
 const { title, description = SITE.description, image, progress = false, noindex = false } = Astro.props;
+// Optional visual skin, chosen at build time (PUBLIC_SKIN=ai for the AI SaaS look).
+const skin = import.meta.env.PUBLIC_SKIN || undefined;
 const fullTitle = title ? `${title} · Dr. B. R. Ambedkar` : SITE.title;
 const canonical = new URL(Astro.url.pathname, Astro.site);
 const ogImage = image ? new URL(image, Astro.site).toString() : undefined;
 ---
 <!doctype html>
-<html lang="en">
+<html lang="en" data-skin={skin}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -36,6 +39,7 @@ const ogImage = image ? new URL(image, Astro.site).toString() : undefined;
     {noindex && <meta name="robots" content="noindex" />}
     <link rel="alternate" type="application/rss+xml" title="Blog" href={url('/rss.xml')} />
     <link rel="sitemap" href={url('/sitemap-index.xml')} />
+    {skin === 'ai' && <meta name="theme-color" content="#05060b" />}
     <slot name="head" />
   </head>
   <body>
@@ -46,5 +50,17 @@ const ogImage = image ? new URL(image, Astro.site).toString() : undefined;
       <slot />
     </main>
     <Footer />
+    {skin === 'ai' && (
+      <script is:inline>
+        // Spotlight: cards light up where the pointer is.
+        document.addEventListener('pointermove', function (e) {
+          var c = e.target.closest && e.target.closest('.latest-card, .tn, .card, .work');
+          if (!c) return;
+          var r = c.getBoundingClientRect();
+          c.style.setProperty('--mx', e.clientX - r.left + 'px');
+          c.style.setProperty('--my', e.clientY - r.top + 'px');
+        }, { passive: true });
+      </script>
+    )}
   </body>
 </html>

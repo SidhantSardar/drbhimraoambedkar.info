@@ -30,6 +30,14 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run build
+      # Second copy of the site with the experimental "AI SaaS" skin, served at /preview-ai/
+      - name: Build AI skin preview
+        run: |
+          mv dist dist-main
+          rm -rf .astro node_modules/.astro
+          BASE_PATH=/drbhimraoambedkar.info/preview-ai PUBLIC_SKIN=ai npm run build
+          mv dist dist-main/preview-ai
+          mv dist-main dist
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist
