@@ -1,0 +1,40 @@
+---
+import { SITE, url } from '../lib/site';
+const year = new Date().getFullYear();
+---
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <h2>About this initiative</h2>
+        <p>An open, independent effort to bring Dr. B. R. Ambedkar's life and work together in one place — from authoritative sources, explained simply, and free for everyone.</p>
+        <p><a href={url('/about/')}>Read our mission and source policy →</a></p>
+      </div>
+      <div>
+        <h2>Explore</h2>
+        <ul>
+          <li><a href={url('/life/')}>Life story</a></li>
+          <li><a href={url('/timeline/')}>Timeline</a></li>
+          <li><a href={url('/constitution/')}>The Constitution</a></li>
+          <li><a href={url('/works/')}>All works</a></li>
+          <li><a href={url('/works/archives/')}>Where the originals are</a></li>
+          <li><a href={url('/themes/flag-and-symbols/')}>The blue flag & symbols</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Take part</h2>
+        <ul>
+          <li><a href={url('/ask/')}>Ask the archive</a></li>
+          <li><a href={url('/blog/')}>Blog & discussion</a></li>
+          <li><a href={url('/news/')}>News</a></li>
+          <li><a href={url('/contribute/')}>Suggest a correction or source</a></li>
+          <li><a href={SITE.repoUrl} target="_blank" rel="noopener noreferrer">Open source on GitHub</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© {year} {SITE.domain}. Original writing is shared under <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer">CC BY-SA 4.0</a>. Images and documents keep their own licences, shown with each one.</span>
+      <a href="#top">Back to top ↑</a>
+    </div>
+  </div>
+</footer>

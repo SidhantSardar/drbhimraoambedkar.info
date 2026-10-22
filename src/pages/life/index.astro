@@ -1,0 +1,40 @@
+---
+import Base from '../../layouts/Base.astro';
+import Chakra from '../../components/Chakra.astro';
+import StoryCard from '../../components/StoryCard.astro';
+import { chapters, themes } from '../../lib/data';
+import { url } from '../../lib/site';
+const life = await chapters();
+const themeList = await themes();
+---
+<Base title="Life Story" description="The life of Dr. B. R. Ambedkar in simple, sourced chapters — from the world before his birth to the movement that continues today.">
+  <section class="hero">
+    <Chakra class="chakra-bg" />
+    <div class="wrap section-tight">
+      <span class="eyebrow">The life story</span>
+      <h1 style="font-size:var(--step-4)">From Mhow to the Constitution — and beyond</h1>
+      <p class="lede" style="max-width:62ch">Read it from the beginning, or jump to any chapter. Every chapter starts with a short summary, and every fact links to its source.</p>
+      {life[0] && <div class="btn-row" style="margin-top:20px"><a class="btn btn-light" href={url(`/life/${life[0].id}/`)}>Start with chapter 1 →</a></div>}
+    </div>
+  </section>
+  <section class="section">
+    <div class="wrap">
+      <div class="grid">
+        {life.map((c, i) => (
+          <StoryCard slug={c.id} href={`/life/${c.id}/`} title={c.data.title} period={c.data.period} summary={c.data.summary} num={String(i + 1).padStart(2, '0')} />
+        ))}
+      </div>
+    </div>
+  </section>
+  {themeList.length > 0 && (
+    <section class="section-tight" id="themes">
+      <div class="wrap">
+        <span class="eyebrow">Themes</span>
+        <h2>The person behind the work</h2>
+        <div class="grid" style="margin-top:24px">
+          {themeList.map((t) => <StoryCard slug={t.id} href={`/themes/${t.id}/`} title={t.data.title} period={t.data.period} summary={t.data.summary} />)}
+        </div>
+      </div>
+    </section>
+  )}
+</Base>

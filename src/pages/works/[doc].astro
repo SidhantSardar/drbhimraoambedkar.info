@@ -1,0 +1,50 @@
+---
+// Publishes the long-form research files in research/works/ as readable pages:
+// /works/archives/ (physical-archives.md), /works/journals/ (journals.md), /works/bibliography/ (bibliography.md)
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Chakra from '../../components/Chakra.astro';
+
+export async function getStaticPaths() {
+  const PAGES: Record<string, { file: string; title: string; eyebrow: string; lede: string }> = {
+    archives: {
+      file: 'works/physical-archives',
+      title: 'Where the originals are kept',
+      eyebrow: 'Beyond the internet',
+      lede: 'Some of his work has never been put online. Here is what exists only on paper, which library, archive or museum holds it, and how you can see it.',
+    },
+    journals: {
+      file: 'works/journals',
+      title: 'His newspapers',
+      eyebrow: 'The press of the voiceless',
+      lede: 'Mooknayak, Bahishkrit Bharat, Samata, Janata and Prabuddha Bharat — the newspapers he founded to give a voice to people who had none.',
+    },
+    bibliography: {
+      file: 'works/bibliography',
+      title: 'Bibliography',
+      eyebrow: 'Complete list',
+      lede: 'All his known writings in one list, grouped by kind, with sources.',
+    },
+  };
+  const entries = await getCollection('research');
+  return Object.keys(PAGES)
+    .map((doc) => ({ doc, entry: entries.find((e) => e.id === PAGES[doc].file) }))
+    .filter((x) => x.entry)
+    .map(({ doc, entry }) => ({ params: { doc }, props: { entry, meta: PAGES[doc] } }));
+}
+const { entry, meta } = Astro.props as any;
+const { Content } = await render(entry);
+---
+<Base title={meta.title} description={meta.lede}>
+  <section class="hero">
+    <Chakra class="chakra-bg" />
+    <div class="wrap section-tight">
+      <span class="eyebrow">{meta.eyebrow}</span>
+      <h1 style="font-size:var(--step-4)">{meta.title}</h1>
+      <p class="lede" style="max-width:64ch">{meta.lede}</p>
+    </div>
+  </section>
+  <article class="narrow section-tight prose" data-pagefind-body data-pagefind-filter="collection:Research">
+    <Content />
+  </article>
+</Base>

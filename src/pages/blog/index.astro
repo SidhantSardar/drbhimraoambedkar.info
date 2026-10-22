@@ -1,0 +1,35 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Chakra from '../../components/Chakra.astro';
+import { url } from '../../lib/site';
+const posts = (await getCollection('blog')).filter((p) => !p.data.draft).sort((a, b) => +b.data.date - +a.data.date);
+---
+<Base title="Blog" description="Articles and discussion on Dr. B. R. Ambedkar's ideas, social justice, equality and the Constitution today.">
+  <section class="hero">
+    <Chakra class="chakra-bg" />
+    <div class="wrap section-tight">
+      <span class="eyebrow">Blog &amp; discussion</span>
+      <h1 style="font-size:var(--step-4)">Ideas that still matter</h1>
+      <p class="lede" style="max-width:64ch">Articles on his ideas and on justice, equality and dignity in India today. Every article is open for discussion.</p>
+      <div class="btn-row" style="margin-top:20px">
+        <a class="btn btn-light" href={url('/news/')}>Latest news →</a>
+        <a class="btn btn-ghost" href={url('/contribute/#write')}>Write for us</a>
+        <a class="btn btn-ghost" href={url('/rss.xml')}>RSS feed</a>
+      </div>
+    </div>
+  </section>
+  <div class="narrow section-tight">
+    <div class="list-stack">
+      {posts.map((p) => (
+        <a class="card" href={url(`/blog/${p.id}/`)}>
+          <div class="card-body">
+            <span class="card-meta">{p.data.date.toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' })} · {p.data.author}</span>
+            <h3>{p.data.title}</h3>
+            <p>{p.data.description}</p>
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+</Base>

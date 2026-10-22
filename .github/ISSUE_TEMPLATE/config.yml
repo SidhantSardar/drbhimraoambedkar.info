@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Discuss an article
+    url: https://github.com/SidhantSardar/drbhimraoambedkar.info/discussions
+    about: Comments on blog articles live in GitHub Discussions.

@@ -1,0 +1,21 @@
+---
+// The 24-spoke Dhamma/Ashoka Chakra, drawn in currentColor.
+interface Props { class?: string; title?: string }
+const { class: cls, title } = Astro.props;
+const spokes = Array.from({ length: 24 }, (_, i) => i * 15);
+const rad = (d: number) => (d * Math.PI) / 180;
+---
+<svg class={cls} viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role={title ? 'img' : 'presentation'} aria-hidden={title ? undefined : 'true'}>
+  {title && <title>{title}</title>}
+  <circle cx="50" cy="50" r="45" fill="none" stroke="currentColor" stroke-width="4" />
+  <circle cx="50" cy="50" r="7" fill="currentColor" />
+  {spokes.map((a) => (
+    <path
+      d={`M ${50 + 8 * Math.cos(rad(a - 4))} ${50 + 8 * Math.sin(rad(a - 4))} L ${50 + 43 * Math.cos(rad(a))} ${50 + 43 * Math.sin(rad(a))} L ${50 + 8 * Math.cos(rad(a + 4))} ${50 + 8 * Math.sin(rad(a + 4))} Z`}
+      fill="currentColor"
+    />
+  ))}
+  {spokes.map((a) => (
+    <circle cx={50 + 43 * Math.cos(rad(a + 7.5))} cy={50 + 43 * Math.sin(rad(a + 7.5))} r="1.8" fill="currentColor" />
+  ))}
+</svg>

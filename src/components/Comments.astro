@@ -1,0 +1,38 @@
+---
+// Comments are stored as GitHub Discussions in the site's repository via giscus (https://giscus.app).
+// Readers sign in with GitHub to comment; everyone can read the discussion.
+import { GISCUS, SITE } from '../lib/site';
+interface Props { term: string }
+const { term } = Astro.props;
+const ready = GISCUS.repoId && GISCUS.categoryId;
+---
+<section class="callout" style="margin-top:48px" aria-labelledby="comments-h">
+  <h2 id="comments-h" style="font-size:var(--step-1)">Discussion</h2>
+  <p class="muted" style="font-size:0.92rem">Comments are public and saved in this site's <a href={`${SITE.repoUrl}/discussions`} target="_blank" rel="noopener noreferrer">GitHub Discussions</a>. Please be respectful and back up facts with a source.</p>
+  {ready ? (
+    <div class="giscus"></div>
+  ) : (
+    <p class="notice">Comments will appear here once the discussion board is connected.</p>
+  )}
+  {ready && (
+    <script
+      is:inline
+      src="https://giscus.app/client.js"
+      data-repo={GISCUS.repo}
+      data-repo-id={GISCUS.repoId}
+      data-category={GISCUS.category}
+      data-category-id={GISCUS.categoryId}
+      data-mapping="specific"
+      data-term={term}
+      data-strict="1"
+      data-reactions-enabled="1"
+      data-emit-metadata="0"
+      data-input-position="top"
+      data-theme="preferred_color_scheme"
+      data-lang="en"
+      data-loading="lazy"
+      crossorigin="anonymous"
+      async
+    ></script>
+  )}
+</section>

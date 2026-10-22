@@ -1,0 +1,80 @@
+---
+import { render } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import Chakra from './Chakra.astro';
+import Picture from './Picture.astro';
+import { imagesFor, credit } from '../lib/images-core.mjs';
+import { url, formatDate, SITE } from '../lib/site';
+import type { Story } from '../lib/data';
+
+interface Props {
+  entry: Story;
+  kind: 'life' | 'themes';
+  num?: number;
+  total?: number;
+  prev?: { href: string; title: string };
+  next?: { href: string; title: string };
+}
+const { entry, kind, num, total, prev, next } = Astro.props;
+const { Content } = await render(entry);
+const d = entry.data;
+const hero = imagesFor(entry.id)[0];
+const issueUrl = `${SITE.repoUrl}/issues/new?labels=correction&title=${encodeURIComponent(`Correction: ${d.title}`)}&body=${encodeURIComponent(`Page: ${Astro.url.href}\n\nWhat is wrong:\n\nWhat it should say (with a source link):\n`)}`;
+---
+<Base title={d.title} description={d.summary} image={hero ? url(hero.file) : undefined} progress>
+  <article data-pagefind-body data-pagefind-filter="collection:Life story">
+    <header class="story-hero">
+      <Chakra class="chakra-bg" />
+      <div class="narrow story-hero-inner">
+        <p style="margin-bottom:8px" data-pagefind-ignore>
+          <a href={url(kind === 'life' ? '/life/' : '/life/#themes')} style="color:var(--blue-200)">{kind === 'life' ? 'Life story' : 'Themes'}</a>
+          {num && total && <span style="color:var(--blue-300)"> · Chapter {num} of {total}</span>}
+        </p>
+        {d.period && <span class="chip period">{d.period}</span>}
+        <h1>{d.title}</h1>
+        {d.subtitle && <p class="subtitle">{d.subtitle}</p>}
+      </div>
+    </header>
+    {hero && (
+      <figure class="story-hero-img" data-pagefind-ignore>
+        <Picture img={hero} eager sizes="100vw" />
+        <figcaption>{hero.caption} — {credit(hero)} · {hero.sourceUrl && <a href={hero.sourceUrl} target="_blank" rel="noopener noreferrer">{hero.sourceName || 'Source'}</a>}</figcaption>
+      </figure>
+    )}
+    <div class="narrow">
+      {d.inShort.length > 0 && (
+        <aside class="in-short" aria-label="In short">
+          <h2>In short</h2>
+          <ul>{d.inShort.map((s) => <li>{s}</li>)}</ul>
+        </aside>
+      )}
+      <div class="prose">
+        <Content />
+      </div>
+
+      {d.keyDates.length > 0 && (
+        <section class="dates-box callout" data-pagefind-ignore>
+          <h2 style="font-size:var(--step-1)">Key dates in this chapter</h2>
+          <ol>
+            {d.keyDates.map((k) => (
+              <li>
+                <time datetime={k.date}>{formatDate(k.date)}</time>
+                {k.label} {k.source && <a class="src" href={k.source} target="_blank" rel="noopener noreferrer">source</a>}
+              </li>
+            ))}
+          </ol>
+          <a href={url('/timeline/')}>See the full timeline →</a>
+        </section>
+      )}
+
+      <p class="notice" data-pagefind-ignore>Spotted a mistake or know a better source? <a href={issueUrl} target="_blank" rel="noopener noreferrer">Suggest a correction</a> — it is recorded publicly on GitHub — or use the <a href={url('/contribute/')}>contribution form</a>.</p>
+
+      {(prev || next) && (
+        <nav class="chapter-nav" aria-label="Chapters" data-pagefind-ignore>
+          {prev ? <a href={url(prev.href)}><span>← Previous</span><strong>{prev.title}</strong></a> : <span></span>}
+          {next && <a class="next" href={url(next.href)}><span>Next →</span><strong>{next.title}</strong></a>}
+        </nav>
+      )}
+    </div>
+  </article>
+</Base>

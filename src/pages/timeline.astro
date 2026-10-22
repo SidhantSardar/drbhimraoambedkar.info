@@ -1,0 +1,95 @@
+---
+import Base from '../layouts/Base.astro';
+import Chakra from '../components/Chakra.astro';
+import { chapters, themes, loadJSON } from '../lib/data';
+import { url, formatDate } from '../lib/site';
+
+type Item = { date: string; label: string; source?: string; chapter: string; chapterTitle: string; href: string };
+const items: Item[] = [];
+for (const c of await chapters()) {
+  for (const k of c.data.keyDates) items.push({ ...k, chapter: c.id, chapterTitle: c.data.title, href: `/life/${c.id}/` });
+}
+for (const t of await themes()) {
+  for (const k of t.data.keyDates) items.push({ ...k, chapter: t.id, chapterTitle: t.data.title, href: `/themes/${t.id}/` });
+}
+const constitution = loadJSON<any>('constitution', {});
+for (const k of constitution.timeline || []) {
+  items.push({ date: k.date, label: k.label, source: k.source, chapter: 'constitution', chapterTitle: 'The Constitution', href: '/constitution/' });
+}
+
+// Remove exact duplicates (same date and same wording).
+const seen = new Set<string>();
+const unique = items.filter((i) => {
+  const key = `${i.date}|${i.label.toLowerCase().replace(/[^a-z0-9]/g, '')}`;
+  if (seen.has(key)) return false;
+  seen.add(key);
+  return true;
+});
+unique.sort((a, b) => String(a.date).localeCompare(String(b.date)));
+
+const decadeOf = (d: string) => {
+  const y = Number(String(d).slice(0, 4));
+  if (!y) return 'Undated';
+  if (y < 1890) return 'Before 1890';
+  if (y >= 1960) return '1960 – today';
+  return `${Math.floor(y / 10) * 10}s`;
+};
+const groups = new Map<string, Item[]>();
+for (const i of unique) {
+  const k = decadeOf(i.date);
+  if (!groups.has(k)) groups.set(k, []);
+  groups.get(k)!.push(i);
+}
+const filters = [...new Map(unique.map((i) => [i.chapter, i.chapterTitle])).entries()];
+---
+<Base title="Timeline" description="Every key date in the life and work of Dr. B. R. Ambedkar, from before his birth to today — each with a source.">
+  <section class="hero">
+    <Chakra class="chakra-bg" />
+    <div class="wrap section-tight">
+      <span class="eyebrow">Timeline</span>
+      <h1 style="font-size:var(--step-4)">{unique.length} moments, one life</h1>
+      <p class="lede" style="max-width:62ch">Scroll through the decades, or pick a chapter to see only its events. Each event links to its source and to the chapter that tells the full story.</p>
+    </div>
+  </section>
+  <div class="narrow section-tight">
+    <div class="tl-filters" role="group" aria-label="Filter by chapter">
+      <button class="chip" type="button" data-filter="all" aria-pressed="true">All</button>
+      {filters.map(([id, title]) => <button class="chip" type="button" data-filter={id} aria-pressed="false">{title}</button>)}
+    </div>
+    {[...groups.entries()].map(([decade, list]) => (
+      <section class="tl-decade" data-decade>
+        <h2>{decade}</h2>
+        <ol class="tl-list">
+          {list.map((i) => (
+            <li class="tl-item" data-chapter={i.chapter}>
+              <time datetime={i.date}>{formatDate(i.date)}</time>
+              <p>{i.label}</p>
+              <div class="tl-links">
+                <a href={url(i.href)}>{i.chapterTitle} →</a>
+                {i.source && <a class="src" href={i.source} target="_blank" rel="noopener noreferrer">source</a>}
+              </div>
+            </li>
+          ))}
+        </ol>
+      </section>
+    ))}
+    {unique.length === 0 && <p class="notice">The timeline fills in automatically as chapters are added.</p>}
+  </div>
+  <script is:inline>
+    (function () {
+      var buttons = document.querySelectorAll('[data-filter]');
+      buttons.forEach(function (b) {
+        b.addEventListener('click', function () {
+          var f = b.getAttribute('data-filter');
+          buttons.forEach(function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+          document.querySelectorAll('.tl-item').forEach(function (li) {
+            li.hidden = f !== 'all' && li.getAttribute('data-chapter') !== f;
+          });
+          document.querySelectorAll('[data-decade]').forEach(function (s) {
+            s.hidden = !s.querySelector('.tl-item:not([hidden])');
+          });
+        });
+      });
+    })();
+  </script>
+</Base>

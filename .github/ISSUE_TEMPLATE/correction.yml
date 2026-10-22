@@ -1,0 +1,31 @@
+name: Suggest a correction
+description: Something on the website is wrong or missing a source.
+title: "Correction: "
+labels: [correction]
+body:
+  - type: input
+    id: page
+    attributes:
+      label: Which page?
+      description: Paste the link to the page.
+    validations:
+      required: true
+  - type: textarea
+    id: wrong
+    attributes:
+      label: What is wrong?
+    validations:
+      required: true
+  - type: textarea
+    id: right
+    attributes:
+      label: What should it say?
+    validations:
+      required: true
+  - type: textarea
+    id: source
+    attributes:
+      label: Your source
+      description: A link, or a book with page number. We only change facts that have a source.
+    validations:
+      required: true

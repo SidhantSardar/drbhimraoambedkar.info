@@ -1,0 +1,99 @@
+---
+import Base from '../../layouts/Base.astro';
+import Chakra from '../../components/Chakra.astro';
+import WorkLinks from '../../components/WorkLinks.astro';
+import { loadJSON, type Work } from '../../lib/data';
+import { url } from '../../lib/site';
+
+const works = loadJSON<Work[]>('works', []).sort((a, b) => Number(a.year || 9999) - Number(b.year || 9999));
+const types = [...new Set(works.map((w) => w.type))].sort();
+const topics = [...new Set(works.flatMap((w) => w.topics || []))].sort();
+const statusLabel: Record<string, string> = {
+  'published-in-lifetime': 'Published in his lifetime',
+  posthumous: 'Published after his death',
+  unfinished: 'Unfinished',
+  unpublished: 'Unpublished',
+  lost: 'Lost',
+};
+---
+<Base title="All Works" description="Every known book, thesis, essay, paper, newspaper and statement by Dr. B. R. Ambedkar — explained simply, with links to read the original or find the physical copy.">
+  <section class="hero">
+    <Chakra class="chakra-bg" />
+    <div class="wrap section-tight">
+      <span class="eyebrow">His work</span>
+      <h1 style="font-size:var(--step-4)">Everything he wrote</h1>
+      <p class="lede" style="max-width:64ch">{works.length} books, theses, essays, papers, newspapers and statements, from 1915 to 1956 — each explained in a few simple lines, with links to read it here, download the official PDF, or find the library that holds the original.</p>
+      <div class="btn-row" style="margin-top:20px">
+        <a class="btn btn-light" href={url('/works/speeches/')}>Speeches</a>
+        <a class="btn btn-ghost" href={url('/library/')}>Read all volumes</a>
+        <a class="btn btn-ghost" href={url('/works/archives/')}>Where the originals are</a>
+        <a class="btn btn-ghost" href={url('/works/journals/')}>His newspapers</a>
+      </div>
+    </div>
+  </section>
+  <div class="wrap section-tight">
+    <div class="toolbar">
+      <label class="visually-hidden" for="wq">Search works</label>
+      <input class="search-input" id="wq" type="search" placeholder="Search by title, topic or year…" />
+      <div class="filter-row" role="group" aria-label="Type">
+        <button class="chip" type="button" data-type="all" aria-pressed="true">All types</button>
+        {types.map((t) => <button class="chip" type="button" data-type={t} aria-pressed="false">{t}</button>)}
+      </div>
+      <label class="visually-hidden" for="wt">Topic</label>
+      <select class="search-input" id="wt">
+        <option value="">All topics</option>
+        {topics.map((t) => <option value={t}>{t}</option>)}
+      </select>
+      <p class="count" aria-live="polite"><span id="wcount">{works.length}</span> works shown</p>
+    </div>
+    <div class="list-stack" id="works">
+      {works.map((w) => (
+        <article class="work" id={w.id} data-type={w.type} data-topics={(w.topics || []).join(' ')} data-search={[w.title, ...(w.altTitles || []), w.year, w.summary, (w.topics || []).join(' ')].join(' ').toLowerCase()}>
+          <div class="meta">
+            <span>{w.year}{w.yearNote ? ` (${w.yearNote})` : ''}</span>
+            <span>{w.type}</span>
+            {w.status && <span>{statusLabel[w.status] || w.status}</span>}
+            {w.language && <span>{w.language}</span>}
+          </div>
+          <h3>{w.title}</h3>
+          {w.summary && <p style="margin:0 0 6px">{w.summary}</p>}
+          {w.whyItMatters && <p class="why" style="margin:0"><strong>Why it matters:</strong> {w.whyItMatters}</p>}
+          <div class="links"><WorkLinks baws={w.baws} online={w.online} /></div>
+          {(w.physical?.length || w.sources?.length) ? (
+            <details>
+              <summary>Physical copies and sources</summary>
+              {w.physical?.length ? (
+                <ul>{w.physical.map((p) => <li><strong>{p.holder}</strong>{p.location && `, ${p.location}`}{p.note && ` — ${p.note}`} {p.url && <a class="src" href={p.url} target="_blank" rel="noopener noreferrer">details</a>}</li>)}</ul>
+              ) : null}
+              {w.sources?.length ? <p>Sources: {w.sources.map((s, i) => <a class="src" href={s} target="_blank" rel="noopener noreferrer">{`source ${i + 1}`}</a>)}</p> : null}
+            </details>
+          ) : null}
+        </article>
+      ))}
+    </div>
+    {works.length === 0 && <p class="notice">The catalogue of works is being compiled.</p>}
+  </div>
+  <script is:inline>
+    (function () {
+      var q = document.getElementById('wq'), topic = document.getElementById('wt'), count = document.getElementById('wcount');
+      var type = 'all', items = document.querySelectorAll('#works .work');
+      function apply() {
+        var term = q.value.trim().toLowerCase(), tp = topic.value, n = 0;
+        items.forEach(function (el) {
+          var ok = (type === 'all' || el.dataset.type === type) && (!tp || (' ' + el.dataset.topics + ' ').indexOf(' ' + tp + ' ') > -1) && (!term || el.dataset.search.indexOf(term) > -1);
+          el.hidden = !ok; if (ok) n++;
+        });
+        count.textContent = n;
+      }
+      q.addEventListener('input', apply); topic.addEventListener('change', apply);
+      document.querySelectorAll('[data-type]').forEach(function (b) {
+        if (b.tagName !== 'BUTTON') return;
+        b.addEventListener('click', function () {
+          type = b.dataset.type;
+          document.querySelectorAll('button[data-type]').forEach(function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+          apply();
+        });
+      });
+    })();
+  </script>
+</Base>

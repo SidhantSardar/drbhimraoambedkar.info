@@ -1,0 +1,23 @@
+---
+import { imageSources } from '../lib/images-core.mjs';
+interface Props {
+  img: { file: string; caption?: string; title?: string; width?: number; height?: number };
+  sizes?: string;
+  eager?: boolean;
+  alt?: string;
+}
+const { img, sizes = '100vw', eager = false, alt } = Astro.props;
+const { src, srcset, width, height } = imageSources(img);
+---
+<picture>
+  {srcset && <source type="image/webp" srcset={srcset} sizes={sizes} />}
+  <img
+    src={src}
+    alt={alt ?? img.caption ?? img.title ?? ''}
+    width={width}
+    height={height}
+    loading={eager ? 'eager' : 'lazy'}
+    decoding="async"
+    fetchpriority={eager ? 'high' : undefined}
+  />
+</picture>

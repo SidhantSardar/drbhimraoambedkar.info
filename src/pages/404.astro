@@ -1,0 +1,15 @@
+---
+import Base from '../layouts/Base.astro';
+import { url } from '../lib/site';
+---
+<Base title="Page not found" noindex>
+  <div class="narrow section center">
+    <h1 style="font-size:var(--step-3)">This page could not be found</h1>
+    <p class="lede">It may have moved. Try the life story, or search his writings.</p>
+    <div class="btn-row" style="justify-content:center">
+      <a class="btn btn-primary" href={url('/')}>Home</a>
+      <a class="btn btn-ghost" href={url('/life/')}>Life story</a>
+      <a class="btn btn-ghost" href={url('/ask/')}>Ask the archive</a>
+    </div>
+  </div>
+</Base>

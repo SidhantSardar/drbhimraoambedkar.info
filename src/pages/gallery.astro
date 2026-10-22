@@ -1,0 +1,80 @@
+---
+import Base from '../layouts/Base.astro';
+import Chakra from '../components/Chakra.astro';
+import Picture from '../components/Picture.astro';
+import { images } from '../lib/data';
+import { url } from '../lib/site';
+import { credit, imageSources } from '../lib/images-core.mjs';
+
+const all = images().filter((i) => !/\.svg$/i.test(i.file));
+const LABELS: Record<string, string> = {
+  portrait: 'Portraits', family: 'Family', events: 'Events', places: 'Places', documents: 'Documents', statues: 'Statues & memorials',
+  constitution: 'Constitution', buddhism: 'Buddhism', legacy: 'Legacy', 'flag-and-symbols': 'Flag & symbols', context: 'Context',
+};
+const tags = Object.keys(LABELS).filter((t) => all.some((i) => i.tags?.includes(t)));
+---
+<Base title="Gallery" description="Photographs and images of Dr. B. R. Ambedkar's life and legacy, each with its source and licence.">
+  <section class="hero">
+    <Chakra class="chakra-bg" />
+    <div class="wrap section-tight">
+      <span class="eyebrow">Gallery</span>
+      <h1 style="font-size:var(--step-4)">His life in pictures</h1>
+      <p class="lede" style="max-width:64ch">{all.length} freely licensed photographs and images. Tap any picture to see its full caption, who made it, and where it comes from.</p>
+    </div>
+  </section>
+  <div class="wrap section-tight">
+    <div class="filter-row" role="group" aria-label="Filter pictures" style="margin-bottom:20px">
+      <button class="chip" type="button" data-tag="all" aria-pressed="true">All</button>
+      {tags.map((t) => <button class="chip" type="button" data-tag={t} aria-pressed="false">{LABELS[t]}</button>)}
+    </div>
+    <div class="masonry" id="gallery">
+      {all.map((img) => (
+        <figure data-tags={(img.tags || []).join(' ')}>
+          <button type="button" data-full={imageSources(img).src} data-caption={img.caption || img.title || ''} data-credit={credit(img)} data-source={img.sourceUrl || ''} data-source-name={img.sourceName || 'Source'} data-license-url={img.licenseUrl || ''} aria-label={`Open: ${img.title || img.caption || 'image'}`}>
+            <Picture img={img} sizes="(min-width: 900px) 25vw, 50vw" />
+          </button>
+          <figcaption>{img.title || img.caption}{img.date ? ` · ${img.date}` : ''}</figcaption>
+        </figure>
+      ))}
+    </div>
+    {all.length === 0 && <p class="notice">The image library is being gathered.</p>}
+    <p class="muted" style="margin-top:28px;font-size:0.92rem">Every image is public domain or released under a free licence (Creative Commons or the Unsplash Licence). Have a historical photo you can share? <a href={url('/contribute/')}>Send it to us</a>.</p>
+  </div>
+  <dialog class="lightbox" id="lightbox" aria-label="Image">
+    <button class="btn btn-light lb-close" type="button" id="lb-close" aria-label="Close">✕</button>
+    <img id="lb-img" alt="" />
+    <div class="lb-body"><p id="lb-cap" style="margin:0 0 6px"></p><p class="muted" id="lb-credit" style="margin:0;font-size:0.85rem"></p></div>
+  </dialog>
+  <script is:inline>
+    (function () {
+      var dlg = document.getElementById('lightbox');
+      document.querySelectorAll('#gallery button').forEach(function (b) {
+        b.addEventListener('click', function () {
+          document.getElementById('lb-img').src = b.dataset.full;
+          document.getElementById('lb-img').alt = b.dataset.caption;
+          document.getElementById('lb-cap').textContent = b.dataset.caption;
+          var c = document.getElementById('lb-credit');
+          c.textContent = b.dataset.credit + ' · ';
+          if (b.dataset.source) {
+            var a = document.createElement('a');
+            a.href = b.dataset.source; a.target = '_blank'; a.rel = 'noopener noreferrer'; a.textContent = b.dataset.sourceName;
+            c.appendChild(a);
+          }
+          dlg.showModal();
+        });
+      });
+      document.getElementById('lb-close').addEventListener('click', function () { dlg.close(); });
+      dlg.addEventListener('click', function (e) { if (e.target === dlg) dlg.close(); });
+      var btns = document.querySelectorAll('[data-tag]');
+      btns.forEach(function (b) {
+        b.addEventListener('click', function () {
+          var t = b.dataset.tag;
+          btns.forEach(function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+          document.querySelectorAll('#gallery figure').forEach(function (f) {
+            f.hidden = t !== 'all' && (' ' + f.dataset.tags + ' ').indexOf(' ' + t + ' ') < 0;
+          });
+        });
+      });
+    })();
+  </script>
+</Base>

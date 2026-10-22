@@ -1,0 +1,9 @@
+[
+  { "category": "Dr. Ambedkar in the news", "name": "Google News", "url": "https://news.google.com/rss/search?q=Ambedkar&hl=en-IN&gl=IN&ceid=IN:en" },
+  { "category": "Caste & justice", "name": "Google News", "url": "https://news.google.com/rss/search?q=%22caste+discrimination%22+OR+%22Dalit%22+OR+%22atrocities+act%22&hl=en-IN&gl=IN&ceid=IN:en" },
+  { "category": "Constitution & rights", "name": "Google News", "url": "https://news.google.com/rss/search?q=%22Constitution+of+India%22+OR+%22fundamental+rights%22+OR+%22reservation%22+Supreme+Court&hl=en-IN&gl=IN&ceid=IN:en" },
+  { "category": "Ambedkarite voices", "name": "Forward Press", "url": "https://www.forwardpress.in/feed/" },
+  { "category": "Ambedkarite voices", "name": "Round Table India", "url": "https://www.roundtableindia.co.in/feed/" },
+  { "category": "Ambedkarite voices", "name": "Velivada", "url": "https://velivada.com/feed/" },
+  { "category": "Ambedkarite voices", "name": "The Mooknayak", "url": "https://www.themooknayak.com/feed" }
+]

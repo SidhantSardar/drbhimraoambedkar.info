@@ -1,0 +1,31 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Chakra from '../../components/Chakra.astro';
+import Comments from '../../components/Comments.astro';
+import { url } from '../../lib/site';
+
+export async function getStaticPaths() {
+  const posts = (await getCollection('blog')).filter((p) => !p.data.draft);
+  return posts.map((post) => ({ params: { slug: post.id }, props: { post } }));
+}
+const { post } = Astro.props;
+const { Content } = await render(post);
+---
+<Base title={post.data.title} description={post.data.description} image={post.data.image ? url(post.data.image) : undefined} progress>
+  <article data-pagefind-body data-pagefind-filter="collection:Blog">
+    <header class="story-hero">
+      <Chakra class="chakra-bg" />
+      <div class="narrow story-hero-inner">
+        <p data-pagefind-ignore><a href={url('/blog/')} style="color:var(--blue-200)">Blog</a></p>
+        <h1>{post.data.title}</h1>
+        <p class="subtitle">{post.data.description}</p>
+        <p style="color:var(--blue-200);font-size:0.9rem;margin:0">{post.data.date.toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' })} · {post.data.author}</p>
+      </div>
+    </header>
+    <div class="narrow">
+      <div class="prose" style="margin-top:32px"><Content /></div>
+      <div data-pagefind-ignore><Comments term={`blog/${post.id}`} /></div>
+    </div>
+  </article>
+</Base>

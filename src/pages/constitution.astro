@@ -1,0 +1,194 @@
+---
+import Base from '../layouts/Base.astro';
+import Chakra from '../components/Chakra.astro';
+import Picture from '../components/Picture.astro';
+import { loadJSON, images } from '../lib/data';
+import { url, formatDate } from '../lib/site';
+import { credit } from '../lib/images-core.mjs';
+
+const c = loadJSON<any>('constitution', {});
+const keyFacts: any[] = c.keyFacts || [];
+const timeline: any[] = c.timeline || [];
+const committee: any[] = c.draftingCommittee || [];
+const articles: any[] = c.articles || [];
+const speeches: any[] = c.keySpeeches || [];
+const quotes: any[] = c.quotes || [];
+const documents: any[] = c.documents || [];
+const pics = images().filter((i) => i.tags?.includes('constitution')).slice(0, 6);
+---
+<Base title="The Constitution of India" description="Dr. B. R. Ambedkar and the Constitution of India: how it was drafted, what it promises in plain words, the articles he fought for, his speeches, and the official text to download.">
+  <section class="hero">
+    <Chakra class="chakra-bg" />
+    <div class="wrap section">
+      <span class="eyebrow">The flagship · 1946–1950</span>
+      <h1 style="font-size:var(--step-4)">The Constitution of India</h1>
+      <p class="lede" style="max-width:64ch">India's highest law — the rulebook for how the country is governed and the promise of equal rights to every citizen. Dr. Ambedkar chaired the committee that drafted it and explained and defended it, clause by clause, in the Constituent Assembly.</p>
+      <div class="btn-row" style="margin-top:24px">
+        <a class="btn btn-light" href={url('/life/constitution/')}>Read the full story →</a>
+        <a class="btn btn-ghost" href="#documents">Download the official text</a>
+        <a class="btn btn-ghost" href={url('/library/volume-13/')}>His Constitution speeches (Vol. 13)</a>
+      </div>
+    </div>
+  </section>
+
+  {keyFacts.length > 0 && (
+    <section class="section-tight">
+      <div class="wrap">
+        <div class="facts">
+          {keyFacts.map((f) => (
+            <div class="fact"><strong>{f.value}</strong><span>{f.label} {f.source && <a class="src" href={f.source} target="_blank" rel="noopener noreferrer">source</a>}</span></div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <section class="section-tight">
+    <div class="narrow">
+      <span class="eyebrow">The promise</span>
+      <h2>The Preamble</h2>
+      <p>The Preamble is the Constitution's opening statement. It says who the Constitution comes from — the people — and what it promises.</p>
+      <div class="preamble">
+        <p><span class="caps">We, the people of India,</span> having solemnly resolved to constitute India into a <span class="caps">Sovereign Socialist Secular Democratic Republic</span> and to secure to all its citizens:</p>
+        <p><span class="caps">Justice,</span> social, economic and political;</p>
+        <p><span class="caps">Liberty</span> of thought, expression, belief, faith and worship;</p>
+        <p><span class="caps">Equality</span> of status and of opportunity; and to promote among them all</p>
+        <p><span class="caps">Fraternity</span> assuring the dignity of the individual and the unity and integrity of the Nation;</p>
+        <p><span class="caps">In our Constituent Assembly</span> this twenty-sixth day of November, 1949, do <span class="caps">hereby adopt, enact and give to ourselves this Constitution.</span></p>
+      </div>
+      <p class="muted" style="margin-top:12px;font-size:0.9rem">Text as it stands today. The words "Socialist", "Secular" and "and integrity" were added by the 42nd Amendment in 1976. <a class="src" href="https://legislative.gov.in/constitution-of-india/" target="_blank" rel="noopener noreferrer">Legislative Department, Government of India</a></p>
+      <h3>In simple words</h3>
+      <ul>
+        <li><strong>Justice</strong> — fair treatment in society, in earning a living, and in politics.</li>
+        <li><strong>Liberty</strong> — freedom to think, speak, believe and worship.</li>
+        <li><strong>Equality</strong> — the same standing and the same chances for everyone.</li>
+        <li><strong>Fraternity</strong> — a feeling of brotherhood and sisterhood that protects every person's dignity. Dr. Ambedkar argued that without fraternity, liberty and equality cannot last.</li>
+      </ul>
+    </div>
+  </section>
+
+  {articles.length > 0 && (
+    <section class="section" style="background:var(--surface-2)">
+      <div class="wrap">
+        <span class="eyebrow">Know your rights</span>
+        <h2>Key articles, explained simply</h2>
+        <div class="grid" style="margin-top:24px">
+          {articles.map((a) => (
+            <div class="article-card">
+              <span class="num">{/^\d/.test(a.number) ? `Article ${a.number}` : a.number}</span>
+              <h3 style="margin:0">{a.title}</h3>
+              <p style="margin:0">{a.plainMeaning}</p>
+              {a.whyItMatters && <p class="muted" style="margin:0;font-size:0.93rem"><strong>Why it matters:</strong> {a.whyItMatters}</p>}
+              {a.ambedkarConnection && <p class="muted" style="margin:0;font-size:0.93rem"><strong>Dr. Ambedkar's role:</strong> {a.ambedkarConnection}</p>}
+              {a.source && <p style="margin:0"><a class="src" href={a.source} target="_blank" rel="noopener noreferrer">source</a></p>}
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  {timeline.length > 0 && (
+    <section class="section">
+      <div class="narrow">
+        <span class="eyebrow">How it was made</span>
+        <h2>From the first sitting to Republic Day</h2>
+        <ol class="tl-list" style="margin-top:24px">
+          {timeline.map((t) => (
+            <li class="tl-item">
+              <time datetime={t.date}>{formatDate(t.date)}</time>
+              <p><strong>{t.label}</strong>{t.detail && <> — {t.detail}</>}</p>
+              {t.source && <div class="tl-links"><a class="src" href={t.source} target="_blank" rel="noopener noreferrer">source</a></div>}
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+  )}
+
+  {pics.length > 0 && (
+    <section class="section-tight">
+      <div class="wrap">
+        <div class="masonry">
+          {pics.map((p) => (
+            <figure><Picture img={p} sizes="(min-width:900px) 300px, 50vw" /><figcaption>{p.caption} <span class="muted">— {credit(p)} · <a href={p.sourceUrl} target="_blank" rel="noopener noreferrer">{p.sourceName}</a></span></figcaption></figure>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  {committee.length > 0 && (
+    <section class="section-tight">
+      <div class="narrow">
+        <span class="eyebrow">The team</span>
+        <h2>The Drafting Committee</h2>
+        <ul>
+          {committee.map((m) => (
+            <li><strong>{m.name}</strong>{m.role && ` — ${m.role}`}{m.note && `. ${m.note}`} {m.source && <a class="src" href={m.source} target="_blank" rel="noopener noreferrer">source</a>}</li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  )}
+
+  {speeches.length > 0 && (
+    <section class="section-tight">
+      <div class="narrow">
+        <span class="eyebrow">In his words</span>
+        <h2>His key speeches in the Constituent Assembly</h2>
+        <div class="list-stack" style="margin-top:20px">
+          {speeches.map((s) => (
+            <div class="work">
+              <div class="meta"><span>{formatDate(s.date)}</span></div>
+              <h3>{s.title}</h3>
+              <p class="why">{s.summary}</p>
+              {s.url && <div class="links"><a class="chip" href={s.url} target="_blank" rel="noopener noreferrer">Read the record ↗</a></div>}
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  {quotes.length > 0 && (
+    <section class="section-tight">
+      <div class="narrow prose">
+        <h2>Verified quotes</h2>
+        {quotes.map((q) => (
+          <blockquote>
+            <p>“{q.text}”</p>
+            <p>— {q.context}{q.date && `, ${formatDate(q.date)}`}. {q.url ? <a class="src" href={q.url} target="_blank" rel="noopener noreferrer">{q.citation || 'source'}</a> : q.citation}</p>
+          </blockquote>
+        ))}
+      </div>
+    </section>
+  )}
+
+  <section class="section" id="documents" style="background:var(--surface-2)">
+    <div class="narrow">
+      <span class="eyebrow">Read it yourself</span>
+      <h2>Official documents</h2>
+      <p>Download the Constitution from official sources. Files saved on this site are exact copies; the "official" link always points to the government page in case there is a newer edition.</p>
+      <div class="doc-list" style="margin-top:20px">
+        {documents.map((d) => (
+          <div class="doc">
+            <strong>{d.title}</strong>
+            <span class="muted" style="font-size:0.93rem">{d.description}</span>
+            <span style="font-size:0.85rem" class="muted">{[d.publisher, d.language, d.sizeMB ? `${d.sizeMB} MB` : ''].filter(Boolean).join(' · ')}</span>
+            <div class="btn-row">
+              {d.localFile && <a class="btn btn-primary" href={url(d.localFile)} download>Download</a>}
+              {d.officialUrl && <a class="btn btn-ghost" href={d.officialUrl} target="_blank" rel="noopener noreferrer">Official source ↗</a>}
+            </div>
+          </div>
+        ))}
+        {documents.length === 0 && (
+          <div class="doc">
+            <strong>The Constitution of India (latest official text)</strong>
+            <div class="btn-row"><a class="btn btn-ghost" href="https://legislative.gov.in/constitution-of-india/" target="_blank" rel="noopener noreferrer">Legislative Department ↗</a></div>
+          </div>
+        )}
+      </div>
+    </div>
+  </section>
+</Base>

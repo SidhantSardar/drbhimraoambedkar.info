@@ -1,0 +1,23 @@
+name: Share a source, document or photograph
+description: A book, letter, speech, newspaper, recording or photo that should be on the website.
+title: "New source: "
+labels: [source]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What is it?
+    validations:
+      required: true
+  - type: textarea
+    id: where
+    attributes:
+      label: Where can it be found?
+      description: A link, or the library, archive or person who holds it.
+    validations:
+      required: true
+  - type: textarea
+    id: rights
+    attributes:
+      label: Rights (for photos and documents)
+      description: Is it public domain, freely licensed, or does the owner allow use?

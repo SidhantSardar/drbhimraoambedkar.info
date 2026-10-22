@@ -1,0 +1,52 @@
+---
+import Base from '../layouts/Base.astro';
+import Chakra from '../components/Chakra.astro';
+import { loadJSON } from '../lib/data';
+import { url } from '../lib/site';
+
+type Item = { title: string; link: string; source: string; category: string; date: string | null };
+const news = loadJSON<{ updated?: string; items: Item[] }>('news', { items: [] });
+const categories = [...new Set(news.items.map((i) => i.category))];
+const fmt = (d: string | null) => (d ? new Date(d).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' }) : '');
+const isHindi = (s: string) => /[ऀ-ॿ]/.test(s);
+---
+<Base title="News" description="News on Dr. B. R. Ambedkar, caste and justice, the Constitution and rights — gathered from many publishers and updated automatically.">
+  <section class="hero">
+    <Chakra class="chakra-bg" />
+    <div class="wrap section-tight">
+      <span class="eyebrow">News</span>
+      <h1 style="font-size:var(--step-4)">Justice, equality and dignity — today</h1>
+      <p class="lede" style="max-width:64ch">Headlines about Dr. Ambedkar, caste discrimination, the Constitution and people's rights, gathered automatically from news publishers and Ambedkarite media. Click a headline to read it on the publisher's site.</p>
+      {news.updated && <p style="color:var(--blue-200);font-size:0.9rem;margin:0">Last updated {new Date(news.updated).toLocaleString('en-IN', { dateStyle: 'medium', timeStyle: 'short', timeZone: 'Asia/Kolkata' })} IST</p>}
+    </div>
+  </section>
+  <div class="narrow section-tight">
+    <div class="tabs" role="group" aria-label="News topics">
+      <button class="chip" type="button" data-cat="all" aria-pressed="true">All</button>
+      {categories.map((c) => <button class="chip" type="button" data-cat={c} aria-pressed="false">{c}</button>)}
+    </div>
+    <div id="news">
+      {news.items.map((i) => (
+        <article class="news-item" data-cat={i.category}>
+          <div class="meta">{i.source} · {fmt(i.date)} · {i.category}</div>
+          <h3 lang={isHindi(i.title) ? 'hi' : undefined}><a href={i.link} target="_blank" rel="noopener noreferrer nofollow">{i.title}</a></h3>
+        </article>
+      ))}
+    </div>
+    {news.items.length === 0 && <p class="notice">News will appear here after the first automatic update.</p>}
+    <p class="muted" style="margin-top:32px;font-size:0.9rem">Headlines belong to their publishers. This page links to them and does not copy articles. Inclusion here does not mean we endorse every view. Know a good source we should add? <a href={url('/contribute/')}>Suggest it</a>.</p>
+  </div>
+  <script is:inline>
+    (function () {
+      var btns = document.querySelectorAll('[data-cat]');
+      btns.forEach(function (b) {
+        if (b.tagName !== 'BUTTON') return;
+        b.addEventListener('click', function () {
+          var c = b.dataset.cat;
+          document.querySelectorAll('button[data-cat]').forEach(function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+          document.querySelectorAll('#news .news-item').forEach(function (n) { n.hidden = c !== 'all' && n.dataset.cat !== c; });
+        });
+      });
+    })();
+  </script>
+</Base>

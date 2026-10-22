@@ -1,0 +1,49 @@
+---
+import Base from '../../../layouts/Base.astro';
+import { volumes, pagesOf, chunksOf, type Volume } from '../../../lib/library';
+import { url } from '../../../lib/site';
+
+export function getStaticPaths() {
+  return volumes().flatMap((vol) => {
+    const chunks = chunksOf(vol);
+    return chunks.map((c, i) => ({
+      params: { volume: vol.id, range: c.slug },
+      props: { vol, start: c.start, end: c.end, prev: chunks[i - 1]?.slug, next: chunks[i + 1]?.slug },
+    }));
+  });
+}
+
+interface Props { vol: Volume; start: number; end: number; prev?: string; next?: string }
+const { vol, start, end, prev, next } = Astro.props;
+const rows = pagesOf(vol).filter((r) => r.p >= start && r.p <= end);
+const hasText = rows.some((r) => r.t.length > 40);
+const title = `${vol.label}, pages ${start}–${end}`;
+---
+<Base title={`${title} — Writings and Speeches`} description={`${vol.label}: ${vol.title}. PDF pages ${start}–${end} of Dr. Babasaheb Ambedkar: Writings and Speeches, with links to the original.`}>
+  <div class="narrow section-tight">
+    <p><a href={url('/library/')}>Library</a> › <a href={url(`/library/${vol.id}/`)}>{vol.label}</a></p>
+    <article
+      data-pagefind-body={hasText ? '' : undefined}
+      data-pagefind-filter="collection:Writings and Speeches"
+      data-pagefind-meta={`title:${title}`}
+    >
+      <span hidden data-pagefind-filter="volume">{vol.label}</span>
+      <span hidden data-pagefind-meta="pdf">{vol.sourceUrl}</span>
+      <span hidden data-pagefind-meta="volumeTitle">{vol.title}</span>
+      <h1 style="font-size:var(--step-3)" data-pagefind-ignore>{vol.label} · pages {start}–{end}</h1>
+      <p class="lede" data-pagefind-ignore>{vol.title}</p>
+      <p class="notice" data-pagefind-ignore>This text was extracted automatically from the {vol.sourceName === 'Ministry of External Affairs, Government of India' ? 'official PDF' : 'OCR copy'} of <em>Dr. Babasaheb Ambedkar: Writings and Speeches</em>, so it may contain small errors. Always check the original page before quoting.</p>
+      {rows.map((r) => (
+        <section>
+          <h2 id={`p${r.p}`} style="font-size:var(--step-1);margin-top:2em">PDF page {r.p}{r.n ? ` (printed page ${r.n})` : ''}</h2>
+          <p data-pagefind-ignore><a class="src" href={`${vol.sourceUrl}#page=${r.p}`} target="_blank" rel="noopener noreferrer">Open the original page</a></p>
+          {r.t.length > 40 ? <div class="reader">{r.t}</div> : <p class="muted">No text on this page (it may be blank, a title page or an image).</p>}
+        </section>
+      ))}
+    </article>
+    <nav class="pager" aria-label="Pages">
+      {prev ? <a class="btn btn-ghost" href={url(`/library/${vol.id}/${prev}/`)}>← Previous pages</a> : <span></span>}
+      {next && <a class="btn btn-primary" href={url(`/library/${vol.id}/${next}/`)}>Next pages →</a>}
+    </nav>
+  </div>
+</Base>

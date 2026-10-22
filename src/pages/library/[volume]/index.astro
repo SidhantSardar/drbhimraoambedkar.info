@@ -1,0 +1,29 @@
+---
+import Base from '../../../layouts/Base.astro';
+import { volumes, chunksOf, type Volume } from '../../../lib/library';
+import { url } from '../../../lib/site';
+
+export function getStaticPaths() {
+  return volumes().map((vol) => ({ params: { volume: vol.id }, props: { vol } }));
+}
+const { vol } = Astro.props as { vol: Volume };
+const chunks = chunksOf(vol);
+---
+<Base title={`${vol.label} — ${vol.title}`} description={`Read ${vol.label} of Dr. Babasaheb Ambedkar: Writings and Speeches online, page by page.`}>
+  <div class="narrow section-tight">
+    <p><a href={url('/library/')}>Library</a> › {vol.label}</p>
+    <span class="eyebrow">Writings and Speeches</span>
+    <h1 style="font-size:var(--step-3)">{vol.label}</h1>
+    <p class="lede">{vol.title}</p>
+    <p>{vol.pages} PDF pages · source: <a href={vol.sourceUrl} target="_blank" rel="noopener noreferrer">{vol.sourceName}</a>{vol.officialUrl !== vol.sourceUrl && <> · <a href={vol.officialUrl} target="_blank" rel="noopener noreferrer">official MEA scan</a></>}</p>
+    <div class="btn-row" style="margin:20px 0 32px">
+      <a class="btn btn-primary" href={url(`/library/${vol.id}/${chunks[0].slug}/`)}>Start reading</a>
+      <a class="btn btn-ghost" href={vol.officialUrl} target="_blank" rel="noopener noreferrer">Download the PDF</a>
+      <a class="btn btn-ghost" href={url(`/ask/?volume=${encodeURIComponent(vol.label)}`)}>Search this volume</a>
+    </div>
+    <h2 style="font-size:var(--step-1)">Jump to pages</h2>
+    <div class="filter-row">
+      {chunks.map((c) => <a class="chip" href={url(`/library/${vol.id}/${c.slug}/`)}>{c.start}–{c.end}</a>)}
+    </div>
+  </div>
+</Base>

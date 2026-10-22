@@ -1,0 +1,39 @@
+---
+import Base from '../../layouts/Base.astro';
+import { volumes, chunksOf } from '../../lib/library';
+import { url } from '../../lib/site';
+import { loadJSON } from '../../lib/data';
+const vols = volumes();
+const totalPages = vols.reduce((s, v) => s + v.pages, 0);
+const catalogue = loadJSON<any[]>('baws-volumes', []);
+const hindi = catalogue.filter((v) => /hindi/i.test(v.language || ''));
+---
+<Base title="Library — Writings and Speeches" description="Read all volumes of Dr. Babasaheb Ambedkar: Writings and Speeches online, page by page, with links to the official PDFs.">
+  <section class="hero">
+    <div class="wrap section-tight">
+      <span class="eyebrow">The library</span>
+      <h1 style="font-size:var(--step-3)">Dr. Babasaheb Ambedkar: Writings and Speeches</h1>
+      <p class="lede" style="max-width:64ch">The complete English edition — {vols.length} files, {totalPages.toLocaleString('en-IN')} pages — readable here page by page. Each page links back to the official PDF published by the Government of India, so you can always check the original.</p>
+      <div class="btn-row" style="margin-top:20px"><a class="btn btn-light" href={url('/ask/')}>Search all volumes →</a></div>
+    </div>
+  </section>
+  <div class="wrap section">
+    <div class="list-stack">
+      {vols.map((v) => (
+        <div class="work">
+          <div class="meta"><span>{v.label}</span><span>{v.pages} pages</span></div>
+          <h3><a href={url(`/library/${v.id}/`)}>{v.title}</a></h3>
+          <div class="links">
+            <a class="chip" href={url(`/library/${v.id}/${chunksOf(v)[0].slug}/`)}>Read online</a>
+            <a class="chip" href={v.officialUrl} target="_blank" rel="noopener noreferrer">Official PDF ↗</a>
+            {v.officialUrl !== v.sourceUrl && <a class="chip" href={v.sourceUrl} target="_blank" rel="noopener noreferrer">Text copy (Internet Archive) ↗</a>}
+          </div>
+        </div>
+      ))}
+    </div>
+    <div class="callout" style="margin-top:32px">
+      <h2 style="font-size:var(--step-1)">In Hindi — सम्पूर्ण वाङ्मय</h2>
+      <p>The Government of India also publishes the collected works in Hindi, in 40 volumes. They are available as PDFs from the Ministry of External Affairs{hindi.length ? '' : ''}: <a href="https://www.mea.gov.in/books-writings-of-ambedkar" target="_blank" rel="noopener noreferrer">Books &amp; Writings of Ambedkar ↗</a>. A searchable Hindi library is planned.</p>
+    </div>
+  </div>
+</Base>

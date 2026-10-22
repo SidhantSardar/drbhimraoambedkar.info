@@ -1,0 +1,18 @@
+---
+import StoryPage from '../../components/StoryPage.astro';
+import { themes } from '../../lib/data';
+
+export async function getStaticPaths() {
+  const list = await themes();
+  return list.map((entry, i) => ({
+    params: { slug: entry.id },
+    props: {
+      entry,
+      prev: list[i - 1] && { href: `/themes/${list[i - 1].id}/`, title: list[i - 1].data.title },
+      next: list[i + 1] && { href: `/themes/${list[i + 1].id}/`, title: list[i + 1].data.title },
+    },
+  }));
+}
+const props = Astro.props;
+---
+<StoryPage kind="themes" {...props} />

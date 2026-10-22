@@ -1,0 +1,425 @@
+{
+ "downloaded": "2026-10-22",
+ "files": [
+  {
+   "file": "archive/baws/Volume1.pdf",
+   "language": "English",
+   "bytes": 11151911,
+   "sha256": "fb7c5fe1ce9f575417d31d05748445798e8b05d18882c1246a598f19e877c7b8",
+   "sourceUrl": "https://www.mea.gov.in/images/CPV/Volume1.pdf"
+  },
+  {
+   "file": "archive/baws/Volume10.pdf",
+   "language": "English",
+   "bytes": 19548009,
+   "sha256": "0785efac47b6280c1d9833348865feb917c0c696f07ad389dc95279a0d854e2d",
+   "sourceUrl": "https://www.mea.gov.in/images/CPV/Volume10.pdf"
+  },
+  {
+   "file": "archive/baws/Volume11.pdf",
+   "language": "English",
+   "bytes": 13532371,
+   "sha256": "9980bf9fa56b135fda6a391da6b598aaa56272634275f847686965ad6aca03b1",
+   "sourceUrl": "https://www.mea.gov.in/images/CPV/Volume11.pdf"
+  },
+  {
+   "file": "archive/baws/Volume12.pdf",
+   "language": "English",
+   "bytes": 15436666,
+   "sha256": "12f04781d6aa9328dc7903a22cd343e9072c13f31d5fe42d7c9b30ed4574da72",
+   "sourceUrl": "https://www.mea.gov.in/images/CPV/Volume12.pdf"
+  },
+  {
+   "file": "archive/baws/Volume13.pdf",
+   "language": "English",
+   "bytes": 23211889,
+   "sha256": "e6362ece69ba1adb2140b6f845fc44924408aa8de245bd68f2644ba2dc8ce546",
+   "sourceUrl": "https://www.mea.gov.in/images/CPV/Volume13.pdf"
+  },
+  {
+   "file": "archive/baws/Volume14_Part_I.pdf",
+   "language": "English",
+   "bytes": 8986024,
+   "sha256": "578da6548d258b10060ee069901ccfd354cbe2a478b28a2ffd4e6ac47fb4bdaa",
+   "sourceUrl": "https://www.mea.gov.in/images/CPV/Volume14_Part_I.pdf"
+  },
+  {
+   "file": "archive/baws/Volume14_Part_II.pdf",
+   "language": "English",
+   "bytes": 7557728,
+   "sha256": "7326e4bd4109e3fa3460652f3eab1b5782e855317acd9e641d1fb8919e471641",
+   "sourceUrl": "https://www.mea.gov.in/images/CPV/Volume14_Part_II.pdf"
+  },
+  {
+   "file": "archive/baws/Volume15.pdf",
+   "language": "English",
+   "bytes": 15920888,
+   "sha256": "3d4436142da438caeaff8c3b308813850a5785a7f027fa8a4761d0574822b766",
+   "sourceUrl": "https://www.mea.gov.in/images/CPV/Volume15.pdf"
+  },
+  {
+   "file": "archive/baws/Volume16.pdf",
+   "language": "English",
+   "bytes": 10645087,
+   "sha256": "b287a3a4228f6c05b38ef0b6d76037151983bc11f1db16db86e8d79bc26d19bd",
+   "sourceUrl": "https://www.mea.gov.in/images/CPV/Volume16.pdf"
+  },
+  {
+   "file": "archive/baws/Volume17_Part_I.pdf",
+   "language": "English",
+   "bytes": 14066396,
+   "sha256": "47aa3de93753bd897b3e9c0437c8a3136e460b19f2f22f12e96cb94fb0b89156",
+   "sourceUrl": "https://www.mea.gov.in/images/CPV/Volume17_Part_I.pdf"
+  },
+  {
+   "file": "archive/baws/Volume17_Part_II.pdf",
+   "language": "English",
+   "bytes": 13440538,
+   "sha256": "9f26416b2e9a45012a4e7c49acf3844be2963d64c92747add5329abea25aa5af",
+   "sourceUrl": "https://www.mea.gov.in/images/CPV/Volume17_Part_II.pdf"
+  },
+  {
+   "file": "archive/baws/Volume17_Part_III.pdf",
+   "language": "English",
+   "bytes": 10670889,
+   "sha256": "8453d62202a14258ec662338883f130566d36b8ab5b2144273ac06a6f4757200",
+   "sourceUrl": "https://www.mea.gov.in/images/CPV/Volume17_Part_III.pdf"
+  },
+  {
+   "file": "archive/baws/Volume2.pdf",
+   "language": "English",
+   "bytes": 13563043,
+   "sha256": "813f730b8c74646bd9132c8e8e2d3663d00a5129baf79ca9f8f3bfc46fc253bb",
+   "sourceUrl": "https://www.mea.gov.in/images/CPV/Volume2.pdf"
+  },
+  {
+   "file": "archive/baws/Volume3.pdf",
+   "language": "English",
+   "bytes": 10818747,
+   "sha256": "9403671aba3443663cf4b02b5ee22a2f3c5131efcc5e7e0cc335696dcebf5be6",
+   "sourceUrl": "https://www.mea.gov.in/images/CPV/Volume3.pdf"
+  },
+  {
+   "file": "archive/baws/Volume4.pdf",
+   "language": "English",
+   "bytes": 10115446,
+   "sha256": "025b46c2c1cfcf45dd9666d381ecb4c32a1687dd2663e0a6b6ab91bf8c38f8c8",
+   "sourceUrl": "https://www.mea.gov.in/images/CPV/Volume4.pdf"
+  },
+  {
+   "file": "archive/baws/Volume5.pdf",
+   "language": "English",
+   "bytes": 11330175,
+   "sha256": "fbaf87ef70d4f7ad62bc596f8cd3a01fb293384c3be671cb059e43719c3be1d0",
+   "sourceUrl": "https://www.mea.gov.in/images/CPV/Volume5.pdf"
+  },
+  {
+   "file": "archive/baws/Volume6.pdf",
+   "language": "English",
+   "bytes": 13365024,
+   "sha256": "2e2d50cef2c2c3f22e0bbd0d8eddaebe4535223e44e854efa7e803afd2d346a2",
+   "sourceUrl": "https://www.mea.gov.in/images/CPV/Volume6.pdf"
+  },
+  {
+   "file": "archive/baws/Volume7.pdf",
+   "language": "English",
+   "bytes": 9241940,
+   "sha256": "953a18dd58d88303943c3f3cb813d187698c87a6fb4cda9f18c3f93505f6ce58",
+   "sourceUrl": "https://www.mea.gov.in/images/CPV/Volume7.pdf"
+  },
+  {
+   "file": "archive/baws/Volume8.pdf",
+   "language": "English",
+   "bytes": 10888923,
+   "sha256": "acc4e55dfac6f176f5f06a6624720a4909d4df4df996d6974aa80d555e0735ed",
+   "sourceUrl": "https://www.mea.gov.in/images/CPV/Volume8.pdf"
+  },
+  {
+   "file": "archive/baws/Volume9.pdf",
+   "language": "English",
+   "bytes": 12603905,
+   "sha256": "6d26941ff4e02a692d5560ad7dcad6b6bc55f7617cbe263dfafc47127636a47f",
+   "sourceUrl": "https://www.mea.gov.in/images/CPV/Volume9.pdf"
+  },
+  {
+   "file": "archive/baws-hindi/VolumeH1.pdf",
+   "language": "Hindi",
+   "bytes": 16370713,
+   "sha256": "26d973cead368498914507fe1ca191869093b9d3981bd0f2bd0cd7c0ab52d278",
+   "sourceUrl": "https://www.mea.gov.in/images/CPV/VolumeH1.pdf"
+  },
+  {
+   "file": "archive/baws-hindi/VolumeH10.pdf",
+   "language": "Hindi",
+   "bytes": 8105524,
+   "sha256": "28447835aad81f7344c0c7040e3491da7885f088e63dd72fddb8851da502125e",
+   "sourceUrl": "https://www.mea.gov.in/images/CPV/VolumeH10.pdf"
+  },
+  {
+   "file": "archive/baws-hindi/VolumeH11.pdf",
+   "language": "Hindi",
+   "bytes": 7558231,
+   "sha256": "589bebb0399cf0d7110b6f60e8d6fd150f25b71822410c66bc9a34e17455ce0c",
+   "sourceUrl": "https://www.mea.gov.in/images/CPV/VolumeH11.pdf"
+  },
+  {
+   "file": "archive/baws-hindi/VolumeH12.pdf",
+   "language": "Hindi",
+   "bytes": 8174008,
+   "sha256": "c07b18972c1004a683e33b9a571fcd4c02fa02cc4e167db46209bb7144f7b811",
+   "sourceUrl": "https://www.mea.gov.in/images/CPV/VolumeH12.pdf"
+  },
+  {
+   "file": "archive/baws-hindi/VolumeH13.pdf",
+   "language": "Hindi",
+   "bytes": 6561947,
+   "sha256": "4e8d6dcbf72c11f1fe9220fd787c993f30693e4f24662701f62f94b471e20408",
+   "sourceUrl": "https://www.mea.gov.in/images/CPV/VolumeH13.pdf"
+  },
+  {
+   "file": "archive/baws-hindi/VolumeH14.pdf",
+   "language": "Hindi",
+   "bytes": 6596531,
+   "sha256": "55f89a90f5a331650b1134978d4fcc024933ddd0b463337980756dc8ff8ad5ae",
+   "sourceUrl": "https://www.mea.gov.in/images/CPV/VolumeH14.pdf"
+  },
+  {
+   "file": "archive/baws-hindi/VolumeH15.pdf",
+   "language": "Hindi",
+   "bytes": 9432696,
+   "sha256": "2e0870f05469e5e7ef7ce07bf67592d7a23e38f35123d2db839ffc71aa26771f",
+   "sourceUrl": "https://www.mea.gov.in/images/CPV/VolumeH15.pdf"
+  },
+  {
+   "file": "archive/baws-hindi/VolumeH16.pdf",
+   "language": "Hindi",
+   "bytes": 7707623,
+   "sha256": "87bb77bb206d97ab796b7401310608a5a6a6292cb69a24e280ae5dba6a1cebb6",
+   "sourceUrl": "https://www.mea.gov.in/images/CPV/VolumeH16.pdf"
+  },
+  {
+   "file": "archive/baws-hindi/VolumeH17.pdf",
+   "language": "Hindi",
+   "bytes": 6184748,
+   "sha256": "48cee155340aaa2c53ef69f938d81fe0472716e241418edaaab4b964c563fdb8",
+   "sourceUrl": "https://www.mea.gov.in/images/CPV/VolumeH17.pdf"
+  },
+  {
+   "file": "archive/baws-hindi/VolumeH18.pdf",
+   "language": "Hindi",
+   "bytes": 8844409,
+   "sha256": "7af2f385bf8a3bef60db0481ae37a9521c308a51f16260c2984d34550e2dd811",
+   "sourceUrl": "https://www.mea.gov.in/images/CPV/VolumeH18.pdf"
+  },
+  {
+   "file": "archive/baws-hindi/VolumeH19.pdf",
+   "language": "Hindi",
+   "bytes": 6616049,
+   "sha256": "d357dc54850e77cd69ffd6dbc77f85b9696ab0c0e5f2093ef7f1d7553c6c041a",
+   "sourceUrl": "https://www.mea.gov.in/images/CPV/VolumeH19.pdf"
+  },
+  {
+   "file": "archive/baws-hindi/VolumeH2.pdf",
+   "language": "Hindi",
+   "bytes": 9256364,
+   "sha256": "54a609756543df0bf5c96e7a19b859a13eb035c36efd4d09e9cfa77b6811f213",
+   "sourceUrl": "https://www.mea.gov.in/images/CPV/VolumeH2.pdf"
+  },
+  {
+   "file": "archive/baws-hindi/VolumeH20.pdf",
+   "language": "Hindi",
+   "bytes": 7505451,
+   "sha256": "da5de16e113f3991bec17bf352368eaff8849f4167f313f6becf4998569de025",
+   "sourceUrl": "https://www.mea.gov.in/images/CPV/VolumeH20.pdf"
+  },
+  {
+   "file": "archive/baws-hindi/VolumeH21.pdf",
+   "language": "Hindi",
+   "bytes": 6712728,
+   "sha256": "da2adc2baa4558f7b5badfe495bc79e5129e40c7f944a9fe4ebddcb8b26eb9ed",
+   "sourceUrl": "https://www.mea.gov.in/images/CPV/VolumeH21.pdf"
+  },
+  {
+   "file": "archive/baws-hindi/VolumeH22.pdf",
+   "language": "Hindi",
+   "bytes": 8671023,
+   "sha256": "e30a4f3d88ca1688a077a952e0f20df2da647234109695736fdc57e55c94fd78",
+   "sourceUrl": "https://www.mea.gov.in/images/CPV/VolumeH22.pdf"
+  },
+  {
+   "file": "archive/baws-hindi/VolumeH23.pdf",
+   "language": "Hindi",
+   "bytes": 7532816,
+   "sha256": "5b31456d6de9c77b9b8cd73041f1b96e10219b655b8ceebf16fd101612ba8e03",
+   "sourceUrl": "https://www.mea.gov.in/images/CPV/VolumeH23.pdf"
+  },
+  {
+   "file": "archive/baws-hindi/VolumeH24.pdf",
+   "language": "Hindi",
+   "bytes": 8716654,
+   "sha256": "85970caaf1223b430a0bfacf1fbcd0024754bc8f7ed9ed72b19366bd56b31476",
+   "sourceUrl": "https://www.mea.gov.in/images/CPV/VolumeH24.pdf"
+  },
+  {
+   "file": "archive/baws-hindi/VolumeH25.pdf",
+   "language": "Hindi",
+   "bytes": 7260533,
+   "sha256": "0814cd688a04be9e7fee7a906dc022e2a5497f88839f45881867e697b0ad6310",
+   "sourceUrl": "https://www.mea.gov.in/images/CPV/VolumeH25.pdf"
+  },
+  {
+   "file": "archive/baws-hindi/VolumeH26.pdf",
+   "language": "Hindi",
+   "bytes": 8425762,
+   "sha256": "2a0a4784cd9bf4b425a98216516cb4fbc64717acabcae24ecad9e893f5f8ca14",
+   "sourceUrl": "https://www.mea.gov.in/images/CPV/VolumeH26.pdf"
+  },
+  {
+   "file": "archive/baws-hindi/VolumeH27.pdf",
+   "language": "Hindi",
+   "bytes": 7381327,
+   "sha256": "77efac40a2b5e8a4586238a7063312587de02334848198eba03ca8f5d12d32e0",
+   "sourceUrl": "https://www.mea.gov.in/images/CPV/VolumeH27.pdf"
+  },
+  {
+   "file": "archive/baws-hindi/VolumeH28.pdf",
+   "language": "Hindi",
+   "bytes": 7487436,
+   "sha256": "0d979a8ba0d6403a9561a8f2da33a89c13cda423538cef138d93e169b4c2c018",
+   "sourceUrl": "https://www.mea.gov.in/images/CPV/VolumeH28.pdf"
+  },
+  {
+   "file": "archive/baws-hindi/VolumeH29.pdf",
+   "language": "Hindi",
+   "bytes": 15925052,
+   "sha256": "d6d27d33a8cea5f59a4ef844bf4dcf8dc204a4e6932ef3c9459b9bf50cf5cdec",
+   "sourceUrl": "https://www.mea.gov.in/images/CPV/VolumeH29.pdf"
+  },
+  {
+   "file": "archive/baws-hindi/VolumeH3.pdf",
+   "language": "Hindi",
+   "bytes": 13658526,
+   "sha256": "27eccc4bc9b132caa4136e714b621d76711b51d0a24900cdc10195c90c86853d",
+   "sourceUrl": "https://www.mea.gov.in/images/CPV/VolumeH3.pdf"
+  },
+  {
+   "file": "archive/baws-hindi/VolumeH30.pdf",
+   "language": "Hindi",
+   "bytes": 7954865,
+   "sha256": "f743dd794475a34fec2b4ff448707f3ad008a8b25254301a45efe49783968e2f",
+   "sourceUrl": "https://www.mea.gov.in/images/CPV/VolumeH30.pdf"
+  },
+  {
+   "file": "archive/baws-hindi/VolumeH31.pdf",
+   "language": "Hindi",
+   "bytes": 10974275,
+   "sha256": "4301cb98e3f9f6b0e3288e49982431a110b97b864c2d9bbc2a6f505f030443b3",
+   "sourceUrl": "https://www.mea.gov.in/images/CPV/VolumeH31.pdf"
+  },
+  {
+   "file": "archive/baws-hindi/VolumeH32.pdf",
+   "language": "Hindi",
+   "bytes": 18362524,
+   "sha256": "984c9e11d4dc87bb8c442acaabb40f98a6fff89ddb9a016ea53eff8481d2b29c",
+   "sourceUrl": "https://www.mea.gov.in/images/CPV/VolumeH32.pdf"
+  },
+  {
+   "file": "archive/baws-hindi/VolumeH33.pdf",
+   "language": "Hindi",
+   "bytes": 9901708,
+   "sha256": "8d57eb4c177060a89a6e1b57c650b61e5b405168e90ef08492be4db3b8ba00a5",
+   "sourceUrl": "https://www.mea.gov.in/images/CPV/VolumeH33.pdf"
+  },
+  {
+   "file": "archive/baws-hindi/VolumeH34.pdf",
+   "language": "Hindi",
+   "bytes": 14569992,
+   "sha256": "3cf4edb1c4a02d1737b96b51242b7b2d4c3c7c26e2bcd08ec2b522ea6966dc5c",
+   "sourceUrl": "https://www.mea.gov.in/images/CPV/VolumeH34.pdf"
+  },
+  {
+   "file": "archive/baws-hindi/VolumeH35.pdf",
+   "language": "Hindi",
+   "bytes": 11499520,
+   "sha256": "9fe76c87dd5b8aa39af0866fcdf59ac6ee378088815e54697f2da7b61196350d",
+   "sourceUrl": "https://www.mea.gov.in/images/CPV/VolumeH35.pdf"
+  },
+  {
+   "file": "archive/baws-hindi/VolumeH36.pdf",
+   "language": "Hindi",
+   "bytes": 12318238,
+   "sha256": "2fcd2dbd7582cd48c070c88e311b236b9e2a5c8577548b663dba6bc851246e61",
+   "sourceUrl": "https://www.mea.gov.in/images/CPV/VolumeH36.pdf"
+  },
+  {
+   "file": "archive/baws-hindi/VolumeH37.pdf",
+   "language": "Hindi",
+   "bytes": 11472570,
+   "sha256": "71005536345b830d7319018800b8585e5189ad2d76f424f32dde726e79c34779",
+   "sourceUrl": "https://www.mea.gov.in/images/CPV/VolumeH37.pdf"
+  },
+  {
+   "file": "archive/baws-hindi/VolumeH38.pdf",
+   "language": "Hindi",
+   "bytes": 10566243,
+   "sha256": "08a538ebe05c694418b4f812d802f03de8309a5e496fd2fbb80e6551fb01daf9",
+   "sourceUrl": "https://www.mea.gov.in/images/CPV/VolumeH38.pdf"
+  },
+  {
+   "file": "archive/baws-hindi/VolumeH39.pdf",
+   "language": "Hindi",
+   "bytes": 9009683,
+   "sha256": "9812731dcaf63ed2468d358331c7bcece139d8936e7979771cf1c63478a720e0",
+   "sourceUrl": "https://www.mea.gov.in/images/CPV/VolumeH39.pdf"
+  },
+  {
+   "file": "archive/baws-hindi/VolumeH4.pdf",
+   "language": "Hindi",
+   "bytes": 7853646,
+   "sha256": "151636c65145d107a141f0231b47265f6ec45a95634a7964841e580aa0c59169",
+   "sourceUrl": "https://www.mea.gov.in/images/CPV/VolumeH4.pdf"
+  },
+  {
+   "file": "archive/baws-hindi/VolumeH40.pdf",
+   "language": "Hindi",
+   "bytes": 8649178,
+   "sha256": "b962caa06346e2c4a71f552f7b25a7839785c798b34d9ac0af10ff6dd606393a",
+   "sourceUrl": "https://www.mea.gov.in/images/CPV/VolumeH40.pdf"
+  },
+  {
+   "file": "archive/baws-hindi/VolumeH5.pdf",
+   "language": "Hindi",
+   "bytes": 18685764,
+   "sha256": "1b874c7dcb041d00aac1d0199f6166434b761c3c0bc9b339cec7f9903338de4f",
+   "sourceUrl": "https://www.mea.gov.in/images/CPV/VolumeH5.pdf"
+  },
+  {
+   "file": "archive/baws-hindi/VolumeH6.pdf",
+   "language": "Hindi",
+   "bytes": 6839008,
+   "sha256": "d9dd9d9b13357cc036dd0219671cb68e3bfb5445ab42ddb6f39acf7d00047f9a",
+   "sourceUrl": "https://www.mea.gov.in/images/CPV/VolumeH6.pdf"
+  },
+  {
+   "file": "archive/baws-hindi/VolumeH7.pdf",
+   "language": "Hindi",
+   "bytes": 8316755,
+   "sha256": "2e4610969df544f9d9b6c13aea7489c67f2cc463d60b12cd23ba2a96932fece4",
+   "sourceUrl": "https://www.mea.gov.in/images/CPV/VolumeH7.pdf"
+  },
+  {
+   "file": "archive/baws-hindi/VolumeH8.pdf",
+   "language": "Hindi",
+   "bytes": 8657293,
+   "sha256": "7efbb3fc4f63dac4623522d582680140a8a356ffb5d121ca6708f2a425af147c",
+   "sourceUrl": "https://www.mea.gov.in/images/CPV/VolumeH8.pdf"
+  },
+  {
+   "file": "archive/baws-hindi/VolumeH9.pdf",
+   "language": "Hindi",
+   "bytes": 6980901,
+   "sha256": "160d3bec89388e9f9575fe93e1f07bda79b7b8bfa67871c913080ca983497c15",
+   "sourceUrl": "https://www.mea.gov.in/images/CPV/VolumeH9.pdf"
+  }
+ ]
+}

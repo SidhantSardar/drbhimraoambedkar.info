@@ -1,0 +1,48 @@
+---
+import Base from '../../layouts/Base.astro';
+import Chakra from '../../components/Chakra.astro';
+import WorkLinks from '../../components/WorkLinks.astro';
+import { loadJSON, type Speech } from '../../lib/data';
+import { url, formatDate } from '../../lib/site';
+const speeches = loadJSON<Speech[]>('speeches', []).sort((a, b) => String(a.date).localeCompare(String(b.date)));
+---
+<Base title="Speeches" description="The major speeches of Dr. B. R. Ambedkar — where and when he spoke, what he said, in simple words, with links to the full text.">
+  <section class="hero">
+    <Chakra class="chakra-bg" />
+    <div class="wrap section-tight">
+      <span class="eyebrow">In his own voice</span>
+      <h1 style="font-size:var(--step-4)">Speeches</h1>
+      <p class="lede" style="max-width:64ch">{speeches.length} major speeches — at conferences, in legislatures, in the Constituent Assembly and at great public gatherings — with the key idea of each and a link to the full text.</p>
+    </div>
+  </section>
+  <div class="narrow section-tight">
+    <label class="visually-hidden" for="sq">Search speeches</label>
+    <input class="search-input" id="sq" type="search" placeholder="Search speeches by place, year or idea…" style="margin-bottom:20px" />
+    <ol class="tl-list" id="speeches">
+      {speeches.map((s) => (
+        <li class="tl-item" id={s.id} data-search={[s.title, s.place, s.date, s.occasion, s.summary, s.keyIdea].join(' ').toLowerCase()}>
+          <time datetime={s.date}>{s.date ? formatDate(s.date) : 'Date unknown'}{s.place ? ` · ${s.place}` : ''}</time>
+          <h3 style="margin:4px 0">{s.title}</h3>
+          {s.occasion && <p class="muted" style="margin:0;font-size:0.95rem">{s.occasion}</p>}
+          {s.summary && <p>{s.summary}</p>}
+          {s.keyIdea && <p style="font-size:0.95rem"><strong>Key idea:</strong> {s.keyIdea}</p>}
+          <div class="tl-links">
+            <WorkLinks baws={s.baws ? [s.baws] : []} online={s.source?.url ? [{ label: s.source.label || 'Full text', url: s.source.url }] : []} />
+            {s.audioOrVideo && <a class="chip" href={s.audioOrVideo} target="_blank" rel="noopener noreferrer">Listen / watch ↗</a>}
+          </div>
+        </li>
+      ))}
+    </ol>
+    {speeches.length === 0 && <p class="notice">The list of speeches is being compiled.</p>}
+    <p style="margin-top:32px"><a href={url('/ask/')}>Search inside every speech and book →</a></p>
+  </div>
+  <script is:inline>
+    (function () {
+      var q = document.getElementById('sq');
+      q.addEventListener('input', function () {
+        var t = q.value.trim().toLowerCase();
+        document.querySelectorAll('#speeches > li').forEach(function (li) { li.hidden = t && li.dataset.search.indexOf(t) < 0; });
+      });
+    })();
+  </script>
+</Base>

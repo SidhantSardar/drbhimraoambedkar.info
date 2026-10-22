@@ -1,0 +1,183 @@
+---
+import Base from '../layouts/Base.astro';
+import Chakra from '../components/Chakra.astro';
+import Picture from '../components/Picture.astro';
+import StoryCard from '../components/StoryCard.astro';
+import { url, formatDate } from '../lib/site';
+import { chapters, themes, images, loadJSON, type Work, type Speech } from '../lib/data';
+import { getCollection } from 'astro:content';
+
+const life = await chapters();
+const themeList = await themes();
+const imgs = images();
+const portrait = imgs.find((i) => i.tags?.includes('portrait') && i.tags?.includes('hero')) || imgs.find((i) => i.tags?.includes('portrait'));
+const works = loadJSON<Work[]>('works', []);
+const speeches = loadJSON<Speech[]>('speeches', []);
+const constitution = loadJSON<any>('constitution', {});
+const posts = (await getCollection('blog')).filter((p) => !p.data.draft).sort((a, b) => +b.data.date - +a.data.date).slice(0, 3);
+
+const milestones = [
+  { date: '1891-04-14', label: 'Born in Mhow, into a family the caste system called "untouchable"', href: '/life/childhood/' },
+  { date: '1913', label: 'Sails to New York to study at Columbia University', href: '/life/columbia/' },
+  { date: '1927-03-20', label: 'Leads the Mahad Satyagraha for the right to drink public water', href: '/life/awakening/' },
+  { date: '1932-09-24', label: 'Signs the Poona Pact on political representation', href: '/life/round-table/' },
+  { date: '1947-08-29', label: 'Chosen to chair the Constitution\'s Drafting Committee', href: '/constitution/' },
+  { date: '1949-11-26', label: 'The Constituent Assembly adopts the Constitution of India', href: '/constitution/' },
+  { date: '1956-10-14', label: 'Embraces Buddhism at Nagpur with hundreds of thousands of people', href: '/life/buddhism/' },
+  { date: '1956-12-06', label: 'Passes away in Delhi — Mahaparinirvan Din', href: '/life/final-days/' },
+];
+---
+<Base image={portrait?.file ? url(portrait.file) : undefined}>
+  <section class="hero">
+    <Chakra class="chakra-bg" />
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow">1891 – 1956 · Scholar · Economist · Jurist · Reformer</span>
+        <h1>Dr. Bhimrao Ramji Ambedkar</h1>
+        <p class="lede">The boy who was not allowed to drink water from the school tap became one of the most educated people of his time — and led the writing of the Constitution that promises every Indian equal dignity.</p>
+        <div class="btn-row" style="margin-top:24px">
+          <a class="btn btn-light" href={url('/life/')}>Begin his story →</a>
+          <a class="btn btn-ghost" href={url('/constitution/')}>The Constitution</a>
+        </div>
+        <div class="mission">
+          <p><strong>Why this website exists.</strong> Dr. Ambedkar's writings, speeches and records are spread across government PDFs, university archives, museums and memorials. India's Ministry of Social Justice and Empowerment itself describes them as "scattered across libraries, memorials, archives, and fragmented digital sources" <a class="src" href="https://zaidsayyed.in/tools/sih-problem-statements/sih26096" target="_blank" rel="noopener noreferrer" title="Source: Smart India Hackathon 2026 brief SIH26096">SIH 2026 brief SIH26096</a>.</p>
+          <p>This is an independent initiative to bring them together in one place — taken from authoritative sources, explained in simple words, with a link to the original for every fact. Free for everyone.</p>
+        </div>
+      </div>
+      {portrait && (
+        <figure class="hero-portrait">
+          <Picture img={portrait} eager sizes="(min-width: 900px) 460px, 90vw" />
+          <figcaption>{portrait.caption} {portrait.sourceUrl && <a href={portrait.sourceUrl} target="_blank" rel="noopener noreferrer">{portrait.license}</a>}</figcaption>
+        </figure>
+      )}
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <span class="eyebrow">The life story</span>
+      <h2>His life, in {life.length} chapters</h2>
+      <p class="lede" style="max-width:62ch">From the world before his birth to the movement that lives on today. Each chapter is short, simple and sourced — every fact links to where it came from.</p>
+      <div class="grid" style="margin-top:28px">
+        {life.map((c, i) => (
+          <StoryCard slug={c.id} href={`/life/${c.id}/`} title={c.data.title} period={c.data.period} summary={c.data.summary} num={String(i + 1).padStart(2, '0')} />
+        ))}
+      </div>
+      {life.length === 0 && <p class="notice">The chapters are being researched and written. Check back soon.</p>}
+    </div>
+  </section>
+
+  <section class="hero section">
+    <Chakra class="chakra-bg" />
+    <div class="wrap">
+      <span class="eyebrow">The flagship</span>
+      <h2>The Constitution of India</h2>
+      <p class="lede" style="max-width:62ch">As chairman of the Drafting Committee, Dr. Ambedkar guided India's Constitution through the Constituent Assembly. Read what it says in plain words, the articles he fought for, his speeches — and download the official text.</p>
+      <div class="stats" style="margin:28px 0">
+        <div class="stat"><strong>26 Nov 1949</strong><span>Adopted by the Constituent Assembly</span></div>
+        <div class="stat"><strong>26 Jan 1950</strong><span>Came into force — Republic Day</span></div>
+        <div class="stat"><strong>Article 17</strong><span>Abolished untouchability</span></div>
+        <div class="stat"><strong>Article 32</strong><span>The right to go to court to protect your rights</span></div>
+      </div>
+      <div class="btn-row">
+        <a class="btn btn-light" href={url('/constitution/')}>Explore the Constitution →</a>
+        {constitution?.documents?.find((d: any) => d.localFile) && (
+          <a class="btn btn-ghost" href={url(constitution.documents.find((d: any) => d.localFile).localFile)}>Download the official text</a>
+        )}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <span class="eyebrow">Milestones</span>
+      <h2>Key moments</h2>
+      <ol class="tl-list" style="margin-top:28px">
+        {milestones.map((m) => (
+          <li class="tl-item">
+            <time datetime={m.date}>{formatDate(m.date)}</time>
+            <p><a href={url(m.href)}>{m.label}</a></p>
+          </li>
+        ))}
+      </ol>
+      <a class="btn btn-primary" href={url('/timeline/')}>See the full timeline →</a>
+    </div>
+  </section>
+
+  <section class="section" style="background:var(--surface-2)">
+    <div class="wrap">
+      <span class="eyebrow">His work</span>
+      <h2>Everything he wrote and said</h2>
+      <p class="lede" style="max-width:62ch">Books, theses, essays, newspapers, evidence to commissions and speeches — each explained simply, with a link to the original page in his collected <em>Writings and Speeches</em>, or to the library that holds the physical copy.</p>
+      <div class="facts" style="margin:28px 0">
+        <div class="fact"><strong>{works.length || '—'}</strong><span>works catalogued</span></div>
+        <div class="fact"><strong>{speeches.length || '—'}</strong><span>major speeches</span></div>
+        <div class="fact"><strong>17</strong><span>volumes of Writings &amp; Speeches, searchable page by page</span></div>
+        <div class="fact"><strong>{imgs.length || '—'}</strong><span>freely licensed photographs and images</span></div>
+      </div>
+      <div class="btn-row">
+        <a class="btn btn-primary" href={url('/works/')}>Browse all works</a>
+        <a class="btn btn-ghost" href={url('/works/speeches/')}>Speeches</a>
+        <a class="btn btn-ghost" href={url('/works/archives/')}>Where the originals are kept</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="narrow">
+      <div class="ask-box">
+        <span class="eyebrow">Ask the archive</span>
+        <h2 style="font-size:var(--step-2)">What did Dr. Ambedkar say about…?</h2>
+        <p>Search across his collected writings and speeches. Every answer shows the exact volume and page, with a link to the original.</p>
+        <form class="ask-form" action={url('/ask/')} method="get" role="search">
+          <label class="visually-hidden" for="home-q">Your question</label>
+          <input class="search-input" id="home-q" name="q" placeholder="e.g. education, democracy, women's rights" />
+          <button class="btn btn-primary" type="submit">Search</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  {themeList.length > 0 && (
+    <section class="section-tight">
+      <div class="wrap">
+        <span class="eyebrow">Beyond the timeline</span>
+        <h2>The person behind the work</h2>
+        <div class="grid" style="margin-top:24px">
+          {themeList.map((t) => <StoryCard slug={t.id} href={`/themes/${t.id}/`} title={t.data.title} summary={t.data.summary} />)}
+        </div>
+      </div>
+    </section>
+  )}
+
+  {posts.length > 0 && (
+    <section class="section">
+      <div class="wrap">
+        <span class="eyebrow">From the blog</span>
+        <h2>Read, discuss, share</h2>
+        <div class="grid" style="margin-top:24px">
+          {posts.map((p) => (
+            <a class="card" href={url(`/blog/${p.id}/`)}>
+              <div class="card-body">
+                <span class="card-meta">{p.data.date.toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' })}</span>
+                <h3>{p.data.title}</h3>
+                <p>{p.data.description}</p>
+              </div>
+            </a>
+          ))}
+        </div>
+        <div class="btn-row" style="margin-top:24px">
+          <a class="btn btn-primary" href={url('/blog/')}>All articles</a>
+          <a class="btn btn-ghost" href={url('/news/')}>Latest news</a>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <section class="section-tight">
+    <div class="narrow callout">
+      <h2 style="font-size:var(--step-1)">Sources first, always</h2>
+      <p>Every fact on this site carries a small link — like this <a class="src" href={url('/about/')}>Our source policy</a> — to the document, archive or book it came from. Where historians disagree, we show both sides. Found a mistake? <a href={url('/contribute/')}>Tell us</a> — corrections are public on GitHub.</p>
+    </div>
+  </section>
+</Base>

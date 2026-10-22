@@ -1,0 +1,163 @@
+---
+import Base from '../layouts/Base.astro';
+import Chakra from '../components/Chakra.astro';
+import { volumes } from '../lib/library';
+import { url, ASK_ENDPOINT } from '../lib/site';
+const vols = volumes();
+const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : import.meta.env.BASE_URL + '/';
+const endpoint = ASK_ENDPOINT || `${base}api/ask`;
+const examples = ['education', 'women', 'democracy', 'fraternity', 'annihilation of caste', 'Buddha', 'labour', 'state socialism'];
+---
+<Base title="Ask the Archive" description="Search everything Dr. B. R. Ambedkar wrote and said — 17 volumes of Writings and Speeches — and get answers that cite the exact page.">
+  <section class="hero">
+    <Chakra class="chakra-bg" />
+    <div class="wrap section-tight">
+      <span class="eyebrow">Ask the archive</span>
+      <h1 style="font-size:var(--step-4)">What did Dr. Ambedkar say?</h1>
+      <p class="lede" style="max-width:64ch">Search all {vols.length} files of <em>Dr. Babasaheb Ambedkar: Writings and Speeches</em> — more than 14,000 pages. Every result shows the volume and page, with a link to the original.</p>
+    </div>
+  </section>
+  <div class="narrow section-tight">
+    <div class="ask-box">
+      <form class="ask-form" id="ask-form" role="search">
+        <label class="visually-hidden" for="q">Your question or search words</label>
+        <input class="search-input" id="q" name="q" type="search" autocomplete="off" placeholder="Ask a question, e.g. What did he say about education?" />
+        <button class="btn btn-primary" type="submit">Search</button>
+      </form>
+      <div class="filter-row" style="margin-top:12px">
+        <label class="visually-hidden" for="vol">Volume</label>
+        <select class="search-input" id="vol" style="max-width:100%">
+          <option value="">All volumes</option>
+          {vols.map((v) => <option value={v.label}>{v.label} — {v.title.length > 60 ? v.title.slice(0, 60) + '…' : v.title}</option>)}
+        </select>
+      </div>
+      <p class="muted" style="font-size:0.9rem;margin:12px 0 0">Try: {examples.map((e, i) => <><a href={`?q=${encodeURIComponent(e)}`} data-example={e}>{e}</a>{i < examples.length - 1 ? ', ' : ''}</>)}</p>
+    </div>
+
+    <div id="answer" hidden></div>
+    <p id="status" class="muted" aria-live="polite" style="margin-top:20px"></p>
+    <div id="results"></div>
+
+    <details class="callout" style="margin-top:32px">
+      <summary style="cursor:pointer;font-weight:700">How this works</summary>
+      <p style="margin-top:12px">Your words are matched against the text of every page of his collected works, taken from the official PDFs published by the Government of India. You see the best-matching pages, each with a link to read it on this site and to open the original PDF at that exact page.</p>
+      <p>When the AI answer service is connected, it reads only those pages and writes a short summary with numbered citations. It is told never to answer from memory and to say so when the pages do not answer your question. Always check the original before you quote it.</p>
+      <p>Text was extracted automatically and may contain small errors. Volumes 14 and 16 come from the Internet Archive's OCR copies.</p>
+    </details>
+  </div>
+
+  <script is:inline define:vars={{ base, endpoint }}>
+    (function () {
+      var form = document.getElementById('ask-form');
+      var q = document.getElementById('q');
+      var vol = document.getElementById('vol');
+      var statusEl = document.getElementById('status');
+      var resultsEl = document.getElementById('results');
+      var answerEl = document.getElementById('answer');
+      var pagefind;
+
+      function esc(s) { return String(s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
+      function sitePath(u) { return u.indexOf(base) === 0 ? '/' + u.slice(base.length) : u; }
+
+      async function load() {
+        if (!pagefind) {
+          pagefind = await import(base + 'pagefind/pagefind.js');
+          await pagefind.options({ baseUrl: base, excerptLength: 40 });
+          await pagefind.init();
+        }
+        return pagefind;
+      }
+
+      async function run(term) {
+        term = term.trim();
+        if (!term) return;
+        answerEl.hidden = true;
+        answerEl.innerHTML = '';
+        statusEl.textContent = 'Searching…';
+        resultsEl.innerHTML = '';
+        var params = new URLSearchParams(location.search);
+        params.set('q', term);
+        if (vol.value) params.set('volume', vol.value); else params.delete('volume');
+        history.replaceState(null, '', '?' + params.toString());
+
+        var pf;
+        try { pf = await load(); } catch (e) {
+          statusEl.textContent = 'Search is not available in this preview. It works on the published site.';
+          return;
+        }
+        var filters = { collection: 'Writings and Speeches' };
+        if (vol.value) filters.volume = vol.value;
+        var search = await pf.search(term, { filters: filters });
+        var top = await Promise.all(search.results.slice(0, 10).map(function (r) { return r.data(); }));
+        statusEl.textContent = search.results.length
+          ? search.results.length + ' matching sections. Showing the best ' + top.length + '.'
+          : 'No pages matched. Try simpler words, or a different spelling.';
+
+        var refs = [];
+        var html = top.map(function (d) {
+          var subs = (d.sub_results || []).filter(function (s) { return /#p\d+$/.test(s.url); }).slice(0, 2);
+          if (!subs.length) subs = [{ url: d.url, title: d.meta.title, excerpt: d.excerpt }];
+          return subs.map(function (s) {
+            var m = s.url.match(/#p(\d+)$/);
+            var page = m ? Number(m[1]) : null;
+            var pdf = d.meta.pdf ? d.meta.pdf + (page ? '#page=' + page : '') : '';
+            if (page) refs.push({ path: sitePath(s.url.replace(/#.*$/, '')), page: page, title: (d.filters.volume || [''])[0] + ' · ' + s.title, url: s.url, pdf: pdf });
+            return '<div class="passage">' +
+              '<div class="ref">' + esc((d.filters.volume || [''])[0]) + ' · ' + esc(s.title || d.meta.title) + '</div>' +
+              '<p class="excerpt">' + (s.excerpt || d.excerpt) + '</p>' +
+              '<div class="links" style="display:flex;gap:8px;flex-wrap:wrap">' +
+              '<a class="chip" href="' + esc(s.url) + '">Read this page</a>' +
+              (pdf ? '<a class="chip" href="' + esc(pdf) + '" target="_blank" rel="noopener noreferrer">Original PDF ↗</a>' : '') +
+              '</div>' + (d.meta.volumeTitle ? '<p class="muted" style="font-size:0.82rem;margin:6px 0 0">' + esc(d.meta.volumeTitle) + '</p>' : '') +
+              '</div>';
+          }).join('');
+        }).join('');
+        resultsEl.innerHTML = html ? '<h2 style="font-size:var(--step-1);margin-top:24px">Pages that match</h2>' + html : '';
+        if (refs.length && term.split(/\s+/).length >= 3) ask(term, refs.slice(0, 8));
+      }
+
+      async function ask(question, refs) {
+        answerEl.hidden = false;
+        answerEl.className = 'answer';
+        answerEl.innerHTML = '<p class="muted">Reading these pages to write a short answer…</p>';
+        try {
+          var res = await fetch(endpoint, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ question: question, refs: refs.map(function (r) { return { path: r.path, page: r.page }; }) })
+          });
+          var data = await res.json().catch(function () { return {}; });
+          if (!res.ok || data.error || !data.answer) throw new Error(data.error || 'unavailable');
+          var srcs = data.sources || [];
+          var body = data.answer.map(function (b) {
+            var marks = (b.cites || []).map(function (i) {
+              var s = srcs[i];
+              if (!s) return '';
+              var href = base + s.path.replace(/^\//, '') + '#p' + s.page;
+              return '<a class="cite-num" href="' + esc(href) + '" title="' + esc(s.title) + '">' + (i + 1) + '</a>';
+            }).join('');
+            return esc(b.text).replace(/\n\n+/g, '</p><p>').replace(/\n/g, '<br>') + marks;
+          }).join('');
+          var list = srcs.map(function (s, i) {
+            var href = base + s.path.replace(/^\//, '') + '#p' + s.page;
+            return '<li><a href="' + esc(href) + '">' + esc(s.title) + '</a>' + (s.pdf ? ' · <a href="' + esc(s.pdf) + '" target="_blank" rel="noopener noreferrer">original ↗</a>' : '') + '</li>';
+          }).join('');
+          answerEl.innerHTML = '<p class="eyebrow" style="margin:0 0 8px">AI summary — check the sources</p><p>' + body + '</p>' +
+            '<details style="margin-top:12px"><summary style="cursor:pointer;font-weight:600">Sources used</summary><ol>' + list + '</ol></details>';
+        } catch (e) {
+          answerEl.className = 'notice';
+          answerEl.innerHTML = 'AI answers will switch on once the answer service is connected. Meanwhile, the pages below are the best matches from his writings.';
+        }
+      }
+
+      form.addEventListener('submit', function (e) { e.preventDefault(); run(q.value); });
+      vol.addEventListener('change', function () { if (q.value.trim()) run(q.value); });
+      document.querySelectorAll('[data-example]').forEach(function (a) {
+        a.addEventListener('click', function (e) { e.preventDefault(); q.value = a.getAttribute('data-example'); run(q.value); });
+      });
+      var params = new URLSearchParams(location.search);
+      if (params.get('volume')) vol.value = params.get('volume');
+      if (params.get('q')) { q.value = params.get('q'); run(q.value); }
+    })();
+  </script>
+</Base>

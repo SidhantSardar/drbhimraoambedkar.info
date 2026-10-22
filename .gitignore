@@ -1,0 +1,22 @@
+# Build output
+dist/
+.astro/
+node_modules/
+
+# Generated image sizes (rebuilt by scripts/build-images.mjs)
+public/images/r/
+src/data/image-variants.json
+
+# Large source files kept locally (see scripts/download-baws.sh and scripts/baws-manifest.json)
+archive/
+.venv/
+
+# Local env
+.env
+.env.*
+!.env.example
+.DS_Store
+.wrangler/
+
+# Local tool settings
+.claude/

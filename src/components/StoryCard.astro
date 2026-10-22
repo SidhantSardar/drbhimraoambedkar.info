@@ -1,0 +1,20 @@
+---
+import Picture from './Picture.astro';
+import Chakra from './Chakra.astro';
+import { imagesFor } from '../lib/images-core.mjs';
+import { url } from '../lib/site';
+interface Props { slug: string; href: string; title: string; period?: string; summary?: string; num?: string }
+const { slug, href, title, period, summary, num } = Astro.props;
+const img = imagesFor(slug)[0];
+---
+<a class="card" href={url(href)}>
+  <div class="card-img">
+    {img ? <Picture img={img} sizes="(min-width: 900px) 380px, 100vw" alt="" /> : <div class="card-placeholder"><Chakra /></div>}
+    {num && <span class="num">{num}</span>}
+  </div>
+  <div class="card-body">
+    {period && <span class="card-meta">{period}</span>}
+    <h3>{title}</h3>
+    {summary && <p>{summary}</p>}
+  </div>
+</a>

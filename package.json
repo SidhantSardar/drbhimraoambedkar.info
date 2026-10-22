@@ -1,0 +1,29 @@
+{
+  "name": "drbhimraoambedkar.info",
+  "description": "The life and work of Dr. B. R. Ambedkar, brought together in one place — free for everyone.",
+  "type": "module",
+  "version": "0.1.0",
+  "private": true,
+  "license": "MIT",
+  "scripts": {
+    "dev": "astro dev",
+    "images": "node scripts/build-images.mjs",
+    "library": "node scripts/build-library.mjs",
+    "prebuild": "node scripts/build-images.mjs",
+    "build": "astro build && pagefind --site dist",
+    "preview": "astro preview",
+    "news": "node scripts/fetch-news.mjs"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^1.1.0",
+    "@astrojs/markdown-remark": "^7.3.4",
+    "@astrojs/rss": "^4.0.19",
+    "@astrojs/sitemap": "^3.7.4",
+    "@fontsource-variable/noto-serif": "^5.3.0",
+    "astro": "^7.4.2",
+    "fast-xml-parser": "^5.11.2",
+    "pagefind": "^1.5.2",
+    "sharp": "^0.35.5",
+    "unist-util-visit": "^5.1.0"
+  }
+}

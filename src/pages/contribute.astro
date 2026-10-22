@@ -1,0 +1,70 @@
+---
+import Base from '../layouts/Base.astro';
+import Chakra from '../components/Chakra.astro';
+import { SITE } from '../lib/site';
+// Each form opens a pre-filled GitHub issue, so every submission is saved publicly in the
+// project's repository where anyone can follow it. (Needs a free GitHub account.)
+const FORMS = [
+  { id: 'correction', label: 'Suggest a correction', title: 'Correction: ', labels: 'correction',
+    fields: [['page', 'Which page?', 'Paste the link to the page'], ['wrong', 'What is wrong?', ''], ['right', 'What should it say?', ''], ['source', 'Your source (link or book and page)', 'Required — we only change facts with a source']] },
+  { id: 'source', label: 'Share a source or document', title: 'New source: ', labels: 'source',
+    fields: [['what', 'What is it?', 'Book, letter, speech, newspaper, photo, recording…'], ['where', 'Where can it be found?', 'Link, library, archive or person who holds it'], ['why', 'Why is it useful?', '']] },
+  { id: 'photo', label: 'Share a photograph', title: 'Photograph: ', labels: 'image',
+    fields: [['what', 'What does it show?', 'People, place, date if known'], ['link', 'Link to the image', ''], ['rights', 'Who owns it / its licence', 'We can only use photos that are public domain or that the owner allows']] },
+  { id: 'write', label: 'Write an article', title: 'Article proposal: ', labels: 'article',
+    fields: [['topic', 'Topic', ''], ['summary', 'What will you argue or explain?', ''], ['about', 'About you', 'Optional']] },
+];
+---
+<Base title="Contribute" description="Help build the most complete and accurate record of Dr. B. R. Ambedkar's life and work: suggest corrections, share sources and photographs, or write an article.">
+  <section class="hero">
+    <Chakra class="chakra-bg" />
+    <div class="wrap section-tight">
+      <span class="eyebrow">Take part</span>
+      <h1 style="font-size:var(--step-4)">Help bring his work together</h1>
+      <p class="lede" style="max-width:64ch">This is a public, open project. Every correction and contribution is recorded openly on GitHub, so anyone can see what changed and why.</p>
+    </div>
+  </section>
+  <div class="narrow section-tight">
+    <div class="tabs" role="tablist" aria-label="Contribution type">
+      {FORMS.map((f, i) => <a class="chip" href={`#${f.id}`} role="tab" aria-selected={i === 0 ? 'true' : 'false'}>{f.label}</a>)}
+    </div>
+    {FORMS.map((f) => (
+      <section id={f.id} class="callout" style="margin-bottom:24px">
+        <h2 style="font-size:var(--step-1)">{f.label}</h2>
+        <form class="form" data-title={f.title} data-labels={f.labels}>
+          <label>Short title<input name="title" required maxlength="120" /></label>
+          {f.fields.map(([name, label, hint]) => (
+            <label>{label}{hint && <span class="hint">{hint}</span>}<textarea name={name} required={name !== 'about'}></textarea></label>
+          ))}
+          <button class="btn btn-primary" type="submit">Continue on GitHub →</button>
+          <p class="hint muted" style="margin:0;font-size:0.85rem">This opens GitHub with your text filled in. Sign in (free) and press "Create" to send it. Your submission will be public.</p>
+        </form>
+      </section>
+    ))}
+    <div class="callout">
+      <h2 style="font-size:var(--step-1)">Our promise</h2>
+      <ul>
+        <li>We change facts only when there is a reliable source.</li>
+        <li>Where historians disagree, we show every side and its source.</li>
+        <li>We credit every contributor who wants to be credited.</li>
+      </ul>
+    </div>
+  </div>
+  <script is:inline define:vars={{ repoUrl: SITE.repoUrl }}>
+    document.querySelectorAll('form[data-title]').forEach(function (form) {
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var data = new FormData(form);
+        var body = '';
+        form.querySelectorAll('textarea').forEach(function (t) {
+          var label = t.parentElement.childNodes[0].textContent.trim();
+          body += '### ' + label + '\n\n' + (data.get(t.name) || '_(none)_') + '\n\n';
+        });
+        body += '---\nSent from ' + location.href;
+        var u = repoUrl + '/issues/new?labels=' + encodeURIComponent(form.dataset.labels) +
+          '&title=' + encodeURIComponent(form.dataset.title + data.get('title')) + '&body=' + encodeURIComponent(body);
+        window.open(u, '_blank', 'noopener');
+      });
+    });
+  </script>
+</Base>

@@ -1,0 +1,20 @@
+---
+import StoryPage from '../../components/StoryPage.astro';
+import { chapters } from '../../lib/data';
+
+export async function getStaticPaths() {
+  const list = await chapters();
+  return list.map((entry, i) => ({
+    params: { slug: entry.id },
+    props: {
+      entry,
+      num: i + 1,
+      total: list.length,
+      prev: list[i - 1] && { href: `/life/${list[i - 1].id}/`, title: list[i - 1].data.title },
+      next: list[i + 1] && { href: `/life/${list[i + 1].id}/`, title: list[i + 1].data.title },
+    },
+  }));
+}
+const props = Astro.props;
+---
+<StoryPage kind="life" {...props} />
