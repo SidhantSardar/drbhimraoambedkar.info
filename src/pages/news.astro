@@ -62,7 +62,7 @@ const day = (d: string | null) => (d ? new Date(d).toLocaleDateString('en-IN', {
               <div class="story-coverage">
                 <h3>How it was covered</h3>
                 <ul>
-                  {s.reports.map((r) => <li><strong>{r.outlet}</strong> — <span lang={isHindi(r.title) ? 'hi' : undefined}>{r.title}</span></li>)}
+                  {s.reports.map((r) => <li><strong>{r.outlet}</strong><span lang={isHindi(r.title) ? 'hi' : undefined}>{r.title}</span></li>)}
                 </ul>
               </div>
             )}

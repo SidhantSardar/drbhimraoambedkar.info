@@ -4,6 +4,7 @@
 
 @import '@fontsource/dm-serif-display/400.css';
 @import '@fontsource-variable/dm-sans';
+@import '@fontsource-variable/literata';
 
 :root {
   /* Blues */
@@ -44,6 +45,7 @@
   --shadow: 0 1px 2px rgb(40 30 10 / 6%), 0 10px 30px rgb(40 30 10 / 8%);
 
   --font-sans: 'DM Sans Variable', 'DM Sans', system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans Devanagari', sans-serif;
+  --font-read: 'Literata Variable', 'Literata', Georgia, 'Noto Serif Devanagari', serif;
   --font-serif: 'DM Serif Display', Georgia, 'Times New Roman', serif;
 
   --step--1: clamp(0.82rem, 0.8rem + 0.1vw, 0.88rem);
@@ -604,3 +606,35 @@ sup.fn a:hover { text-decoration: underline; }
 .references .ref-links { font-size: 0.85rem; }
 .references .ref-back { text-decoration: none; font-size: 0.85rem; margin-left: 4px; }
 .prose p:has(sup.fn) { hyphens: manual; }
+
+
+/* =====================================================================
+   Reading experience — Literata for every long text
+   ===================================================================== */
+.prose, .story-summary, .reader, .walk-text p { font-family: var(--font-read); }
+.prose { font-size: clamp(1.12rem, 1.06rem + 0.3vw, 1.25rem); line-height: 1.78; color: #1a1a1a; font-weight: 400; font-optical-sizing: auto; }
+.prose p, .prose li { max-width: 66ch; }
+.prose p { margin-bottom: 1.25em; }
+.prose h2 { font-size: clamp(1.7rem, 1.4rem + 1.2vw, 2.3rem); margin-top: 2em; margin-bottom: 0.55em; line-height: 1.15; }
+.prose h3 { font-family: var(--font-sans); font-size: 1.12rem; font-weight: 700; margin-top: 1.8em; }
+.prose strong { font-weight: 650; color: #000; }
+.prose a { color: var(--blue-700); }
+.prose blockquote { font-family: var(--font-read); font-size: 1.15em; font-weight: 400; line-height: 1.6; background: none; border-left: 3px solid var(--blue-700); border-radius: 0; padding: 4px 0 4px 24px; }
+.prose blockquote p:last-child { font-family: var(--font-sans); font-size: 0.82rem; }
+.in-short { font-family: var(--font-sans); }
+.story-hero .subtitle { font-family: var(--font-read); }
+
+/* News: the selected story reads like an article */
+.story-body { max-width: 760px; margin-inline: auto; padding: clamp(24px, 4vw, 56px) clamp(20px, 4vw, 48px) 64px; }
+.story-body h2 { font-size: clamp(2.1rem, 1.6rem + 2vw, 3.3rem); line-height: 1.08; letter-spacing: -0.01em; }
+.story-meta { font-family: var(--font-sans); color: var(--muted); }
+.story-summary p { font-family: var(--font-read); font-size: clamp(1.14rem, 1.08rem + 0.3vw, 1.26rem); line-height: 1.8; color: #1a1a1a; margin-bottom: 1.2em; }
+.story-summary .note { font-family: var(--font-sans); font-size: 0.8rem; line-height: 1.5; }
+.story-coverage ul { list-style: none; padding: 0; margin: 0; border-top: 1px solid var(--line); }
+.story-coverage li { font-family: var(--font-read); font-size: 1rem; line-height: 1.55; color: #222; padding: 12px 0; border-bottom: 1px solid var(--line); margin: 0; }
+.story-coverage li strong { display: block; font-family: var(--font-sans); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 2px; }
+.story-sources ol { font-family: var(--font-sans); font-size: 0.88rem; line-height: 1.55; color: var(--ink-2); }
+.story-body h3 { margin-top: 40px; }
+
+/* Library reader */
+.reader { font-size: 1.12rem; line-height: 1.8; color: #1a1a1a; }
