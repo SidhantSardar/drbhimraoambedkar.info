@@ -1,6 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
-import { loadNews, catOf, thumbFor, fallbackFor, ONERROR, mixed, isHindi } from '../lib/news';
+import { loadNews, catOf, thumbFor, fallbackFor, ONERROR, mixed, isHindi, cleanTitle } from '../lib/news';
 import { url } from '../lib/site';
 
 const news = loadNews();
@@ -26,7 +26,7 @@ const day = (d: string | null) => (d ? new Date(d).toLocaleDateString('en-IN', {
               <img src={thumbFor(s)} data-fallback={fallbackFor(s)} onerror={ONERROR} alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" />
               <span>
                 <span class={`cat ${catOf(s).cls}`}>{catOf(s).label}</span>
-                <strong lang={isHindi(s.title) ? 'hi' : undefined}>{s.title}</strong>
+                <strong lang={isHindi(s.title) ? 'hi' : undefined}>{cleanTitle(s.title)}</strong>
                 <small>{s.outlets.length > 1 ? `${s.outlets.length} outlets` : s.outlets[0]}</small>
               </span>
             </a>
@@ -41,7 +41,7 @@ const day = (d: string | null) => (d ? new Date(d).toLocaleDateString('en-IN', {
           <figure class="story-img"><img src={thumbFor(s, 960)} data-fallback={fallbackFor(s, 960)} onerror={ONERROR} alt="" loading={i === 0 ? 'eager' : 'lazy'} decoding="async" referrerpolicy="no-referrer" /></figure>
           <div class="story-body">
             <span class={`cat ${catOf(s).cls}`}>{catOf(s).label}</span>
-            <h2 lang={isHindi(s.title) ? 'hi' : undefined}>{s.title}</h2>
+            <h2 lang={isHindi(s.title) ? 'hi' : undefined}>{cleanTitle(s.title)}</h2>
             <p class="muted story-meta">{day(s.date)} · Reported by {s.outlets.length} {s.outlets.length === 1 ? 'outlet' : 'outlets'}</p>
 
             {s.summary ? (

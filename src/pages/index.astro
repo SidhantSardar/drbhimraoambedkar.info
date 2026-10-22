@@ -4,7 +4,7 @@ import Picture from '../components/Picture.astro';
 import { url } from '../lib/site';
 import { chapters, images, type Img } from '../lib/data';
 import { heroFor, credit } from '../lib/images-core.mjs';
-import { loadNews, mixed, catOf, thumbFor, fallbackFor, ONERROR, isHindi } from '../lib/news';
+import { loadNews, mixed, catOf, thumbFor, fallbackFor, ONERROR, isHindi, cleanTitle } from '../lib/news';
 
 const life = await chapters();
 
@@ -17,7 +17,7 @@ const heroImg = byId('ambedkar-1950');
 // ---- News ----
 const news = loadNews();
 const updates = mixed(news.stories, 30);
-const latest = mixed(news.stories, 7);
+const latest = mixed(news.stories, 6);
 
 // ---- Then & now ----
 const pairs = [
@@ -92,20 +92,20 @@ const bandConst = byId('constituent-assembly-first-day-1946');
       {latest.length > 0 && (
         <div class="latest-grid">
           {latest.map((n, i) => (
-            <a class={`latest-card ${i === 0 ? 'lead' : ''} ${catOf(n).cls}`} href={url(`/news/#${n.id}`)}>
+            <a class={`latest-card ${catOf(n).cls}`} href={url(`/news/#${n.id}`)}>
               <span class={`lc-media blob-${i % 4}`}>
-                <img src={thumbFor(n, i === 0 ? 960 : 480)} data-fallback={fallbackFor(n, i === 0 ? 960 : 480)} onerror={ONERROR} alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" />
+                <img src={thumbFor(n, 480)} data-fallback={fallbackFor(n, 480)} onerror={ONERROR} alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" />
                 <span class={`cat ${catOf(n).cls}`}>{catOf(n).label}</span>
               </span>
               <span class="lc-body">
-                <strong lang={isHindi(n.title) ? 'hi' : undefined}>{n.title}</strong>
+                <strong lang={isHindi(n.title) ? 'hi' : undefined}>{cleanTitle(n.title)}</strong>
                 <small>{n.outlets.length > 1 ? `${n.outlets.length} outlets reporting` : n.outlets[0]}</small>
               </span>
             </a>
           ))}
         </div>
       )}
-      <div class="btn-row" style="margin-top:28px"><a class="btn btn-primary" href={url('/news/')}>All news →</a><a class="btn btn-ghost" href={url('/blog/')}>Read the blog</a></div>
+      <div class="btn-row" style="margin-top:36px;justify-content:center"><a class="btn btn-primary" href={url('/news/')}>View all news →</a></div>
     </div>
   </section>
 
@@ -122,13 +122,13 @@ const bandConst = byId('constituent-assembly-first-day-1946');
       </div>
       <div class="then-now" id="then-now" tabindex="0" aria-label="Places then and now">
         {pairs.map((p) => (
-          <a class="tn" href={url(p.href)} style="text-decoration:none;color:inherit">
+          <a class={`tn tn-${pairs.indexOf(p) % 4}`} href={url(p.href)} style="text-decoration:none;color:inherit">
             <div class="tn-pair">
               <figure><Picture img={p.a!} sizes="(min-width:900px) 310px, 43vw" alt={p.a!.caption} /><span class="tn-label">Then · {p.thenLabel}</span></figure>
               <figure><Picture img={p.b!} sizes="(min-width:900px) 310px, 43vw" alt={p.b!.caption} /><span class="tn-label">Now</span></figure>
             </div>
             <div class="tn-body">
-              <span class="place">{p.place}</span>
+              <span class="cat cat-events">{p.place}</span>
               <h3>{p.title}</h3>
               <p>{p.text}</p>
             </div>

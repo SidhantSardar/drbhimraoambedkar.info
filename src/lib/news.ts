@@ -58,3 +58,10 @@ export function mixed(stories: Story[], limit: number) {
 }
 
 export const isHindi = (t: string) => /[ऀ-ॿ]/.test(t);
+
+/** A cleaner headline: no "| Explained"-style tails or outlet names, no SHOUTING. */
+export function cleanTitle(t: string) {
+  let s = t.replace(/\s+[|–—-]\s+[^|–—-]{2,40}$/, '').replace(/\s*\|\s*(Explained|Watch|Video|Live Updates?)\s*$/i, '').trim();
+  if (s.length > 12 && s === s.toUpperCase() && /[A-Z]/.test(s)) s = s.charAt(0) + s.slice(1).toLowerCase();
+  return s.replace(/\s{2,}/g, ' ');
+}

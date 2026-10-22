@@ -737,3 +737,31 @@ span.cat::before { content: ''; width: 18px; height: 18px; flex: none; border-ra
 .card-img { aspect-ratio: 16 / 10; }
 .card-body h3 { font-family: var(--font-sans); font-weight: 700 !important; font-size: 1.15rem; letter-spacing: -0.01em; line-height: 1.3; }
 .grid { gap: 28px; }
+
+/* Equal news cards, 3 x 2, headlines max three lines */
+@media (min-width: 1000px) { .latest-grid { grid-template-columns: repeat(3, 1fr); } }
+.latest-card { height: 100%; }
+.lc-media img, .latest-card.lead .lc-media img { aspect-ratio: 16 / 10; }
+.lc-body strong, .latest-card.lead strong { font-size: 1.12rem; line-height: 1.32; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.lc-body { flex: 1; }
+.lc-body small { margin-top: auto; }
+.news-list strong { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.ticker-list a { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+
+/* Then & now: same card language, bigger */
+.then-now { grid-auto-columns: min(88vw, 820px); gap: 28px; padding-bottom: 30px; }
+.tn { border-radius: var(--radius-card) !important; overflow: hidden; }
+.tn-pair { position: relative; isolation: isolate; background: #fff; gap: 3px; }
+.tn-pair figure { aspect-ratio: 4 / 5; }
+.tn-pair::after { content: ''; position: absolute; z-index: 2; width: 26%; aspect-ratio: 1; border-radius: 50%; background: var(--cat-color, #1240ab); pointer-events: none; }
+.tn-0 .tn-pair::after { top: -9%; right: -6%; --cat-color: #1240ab; }
+.tn-1 .tn-pair::after { bottom: -10%; left: -6%; --cat-color: #d6452f; }
+.tn-2 .tn-pair::after { top: -10%; left: 44%; --cat-color: #2f8a57; width: 20%; }
+.tn-3 .tn-pair::after { bottom: -9%; right: -7%; --cat-color: #e6a01e; }
+.tn-label { top: 18px; left: 18px; z-index: 3; background: #141210 !important; border-radius: 9px; padding: 7px 11px; font-size: 0.7rem; }
+.tn figure:last-child .tn-label { background: #141210 !important; }
+.tn-body { padding: 22px 24px 26px; }
+.tn-body .cat { margin-bottom: 12px; }
+.tn-body h3 { font-family: var(--font-sans); font-weight: 700 !important; font-size: clamp(1.4rem, 1.2rem + 0.7vw, 1.8rem); letter-spacing: -0.02em; margin: 0 0 8px; }
+.tn-body p { font-size: 1rem; line-height: 1.6; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.tn-pair { overflow: hidden; }
