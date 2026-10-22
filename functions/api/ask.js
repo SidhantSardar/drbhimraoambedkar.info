@@ -9,9 +9,9 @@
 // Environment (Cloudflare Pages → Settings → Variables and Secrets):
 //   ANTHROPIC_API_KEY   (secret, required)
 //   ALLOWED_ORIGINS     comma-separated origins allowed to call this endpoint, e.g.
-//                       "https://drbhimraoambedkar.info,https://sidhantsardar.github.io"
+//                       "https://drbhimraoambedkar.info,https://www.sidhantsardar.com"
 //   SITE_ORIGIN         where to read library pages from when this runs outside Cloudflare Pages
-//                       (e.g. "https://sidhantsardar.github.io/drbhimraoambedkar.info")
+//                       (e.g. "https://www.sidhantsardar.com/drbhimraoambedkar.info")
 //   ASK_MODEL           optional, defaults to claude-opus-5-5
 //   ASK_EFFORT          optional: low | medium | high (default low — short grounded answers)
 import Anthropic from '@anthropic-ai/sdk';

@@ -11,9 +11,10 @@ export const SITE = {
 /** Comments are stored in GitHub Discussions through giscus (https://giscus.app). */
 export const GISCUS = {
   repo: SITE.repo,
-  repoId: import.meta.env.PUBLIC_GISCUS_REPO_ID || '',
-  category: 'Comments',
-  categoryId: import.meta.env.PUBLIC_GISCUS_CATEGORY_ID || '',
+  repoId: 'R_kgDOVTJb5w',
+  // "Announcements": only maintainers and the giscus app can open new threads; anyone can reply.
+  category: 'Announcements',
+  categoryId: 'DIC_kwDOVTJb584DJUFa',
 };
 
 /** Where the AI answer service lives. On GitHub Pages there is none, so the page falls back to search results. */

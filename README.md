@@ -4,7 +4,7 @@
 
 Dr. Ambedkar's writings, speeches and records are spread across government PDFs, university archives, museums and memorials. India's Ministry of Social Justice and Empowerment itself describes them as "scattered across libraries, memorials, archives, and fragmented digital sources" ([SIH 2026 brief SIH26096](https://zaidsayyed.in/tools/sih-problem-statements/sih26096)). This project gathers them.
 
-- **Staging:** https://sidhantsardar.github.io/drbhimraoambedkar.info/ (branch `staging`)
+- **Staging:** https://www.sidhantsardar.com/drbhimraoambedkar.info/ (branch `staging`)
 - **Production:** https://drbhimraoambedkar.info (branch `main`, once the domain is connected)
 
 ## What's inside

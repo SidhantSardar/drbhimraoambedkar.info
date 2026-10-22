@@ -1,5 +1,5 @@
 # Builds the site from the `staging` branch and publishes it to GitHub Pages:
-# https://sidhantsardar.github.io/drbhimraoambedkar.info/
+# https://www.sidhantsardar.com/drbhimraoambedkar.info/ (the account's GitHub Pages custom domain)
 name: Deploy staging
 
 on:
@@ -20,7 +20,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      SITE_URL: https://sidhantsardar.github.io
+      SITE_URL: https://www.sidhantsardar.com
       BASE_PATH: /drbhimraoambedkar.info
     steps:
       - uses: actions/checkout@v4
