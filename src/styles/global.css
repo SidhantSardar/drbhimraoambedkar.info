@@ -22,26 +22,27 @@
   --gold-700: #8a6212; /* text-safe gold */
 
   /* Paper */
-  --paper: #ffffff;
-  --paper-2: #f5f5f3;
-  --paper-3: #ebebe8;
+  --paper: #f4eee2;
+  --paper-2: #ece3d2;
+  --paper-3: #e1d5bf;
+  --earth: #8c3b22;
 
   /* Roles */
   --bg: var(--paper);
-  --surface: #ffffff;
+  --surface: #fbf8f1;
   --surface-2: var(--paper-2);
-  --ink: #111111;
-  --ink-2: #3a3a3a;
-  --muted: #6b6b6b;
-  --line: #e6e6e6;
+  --ink: #141210;
+  --ink-2: #3a342c;
+  --muted: #6b6152;
+  --line: #d9ccb3;
   --primary: var(--blue-700);
   --primary-ink: #ffffff;
   --link: var(--blue-700);
   --accent: var(--blue-700);
   --hero-bg: var(--blue-950);
   --hero-ink: #f5f1e8;
-  --chip-bg: #f0f0ee;
-  --chip-ink: #222222;
+  --chip-bg: #e9dfcb;
+  --chip-ink: #241f19;
   --shadow: 0 1px 2px rgb(40 30 10 / 6%), 0 10px 30px rgb(40 30 10 / 8%);
 
   --font-sans: 'DM Sans Variable', 'DM Sans', system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans Devanagari', sans-serif;
@@ -115,7 +116,7 @@ button.chip { display: inline-flex; align-items: center; gap: 6px; font-size: va
 button.chip[aria-pressed='true'] { background: var(--primary); color: var(--primary-ink); }
 
 /* ---------- Header ---------- */
-.site-header { position: sticky; top: 0; z-index: 50; background: rgb(255 255 255 / 94%); backdrop-filter: saturate(1.2) blur(12px); border-bottom: 1px solid var(--line); }
+.site-header { position: sticky; top: 0; z-index: 50; background: rgb(244 238 226 / 95%); backdrop-filter: saturate(1.2) blur(12px); border-bottom: 1px solid var(--line); }
 .site-header .bar { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 64px; }
 .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--ink); }
 .brand svg { width: 36px; height: 36px; color: var(--primary); flex: none; }
@@ -638,3 +639,49 @@ sup.fn a:hover { text-decoration: underline; }
 
 /* Library reader */
 .reader { font-size: 1.12rem; line-height: 1.8; color: #1a1a1a; }
+
+
+/* =====================================================================
+   Godna — line patterns inspired by the Godna painting of Dalit (Dusadh)
+   women of Mithila: fine black dots, chevrons and interlocking lines.
+   Original drawings made for this site.
+   ===================================================================== */
+:root {
+  --godna-chevron: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='16' viewBox='0 0 32 16'%3E%3Cg fill='none' stroke='%23141210' stroke-width='1.3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M0 12 L8 4 L16 12 L24 4 L32 12'/%3E%3C/g%3E%3Cg fill='%23141210'%3E%3Ccircle cx='8' cy='12.5' r='1.3'/%3E%3Ccircle cx='24' cy='12.5' r='1.3'/%3E%3Ccircle cx='16' cy='3.5' r='1.3'/%3E%3Ccircle cx='0' cy='3.5' r='1.3'/%3E%3Ccircle cx='32' cy='3.5' r='1.3'/%3E%3C/g%3E%3C/svg%3E");
+  --godna-band: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='22' viewBox='0 0 36 22'%3E%3Cg fill='none' stroke='%23141210' stroke-width='1.1' stroke-linecap='round'%3E%3Cpath d='M0 2.5 H36 M0 19.5 H36'/%3E%3Cpath d='M0 11 L6 6 L12 11 L18 6 L24 11 L30 6 L36 11'/%3E%3Cpath d='M0 11 L6 16 L12 11 L18 16 L24 11 L30 16 L36 11'/%3E%3C/g%3E%3Cg fill='%23141210'%3E%3Ccircle cx='6' cy='11' r='1.2'/%3E%3Ccircle cx='18' cy='11' r='1.2'/%3E%3Ccircle cx='30' cy='11' r='1.2'/%3E%3C/g%3E%3C/svg%3E");
+  --godna-dots: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='6' viewBox='0 0 14 6'%3E%3Ccircle cx='3' cy='3' r='1.2' fill='%23141210'/%3E%3Cpath d='M7 3 H12' stroke='%23141210' stroke-width='1' stroke-linecap='round'/%3E%3C/svg%3E");
+  --godna-band-light: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='22' viewBox='0 0 36 22'%3E%3Cg fill='none' stroke='%23f4eee2' stroke-width='1.1' stroke-linecap='round' opacity='.55'%3E%3Cpath d='M0 2.5 H36 M0 19.5 H36'/%3E%3Cpath d='M0 11 L6 6 L12 11 L18 6 L24 11 L30 6 L36 11'/%3E%3Cpath d='M0 11 L6 16 L12 11 L18 16 L24 11 L30 16 L36 11'/%3E%3C/g%3E%3Cg fill='%23f4eee2' opacity='.55'%3E%3Ccircle cx='6' cy='11' r='1.2'/%3E%3Ccircle cx='18' cy='11' r='1.2'/%3E%3Ccircle cx='30' cy='11' r='1.2'/%3E%3C/g%3E%3C/svg%3E");
+}
+body { background-color: var(--paper); }
+.godna-band { height: 22px; background: var(--godna-band) repeat-x center / auto 22px; opacity: 0.9; }
+.godna-rule { height: 16px; background: var(--godna-chevron) repeat-x center / auto 16px; opacity: 0.75; margin: 0 auto; max-width: 240px; }
+.site-header { border-bottom: 0; }
+.site-header::after { content: ''; position: absolute; left: 0; right: 0; bottom: -6px; height: 6px; background: var(--godna-dots) repeat-x left center / auto 6px; opacity: 0.55; }
+.site-footer { position: relative; background: #141210; }
+.site-footer::before { content: ''; position: absolute; left: 0; right: 0; top: 0; height: 22px; background: var(--godna-band-light) repeat-x center / auto 22px; }
+.site-footer { padding-top: 72px; }
+
+/* Section labels: a small earth-red dotted mark instead of a rule */
+.eyebrow { color: var(--earth); }
+.eyebrow::before { content: ''; width: 22px; height: 8px; background: var(--godna-chevron) no-repeat left center / auto 8px; opacity: 0.9; }
+.hero-full .eyebrow::before, .band .eyebrow::before { filter: invert(1); }
+
+/* Cards and panels get a hand-drawn frame */
+.latest-card, .tn, .card, .work, .callout, .doc, .fact, .article-card { background: var(--surface); border-color: var(--line); }
+.latest-card { position: relative; }
+.latest-card::after, .tn::after { content: ''; position: absolute; inset: auto 0 0 0; height: 8px; background: var(--godna-dots) repeat-x left center / auto 6px; opacity: 0; transition: opacity 0.2s ease; }
+.latest-card:hover::after, .tn:hover::after { opacity: 0.6; }
+.tn { position: relative; }
+.walk-text { background: var(--surface); }
+.walk-text::before { content: ''; display: block; height: 16px; margin: -6px 0 14px; background: var(--godna-chevron) repeat-x left center / auto 14px; opacity: 0.8; }
+.references { border-top: 0; }
+.references::before { content: ''; display: block; height: 22px; margin-bottom: 18px; background: var(--godna-band) repeat-x left center / auto 22px; opacity: 0.7; }
+.news-list { background: var(--paper-2); }
+.news-detail { background: var(--surface); }
+.news-list li a:hover, .news-list li a[aria-current='true'] { background: var(--surface); }
+.ticker { background: #141210; }
+.btn-primary { background: var(--ink); color: var(--paper); }
+.btn-primary:hover { background: var(--blue-700); }
+.hero-full .btn-light, .band .btn-light { background: var(--paper); color: var(--ink); }
+.prose blockquote { border-left-color: var(--earth); }
+sup.fn a { color: var(--earth); }
