@@ -1,0 +1,66 @@
+---
+import Base from '../layouts/Base.astro';
+import Chakra from '../components/Chakra.astro';
+import Picture from '../components/Picture.astro';
+import { loadJSON, images } from '../lib/data';
+import { url } from '../lib/site';
+import { credit } from '../lib/images-core.mjs';
+
+type Stage = { stage: string; institution: string; place: string; startYear: number; endYear: number; qualification: string; thesisOrSubject?: string; notes?: string; sources?: string[] };
+const stages = loadJSON<Stage[]>('education', []);
+const pics = images().filter((i) => i.tags?.some((t) => ['columbia', 'london', 'school-years'].includes(t))).slice(0, 6);
+const host = (u: string) => { try { return new URL(u).hostname.replace(/^www\./, ''); } catch { return 'source'; } };
+const isDegree = (s: Stage) => /BA|MA|PhD|MSc|DSc|Bar|LLD|DLitt/.test(s.qualification || '');
+---
+<Base title="Educational Journey" description="Dr. B. R. Ambedkar's complete education, step by step: from a gunny sack in a Satara classroom to degrees from Columbia University and the London School of Economics, and the Bar at Gray's Inn.">
+  <section class="hero">
+    <Chakra class="chakra-bg" />
+    <div class="wrap section">
+      <span class="eyebrow">Educational journey · 1894–1923</span>
+      <h1 style="font-size:var(--step-4)">From a gunny sack to two doctorates</h1>
+      <p class="lede" style="max-width:64ch">At school in Satara he had to sit apart on a piece of sacking. Within twenty years he had earned an MA and a PhD from Columbia University in New York, an MSc and a DSc from the London School of Economics, and become a barrister at Gray's Inn — at a time when almost no one from his community could go to school at all.</p>
+      <div class="stats" style="margin-top:28px">
+        <div class="stat"><strong>BA</strong><span>Bombay, 1912</span></div>
+        <div class="stat"><strong>MA · PhD</strong><span>Columbia University, New York</span></div>
+        <div class="stat"><strong>MSc · DSc</strong><span>London School of Economics</span></div>
+        <div class="stat"><strong>Barrister</strong><span>Gray's Inn, London</span></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="narrow section">
+    <p class="lede">Satara → Bombay → New York → London → Bonn → London → Bombay. Follow each step below. Tap "More detail" for the full story and the sources behind it.</p>
+    <ol class="tl-list" style="margin-top:32px">
+      {stages.map((s) => (
+        <li class="tl-item">
+          <time>{s.startYear === s.endYear ? s.startYear : `${s.startYear}–${s.endYear}`}</time>
+          <h2 style="font-size:var(--step-1);margin:4px 0 2px;font-family:var(--font-serif)">{s.institution}</h2>
+          <p class="muted" style="margin:0 0 6px;font-size:0.95rem">{s.stage} · {s.place}</p>
+          {s.qualification && <p style="margin:0 0 6px">{isDegree(s) ? <strong>{s.qualification}</strong> : s.qualification}</p>}
+          {s.thesisOrSubject && <p style="margin:0 0 6px;font-size:0.97rem"><em>{s.thesisOrSubject}</em></p>}
+          {(s.notes || s.sources?.length) && (
+            <details style="font-size:0.95rem">
+              <summary style="cursor:pointer;font-weight:600;color:var(--link)">More detail</summary>
+              {s.notes && <p style="margin:8px 0">{s.notes}</p>}
+              {s.sources?.length ? <p style="margin:0">{s.sources.map((u) => <a class="src" href={u} target="_blank" rel="noopener noreferrer">{host(u)}</a>)}</p> : null}
+            </details>
+          )}
+        </li>
+      ))}
+    </ol>
+    {stages.length === 0 && <p class="notice">The education record is being compiled.</p>}
+
+    {pics.length > 0 && (
+      <div class="masonry" style="margin:40px 0">
+        {pics.map((p) => (
+          <figure><Picture img={p} sizes="(min-width:900px) 300px, 50vw" /><figcaption>{p.caption} <span class="muted">— {credit(p)}</span></figcaption></figure>
+        ))}
+      </div>
+    )}
+
+    <div class="chapter-nav">
+      <a href={url('/life/columbia/')}><span>Read the story</span><strong>New York and Columbia, 1913–1916</strong></a>
+      <a class="next" href={url('/life/london/')}><span>Read the story</span><strong>London, LSE and Gray's Inn, 1916–1923</strong></a>
+    </div>
+  </div>
+</Base>

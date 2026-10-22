@@ -12,7 +12,7 @@ Yet if you try to read his work today, you quickly find it is spread across many
 
 ## The government agrees
 
-This is not just our impression. In 2026 India's Ministry of Social Justice and Empowerment set a challenge for the Smart India Hackathon. Its brief says Dr. Ambedkar's writings, speeches and records are "scattered across libraries, memorials, archives, and fragmented digital sources" [source: SIH 2026 problem statement SIH26096](https://zaidsayyed.in/tools/sih-problem-statements/sih26096).
+This is not just our impression. In 2026 India's Ministry of Social Justice and Empowerment set a challenge for the Smart India Hackathon. Its brief says Dr. Ambedkar's writings, speeches and records are "spread across libraries, memorials, archives, and fragmented digital sources" [source: SIH 2026 problem statement SIH26096](https://zaidsayyed.in/tools/sih-problem-statements/sih26096).
 
 ## What this website does
 

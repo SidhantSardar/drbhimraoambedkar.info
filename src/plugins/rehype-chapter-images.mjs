@@ -1,7 +1,7 @@
 // Places photographs between the sections of a life chapter or theme page.
 // Images come from src/data/images.json, matched by tag = the chapter slug.
 // The first matching image is the page's hero (rendered by the page), so it is skipped here.
-import { imagesFor, imageSources, credit } from '../lib/images-core.mjs';
+import { imagesFor, heroFor, imageSources, credit } from '../lib/images-core.mjs';
 
 const h = (tagName, properties = {}, children = []) => ({ type: 'element', tagName, properties, children });
 const t = (value) => ({ type: 'text', value });
@@ -24,7 +24,8 @@ export default function rehypeChapterImages() {
     const p = String(file.path || file.history?.[0] || '');
     const m = p.match(/src[\\/]content[\\/](life|themes)[\\/](?:\d+-)?([^\\/]+)\.md$/);
     if (!m) return;
-    const pool = imagesFor(m[2]).slice(1);
+    const hero = heroFor(m[2]);
+    const pool = imagesFor(m[2]).filter((i) => i !== hero);
     if (!pool.length) return;
 
     // Insert one figure before every second h2 (after the first), skipping the closing reference sections.

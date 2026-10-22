@@ -3,7 +3,7 @@ import { render } from 'astro:content';
 import Base from '../layouts/Base.astro';
 import Chakra from './Chakra.astro';
 import Picture from './Picture.astro';
-import { imagesFor, credit } from '../lib/images-core.mjs';
+import { heroFor, credit } from '../lib/images-core.mjs';
 import { url, formatDate, SITE } from '../lib/site';
 import type { Story } from '../lib/data';
 
@@ -18,7 +18,7 @@ interface Props {
 const { entry, kind, num, total, prev, next } = Astro.props;
 const { Content } = await render(entry);
 const d = entry.data;
-const hero = imagesFor(entry.id)[0];
+const hero = heroFor(entry.id);
 const issueUrl = `${SITE.repoUrl}/issues/new?labels=correction&title=${encodeURIComponent(`Correction: ${d.title}`)}&body=${encodeURIComponent(`Page: ${Astro.url.href}\n\nWhat is wrong:\n\nWhat it should say (with a source link):\n`)}`;
 ---
 <Base title={d.title} description={d.summary} image={hero ? url(hero.file) : undefined} progress>

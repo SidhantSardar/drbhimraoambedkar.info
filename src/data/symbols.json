@@ -1,0 +1,126 @@
+[
+  {
+    "id": "ambedkarite-blue",
+    "name": "The colour blue",
+    "description": "Blue is the colour most closely linked with Dr. Ambedkar and his movement. It is seen on flags, scarves and statues at every Ambedkar Jayanti. Many people say it stands for the sky, which covers everyone equally.",
+    "history": "Blue flags were used by his Samata Sainik Dal and Scheduled Castes Federation in his lifetime: the Dal's constitution (drafted 1944) specifies a 'deep blue' ground, the Federation's constitution (as published in 1955) a blue cloth with stars, and reports from 1950–51 describe 'blue party flags', 'the Blue Flag' and 'blue star-studded flags of the Federation'. We found no statement by Dr. Ambedkar explaining the choice. The sky, his supposed favourite colour, his blue suit in portraits and an older Mahar flag are all later explanations, not recorded words; Prof. Raosaheb Kasbe has said there is no settled history of why blue became the movement's colour. There is no official shade or colour code.",
+    "colorHex": null,
+    "sources": [
+      "https://www.mea.gov.in/images/CPV/Volume17_Part_III.pdf#page=601",
+      "https://www.mea.gov.in/images/CPV/Volume17_Part_II.pdf#page=499",
+      "https://www.mea.gov.in/images/CPV/Volume17_Part_III.pdf#page=426",
+      "https://www.mea.gov.in/images/CPV/Volume17_Part_III.pdf#page=479",
+      "https://www.mea.gov.in/images/CPV/Volume17_Part_III.pdf#page=485",
+      "https://sabrangindia.in/significance-colour-blue-dalit-movement/",
+      "https://www.theweek.in/news/india/2018/04/15/how-colour-blue-got-associated-with-ambedkar.html"
+    ]
+  },
+  {
+    "id": "samata-sainik-dal-flag",
+    "name": "Samata Sainik Dal flag",
+    "description": "The flag of the Samata Sainik Dal, the volunteer corps that guarded Dr. Ambedkar's meetings. It is deep blue with white stars and a white sun. Its constitution says it stands for liberty, equality and fraternity.",
+    "history": "The Dal's written constitution was drafted after its Kanpur conference of 30 January 1944 and sent to Dr. Ambedkar on 8 December 1944. Section XI says the flag is four feet by two and a half feet, with a deep blue ground, '11 pointed stars in white colour' in the top left corner (read as eleven stars), a white sun in the middle, the letters 'S.C.F.' in blue under the sun and 'S.S.D.' in white in the bottom right corner. 'The meaning of the FLAG is liberty, equality & fraternity and to fight to achieve our goal.' Dal volunteers were active by 1932; most accounts date the Dal to 1927.",
+    "colorHex": null,
+    "sources": [
+      "https://www.mea.gov.in/images/CPV/Volume17_Part_III.pdf#page=595",
+      "https://www.mea.gov.in/images/CPV/Volume17_Part_III.pdf#page=601",
+      "https://www.mea.gov.in/images/CPV/Volume17_Part_III.pdf#page=114"
+    ]
+  },
+  {
+    "id": "scheduled-castes-federation-flag",
+    "name": "Scheduled Castes Federation flag",
+    "description": "The flag of the All-India Scheduled Castes Federation, the party Dr. Ambedkar founded in 1942. Its constitution describes stars on a triangular blue cloth. Reports from the 1950s call these 'blue star-studded flags'.",
+    "history": "The Federation was founded at Nagpur on 19 July 1942; its constitution was made public on 7 September 1942 and published in amended form in January 1955. Article XXVI(1) of that text reads: 'The flag of the Federation shall consist of stars against a blue cloth cut in triangle.' Dr. Ambedkar unfurled 'the Scheduled Castes flag' at Nare Park, Bombay, on 17 February 1946; Federation flags were hoisted across Delhi on 14 April 1947; and a Shivaji Park rally on 25 November 1951 was full of 'blue star-studded flags of the Federation'. One activist, S. R. Darapuri, says the flag carried an Ashoka Chakra, but the constitution and the 1951 report both mention stars.",
+    "colorHex": null,
+    "sources": [
+      "https://www.mea.gov.in/images/CPV/Volume17_Part_II.pdf#page=480",
+      "https://www.mea.gov.in/images/CPV/Volume17_Part_II.pdf#page=499",
+      "https://www.mea.gov.in/images/CPV/Volume17_Part_III.pdf#page=392",
+      "https://www.mea.gov.in/images/CPV/Volume17_Part_III.pdf#page=398",
+      "https://www.mea.gov.in/images/CPV/Volume17_Part_III.pdf#page=485",
+      "https://www.theweek.in/news/india/2018/04/15/how-colour-blue-got-associated-with-ambedkar.html"
+    ]
+  },
+  {
+    "id": "republican-party-flag",
+    "name": "Blue flag with the Ashoka Chakra (Republican Party of India)",
+    "description": "A plain blue flag with a white wheel in the centre. It is the flag of the Republican Party of India and is widely flown by Ambedkarites and Indian Buddhists. It is the flag most people now picture as 'the blue flag'.",
+    "history": "Dr. Ambedkar's Scheduled Castes Federation decided on 30 September 1956 to make way for a new Republican Party; his followers formally organised the party in October 1957, after his death. Its flag is blue with a white Ashoka Chakra. We found no document from Dr. Ambedkar's lifetime describing this exact flag. On Wikimedia Commons the flag is drawn in dark navy blue (#000066) with a white wheel, but that is a drawing, not an official specification.",
+    "colorHex": null,
+    "sources": [
+      "https://www.mea.gov.in/images/CPV/Volume17_Part_II.pdf#page=175",
+      "https://archive.org/details/sochara.fromuntouchablet0000zell",
+      "https://www.theweek.in/news/india/2018/04/15/how-colour-blue-got-associated-with-ambedkar.html",
+      "https://commons.wikimedia.org/wiki/File:Flag_of_various_Republican_Parties_of_India.svg"
+    ]
+  },
+  {
+    "id": "ashoka-chakra",
+    "name": "Ashoka Chakra / Dhamma Chakra",
+    "description": "A wheel with 24 spokes taken from Emperor Ashoka's Buddhist Lion Capital at Sarnath. Buddhists call it the Dhamma Chakra, the 'wheel of the teaching'. It is at the centre of India's national flag and of the blue Ambedkarite flag.",
+    "history": "The Constituent Assembly set up an ad hoc Flag Committee under Dr. Rajendra Prasad on 23 June 1947; Dr. Ambedkar was a member. The committee kept the Congress tricolour but replaced the charkha (spinning wheel) with Ashoka's wheel, and the Assembly adopted the flag on 22 July 1947. Keer reports only as hearsay that Dr. Ambedkar spoke up for the chakra; in a speech on 2 May 1950 he pointed out that free India had turned to Buddhism for its flag's symbol. On the national flag the wheel is navy blue (standard IS 1:1968; Wikipedia's common digital approximation is #06038D).",
+    "colorHex": "#06038D",
+    "sources": [
+      "https://fiav.org/wp-content/uploads/2022/12/ICV27-A8-Chakrabarti.pdf",
+      "https://www.services.bis.gov.in/php/BIS_2.0/BISBlog/standardizing-the-tricolour-that-symbolizes-the-worlds-largest-democracy/",
+      "https://archive.org/details/dr-ambedkar-life-and-mission-dhananjay-keer",
+      "https://www.mea.gov.in/images/CPV/Volume17_Part_III.pdf#page=431",
+      "https://en.wikipedia.org/wiki/Flag_of_India"
+    ]
+  },
+  {
+    "id": "panchsheel-flag",
+    "name": "Panchsheel (Buddhist) flag",
+    "description": "The international Buddhist flag, with stripes of blue, yellow, red, white and orange. Indian Buddhists often call it the Panchsheel flag, after the Buddhist five precepts. It flies at Deekshabhoomi and at Buddhist gatherings across India.",
+    "history": "It was designed by a committee in Colombo, Ceylon, in 1885; Henry Steel Olcott suggested changing it to the shape of a national flag. The World Fellowship of Buddhists adopted it as the international Buddhist flag in 1950; Dr. Ambedkar attended that first conference in Ceylon (25 May–6 June 1950). People came to his conversion at Nagpur on 14 October 1956 carrying Buddhist flags. The colours are said to be those that shone from the Buddha after his enlightenment. No official colour codes exist; the common Wikimedia drawing uses blue #0018A8, yellow #FEDF00, red #ED1B24, white #FFFFFF and orange #FF9800.",
+    "colorHex": null,
+    "sources": [
+      "https://tricycle.org/article/international-buddhist-flag/",
+      "https://en.wikipedia.org/wiki/Buddhist_flag",
+      "https://www.mea.gov.in/images/CPV/Volume17_Part_III.pdf#page=433",
+      "https://www.mea.gov.in/images/CPV/Volume17_Part_III.pdf#page=574",
+      "https://commons.wikimedia.org/wiki/File:Flag_of_Buddhism.svg"
+    ]
+  },
+  {
+    "id": "jai-bhim",
+    "name": "Jai Bhim",
+    "description": "A greeting meaning 'Victory to Bhim', from Dr. Ambedkar's name Bhimrao. Ambedkarites use it as a greeting and as a slogan. It is usually credited to his follower Babu Hardas of Kamptee.",
+    "history": "Babu Hardas L. N. (Laxman Nagrale, 1904–1939) of Kamptee near Nagpur is said to have asked Samata Sainik Dal volunteers to greet each other with 'Jai Bhim' instead of older greetings. BBC News gives 1935, citing Ramchandra Kshirsagar's book; The Wire says it first appeared in a 1932 speech at Kamptee and spread from a 1938 meeting at Makranpur. Zelliot notes that followers turned 'Jai Hind' into 'Jai Bhim', and Keer says Dr. Ambedkar replied with 'Jai Bhim' at the end of his letters.",
+    "colorHex": null,
+    "sources": [
+      "https://www.bbc.com/hindi/india-59297949",
+      "https://thewire.in/caste/the-collective-memory-of-resistance-exploring-babu-hardass-influence",
+      "https://www.mea.gov.in/images/CPV/Volume17_Part_III.pdf#page=44",
+      "https://archive.org/details/sochara.fromuntouchablet0000zell",
+      "https://archive.org/details/dr-ambedkar-life-and-mission-dhananjay-keer"
+    ]
+  },
+  {
+    "id": "statue-blue-suit",
+    "name": "The statue in the blue suit",
+    "description": "Most statues of Dr. Ambedkar show him in a blue three-piece suit, holding the Constitution of India, with a finger pointing forward. The suit stands for dignity and education, the book for the Constitution he helped write, and the finger for moving ahead.",
+    "history": "Eleanor Zelliot described the statue placed in the Parliament House grounds, with the Constitution in one hand and the other hand pointing, and noted that popular pictures usually show him in a blue suit with a book and a fountain pen. Activists quoted by PTI in 2018 describe the pointing finger as a symbol of progress. The blue colour belongs to the popular image; we found no document recording what colour his own suits were.",
+    "colorHex": null,
+    "sources": [
+      "https://archive.org/details/sochara.fromuntouchablet0000zell",
+      "https://www.theweek.in/news/india/2018/04/15/how-colour-blue-got-associated-with-ambedkar.html",
+      "https://sabrangindia.in/significance-colour-blue-dalit-movement/",
+      "https://commons.wikimedia.org/wiki/File:Statue_of_Social_Justice,_Vijayawada.jpg"
+    ]
+  },
+  {
+    "id": "deekshabhoomi-stupa",
+    "name": "Deekshabhoomi stupa",
+    "description": "A great white hollow dome at Deekshabhoomi in Nagpur, where Dr. Ambedkar became a Buddhist on 14 October 1956. It has become a symbol of that conversion, and crowds gather there every year on its anniversary.",
+    "history": "The stupa was designed by the Nagpur architect Sheo Dan Mal and inaugurated by President K. R. Narayanan on 18 December 2001. India Post's stamp text gives a dome 36 metres across and a main hall of about 64 by 64 metres; stamps showing it were issued on 14 April 2017. It is often called the largest hollow stupa, in India or in the world; these rankings are claims, not independent measurements.",
+    "colorHex": null,
+    "sources": [
+      "https://www.oneindia.com/2007/01/24/dr-ambedkar-memorial-architect-sheo-dan-mal-passes-away-1169695243.html",
+      "https://timesofindia.indiatimes.com/city/mumbai/Ambedkar-memorial-set-up-at-Deekshabhoomi/articleshow/189472379.cms",
+      "https://istampgallery.com/deekshabhoomi/",
+      "https://www.tribuneindia.com/2002/20020317/spectrum/main5.htm"
+    ]
+  }
+]

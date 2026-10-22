@@ -40,7 +40,7 @@ const milestones = [
           <a class="btn btn-ghost" href={url('/constitution/')}>The Constitution</a>
         </div>
         <div class="mission">
-          <p><strong>Why this website exists.</strong> Dr. Ambedkar's writings, speeches and records are spread across government PDFs, university archives, museums and memorials. India's Ministry of Social Justice and Empowerment itself describes them as "scattered across libraries, memorials, archives, and fragmented digital sources" <a class="src" href="https://zaidsayyed.in/tools/sih-problem-statements/sih26096" target="_blank" rel="noopener noreferrer" title="Source: Smart India Hackathon 2026 brief SIH26096">SIH 2026 brief SIH26096</a>.</p>
+          <p><strong>Why this website exists.</strong> Dr. Ambedkar's writings, speeches and records are spread across government PDFs, university archives, museums and memorials. India's Ministry of Social Justice and Empowerment itself describes them as "spread across libraries, memorials, archives, and fragmented digital sources" <a class="src" href="https://zaidsayyed.in/tools/sih-problem-statements/sih26096" target="_blank" rel="noopener noreferrer" title="Source: Smart India Hackathon 2026 brief SIH26096">SIH 2026 brief SIH26096</a>.</p>
           <p>This is an independent initiative to bring them together in one place — taken from authoritative sources, explained in simple words, with a link to the original for every fact. Free for everyone.</p>
         </div>
       </div>
@@ -64,6 +64,18 @@ const milestones = [
         ))}
       </div>
       {life.length === 0 && <p class="notice">The chapters are being researched and written. Check back soon.</p>}
+    </div>
+  </section>
+
+  <section class="section-tight">
+    <div class="wrap">
+      <a class="card" href={url('/education/')} style="flex-direction:row;flex-wrap:wrap;align-items:center">
+        <div class="card-body" style="min-width:min(100%,320px)">
+          <span class="card-meta">Educational journey · 1894–1923</span>
+          <h3 style="font-size:var(--step-2)">From a gunny sack to two doctorates</h3>
+          <p>Made to sit apart at school in Satara, he went on to earn an MA and PhD from Columbia, an MSc and DSc from the London School of Economics, and become a barrister. Follow every step →</p>
+        </div>
+      </a>
     </div>
   </section>
 

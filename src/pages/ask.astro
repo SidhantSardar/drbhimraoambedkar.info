@@ -87,7 +87,10 @@ const examples = ['education', 'women', 'democracy', 'fraternity', 'annihilation
         }
         var filters = { collection: 'Writings and Speeches' };
         if (vol.value) filters.volume = vol.value;
-        var search = await pf.search(term, { filters: filters });
+        // Questions contain words every page has; search on the meaningful words only.
+        var STOP = ' a an the is are was were be been of on in to for and or but with by about what which who whom whose why how when where did does do say said tell me his her he she it its this that these those dr dr. babasaheb ambedkar ambedkars bhimrao b r b.r. think thought view views opinion according ';
+        var words = term.toLowerCase().replace(/[?!.,;:"'’]/g, ' ').split(/\s+/).filter(function (w) { return w && STOP.indexOf(' ' + w + ' ') < 0; });
+        var search = await pf.search(words.length ? words.join(' ') : term, { filters: filters });
         var top = await Promise.all(search.results.slice(0, 10).map(function (r) { return r.data(); }));
         statusEl.textContent = search.results.length
           ? search.results.length + ' matching sections. Showing the best ' + top.length + '.'

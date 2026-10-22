@@ -55,6 +55,14 @@ export function imagesFor(slug, limit = 12) {
   return all.sort((a, b) => rank(a) - rank(b)).slice(0, limit);
 }
 
+/** The best header image for a chapter: the largest historical photo with that tag. */
+export function heroFor(slug) {
+  const pool = imagesFor(slug, 99);
+  const historical = pool.filter((i) => !(i.tags || []).includes('context'));
+  const list = historical.length ? historical : pool;
+  return list.reduce((best, i) => (!best || (i.width || 0) * (i.height || 0) > (best.width || 0) * (best.height || 0) ? i : best), null);
+}
+
 export function credit(img) {
   const bits = [img.author && `Photo: ${img.author}`, img.license].filter(Boolean);
   return bits.join(' · ');

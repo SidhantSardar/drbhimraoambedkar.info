@@ -1,11 +1,11 @@
 ---
 import Picture from './Picture.astro';
 import Chakra from './Chakra.astro';
-import { imagesFor } from '../lib/images-core.mjs';
+import { heroFor } from '../lib/images-core.mjs';
 import { url } from '../lib/site';
 interface Props { slug: string; href: string; title: string; period?: string; summary?: string; num?: string }
 const { slug, href, title, period, summary, num } = Astro.props;
-const img = imagesFor(slug)[0];
+const img = heroFor(slug);
 ---
 <a class="card" href={url(href)}>
   <div class="card-img">

@@ -1,0 +1,768 @@
+{
+  "keyFacts": [
+    {
+      "label": "Constituent Assembly first met",
+      "value": "9 December 1946, Constitution Hall, New Delhi",
+      "source": "https://www.constitutionofindia.net/debates/09-dec-1946/"
+    },
+    {
+      "label": "Dr. Ambedkar's first seat",
+      "value": "Bengal (elected by the Bengal Legislative Assembly; signed the register on 9 December 1946)",
+      "source": "https://www.mea.gov.in/images/CPV/Volume13.pdf#page=38"
+    },
+    {
+      "label": "Second seat after Partition",
+      "value": "Bombay (re-elected July 1947; took his seat on 14 July 1947)",
+      "source": "https://www.constitutionofindia.net/debates/14-jul-1947/"
+    },
+    {
+      "label": "Drafting Committee appointed",
+      "value": "29 August 1947, seven members; first meeting 30 August 1947",
+      "source": "https://www.constitutionofindia.net/debates/29-aug-1947/"
+    },
+    {
+      "label": "Chairman of the Drafting Committee",
+      "value": "Dr. B. R. Ambedkar (in his words, elected Chairman by the Committee itself)",
+      "source": "https://www.constitutionofindia.net/debates/25-nov-1949/"
+    },
+    {
+      "label": "Days the Drafting Committee sat",
+      "value": "141 days",
+      "source": "https://www.constitutionofindia.net/debates/25-nov-1949/"
+    },
+    {
+      "label": "Starting text",
+      "value": "Draft by Constitutional Adviser Sir B. N. Rau: 243 articles and 13 Schedules",
+      "source": "https://www.constitutionofindia.net/debates/25-nov-1949/"
+    },
+    {
+      "label": "Draft Constitution",
+      "value": "Sent 21 February 1948; published in the Gazette of India 26 February 1948; 315 articles and 8 Schedules",
+      "source": "https://www.mea.gov.in/images/CPV/Volume13.pdf#page=128"
+    },
+    {
+      "label": "Amendments",
+      "value": "About 7,635 tabled; 2,473 actually moved",
+      "source": "https://www.constitutionofindia.net/debates/25-nov-1949/"
+    },
+    {
+      "label": "Assembly sittings (to 25 Nov 1949)",
+      "value": "11 sessions, 165 days, of which 114 days on the Draft Constitution",
+      "source": "https://www.constitutionofindia.net/debates/25-nov-1949/"
+    },
+    {
+      "label": "Constitution as adopted",
+      "value": "395 articles and 8 Schedules",
+      "source": "https://www.constitutionofindia.net/debates/25-nov-1949/"
+    },
+    {
+      "label": "Adopted",
+      "value": "26 November 1949",
+      "source": "https://www.constitutionofindia.net/debates/26-nov-1949/"
+    },
+    {
+      "label": "Signed by members",
+      "value": "24 January 1950 (handwritten English, printed English and handwritten Hindi copies)",
+      "source": "https://www.constitutionofindia.net/debates/24-jan-1950/"
+    },
+    {
+      "label": "Number of members who signed",
+      "value": "284, according to the PIB's New India Samachar (the Assembly record gives no number)",
+      "source": "https://newindiasamachar.pib.gov.in/archive/nov2/english/files/basic-html/page12.html"
+    },
+    {
+      "label": "Came into force",
+      "value": "26 January 1950 (citizenship, elections and some other provisions from 26 November 1949)",
+      "source": "https://www.legislative.gov.in/static/uploads/2025/08/b9a933fb88c0a5afba254256bc55a3f0.pdf#page=283"
+    },
+    {
+      "label": "English calligrapher",
+      "value": "Prem Behari Narain Raizada",
+      "source": "https://www.currentscience.ac.in/Volumes/115/04/0788.pdf"
+    },
+    {
+      "label": "Hindi calligrapher",
+      "value": "Vasant Krishna Vaidya (PIB spelling; also written Vasant Krishan Vaidya, and Basantrao Vaidya by CSIR-NPL)",
+      "source": "https://newindiasamachar.pib.gov.in/archive/nov2/english/files/basic-html/page12.html"
+    },
+    {
+      "label": "Decoration (illumination)",
+      "value": "Nandalal Bose and his team from Kala Bhavana, Santiniketan; Preamble page credited to Beohar Rammanohar Sinha",
+      "source": "https://newindiasamachar.pib.gov.in/archive/nov2/english/files/basic-html/page12.html"
+    },
+    {
+      "label": "Where the originals are kept",
+      "value": "Parliament Library, New Delhi, in nitrogen-filled sealed glass cases installed in March 1994",
+      "source": "https://npl.csircentral.net/4027/"
+    },
+    {
+      "label": "Size of the originals",
+      "value": "English: 221 parchment sheets, about 13 kg; Hindi: 252 sheets, about 14 kg",
+      "source": "https://www.currentscience.ac.in/Volumes/115/04/0788.pdf"
+    },
+    {
+      "label": "Constitution Day (Samvidhan Divas)",
+      "value": "26 November, celebrated every year since 2015",
+      "source": "https://newindiasamachar.pib.gov.in/archive/nov2/english/files/basic-html/page8.html"
+    },
+    {
+      "label": "Official current text",
+      "value": "English edition 'as on 10th September, 2026', with all amendments up to the 106th Amendment Act, 2023",
+      "source": "https://www.legislative.gov.in/static/uploads/2025/08/b9a933fb88c0a5afba254256bc55a3f0.pdf#page=2"
+    }
+  ],
+  "timeline": [
+    {
+      "date": "1946-12-09",
+      "label": "Constituent Assembly meets",
+      "detail": "First sitting in the Constitution Hall, New Delhi, with Dr. Sachchidananda Sinha as temporary Chairman. Dr. Ambedkar signs the register as a member from Bengal.",
+      "source": "https://www.constitutionofindia.net/debates/09-dec-1946/"
+    },
+    {
+      "date": "1946-12-11",
+      "label": "Rajendra Prasad elected President of the Assembly",
+      "detail": "Dr. Rajendra Prasad becomes the permanent Chairman (President) of the Constituent Assembly.",
+      "source": "https://www.mea.gov.in/images/CPV/Volume13.pdf#page=38"
+    },
+    {
+      "date": "1946-12-13",
+      "label": "Objectives Resolution moved",
+      "detail": "Jawaharlal Nehru moves the resolution setting out the aims of the Constitution.",
+      "source": "https://www.mea.gov.in/images/CPV/Volume13.pdf#page=39"
+    },
+    {
+      "date": "1946-12-17",
+      "label": "Dr. Ambedkar's first speech",
+      "detail": "He criticises the resolution for listing rights without remedies, but says nothing will prevent India 'from becoming one'.",
+      "source": "https://www.constitutionofindia.net/debates/17-dec-1946/"
+    },
+    {
+      "date": "1947-01-22",
+      "label": "Objectives Resolution adopted",
+      "detail": "Adopted with all members standing. Its ideas later shaped the Preamble.",
+      "source": "https://www.constitutionofindia.net/debates/22-jan-1947/"
+    },
+    {
+      "date": "1947-06-30",
+      "label": "Prasad asks Bombay to re-elect Dr. Ambedkar",
+      "detail": "After the partition of Bengal ended his membership, Rajendra Prasad writes to B. G. Kher that the Assembly 'should not be deprived of his services'.",
+      "source": "https://www.mea.gov.in/images/CPV/Volume13.pdf#page=58"
+    },
+    {
+      "date": "1947-07-14",
+      "label": "Returns as a member from Bombay",
+      "detail": "Presents his credentials and signs the register as a Bombay member.",
+      "source": "https://www.constitutionofindia.net/debates/14-jul-1947/"
+    },
+    {
+      "date": "1947-08-15",
+      "label": "Becomes Law Minister",
+      "detail": "Joins Nehru's first cabinet on the day of independence.",
+      "source": "https://www.mea.gov.in/images/CPV/Volume13.pdf#page=59"
+    },
+    {
+      "date": "1947-08-29",
+      "label": "Drafting Committee appointed",
+      "detail": "Seven members named: Alladi Krishnaswami Ayyar, N. Gopalaswami Ayyangar, B. R. Ambedkar, K. M. Munshi, Saiyid Mohd. Saadulla, B. L. Mitter and D. P. Khaitan.",
+      "source": "https://www.constitutionofindia.net/debates/29-aug-1947/"
+    },
+    {
+      "date": "1947-08-30",
+      "label": "Drafting Committee's first meeting",
+      "detail": "The Committee begins work; it would sit for 141 days. Its members chose Dr. Ambedkar as Chairman (the exact day of that choice is not recorded in our sources).",
+      "source": "https://www.constitutionofindia.net/debates/25-nov-1949/"
+    },
+    {
+      "date": "1947-10-27",
+      "label": "Scrutiny of B. N. Rau's draft begins",
+      "detail": "The Committee starts going through the draft prepared by the Constitutional Adviser.",
+      "source": "https://www.constitutionofindia.net/stages-of-constitution-making/"
+    },
+    {
+      "date": "1948-02-21",
+      "label": "Draft Constitution submitted",
+      "detail": "Dr. Ambedkar sends the Draft to the President of the Assembly with a covering letter explaining the main changes.",
+      "source": "https://www.mea.gov.in/images/CPV/Volume13.pdf#page=128"
+    },
+    {
+      "date": "1948-02-26",
+      "label": "Draft published in the Gazette of India",
+      "detail": "Printed 'for general information' so that the public, governments and courts could comment.",
+      "source": "https://www.mea.gov.in/images/CPV/Volume13.pdf#page=128"
+    },
+    {
+      "date": "1948-11-04",
+      "label": "Draft introduced in the Assembly",
+      "detail": "Dr. Ambedkar moves that the Draft be taken into consideration and explains its main features.",
+      "source": "https://www.constitutionofindia.net/debates/04-nov-1948/"
+    },
+    {
+      "date": "1948-11-05",
+      "label": "T. T. Krishnamachari's remark",
+      "detail": "He tells the House that, with other members absent, 'the burden of drafting this constitution fell on Dr. Ambedkar'.",
+      "source": "https://www.constitutionofindia.net/debates/05-nov-1948/"
+    },
+    {
+      "date": "1948-11-15",
+      "label": "Second reading begins",
+      "detail": "The Assembly starts discussing the Draft clause by clause; this continues until 17 October 1949.",
+      "source": "https://www.mea.gov.in/images/CPV/Volume13.pdf#page=80"
+    },
+    {
+      "date": "1948-11-22",
+      "label": "Directive Principles explained",
+      "detail": "Dr. Ambedkar says the Directive Principles set 'economic democracy' as the ideal.",
+      "source": "https://www.mea.gov.in/images/CPV/Volume13.pdf#page=384"
+    },
+    {
+      "date": "1948-11-29",
+      "label": "Untouchability abolished in the Draft",
+      "detail": "Draft article 11 (now Article 17) is adopted to cries of 'Mahatma Gandhi ki Jai'.",
+      "source": "https://www.constitutionofindia.net/debates/29-nov-1948/"
+    },
+    {
+      "date": "1948-11-30",
+      "label": "Equality of opportunity and reservations",
+      "detail": "Dr. Ambedkar explains draft article 10 (now Article 16): reservations must be 'confined to a minority of seats'.",
+      "source": "https://www.constitutionofindia.net/debates/30-nov-1948/"
+    },
+    {
+      "date": "1948-12-09",
+      "label": "Right to constitutional remedies adopted",
+      "detail": "Draft article 25 (now Article 32) is adopted after Dr. Ambedkar calls it 'the very soul of the Constitution and the very heart of it'.",
+      "source": "https://www.constitutionofindia.net/debates/09-dec-1948/"
+    },
+    {
+      "date": "1948-12-13",
+      "label": "'Due process' debate",
+      "detail": "On draft article 15 (now Article 21) Dr. Ambedkar sets out both sides and leaves the choice to the House; 'procedure established by law' stays.",
+      "source": "https://www.constitutionofindia.net/debates/13-dec-1948/"
+    },
+    {
+      "date": "1949-09-17",
+      "label": "Amendment procedure and SC/ST lists adopted",
+      "detail": "Draft articles 304, 300A and 300B (now Articles 368, 341 and 342) are approved.",
+      "source": "https://www.mea.gov.in/images/CPV/Volume13.pdf#page=1253"
+    },
+    {
+      "date": "1949-10-17",
+      "label": "Preamble adopted",
+      "detail": "The Preamble is added to the Constitution on the last day of the second reading.",
+      "source": "https://www.constitutionofindia.net/debates/17-oct-1949/"
+    },
+    {
+      "date": "1949-11-14",
+      "label": "Third reading begins",
+      "detail": "The Assembly meets for the final reading of the revised Draft.",
+      "source": "https://www.mea.gov.in/images/CPV/Volume13.pdf#page=81"
+    },
+    {
+      "date": "1949-11-25",
+      "label": "Closing speech",
+      "detail": "Dr. Ambedkar shares the credit and gives three warnings: use constitutional methods, avoid hero-worship, build social democracy.",
+      "source": "https://www.constitutionofindia.net/debates/25-nov-1949/"
+    },
+    {
+      "date": "1949-11-26",
+      "label": "Constitution adopted",
+      "detail": "The motion 'That the Constitution as settled by the Assembly be passed' is adopted; the President signs it.",
+      "source": "https://www.constitutionofindia.net/debates/26-nov-1949/"
+    },
+    {
+      "date": "1950-01-24",
+      "label": "Members sign the Constitution",
+      "detail": "Members sign the handwritten English and Hindi copies and a printed English copy. Rajendra Prasad is elected first President of India.",
+      "source": "https://www.constitutionofindia.net/debates/24-jan-1950/"
+    },
+    {
+      "date": "1950-01-26",
+      "label": "Constitution comes into force",
+      "detail": "India becomes a republic. Article 394 calls this day 'the commencement of this Constitution'.",
+      "source": "https://www.legislative.gov.in/static/uploads/2025/08/b9a933fb88c0a5afba254256bc55a3f0.pdf#page=283"
+    },
+    {
+      "date": "1994-03",
+      "label": "Originals placed in sealed cases",
+      "detail": "Nitrogen-filled glass cases made by CSIR-NPL and the Getty Conservation Institute are installed in the Parliament Library.",
+      "source": "https://npl.csircentral.net/4027/"
+    },
+    {
+      "date": "2015",
+      "label": "Constitution Day begins",
+      "detail": "The Government decides to celebrate 26 November every year as Constitution Day, in Dr. Ambedkar's 125th birth-anniversary year.",
+      "source": "https://newindiasamachar.pib.gov.in/archive/nov2/english/files/basic-html/page8.html"
+    }
+  ],
+  "draftingCommittee": [
+    {
+      "name": "Dr. B. R. Ambedkar",
+      "role": "Chairman (member from 29 August 1947)",
+      "note": "Elected Chairman by the Committee, in his own words. Introduced the Draft on 4 November 1948 and piloted it through the Assembly. The BAWS editor instead says the Assembly elected him Chairman on 29 August 1947.",
+      "source": "https://www.constitutionofindia.net/debates/25-nov-1949/"
+    },
+    {
+      "name": "Alladi Krishnaswami Ayyar",
+      "role": "Member (from 29 August 1947)",
+      "note": "Senior lawyer. Dr. Ambedkar called him one of the men 'bigger, better and more competent than myself'. His separate notes are printed at the end of the 1948 Draft.",
+      "source": "https://www.constitutionofindia.net/debates/29-aug-1947/"
+    },
+    {
+      "name": "N. Gopalaswami Ayyangar",
+      "role": "Member (from 29 August 1947)",
+      "note": "Named in the original resolution of 29 August 1947.",
+      "source": "https://www.constitutionofindia.net/debates/29-aug-1947/"
+    },
+    {
+      "name": "K. M. Munshi",
+      "role": "Member (from 29 August 1947)",
+      "note": "Named in the original resolution of 29 August 1947.",
+      "source": "https://www.constitutionofindia.net/debates/29-aug-1947/"
+    },
+    {
+      "name": "Saiyid Mohd. Saadulla",
+      "role": "Member (from 29 August 1947)",
+      "note": "A point of order was raised on 29 August 1947 because he had been unseated after the Sylhet referendum and re-elected; the original list was adopted anyway.",
+      "source": "https://www.constitutionofindia.net/debates/29-aug-1947/"
+    },
+    {
+      "name": "Sir B. L. Mitter",
+      "role": "Original member, later replaced",
+      "note": "Named on 29 August 1947. Later replaced by N. Madhava Rau (secondary sources say because of ill health; date not verified).",
+      "source": "https://www.constitutionofindia.net/debates/29-aug-1947/"
+    },
+    {
+      "name": "D. P. Khaitan",
+      "role": "Original member; died in 1948",
+      "note": "The Assembly mourned his death on 4 November 1948. T. T. Krishnamachari later joined the Committee.",
+      "source": "https://www.constitutionofindia.net/debates/04-nov-1948/"
+    },
+    {
+      "name": "N. Madhava Rau",
+      "role": "Member (replaced B. L. Mitter)",
+      "note": "Acting as a Committee member by November–December 1948; a Committee amendment of 9 December 1948 stood in the names of Ambedkar, Madhava Rau and Saadulla. Exact date of appointment not verified.",
+      "source": "https://www.constitutionofindia.net/debates/09-dec-1948/"
+    },
+    {
+      "name": "T. T. Krishnamachari",
+      "role": "Member (joined later; usually said to have replaced D. P. Khaitan)",
+      "note": "Called 'a colleague of his in the Drafting Committee' in the Foreword to BAWS Vol. 13. Exact date of appointment not verified.",
+      "source": "https://www.constitutionofindia.net/members/t-t-krishnamachari/"
+    },
+    {
+      "name": "Sir B. N. Rau",
+      "role": "Constitutional Adviser (not a Committee member)",
+      "note": "Prepared the first draft (243 articles, 13 Schedules) that the Committee worked on. Dr. Ambedkar gave him part of the credit.",
+      "source": "https://www.constitutionofindia.net/debates/25-nov-1949/"
+    },
+    {
+      "name": "S. N. Mukherjee",
+      "role": "Chief Draftsman (staff, not a Committee member)",
+      "note": "Dr. Ambedkar said a 'much greater' share of the credit should go to him for putting proposals into clear legal language.",
+      "source": "https://www.constitutionofindia.net/debates/25-nov-1949/"
+    }
+  ],
+  "keySpeeches": [
+    {
+      "date": "1946-12-17",
+      "title": "First speech in the Constituent Assembly (Objectives Resolution)",
+      "summary": "He asked for remedies, not just a list of rights, and said that despite India being 'a group of warring camps', nothing would stop it 'from becoming one'.",
+      "url": "https://www.constitutionofindia.net/debates/17-dec-1946/"
+    },
+    {
+      "date": "1948-11-04",
+      "title": "Introducing the Draft Constitution",
+      "summary": "He explained the parliamentary system, the federal structure, the Directive Principles and 'constitutional morality', answered critics, and said the Draft was 'workable', 'flexible' and strong enough for peace and war.",
+      "url": "https://www.constitutionofindia.net/debates/04-nov-1948/"
+    },
+    {
+      "date": "1948-11-22",
+      "title": "On the Directive Principles",
+      "summary": "He said the Constitution sets up political democracy and names 'economic democracy' as the ideal, and that the word 'strive' binds every government to keep trying.",
+      "url": "https://www.mea.gov.in/images/CPV/Volume13.pdf#page=384"
+    },
+    {
+      "date": "1948-11-30",
+      "title": "On equality of opportunity and reservations (draft article 10)",
+      "summary": "He reconciled equal opportunity with reservations for groups kept out of government jobs, saying reservations must be limited to a minority of posts.",
+      "url": "https://www.constitutionofindia.net/debates/30-nov-1948/"
+    },
+    {
+      "date": "1948-12-09",
+      "title": "On the right to constitutional remedies (draft article 25, now Article 32)",
+      "summary": "He called it the most important article, 'the very soul of the Constitution and the very heart of it', and said 'It is the remedy that makes a right real.'",
+      "url": "https://www.constitutionofindia.net/debates/09-dec-1948/"
+    },
+    {
+      "date": "1948-12-13",
+      "title": "On 'due process' and personal liberty (draft article 15, now Article 21)",
+      "summary": "He laid out the case for trusting legislatures and the case for trusting judges, and left the decision to the House.",
+      "url": "https://www.constitutionofindia.net/debates/13-dec-1948/"
+    },
+    {
+      "date": "1949-11-25",
+      "title": "Closing speech before adoption",
+      "summary": "He gave the facts of the Assembly's work, shared the credit, defended the Constitution, and warned India to use constitutional methods, avoid hero-worship and build social democracy.",
+      "url": "https://www.constitutionofindia.net/debates/25-nov-1949/"
+    }
+  ],
+  "articles": [
+    {
+      "number": "Preamble",
+      "title": "We, the People of India",
+      "plainMeaning": "The opening statement. It says the people of India give themselves this Constitution to secure justice, liberty and equality for all, and to promote fraternity.",
+      "whyItMatters": "It sums up the purpose of the whole Constitution and is used to understand the rest of it.",
+      "ambedkarConnection": "The Drafting Committee he chaired added 'fraternity' to the Preamble in 1948. In his closing speech he said liberty, equality and fraternity form 'a union of trinity' that cannot be separated. (The words 'Socialist Secular' were added in 1976.)",
+      "source": "https://www.legislative.gov.in/static/uploads/2025/08/b9a933fb88c0a5afba254256bc55a3f0.pdf#page=32"
+    },
+    {
+      "number": "14",
+      "title": "Equality before law",
+      "plainMeaning": "The government must treat every person as equal before the law and give everyone equal protection of the laws.",
+      "whyItMatters": "No one is above the law, and no one can be treated as less than others by the law.",
+      "ambedkarConnection": "The same words were part of draft article 15 in the 1948 Draft; they became a separate article. Equality before the law was the centre of his life's work against caste.",
+      "source": "https://www.legislative.gov.in/static/uploads/2025/08/b9a933fb88c0a5afba254256bc55a3f0.pdf#page=37"
+    },
+    {
+      "number": "15",
+      "title": "No discrimination by religion, race, caste, sex or place of birth",
+      "plainMeaning": "The State cannot discriminate on these grounds, and no one can be kept out of shops, restaurants, wells, tanks, roads and other public places because of them.",
+      "whyItMatters": "It opened public places to people who had been shut out by caste.",
+      "ambedkarConnection": "Debated as draft article 9 on 29 November 1948. Dr. Ambedkar explained that places like rivers and canals were also protected through the article abolishing untouchability.",
+      "source": "https://www.legislative.gov.in/static/uploads/2025/08/b9a933fb88c0a5afba254256bc55a3f0.pdf#page=37"
+    },
+    {
+      "number": "16",
+      "title": "Equal opportunity in government jobs",
+      "plainMeaning": "Everyone has an equal chance at government jobs, but the State may reserve posts for backward classes that are not fairly represented.",
+      "whyItMatters": "It balances fairness for all with help for groups that were kept out for centuries.",
+      "ambedkarConnection": "As draft article 10, he defended it on 30 November 1948, saying reservations 'must be confined to a minority of seats' so the exception does not 'eat up the rule'.",
+      "source": "https://www.legislative.gov.in/static/uploads/2025/08/b9a933fb88c0a5afba254256bc55a3f0.pdf#page=39"
+    },
+    {
+      "number": "17",
+      "title": "Abolition of untouchability",
+      "plainMeaning": "'Untouchability' is abolished and practising it in any form is forbidden. Enforcing it is a crime.",
+      "whyItMatters": "It ended the legal acceptance of a practice that had humiliated millions of people.",
+      "ambedkarConnection": "It was draft article 11 in the Draft his committee prepared, and was adopted on 29 November 1948.",
+      "source": "https://www.legislative.gov.in/static/uploads/2025/08/b9a933fb88c0a5afba254256bc55a3f0.pdf#page=40"
+    },
+    {
+      "number": "21",
+      "title": "Protection of life and personal liberty",
+      "plainMeaning": "No one can lose their life or personal freedom except by a procedure set out in law.",
+      "whyItMatters": "It is the basic guarantee of life and freedom for every person in India.",
+      "ambedkarConnection": "As draft article 15 it used 'procedure established by law' instead of 'due process'. On 13 December 1948 he laid out both views and left the choice to the House, which kept the Draft wording.",
+      "source": "https://www.legislative.gov.in/static/uploads/2025/08/b9a933fb88c0a5afba254256bc55a3f0.pdf#page=42"
+    },
+    {
+      "number": "32",
+      "title": "Right to constitutional remedies",
+      "plainMeaning": "Anyone whose fundamental rights are violated can go straight to the Supreme Court, which can issue orders (writs) to protect them.",
+      "whyItMatters": "Without it, the fundamental rights would be promises with no way to enforce them.",
+      "ambedkarConnection": "On 9 December 1948 he called draft article 25 'the very soul of the Constitution and the very heart of it'.",
+      "source": "https://www.legislative.gov.in/static/uploads/2025/08/b9a933fb88c0a5afba254256bc55a3f0.pdf#page=50"
+    },
+    {
+      "number": "46",
+      "title": "Promoting the interests of Scheduled Castes, Scheduled Tribes and weaker sections",
+      "plainMeaning": "The State must promote, 'with special care', the education and economic interests of weaker sections, especially Scheduled Castes and Scheduled Tribes, and protect them from injustice and exploitation.",
+      "whyItMatters": "It is a standing instruction to every government to lift up those held back by caste and poverty.",
+      "ambedkarConnection": "It was draft article 37 in the 1948 Draft. He explained that the Directive Principles set 'economic democracy' as the goal every government must 'strive' for.",
+      "source": "https://www.legislative.gov.in/static/uploads/2025/08/b9a933fb88c0a5afba254256bc55a3f0.pdf#page=54"
+    },
+    {
+      "number": "330",
+      "title": "Reserved seats in the Lok Sabha",
+      "plainMeaning": "Some seats in the House of the People are reserved for Scheduled Castes and Scheduled Tribes, roughly in proportion to their population. (Article 332 does the same for state assemblies.)",
+      "whyItMatters": "It makes sure these communities have their own representatives in Parliament.",
+      "ambedkarConnection": "In the 1948 Draft (article 292) reserved seats also covered Muslims and Indian Christians; the final Constitution kept them only for Scheduled Castes and Scheduled Tribes.",
+      "source": "https://www.legislative.gov.in/static/uploads/2025/08/b9a933fb88c0a5afba254256bc55a3f0.pdf#page=220"
+    },
+    {
+      "number": "334",
+      "title": "Time limit on reserved seats",
+      "plainMeaning": "Reserved seats for Scheduled Castes and Scheduled Tribes last for a fixed period; it was ten years at first and is now eighty years from 1950.",
+      "whyItMatters": "Parliament must decide again and again whether these seats are still needed.",
+      "ambedkarConnection": "The 1948 Draft (article 305) already limited reserved seats to ten years unless extended by amendment.",
+      "source": "https://www.legislative.gov.in/static/uploads/2025/08/b9a933fb88c0a5afba254256bc55a3f0.pdf#page=223"
+    },
+    {
+      "number": "335",
+      "title": "Claims of Scheduled Castes and Scheduled Tribes to government posts",
+      "plainMeaning": "Their claims must be taken into account when government jobs are filled, consistent with efficient administration.",
+      "whyItMatters": "It supports fair representation of these communities in government service.",
+      "ambedkarConnection": "Developed from draft article 296 and approved in August and October 1949, while he piloted the Draft.",
+      "source": "https://www.legislative.gov.in/static/uploads/2025/08/b9a933fb88c0a5afba254256bc55a3f0.pdf#page=224"
+    },
+    {
+      "number": "338",
+      "title": "National Commission for Scheduled Castes",
+      "plainMeaning": "A national body watches over the safeguards for Scheduled Castes and reports to the President.",
+      "whyItMatters": "Someone official must check that the promises in the Constitution are kept.",
+      "ambedkarConnection": "It began as draft article 299, which provided a special officer to watch over these safeguards; it was turned into a Commission by amendments in 1990 and 2003.",
+      "source": "https://www.legislative.gov.in/static/uploads/2025/08/b9a933fb88c0a5afba254256bc55a3f0.pdf#page=226"
+    },
+    {
+      "number": "340",
+      "title": "Commission on backward classes",
+      "plainMeaning": "The President can appoint a commission to study the conditions of socially and educationally backward classes and suggest how to help them.",
+      "whyItMatters": "It is the starting point for policies for the Other Backward Classes.",
+      "ambedkarConnection": "In his 1951 resignation statement he complained that more than a year after the Constitution was passed, the Government had 'not even thought of appointing the Commission'.",
+      "source": "https://www.mea.gov.in/images/CPV/Volume14_Part_II.pdf#page=539"
+    },
+    {
+      "number": "341",
+      "title": "Scheduled Castes list",
+      "plainMeaning": "The President names which castes count as Scheduled Castes in each state; only Parliament can change the list.",
+      "whyItMatters": "This list decides who receives the protections meant for Scheduled Castes.",
+      "ambedkarConnection": "Approved as draft article 300A on 17 September 1949.",
+      "source": "https://www.legislative.gov.in/static/uploads/2025/08/b9a933fb88c0a5afba254256bc55a3f0.pdf#page=231"
+    },
+    {
+      "number": "342",
+      "title": "Scheduled Tribes list",
+      "plainMeaning": "The President names which tribes count as Scheduled Tribes in each state; only Parliament can change the list.",
+      "whyItMatters": "This list decides who receives the protections meant for Scheduled Tribes.",
+      "ambedkarConnection": "Approved as draft article 300B on 17 September 1949.",
+      "source": "https://www.legislative.gov.in/static/uploads/2025/08/b9a933fb88c0a5afba254256bc55a3f0.pdf#page=232"
+    },
+    {
+      "number": "368",
+      "title": "Amending the Constitution",
+      "plainMeaning": "Parliament can change the Constitution by special majorities; some changes also need approval from half the states.",
+      "whyItMatters": "It lets the Constitution grow with the country without being easy to rewrite on a whim.",
+      "ambedkarConnection": "Approved as draft article 304 on 17 September 1949. On 25 November 1949 he defended it as 'a most facile procedure' that lets each generation make changes.",
+      "source": "https://www.legislative.gov.in/static/uploads/2025/08/b9a933fb88c0a5afba254256bc55a3f0.pdf#page=259"
+    },
+    {
+      "number": "394",
+      "title": "Commencement",
+      "plainMeaning": "A few articles (on citizenship, elections and some others) began on 26 November 1949; the rest began on 26 January 1950.",
+      "whyItMatters": "It explains why India celebrates both 26 November (Constitution Day) and 26 January (Republic Day).",
+      "ambedkarConnection": "He moved the motion that the Constitution be passed on 26 November 1949.",
+      "source": "https://www.legislative.gov.in/static/uploads/2025/08/b9a933fb88c0a5afba254256bc55a3f0.pdf#page=283"
+    }
+  ],
+  "documents": [
+    {
+      "id": "coi-english-2026",
+      "title": "The Constitution of India (English), as on 10 September 2026",
+      "description": "Official up-to-date text from the Legislative Department, Ministry of Law and Justice, including all amendments up to the 106th Amendment Act, 2023.",
+      "publisher": "Legislative Department, Ministry of Law and Justice, Government of India",
+      "officialUrl": "https://www.legislative.gov.in/static/uploads/2025/08/b9a933fb88c0a5afba254256bc55a3f0.pdf",
+      "localFile": "/documents/constitution/constitution-of-india-english-2026.pdf",
+      "sizeMB": 3.39,
+      "language": "English"
+    },
+    {
+      "id": "coi-hindi-2024",
+      "title": "भारत का संविधान (The Constitution of India in Hindi), as on 1 May 2024",
+      "description": "Official Hindi text from the Legislative Department (Official Languages Wing).",
+      "publisher": "Legislative Department, Ministry of Law and Justice, Government of India",
+      "officialUrl": "https://www.legislative.gov.in/static/uploads/2025/08/a1d89fd14cb3b94f3c1f39bad5bff3b1.pdf",
+      "localFile": "/documents/constitution/constitution-of-india-hindi-2024.pdf",
+      "sizeMB": 5.5,
+      "language": "Hindi"
+    },
+    {
+      "id": "coi-diglot-2026",
+      "title": "The Constitution of India (2026), Diglot (Hindi and English)",
+      "description": "Official bilingual edition with Hindi and English side by side. Not downloaded; linked only.",
+      "publisher": "Legislative Department, Ministry of Law and Justice, Government of India",
+      "officialUrl": "https://www.legislative.gov.in/static/uploads/2025/08/cb1b190ea633a1746368ed1fac35fb30.pdf",
+      "localFile": null,
+      "sizeMB": 19.24,
+      "language": "Hindi and English"
+    },
+    {
+      "id": "draft-constitution-1948",
+      "title": "Draft Constitution of India, 21 February 1948 (Gazette of India, 26 February 1948)",
+      "description": "The Draft prepared by the Drafting Committee, with Dr. Ambedkar's covering letter of 21 February 1948, as published in the Gazette of India Extraordinary. Unaltered pages 128–350 extracted from the official BAWS Vol. 13 PDF.",
+      "publisher": "Dr. Ambedkar Foundation (BAWS Vol. 13), reprinting the Gazette of India",
+      "officialUrl": "https://www.mea.gov.in/images/CPV/Volume13.pdf#page=128",
+      "localFile": "/documents/constitution/draft-constitution-1948-gazette-extract-baws-vol-13.pdf",
+      "sizeMB": 0.96,
+      "language": "English"
+    },
+    {
+      "id": "speech-1948-11-04",
+      "title": "Dr. Ambedkar's speech introducing the Draft Constitution, 4 November 1948",
+      "description": "Full speech (CAD Vol. VII, pp. 31–44) as reprinted in BAWS Vol. 13, pp. 47–70. Unaltered pages 82–103 of the official PDF.",
+      "publisher": "Dr. Ambedkar Foundation (BAWS Vol. 13)",
+      "officialUrl": "https://www.mea.gov.in/images/CPV/Volume13.pdf#page=82",
+      "localFile": "/documents/constitution/ambedkar-speech-1948-11-04-introducing-draft-constitution-baws-vol-13-extract.pdf",
+      "sizeMB": 0.22,
+      "language": "English"
+    },
+    {
+      "id": "speech-1948-12-09-article-32",
+      "title": "Debate on draft article 25 (now Article 32), 9 December 1948",
+      "description": "Dr. Ambedkar's reply calling the article 'the very soul of the Constitution and the very heart of it'. Unaltered pages 467–476 of the official BAWS Vol. 13 PDF.",
+      "publisher": "Dr. Ambedkar Foundation (BAWS Vol. 13)",
+      "officialUrl": "https://www.mea.gov.in/images/CPV/Volume13.pdf#page=467",
+      "localFile": "/documents/constitution/ambedkar-article-32-heart-and-soul-1948-12-09-baws-vol-13-extract.pdf",
+      "sizeMB": 0.16,
+      "language": "English"
+    },
+    {
+      "id": "speech-1949-11-25",
+      "title": "Dr. Ambedkar's closing speech, 25 November 1949, and the adoption on 26 November 1949",
+      "description": "Full closing speech (CAD Vol. XI, pp. 972–981) and Rajendra Prasad's words at adoption (p. 994), as reprinted in BAWS Vol. 13, pp. 1206–1219. Unaltered pages 1239–1252 of the official PDF.",
+      "publisher": "Dr. Ambedkar Foundation (BAWS Vol. 13)",
+      "officialUrl": "https://www.mea.gov.in/images/CPV/Volume13.pdf#page=1239",
+      "localFile": "/documents/constitution/ambedkar-speech-1949-11-25-final-speech-and-adoption-baws-vol-13-extract.pdf",
+      "sizeMB": 0.21,
+      "language": "English"
+    },
+    {
+      "id": "baws-vol-13",
+      "title": "Dr. Babasaheb Ambedkar: Writings and Speeches, Vol. 13 (Dr. Ambedkar as principal architect of the Constitution)",
+      "description": "The complete volume of his Constituent Assembly speeches, the 1948 Draft and a table linking every final article to the Draft. Not copied to the public folder because the project already keeps it in archive/baws/Volume13.pdf.",
+      "publisher": "Dr. Ambedkar Foundation, Ministry of Social Justice and Empowerment (hosted by the Ministry of External Affairs)",
+      "officialUrl": "https://www.mea.gov.in/images/CPV/Volume13.pdf",
+      "localFile": null,
+      "sizeMB": 23.21,
+      "language": "English"
+    },
+    {
+      "id": "survey-of-india-note",
+      "title": "Survey of India: note on the photolithographic edition of the Constitution",
+      "description": "One-page official description of the 1,000 photolithographic copies of the calligraphed and illuminated Constitution printed by the Survey of India, Dehra Dun.",
+      "publisher": "Survey of India, Government of India",
+      "officialUrl": "https://surveyofindia.gov.in/documents/the-constitution-of-india.pdf",
+      "localFile": "/documents/constitution/survey-of-india-note-on-calligraphed-constitution-facsimile.pdf",
+      "sizeMB": 0.14,
+      "language": "English"
+    },
+    {
+      "id": "calligraphed-facsimile-wdl",
+      "title": "The Constitution of India: calligraphed and illuminated edition (Survey of India facsimile, scan)",
+      "description": "Full scan of a Survey of India photolithographic copy, digitised by the Library of Congress for the World Digital Library (item 2672). The Library of Congress page could not be opened (bot check), so the copy kept in archive/constitution/ is the identical scan re-hosted on Wikimedia Commons (DjVu, 91 MB). Too large for the public folder.",
+      "publisher": "Survey of India (1950 edition); scan by Library of Congress / World Digital Library",
+      "officialUrl": "https://www.loc.gov/item/57026883/",
+      "localFile": null,
+      "sizeMB": 91.39,
+      "language": "English"
+    },
+    {
+      "id": "calligraphed-manuscript-clpr",
+      "title": "Original manuscript of the Constitution of India (PDF, constitutionofindia.net)",
+      "description": "A viewable PDF of the calligraphed Constitution from the Centre for Law and Policy Research. Not a government copy; linked only, not downloaded.",
+      "publisher": "Centre for Law and Policy Research (constitutionofindia.net)",
+      "officialUrl": "https://www.constitutionofindia.net/wp-content/uploads/2023/03/Original-Manuscript-of-the-Constitution-of-India_New1.pdf",
+      "localFile": null,
+      "sizeMB": 49.32,
+      "language": "English"
+    },
+    {
+      "id": "cad-online",
+      "title": "Constituent Assembly Debates (all 12 volumes, day by day)",
+      "description": "Searchable full text of every sitting from 9 December 1946 to 24 January 1950. The official per-day PDFs are on the Lok Sabha eParliament library (eparlib.sansad.in), which could not be reached when this was compiled.",
+      "publisher": "Centre for Law and Policy Research (text of the Lok Sabha Secretariat's official report)",
+      "officialUrl": "https://www.constitutionofindia.net/constitution-assembly-debates/",
+      "localFile": null,
+      "sizeMB": 0,
+      "language": "English"
+    }
+  ],
+  "quotes": [
+    {
+      "text": "I know today we are divided politically, socially and economically. We are a group of warring camps and I may go even to the extent of confessing that I am probably one of the leaders of such a camp. But, Sir, with all this, I am quite convinced that given time and circumstances nothing in the world will prevent this country from becoming one.",
+      "context": "His first speech in the Constituent Assembly, on the Objectives Resolution.",
+      "date": "1946-12-17",
+      "citation": "Constituent Assembly Debates, Vol. I, 17 December 1946, pp. 99–103; BAWS Vol. 13, p. 9 (BAWS prints 'to-day')",
+      "url": "https://www.constitutionofindia.net/debates/17-dec-1946/"
+    },
+    {
+      "text": "Constitutional morality is not a natural sentiment. It has to be cultivated. We must realize that our people have yet to learn it. Democracy in India is only a top-dressing on an Indian soil, which is essentially undemocratic.",
+      "context": "Speech introducing the Draft Constitution, explaining why details of administration were written into the Constitution.",
+      "date": "1948-11-04",
+      "citation": "Constituent Assembly Debates, Vol. VII, 4 November 1948 (speech at pp. 31–44); BAWS Vol. 13, p. 61",
+      "url": "https://www.constitutionofindia.net/debates/04-nov-1948/"
+    },
+    {
+      "text": "I feel that it is workable, it is flexible and it is strong enough to hold the country together both in peace time and in war time. Indeed, if I may say so, if things go wrong under the new Constitution, the reason will not be that we had a bad Constitution. What we will have to say is, that Man was vile.",
+      "context": "Closing words of his speech introducing the Draft Constitution.",
+      "date": "1948-11-04",
+      "citation": "Constituent Assembly Debates, Vol. VII, 4 November 1948; BAWS Vol. 13, p. 70",
+      "url": "https://www.constitutionofindia.net/debates/04-nov-1948/"
+    },
+    {
+      "text": "If I was asked to name any particular article in this Constitution as the most important–an article without which this Constitution would be a nullity–I could not refer to any other article except this one. It is the very soul of the Constitution and the very heart of it and I am glad that the House has realised its importance.",
+      "context": "Reply on draft article 25 (now Article 32), the right to move the Supreme Court to enforce fundamental rights. The popular phrase 'heart and soul' is a shortened form of these words.",
+      "date": "1948-12-09",
+      "citation": "Constituent Assembly Debates, Vol. VII, 9 December 1948 (reply from p. 950); BAWS Vol. 13, p. 440",
+      "url": "https://www.constitutionofindia.net/debates/09-dec-1948/"
+    },
+    {
+      "text": "It is the remedy that makes a right real.",
+      "context": "Same speech on draft article 25, explaining why he preferred rights backed by remedies to 'pious declarations'. Wording as on constitutionofindia.net; BAWS prints 'make' for 'makes'. (The next sentence is printed 'no right of all' on the website and 'no right at all' in BAWS, so it is not quoted here.)",
+      "date": "1948-12-09",
+      "citation": "Constituent Assembly Debates, Vol. VII, 9 December 1948; BAWS Vol. 13, p. 441",
+      "url": "https://www.constitutionofindia.net/debates/09-dec-1948/"
+    },
+    {
+      "text": "So it happened ultimately that the burden of drafting this constitution fell on Dr. Ambedkar and I have no doubt that we are grateful to him for having achieved this task in a manner which is undoubtedly commendable.",
+      "context": "Said by T. T. Krishnamachari (not by Dr. Ambedkar), after explaining that some Drafting Committee members had resigned, died, gone abroad or could not attend. In the same speech he criticised the Committee as a whole for not giving the Draft enough attention.",
+      "date": "1948-11-05",
+      "citation": "Constituent Assembly Debates, Vol. VII, 5 November 1948, pp. 231–32; BAWS Vol. 13, p. 72",
+      "url": "https://www.constitutionofindia.net/debates/05-nov-1948/"
+    },
+    {
+      "text": "I came into the Constituent Assembly with no greater aspiration than to safeguard the interests of the Scheduled Castes. I had not the remotest idea that I would be called upon to undertake more responsible functions.",
+      "context": "Closing speech, thanking the Assembly for its praise.",
+      "date": "1949-11-25",
+      "citation": "Constituent Assembly Debates, Vol. XI, 25 November 1949 (speech at pp. 972–981); BAWS Vol. 13, p. 1208",
+      "url": "https://www.constitutionofindia.net/debates/25-nov-1949/"
+    },
+    {
+      "text": "The credit that is given to me does not really belong to me.",
+      "context": "Closing speech; he went on to credit B. N. Rau, the Drafting Committee members and the Chief Draftsman S. N. Mukherjee.",
+      "date": "1949-11-25",
+      "citation": "Constituent Assembly Debates, Vol. XI, 25 November 1949; BAWS Vol. 13, p. 1208",
+      "url": "https://www.constitutionofindia.net/debates/25-nov-1949/"
+    },
+    {
+      "text": "These methods are nothing but the Grammar of Anarchy and the sooner they are abandoned, the better for us.",
+      "context": "First of his three warnings: once constitutional methods are open, bloody revolution, civil disobedience, non-cooperation and satyagraha should be given up.",
+      "date": "1949-11-25",
+      "citation": "Constituent Assembly Debates, Vol. XI, 25 November 1949; BAWS Vol. 13, p. 1215",
+      "url": "https://www.constitutionofindia.net/debates/25-nov-1949/"
+    },
+    {
+      "text": "Bhakti in religion may be a road to the salvation of the soul. But in politics, Bhakti or hero-worship is a sure road to degradation and to eventual dictatorship.",
+      "context": "Second warning: citizens must not 'lay their liberties at the feet of even a great man' (quoting John Stuart Mill).",
+      "date": "1949-11-25",
+      "citation": "Constituent Assembly Debates, Vol. XI, 25 November 1949; BAWS Vol. 13, pp. 1215–1216",
+      "url": "https://www.constitutionofindia.net/debates/25-nov-1949/"
+    },
+    {
+      "text": "The third thing we must do is not to be content with mere political democracy. We must make our political democracy a social democracy as well.",
+      "context": "Third warning: social democracy means a way of life based on liberty, equality and fraternity.",
+      "date": "1949-11-25",
+      "citation": "Constituent Assembly Debates, Vol. XI, 25 November 1949; BAWS Vol. 13, p. 1216",
+      "url": "https://www.constitutionofindia.net/debates/25-nov-1949/"
+    },
+    {
+      "text": "On the 26th of January 1950, we are going to enter into a life of contradictions. In politics we will have equality and in social and economic life we will have inequality.",
+      "context": "Closing speech, on the gap between equal votes and an unequal society.",
+      "date": "1949-11-25",
+      "citation": "Constituent Assembly Debates, Vol. XI, 25 November 1949; BAWS Vol. 13, p. 1216",
+      "url": "https://www.constitutionofindia.net/debates/25-nov-1949/"
+    },
+    {
+      "text": "By independence, we have lost the excuse of blaming the British for anything going wrong. If hereafter things go wrong, we will have nobody to blame except ourselves.",
+      "context": "Final words of the closing speech.",
+      "date": "1949-11-25",
+      "citation": "Constituent Assembly Debates, Vol. XI, 25 November 1949; BAWS Vol. 13, p. 1218",
+      "url": "https://www.constitutionofindia.net/debates/25-nov-1949/"
+    },
+    {
+      "text": "We could never make a decision which was or could be ever so right as when we put him on the Drafting Committee and made him its Chairman.",
+      "context": "Said by Dr. Rajendra Prasad, President of the Assembly, just before the Constitution was adopted.",
+      "date": "1949-11-26",
+      "citation": "Constituent Assembly Debates, Vol. XI, 26 November 1949, p. 994; BAWS Vol. 13, p. 1219",
+      "url": "https://www.constitutionofindia.net/debates/26-nov-1949/"
+    }
+  ]
+}

@@ -14,7 +14,11 @@ const themeList = await themes();
       <span class="eyebrow">The life story</span>
       <h1 style="font-size:var(--step-4)">From Mhow to the Constitution — and beyond</h1>
       <p class="lede" style="max-width:62ch">Read it from the beginning, or jump to any chapter. Every chapter starts with a short summary, and every fact links to its source.</p>
-      {life[0] && <div class="btn-row" style="margin-top:20px"><a class="btn btn-light" href={url(`/life/${life[0].id}/`)}>Start with chapter 1 →</a></div>}
+      <div class="btn-row" style="margin-top:20px">
+        {life[0] && <a class="btn btn-light" href={url(`/life/${life[0].id}/`)}>Start with chapter 1 →</a>}
+        <a class="btn btn-ghost" href={url('/education/')}>His educational journey</a>
+        <a class="btn btn-ghost" href={url('/timeline/')}>Timeline</a>
+      </div>
     </div>
   </section>
   <section class="section">
