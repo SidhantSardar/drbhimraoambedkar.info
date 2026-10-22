@@ -2,8 +2,8 @@
    A warm paper "blank canvas" with Ambedkarite blue as the accent colour.
    Mobile-first: the same single column, the same order, on phones and desktops. */
 
-@import '@fontsource/instrument-serif/400.css';
-@import '@fontsource-variable/manrope';
+@import '@fontsource/dm-serif-display/400.css';
+@import '@fontsource-variable/dm-sans';
 
 :root {
   /* Blues */
@@ -43,8 +43,8 @@
   --chip-ink: #222222;
   --shadow: 0 1px 2px rgb(40 30 10 / 6%), 0 10px 30px rgb(40 30 10 / 8%);
 
-  --font-sans: 'Manrope Variable', 'Manrope', system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans Devanagari', sans-serif;
-  --font-serif: 'Instrument Serif', Georgia, 'Times New Roman', serif;
+  --font-sans: 'DM Sans Variable', 'DM Sans', system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans Devanagari', sans-serif;
+  --font-serif: 'DM Serif Display', Georgia, 'Times New Roman', serif;
 
   --step--1: clamp(0.82rem, 0.8rem + 0.1vw, 0.88rem);
   --step-0: clamp(1.05rem, 1.02rem + 0.15vw, 1.13rem);
