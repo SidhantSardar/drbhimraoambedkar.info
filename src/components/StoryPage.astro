@@ -67,6 +67,11 @@ const issueUrl = `${SITE.repoUrl}/issues/new?labels=correction&title=${encodeURI
         </section>
       )}
 
+      <details class="callout" style="margin:24px 0" data-pagefind-ignore>
+        <summary style="cursor:pointer;font-weight:700">Cite this page</summary>
+        <p style="margin:12px 0 0;font-size:0.95rem">“{d.title}{d.subtitle ? `: ${d.subtitle}` : ''}.” <em>Dr. B. R. Ambedkar — His Life and Work, Together</em>, {SITE.domain}. {new URL(Astro.url.pathname, Astro.site).toString()}</p>
+      </details>
+
       <p class="notice" data-pagefind-ignore>Spotted a mistake or know a better source? <a href={issueUrl} target="_blank" rel="noopener noreferrer">Suggest a correction</a> — it is recorded publicly on GitHub — or use the <a href={url('/contribute/')}>contribution form</a>.</p>
 
       {(prev || next) && (
