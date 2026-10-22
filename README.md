@@ -37,7 +37,11 @@ npm run preview    # http://localhost:4321
 ./scripts/download-baws.sh                        # ~620 MB of PDFs into archive/ (not committed)
 .venv/bin/python -I scripts/extract-baws.py       # page text into archive/baws-text/
 node scripts/build-library.mjs                    # cleaned text into library/ (committed)
+node scripts/build-toc.mjs                        # chapters from each volume's printed CONTENTS into library/toc.json
+.venv/bin/python -I scripts/build-covers.py       # front covers into public/images/covers/
 ```
+
+The reader (`/library/<volume>/<chapter>/`) shows each page's text word for word: only line breaks are joined into paragraphs, and running headers and page numbers are left out. Every page links to the same page of the official PDF.
 
 ## Branches and deploys
 

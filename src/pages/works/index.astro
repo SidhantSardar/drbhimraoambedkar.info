@@ -4,10 +4,20 @@ import Chakra from '../../components/Chakra.astro';
 import WorkLinks from '../../components/WorkLinks.astro';
 import { loadJSON, type Work } from '../../lib/data';
 import { url } from '../../lib/site';
+import { volumes, coverOf } from '../../lib/library';
+import { bawsVolumeId, bawsReaderPath } from '../../lib/sources.mjs';
 
 const works = loadJSON<Work[]>('works', []).sort((a, b) => Number(a.year || 9999) - Number(b.year || 9999));
 const types = [...new Set(works.map((w) => w.type))].sort();
 const topics = [...new Set(works.flatMap((w) => w.topics || []))].sort();
+const vols = volumes();
+// Each work is shown as a book: the cover of the volume it is printed in, opening the reader at its first page.
+const bookOf = (w: Work) => {
+  const b = w.baws?.[0];
+  const vol = b ? vols.find((v) => v.id === bawsVolumeId(b)) : undefined;
+  const here = b ? bawsReaderPath(b) : null;
+  return { cover: vol ? url(coverOf(vol)) : null, read: here ? url(here) : null, label: vol?.label };
+};
 const statusLabel: Record<string, string> = {
   'published-in-lifetime': 'Published in his lifetime',
   posthumous: 'Published after his death',
@@ -24,8 +34,8 @@ const statusLabel: Record<string, string> = {
       <h1 style="font-size:var(--step-4)">Everything he wrote</h1>
       <p class="lede" style="max-width:64ch">{works.length} books, theses, essays, papers, newspapers and statements, from 1915 to 1956 — each explained in a few simple lines, with links to read it here, download the official PDF, or find the library that holds the original.</p>
       <div class="btn-row" style="margin-top:20px">
-        <a class="btn btn-light" href={url('/works/speeches/')}>Speeches</a>
-        <a class="btn btn-ghost" href={url('/library/')}>Read all volumes</a>
+        <a class="btn btn-primary btn-beam" href={url('/library/')}><span>Read all 17 volumes →</span></a>
+        <a class="btn btn-ghost" href={url('/works/speeches/')}>Speeches</a>
         <a class="btn btn-ghost" href={url('/works/archives/')}>Where the originals are</a>
         <a class="btn btn-ghost" href={url('/works/journals/')}>His newspapers</a>
       </div>
@@ -46,9 +56,21 @@ const statusLabel: Record<string, string> = {
       </select>
       <p class="count" aria-live="polite"><span id="wcount">{works.length}</span> works shown</p>
     </div>
-    <div class="list-stack" id="works">
+    <div class="list-stack works-shelf" id="works">
       {works.map((w) => (
-        <article class="work" id={w.id} data-type={w.type} data-topics={(w.topics || []).join(' ')} data-search={[w.title, ...(w.altTitles || []), w.year, w.summary, (w.topics || []).join(' ')].join(' ').toLowerCase()}>
+        <article class="work work-book" id={w.id} data-type={w.type} data-topics={(w.topics || []).join(' ')} data-search={[w.title, ...(w.altTitles || []), w.year, w.summary, (w.topics || []).join(' ')].join(' ').toLowerCase()}>
+          {(() => {
+            const bk = bookOf(w);
+            return bk.cover ? (
+              <a class="book-cover sm" href={bk.read ?? '#'} aria-label={`Read ${w.title}`} tabindex="-1">
+                <img src={bk.cover} alt="" width="120" height="180" loading="lazy" decoding="async" />
+                <span class="book-spine" aria-hidden="true"></span>
+              </a>
+            ) : (
+              <span class="book-cover sm typo" aria-hidden="true"><span>{w.title}</span><small>{w.year}</small></span>
+            );
+          })()}
+          <div class="work-body">
           <div class="meta">
             <span>{w.year}{w.yearNote ? ` (${w.yearNote})` : ''}</span>
             <span>{w.type}</span>
@@ -68,6 +90,7 @@ const statusLabel: Record<string, string> = {
               {w.sources?.length ? <p>Sources: {w.sources.map((s, i) => <a class="src" href={s} target="_blank" rel="noopener noreferrer">{`source ${i + 1}`}</a>)}</p> : null}
             </details>
           ) : null}
+          </div>
         </article>
       ))}
     </div>

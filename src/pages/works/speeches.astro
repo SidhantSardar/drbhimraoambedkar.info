@@ -4,6 +4,14 @@ import Chakra from '../../components/Chakra.astro';
 import WorkLinks from '../../components/WorkLinks.astro';
 import { loadJSON, type Speech } from '../../lib/data';
 import { url, formatDate } from '../../lib/site';
+import { volumes, coverOf } from '../../lib/library';
+import { bawsVolumeId, bawsReaderPath } from '../../lib/sources.mjs';
+const vols = volumes();
+const bookOf = (b?: { volume?: string; pages?: string; url?: string }) => {
+  const vol = b ? vols.find((v) => v.id === bawsVolumeId(b)) : undefined;
+  const here = b ? bawsReaderPath(b) : null;
+  return vol && here ? { cover: url(coverOf(vol)), read: url(here) } : null;
+};
 const speeches = loadJSON<Speech[]>('speeches', []).sort((a, b) => String(a.date).localeCompare(String(b.date)));
 ---
 <Base title="Speeches" description="The major speeches of Dr. B. R. Ambedkar — where and when he spoke, what he said, in simple words, with links to the full text.">
@@ -20,7 +28,10 @@ const speeches = loadJSON<Speech[]>('speeches', []).sort((a, b) => String(a.date
     <input class="search-input" id="sq" type="search" placeholder="Search speeches by place, year or idea…" style="margin-bottom:20px" />
     <ol class="tl-list" id="speeches">
       {speeches.map((s) => (
-        <li class="tl-item" id={s.id} data-search={[s.title, s.place, s.date, s.occasion, s.summary, s.keyIdea].join(' ').toLowerCase()}>
+        <li class:list={['tl-item', { 'has-book': bookOf(s.baws) }]} id={s.id} data-search={[s.title, s.place, s.date, s.occasion, s.summary, s.keyIdea].join(' ').toLowerCase()}>
+          {(() => { const bk = bookOf(s.baws); return bk && (
+            <a class="book-cover xs" href={bk.read} tabindex="-1" aria-hidden="true"><img src={bk.cover} alt="" width="84" height="126" loading="lazy" decoding="async" /><span class="book-spine"></span></a>
+          ); })()}
           <time datetime={s.date}>{s.date ? formatDate(s.date) : 'Date unknown'}{s.place ? ` · ${s.place}` : ''}</time>
           <h3 style="margin:4px 0">{s.title}</h3>
           {s.occasion && <p class="muted" style="margin:0;font-size:0.95rem">{s.occasion}</p>}

@@ -82,6 +82,17 @@ export function heroFor(slug) {
   return list.reduce((best, i) => (!best || (i.width || 0) * (i.height || 0) > (best.width || 0) * (best.height || 0) ? i : best), null);
 }
 
+// The home page's life-story slider uses original photographs of Dr. Ambedkar (or his family) for
+// every chapter, even where the chapter page itself opens on a place or a memorial.
+const ORIGINALS = {
+  'before-birth': 'ramji-maloji-sakpal-father',
+  childhood: 'ambedkar-as-young-student',
+  legacy: 'ambedkar-portrait-navayan',
+};
+export function originalFor(slug) {
+  return (ORIGINALS[slug] && loadImages().find((i) => i.id === ORIGINALS[slug])) || heroFor(slug);
+}
+
 export function credit(img) {
   const bits = [img.author && `Photo: ${img.author}`, img.license].filter(Boolean);
   return bits.join(' · ');

@@ -1,7 +1,7 @@
 // POST /api/ask — "Ask the Archive" answer service (Cloudflare Pages Function).
 //
 // The browser searches the site with Pagefind and sends back only *references* to library pages
-// ({ path: "/library/volume-1/pages-21-25/", page: 23 }). This function fetches those pages from the
+// ({ path: "/library/volume-1/02-castes-in-india/", page: 23 }). This function fetches those pages from the
 // site itself, extracts the text of each referenced PDF page, and asks Claude to answer using only
 // that text, with citations. Because the text is taken from our own pages, the endpoint cannot be
 // used as a general-purpose chatbot, and every answer points to a real page of his writings.
@@ -75,8 +75,8 @@ function extractPage(html, page) {
 async function loadRef(ref, request, env) {
   const path = String(ref.path || '');
   const page = Number(ref.page);
-  // Only library pages may be used as sources. Paths are site-relative: /library/<volume>/pages-N-M/
-  if (!/^\/library\/[\w-]+\/pages-\d+-\d+\/$/.test(path) || !Number.isInteger(page) || page < 1) return null;
+  // Only library pages may be used as sources. Paths are site-relative: /library/<volume>/<chapter>/
+  if (!/^\/library\/volume-[\w-]+\/[a-z0-9-]+\/$/.test(path) || !Number.isInteger(page) || page < 1) return null;
   const origin = (env.SITE_ORIGIN || new URL(request.url).origin).replace(/\/$/, '');
   const target = new URL(origin + path);
   const res = env.ASSETS && !env.SITE_ORIGIN ? await env.ASSETS.fetch(new Request(target)) : await fetch(target);

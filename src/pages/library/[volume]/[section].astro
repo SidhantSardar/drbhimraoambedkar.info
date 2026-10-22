@@ -1,0 +1,70 @@
+---
+import DocsShell from '../../../components/DocsShell.astro';
+import { volumes, leavesOf, pagesOf, formatPage, type Volume, type Leaf } from '../../../lib/library';
+import { url } from '../../../lib/site';
+
+export function getStaticPaths() {
+  return volumes().flatMap((vol) => {
+    const leaves = leavesOf(vol);
+    return leaves.map((leaf, i) => ({
+      params: { volume: vol.id, section: leaf.slug },
+      props: { vol, leaf, prev: leaves[i - 1], next: leaves[i + 1] },
+    }));
+  });
+}
+
+interface Props { vol: Volume; leaf: Leaf; prev?: Leaf; next?: Leaf }
+const { vol, leaf, prev, next } = Astro.props;
+const rows = pagesOf(vol).filter((r) => r.p >= leaf.start && r.p <= leaf.end);
+const hasText = rows.some((r) => r.t.length > 40);
+const chapterTitle = leaf.chapter.title;
+const partLabel = leaf.chapter.parts.length > 1 ? leaf.title : '';
+---
+<DocsShell vol={vol} current={leaf.slug} title={`${chapterTitle}${partLabel ? ` (${partLabel})` : ''} — ${vol.label}`} description={`${chapterTitle}, from ${vol.label} of Dr. Babasaheb Ambedkar: Writings and Speeches — the full text, page by page.`}>
+  <article
+    class="docs-article"
+    data-pagefind-body={hasText ? '' : undefined}
+    data-pagefind-filter="collection:Writings and Speeches"
+    data-pagefind-meta={`title:${chapterTitle}${partLabel ? ` · ${partLabel}` : ''} — ${vol.label}`}
+  >
+    <span hidden data-pagefind-filter="volume">{vol.label}</span>
+    <span hidden data-pagefind-meta="pdf">{vol.sourceUrl}</span>
+    <span hidden data-pagefind-meta="volumeTitle">{vol.title}</span>
+
+    <nav class="docs-crumbs" aria-label="Breadcrumb" data-pagefind-ignore>
+      <a href={url('/library/')}>Library</a> <span>/</span>
+      <a href={url(`/library/${vol.id}/`)}>{vol.label}</a>
+      {leaf.chapter.group && <><span>/</span> <span>{leaf.chapter.group}</span></>}
+    </nav>
+    <header class="docs-head" data-pagefind-ignore>
+      <h1>{chapterTitle}</h1>
+      <p class="docs-meta">
+        {partLabel && <span>{partLabel} · </span>}
+        <span>PDF pages {leaf.start}–{leaf.end}</span>
+        <span> · Dr. Babasaheb Ambedkar: Writings and Speeches, {vol.label}</span>
+      </p>
+    </header>
+
+    {rows.map((r) => {
+      const blocks = formatPage(r.t);
+      return (
+        <section class="docs-page">
+          <div class="page-mark">
+            <h2 id={`p${r.p}`}>{r.n ? `Page ${r.n}` : `PDF page ${r.p}`}</h2>
+            <a href={`${vol.sourceUrl}#page=${r.p}`} target="_blank" rel="noopener noreferrer" data-pagefind-ignore title="Compare with the original PDF page">PDF p. {r.p} ↗</a>
+          </div>
+          <div class="reader">
+            {blocks.length ? blocks.map((b) => (b.type === 'h' ? <h3>{b.text}</h3> : b.type === 'fn' ? <p class="fn">{b.text}</p> : <p>{b.text}</p>)) : <p class="muted">(This page has no text — it may be blank or an image.)</p>}
+          </div>
+        </section>
+      );
+    })}
+
+    <p class="docs-note" data-pagefind-ignore>Text taken word for word from the official PDF published by the Government of India. Line breaks have been joined into paragraphs; automatic extraction can still leave small errors, so check the original page before quoting.</p>
+
+    <nav class="docs-pager" aria-label="Chapters" data-pagefind-ignore>
+      {prev ? <a href={url(`/library/${vol.id}/${prev.slug}/`)}><small>← Previous</small><strong>{prev.label}</strong></a> : <span></span>}
+      {next && <a class="next" href={url(`/library/${vol.id}/${next.slug}/`)}><small>Next →</small><strong>{next.label}</strong></a>}
+    </nav>
+  </article>
+</DocsShell>

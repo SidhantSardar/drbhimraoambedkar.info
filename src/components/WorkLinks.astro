@@ -1,42 +1,18 @@
 ---
-import { volumes, chunkForPage } from '../lib/library';
+// "Read now" opens the exact chapter in this site's reader; the official PDF is a small secondary link.
+import { fixBawsUrl, bawsReaderPath } from '../lib/sources.mjs';
 import { url } from '../lib/site';
 interface Props { baws?: { volume?: string; pages?: string; url?: string }[]; online?: { label: string; url: string }[] }
 const { baws: rawBaws = [], online = [] } = Astro.props;
-
-// The old MEA links (/Images/attach/amb/Volume_01.pdf) are dead; point them at the working
-// /images/CPV/ files. Their page numbers differ, so the #page anchor is dropped.
-const PARTS = ['', 'I', 'II', 'III'];
-function fixUrl(u = '') {
-  const m = u.match(/attach\/amb\/Volume_(\d+)(?:_(\d+))?\.pdf/i);
-  if (!m) return u;
-  const n = Number(m[1]);
-  const part = m[2] ? `_Part_${PARTS[Number(m[2])]}` : '';
-  return `https://www.mea.gov.in/images/CPV/Volume${n}${part}.pdf`;
-}
-const baws = rawBaws.map((b) => ({ ...b, url: fixUrl(b.url) }));
-
-// Map a BAWS reference to this site's own reader page when we can work out the PDF page.
-const vols = volumes();
-function readerHref(b: { volume?: string; url?: string }) {
-  const v = String(b.volume || '').toLowerCase().replace(/\s+/g, '');
-  const pageMatch = String(b.url || '').match(/#page=(\d+)/);
-  const fileMatch = String(b.url || '').match(/Volume(\d+)(?:_Part_(I{1,3}))?\.pdf/i);
-  let id = '';
-  if (fileMatch) id = `volume-${fileMatch[1]}${fileMatch[2] ? `-part-${fileMatch[2].length}` : ''}`;
-  else if (/^\d+$/.test(v)) id = `volume-${v}`;
-  const vol = vols.find((x) => x.id === id);
-  if (!vol) return null;
-  return pageMatch ? url(`/library/${vol.id}/${chunkForPage(vol, Number(pageMatch[1]))}/#p${pageMatch[1]}`) : url(`/library/${vol.id}/`);
-}
+const baws = rawBaws.map((b) => {
+  const here = bawsReaderPath(b);
+  return { ...b, url: fixBawsUrl(b.url), here: here ? url(here) : null };
+});
 ---
-{baws.map((b) => {
-  const here = readerHref(b);
-  return (
-    <>
-      {here && <a class="chip" href={here}>Read here · Vol. {b.volume}{b.pages ? `, pp. ${b.pages}` : ''}</a>}
-      {b.url && <a class="chip" href={b.url} target="_blank" rel="noopener noreferrer">Official PDF ↗</a>}
-    </>
-  );
-})}
-{online.map((o) => <a class="chip" href={o.url} target="_blank" rel="noopener noreferrer">{o.label} ↗</a>)}
+{baws.map((b) => (
+  <>
+    {b.here && <a class="read-now" href={b.here}>Read now <span>· Vol. {b.volume}{b.pages ? `, pp. ${b.pages}` : ''}</span></a>}
+    {b.url && <a class="pdf-link" href={b.url} target="_blank" rel="noopener noreferrer">Official PDF ↗</a>}
+  </>
+))}
+{online.map((o) => <a class="pdf-link" href={o.url} target="_blank" rel="noopener noreferrer">{o.label} ↗</a>)}

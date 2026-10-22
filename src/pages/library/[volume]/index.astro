@@ -1,29 +1,38 @@
 ---
-import Base from '../../../layouts/Base.astro';
-import { volumes, chunksOf, type Volume } from '../../../lib/library';
+import DocsShell from '../../../components/DocsShell.astro';
+import { volumes, tocOf, firstChapter, coverOf, type Volume } from '../../../lib/library';
 import { url } from '../../../lib/site';
 
 export function getStaticPaths() {
   return volumes().map((vol) => ({ params: { volume: vol.id }, props: { vol } }));
 }
 const { vol } = Astro.props as { vol: Volume };
-const chunks = chunksOf(vol);
+const chapters = tocOf(vol);
+const start = firstChapter(vol);
 ---
-<Base title={`${vol.label} — ${vol.title}`} description={`Read ${vol.label} of Dr. Babasaheb Ambedkar: Writings and Speeches online, page by page.`}>
-  <div class="narrow section-tight">
-    <p><a href={url('/library/')}>Library</a> › {vol.label}</p>
-    <span class="eyebrow">Writings and Speeches</span>
-    <h1 style="font-size:var(--step-3)">{vol.label}</h1>
-    <p class="lede">{vol.title}</p>
-    <p>{vol.pages} PDF pages · source: <a href={vol.sourceUrl} target="_blank" rel="noopener noreferrer">{vol.sourceName}</a>{vol.officialUrl !== vol.sourceUrl && <> · <a href={vol.officialUrl} target="_blank" rel="noopener noreferrer">official MEA scan</a></>}</p>
-    <div class="btn-row" style="margin:20px 0 32px">
-      <a class="btn btn-primary" href={url(`/library/${vol.id}/${chunks[0].slug}/`)}>Start reading</a>
-      <a class="btn btn-ghost" href={vol.officialUrl} target="_blank" rel="noopener noreferrer">Download the PDF</a>
-      <a class="btn btn-ghost" href={url(`/ask/?volume=${encodeURIComponent(vol.label)}`)}>Search this volume</a>
-    </div>
-    <h2 style="font-size:var(--step-1)">Jump to pages</h2>
-    <div class="filter-row">
-      {chunks.map((c) => <a class="chip" href={url(`/library/${vol.id}/${c.slug}/`)}>{c.start}–{c.end}</a>)}
+<DocsShell vol={vol} title={`${vol.label} — ${vol.title}`} description={`Read ${vol.label} of Dr. Babasaheb Ambedkar: Writings and Speeches online — ${vol.title}.`}>
+  <div class="docs-overview">
+    <figure class="book-cover large"><img src={url(coverOf(vol))} alt={`Cover of ${vol.label}`} width="360" height="560" /></figure>
+    <div>
+      <span class="eyebrow">Dr. Babasaheb Ambedkar: Writings and Speeches</span>
+      <h1>{vol.label}</h1>
+      <p class="lede">{vol.title}</p>
+      <p class="muted">{chapters.filter((c) => c.title !== 'Front matter').length} chapters · {vol.pages} pages</p>
+      <div class="btn-row" style="margin:22px 0 10px">
+        {start && <a class="btn btn-primary btn-beam" href={url(`/library/${vol.id}/${start.slug}/`)}><span>Start reading →</span></a>}
+        <a class="btn btn-ghost" href={url(`/ask/?volume=${encodeURIComponent(vol.label)}`)}>Search this volume</a>
+      </div>
+      <p class="source-link">Source: <a href={vol.officialUrl} target="_blank" rel="noopener noreferrer">official PDF, Government of India ↗</a></p>
     </div>
   </div>
-</Base>
+  <h2 class="docs-toc-title">Contents</h2>
+  <ol class="docs-toc">
+    {chapters.map((c, i) => (
+      <li>
+        {c.group && c.group !== chapters[i - 1]?.group && <span class="g">{c.group}</span>}
+        <a href={url(`/library/${vol.id}/${c.parts[0].slug}/`)}>{c.title}</a>
+        <span class="pp">pp. {c.start}–{c.end}</span>
+      </li>
+    ))}
+  </ol>
+</DocsShell>
