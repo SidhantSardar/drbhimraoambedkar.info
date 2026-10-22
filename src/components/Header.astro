@@ -2,6 +2,8 @@
 import Chakra from './Chakra.astro';
 import { NAV, url } from '../lib/site';
 const current = Astro.url.pathname;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const here = (href: string) => current === base + href || (href !== '/' && current.startsWith(base + href));
 ---
 <header class="site-header" id="top">
   <div class="wrap bar">
@@ -11,12 +13,19 @@ const current = Astro.url.pathname;
     </a>
     <nav class="site-nav" id="site-nav" aria-label="Main">
       <ul>
-        {NAV.map((item) => (
-          <li>
-            <a href={url(item.href)} aria-current={current.includes(item.href) ? 'page' : undefined}>
-              {item.label}<small>{item.hint}</small>
-            </a>
+        {NAV.map((g) => g.items ? (
+          <li class="has-menu">
+            <details>
+              <summary class={g.items.some((i) => here(i.href)) ? 'active' : undefined}>{g.label}</summary>
+              <ul class="menu">
+                {g.items.map((i) => (
+                  <li><a href={url(i.href)} aria-current={here(i.href) ? 'page' : undefined}>{i.label}{i.hint && <small>{i.hint}</small>}</a></li>
+                ))}
+              </ul>
+            </details>
           </li>
+        ) : (
+          <li><a href={url(g.href!)} aria-current={here(g.href!) ? 'page' : undefined}>{g.label}</a></li>
         ))}
       </ul>
     </nav>
@@ -35,8 +44,24 @@ const current = Astro.url.pathname;
       btn.setAttribute('aria-expanded', open ? 'true' : 'false');
       btn.lastChild.textContent = open ? ' Close' : ' Menu';
     });
-    document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape' && document.body.classList.contains('nav-open')) btn.click();
+    var menus = document.querySelectorAll('.site-nav details');
+    var desktop = window.matchMedia('(min-width: 1080px)');
+    // Only one dropdown open at a time; close on outside click or Escape (desktop).
+    menus.forEach(function (d) {
+      d.addEventListener('toggle', function () {
+        if (d.open && desktop.matches) menus.forEach(function (o) { if (o !== d) o.open = false; });
+      });
     });
+    document.addEventListener('click', function (e) {
+      if (!desktop.matches) return;
+      menus.forEach(function (d) { if (!d.contains(e.target)) d.open = false; });
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key !== 'Escape') return;
+      menus.forEach(function (d) { d.open = false; });
+      if (document.body.classList.contains('nav-open')) btn.click();
+    });
+    // On phones, show every group open inside the menu.
+    if (!desktop.matches) menus.forEach(function (d) { d.open = true; });
   })();
 </script>

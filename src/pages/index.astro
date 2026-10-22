@@ -1,64 +1,23 @@
 ---
 import Base from '../layouts/Base.astro';
 import Picture from '../components/Picture.astro';
-import { url, formatDate } from '../lib/site';
-import { chapters, themes, images, loadJSON, type Work, type Speech, type Img } from '../lib/data';
+import { url } from '../lib/site';
+import { chapters, images, type Img } from '../lib/data';
 import { heroFor, credit } from '../lib/images-core.mjs';
-import { getCollection } from 'astro:content';
+import { loadNews, mixed, catOf, thumbFor, fallbackFor, ONERROR, isHindi } from '../lib/news';
 
 const life = await chapters();
-const themeList = await themes();
+
 const imgs = images();
 const byId = (id: string) => imgs.find((i) => i.id === id) as Img | undefined;
-const works = loadJSON<Work[]>('works', []);
-const speeches = loadJSON<Speech[]>('speeches', []);
-const posts = (await getCollection('blog')).filter((p) => !p.data.draft).sort((a, b) => +b.data.date - +a.data.date).slice(0, 3);
 
 // ---- Hero ----
 const heroImg = byId('ambedkar-1950');
 
-// ---- Live updates: newest first, mixing categories so every kind of news appears ----
-type News = { title: string; link: string; source: string; category: string; date: string | null; image?: string | null };
-const news = loadJSON<{ updated?: string; items: News[] }>('news', { items: [] });
-const CAT: Record<string, { cls: string; label: string }> = {
-  'Protests & justice': { cls: 'cat-protests', label: 'Protest & justice' },
-  'Research & reports': { cls: 'cat-research', label: 'Research' },
-  'Social work & community': { cls: 'cat-social', label: 'Social work' },
-  'Ambedkarite events': { cls: 'cat-events', label: 'Events' },
-  Achievers: { cls: 'cat-achievers', label: 'Achievers' },
-  'Constitution & rights': { cls: 'cat-rights', label: 'Rights' },
-  'Ambedkar in the news': { cls: 'cat-events', label: 'Ambedkar' },
-  'Ambedkarite voices': { cls: 'cat-voices', label: 'Voices' },
-};
-const FALLBACK: Record<string, string> = {
-  'Protests & justice': 'bhima-koregaon-vijaystambha-1927',
-  'Research & reports': 'riddles-in-hinduism-handwriting',
-  'Social work & community': 'peoples-education-society-1945',
-  'Ambedkarite events': 'ambedkar-jayanti-2026',
-  Achievers: 'scf-womens-conference-nagpur-1942',
-  'Constitution & rights': 'constitution-preamble-page-calligraphed',
-  'Ambedkar in the news': 'ambedkar-portrait-classic',
-  'Ambedkarite voices': 'mooknayak-bahishkrit-bharat-mastheads',
-};
-const thumbFor = (n: News & { image?: string | null }) => {
-  if (n.image) return n.image;
-  const f = byId(FALLBACK[n.category] || 'ambedkar-portrait-classic');
-  return f ? url(`/images/r/${f.file.split('/').pop()!.replace(/\.[^.]+$/, '')}-480.webp`) : '';
-};
-const buckets = new Map<string, News[]>();
-for (const n of [...news.items].sort((a: any, b: any) => (b.image ? 1 : 0) - (a.image ? 1 : 0) || String(b.date).localeCompare(String(a.date)))) {
-  if (!buckets.has(n.category)) buckets.set(n.category, []);
-  buckets.get(n.category)!.push(n);
-}
-const updates: News[] = [];
-for (let round = 0; updates.length < 32 && round < 10; round++) {
-  for (const list of buckets.values()) if (list[round] && updates.length < 32) updates.push(list[round]);
-}
-const ago = (d: string | null) => {
-  if (!d) return '';
-  const h = Math.max(1, Math.round((Date.parse(news.updated || d) - Date.parse(d)) / 36e5));
-  return h < 24 ? `${h}h ago` : `${Math.round(h / 24)}d ago`;
-};
+// ---- News ----
+const news = loadNews();
+const updates = mixed(news.stories, 30);
+const latest = mixed(news.stories, 7);
 
 // ---- Then & now ----
 const pairs = [
@@ -84,18 +43,8 @@ const traces = [
 ].map((t) => ({ ...t, img: byId(t.id) })).filter((t) => t.img);
 
 const bandConst = byId('constituent-assembly-first-day-1946');
-const bandEdu = byId('columbia-university-birds-eye-view-1916');
 
-const milestones = [
-  { date: '1891-04-14', label: 'Born in Mhow, into a family the caste system called "untouchable"', href: '/life/childhood/' },
-  { date: '1913', label: 'Sails to New York to study at Columbia University', href: '/life/columbia/' },
-  { date: '1927-03-20', label: 'Leads the Mahad Satyagraha for the right to drink public water', href: '/life/awakening/' },
-  { date: '1932-09-24', label: 'Signs the Poona Pact on political representation', href: '/life/round-table/' },
-  { date: '1947-08-29', label: "Chosen to chair the Constitution's Drafting Committee", href: '/constitution/' },
-  { date: '1949-11-26', label: 'The Constituent Assembly adopts the Constitution of India', href: '/constitution/' },
-  { date: '1956-10-14', label: 'Embraces Buddhism at Nagpur with hundreds of thousands of people', href: '/life/buddhism/' },
-  { date: '1956-12-06', label: 'Passes away in Delhi — Mahaparinirvan Din', href: '/life/final-days/' },
-];
+
 ---
 <Base image={heroImg ? url(heroImg.file) : undefined}>
   <!-- 1. HERO: full photograph + full-height live updates column -->
@@ -117,11 +66,11 @@ const milestones = [
           <ul class="ticker-list" style={`--dur:${updates.length * 6}s`}>
             {[...updates, ...updates].map((n, i) => (
               <li aria-hidden={i >= updates.length ? 'true' : undefined}>
-                <div class="ticker-thumb"><img src={thumbFor(n)} alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" /></div>
+                <div class="ticker-thumb"><img src={thumbFor(n)} data-fallback={fallbackFor(n)} onerror={ONERROR} alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" /></div>
                 <div>
-                  <span class={`cat ${CAT[n.category]?.cls || ''}`}>{CAT[n.category]?.label || n.category}</span>
-                  <a href={n.link} target="_blank" rel="noopener noreferrer nofollow" tabindex={i >= updates.length ? -1 : undefined} lang={/[\u0900-\u097F]/.test(n.title) ? 'hi' : undefined}>{n.title}</a>
-                  <small>{n.source}</small>
+                  <span class={`cat ${catOf(n).cls}`}>{catOf(n).label}</span>
+                  <a href={url(`/news/#${n.id}`)} tabindex={i >= updates.length ? -1 : undefined} lang={isHindi(n.title) ? 'hi' : undefined}>{n.title}</a>
+                  <small>{n.outlets.length > 1 ? `${n.outlets.length} outlets reporting` : n.outlets[0]}</small>
                 </div>
               </li>
             ))}
@@ -133,7 +82,32 @@ const milestones = [
     {heroImg && <p class="credit">{heroImg.caption} {credit(heroImg)} · <a href={heroImg.sourceUrl} target="_blank" rel="noopener noreferrer">{heroImg.sourceName}</a></p>}
   </section>
 
-  <!-- 2. THEN & NOW: the real places of his life -->
+  <!-- 2. LATEST NEWS -->
+  <section class="section latest">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><span class="eyebrow">Latest news</span><h2>Justice, equality and dignity — today</h2></div>
+        <p>Protests, research, social work, events and achievers. Each story is explained on this site, with every source listed.</p>
+      </div>
+      {latest.length > 0 && (
+        <div class="latest-grid">
+          {latest.map((n, i) => (
+            <a class={`latest-card ${i === 0 ? 'lead' : ''}`} href={url(`/news/#${n.id}`)}>
+              <img src={thumbFor(n, i === 0 ? 960 : 480)} data-fallback={fallbackFor(n, i === 0 ? 960 : 480)} onerror={ONERROR} alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" />
+              <span class="lc-body">
+                <span class={`cat ${catOf(n).cls}`}>{catOf(n).label}</span>
+                <strong lang={isHindi(n.title) ? 'hi' : undefined}>{n.title}</strong>
+                <small>{n.outlets.length > 1 ? `${n.outlets.length} outlets reporting` : n.outlets[0]}</small>
+              </span>
+            </a>
+          ))}
+        </div>
+      )}
+      <div class="btn-row" style="margin-top:28px"><a class="btn btn-primary" href={url('/news/')}>All news →</a><a class="btn btn-ghost" href={url('/blog/')}>Read the blog</a></div>
+    </div>
+  </section>
+
+  <!-- 3. THEN & NOW: the real places of his life -->
   <section class="section">
     <div class="wrap">
       <div class="sec-head">
@@ -172,15 +146,6 @@ const milestones = [
     </div>
   </section>
 
-  <!-- 3. WHY THIS SITE -->
-  <section class="section" style="border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
-    <div class="wrap" style="display:grid;gap:28px">
-      <span class="eyebrow">Why this website exists</span>
-      <p class="statement">His writings and records are <mark>spread across</mark> government PDFs, archives, museums and memorials. This is an independent effort to bring them together — sourced, simple, and <mark>free for everyone</mark>.</p>
-      <p style="max-width:62ch;color:var(--ink-2)">India's Ministry of Social Justice and Empowerment itself describes his work as "spread across libraries, memorials, archives, and fragmented digital sources" <a class="src" href="https://zaidsayyed.in/tools/sih-problem-statements/sih26096" target="_blank" rel="noopener noreferrer" title="Source: Smart India Hackathon 2026 brief SIH26096">SIH 2026 brief SIH26096</a>. Every fact on this site links to the document, archive or book it came from.</p>
-    </div>
-  </section>
-
   <!-- 4. LIFE STORY: full-screen walkthrough -->
   <section class="walk-intro">
     <div class="wrap sec-head" style="margin-bottom:0">
@@ -211,21 +176,7 @@ const milestones = [
     })}
   </div>
 
-  <!-- 5. EDUCATION: wide image band -->
-  {bandEdu && (
-    <section class="band">
-      <div class="bg"><Picture img={bandEdu} sizes="100vw" alt="" /></div>
-      <div class="wrap band-inner">
-        <span class="eyebrow">Educational journey · 1894–1923</span>
-        <h2 style="max-width:16ch">From a gunny sack to two doctorates</h2>
-        <p class="lede" style="max-width:46ch">Made to sit apart at school in Satara, he earned an MA and PhD from Columbia, an MSc and DSc from the London School of Economics, and became a barrister.</p>
-        <a class="btn btn-light" href={url('/education/')} style="margin-top:12px">Follow every step →</a>
-      </div>
-      <p class="credit">{bandEdu.caption?.slice(0, 90)} · {bandEdu.license}</p>
-    </section>
-  )}
-
-  <!-- 6. CONSTITUTION: flagship band -->
+  <!-- 5. CONSTITUTION: flagship band -->
   <section class="band">
     {bandConst && <div class="bg"><Picture img={bandConst} sizes="100vw" alt="" /></div>}
     <div class="wrap band-inner">
@@ -245,98 +196,6 @@ const milestones = [
     </div>
     {bandConst && <p class="credit">{bandConst.caption?.slice(0, 80)}… · {bandConst.license}</p>}
   </section>
-
-  <!-- 7. MILESTONES -->
-  <section class="section">
-    <div class="wrap" style="display:grid;gap:40px;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr))">
-      <div>
-        <span class="eyebrow">Milestones</span>
-        <h2>Key moments</h2>
-        <p style="color:var(--ink-2);max-width:40ch">Eight dates that changed his life — and India. The full timeline has every event, each with its source.</p>
-        <a class="btn btn-primary" href={url('/timeline/')}>See the full timeline →</a>
-      </div>
-      <ol class="tl-list">
-        {milestones.map((m) => (
-          <li class="tl-item">
-            <time datetime={m.date}>{formatDate(m.date)}</time>
-            <p><a href={url(m.href)} style="color:var(--ink);text-decoration:none">{m.label}</a></p>
-          </li>
-        ))}
-      </ol>
-    </div>
-  </section>
-
-  <!-- 8. WORKS + ASK -->
-  <section class="section" style="background:var(--paper-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
-    <div class="wrap">
-      <div class="sec-head">
-        <div>
-          <span class="eyebrow">His work</span>
-          <h2>Everything he wrote and said</h2>
-        </div>
-        <p>Books, theses, essays, newspapers and speeches — explained simply, linked to the original page in his collected <em>Writings and Speeches</em>, or to the library that holds the physical copy.</p>
-      </div>
-      <div class="facts">
-        <div class="fact"><strong>{works.length}</strong><span>works catalogued</span></div>
-        <div class="fact"><strong>{speeches.length}</strong><span>major speeches</span></div>
-        <div class="fact"><strong>14,343</strong><span>pages of Writings &amp; Speeches, searchable</span></div>
-        <div class="fact"><strong>{imgs.length}</strong><span>freely licensed photographs</span></div>
-      </div>
-      <form class="ask-form" action={url('/ask/')} method="get" role="search" style="margin-top:32px">
-        <label class="visually-hidden" for="home-q">Search his writings</label>
-        <input class="search-input" id="home-q" name="q" placeholder="What did he say about… education, democracy, women's rights" />
-        <button class="btn btn-primary" type="submit">Search</button>
-      </form>
-      <div class="btn-row" style="margin-top:20px">
-        <a class="btn btn-ghost" href={url('/works/')}>Browse all works</a>
-        <a class="btn btn-ghost" href={url('/works/speeches/')}>Speeches</a>
-        <a class="btn btn-ghost" href={url('/works/archives/')}>Where the originals are kept</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- 9. THEMES -->
-  {themeList.length > 0 && (
-    <section class="section">
-      <div class="wrap">
-        <div class="sec-head">
-          <div><span class="eyebrow">Beyond the timeline</span><h2>The person behind the work</h2></div>
-          <p>His family and home, the people who inspired him, and the meaning of the blue flag.</p>
-        </div>
-        <div class="vgrid">
-          {themeList.map((t) => {
-            const img = heroFor(t.id);
-            return (
-              <a class="vcard" href={url(`/themes/${t.id}/`)}>
-                {img && <Picture img={img} sizes="(min-width:900px) 400px, 100vw" alt="" />}
-                <div class="vbody"><span class="period">Theme</span><h3>{t.data.title}</h3>{t.data.summary && <p>{t.data.summary}</p>}</div>
-              </a>
-            );
-          })}
-        </div>
-      </div>
-    </section>
-  )}
-
-  <!-- 10. BLOG -->
-  {posts.length > 0 && (
-    <section class="section" style="border-top:1px solid var(--line)">
-      <div class="wrap">
-        <div class="sec-head"><div><span class="eyebrow">From the blog</span><h2>Read, discuss, share</h2></div><p>Articles on his ideas and on justice and dignity today — open for discussion.</p></div>
-        <div class="grid">
-          {posts.map((p) => (
-            <a class="card" href={url(`/blog/${p.id}/`)}>
-              <div class="card-body">
-                <span class="card-meta">{p.data.date.toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' })}</span>
-                <h3>{p.data.title}</h3>
-                <p>{p.data.description}</p>
-              </div>
-            </a>
-          ))}
-        </div>
-      </div>
-    </section>
-  )}
 
   <script is:inline>
     (function () {

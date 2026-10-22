@@ -27,14 +27,33 @@ export function url(path = '/'): string {
   return base + path.replace(/^\//, '');
 }
 
-export const NAV = [
-  { href: '/life/', label: 'Life Story', hint: 'His whole life in 13 chapters' },
-  { href: '/timeline/', label: 'Timeline', hint: 'Every key date, 1891–today' },
-  { href: '/constitution/', label: 'Constitution', hint: 'The flagship: his greatest work' },
-  { href: '/works/', label: 'Works', hint: 'Books, speeches, papers, newspapers' },
-  { href: '/ask/', label: 'Ask the Archive', hint: 'Search his writings, with page links' },
-  { href: '/gallery/', label: 'Gallery', hint: 'Photographs with full credits' },
-  { href: '/blog/', label: 'Blog & News', hint: 'Articles, discussion and news' },
+export type NavItem = { href: string; label: string; hint?: string };
+export type NavGroup = { label: string; href?: string; items?: NavItem[] };
+
+export const NAV: NavGroup[] = [
+  { label: 'News & Blog', items: [
+    { href: '/news/', label: 'Latest news', hint: 'Today\'s stories, explained with sources' },
+    { href: '/blog/', label: 'Blog', hint: 'Articles and discussion' },
+  ] },
+  { label: 'Life', items: [
+    { href: '/life/', label: 'Life story', hint: 'His whole life in 13 chapters' },
+    { href: '/timeline/', label: 'Timeline', hint: 'Every key date, with sources' },
+    { href: '/education/', label: 'Educational journey', hint: 'From Satara to Columbia and LSE' },
+    { href: '/themes/personal-life/', label: 'Family and home', hint: 'Ramabai, Savita, Rajgriha' },
+    { href: '/themes/inspirations/', label: 'Inspirations', hint: 'Buddha, Kabir, Phule' },
+    { href: '/themes/flag-and-symbols/', label: 'The blue flag & symbols', hint: 'Why blue, Jai Bhim, the Chakra' },
+  ] },
+  { label: 'Works', items: [
+    { href: '/works/', label: 'All works', hint: 'Books, papers, essays, statements' },
+    { href: '/works/speeches/', label: 'Speeches', hint: 'His major speeches' },
+    { href: '/library/', label: 'Writings & Speeches', hint: 'All 17 volumes, page by page' },
+    { href: '/ask/', label: 'Ask the archive', hint: 'Search everything he wrote' },
+    { href: '/works/journals/', label: 'His newspapers', hint: 'Mooknayak, Bahishkrit Bharat, Janata' },
+  ] },
+  { label: 'Constitution', href: '/constitution/' },
+  { label: 'Gallery', href: '/gallery/' },
+  { label: 'Resources', href: '/resources/' },
+  { label: 'About', href: '/about/' },
 ];
 
 export const CHAPTER_COUNT_LABEL = 'chapters';

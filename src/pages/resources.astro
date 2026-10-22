@@ -1,0 +1,108 @@
+---
+import Base from '../layouts/Base.astro';
+import { url } from '../lib/site';
+
+type R = { name: string; href: string; text: string };
+const host = (u: string) => (u.startsWith('/') ? 'On this website' : new URL(u).hostname.replace(/^www\./, ''));
+
+const GROUPS: { title: string; intro: string; items: R[] }[] = [
+  {
+    title: 'On this website',
+    intro: 'Everything here is free to read, search and share.',
+    items: [
+      { name: 'Writings and Speeches — the library', href: '/library/', text: 'All 17 volumes published by the Government of India, readable page by page, each page linked to the official PDF.' },
+      { name: 'Ask the archive', href: '/ask/', text: 'Search more than 14,000 pages of his writings and speeches by word or question.' },
+      { name: 'All works', href: '/works/', text: 'Every book, thesis, essay and statement, explained simply, with where to read it.' },
+      { name: 'Speeches', href: '/works/speeches/', text: 'His major speeches, with dates, places and the key idea of each.' },
+      { name: 'Where the originals are kept', href: '/works/archives/', text: 'Manuscripts, theses, letters and his personal library — which archive or museum holds them and how to visit.' },
+      { name: 'The Constitution of India', href: '/constitution/', text: 'The official text to download, key articles explained, and his speeches in the Constituent Assembly.' },
+      { name: 'Timeline', href: '/timeline/', text: 'Every key date in his life, each with its source.' },
+    ],
+  },
+  {
+    title: 'Government of India',
+    intro: 'Official publications and records.',
+    items: [
+      { name: 'Books & Writings of Ambedkar — Ministry of External Affairs', href: 'https://www.mea.gov.in/books-writings-of-ambedkar', text: 'Official PDFs of Writings and Speeches in English (17 volumes) and Hindi (40 volumes).' },
+      { name: 'Writings and Speeches — Dr. Ambedkar Foundation', href: 'https://drambedkarwritings.gov.in', text: 'The Foundation\'s own website for the collected works, with a photo gallery.' },
+      { name: 'Dr. Ambedkar Foundation', href: 'https://ambedkarfoundation.nic.in', text: 'Autonomous body under the Ministry of Social Justice and Empowerment; runs the National Memorial at 26 Alipur Road, Delhi.' },
+      { name: 'The Constitution of India — Legislative Department', href: 'https://legislative.gov.in/constitution-of-india/', text: 'The latest official text of the Constitution in English and Hindi.' },
+      { name: 'Dr. Ambedkar International Centre, New Delhi', href: 'https://daic.gov.in/', text: 'Research centre with a digital library and a Constitution gallery.' },
+      { name: 'National Archives of India — Abhilekh Patal', href: 'https://www.abhilekh-patal.in/Category/Search/QuerySearch?query=Ambedkar', text: 'Government files mentioning him, and his papers received from the People\'s Education Society.' },
+    ],
+  },
+  {
+    title: 'The Constitution and its making',
+    intro: 'Debates and documents from 1946–1950.',
+    items: [
+      { name: 'Constituent Assembly Debates — Constitution of India (CLPR)', href: 'https://www.constitutionofindia.net', text: 'Full text of the debates, by date and by article, including his speeches of 4 November 1948 and 25 November 1949.' },
+      { name: 'Writings and Speeches, Vol. 13 — on this site', href: '/library/volume-13/', text: 'His speeches and work as chairman of the Drafting Committee.' },
+    ],
+  },
+  {
+    title: 'Universities and archives abroad',
+    intro: 'Where his student years are documented.',
+    items: [
+      { name: 'Columbia University Archives — Notable Columbians', href: 'https://guides.library.columbia.edu/uarchives/notables', text: 'His degrees, photographs and records held at Columbia, with how to see them.' },
+      { name: 'Caste, Ambedkar, and Contemporary India — Columbia Libraries', href: 'https://exhibitions.library.columbia.edu/exhibits/show/ambedkar', text: 'Online exhibition created for a 2009 Columbia conference in his honour.' },
+      { name: 'Ambedkar timeline — Frances Pritchett, Columbia', href: 'https://franpritchett.com/00ambedkar/timeline', text: 'A decade-by-decade timeline with many original documents and translations.' },
+      { name: 'Educate. Agitate. Organise. — LSE Library', href: 'https://www.lse.ac.uk/library/whats-on/online-exhibitions/educate-agitate-organise', text: 'Online exhibition on his years at the London School of Economics.' },
+      { name: 'His LSE student file (PDF)', href: 'https://www.lse.ac.uk/library/assets/documents/Ambedkars-LSE-student-file.pdf', text: 'Application forms, record card and letters from his professors.' },
+      { name: 'British Library — India Office Records', href: 'https://searcharchives.bl.uk/?q=Ambedkar&search_field=all_fields', text: 'About 45 records: Round Table Conference papers, the Poona Pact, government files.' },
+    ],
+  },
+  {
+    title: 'Digital libraries',
+    intro: 'Free scanned copies of his works.',
+    items: [
+      { name: 'Collected Works — Internet Archive', href: 'https://archive.org/details/collected-works-of-ambedkar', text: 'The Dr. Ambedkar Foundation volumes as PDF and searchable text.' },
+      { name: 'Writings and Speeches, all volumes — Internet Archive', href: 'https://archive.org/details/Dr.BabasahebAmbedkarWritingsAndSpeechespdfsAllVolumes', text: 'Another complete set, including searchable copies of Volumes 14 and 16.' },
+      { name: 'सम्पूर्ण वाङ्मय (Hindi) — Internet Archive', href: 'https://archive.org/details/05_20220926_202209', text: 'The collected works in Hindi.' },
+      { name: 'Dr. Ambedkar: Life and Mission — Dhananjay Keer', href: 'https://archive.org/details/dr-ambedkar-life-and-mission-dhananjay-keer', text: 'The classic biography, first published in 1954 during his lifetime.' },
+      { name: 'Velivada — Dr. B. R. Ambedkar books', href: 'https://velivada.com/dr-b-r-ambedkar-books-2/', text: 'Downloads of his books in several languages.' },
+    ],
+  },
+  {
+    title: 'Museums and memorials',
+    intro: 'Places that keep his belongings and memory.',
+    items: [
+      { name: 'Dr. Babasaheb Ambedkar Museum & Memorial, Pune (Symbiosis)', href: 'https://www.symbiosis-ambedkarmemorial.org/', text: 'Personal belongings including his Bharat Ratna, manuscripts and photographs.' },
+      { name: 'Dr. Ambedkar National Memorial, 26 Alipur Road, Delhi', href: 'https://www.ambedkarfoundation.nic.in/danm.html', text: 'The house where he died, now a national memorial.' },
+    ],
+  },
+  {
+    title: 'Ambedkarite media',
+    intro: 'Independent journalism and writing from the movement.',
+    items: [
+      { name: 'Forward Press', href: 'https://www.forwardpress.in/', text: 'Bilingual magazine on Bahujan history, politics and culture.' },
+      { name: 'Round Table India', href: 'https://www.roundtableindia.co.in/', text: 'Essays and opinion from Ambedkarite writers.' },
+      { name: 'The Mooknayak', href: 'https://www.themooknayak.com/', text: 'News on Dalit, Adivasi and Bahujan communities, named after his 1920 newspaper.' },
+    ],
+  },
+];
+---
+<Base title="Resources" description="Every important resource on Dr. B. R. Ambedkar in one place: official publications, the Constitution, university archives, digital libraries, museums and Ambedkarite media.">
+  <div class="narrow section">
+    <span class="eyebrow">Resources</span>
+    <h1>Everything in one place</h1>
+    <p class="lede">The best places to read, research and learn about Dr. Ambedkar — official, academic and community sources, checked and described simply.</p>
+    {GROUPS.map((g) => (
+      <section class="res-group">
+        <h2>{g.title}</h2>
+        <p>{g.intro}</p>
+        <ul class="res-list">
+          {g.items.map((r) => (
+            <li>
+              <span>
+                <a href={r.href.startsWith('/') ? url(r.href) : r.href} target={r.href.startsWith('/') ? undefined : '_blank'} rel={r.href.startsWith('/') ? undefined : 'noopener noreferrer'}>{r.name}</a>
+                <span class="host">{host(r.href)}</span>
+              </span>
+              <p>{r.text}</p>
+            </li>
+          ))}
+        </ul>
+      </section>
+    ))}
+    <p class="muted" style="margin-top:48px">Know a resource we should add? <a href={url('/contribute/')}>Suggest it</a>.</p>
+  </div>
+</Base>

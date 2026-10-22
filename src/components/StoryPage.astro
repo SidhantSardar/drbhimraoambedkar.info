@@ -5,6 +5,7 @@ import Chakra from './Chakra.astro';
 import Picture from './Picture.astro';
 import { heroFor, credit } from '../lib/images-core.mjs';
 import { url, formatDate, SITE } from '../lib/site';
+import { libraryPathFor } from '../lib/sources.mjs';
 import type { Story } from '../lib/data';
 
 interface Props {
@@ -59,7 +60,9 @@ const issueUrl = `${SITE.repoUrl}/issues/new?labels=correction&title=${encodeURI
             {d.keyDates.map((k) => (
               <li>
                 <time datetime={k.date}>{formatDate(k.date)}</time>
-                {k.label} {k.source && <a class="src" href={k.source} target="_blank" rel="noopener noreferrer">source</a>}
+                {k.label} {k.source && (libraryPathFor(k.source)
+                  ? <a class="src" href={url(libraryPathFor(k.source)!)}>Writings &amp; Speeches</a>
+                  : <a class="src" href={k.source} target="_blank" rel="noopener noreferrer">source</a>)}
               </li>
             ))}
           </ol>

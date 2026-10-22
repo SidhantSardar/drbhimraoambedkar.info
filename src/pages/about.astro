@@ -1,47 +1,50 @@
 ---
 import Base from '../layouts/Base.astro';
-import Chakra from '../components/Chakra.astro';
 import { url, SITE } from '../lib/site';
 ---
-<Base title="About" description="Why drbhimraoambedkar.info exists, how we choose and cite sources, and how the content may be reused.">
-  <section class="hero">
-    <Chakra class="chakra-bg" />
-    <div class="wrap section-tight">
-      <span class="eyebrow">About</span>
-      <h1 style="font-size:var(--step-4)">One place for his life and work</h1>
+<Base title="About" description="Who is building drbhimraoambedkar.info and why: an Ambedkarite effort to gather all of Dr. B. R. Ambedkar's work and resources in one public place.">
+  <div class="narrow section">
+    <span class="eyebrow">About</span>
+    <h1>Why I am building this</h1>
+
+    <div class="prose">
+      <p class="lede">I am <strong>Sidhant Sardar</strong> — an Ambedkarite and a web developer.</p>
+
+      <p>Babasaheb's life and work belong to everyone. Yet his writings, speeches, records and photographs are spread across government PDFs, university archives, museums and memorials. India's Ministry of Social Justice and Empowerment itself describes them as "spread across libraries, memorials, archives, and fragmented digital sources" <a class="src" href="https://zaidsayyed.in/tools/sih-problem-statements/sih26096" target="_blank" rel="noopener noreferrer">SIH 2026 brief SIH26096</a>.</p>
+
+      <p>So I am building this website to bring them together: his whole life told simply, everything he wrote catalogued and searchable, the Constitution explained, and the events, news and articles that carry his work forward today — all in one place, publicly available and free for everyone.</p>
+
+      <p>Going forward, we need a more Ambedkarite approach to how this history is told and shared. That starts with the resources being gathered, sourced and open. That is why I am doing this work.</p>
+
+      <p><a class="btn btn-primary" href="https://www.sidhantsardar.com/" target="_blank" rel="noopener noreferrer">More about me and my work →</a></p>
+
+      <h2>How this website works</h2>
+      <ul>
+        <li><strong>Every fact has a source.</strong> Numbered notes in each chapter lead to the exact document, archive or book. Where the source is his own <em>Writings and Speeches</em>, the note opens that page on this website.</li>
+        <li><strong>Primary sources first:</strong> his own words, the Constituent Assembly Debates and university archives — then respected biographies and journalism.</li>
+        <li><strong>Honest about disagreements.</strong> When sources disagree about a date or detail, we say so and show each one.</li>
+        <li><strong>No invented quotes.</strong> A quote appears only if it was found in a primary source.</li>
+        <li><strong>Open and correctable.</strong> The research notes are public on <a href={SITE.repoUrl} target="_blank" rel="noopener noreferrer">GitHub</a>, and anyone can <a href={url('/contribute/')}>suggest a correction</a>.</li>
+      </ul>
+
+      <h2>News on this website</h2>
+      <p>The news section gathers reports on caste, justice, the Constitution and the Ambedkarite movement from many outlets every six hours. Reports about the same event are grouped together, so you can see who reported it — local, national or international — and every report is listed as a source. Short summaries may be written with the help of AI, using only those reports, and are always labelled.</p>
+
+      <h2>Copyright and reuse</h2>
+      <ul>
+        <li>Dr. Ambedkar died in 1956. Under Indian copyright law, his own writings entered the public domain in India in 2017.</li>
+        <li>Photographs and documents keep their own licences, shown with each one. We only use images that are public domain or freely licensed.</li>
+        <li>Original text written for this website is shared under <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer">Creative Commons BY-SA 4.0</a>.</li>
+        <li>If you hold rights to something used here and want it changed or removed, please <a href={url('/contribute/')}>get in touch</a>.</li>
+      </ul>
+
+      <h2>What's next</h2>
+      <ul>
+        <li>Hindi and Marathi versions of the life story.</li>
+        <li>A searchable Hindi library of the 40-volume सम्पूर्ण वाङ्मय.</li>
+        <li>An events calendar for Ambedkarite events across India and the world.</li>
+      </ul>
+      <p><a href={url('/contribute/')}>Help build it →</a></p>
     </div>
-  </section>
-  <div class="narrow section-tight prose">
-    <h2>Why this website exists</h2>
-    <p>Dr. B. R. Ambedkar wrote and spoke on caste, economics, law, religion, democracy, women's rights and labour for more than forty years. His work survives in government volumes, university archives, museums, old newspapers and memorials — but it is spread out and hard to explore. In 2026 India's Ministry of Social Justice and Empowerment described his writings and records as "spread across libraries, memorials, archives, and fragmented digital sources" <a class="src" href="https://zaidsayyed.in/tools/sih-problem-statements/sih26096" target="_blank" rel="noopener noreferrer">SIH 2026 brief SIH26096</a>.</p>
-    <p>This website is an independent initiative to bring it together: his whole life told simply, every work catalogued, his collected writings searchable page by page, and the Constitution explained for everyone. It is free, and will stay free.</p>
-
-    <h2>How we use sources</h2>
-    <ul>
-      <li><strong>Every fact links to its source</strong> with a small chip like this <a class="src" href={url('/library/')}>Writings and Speeches</a>.</li>
-      <li>We prefer his own words (the government-published <em>Writings and Speeches</em>), official records such as the Constituent Assembly Debates, and university archives — then respected biographies and journalism.</li>
-      <li>When sources disagree about a date or a detail, we say so and show each one.</li>
-      <li>We never publish a quote unless we found it in a primary source.</li>
-      <li>The full research notes behind each chapter are public in our <a href={SITE.repoUrl} target="_blank" rel="noopener noreferrer">GitHub repository</a>.</li>
-    </ul>
-
-    <h2>Copyright and reuse</h2>
-    <ul>
-      <li>Dr. Ambedkar died in 1956. Under Indian copyright law (life of the author plus 60 years), his own writings entered the public domain in India in 2017.</li>
-      <li>Photographs and documents keep their own licences, shown next to each one. We only use images that are public domain or freely licensed.</li>
-      <li>Original text written for this website is shared under <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer">Creative Commons BY-SA 4.0</a>: you may share and adapt it, with credit, under the same licence. The website's code is open source.</li>
-      <li>If you hold rights to something we have used and want it changed or removed, please <a href={url('/contribute/')}>contact us</a>.</li>
-    </ul>
-
-    <h2>AI on this website</h2>
-    <p>The "Ask the Archive" feature searches his writings and, when connected, uses an AI model to write short summaries of the pages it finds. Summaries are always labelled, always cite the exact pages, and are told to say "the sources don't answer this" rather than guess. Always check the original before you quote.</p>
-
-    <h2>What's next</h2>
-    <ul>
-      <li>Hindi and Marathi versions of the life story.</li>
-      <li>A searchable Hindi library of the 40-volume सम्पूर्ण वाङ्मय.</li>
-      <li>Audio versions of every chapter.</li>
-    </ul>
-    <p><a href={url('/contribute/')}>Help us build it →</a></p>
   </div>
 </Base>

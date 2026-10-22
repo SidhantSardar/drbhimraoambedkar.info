@@ -1,50 +1,110 @@
 ---
 import Base from '../layouts/Base.astro';
-import Chakra from '../components/Chakra.astro';
-import { loadJSON } from '../lib/data';
+import { loadNews, catOf, thumbFor, fallbackFor, ONERROR, mixed, isHindi } from '../lib/news';
 import { url } from '../lib/site';
 
-type Item = { title: string; link: string; source: string; category: string; date: string | null };
-const news = loadJSON<{ updated?: string; items: Item[] }>('news', { items: [] });
-const categories = [...new Set(news.items.map((i) => i.category))];
-const fmt = (d: string | null) => (d ? new Date(d).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' }) : '');
-const isHindi = (s: string) => /[ऀ-ॿ]/.test(s);
+const news = loadNews();
+const stories = mixed(news.stories, news.stories.length);
+const categories = [...new Set(stories.map((s) => s.category))];
+const day = (d: string | null) => (d ? new Date(d).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'Asia/Kolkata' }) : '');
 ---
-<Base title="News" description="News on Dr. B. R. Ambedkar, caste and justice, the Constitution and rights — gathered from many publishers and updated automatically.">
-  <section class="hero">
-    <Chakra class="chakra-bg" />
-    <div class="wrap section-tight">
-      <span class="eyebrow">News</span>
-      <h1 style="font-size:var(--step-4)">Justice, equality and dignity — today</h1>
-      <p class="lede" style="max-width:64ch">Headlines about Dr. Ambedkar, caste discrimination, the Constitution and people's rights, gathered automatically from news publishers and Ambedkarite media. Click a headline to read it on the publisher's site.</p>
-      {news.updated && <p class="muted" style="font-size:0.9rem;margin:0">Last updated {new Date(news.updated).toLocaleString('en-IN', { dateStyle: 'medium', timeStyle: 'short', timeZone: 'Asia/Kolkata' })} IST</p>}
-    </div>
-  </section>
-  <div class="narrow section-tight">
-    <div class="tabs" role="group" aria-label="News topics">
-      <button class="chip" type="button" data-cat="all" aria-pressed="true">All</button>
-      {categories.map((c) => <button class="chip" type="button" data-cat={c} aria-pressed="false">{c}</button>)}
-    </div>
-    <div id="news">
-      {news.items.map((i) => (
-        <article class="news-item" data-cat={i.category}>
-          <div class="meta">{i.source} · {fmt(i.date)} · {i.category}</div>
-          <h3 lang={isHindi(i.title) ? 'hi' : undefined}><a href={i.link} target="_blank" rel="noopener noreferrer nofollow">{i.title}</a></h3>
+<Base title="News" description="Daily news on caste, justice, the Constitution and the Ambedkarite movement — each story explained, with every source listed.">
+  <section class="news-app">
+    <aside class="news-list" aria-label="Stories">
+      <div class="news-list-head">
+        <h1>News</h1>
+        <p class="muted">Updated every six hours. Select a story to read what happened and who reported it.</p>
+        <div class="filter-row" role="group" aria-label="Topics">
+          <button class="chip" type="button" data-cat="all" aria-pressed="true">All</button>
+          {categories.map((c) => <button class="chip" type="button" data-cat={c} aria-pressed="false">{catOf({ category: c } as any).label}</button>)}
+        </div>
+      </div>
+      <ol>
+        {stories.map((s, i) => (
+          <li data-cat={s.category}>
+            <a href={`#${s.id}`} data-story={s.id} aria-current={i === 0 ? 'true' : undefined}>
+              <img src={thumbFor(s)} data-fallback={fallbackFor(s)} onerror={ONERROR} alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" />
+              <span>
+                <span class={`cat ${catOf(s).cls}`}>{catOf(s).label}</span>
+                <strong lang={isHindi(s.title) ? 'hi' : undefined}>{s.title}</strong>
+                <small>{s.outlets.length > 1 ? `${s.outlets.length} outlets` : s.outlets[0]}</small>
+              </span>
+            </a>
+          </li>
+        ))}
+      </ol>
+    </aside>
+
+    <div class="news-detail">
+      {stories.map((s, i) => (
+        <article id={s.id} class="story" hidden={i !== 0} data-pagefind-ignore>
+          <figure class="story-img"><img src={thumbFor(s, 960)} data-fallback={fallbackFor(s, 960)} onerror={ONERROR} alt="" loading={i === 0 ? 'eager' : 'lazy'} decoding="async" referrerpolicy="no-referrer" /></figure>
+          <div class="story-body">
+            <span class={`cat ${catOf(s).cls}`}>{catOf(s).label}</span>
+            <h2 lang={isHindi(s.title) ? 'hi' : undefined}>{s.title}</h2>
+            <p class="muted story-meta">{day(s.date)} · Reported by {s.outlets.length} {s.outlets.length === 1 ? 'outlet' : 'outlets'}</p>
+
+            {s.summary ? (
+              <div class="story-summary">
+                <h3>What happened</h3>
+                {s.summary.split(/\n\n+/).map((p) => <p>{p}</p>)}
+                <p class="note">Summary written by AI from the reports listed below. Read the original reports before quoting.</p>
+              </div>
+            ) : (
+              <div class="story-summary">
+                <h3>What the reports say</h3>
+                {s.reports.find((r) => r.snippet) ? <p>{s.reports.find((r) => r.snippet)!.snippet}</p> : <p>{s.title}.</p>}
+                {s.reports.length > 1 && <p>This story was reported by {s.outlets.slice(0, -1).join(', ')}{s.outlets.length > 1 ? ` and ${s.outlets[s.outlets.length - 1]}` : ''}.</p>}
+              </div>
+            )}
+
+            {s.reports.length > 1 && (
+              <div class="story-coverage">
+                <h3>How it was covered</h3>
+                <ul>
+                  {s.reports.map((r) => <li><strong>{r.outlet}</strong> — <span lang={isHindi(r.title) ? 'hi' : undefined}>{r.title}</span></li>)}
+                </ul>
+              </div>
+            )}
+
+            <div class="story-sources">
+              <h3>Sources</h3>
+              <ol>
+                {s.reports.map((r) => (
+                  <li><a href={r.link} target="_blank" rel="noopener noreferrer nofollow">{r.title}</a> <span class="muted">— {r.outlet}{r.date ? `, ${day(r.date)}` : ''}</span></li>
+                ))}
+              </ol>
+            </div>
+          </div>
         </article>
       ))}
+      {stories.length === 0 && <p class="notice" style="margin:40px">News will appear here after the next automatic update.</p>}
     </div>
-    {news.items.length === 0 && <p class="notice">News will appear here after the first automatic update.</p>}
-    <p class="muted" style="margin-top:32px;font-size:0.9rem">Headlines belong to their publishers. This page links to them and does not copy articles. Inclusion here does not mean we endorse every view. Know a good source we should add? <a href={url('/contribute/')}>Suggest it</a>.</p>
-  </div>
+  </section>
+  <p class="wrap muted" style="font-size:0.85rem;padding-block:24px">Headlines and pictures belong to their publishers; this page links to them and does not copy articles. Listing a report does not mean we endorse it. <a href={url('/contribute/')}>Suggest a news source</a>.</p>
+
   <script is:inline>
     (function () {
-      var btns = document.querySelectorAll('[data-cat]');
+      var links = document.querySelectorAll('[data-story]');
+      function show(id, scroll) {
+        var target = document.getElementById(id);
+        if (!target) return;
+        document.querySelectorAll('.story').forEach(function (a) { a.hidden = a !== target; });
+        links.forEach(function (l) { l.setAttribute('aria-current', l.dataset.story === id ? 'true' : 'false'); });
+        var detail = document.querySelector('.news-detail');
+        detail.scrollTop = 0;
+        if (scroll && window.innerWidth < 1000) detail.scrollIntoView({ behavior: 'smooth' });
+      }
+      links.forEach(function (l) {
+        l.addEventListener('click', function (e) { e.preventDefault(); history.replaceState(null, '', '#' + l.dataset.story); show(l.dataset.story, true); });
+      });
+      if (location.hash) show(location.hash.slice(1), false);
+      var btns = document.querySelectorAll('button[data-cat]');
       btns.forEach(function (b) {
-        if (b.tagName !== 'BUTTON') return;
         b.addEventListener('click', function () {
           var c = b.dataset.cat;
-          document.querySelectorAll('button[data-cat]').forEach(function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
-          document.querySelectorAll('#news .news-item').forEach(function (n) { n.hidden = c !== 'all' && n.dataset.cat !== c; });
+          btns.forEach(function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+          document.querySelectorAll('.news-list li').forEach(function (li) { li.hidden = c !== 'all' && li.dataset.cat !== c; });
         });
       });
     })();
