@@ -1,9 +1,12 @@
 [
-  { "category": "Dr. Ambedkar in the news", "name": "Google News", "url": "https://news.google.com/rss/search?q=Ambedkar&hl=en-IN&gl=IN&ceid=IN:en" },
-  { "category": "Caste & justice", "name": "Google News", "url": "https://news.google.com/rss/search?q=%22caste+discrimination%22+OR+%22Dalit%22+OR+%22atrocities+act%22&hl=en-IN&gl=IN&ceid=IN:en" },
-  { "category": "Constitution & rights", "name": "Google News", "url": "https://news.google.com/rss/search?q=%22Constitution+of+India%22+OR+%22fundamental+rights%22+OR+%22reservation%22+Supreme+Court&hl=en-IN&gl=IN&ceid=IN:en" },
+  { "category": "Ambedkar in the news", "name": "Google News", "url": "https://news.google.com/rss/search?q=Ambedkar+when:30d&hl=en-IN&gl=IN&ceid=IN:en" },
+  { "category": "Protests & justice", "name": "Google News", "url": "https://news.google.com/rss/search?q=%22Dalit%22+protest+OR+%22caste+atrocity%22+OR+%22anti-caste%22+when:30d&hl=en-IN&gl=IN&ceid=IN:en" },
+  { "category": "Research & reports", "name": "Google News", "url": "https://news.google.com/rss/search?q=%22caste%22+study+OR+survey+OR+report+OR+research+India+when:30d&hl=en-IN&gl=IN&ceid=IN:en" },
+  { "category": "Social work & community", "name": "Google News", "url": "https://news.google.com/rss/search?q=%22Dalit%22+NGO+OR+scholarship+OR+%22social+work%22+OR+initiative+when:30d&hl=en-IN&gl=IN&ceid=IN:en" },
+  { "category": "Ambedkarite events", "name": "Google News", "url": "https://news.google.com/rss/search?q=%22Ambedkar+Jayanti%22+OR+Deekshabhoomi+OR+%22Ambedkar+memorial%22+OR+%22Chaitya+Bhoomi%22+when:30d&hl=en-IN&gl=IN&ceid=IN:en" },
+  { "category": "Achievers", "name": "Google News", "url": "https://news.google.com/rss/search?q=%22Dalit%22+first+OR+award+OR+honoured+OR+achiever+OR+success+when:30d&hl=en-IN&gl=IN&ceid=IN:en" },
+  { "category": "Constitution & rights", "name": "Google News", "url": "https://news.google.com/rss/search?q=%22Constitution+of+India%22+OR+%22fundamental+rights%22+OR+%22reservation%22+Supreme+Court+when:30d&hl=en-IN&gl=IN&ceid=IN:en" },
   { "category": "Ambedkarite voices", "name": "Forward Press", "url": "https://www.forwardpress.in/feed/" },
   { "category": "Ambedkarite voices", "name": "Round Table India", "url": "https://www.roundtableindia.co.in/feed/" },
-  { "category": "Ambedkarite voices", "name": "Velivada", "url": "https://velivada.com/feed/" },
   { "category": "Ambedkarite voices", "name": "The Mooknayak", "url": "https://www.themooknayak.com/feed" }
 ]

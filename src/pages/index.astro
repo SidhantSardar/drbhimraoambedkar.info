@@ -1,173 +1,316 @@
 ---
 import Base from '../layouts/Base.astro';
-import Chakra from '../components/Chakra.astro';
 import Picture from '../components/Picture.astro';
-import StoryCard from '../components/StoryCard.astro';
 import { url, formatDate } from '../lib/site';
-import { chapters, themes, images, loadJSON, type Work, type Speech } from '../lib/data';
+import { chapters, themes, images, loadJSON, type Work, type Speech, type Img } from '../lib/data';
+import { heroFor, credit } from '../lib/images-core.mjs';
 import { getCollection } from 'astro:content';
 
 const life = await chapters();
 const themeList = await themes();
 const imgs = images();
-const portrait = imgs.find((i) => i.tags?.includes('portrait') && i.tags?.includes('hero')) || imgs.find((i) => i.tags?.includes('portrait'));
+const byId = (id: string) => imgs.find((i) => i.id === id) as Img | undefined;
 const works = loadJSON<Work[]>('works', []);
 const speeches = loadJSON<Speech[]>('speeches', []);
-const constitution = loadJSON<any>('constitution', {});
 const posts = (await getCollection('blog')).filter((p) => !p.data.draft).sort((a, b) => +b.data.date - +a.data.date).slice(0, 3);
+
+// ---- Hero ----
+const heroImg = byId('ambedkar-1950');
+
+// ---- Live updates: newest first, mixing categories so every kind of news appears ----
+type News = { title: string; link: string; source: string; category: string; date: string | null };
+const news = loadJSON<{ updated?: string; items: News[] }>('news', { items: [] });
+const CAT: Record<string, { cls: string; label: string }> = {
+  'Protests & justice': { cls: 'cat-protests', label: 'Protest & justice' },
+  'Research & reports': { cls: 'cat-research', label: 'Research' },
+  'Social work & community': { cls: 'cat-social', label: 'Social work' },
+  'Ambedkarite events': { cls: 'cat-events', label: 'Events' },
+  Achievers: { cls: 'cat-achievers', label: 'Achievers' },
+  'Constitution & rights': { cls: 'cat-rights', label: 'Rights' },
+  'Ambedkar in the news': { cls: 'cat-events', label: 'Ambedkar' },
+  'Ambedkarite voices': { cls: 'cat-voices', label: 'Voices' },
+};
+const buckets = new Map<string, News[]>();
+for (const n of [...news.items].sort((a, b) => String(b.date).localeCompare(String(a.date)))) {
+  if (!buckets.has(n.category)) buckets.set(n.category, []);
+  buckets.get(n.category)!.push(n);
+}
+const updates: News[] = [];
+for (let round = 0; updates.length < 32 && round < 10; round++) {
+  for (const list of buckets.values()) if (list[round] && updates.length < 32) updates.push(list[round]);
+}
+const ago = (d: string | null) => {
+  if (!d) return '';
+  const h = Math.max(1, Math.round((Date.parse(news.updated || d) - Date.parse(d)) / 36e5));
+  return h < 24 ? `${h}h ago` : `${Math.round(h / 24)}d ago`;
+};
+
+// ---- Then & now ----
+const pairs = [
+  { then: 'mhow-cantonment-quarters-c1900', now: 'bhim-janmabhoomi-memorial-mhow', thenLabel: 'c. 1900', title: 'Mhow', place: 'Madhya Pradesh · birthplace', text: 'He was born in this army town on 14 April 1891. His birthplace is now Bhim Janmabhoomi, a memorial.', href: '/life/childhood/' },
+  { then: 'elphinstone-college-1904', now: 'elphinstone-college-mumbai-2020', thenLabel: '1904', title: 'Elphinstone College', place: 'Mumbai · student', text: 'The college where he earned his BA in 1912 — one of the very few from his community to reach university.', href: '/life/school-years/' },
+  { then: 'columbia-university-birds-eye-view-1916', now: 'columbia-low-memorial-library-2021', thenLabel: '1916', title: 'Columbia University', place: 'New York · scholar', text: 'He arrived in July 1913 on a scholarship from the Maharaja of Baroda, and left with an MA and the work for a PhD.', href: '/life/columbia/' },
+  { then: 'chavdar-tale-mahad-1927', now: 'chavdar-tale-ambedkar-statue-mahad', thenLabel: '1927', title: 'Chavdar Tale', place: 'Mahad · the water struggle', text: 'In March 1927 he led thousands to drink from this public tank — water they had been forbidden to touch.', href: '/life/awakening/' },
+  { then: 'kala-rama-temple-nashik-c1870', now: 'kalaram-temple-nashik-2024', thenLabel: 'c. 1870', title: 'Kalaram Temple', place: 'Nashik · temple entry', text: 'From 1930 his followers stood at these closed doors for years, demanding the right to enter.', href: '/life/round-table/' },
+  { then: 'siddharth-college-1946', now: 'siddharth-college-mumbai-2015', thenLabel: '1946', title: 'Siddharth College', place: 'Mumbai · educator', text: 'The college he founded in 1946 so that poor and excluded students could study. It still teaches today.', href: '/life/politics/' },
+  { then: 'twenty-two-vows-deekshabhoomi-1956', now: 'deekshabhoomi-nagpur-2015', thenLabel: '14 Oct 1956', title: 'Deekshabhoomi', place: 'Nagpur · a new path', text: 'Here he embraced Buddhism with hundreds of thousands of people. A great stupa now stands on the ground.', href: '/life/buddhism/' },
+  { then: 'funeral-procession-bombay-1956', now: 'chaitya-bhoomi-2024', thenLabel: '7 Dec 1956', title: 'Chaitya Bhoomi', place: 'Mumbai · resting place', text: 'A vast crowd carried him to the sea shore at Dadar. Every 6 December, lakhs return to remember him.', href: '/life/final-days/' },
+].map((p) => ({ ...p, a: byId(p.then), b: byId(p.now) })).filter((p) => p.a && p.b);
+
+const traces = [
+  { id: 'law-minister-at-office-1950', title: 'At his desk, 1950', text: 'As India\'s first Law Minister, on the telephone in his office.', cls: 't-big' },
+  { id: 'bed-pune-museum', title: 'His last bed?', text: 'At the Ambedkar Museum, Pune — described by the photographer as the bed on which he died.', cls: '' },
+  { id: '10-king-henrys-road-london', title: '10 King Henry\'s Road', text: 'His London home as a student (plaque: 1921–22), now Ambedkar House.', cls: 't-tall' },
+  { id: 'rajgruha-dadar-2024', title: 'Rajgriha, Mumbai', text: 'The house he built for his books.', cls: '' },
+  { id: 'riddles-in-hinduism-handwriting', title: 'In his own hand', text: 'Handwriting from the manuscript of Riddles in Hinduism.', cls: '' },
+  { id: 'ashes-urn-deekshabhoomi', title: 'The urn at Deekshabhoomi', text: 'Part of his ashes, kept in Nagpur.', cls: '' },
+  { id: 'ambedkar-reading-a-book', title: 'Among his books', text: 'Absorbed in reading in his large library.', cls: '' },
+  { id: 'twenty-two-vows-inscription-deekshabhoomi', title: 'The 22 vows', text: 'The vows he gave in 1956, inscribed at Deekshabhoomi.', cls: '' },
+].map((t) => ({ ...t, img: byId(t.id) })).filter((t) => t.img);
+
+const bandConst = byId('constituent-assembly-first-day-1946');
+const bandEdu = byId('columbia-university-birds-eye-view-1916');
 
 const milestones = [
   { date: '1891-04-14', label: 'Born in Mhow, into a family the caste system called "untouchable"', href: '/life/childhood/' },
   { date: '1913', label: 'Sails to New York to study at Columbia University', href: '/life/columbia/' },
   { date: '1927-03-20', label: 'Leads the Mahad Satyagraha for the right to drink public water', href: '/life/awakening/' },
   { date: '1932-09-24', label: 'Signs the Poona Pact on political representation', href: '/life/round-table/' },
-  { date: '1947-08-29', label: 'Chosen to chair the Constitution\'s Drafting Committee', href: '/constitution/' },
+  { date: '1947-08-29', label: "Chosen to chair the Constitution's Drafting Committee", href: '/constitution/' },
   { date: '1949-11-26', label: 'The Constituent Assembly adopts the Constitution of India', href: '/constitution/' },
   { date: '1956-10-14', label: 'Embraces Buddhism at Nagpur with hundreds of thousands of people', href: '/life/buddhism/' },
   { date: '1956-12-06', label: 'Passes away in Delhi — Mahaparinirvan Din', href: '/life/final-days/' },
 ];
 ---
-<Base image={portrait?.file ? url(portrait.file) : undefined}>
-  <section class="hero">
-    <Chakra class="chakra-bg" />
-    <div class="wrap hero-grid">
+<Base image={heroImg ? url(heroImg.file) : undefined}>
+  <!-- 1. HERO: full photograph + live updates -->
+  <section class="hero-full">
+    {heroImg && <div class="bg"><Picture img={heroImg} eager sizes="100vw" alt="" /></div>}
+    <div class="wrap hero-full-grid">
       <div>
         <span class="eyebrow">1891 – 1956 · Scholar · Economist · Jurist · Reformer</span>
-        <h1>Dr. Bhimrao Ramji Ambedkar</h1>
-        <p class="lede">The boy who was not allowed to drink water from the school tap became one of the most educated people of his time — and led the writing of the Constitution that promises every Indian equal dignity.</p>
-        <div class="btn-row" style="margin-top:24px">
+        <h1>Dr. Bhimrao<br />Ramji Ambedkar<span>His life, his work and his struggle — together in one place</span></h1>
+        <p class="lede">The boy who was not allowed to drink from the school tap became one of the most educated people of his time, and led the writing of the Constitution that promises every Indian equal dignity.</p>
+        <div class="btn-row" style="margin-top:28px">
           <a class="btn btn-light" href={url('/life/')}>Begin his story →</a>
           <a class="btn btn-ghost" href={url('/constitution/')}>The Constitution</a>
-        </div>
-        <div class="mission">
-          <p><strong>Why this website exists.</strong> Dr. Ambedkar's writings, speeches and records are spread across government PDFs, university archives, museums and memorials. India's Ministry of Social Justice and Empowerment itself describes them as "spread across libraries, memorials, archives, and fragmented digital sources" <a class="src" href="https://zaidsayyed.in/tools/sih-problem-statements/sih26096" target="_blank" rel="noopener noreferrer" title="Source: Smart India Hackathon 2026 brief SIH26096">SIH 2026 brief SIH26096</a>.</p>
-          <p>This is an independent initiative to bring them together in one place — taken from authoritative sources, explained in simple words, with a link to the original for every fact. Free for everyone.</p>
+          <a class="btn btn-ghost" href={url('/ask/')}>Ask the archive</a>
         </div>
       </div>
-      {portrait && (
-        <figure class="hero-portrait">
-          <Picture img={portrait} eager sizes="(min-width: 900px) 460px, 90vw" />
-          <figcaption>{portrait.caption} {portrait.sourceUrl && <a href={portrait.sourceUrl} target="_blank" rel="noopener noreferrer">{portrait.license}</a>}</figcaption>
-        </figure>
+      {updates.length > 0 && (
+        <aside class="ticker" aria-label="Live updates">
+          <div class="ticker-head">
+            <strong><span class="live-dot" aria-hidden="true"></span>Live updates</strong>
+            {news.updated && <span>Updated {new Date(news.updated).toLocaleString('en-IN', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit', timeZone: 'Asia/Kolkata' })} IST</span>}
+          </div>
+          <div class="ticker-view">
+            <ul class="ticker-list" style={`--dur:${updates.length * 5}s`}>
+              {[...updates, ...updates].map((n, i) => (
+                <li aria-hidden={i >= updates.length ? 'true' : undefined}>
+                  <span class={`cat ${CAT[n.category]?.cls || ''}`}>{CAT[n.category]?.label || n.category}</span>
+                  <a href={n.link} target="_blank" rel="noopener noreferrer nofollow" tabindex={i >= updates.length ? -1 : undefined} lang={/[ऀ-ॿ]/.test(n.title) ? 'hi' : undefined}>{n.title}</a>
+                  <small>{n.source}{n.date ? ` · ${ago(n.date)}` : ''}</small>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div class="ticker-foot"><span class="muted" style="color:rgb(255 255 255 / 55%)">Protests · research · social work · events · achievers</span><a href={url('/news/')}>All news →</a></div>
+        </aside>
       )}
     </div>
+    {heroImg && <p class="credit">{heroImg.caption} {credit(heroImg)} · <a href={heroImg.sourceUrl} target="_blank" rel="noopener noreferrer">{heroImg.sourceName}</a></p>}
   </section>
 
+  <!-- 2. THEN & NOW: the real places of his life -->
   <section class="section">
     <div class="wrap">
-      <span class="eyebrow">The life story</span>
-      <h2>His life, in {life.length} chapters</h2>
-      <p class="lede" style="max-width:62ch">From the world before his birth to the movement that lives on today. Each chapter is short, simple and sourced — every fact links to where it came from.</p>
-      <div class="grid" style="margin-top:28px">
-        {life.map((c, i) => (
-          <StoryCard slug={c.id} href={`/life/${c.id}/`} title={c.data.title} period={c.data.period} summary={c.data.summary} num={String(i + 1).padStart(2, '0')} />
+      <div class="sec-head">
+        <div>
+          <span class="eyebrow">Then &amp; now</span>
+          <h2>Walk where he walked</h2>
+        </div>
+        <p>The real places of his life — as they looked in his time, and as they stand today. Scroll sideways, then tap any place to read its story.</p>
+      </div>
+      <div class="then-now" id="then-now" tabindex="0" aria-label="Places then and now">
+        {pairs.map((p) => (
+          <a class="tn" href={url(p.href)} style="text-decoration:none;color:inherit">
+            <div class="tn-pair">
+              <figure><Picture img={p.a!} sizes="(min-width:900px) 310px, 43vw" alt={p.a!.caption} /><span class="tn-label">Then · {p.thenLabel}</span></figure>
+              <figure><Picture img={p.b!} sizes="(min-width:900px) 310px, 43vw" alt={p.b!.caption} /><span class="tn-label">Now</span></figure>
+            </div>
+            <div class="tn-body">
+              <span class="place">{p.place}</span>
+              <h3>{p.title}</h3>
+              <p>{p.text}</p>
+            </div>
+          </a>
         ))}
       </div>
-      {life.length === 0 && <p class="notice">The chapters are being researched and written. Check back soon.</p>}
+      <div class="scroll-hint"><span>Scroll for more places</span><div class="scroll-btns"><button type="button" data-scroll="-1" aria-label="Previous places">←</button><button type="button" data-scroll="1" aria-label="Next places">→</button></div></div>
+
+      <div class="traces">
+        {traces.map((t) => (
+          <figure class={`trace ${t.cls}`}>
+            <Picture img={t.img!} sizes="(min-width:900px) 50vw, 50vw" alt={t.img!.caption} />
+            <figcaption><strong>{t.title}</strong>{t.text}</figcaption>
+          </figure>
+        ))}
+      </div>
+      <p class="muted" style="font-size:0.85rem;margin-top:14px">All photographs are public domain or freely licensed. <a href={url('/gallery/')}>See every picture with its full credit →</a></p>
     </div>
   </section>
 
-  <section class="section-tight">
+  <!-- 3. WHY THIS SITE -->
+  <section class="section" style="border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+    <div class="wrap" style="display:grid;gap:28px">
+      <span class="eyebrow">Why this website exists</span>
+      <p class="statement">His writings and records are <mark>spread across</mark> government PDFs, archives, museums and memorials. This is an independent effort to bring them together — sourced, simple, and <mark>free for everyone</mark>.</p>
+      <p style="max-width:62ch;color:var(--ink-2)">India's Ministry of Social Justice and Empowerment itself describes his work as "spread across libraries, memorials, archives, and fragmented digital sources" <a class="src" href="https://zaidsayyed.in/tools/sih-problem-statements/sih26096" target="_blank" rel="noopener noreferrer" title="Source: Smart India Hackathon 2026 brief SIH26096">SIH 2026 brief SIH26096</a>. Every fact on this site links to the document, archive or book it came from.</p>
+    </div>
+  </section>
+
+  <!-- 4. LIFE STORY: vertical portraits -->
+  <section class="section">
     <div class="wrap">
-      <a class="card" href={url('/education/')} style="flex-direction:row;flex-wrap:wrap;align-items:center">
-        <div class="card-body" style="min-width:min(100%,320px)">
-          <span class="card-meta">Educational journey · 1894–1923</span>
-          <h3 style="font-size:var(--step-2)">From a gunny sack to two doctorates</h3>
-          <p>Made to sit apart at school in Satara, he went on to earn an MA and PhD from Columbia, an MSc and DSc from the London School of Economics, and become a barrister. Follow every step →</p>
+      <div class="sec-head">
+        <div>
+          <span class="eyebrow">The life story</span>
+          <h2>His life, in {life.length} chapters</h2>
         </div>
-      </a>
+        <p>From the world before his birth to the movement that lives on today. Short, simple and sourced.</p>
+      </div>
+      <div class="vgrid">
+        {life.map((c, i) => {
+          const img = heroFor(c.id);
+          return (
+            <a class={`vcard ${i === 0 ? 'vcard-wide' : ''}`} href={url(`/life/${c.id}/`)}>
+              {img && <Picture img={img} sizes={i === 0 ? '100vw' : '(min-width:900px) 300px, 50vw'} alt="" />}
+              <span class="num">{String(i + 1).padStart(2, '0')}</span>
+              <div class="vbody">
+                <span class="period">{c.data.period}</span>
+                <h3>{c.data.title}</h3>
+                {c.data.summary && <p>{c.data.summary}</p>}
+              </div>
+            </a>
+          );
+        })}
+      </div>
     </div>
   </section>
 
-  <section class="hero section">
-    <Chakra class="chakra-bg" />
-    <div class="wrap">
-      <span class="eyebrow">The flagship</span>
-      <h2>The Constitution of India</h2>
-      <p class="lede" style="max-width:62ch">As chairman of the Drafting Committee, Dr. Ambedkar guided India's Constitution through the Constituent Assembly. Read what it says in plain words, the articles he fought for, his speeches — and download the official text.</p>
-      <div class="stats" style="margin:28px 0">
+  <!-- 5. EDUCATION: wide image band -->
+  {bandEdu && (
+    <section class="band">
+      <div class="bg"><Picture img={bandEdu} sizes="100vw" alt="" /></div>
+      <div class="wrap band-inner">
+        <span class="eyebrow">Educational journey · 1894–1923</span>
+        <h2 style="max-width:16ch">From a gunny sack to two doctorates</h2>
+        <p class="lede" style="max-width:46ch">Made to sit apart at school in Satara, he earned an MA and PhD from Columbia, an MSc and DSc from the London School of Economics, and became a barrister.</p>
+        <a class="btn btn-light" href={url('/education/')} style="margin-top:12px">Follow every step →</a>
+      </div>
+      <p class="credit">{bandEdu.caption?.slice(0, 90)} · {bandEdu.license}</p>
+    </section>
+  )}
+
+  <!-- 6. CONSTITUTION: flagship band -->
+  <section class="band">
+    {bandConst && <div class="bg"><Picture img={bandConst} sizes="100vw" alt="" /></div>}
+    <div class="wrap band-inner">
+      <span class="eyebrow">The flagship · 1946–1950</span>
+      <h2 style="max-width:14ch">The Constitution of India</h2>
+      <p class="lede" style="max-width:52ch">As chairman of the Drafting Committee, he guided India's Constitution through the Constituent Assembly. Read what it promises in plain words, the articles he fought for, his speeches — and download the official text.</p>
+      <div class="stats" style="margin:32px 0">
         <div class="stat"><strong>26 Nov 1949</strong><span>Adopted by the Constituent Assembly</span></div>
         <div class="stat"><strong>26 Jan 1950</strong><span>Came into force — Republic Day</span></div>
         <div class="stat"><strong>Article 17</strong><span>Abolished untouchability</span></div>
-        <div class="stat"><strong>Article 32</strong><span>The right to go to court to protect your rights</span></div>
+        <div class="stat"><strong>Article 32</strong><span>"The very soul of the Constitution"</span></div>
       </div>
       <div class="btn-row">
         <a class="btn btn-light" href={url('/constitution/')}>Explore the Constitution →</a>
-        {constitution?.documents?.find((d: any) => d.localFile) && (
-          <a class="btn btn-ghost" href={url(constitution.documents.find((d: any) => d.localFile).localFile)}>Download the official text</a>
-        )}
+        <a class="btn btn-ghost" href={url('/constitution/#documents')}>Download the official text</a>
       </div>
     </div>
+    {bandConst && <p class="credit">{bandConst.caption?.slice(0, 80)}… · {bandConst.license}</p>}
   </section>
 
+  <!-- 7. MILESTONES -->
   <section class="section">
-    <div class="wrap">
-      <span class="eyebrow">Milestones</span>
-      <h2>Key moments</h2>
-      <ol class="tl-list" style="margin-top:28px">
+    <div class="wrap" style="display:grid;gap:40px;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr))">
+      <div>
+        <span class="eyebrow">Milestones</span>
+        <h2>Key moments</h2>
+        <p style="color:var(--ink-2);max-width:40ch">Eight dates that changed his life — and India. The full timeline has every event, each with its source.</p>
+        <a class="btn btn-primary" href={url('/timeline/')}>See the full timeline →</a>
+      </div>
+      <ol class="tl-list">
         {milestones.map((m) => (
           <li class="tl-item">
             <time datetime={m.date}>{formatDate(m.date)}</time>
-            <p><a href={url(m.href)}>{m.label}</a></p>
+            <p><a href={url(m.href)} style="color:var(--ink);text-decoration:none">{m.label}</a></p>
           </li>
         ))}
       </ol>
-      <a class="btn btn-primary" href={url('/timeline/')}>See the full timeline →</a>
     </div>
   </section>
 
-  <section class="section" style="background:var(--surface-2)">
+  <!-- 8. WORKS + ASK -->
+  <section class="section" style="background:var(--paper-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
     <div class="wrap">
-      <span class="eyebrow">His work</span>
-      <h2>Everything he wrote and said</h2>
-      <p class="lede" style="max-width:62ch">Books, theses, essays, newspapers, evidence to commissions and speeches — each explained simply, with a link to the original page in his collected <em>Writings and Speeches</em>, or to the library that holds the physical copy.</p>
-      <div class="facts" style="margin:28px 0">
-        <div class="fact"><strong>{works.length || '—'}</strong><span>works catalogued</span></div>
-        <div class="fact"><strong>{speeches.length || '—'}</strong><span>major speeches</span></div>
-        <div class="fact"><strong>17</strong><span>volumes of Writings &amp; Speeches, searchable page by page</span></div>
-        <div class="fact"><strong>{imgs.length || '—'}</strong><span>freely licensed photographs and images</span></div>
+      <div class="sec-head">
+        <div>
+          <span class="eyebrow">His work</span>
+          <h2>Everything he wrote and said</h2>
+        </div>
+        <p>Books, theses, essays, newspapers and speeches — explained simply, linked to the original page in his collected <em>Writings and Speeches</em>, or to the library that holds the physical copy.</p>
       </div>
-      <div class="btn-row">
-        <a class="btn btn-primary" href={url('/works/')}>Browse all works</a>
+      <div class="facts">
+        <div class="fact"><strong>{works.length}</strong><span>works catalogued</span></div>
+        <div class="fact"><strong>{speeches.length}</strong><span>major speeches</span></div>
+        <div class="fact"><strong>14,343</strong><span>pages of Writings &amp; Speeches, searchable</span></div>
+        <div class="fact"><strong>{imgs.length}</strong><span>freely licensed photographs</span></div>
+      </div>
+      <form class="ask-form" action={url('/ask/')} method="get" role="search" style="margin-top:32px">
+        <label class="visually-hidden" for="home-q">Search his writings</label>
+        <input class="search-input" id="home-q" name="q" placeholder="What did he say about… education, democracy, women's rights" />
+        <button class="btn btn-primary" type="submit">Search</button>
+      </form>
+      <div class="btn-row" style="margin-top:20px">
+        <a class="btn btn-ghost" href={url('/works/')}>Browse all works</a>
         <a class="btn btn-ghost" href={url('/works/speeches/')}>Speeches</a>
         <a class="btn btn-ghost" href={url('/works/archives/')}>Where the originals are kept</a>
       </div>
     </div>
   </section>
 
-  <section class="section">
-    <div class="narrow">
-      <div class="ask-box">
-        <span class="eyebrow">Ask the archive</span>
-        <h2 style="font-size:var(--step-2)">What did Dr. Ambedkar say about…?</h2>
-        <p>Search across his collected writings and speeches. Every answer shows the exact volume and page, with a link to the original.</p>
-        <form class="ask-form" action={url('/ask/')} method="get" role="search">
-          <label class="visually-hidden" for="home-q">Your question</label>
-          <input class="search-input" id="home-q" name="q" placeholder="e.g. education, democracy, women's rights" />
-          <button class="btn btn-primary" type="submit">Search</button>
-        </form>
-      </div>
-    </div>
-  </section>
-
+  <!-- 9. THEMES -->
   {themeList.length > 0 && (
-    <section class="section-tight">
+    <section class="section">
       <div class="wrap">
-        <span class="eyebrow">Beyond the timeline</span>
-        <h2>The person behind the work</h2>
-        <div class="grid" style="margin-top:24px">
-          {themeList.map((t) => <StoryCard slug={t.id} href={`/themes/${t.id}/`} title={t.data.title} summary={t.data.summary} />)}
+        <div class="sec-head">
+          <div><span class="eyebrow">Beyond the timeline</span><h2>The person behind the work</h2></div>
+          <p>His family and home, the people who inspired him, and the meaning of the blue flag.</p>
+        </div>
+        <div class="vgrid">
+          {themeList.map((t) => {
+            const img = heroFor(t.id);
+            return (
+              <a class="vcard" href={url(`/themes/${t.id}/`)}>
+                {img && <Picture img={img} sizes="(min-width:900px) 400px, 100vw" alt="" />}
+                <div class="vbody"><span class="period">Theme</span><h3>{t.data.title}</h3>{t.data.summary && <p>{t.data.summary}</p>}</div>
+              </a>
+            );
+          })}
         </div>
       </div>
     </section>
   )}
 
+  <!-- 10. BLOG -->
   {posts.length > 0 && (
-    <section class="section">
+    <section class="section" style="border-top:1px solid var(--line)">
       <div class="wrap">
-        <span class="eyebrow">From the blog</span>
-        <h2>Read, discuss, share</h2>
-        <div class="grid" style="margin-top:24px">
+        <div class="sec-head"><div><span class="eyebrow">From the blog</span><h2>Read, discuss, share</h2></div><p>Articles on his ideas and on justice and dignity today — open for discussion.</p></div>
+        <div class="grid">
           {posts.map((p) => (
             <a class="card" href={url(`/blog/${p.id}/`)}>
               <div class="card-body">
@@ -178,18 +321,17 @@ const milestones = [
             </a>
           ))}
         </div>
-        <div class="btn-row" style="margin-top:24px">
-          <a class="btn btn-primary" href={url('/blog/')}>All articles</a>
-          <a class="btn btn-ghost" href={url('/news/')}>Latest news</a>
-        </div>
       </div>
     </section>
   )}
 
-  <section class="section-tight">
-    <div class="narrow callout">
-      <h2 style="font-size:var(--step-1)">Sources first, always</h2>
-      <p>Every fact on this site carries a small link — like this <a class="src" href={url('/about/')}>Our source policy</a> — to the document, archive or book it came from. Where historians disagree, we show both sides. Found a mistake? <a href={url('/contribute/')}>Tell us</a> — corrections are public on GitHub.</p>
-    </div>
-  </section>
+  <script is:inline>
+    (function () {
+      var row = document.getElementById('then-now');
+      if (!row) return;
+      document.querySelectorAll('[data-scroll]').forEach(function (b) {
+        b.addEventListener('click', function () { row.scrollBy({ left: Number(b.dataset.scroll) * row.clientWidth * 0.8, behavior: 'smooth' }); });
+      });
+    })();
+  </script>
 </Base>

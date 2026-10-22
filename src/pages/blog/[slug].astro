@@ -17,10 +17,10 @@ const { Content } = await render(post);
     <header class="story-hero">
       <Chakra class="chakra-bg" />
       <div class="narrow story-hero-inner">
-        <p data-pagefind-ignore><a href={url('/blog/')} style="color:var(--blue-200)">Blog</a></p>
+        <p data-pagefind-ignore><a href={url('/blog/')} class="muted">Blog</a></p>
         <h1>{post.data.title}</h1>
         <p class="subtitle">{post.data.description}</p>
-        <p style="color:var(--blue-200);font-size:0.9rem;margin:0">{post.data.date.toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' })} · {post.data.author}</p>
+        <p class="muted" style="font-size:0.9rem;margin:0">{post.data.date.toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' })} · {post.data.author}</p>
       </div>
     </header>
     <div class="narrow">

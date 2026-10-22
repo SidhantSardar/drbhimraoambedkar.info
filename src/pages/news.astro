@@ -17,7 +17,7 @@ const isHindi = (s: string) => /[ऀ-ॿ]/.test(s);
       <span class="eyebrow">News</span>
       <h1 style="font-size:var(--step-4)">Justice, equality and dignity — today</h1>
       <p class="lede" style="max-width:64ch">Headlines about Dr. Ambedkar, caste discrimination, the Constitution and people's rights, gathered automatically from news publishers and Ambedkarite media. Click a headline to read it on the publisher's site.</p>
-      {news.updated && <p style="color:var(--blue-200);font-size:0.9rem;margin:0">Last updated {new Date(news.updated).toLocaleString('en-IN', { dateStyle: 'medium', timeStyle: 'short', timeZone: 'Asia/Kolkata' })} IST</p>}
+      {news.updated && <p class="muted" style="font-size:0.9rem;margin:0">Last updated {new Date(news.updated).toLocaleString('en-IN', { dateStyle: 'medium', timeStyle: 'short', timeZone: 'Asia/Kolkata' })} IST</p>}
     </div>
   </section>
   <div class="narrow section-tight">

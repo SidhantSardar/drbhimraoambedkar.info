@@ -21,7 +21,6 @@ const current = Astro.url.pathname;
       </ul>
     </nav>
     <div class="header-actions">
-      <button class="theme-toggle" type="button" id="theme-toggle" aria-label="Switch light or dark theme">◐</button>
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" id="nav-toggle">
         <span aria-hidden="true">☰</span> Menu
       </button>
@@ -38,13 +37,6 @@ const current = Astro.url.pathname;
     });
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape' && document.body.classList.contains('nav-open')) btn.click();
-    });
-    var t = document.getElementById('theme-toggle');
-    t.addEventListener('click', function () {
-      var root = document.documentElement;
-      var dark = root.dataset.theme ? root.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
-      root.dataset.theme = dark ? 'light' : 'dark';
-      try { localStorage.setItem('theme', root.dataset.theme); } catch (e) {}
     });
   })();
 </script>

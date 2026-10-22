@@ -8,7 +8,7 @@ public/images/r/
 src/data/image-variants.json
 
 # Large source files kept locally (see scripts/download-baws.sh and scripts/baws-manifest.json)
-archive/
+/archive/
 .venv/
 
 # Local env

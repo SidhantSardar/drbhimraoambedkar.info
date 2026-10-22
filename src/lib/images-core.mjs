@@ -56,7 +56,26 @@ export function imagesFor(slug, limit = 12) {
 }
 
 /** The best header image for a chapter: the largest historical photo with that tag. */
+// Chosen cover photographs (real photos of Dr. Ambedkar where they exist).
+const COVERS = {
+  'school-years': 'young-ambedkar-1912',
+  columbia: 'ambedkar-at-columbia-1913-1916',
+  london: 'ambedkar-barrister-1922',
+  awakening: 'ambedkar-nipani-1925',
+  'round-table': 'ambedkar-returns-to-bombay-1932',
+  politics: 'ambedkar-lawyer-portrait',
+  constitution: 'presenting-draft-constitution-1949',
+  'law-minister': 'ambedkar-portrait-classic',
+  buddhism: 'babasaheb-maisaheb-deekshabhoomi-1956',
+  'final-days': 'buddha-or-karl-marx-kathmandu-1956',
+  legacy: 'statue-of-social-justice-vijayawada',
+  'personal-life': 'ambedkar-family-rajgriha-1934',
+  inspirations: 'ambedkar-reading-a-book',
+};
+
 export function heroFor(slug) {
+  const chosen = COVERS[slug] && loadImages().find((i) => i.id === COVERS[slug]);
+  if (chosen) return chosen;
   const pool = imagesFor(slug, 99);
   const historical = pool.filter((i) => !(i.tags || []).includes('context'));
   const list = historical.length ? historical : pool;
