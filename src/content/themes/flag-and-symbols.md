@@ -100,7 +100,7 @@ Dr. Ambedkar founded the **All-India Scheduled Castes Federation** at Nagpur on 
 
 Reports from the time match this. On 17 February 1946 Dr. Ambedkar himself unfurled "the Scheduled Castes flag" at Nare Park, Bombay [source: BAWS Vol. 17 Part III, p. 363](https://www.mea.gov.in/images/CPV/Volume17_Part_III.pdf#page=392). In January 1950 processions carried "blue party flags" [source: BAWS Vol. 17 Part III, p. 397](https://www.mea.gov.in/images/CPV/Volume17_Part_III.pdf#page=426). In November 1951 a speaker praised the unity built "under the Blue Flag", and a huge Shivaji Park rally was full of "blue star-studded flags of the Federation", with volunteers in blue caps [source: BAWS Vol. 17 Part III, pp. 450, 456](https://www.mea.gov.in/images/CPV/Volume17_Part_III.pdf#page=479).
 
-His first party, the **Independent Labour Party** (1936), also matters here. We could not find a reliable description of its flag.
+What about his first party, the **Independent Labour Party** (1936)? We could not find a reliable description of its flag.
 
 ## The Republican Party: blue with a wheel
 
@@ -113,7 +113,7 @@ These are interpretations by later writers and activists, not recorded words of 
 - **The sky.** Blue is the colour of the sky, which covers everyone without discrimination [source: SabrangIndia](https://sabrangindia.in/significance-colour-blue-dalit-movement/) [source: The Week (PTI)](https://www.theweek.in/news/india/2018/04/15/how-colour-blue-got-associated-with-ambedkar.html).
 - **His favourite colour.** One activist says blue was his favourite colour [source: The Week (PTI)](https://www.theweek.in/news/india/2018/04/15/how-colour-blue-got-associated-with-ambedkar.html).
 - **His blue suit.** Some say the suit in his portraits inspired the flag [source: SabrangIndia](https://sabrangindia.in/significance-colour-blue-dalit-movement/).
-- **A Mahar flag.** A 2017 paper, citing the historian Christophe Jaffrelot, says he made an older blue Mahar flag the flag of his Labour Party. We could not check this in Jaffrelot's book.
+- **A Mahar flag.** A 2017 paper, citing the historian Christophe Jaffrelot, says he made an older blue Mahar flag the flag of his Labour Party [source: SabrangIndia](https://sabrangindia.in/significance-colour-blue-dalit-movement/). We could not check this in Jaffrelot's book.
 
 ## The wheel: Ashoka Chakra and Dhamma Chakra
 
