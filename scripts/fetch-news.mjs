@@ -16,9 +16,24 @@ const parser = new XMLParser({ ignoreAttributes: false, attributeNamePrefix: '@'
 const text = (v) => (typeof v === 'object' && v !== null ? v['#text'] ?? '' : v ?? '').toString().trim();
 const strip = (s) => s.replace(/<[^>]+>/g, '').replace(/&nbsp;/g, ' ').replace(/\s+/g, ' ').trim();
 
+// A thumbnail for the story: Bing's News:Image, an RSS enclosure/media tag, or the first <img> in the content.
+function imageOf(it) {
+  const pick = (v) => (Array.isArray(v) ? v[0] : v);
+  let u = text(it['News:Image']) ||
+    pick(it.enclosure)?.['@url'] || pick(it['media:content'])?.['@url'] || pick(it['media:thumbnail'])?.['@url'] || '';
+  if (!u) {
+    const html = text(it['content:encoded']) + ' ' + text(it.description);
+    u = (html.match(/<img[^>]+src=["']([^"']+)["']/i) || [])[1] || '';
+  }
+  if (!u) return null;
+  u = u.replace(/&amp;/g, '&').replace(/^http:\/\//, 'https://');
+  if (/bing\.com\/th\?/.test(u)) u += '&w=320&h=220&c=7&rs=1';
+  return /^https:\/\//.test(u) ? u : null;
+}
+
 async function read(feed) {
   const res = await fetch(feed.url, {
-    headers: { 'User-Agent': 'Mozilla/5.0 (drbhimraoambedkar.info news reader)' },
+    headers: { 'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120 Safari/537.36' },
     redirect: 'follow',
     signal: AbortSignal.timeout(30000),
   });
@@ -30,9 +45,13 @@ async function read(feed) {
     let source = text(it.source) || feed.name;
     // Google News puts " - Outlet" at the end of the title.
     if (feed.name === 'Google News' && source && title.endsWith(` - ${source}`)) title = title.slice(0, -(source.length + 3));
-    const link = text(it.link?.['@href'] ? it.link['@href'] : it.link);
+    let link = text(it.link?.['@href'] ? it.link['@href'] : it.link);
+    // Bing wraps the publisher's link; keep the real article URL.
+    const real = link.match(/[?&]url=([^&]+)/);
+    if (real) link = decodeURIComponent(real[1]);
+    if (it['News:Source']) source = text(it['News:Source']);
     const date = new Date(text(it.pubDate || it.published || it.updated || it['dc:date']));
-    return { title, link, source, category: feed.category, date: isNaN(+date) ? null : date.toISOString() };
+    return { title, link, source, category: feed.category, date: isNaN(+date) ? null : date.toISOString(), image: imageOf(it) };
   });
 }
 
@@ -49,6 +68,8 @@ for (const feed of feeds) {
 
 const cutoff = Date.now() - MAX_AGE_DAYS * 864e5;
 const seen = new Set();
+// When the same story comes from two feeds, keep the copy that has a picture.
+all.sort((a, b) => (b.image ? 1 : 0) - (a.image ? 1 : 0));
 const items = all
   .filter((i) => i.title && /^https?:\/\//.test(i.link) && (!i.date || +new Date(i.date) > cutoff))
   .filter((i) => {

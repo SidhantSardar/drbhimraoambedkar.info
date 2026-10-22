@@ -1,12 +1,112 @@
 [
-  { "category": "Ambedkar in the news", "name": "Google News", "url": "https://news.google.com/rss/search?q=Ambedkar+when:30d&hl=en-IN&gl=IN&ceid=IN:en" },
-  { "category": "Protests & justice", "name": "Google News", "url": "https://news.google.com/rss/search?q=%22Dalit%22+protest+OR+%22caste+atrocity%22+OR+%22anti-caste%22+when:30d&hl=en-IN&gl=IN&ceid=IN:en" },
-  { "category": "Research & reports", "name": "Google News", "url": "https://news.google.com/rss/search?q=%22caste%22+study+OR+survey+OR+report+OR+research+India+when:30d&hl=en-IN&gl=IN&ceid=IN:en" },
-  { "category": "Social work & community", "name": "Google News", "url": "https://news.google.com/rss/search?q=%22Dalit%22+NGO+OR+scholarship+OR+%22social+work%22+OR+initiative+when:30d&hl=en-IN&gl=IN&ceid=IN:en" },
-  { "category": "Ambedkarite events", "name": "Google News", "url": "https://news.google.com/rss/search?q=%22Ambedkar+Jayanti%22+OR+Deekshabhoomi+OR+%22Ambedkar+memorial%22+OR+%22Chaitya+Bhoomi%22+when:30d&hl=en-IN&gl=IN&ceid=IN:en" },
-  { "category": "Achievers", "name": "Google News", "url": "https://news.google.com/rss/search?q=%22Dalit%22+first+OR+award+OR+honoured+OR+achiever+OR+success+when:30d&hl=en-IN&gl=IN&ceid=IN:en" },
-  { "category": "Constitution & rights", "name": "Google News", "url": "https://news.google.com/rss/search?q=%22Constitution+of+India%22+OR+%22fundamental+rights%22+OR+%22reservation%22+Supreme+Court+when:30d&hl=en-IN&gl=IN&ceid=IN:en" },
-  { "category": "Ambedkarite voices", "name": "Forward Press", "url": "https://www.forwardpress.in/feed/" },
-  { "category": "Ambedkarite voices", "name": "Round Table India", "url": "https://www.roundtableindia.co.in/feed/" },
-  { "category": "Ambedkarite voices", "name": "The Mooknayak", "url": "https://www.themooknayak.com/feed" }
+ {
+  "category": "Ambedkar in the news",
+  "name": "Bing News",
+  "url": "https://www.bing.com/news/search?q=Ambedkar&format=rss&mkt=en-IN"
+ },
+ {
+  "category": "Ambedkar in the news",
+  "name": "Google News",
+  "url": "https://news.google.com/rss/search?q=Ambedkar+when:30d&hl=en-IN&gl=IN&ceid=IN:en"
+ },
+ {
+  "category": "Protests & justice",
+  "name": "Bing News",
+  "url": "https://www.bing.com/news/search?q=Dalit+protest&format=rss&mkt=en-IN"
+ },
+ {
+  "category": "Protests & justice",
+  "name": "Bing News",
+  "url": "https://www.bing.com/news/search?q=caste+discrimination&format=rss&mkt=en-IN"
+ },
+ {
+  "category": "Protests & justice",
+  "name": "Google News",
+  "url": "https://news.google.com/rss/search?q=%22Dalit%22+protest+OR+%22caste+atrocity%22+OR+%22anti-caste%22+when:30d&hl=en-IN&gl=IN&ceid=IN:en"
+ },
+ {
+  "category": "Research & reports",
+  "name": "Bing News",
+  "url": "https://www.bing.com/news/search?q=caste+survey&format=rss&mkt=en-IN"
+ },
+ {
+  "category": "Research & reports",
+  "name": "Bing News",
+  "url": "https://www.bing.com/news/search?q=caste+census&format=rss&mkt=en-IN"
+ },
+ {
+  "category": "Research & reports",
+  "name": "Google News",
+  "url": "https://news.google.com/rss/search?q=%22caste%22+study+OR+survey+OR+report+OR+research+India+when:30d&hl=en-IN&gl=IN&ceid=IN:en"
+ },
+ {
+  "category": "Social work & community",
+  "name": "Bing News",
+  "url": "https://www.bing.com/news/search?q=Dalit+scholarship&format=rss&mkt=en-IN"
+ },
+ {
+  "category": "Social work & community",
+  "name": "Bing News",
+  "url": "https://www.bing.com/news/search?q=Dalit+students&format=rss&mkt=en-IN"
+ },
+ {
+  "category": "Social work & community",
+  "name": "Google News",
+  "url": "https://news.google.com/rss/search?q=%22Dalit%22+NGO+OR+scholarship+OR+%22social+work%22+OR+initiative+when:30d&hl=en-IN&gl=IN&ceid=IN:en"
+ },
+ {
+  "category": "Ambedkarite events",
+  "name": "Bing News",
+  "url": "https://www.bing.com/news/search?q=Deekshabhoomi&format=rss&mkt=en-IN"
+ },
+ {
+  "category": "Ambedkarite events",
+  "name": "Bing News",
+  "url": "https://www.bing.com/news/search?q=Ambedkar+statue&format=rss&mkt=en-IN"
+ },
+ {
+  "category": "Ambedkarite events",
+  "name": "Google News",
+  "url": "https://news.google.com/rss/search?q=%22Ambedkar+Jayanti%22+OR+Deekshabhoomi+OR+%22Ambedkar+memorial%22+OR+%22Chaitya+Bhoomi%22+when:30d&hl=en-IN&gl=IN&ceid=IN:en"
+ },
+ {
+  "category": "Achievers",
+  "name": "Bing News",
+  "url": "https://www.bing.com/news/search?q=Dalit+entrepreneur&format=rss&mkt=en-IN"
+ },
+ {
+  "category": "Achievers",
+  "name": "Bing News",
+  "url": "https://www.bing.com/news/search?q=first+Dalit&format=rss&mkt=en-IN"
+ },
+ {
+  "category": "Achievers",
+  "name": "Google News",
+  "url": "https://news.google.com/rss/search?q=%22Dalit%22+first+OR+award+OR+honoured+OR+achiever+OR+success+when:30d&hl=en-IN&gl=IN&ceid=IN:en"
+ },
+ {
+  "category": "Constitution & rights",
+  "name": "Bing News",
+  "url": "https://www.bing.com/news/search?q=Supreme+Court+reservation&format=rss&mkt=en-IN"
+ },
+ {
+  "category": "Constitution & rights",
+  "name": "Google News",
+  "url": "https://news.google.com/rss/search?q=%22Constitution+of+India%22+OR+%22fundamental+rights%22+OR+%22reservation%22+Supreme+Court+when:30d&hl=en-IN&gl=IN&ceid=IN:en"
+ },
+ {
+  "category": "Ambedkarite voices",
+  "name": "Forward Press",
+  "url": "https://www.forwardpress.in/feed/"
+ },
+ {
+  "category": "Ambedkarite voices",
+  "name": "Round Table India",
+  "url": "https://www.roundtableindia.co.in/feed/"
+ },
+ {
+  "category": "Ambedkarite voices",
+  "name": "The Mooknayak",
+  "url": "https://www.themooknayak.com/feed"
+ }
 ]

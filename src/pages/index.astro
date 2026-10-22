@@ -18,7 +18,7 @@ const posts = (await getCollection('blog')).filter((p) => !p.data.draft).sort((a
 const heroImg = byId('ambedkar-1950');
 
 // ---- Live updates: newest first, mixing categories so every kind of news appears ----
-type News = { title: string; link: string; source: string; category: string; date: string | null };
+type News = { title: string; link: string; source: string; category: string; date: string | null; image?: string | null };
 const news = loadJSON<{ updated?: string; items: News[] }>('news', { items: [] });
 const CAT: Record<string, { cls: string; label: string }> = {
   'Protests & justice': { cls: 'cat-protests', label: 'Protest & justice' },
@@ -30,8 +30,23 @@ const CAT: Record<string, { cls: string; label: string }> = {
   'Ambedkar in the news': { cls: 'cat-events', label: 'Ambedkar' },
   'Ambedkarite voices': { cls: 'cat-voices', label: 'Voices' },
 };
+const FALLBACK: Record<string, string> = {
+  'Protests & justice': 'bhima-koregaon-vijaystambha-1927',
+  'Research & reports': 'riddles-in-hinduism-handwriting',
+  'Social work & community': 'peoples-education-society-1945',
+  'Ambedkarite events': 'ambedkar-jayanti-2026',
+  Achievers: 'scf-womens-conference-nagpur-1942',
+  'Constitution & rights': 'constitution-preamble-page-calligraphed',
+  'Ambedkar in the news': 'ambedkar-portrait-classic',
+  'Ambedkarite voices': 'mooknayak-bahishkrit-bharat-mastheads',
+};
+const thumbFor = (n: News & { image?: string | null }) => {
+  if (n.image) return n.image;
+  const f = byId(FALLBACK[n.category] || 'ambedkar-portrait-classic');
+  return f ? url(`/images/r/${f.file.split('/').pop()!.replace(/\.[^.]+$/, '')}-480.webp`) : '';
+};
 const buckets = new Map<string, News[]>();
-for (const n of [...news.items].sort((a, b) => String(b.date).localeCompare(String(a.date)))) {
+for (const n of [...news.items].sort((a: any, b: any) => (b.image ? 1 : 0) - (a.image ? 1 : 0) || String(b.date).localeCompare(String(a.date)))) {
   if (!buckets.has(n.category)) buckets.set(n.category, []);
   buckets.get(n.category)!.push(n);
 }
@@ -83,41 +98,38 @@ const milestones = [
 ];
 ---
 <Base image={heroImg ? url(heroImg.file) : undefined}>
-  <!-- 1. HERO: full photograph + live updates -->
+  <!-- 1. HERO: full photograph + full-height live updates column -->
   <section class="hero-full">
     {heroImg && <div class="bg"><Picture img={heroImg} eager sizes="100vw" alt="" /></div>}
-    <div class="wrap hero-full-grid">
-      <div>
-        <span class="eyebrow">1891 – 1956 · Scholar · Economist · Jurist · Reformer</span>
-        <h1>Dr. Bhimrao<br />Ramji Ambedkar<span>His life, his work and his struggle — together in one place</span></h1>
-        <p class="lede">The boy who was not allowed to drink from the school tap became one of the most educated people of his time, and led the writing of the Constitution that promises every Indian equal dignity.</p>
-        <div class="btn-row" style="margin-top:28px">
-          <a class="btn btn-light" href={url('/life/')}>Begin his story →</a>
-          <a class="btn btn-ghost" href={url('/constitution/')}>The Constitution</a>
-          <a class="btn btn-ghost" href={url('/ask/')}>Ask the archive</a>
-        </div>
+    <div class="hero-main">
+      <span class="eyebrow">1891 – 1956 · Scholar · Economist · Jurist · Reformer</span>
+      <h1>Dr. Bhimrao Ramji Ambedkar<span>The boy who was not allowed to drink from the school tap became one of the most educated people of his time — and led the writing of the Constitution that promises every Indian equal dignity.</span></h1>
+      <div class="btn-row">
+        <a class="btn btn-light" href={url('/life/')}>Begin his story →</a>
+        <a class="btn btn-ghost" href={url('/constitution/')}>The Constitution</a>
+        <a class="btn btn-ghost" href={url('/ask/')}>Ask the archive</a>
       </div>
-      {updates.length > 0 && (
-        <aside class="ticker" aria-label="Live updates">
-          <div class="ticker-head">
-            <strong><span class="live-dot" aria-hidden="true"></span>Live updates</strong>
-            {news.updated && <span>Updated {new Date(news.updated).toLocaleString('en-IN', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit', timeZone: 'Asia/Kolkata' })} IST</span>}
-          </div>
-          <div class="ticker-view">
-            <ul class="ticker-list" style={`--dur:${updates.length * 5}s`}>
-              {[...updates, ...updates].map((n, i) => (
-                <li aria-hidden={i >= updates.length ? 'true' : undefined}>
-                  <span class={`cat ${CAT[n.category]?.cls || ''}`}>{CAT[n.category]?.label || n.category}</span>
-                  <a href={n.link} target="_blank" rel="noopener noreferrer nofollow" tabindex={i >= updates.length ? -1 : undefined} lang={/[ऀ-ॿ]/.test(n.title) ? 'hi' : undefined}>{n.title}</a>
-                  <small>{n.source}{n.date ? ` · ${ago(n.date)}` : ''}</small>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div class="ticker-foot"><span class="muted" style="color:rgb(255 255 255 / 55%)">Protests · research · social work · events · achievers</span><a href={url('/news/')}>All news →</a></div>
-        </aside>
-      )}
     </div>
+    {updates.length > 0 && (
+      <aside class="ticker" aria-label="Live updates">
+        <div class="ticker-head"><strong><span class="live-dot" aria-hidden="true"></span>Live updates</strong></div>
+        <div class="ticker-view">
+          <ul class="ticker-list" style={`--dur:${updates.length * 6}s`}>
+            {[...updates, ...updates].map((n, i) => (
+              <li aria-hidden={i >= updates.length ? 'true' : undefined}>
+                <div class="ticker-thumb"><img src={thumbFor(n)} alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" /></div>
+                <div>
+                  <span class={`cat ${CAT[n.category]?.cls || ''}`}>{CAT[n.category]?.label || n.category}</span>
+                  <a href={n.link} target="_blank" rel="noopener noreferrer nofollow" tabindex={i >= updates.length ? -1 : undefined} lang={/[\u0900-\u097F]/.test(n.title) ? 'hi' : undefined}>{n.title}</a>
+                  <small>{n.source}</small>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div class="ticker-foot"><span style="color:rgb(255 255 255 / 55%)">Protests · research · social work · events · achievers</span><a href={url('/news/')}>All news →</a></div>
+      </aside>
+    )}
     {heroImg && <p class="credit">{heroImg.caption} {credit(heroImg)} · <a href={heroImg.sourceUrl} target="_blank" rel="noopener noreferrer">{heroImg.sourceName}</a></p>}
   </section>
 
@@ -169,34 +181,35 @@ const milestones = [
     </div>
   </section>
 
-  <!-- 4. LIFE STORY: vertical portraits -->
-  <section class="section">
-    <div class="wrap">
-      <div class="sec-head">
-        <div>
-          <span class="eyebrow">The life story</span>
-          <h2>His life, in {life.length} chapters</h2>
-        </div>
-        <p>From the world before his birth to the movement that lives on today. Short, simple and sourced.</p>
-      </div>
-      <div class="vgrid">
-        {life.map((c, i) => {
-          const img = heroFor(c.id);
-          return (
-            <a class={`vcard ${i === 0 ? 'vcard-wide' : ''}`} href={url(`/life/${c.id}/`)}>
-              {img && <Picture img={img} sizes={i === 0 ? '100vw' : '(min-width:900px) 300px, 50vw'} alt="" />}
-              <span class="num">{String(i + 1).padStart(2, '0')}</span>
-              <div class="vbody">
-                <span class="period">{c.data.period}</span>
-                <h3>{c.data.title}</h3>
-                {c.data.summary && <p>{c.data.summary}</p>}
-              </div>
-            </a>
-          );
-        })}
-      </div>
+  <!-- 4. LIFE STORY: full-screen walkthrough -->
+  <section class="walk-intro">
+    <div class="wrap sec-head" style="margin-bottom:0">
+      <div><span class="eyebrow">The life story</span><h2>His life, in {life.length} chapters</h2></div>
+      <p>Scroll through his life. Each picture stays on screen while its story passes over it — then the next chapter begins.</p>
     </div>
   </section>
+  <div class="walk">
+    {life.map((c, i) => {
+      const img = heroFor(c.id);
+      const cover = img && (img.width || 0) >= 1100 && (img.width || 0) >= (img.height || 0);
+      return (
+        <section class="walk-item">
+          <div class={`walk-media ${cover ? 'cover' : ''}`}>
+            {img && <div class="blur"><Picture img={img} sizes="40vw" alt="" /></div>}
+            {img && <div class="fg"><Picture img={img} sizes="100vw" alt={img.caption} /></div>}
+            <div class="walk-corner"><span class="n">{String(i + 1).padStart(2, '0')}</span><span class="p">{c.data.period}</span></div>
+          </div>
+          <div class="walk-text">
+            <span class="k">Chapter {i + 1}</span>
+            <h3>{c.data.title}</h3>
+            {c.data.summary && <p>{c.data.summary}</p>}
+            <a class="more" href={url(`/life/${c.id}/`)}>Read this chapter →</a>
+            {img && <span class="cap">{img.caption} {credit(img)}</span>}
+          </div>
+        </section>
+      );
+    })}
+  </div>
 
   <!-- 5. EDUCATION: wide image band -->
   {bandEdu && (
