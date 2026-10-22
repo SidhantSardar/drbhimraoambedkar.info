@@ -2,185 +2,132 @@
 import Base from '../layouts/Base.astro';
 import Picture from '../components/Picture.astro';
 import { url } from '../lib/site';
-import { chapters, images, type Img } from '../lib/data';
+import { chapters, images, loadJSON, type Img, type Work, type Speech } from '../lib/data';
 import { heroFor, credit } from '../lib/images-core.mjs';
+import { volumes } from '../lib/library';
 import { loadNews, mixed, catOf, thumbFor, fallbackFor, ONERROR, isHindi, cleanTitle } from '../lib/news';
 
 const life = await chapters();
-
 const imgs = images();
 const byId = (id: string) => imgs.find((i) => i.id === id) as Img | undefined;
 
-// ---- Hero ----
 const heroImg = byId('ambedkar-1950');
-
-// ---- News ----
-const news = loadNews();
-const updates = mixed(news.stories, 30);
-const latest = mixed(news.stories, 6);
-
-// ---- Then & now ----
-const pairs = [
-  { then: 'mhow-cantonment-quarters-c1900', now: 'bhim-janmabhoomi-memorial-mhow', thenLabel: 'c. 1900', title: 'Mhow', place: 'Madhya Pradesh · birthplace', text: 'He was born in this army town on 14 April 1891. His birthplace is now Bhim Janmabhoomi, a memorial.', href: '/life/childhood/' },
-  { then: 'elphinstone-college-1904', now: 'elphinstone-college-mumbai-2020', thenLabel: '1904', title: 'Elphinstone College', place: 'Mumbai · student', text: 'The college where he earned his BA in 1912 — one of the very few from his community to reach university.', href: '/life/school-years/' },
-  { then: 'columbia-university-birds-eye-view-1916', now: 'columbia-low-memorial-library-2021', thenLabel: '1916', title: 'Columbia University', place: 'New York · scholar', text: 'He arrived in July 1913 on a scholarship from the Maharaja of Baroda, and left with an MA and the work for a PhD.', href: '/life/columbia/' },
-  { then: 'chavdar-tale-mahad-1927', now: 'chavdar-tale-ambedkar-statue-mahad', thenLabel: '1927', title: 'Chavdar Tale', place: 'Mahad · the water struggle', text: 'In March 1927 he led thousands to drink from this public tank — water they had been forbidden to touch.', href: '/life/awakening/' },
-  { then: 'kala-rama-temple-nashik-c1870', now: 'kalaram-temple-nashik-2024', thenLabel: 'c. 1870', title: 'Kalaram Temple', place: 'Nashik · temple entry', text: 'From 1930 his followers stood at these closed doors for years, demanding the right to enter.', href: '/life/round-table/' },
-  { then: 'siddharth-college-1946', now: 'siddharth-college-mumbai-2015', thenLabel: '1946', title: 'Siddharth College', place: 'Mumbai · educator', text: 'The college he founded in 1946 so that poor and excluded students could study. It still teaches today.', href: '/life/politics/' },
-  { then: 'twenty-two-vows-deekshabhoomi-1956', now: 'deekshabhoomi-nagpur-2015', thenLabel: '14 Oct 1956', title: 'Deekshabhoomi', place: 'Nagpur · a new path', text: 'Here he embraced Buddhism with hundreds of thousands of people. A great stupa now stands on the ground.', href: '/life/buddhism/' },
-  { then: 'funeral-procession-bombay-1956', now: 'chaitya-bhoomi-2024', thenLabel: '7 Dec 1956', title: 'Chaitya Bhoomi', place: 'Mumbai · resting place', text: 'A vast crowd carried him to the sea shore at Dadar. Every 6 December, lakhs return to remember him.', href: '/life/final-days/' },
-].map((p) => ({ ...p, a: byId(p.then), b: byId(p.now) })).filter((p) => p.a && p.b);
-
-const traces = [
-  { id: 'law-minister-at-office-1950', title: 'At his desk, 1950', text: 'As India\'s first Law Minister, on the telephone in his office.', cls: 't-big' },
-  { id: 'bed-pune-museum', title: 'His last bed?', text: 'At the Ambedkar Museum, Pune — described by the photographer as the bed on which he died.', cls: '' },
-  { id: '10-king-henrys-road-london', title: '10 King Henry\'s Road', text: 'His London home as a student (plaque: 1921–22), now Ambedkar House.', cls: 't-tall' },
-  { id: 'rajgruha-dadar-2024', title: 'Rajgriha, Mumbai', text: 'The house he built for his books.', cls: '' },
-  { id: 'riddles-in-hinduism-handwriting', title: 'In his own hand', text: 'Handwriting from the manuscript of Riddles in Hinduism.', cls: '' },
-  { id: 'ashes-urn-deekshabhoomi', title: 'The urn at Deekshabhoomi', text: 'Part of his ashes, kept in Nagpur.', cls: '' },
-  { id: 'ambedkar-reading-a-book', title: 'Among his books', text: 'Absorbed in reading in his large library.', cls: '' },
-  { id: 'twenty-two-vows-inscription-deekshabhoomi', title: 'The 22 vows', text: 'The vows he gave in 1956, inscribed at Deekshabhoomi.', cls: '' },
-].map((t) => ({ ...t, img: byId(t.id) })).filter((t) => t.img);
-
 const bandConst = byId('constituent-assembly-first-day-1946');
 
+const pages = volumes().reduce((s, v) => s + v.pages, 0);
+const works = loadJSON<Work[]>('works', []).length;
+const speeches = loadJSON<Speech[]>('speeches', []).length;
 
+// Live updates: newest first, every kind of news represented
+const news = loadNews();
+const updates = mixed(news.stories, 36);
+const cats = [...new Set(updates.map((n) => n.category))];
 ---
 <Base image={heroImg ? url(heroImg.file) : undefined}>
-  <!-- 1. HERO: full photograph + full-height live updates column -->
+  <!-- 1. HERO -->
   <section class="hero-full">
     {heroImg && <div class="bg"><Picture img={heroImg} eager sizes="100vw" alt="" /></div>}
+    <div class="hero-fx" aria-hidden="true"><span class="grid-floor"></span><span class="scan"></span></div>
+
     <div class="hero-main">
+      <a class="status-pill" href={url('/ask/')}>
+        <span class="live-dot" aria-hidden="true"></span>
+        Archive online · {pages.toLocaleString('en-IN')} pages of his writings, searchable
+        <span aria-hidden="true">→</span>
+      </a>
       <span class="eyebrow">1891 – 1956 · Scholar · Economist · Jurist · Reformer</span>
-      <h1>Dr. Bhimrao Ramji Ambedkar<span>The boy who was not allowed to drink from the school tap became one of the most educated people of his time — and led the writing of the Constitution that promises every Indian equal dignity.</span></h1>
+      <h1>Dr. Bhimrao<br />Ramji Ambedkar</h1>
+      <p class="hero-sub">The boy who was not allowed to drink from the school tap became one of the most educated people of his time — and led the writing of the Constitution that promises every Indian equal dignity.</p>
       <div class="btn-row">
-        <a class="btn btn-light" href={url('/life/')}>Begin his story →</a>
-        <a class="btn btn-ghost" href={url('/constitution/')}>The Constitution</a>
+        <a class="btn btn-primary btn-beam" href={url('/life/')}><span>Begin his story →</span></a>
         <a class="btn btn-ghost" href={url('/ask/')}>Ask the archive</a>
       </div>
+      <dl class="hero-stats">
+        <div><dt>Chapters</dt><dd>{life.length}</dd></div>
+        <div><dt>Works</dt><dd>{works}</dd></div>
+        <div><dt>Speeches</dt><dd>{speeches}</dd></div>
+        <div><dt>Pages</dt><dd>{pages.toLocaleString('en-IN')}</dd></div>
+      </dl>
     </div>
+
     {updates.length > 0 && (
       <aside class="ticker" aria-label="Live updates">
-        <div class="ticker-head"><strong><span class="live-dot" aria-hidden="true"></span>Live updates</strong></div>
-        <div class="ticker-view">
+        <div class="ticker-head">
+          <strong><span class="live-dot" aria-hidden="true"></span>Live updates</strong>
+          <p class="ticker-sub">Educate · Agitate · Organise — the movement today</p>
+          <div class="ticker-tags" role="group" aria-label="Filter updates">
+            <button type="button" data-tcat="all" aria-pressed="true">All</button>
+            {cats.map((c) => <button type="button" data-tcat={c} aria-pressed="false" class={catOf({ category: c } as any).cls}>{catOf({ category: c } as any).label}</button>)}
+          </div>
+        </div>
+        <div class="ticker-view" tabindex="0" aria-label="Scroll the updates">
           <ul class="ticker-list" style={`--dur:${updates.length * 6}s`}>
             {[...updates, ...updates].map((n, i) => (
-              <li aria-hidden={i >= updates.length ? 'true' : undefined}>
+              <li data-cat={n.category} aria-hidden={i >= updates.length ? 'true' : undefined}>
                 <div class="ticker-thumb"><img src={thumbFor(n)} data-fallback={fallbackFor(n)} onerror={ONERROR} alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" /></div>
                 <div>
                   <span class={`cat ${catOf(n).cls}`}>{catOf(n).label}</span>
-                  <a href={url(`/news/#${n.id}`)} tabindex={i >= updates.length ? -1 : undefined} lang={isHindi(n.title) ? 'hi' : undefined}>{n.title}</a>
+                  <a href={url(`/news/#${n.id}`)} tabindex={i >= updates.length ? -1 : undefined} lang={isHindi(n.title) ? 'hi' : undefined}>{cleanTitle(n.title)}</a>
                   <small>{n.outlets.length > 1 ? `${n.outlets.length} outlets reporting` : n.outlets[0]}</small>
                 </div>
               </li>
             ))}
           </ul>
         </div>
-        <div class="ticker-foot"><span style="color:rgb(255 255 255 / 55%)">Protests · research · social work · events · achievers</span><a href={url('/news/')}>All news →</a></div>
+        <div class="ticker-foot"><span>Hover to browse</span><a href={url('/news/')}>All news →</a></div>
       </aside>
     )}
     {heroImg && <p class="credit">{heroImg.caption} {credit(heroImg)} · <a href={heroImg.sourceUrl} target="_blank" rel="noopener noreferrer">{heroImg.sourceName}</a></p>}
   </section>
 
-  <!-- 2. LATEST NEWS -->
-  <section class="section latest">
-    <div class="wrap">
-      <div class="sec-head">
-        <div><span class="eyebrow">Latest news</span><h2>Justice, equality and dignity — today</h2></div>
-        <p>Protests, research, social work, events and achievers. Each story is explained on this site, with every source listed.</p>
+  <!-- 2. LIFE STORY: horizontal journey through the chapters -->
+  <section class="hs" id="life-story" aria-label="His life in chapters">
+    <div class="hs-sticky">
+      <div class="hs-head">
+        <div>
+          <span class="eyebrow">The life story</span>
+          <h2>His life, in {life.length} chapters</h2>
+        </div>
+        <div class="hs-meta" aria-hidden="true">
+          <span class="hs-count"><b id="hs-n">01</b> / {String(life.length).padStart(2, '0')}</span>
+          <span class="hs-bar"><i id="hs-bar"></i></span>
+        </div>
       </div>
-      {latest.length > 0 && (
-        <div class="latest-grid">
-          {latest.map((n, i) => (
-            <a class={`latest-card ${catOf(n).cls}`} href={url(`/news/#${n.id}`)}>
-              <span class={`lc-media blob-${i % 4}`}>
-                <img src={thumbFor(n, 480)} data-fallback={fallbackFor(n, 480)} onerror={ONERROR} alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" />
-                <span class={`cat ${catOf(n).cls}`}>{catOf(n).label}</span>
+      <div class="hs-track" id="hs-track">
+        {life.map((c, i) => {
+          const img = heroFor(c.id);
+          const cover = img && (img.width || 0) >= 1100 && (img.width || 0) >= (img.height || 0);
+          return (
+            <a class={`hs-panel ${cover ? 'cover' : ''}`} href={url(`/life/${c.id}/`)}>
+              <span class="hs-media" aria-hidden="true">
+                {img && <span class="blur"><Picture img={img} sizes="30vw" alt="" /></span>}
+                {img && <span class="fg"><Picture img={img} sizes="(min-width: 900px) 70vw, 90vw" alt="" /></span>}
               </span>
-              <span class="lc-body">
-                <strong lang={isHindi(n.title) ? 'hi' : undefined}>{cleanTitle(n.title)}</strong>
-                <small>{n.outlets.length > 1 ? `${n.outlets.length} outlets reporting` : n.outlets[0]}</small>
+              <span class="hs-cap">
+                <span class="hs-k">{String(i + 1).padStart(2, '0')} · {c.data.period}</span>
+                <strong>{c.data.title}</strong>
+                {c.data.summary && <span class="hs-sum">{c.data.summary}</span>}
+                <span class="hs-more">Read chapter →</span>
               </span>
             </a>
-          ))}
+          );
+        })}
+        <div class="hs-panel hs-end">
+          <span class="hs-cap">
+            <span class="hs-k">Keep going</span>
+            <strong>Explore more of his life</strong>
+            <span class="hs-links">
+              <a class="btn btn-primary" href={url('/timeline/')}>Timeline</a>
+              <a class="btn btn-ghost" href={url('/education/')}>Educational journey</a>
+              <a class="btn btn-ghost" href={url('/gallery/')}>Gallery</a>
+            </span>
+          </span>
         </div>
-      )}
-      <div class="btn-row" style="margin-top:36px;justify-content:center"><a class="btn btn-primary" href={url('/news/')}>View all news →</a></div>
+      </div>
     </div>
   </section>
 
-  <div class="godna-band" aria-hidden="true"></div>
-  <!-- 3. THEN & NOW: the real places of his life -->
-  <section class="section">
-    <div class="wrap">
-      <div class="sec-head">
-        <div>
-          <span class="eyebrow">Then &amp; now</span>
-          <h2>Walk where he walked</h2>
-        </div>
-        <p>The real places of his life — as they looked in his time, and as they stand today. Scroll sideways, then tap any place to read its story.</p>
-      </div>
-      <div class="then-now" id="then-now" tabindex="0" aria-label="Places then and now">
-        {pairs.map((p) => (
-          <a class={`tn tn-${pairs.indexOf(p) % 4}`} href={url(p.href)} style="text-decoration:none;color:inherit">
-            <div class="tn-pair">
-              <figure><Picture img={p.a!} sizes="(min-width:900px) 310px, 43vw" alt={p.a!.caption} /><span class="tn-label">Then · {p.thenLabel}</span></figure>
-              <figure><Picture img={p.b!} sizes="(min-width:900px) 310px, 43vw" alt={p.b!.caption} /><span class="tn-label">Now</span></figure>
-            </div>
-            <div class="tn-body">
-              <span class="cat cat-events">{p.place}</span>
-              <h3>{p.title}</h3>
-              <p>{p.text}</p>
-            </div>
-          </a>
-        ))}
-      </div>
-      <div class="scroll-hint"><span>Scroll for more places</span><div class="scroll-btns"><button type="button" data-scroll="-1" aria-label="Previous places">←</button><button type="button" data-scroll="1" aria-label="Next places">→</button></div></div>
-
-      <div class="traces">
-        {traces.map((t) => (
-          <figure class={`trace ${t.cls}`}>
-            <Picture img={t.img!} sizes="(min-width:900px) 50vw, 50vw" alt={t.img!.caption} />
-            <figcaption><strong>{t.title}</strong>{t.text}</figcaption>
-          </figure>
-        ))}
-      </div>
-      <p class="muted" style="font-size:0.85rem;margin-top:14px">All photographs are public domain or freely licensed. <a href={url('/gallery/')}>See every picture with its full credit →</a></p>
-    </div>
-  </section>
-
-  <div class="godna-band" aria-hidden="true"></div>
-  <!-- 4. LIFE STORY: full-screen walkthrough -->
-  <section class="walk-intro">
-    <div class="wrap sec-head" style="margin-bottom:0">
-      <div><span class="eyebrow">The life story</span><h2>His life, in {life.length} chapters</h2></div>
-      <p>Scroll through his life. Each picture stays on screen while its story passes over it — then the next chapter begins.</p>
-    </div>
-  </section>
-  <div class="walk">
-    {life.map((c, i) => {
-      const img = heroFor(c.id);
-      const cover = img && (img.width || 0) >= 1100 && (img.width || 0) >= (img.height || 0);
-      return (
-        <section class="walk-item">
-          <div class={`walk-media ${cover ? 'cover' : ''}`}>
-            {img && <div class="blur"><Picture img={img} sizes="40vw" alt="" /></div>}
-            {img && <div class="fg"><Picture img={img} sizes="100vw" alt={img.caption} /></div>}
-            <div class="walk-corner"><span class="n">{String(i + 1).padStart(2, '0')}</span><span class="p">{c.data.period}</span></div>
-          </div>
-          <div class="walk-text">
-            <span class="k">Chapter {i + 1}</span>
-            <h3>{c.data.title}</h3>
-            {c.data.summary && <p>{c.data.summary}</p>}
-            <a class="more" href={url(`/life/${c.id}/`)}>Read this chapter →</a>
-            {img && <span class="cap">{img.caption} {credit(img)}</span>}
-          </div>
-        </section>
-      );
-    })}
-  </div>
-
-  <!-- 5. CONSTITUTION: flagship band -->
+  <!-- 3. CONSTITUTION -->
   <section class="band">
     {bandConst && <div class="bg"><Picture img={bandConst} sizes="100vw" alt="" /></div>}
     <div class="wrap band-inner">
@@ -194,7 +141,7 @@ const bandConst = byId('constituent-assembly-first-day-1946');
         <div class="stat"><strong>Article 32</strong><span>"The very soul of the Constitution"</span></div>
       </div>
       <div class="btn-row">
-        <a class="btn btn-light" href={url('/constitution/')}>Explore the Constitution →</a>
+        <a class="btn btn-primary" href={url('/constitution/')}>Explore the Constitution →</a>
         <a class="btn btn-ghost" href={url('/constitution/#documents')}>Download the official text</a>
       </div>
     </div>
@@ -203,11 +150,116 @@ const bandConst = byId('constituent-assembly-first-day-1946');
 
   <script is:inline>
     (function () {
-      var row = document.getElementById('then-now');
-      if (!row) return;
-      document.querySelectorAll('[data-scroll]').forEach(function (b) {
-        b.addEventListener('click', function () { row.scrollBy({ left: Number(b.dataset.scroll) * row.clientWidth * 0.8, behavior: 'smooth' }); });
+      /* ---------- Live updates: auto-scroll, hover to browse, filter by tag ---------- */
+      var ticker = document.querySelector('.ticker');
+      if (ticker) {
+        var view = ticker.querySelector('.ticker-view');
+        var list = ticker.querySelector('.ticker-list');
+        var manual = false;
+        var offsetNow = function () {
+          var t = getComputedStyle(list).transform;
+          return t && t !== 'none' ? -new DOMMatrixReadOnly(t).m42 : 0;
+        };
+        var toManual = function () {
+          if (manual) return;
+          var off = offsetNow();
+          manual = true;
+          list.style.animation = 'none';
+          view.classList.add('manual');
+          view.scrollTop = off;
+        };
+        var toAuto = function () {
+          if (!manual) return;
+          var half = list.scrollHeight / 2;
+          var dur = parseFloat(list.style.getPropertyValue('--dur')) || 120;
+          var off = half ? view.scrollTop % half : 0;
+          manual = false;
+          view.classList.remove('manual');
+          view.scrollTop = 0;
+          list.style.animation = '';
+          list.style.animationDelay = (half ? -(off / half) * dur : 0) + 's';
+        };
+        ticker.addEventListener('pointerenter', function (e) { if (e.pointerType === 'mouse') toManual(); });
+        ticker.addEventListener('pointerleave', function (e) { if (e.pointerType === 'mouse') toAuto(); });
+        view.addEventListener('touchstart', toManual, { passive: true });
+        view.addEventListener('focusin', toManual);
+        var tags = ticker.querySelectorAll('[data-tcat]');
+        tags.forEach(function (b) {
+          b.addEventListener('click', function () {
+            var c = b.dataset.tcat, shown = 0;
+            tags.forEach(function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+            list.querySelectorAll('li').forEach(function (li) {
+              var ok = c === 'all' || li.dataset.cat === c;
+              li.hidden = !ok;
+              if (ok) shown++;
+            });
+            list.style.setProperty('--dur', Math.max(20, (shown / 2) * 6) + 's');
+            list.style.animationDelay = '0s';
+            view.scrollTop = 0;
+          });
+        });
+      }
+
+      /* ---------- Life story: vertical scroll drives a smooth horizontal journey ---------- */
+      var sec = document.querySelector('.hs');
+      if (!sec) return;
+      var sticky = sec.querySelector('.hs-sticky');
+      var track = sec.querySelector('.hs-track');
+      var panels = track.querySelectorAll('.hs-panel');
+      var nEl = document.getElementById('hs-n'), bar = document.getElementById('hs-bar');
+      var mq = window.matchMedia('(min-width: 900px) and (prefers-reduced-motion: no-preference)');
+      var dist = 0, target = 0, cur = 0, raf = 0;
+      var label = function (p) {
+        var i = Math.min(panels.length - 1, Math.round(p * (panels.length - 1)));
+        nEl.textContent = String(Math.min(i + 1, panels.length - 1)).padStart(2, '0');
+        bar.style.transform = 'scaleX(' + p + ')';
+      };
+      var tick = function () {
+        cur += (target - cur) * 0.12;
+        if (Math.abs(target - cur) < 0.4) cur = target;
+        track.style.transform = 'translate3d(' + -cur + 'px,0,0)';
+        label(dist ? cur / dist : 0);
+        raf = cur !== target ? requestAnimationFrame(tick) : 0;
+      };
+      var onScroll = function () {
+        if (!mq.matches) return;
+        var total = sec.offsetHeight - sticky.offsetHeight;
+        var p = total > 0 ? Math.min(1, Math.max(0, -sec.getBoundingClientRect().top / total)) : 0;
+        target = p * dist;
+        if (!raf) raf = requestAnimationFrame(tick);
+      };
+      var measure = function () {
+        if (!mq.matches) {
+          sec.classList.remove('pinned');
+          sec.style.height = '';
+          track.style.transform = '';
+          return;
+        }
+        sec.classList.add('pinned');
+        dist = Math.max(0, track.scrollWidth - track.clientWidth);
+        sec.style.height = sticky.offsetHeight + dist + 'px';
+        onScroll();
+      };
+      // Touch / small screens: native swipe, keep the counter in sync
+      track.addEventListener('scroll', function () {
+        if (mq.matches) return;
+        var max = track.scrollWidth - track.clientWidth;
+        label(max ? track.scrollLeft / max : 0);
+      }, { passive: true });
+      // Keyboard: bring a focused chapter into view
+      track.addEventListener('focusin', function (e) {
+        if (!mq.matches) return;
+        var p = e.target.closest('.hs-panel');
+        if (!p) return;
+        var total = sec.offsetHeight - sticky.offsetHeight;
+        var want = Math.min(dist, Math.max(0, p.offsetLeft - 40));
+        window.scrollTo({ top: sec.offsetTop + (dist ? (want / dist) * total : 0) });
       });
+      window.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('resize', measure);
+      mq.addEventListener('change', measure);
+      window.addEventListener('load', measure);
+      measure();
     })();
   </script>
 </Base>
