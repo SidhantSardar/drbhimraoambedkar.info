@@ -92,10 +92,12 @@ const bandConst = byId('constituent-assembly-first-day-1946');
       {latest.length > 0 && (
         <div class="latest-grid">
           {latest.map((n, i) => (
-            <a class={`latest-card ${i === 0 ? 'lead' : ''}`} href={url(`/news/#${n.id}`)}>
-              <img src={thumbFor(n, i === 0 ? 960 : 480)} data-fallback={fallbackFor(n, i === 0 ? 960 : 480)} onerror={ONERROR} alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" />
-              <span class="lc-body">
+            <a class={`latest-card ${i === 0 ? 'lead' : ''} ${catOf(n).cls}`} href={url(`/news/#${n.id}`)}>
+              <span class={`lc-media blob-${i % 4}`}>
+                <img src={thumbFor(n, i === 0 ? 960 : 480)} data-fallback={fallbackFor(n, i === 0 ? 960 : 480)} onerror={ONERROR} alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" />
                 <span class={`cat ${catOf(n).cls}`}>{catOf(n).label}</span>
+              </span>
+              <span class="lc-body">
                 <strong lang={isHindi(n.title) ? 'hi' : undefined}>{n.title}</strong>
                 <small>{n.outlets.length > 1 ? `${n.outlets.length} outlets reporting` : n.outlets[0]}</small>
               </span>

@@ -685,3 +685,55 @@ body { background-color: var(--paper); }
 .hero-full .btn-light, .band .btn-light { background: var(--paper); color: var(--ink); }
 .prose blockquote { border-left-color: var(--earth); }
 sup.fn a { color: var(--earth); }
+
+/* =====================================================================
+   Card & tag language (inspired by sedex.com): white rounded cards,
+   soft shadow, a bold category-coloured circle cutting into the image,
+   and dark tags with a coloured icon.
+   ===================================================================== */
+:root { --radius-card: 20px; --card-shadow: 0 1px 3px rgb(20 18 16 / 6%), 0 16px 40px rgb(20 18 16 / 9%); }
+
+/* Category colours */
+.cat-protests { --cat-color: #d6452f; } .cat-research { --cat-color: #2f8a57; } .cat-social { --cat-color: #e6a01e; }
+.cat-events { --cat-color: #1240ab; } .cat-achievers { --cat-color: #d81b6a; } .cat-rights { --cat-color: #0e8aa0; }
+.cat-voices { --cat-color: #8c3b22; }
+
+/* Tags: dark pill with a coloured icon */
+.cat, .cat-protests, .cat-research, .cat-social, .cat-events, .cat-achievers, .cat-rights, .cat-voices { }
+span.cat { display: inline-flex !important; align-items: center; gap: 8px; background: #141210 !important; color: #fff !important; border-radius: 9px; padding: 6px 11px 6px 7px; font-family: var(--font-sans); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; line-height: 1; width: max-content; }
+span.cat::before { content: ''; width: 18px; height: 18px; flex: none; border-radius: 50%; background: var(--cat-color, #1240ab) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 18'%3E%3Cg fill='none' stroke='%23fff' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 11 L9 6 L13 11'/%3E%3C/g%3E%3Ccircle cx='9' cy='13' r='1.2' fill='%23fff'/%3E%3C/svg%3E") center / 18px no-repeat; }
+
+/* Cards */
+.latest-card, .card, .tn, .work, .article-card, .doc { border: 0 !important; border-radius: var(--radius-card) !important; box-shadow: var(--card-shadow); background: #fff !important; overflow: hidden; }
+.latest-card { transition: transform 0.25s ease, box-shadow 0.25s ease; }
+.latest-card:hover, a.card:hover, .tn:hover { transform: translateY(-4px); box-shadow: 0 2px 4px rgb(20 18 16 / 6%), 0 26px 56px rgb(20 18 16 / 14%); }
+.latest-card::after, .tn::after { display: none; }
+.lc-media { position: relative; display: block; overflow: hidden; isolation: isolate; }
+.lc-media img { display: block; width: 100%; aspect-ratio: 16 / 10; object-fit: cover; }
+.latest-card.lead .lc-media img { aspect-ratio: 4 / 3; }
+.lc-media .cat { position: absolute; top: 18px; left: 18px; z-index: 2; }
+/* the coloured circle cutting into a corner */
+.lc-media::after { content: ''; position: absolute; z-index: 1; width: 46%; aspect-ratio: 1; border-radius: 50%; background: var(--cat-color, #1240ab); }
+.blob-0::after { top: -26%; right: -14%; }
+.blob-1::after { top: -30%; left: -16%; }
+.blob-2::after { bottom: -30%; right: -12%; }
+.blob-3::after { top: -22%; right: -18%; width: 40%; }
+.lc-body { padding: 20px 22px 24px; gap: 10px; }
+.lc-body strong { font-family: var(--font-sans); font-weight: 700; font-size: 1.08rem; line-height: 1.32; letter-spacing: -0.01em; color: #141210; }
+.latest-card.lead strong { font-family: var(--font-sans); font-weight: 700; font-size: clamp(1.35rem, 1.1rem + 0.9vw, 1.8rem); line-height: 1.22; letter-spacing: -0.015em; }
+.lc-body small { font-size: 0.8rem; }
+.latest-grid { gap: 28px; }
+
+/* News list tags & detail */
+.news-list .cat { padding: 4px 9px 4px 5px; font-size: 0.64rem; gap: 6px; }
+.news-list .cat::before { width: 14px; height: 14px; background-size: 14px; }
+.news-list strong { font-weight: 700; }
+.story-img { border-radius: 0 0 var(--radius-card) var(--radius-card); position: relative; }
+.story-body h2 { font-family: var(--font-sans); font-weight: 700 !important; letter-spacing: -0.025em; line-height: 1.12; font-size: clamp(1.9rem, 1.4rem + 1.8vw, 2.8rem); }
+.ticker-list .cat { padding: 4px 9px 4px 5px; font-size: 0.62rem; background: #2a2622 !important; }
+.ticker-list .cat::before { width: 14px; height: 14px; background-size: 14px; }
+
+/* Blog & life cards */
+.card-img { aspect-ratio: 16 / 10; }
+.card-body h3 { font-family: var(--font-sans); font-weight: 700 !important; font-size: 1.15rem; letter-spacing: -0.01em; line-height: 1.3; }
+.grid { gap: 28px; }
