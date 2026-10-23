@@ -1021,3 +1021,14 @@ span.cat::before { content: ''; width: 18px; height: 18px; flex: none; border-ra
   :lang(mr) .site-nav summary, :lang(mr) .site-nav a { letter-spacing: 0 !important; text-transform: none !important; }
 }
 @media (max-width: 1079px) { .nav-toggle { white-space: nowrap; } }
+
+/* Mobile home page: no overlaps, clear separation between sections */
+@media (max-width: 999px) {
+  .hero-full .credit { position: static; grid-row: 3; grid-column: 1; max-width: none; text-align: left; padding: 14px var(--gutter) 22px; margin: 0; background: #05060b; }
+  .ticker { min-height: 0; height: auto; }
+  .ticker-view { flex: none; height: min(62svh, 520px); }
+  .ticker-foot { padding-bottom: 16px; }
+  .ls { margin-top: 28px; }
+  .band { margin-top: 28px; }
+  :lang(mr) .ticker-head, :lang(mr) .ticker-sub, :lang(mr) .ticker-tags button, :lang(mr) .ticker-foot { letter-spacing: 0 !important; }
+}
