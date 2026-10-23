@@ -93,3 +93,22 @@ No Kruti Dev text.
 8. **pp. 120–121.** Page-break sentence “…without causing grave disturbance to the | peace and tranquillity of the Presidency” re-balanced so each page keeps its share; reads slightly unusual at the break, reviewer may smooth it.
 9. **p. 121.** Karandikar says “Revenue Member”, Ambedkar replies “Revenue Minister”; the distinction is kept (महसूल सदस्य / महसूलमंत्री).
 10. **Terms.** officiator → सेवा बजावणारा (chapters 8–15 used कामकरी; make consistent); inferior officers/holders → कनिष्ठ अधिकारी/धारक; resumption → खालसा; suspended → तहकूब; commutation → रूपांतर; money cess → रोख कर (chapters 8–15: रोख उपकर); alienation → हस्तांतरण; occupant → कब्जेदार; select committee → प्रवर समिती; proviso → परंतुक; Khot/Khoti → खोत/खोती; Rayatwari → रयतवारी; Tribunal → न्यायाधिकरण; Depressed Classes → दलित वर्ग.
+
+## Chapters 4–6 — On Budget 4 (1939), Finance Act Amendment Bill, Grants for Education (PDF pp. 39–63)
+
+No Kruti Dev text. Stray “zz” kept as printed (p. 52 after “(Applause.)”, p. 57 sole block, p. 63).
+
+1. **p. 41.** “if there was any person or any individual tax, it was certainly the cinema and the theatre” (garbled) → “कोणा व्यक्तीवर किंवा कोणत्या एका गोष्टीवर कर लावायचा असेल, तर ती निश्चितच सिनेमागृहे आणि नाट्यगृहे होती”.
+2. **p. 45.** Excise/population figures inconsistently printed (Great Britain “1,504,895,000” with no unit; Austria “15.96 lacks”; Norway “1,66,72,600”; “Austria—which is now no more but still it was in 1937” though figures are said to be for 1931). All numbers kept exactly; “lacks” → लाख.
+3. **pp. 48–52.** “1.30 lakhs” vs “1,30 lakhs”, “1.69” vs “1,69” — the source wavers; context (total taxation 169 lakhs) shows 130 / 169 lakhs is meant. Each kept exactly as printed in its block; reviewer may normalise.
+4. **p. 42.** “33½ per cent.” for the rise from 1½ to 2 per cent (arithmetically 33⅓) kept as printed.
+5. **p. 44.** “Mannat” → मन्ना (Manna), as the “fall from heaven” context intends; “7,000 itinerary men” → “7,000 फिरस्त्या माणसांना”.
+6. **p. 51.** “destroy industries and other revenues of service in the towns” → “शहरांतील उद्योग आणि सेवांचे इतर उत्पन्न नष्ट करून”.
+7. **p. 55.** Broken English on section 45 and “a continuing penalty for a continuing default” translated literally; “here” left as ambiguous as in the source. “placed the Municipal Corporation of Bombay City in the issue” → “या वादाच्या मध्यभागी आणून ठेवले आहे”.
+8. **p. 56.** “let him come but and as a courageous man … hook it from those who do not want to pay” → “त्यांनी पुढे यावे आणि धाडसी माणसाप्रमाणे … ओरबाडून घ्यावे”.
+9. **p. 62.** “conceived after the fashion of money houses in a museum” (OCR error) → “संग्रहालयातील त्या दालनांच्या धर्तीवर”, keeping the one-specimen-of-every-species image. **Check the printed page.**
+10. **Terms.** reckless / senseless Budget → बेपर्वा / निर्बुद्ध अर्थसंकल्प; first charge → पहिला बोजा; rate / tax → दर / कर; property tax → मालमत्ता कर; Prohibition → दारूबंदी; excise → अबकारी; backward classes → मागासवर्ग; advanced / intermediate Hindus → प्रगत / मध्यम हिंदू; non-Brahmins → ब्राह्मणेतर; “a most cowardly Bill” → अत्यंत भेकड विधेयक; “enemy of the people” → लोकांचा शत्रू; “dung heap” → शेणाचा ढीग.
+
+## Chapters 37–39 — Ministers' Salaries Bill, Probation of Offenders Bill, Tobacco Duty Act Amendment Bill (PDF pp. ~189–202)
+
+The translator stopped at a usage limit after these chapters passed the checks, before sending its notes. No passages were flagged for these three chapters; a reviewer should read them in full.
