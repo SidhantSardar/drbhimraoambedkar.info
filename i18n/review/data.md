@@ -21,3 +21,16 @@
   - आंबावडेकर
   - बेलविंकेल-शेम्प
   - the Mooknayak editors are written with English initials (पी. एन. भाटकर, डी. डी. घोलप)
+
+## Bibliography page
+
+- Original English titles stay in bold, with the Marathi in brackets. Titles not in the glossary are approximations, e.g. "Held at Bay" → रोखून धरलेले.
+- **Confirm the committee name:** डॉ. बाबासाहेब आंबेडकर चरित्र साधने प्रकाशन समिती.
+- **Names to check:**
+  - पां. नं. भटकर
+  - द. दा. घोलप
+  - चां. भ. खैरमोडे
+  - कद्रेकर
+  - सहस्रबुद्धे
+  - इडगुंजी
+  - साळवी
