@@ -348,3 +348,7 @@
   [data-skin='ai'] .docs-toggle::before { border-color: rgb(125 211 252 / 35%); color: #7dd3fc; }
   [data-skin='ai'] .docs-nav { background: #070b16; }
 }
+@media (max-width: 1079px) {
+  [data-skin='ai'] .nav-open .site-header { background: #05060b !important; }
+  [data-skin='ai'] .nav-open .site-nav { background: #070b16 !important; }
+}

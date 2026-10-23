@@ -1013,3 +1013,11 @@ span.cat::before { content: ''; width: 18px; height: 18px; flex: none; border-ra
   .brand-name { font-size: 0.98rem; }
   .brand-name small { display: none; }
 }
+
+/* Mobile menu: open full screen (the header's blur would otherwise trap the fixed menu inside it) */
+@media (max-width: 1079px) {
+  .nav-open .site-header { backdrop-filter: none !important; -webkit-backdrop-filter: none !important; }
+  .nav-open .site-nav { position: fixed; top: 65px; left: 0; right: 0; bottom: 0; height: calc(100dvh - 65px); z-index: 60; overflow-y: auto; }
+  :lang(mr) .site-nav summary, :lang(mr) .site-nav a { letter-spacing: 0 !important; text-transform: none !important; }
+}
+@media (max-width: 1079px) { .nav-toggle { white-space: nowrap; } }
