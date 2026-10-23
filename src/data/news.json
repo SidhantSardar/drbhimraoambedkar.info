@@ -1,60 +1,158 @@
 {
- "updated": "2026-10-23T11:40:24.555Z",
+ "updated": "2026-10-23T17:08:23.692Z",
  "stories": [
   {
-   "id": "dfe8ba80f5",
-   "title": "Dalit Teen Takes His Own Life In Tamil Nadu After Alleged Caste Taunts Over Beef",
-   "category": "Research & reports",
+   "id": "c10f92f12a",
+   "title": "Coimbatore Dalit student’s death: Two classmates arrested, parents continue sit-in demanding headmaster’s arrest",
+   "category": "Protests & justice",
    "image": null,
-   "date": "2026-10-23T11:00:26.000Z",
+   "date": "2026-10-23T12:42:16.000Z",
    "outlets": [
-    "Brut"
+    "The South First"
    ],
    "reports": [
+    {
+     "title": "Coimbatore Dalit student’s death: Two classmates arrested, parents continue sit-in demanding headmaster’s arrest",
+     "outlet": "The South First",
+     "link": "https://news.google.com/rss/articles/CBMi3gFBVV95cUxPQVpXb0NvMjRXT19wZXhrbF9CRGxmR3F6OWJRSV9ZVS1rWmU2MHNIX0dzOWZyZWtIdHlEbTFJdFFtMzZqTS1kWG1zRm5rQ1VoYzNKUUdBMVVhOXBKeEV0UWtpeTZBMWtwZ2hxdG5SOWh6X3drU2xXR1M4OWx5OFRsU1ZCN1dxQWl5bXFJTHZ6UnA3Y3U5bHYzRW4wUExXaGFBZ2xrZDdXMWViNm9CVE1hWUxESjZUdThFVVp6eGpsQVA5aDRER2JnYURXT25jSnRMTXRUR3ZRZ3E5c0s3R1E?oc=5",
+     "date": "2026-10-23T12:42:16.000Z",
+     "snippet": ""
+    }
+   ]
+  },
+  {
+   "id": "f797fceb63",
+   "title": "Class XI Dalit student in TN dies by suicide after alleged caste harassment over beef consumption",
+   "category": "Social work & community",
+   "image": "https://www.bing.com/th?id=ONUT.b0L-mAm9vnM-rDHpALOPNw&pid=News&w=640&h=400&c=7&rs=1",
+   "date": "2026-10-23T12:23:52.000Z",
+   "outlets": [
+    "The Tribune",
+    "Brut",
+    "Rediff",
+    "CNBCTV18",
+    "The Indian Express",
+    "National Herald"
+   ],
+   "reports": [
+    {
+     "title": "Tamil Nadu: Dalit student ends life after alleged caste harassment over beef consumption",
+     "outlet": "The Tribune",
+     "link": "https://news.google.com/rss/articles/CBMixwFBVV95cUxOcE03SDZacGpJUDBZV21KOEV6RDhBTmpjLXR0aUVMUE5XTW1OajRrYkNES1VuRHMxamw3bFZFNUxtZjN4WWp6SWQ2b0ItUEwzSGExYzdERGwwTzhPZ0RQTFlZU0JzQ0pVVkliN3g3cG93Ri1RbWdlS2dYNDJBTVRqbFFyNm9xUUIybHd4NzZ5Vzk4Vl9tOHZqRWxfWmVnTWVLZmc1QTdOVkpma2VLUDhyNXEzbk9kcnJaWHp1b3MxNWdaSTRWTjlv0gHLAUFVX3lxTE13MGFDYXV4aXhfWmhTMnNwM3BZRzZnd1VyRWVvMlYzNmt6ckdxeEVSSzJxLWJlVUl5V2ZIcnp5bzRncm1oN05faUhISGVnM185OWdHLWY0U09jYkItZnNvNVhWS052b0thLXI1bmJSV3RIN2xQd2draGRTXzFWUWctWjIxOFh1OGJ4cVp5NmR0TXNod012Tzd4SXNzRmpYMEl4cDdyREFmWkYzOHFLTGRqZHl6bnVXUnYxZzRKNkE1cWw1TV9TZTZQeTRB?oc=5",
+     "date": "2026-10-23T12:23:52.000Z",
+     "snippet": ""
+    },
     {
      "title": "Dalit Teen Takes His Own Life In Tamil Nadu After Alleged Caste Taunts Over Beef",
      "outlet": "Brut",
      "link": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxNODg4akI3MjFzak5jc1doUm80aHlWUFEzNlRHYlZoWWJZemk5ckVvWUZsVk5HcFhVTTJZbnF6MS15ckF1UFJHMlRFZTJwbTIzdktyUUxuV2swWDY2V2g3WXJ3d1hIMDFxb0Z2Sm05NHBCeXIxeDhIVXFCLThZZFJFUm5GTDBDVFJnejVyUFh0TVBWQ21qR3JsTzlSa0c4YVd0X1RHUUpyRmNxcEFrRGQzNExzdFEyZGM3SUFYVWdzOVdETkd2b0dKY0M4TS04S2Y0NVgtSw?oc=5",
      "date": "2026-10-23T11:00:26.000Z",
      "snippet": ""
+    },
+    {
+     "title": "Dalit student ends life over harassment for consuming beef",
+     "outlet": "Rediff",
+     "link": "https://news.google.com/rss/articles/CBMi2gFBVV95cUxNT3FUejdwWHkxQ0lvckhGeXZxQ1RVbVlRb1MxbEZjMUh6LVlDd2NuYmNvZkxWU1ktX0Q1WVUwX29KcDVya0VNQnBaVUc1RTFUd1RFbEE3NVg0NkJjZ2QyMTRMcGx2SllZWGhVaVcxSTFMX1hUNkNvTEVTZmV0SnJBZnBCN1AxQVBpTGVPTV8wNHlPd294MEh1QldZVG5tZTAyQ0hUNDNwZ3B1N0JPcnBsZWRleGV0QVcxUHFJakVEN1NONUJpMVc0YW5zN0ZnNHdlcUs4TkstVGJQZ9IB3AFBVV95cUxPLUJmV25ySTAyWDljdHJxc01vQzZDdzZ4bFFRWlA3eGpxb01rR2syaGUxbWdOYnRrWlhyUmdPbnFWM180ZkF4YkREMUh4NUlmT0tVS1dMS1VlS2ExdUE3MF9kM3BSVzV0c0VFRDNNVUVha19wWlI4eXZwRWpPaV9lY1BOamlQQjJyTkNlOG5DSXFmZkFlRTJxNDNxRDREemNWSUY0SVhTZk13ZFZwRWdvLUpYdG9zcVJwaXBWV0FJRHptdndyV0Uzdmk1anl6ay1EY0Z6TmFndUxoMUh6?oc=5",
+     "date": "2026-10-23T08:57:10.000Z",
+     "snippet": ""
+    },
+    {
+     "title": "Class XI Dalit student in TN dies by suicide after alleged caste harassment over beef consumption",
+     "outlet": "CNBCTV18",
+     "link": "https://www.cnbctv18.com/india/class-xi-dalit-student-in-tn-dies-by-suicide-after-alleged-caste-harassment-over-beef-consumption-20018330.htm",
+     "date": "2026-10-23T08:07:00.000Z",
+     "snippet": "A Class XI Dalit student allegedly died by suicide at his residence in Peelamedu here on October 21 following alleged castebased harassment and bullying by classmates over his caste and choice of food ..."
+    },
+    {
+     "title": "Taunted for ‘eating beef’, Dalit student dies by suicide in Tamil Nadu",
+     "outlet": "The Indian Express",
+     "link": "https://indianexpress.com/article/india/dalit-student-suicide-eating-beef-teacher-coimbatore-10933501/",
+     "date": "2026-10-23T02:12:00.000Z",
+     "snippet": "The mother said she had considered approaching the school herself but abandoned the idea because the student feared that doing so could further isolate him and make him a target."
+    },
+    {
+     "title": "Tamil Nadu: Dalit teen dies by suicide after alleged caste bullying over beef",
+     "outlet": "National Herald",
+     "link": "https://www.nationalheraldindia.com/national/coimbatore-dalit-student-suicide-caste-bullying-beef",
+     "date": "2026-10-22T21:14:00.000Z",
+     "snippet": "Class XI student’s family demands arrests; class teacher held as police book four, including principal and two classmates ..."
     }
    ]
   },
   {
-   "id": "ba533f409c",
-   "title": "27% OBC आरक्षण के समर्थन में भोपाल समेत 100 से अधिक स्थानों पर सरकार के पुतले दहन",
-   "category": "Ambedkarite voices",
-   "image": "https://cf-images.assettype.com/themooknayak/2026-10-23/y2igpcen/1002669449.png",
-   "date": "2026-10-23T10:06:47.000Z",
+   "id": "2ab37b1fb3",
+   "title": "Coimbatore Dalit student dies by suicide over caste discrimination, teacher arrested",
+   "category": "Social work & community",
+   "image": "https://www.bing.com/th?id=ONUT.RrdtPhren9ofHUcI_KrxzQ&pid=News&w=640&h=400&c=7&rs=1",
+   "date": "2026-10-23T12:18:31.000Z",
    "outlets": [
-    "The Mooknayak"
+    "Rediff",
+    "The Indian Express",
+    "The News Minute",
+    "India Today",
+    "Citizens for Justice and Peace | CJP"
    ],
    "reports": [
     {
-     "title": "27% OBC आरक्षण के समर्थन में भोपाल समेत 100 से अधिक स्थानों पर सरकार के पुतले दहन",
-     "outlet": "The Mooknayak",
-     "link": "https://www.themooknayak.com/obc-news/effigies-of-the-government-burnt-in-over-100-locations-including-bhopal-in-support-of-27-obc-reservation",
-     "date": "2026-10-23T10:06:47.000Z",
-     "snippet": "भोपाल। मध्य प्रदेश में ओबीसी आरक्षण के मुद्दे पर सरकार के खिलाफ विरोध तेज हो गया है। गुरुवार को राजधानी भोपाल के बोर्ड ऑफिस चौराहे सहित प्रदेश के 100 से अधिक तहसील और जिला मुख्यालयों पर मध्य प्रदेश सरकार के पुतले दहन किए गए। यह कार्यक्रम आजाद समाज पार्टी (आसपा) और दलित पिछड़ा आदिवासी संगठन (DPAS) सहित विभिन्न संगठनों के कार्यकर्ताओं ने किया। अंबेडकर प्रतिमा के पास जुटे कार्यकर्ता भोपाल में डॉ. भीम"
+     "title": "Caste Bullying Allegations After Dalit Student's Suicide In Coimbatore",
+     "outlet": "Rediff",
+     "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxPUGliRUJ2RlNoYTlsdWZOcnYzMnQxMlY0MDBfdWkxRUZDamEzZl9tVG5JLWdWemFfc25NN2haNHlaa0I4Ym43VThPMmF1eVJzdFJnekdCNFJfXzNlX0MzQS1xMlA3ZG9ROC1rX09ZNTM0VlV3cXQzOWZwenVlSm1ZVlFLeXRWWkpoTV9QNWlHd1Bod0tqOHpEc08wTXZiaWYwU2ZvV0ZSdi15a0VNRmdhONIBswFBVV95cUxONTBZTUgydGo5RnNqOVlPbUhRRlF4eTJIX2hjdFhzcmhSM2pjcUpmT2l5Wk9TVGlmSzJaWHJJS29tOXZIZnNCUDU5bUhqYzh6dXlGdDFQbDNPR1VxUzBHeVVwbnFuOGoxUDNvRmcyLWJrRnRQNF9DaFlKa1NDXzZrajdaNmdGd0d4ZTNKS2R3R3dKcUFZY0RJOW0zbTJkOV9ic2syVkVYT19FMHVFRU5HSGVUbw?oc=5",
+     "date": "2026-10-23T12:18:31.000Z",
+     "snippet": ""
+    },
+    {
+     "title": "Dalit student dies by suicide after ‘taunts over eating beef’, teacher booked in Coimbatore",
+     "outlet": "The Indian Express",
+     "link": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxNU2VLbDg2TzF4UkRQc1YycUltV2g5UTNtazRxZzlLcFBSVGZfa2tjODhvdGVfNHd1Q0xZZDJHQVZXMjMtZzdmWnZsaGhQd0o5V3o5aGdrNjU1VklTZm1MTkY2N05vOHZaU3IySzBIM1p2NWpRS3h1cDJ5V09tY0JFVzJkQjIzbEpuWl9YS09Ia1FQZFJsV1JNRjl5M1lNMWhCbmVWb05xTmM3X03SAasBQVVfeXFMTVNlS2w4Nk8xeFJEUHNWMnFJbVdoOVEzbWs0cWc5S3BQUlRmX2trYzg4b3RlXzR3dUNMWWQyR0FWVzIzLWc3Zlp2bGhoUHdKOVd6OWhnazY1NVZJU2ZtTE5GNjdObzh2WlNyMkswSDNadjVqUUt4dXAyeVdPbWNCRVcyZEIyM2xKblpfWEtPSGtRUGRSbFdSTUY5eTNZTTFoQm5lVm9OcU5jN19N?oc=5",
+     "date": "2026-10-23T08:10:59.000Z",
+     "snippet": ""
+    },
+    {
+     "title": "Coimbatore Dalit student dies by suicide over caste discrimination, teacher arrested",
+     "outlet": "The News Minute",
+     "link": "https://news.google.com/rss/articles/CBMizwFBVV95cUxNTzNlc0ZQd28zOXpPU3Vlek9ybW9rNW9Ob3hTY2NCV3kzN0x6cnlyQTR3bUtlQVNxVzU5QU96ZjN2VGpRQlVZZDRLMUpKc0JZVjhPYWVaZlpWTGhlZnBocjByVDE5M2pXRTJCckMyRVh0N2U4SmRDY2ZyRndxc3ZSWFpxMTRyMjJ5VnVmb25vZ0t6TWJRVkd4Q3UxN2hqSWJEUmRmVUx1QnpZMTR2MGtVcHBVcmw2cVNoZ1ZCbXpPZGxrUlJIRlFWcWtYbzFsZnfSAc8BQVVfeXFMTU8zZXNGUHdvMzl6T1N1ZXpPcm1vazVvTm94U2NjQld5MzdMenJ5ckE0d21LZUFTcVc1OUFPemYzdlRqUUJVWWQ0SzFKSnNCWVY4T2FlWmZaVkxoZWZwaHIwclQxOTNqV0UyQnJDMkVYdDdlOEpkQ2NmckZ3cXN2UlhacTE0cjIyeVZ1Zm9ub2dLek1iUVZHeEN1MTdoakliRFJkZlVMdUJ6WTE0djBrVXBwVXJsNnFTaGdWQm16T2Rsa1JSSEZRVnFrWG8xbGZ3?oc=5",
+     "date": "2026-10-23T03:55:00.000Z",
+     "snippet": ""
+    },
+    {
+     "title": "Coimbatore Dalit Boy Suicide, Beef Bullying Charge, Police Book 4 Under SC-ST Act - India Today",
+     "outlet": "India Today",
+     "link": "https://news.google.com/rss/articles/CBMi2AFBVV95cUxOTnplaFRjZElKUkpySHE3a1pZVHE4SEFiWXptNEYwUUo4YWtOcWVDS2Q1VDZPQ0tvMk9ubmxxNW9Cb2dBX3VmeFh1eUZjUGJvQXQtZllLeU9Pd0doeFlFeTl6bEo0Y1NMSkVfbzljZngwSncxa3JXRTVDcnJSdUR0bXZ2bHM0cVdUUTN1TGVrU2xBU1d0SVhJcS1ic0tTM1BDZ1M3SENTbFZha0U5d2Q2OGN1VTVQRGd5SjJSamJBOW9zdThuaXNGcjZZT29GVExnN1E0bElYNWHSAd4BQVVfeXFMUDV2TWQ4SUZPSjN0ajMweUhlNWdIN3hCRXN1SUNuQUZkWlNzb3JnWldJRl9Bb185UkxPVFFBWWVLWVdWMDF0MG02VkVrYjRXOTlHR3owUF9ZOG16WUlkMEZFNTdyN2ZSa0FraHlrTl9MRkp2MVR4TTBzbnFNcWtkcW5yR0pNNEVMNV9GVmZSX2dNSWNMcF91aU85RWV5djJnS3A2MjlZSlZnTWRMWGpuLWF4MDk3U21kM3hRc1BjdXJzZ1JTRzZBZzRqdGFjeDkxMDN6YWNaaUIxNjVNSzFn?oc=5",
+     "date": "2026-10-23T03:29:04.000Z",
+     "snippet": ""
+    },
+    {
+     "title": "Coimbatore Dalit Boy Suicide, Beef Bullying Charge, Police Book 4 Under SC-ST Act",
+     "outlet": "India Today",
+     "link": "https://www.indiatoday.in/india/video/coimbatore-dalit-boy-suicide-beef-bullying-charge-police-book-4-under-sc-st-act-ytvd-3023208-2026-10-23",
+     "date": "2026-10-22T20:29:00.000Z",
+     "snippet": "A sixteen-year-old Dalit student in Coimbatore died by suicide on October 21 after allegedly facing relentless harassment over his caste and food habits. The boy, identified as Akhilan, was subjected ..."
+    },
+    {
+     "title": "Dalit Class XI student dies by suicide after alleged casteist harassment in Coimbatore",
+     "outlet": "Citizens for Justice and Peace | CJP",
+     "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxPdkRpRUFHLXdjREd3YU1VdDJOdkxLRDJLLWo3c1B6el9XOE9ENlBRcVBCV05Gem9qVW8tckNWTlBuV1pTMGExbFFKMFZwR29VRWRCQWpvUUhiUm1FYVNGNXoxMjh4MU5XaVlYV3JvWThZVWRjYzhuR2MtU2FKZFppaXVTakhySGJUUHl0RjlQZGZGVHFoM3M4dnFicW9sdllfdll4QUdudjZmZ9IBrwFBVV95cUxONlZfQW1tNGVFc0VnS3AwNktlSF9qcEw4MHIwcUphVEdiVXhWYVgyY1pKTTlNN0RMUU9wZW1DMDlNQndfNjVaWXVkTnk3TUtqcnljVXY1bHZpWGgwXzlSLTB6eDVmbXBFMTZMeDc1eThwMWNOcGp3c1dtUEpWUWNtR3JzeHZKMXpSazdQTXQ5M0lMaGJfREdIYnBaZXcxelp5czY3N0xEWkhZMW5lYnFB?oc=5",
+     "date": "2026-10-22T13:26:44.000Z",
+     "snippet": ""
     }
    ]
   },
   {
-   "id": "29ecc8f8e9",
-   "title": "मैसूर दशहरा में प्रवेश से पुलिस ने तीन दलित मंत्रियों को रोका, CM डीके शिवकुमार ने दिए जांच के आदेश",
+   "id": "435be28260",
+   "title": "मीडिया नहीं, नागरिक पालिका ही लोकतंत्र का चौथा स्तंभ",
    "category": "Ambedkarite voices",
-   "image": "https://cf-images.assettype.com/themooknayak/2026-10-23/jfst0j3y/Mysuru-Dasara-controversy-Karnataka-Dalit-ministers-stopped.jpg",
-   "date": "2026-10-23T10:05:37.000Z",
+   "image": "https://www.forwardpress.in/wp-content/uploads/2026/10/IMG-20261023-WA0007-1024x536.jpg",
+   "date": "2026-10-23T11:41:11.000Z",
    "outlets": [
-    "The Mooknayak"
+    "Forward Press"
    ],
    "reports": [
     {
-     "title": "मैसूर दशहरा में प्रवेश से पुलिस ने तीन दलित मंत्रियों को रोका, CM डीके शिवकुमार ने दिए जांच के आदेश",
-     "outlet": "The Mooknayak",
-     "link": "https://www.themooknayak.com/dalit/karnataka-mysuru-dasara-dalit-ministers-stopped-probe",
-     "date": "2026-10-23T10:05:37.000Z",
-     "snippet": "कर्नाटक: मैसूर पैलेस में दशहरा अनुष्ठान के दौरान एक बड़ा विवाद खड़ा हो गया है। पुलिस द्वारा तीन दलित मंत्रियों को नंदीध्वज पूजा में शामिल होने से रोके जाने के बाद, मुख्यमंत्री डीके शिवकुमार ने इस मामले में कड़ी कार्रवाई करते हुए जांच के आदेश दे दिए हैं। यह घटना मंगलवार की है, जिसका संज्ञान लेते हुए गुरुवार, 22 अक्टूबर को मुख्यमंत्री शिवकुमार ने मुख्य सचिव शालिनी रजनीश को निर्देश जारी किए हैं। उन्ह"
+     "title": "मीडिया नहीं, नागरिक पालिका ही लोकतंत्र का चौथा स्तंभ",
+     "outlet": "Forward Press",
+     "link": "https://www.forwardpress.in/2026/10/analysis-questions-on-indian-media/",
+     "date": "2026-10-23T11:41:11.000Z",
+     "snippet": "प्रेस को भी जब चौथे स्तंभ के रूप में प्रचारित किया जाता है, तो उसका महत्व भी उसकी निगरानी के रूप में व्यक्त किया जाता है। लेकिन नागरिक और किसी कंपनी की निगरानी के बीच एक बुनियादी फर्क होता है। पढ़ें, यह अनिल चमड़िया का यह आलेख The post मीडिया नहीं, नागरिक पालिका ही लोकतंत्र का चौथा स्तंभ appeared first on Forward Press ."
     }
    ]
   },
@@ -78,60 +176,62 @@
    ]
   },
   {
-   "id": "e194547d11",
-   "title": "Dalit student ends life over harassment for consuming beef",
-   "category": "Social work & community",
+   "id": "53add07a73",
+   "title": "Tiranga March against SIR held in Bengaluru; police stop protest placards, slogans",
+   "category": "Protests & justice",
    "image": null,
-   "date": "2026-10-23T08:57:10.000Z",
+   "date": "2026-10-23T08:22:00.000Z",
    "outlets": [
-    "Rediff"
+    "The Print"
    ],
    "reports": [
     {
-     "title": "Dalit student ends life over harassment for consuming beef",
-     "outlet": "Rediff",
-     "link": "https://news.google.com/rss/articles/CBMi2gFBVV95cUxNT3FUejdwWHkxQ0lvckhGeXZxQ1RVbVlRb1MxbEZjMUh6LVlDd2NuYmNvZkxWU1ktX0Q1WVUwX29KcDVya0VNQnBaVUc1RTFUd1RFbEE3NVg0NkJjZ2QyMTRMcGx2SllZWGhVaVcxSTFMX1hUNkNvTEVTZmV0SnJBZnBCN1AxQVBpTGVPTV8wNHlPd294MEh1QldZVG5tZTAyQ0hUNDNwZ3B1N0JPcnBsZWRleGV0QVcxUHFJakVEN1NONUJpMVc0YW5zN0ZnNHdlcUs4TkstVGJQZ9IB3AFBVV95cUxPLUJmV25ySTAyWDljdHJxc01vQzZDdzZ4bFFRWlA3eGpxb01rR2syaGUxbWdOYnRrWlhyUmdPbnFWM180ZkF4YkREMUh4NUlmT0tVS1dMS1VlS2ExdUE3MF9kM3BSVzV0c0VFRDNNVUVha19wWlI4eXZwRWpPaV9lY1BOamlQQjJyTkNlOG5DSXFmZkFlRTJxNDNxRDREemNWSUY0SVhTZk13ZFZwRWdvLUpYdG9zcVJwaXBWV0FJRHptdndyV0Uzdmk1anl6ay1EY0Z6TmFndUxoMUh6?oc=5",
-     "date": "2026-10-23T08:57:10.000Z",
-     "snippet": ""
+     "title": "Tiranga March against SIR held in Bengaluru; police stop protest placards, slogans",
+     "outlet": "The Print",
+     "link": "https://theprint.in/india/tiranga-march-against-sir-held-in-bengaluru-police-stop-protest-placards-slogans/3080065/",
+     "date": "2026-10-23T08:22:00.000Z",
+     "snippet": "Several people took out a Tiranga March from Town Hall towards Freedom Park here on Friday to oppose the SIR of electoral rolls and demand that the exercise be scrapped. The march, also called the ..."
+    }
+   ]
+  },
+  {
+   "id": "2f7bfc1d44",
+   "title": "Two-day Buddhist conference to be held in Chamarajanagar on October 24 and 25",
+   "category": "Ambedkar in the news",
+   "image": null,
+   "date": "2026-10-23T07:36:00.000Z",
+   "outlets": [
+    "The Hindu"
+   ],
+   "reports": [
+    {
+     "title": "Two-day Buddhist conference to be held in Chamarajanagar on October 24 and 25",
+     "outlet": "The Hindu",
+     "link": "https://www.thehindu.com/news/national/karnataka/two-day-buddhist-conference-to-be-held-in-chamarajanagar-on-october-24-and-25/article71616041.ece",
+     "date": "2026-10-23T07:36:00.000Z",
+     "snippet": "A two-day International Buddhist Conference will be held on Saturday and Sunday, October 24 and 25, at the Dr. B.R. Ambedkar Stadium in Chamarajanagara."
     }
    ]
   },
   {
    "id": "31c4f15abc",
-   "title": "Coimbatore Dalit student dies by suicide over caste discrimination, teacher arrested",
+   "title": "Beef question at school, caste abuse: Teacher and two students arrested after Coimbatore teen’s suicide",
    "category": "Social work & community",
-   "image": "https://www.bing.com/th?id=ONUT.RrdtPhren9ofHUcI_KrxzQ&pid=News&w=640&h=400&c=7&rs=1",
-   "date": "2026-10-23T08:10:59.000Z",
+   "image": "https://www.bing.com/th?id=ONUT.2w6WIcSa4Zb0X6PsGQPeVA&pid=News&w=640&h=400&c=7&rs=1",
+   "date": "2026-10-23T07:33:00.000Z",
    "outlets": [
-    "The Indian Express",
-    "The News Minute",
+    "Kerala Kaumudi",
     "Clarion India",
     "News Today",
-    "Citizens for Justice and Peace | CJP",
-    "DT Next",
-    "NewsBytes"
+    "DT Next"
    ],
    "reports": [
     {
-     "title": "Dalit student dies by suicide after ‘taunts over eating beef’, teacher booked in Coimbatore",
-     "outlet": "The Indian Express",
-     "link": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxNU2VLbDg2TzF4UkRQc1YycUltV2g5UTNtazRxZzlLcFBSVGZfa2tjODhvdGVfNHd1Q0xZZDJHQVZXMjMtZzdmWnZsaGhQd0o5V3o5aGdrNjU1VklTZm1MTkY2N05vOHZaU3IySzBIM1p2NWpRS3h1cDJ5V09tY0JFVzJkQjIzbEpuWl9YS09Ia1FQZFJsV1JNRjl5M1lNMWhCbmVWb05xTmM3X03SAasBQVVfeXFMTVNlS2w4Nk8xeFJEUHNWMnFJbVdoOVEzbWs0cWc5S3BQUlRmX2trYzg4b3RlXzR3dUNMWWQyR0FWVzIzLWc3Zlp2bGhoUHdKOVd6OWhnazY1NVZJU2ZtTE5GNjdObzh2WlNyMkswSDNadjVqUUt4dXAyeVdPbWNCRVcyZEIyM2xKblpfWEtPSGtRUGRSbFdSTUY5eTNZTTFoQm5lVm9OcU5jN19N?oc=5",
-     "date": "2026-10-23T08:10:59.000Z",
-     "snippet": ""
-    },
-    {
-     "title": "Coimbatore Dalit student dies by suicide over caste discrimination, teacher arrested",
-     "outlet": "The News Minute",
-     "link": "https://news.google.com/rss/articles/CBMizwFBVV95cUxNTzNlc0ZQd28zOXpPU3Vlek9ybW9rNW9Ob3hTY2NCV3kzN0x6cnlyQTR3bUtlQVNxVzU5QU96ZjN2VGpRQlVZZDRLMUpKc0JZVjhPYWVaZlpWTGhlZnBocjByVDE5M2pXRTJCckMyRVh0N2U4SmRDY2ZyRndxc3ZSWFpxMTRyMjJ5VnVmb25vZ0t6TWJRVkd4Q3UxN2hqSWJEUmRmVUx1QnpZMTR2MGtVcHBVcmw2cVNoZ1ZCbXpPZGxrUlJIRlFWcWtYbzFsZnfSAc8BQVVfeXFMTU8zZXNGUHdvMzl6T1N1ZXpPcm1vazVvTm94U2NjQld5MzdMenJ5ckE0d21LZUFTcVc1OUFPemYzdlRqUUJVWWQ0SzFKSnNCWVY4T2FlWmZaVkxoZWZwaHIwclQxOTNqV0UyQnJDMkVYdDdlOEpkQ2NmckZ3cXN2UlhacTE0cjIyeVZ1Zm9ub2dLek1iUVZHeEN1MTdoakliRFJkZlVMdUJ6WTE0djBrVXBwVXJsNnFTaGdWQm16T2Rsa1JSSEZRVnFrWG8xbGZ3?oc=5",
-     "date": "2026-10-23T03:55:00.000Z",
-     "snippet": ""
-    },
-    {
-     "title": "Taunted for ‘eating beef’, Dalit student dies by suicide in Tamil Nadu",
-     "outlet": "The Indian Express",
-     "link": "https://indianexpress.com/article/india/dalit-student-suicide-eating-beef-teacher-coimbatore-10933501/",
-     "date": "2026-10-23T02:12:00.000Z",
-     "snippet": "The mother said she had considered approaching the school herself but abandoned the idea because the student feared that doing so could further isolate him and make him a target."
+     "title": "Beef question at school, caste abuse: Teacher and two students arrested after Coimbatore teen’s suicide",
+     "outlet": "Kerala Kaumudi",
+     "link": "https://keralakaumudi.com/en/india/general/beef-question-caste-abuse-coimbatore-student-suicide-1818062",
+     "date": "2026-10-23T07:33:00.000Z",
+     "snippet": "CHENNAI: A Class 11 student died by suicide in Coimbatore following alleged caste-based harassment at school. Police arrested the class teacher and two classmates in connection with the case."
     },
     {
      "title": "TN Dalit Student Dies by Suicide After Caste Taunts at School; Teacher Arrested",
@@ -148,70 +248,95 @@
      "snippet": "The Coimbatore city police arrested a teacher on Thursday in connection with the death by suicide of a 16-year-old Dalit student who allegedly faced caste-based harassment at a private school in ..."
     },
     {
-     "title": "Dalit Class XI student dies by suicide after alleged casteist harassment in Coimbatore",
-     "outlet": "Citizens for Justice and Peace | CJP",
-     "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxPdkRpRUFHLXdjREd3YU1VdDJOdkxLRDJLLWo3c1B6el9XOE9ENlBRcVBCV05Gem9qVW8tckNWTlBuV1pTMGExbFFKMFZwR29VRWRCQWpvUUhiUm1FYVNGNXoxMjh4MU5XaVlYV3JvWThZVWRjYzhuR2MtU2FKZFppaXVTakhySGJUUHl0RjlQZGZGVHFoM3M4dnFicW9sdllfdll4QUdudjZmZ9IBrwFBVV95cUxONlZfQW1tNGVFc0VnS3AwNktlSF9qcEw4MHIwcUphVEdiVXhWYVgyY1pKTTlNN0RMUU9wZW1DMDlNQndfNjVaWXVkTnk3TUtqcnljVXY1bHZpWGgwXzlSLTB6eDVmbXBFMTZMeDc1eThwMWNOcGp3c1dtUEpWUWNtR3JzeHZKMXpSazdQTXQ5M0lMaGJfREdIYnBaZXcxelp5czY3N0xEWkhZMW5lYnFB?oc=5",
-     "date": "2026-10-22T13:26:44.000Z",
-     "snippet": ""
-    },
-    {
-     "title": "Teacher held, HM booked for Coimbatore Dalit boy's suicid",
+     "title": "Teacher held, HM booked for Coimbatore Dalit boy's suicide",
      "outlet": "DT Next",
      "link": "https://www.dtnext.in/news/tamilnadu/teacher-held-hm-booked-for-coimbatore-dalit-boys-suicide",
      "date": "2026-10-22T08:06:00.000Z",
      "snippet": "COIMBATORE: The Coimbatore city police on Thursday arrested a teacher on charges of abetting the suicide of a Class 11 student who allegedly faced caste-based h ..."
-    },
-    {
-     "title": "Class 11 Dalit student in Coimbatore dies by suicide",
-     "outlet": "NewsBytes",
-     "link": "https://www.newsbytesapp.com/news/india/class-11-dalit-student-in-coimbatore-dies-by-suicide/tldr",
-     "date": "2026-10-22T07:25:00.000Z",
-     "snippet": "A Class XI Dalit student in Coimbatore was found dead, with his parents alleging discrimination at school; police are investigating under the SC/ST Act."
     }
    ]
   },
   {
-   "id": "2ab37b1fb3",
-   "title": "Coimbatore Dalit Boy Suicide, Beef Bullying Charge, Police Book 4 Under SC-ST Act - India Today",
-   "category": "Social work & community",
-   "image": null,
-   "date": "2026-10-23T03:29:04.000Z",
-   "outlets": [
-    "India Today"
-   ],
-   "reports": [
-    {
-     "title": "Coimbatore Dalit Boy Suicide, Beef Bullying Charge, Police Book 4 Under SC-ST Act - India Today",
-     "outlet": "India Today",
-     "link": "https://news.google.com/rss/articles/CBMi2AFBVV95cUxOTnplaFRjZElKUkpySHE3a1pZVHE4SEFiWXptNEYwUUo4YWtOcWVDS2Q1VDZPQ0tvMk9ubmxxNW9Cb2dBX3VmeFh1eUZjUGJvQXQtZllLeU9Pd0doeFlFeTl6bEo0Y1NMSkVfbzljZngwSncxa3JXRTVDcnJSdUR0bXZ2bHM0cVdUUTN1TGVrU2xBU1d0SVhJcS1ic0tTM1BDZ1M3SENTbFZha0U5d2Q2OGN1VTVQRGd5SjJSamJBOW9zdThuaXNGcjZZT29GVExnN1E0bElYNWHSAd4BQVVfeXFMUDV2TWQ4SUZPSjN0ajMweUhlNWdIN3hCRXN1SUNuQUZkWlNzb3JnWldJRl9Bb185UkxPVFFBWWVLWVdWMDF0MG02VkVrYjRXOTlHR3owUF9ZOG16WUlkMEZFNTdyN2ZSa0FraHlrTl9MRkp2MVR4TTBzbnFNcWtkcW5yR0pNNEVMNV9GVmZSX2dNSWNMcF91aU85RWV5djJnS3A2MjlZSlZnTWRMWGpuLWF4MDk3U21kM3hRc1BjdXJzZ1JTRzZBZzRqdGFjeDkxMDN6YWNaaUIxNjVNSzFn?oc=5",
-     "date": "2026-10-23T03:29:04.000Z",
-     "snippet": ""
-    },
-    {
-     "title": "Coimbatore Dalit Boy Suicide, Beef Bullying Charge, Police Book 4 Under SC-ST Act",
-     "outlet": "India Today",
-     "link": "https://www.indiatoday.in/india/video/coimbatore-dalit-boy-suicide-beef-bullying-charge-police-book-4-under-sc-st-act-ytvd-3023208-2026-10-23",
-     "date": "2026-10-22T20:29:00.000Z",
-     "snippet": "A sixteen-year-old Dalit student in Coimbatore died by suicide on October 21 after allegedly facing relentless harassment over his caste and food habits. The boy, identified as Akhilan, was subjected ..."
-    }
-   ]
-  },
-  {
-   "id": "e1d4d3c478",
-   "title": "Diljit Dosanjh's Delhi concert granted permission after meetings between police and organisers",
+   "id": "485f88569b",
+   "title": "4 dead, more casualties feared after blast at firecracker factory in Bihar's Siwan",
    "category": "Protests & justice",
    "image": null,
-   "date": "2026-10-23T03:03:47.000Z",
+   "date": "2026-10-23T07:23:23.000Z",
    "outlets": [
     "Hindustan Times on MSN"
    ],
    "reports": [
     {
-     "title": "Diljit Dosanjh's Delhi concert granted permission after meetings between police and organisers",
+     "title": "4 dead, more casualties feared after blast at firecracker factory in Bihar's Siwan",
      "outlet": "Hindustan Times on MSN",
-     "link": "https://www.msn.com/en-in/news/India/singer-diljit-dosanjhs-delhi-concert-granted-permission-after-meetings-between-police-and-organisers/ar-AA2fUkEr",
-     "date": "2026-10-23T03:03:47.000Z",
-     "snippet": "Singer Diljit Dosanjh's Delhi concert granted permission after meetings between police and organisers ..."
+     "link": "https://www.msn.com/en-in/news/India/4-dead-more-casualties-feared-after-blast-at-firecracker-factory-in-bihars-siwan/ar-AA2fUSWk",
+     "date": "2026-10-23T07:23:23.000Z",
+     "snippet": "The blast ripped through a house in Bihar's Siwan from where a licensed firecracker unit was being run."
+    }
+   ]
+  },
+  {
+   "id": "8ee1a5ea0f",
+   "title": "Tamil Nadu Dalit Student Dies By Suicide, Parents Allege Discrimination",
+   "category": "Protests & justice",
+   "image": "https://www.bing.com/th?id=ORMS.55eee4f3bbdde1fafb98765af4ad1a8f&pid=News&w=640&h=400&c=7&rs=1",
+   "date": "2026-10-23T05:37:30.000Z",
+   "outlets": [
+    "NDTV",
+    "NDTV on MSN"
+   ],
+   "reports": [
+    {
+     "title": "Video | Tamil Nadu News | Harish Suicide Case: Techie Arrested | Dalit Student Death | CJP’s SIR Protest",
+     "outlet": "NDTV",
+     "link": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxQeWhwd1o2UlU4YkM4N0haQVREWmk4MTBfeUJkWEFReVZBb3NoWXhVUDExbU5aTU03SlRmOGpMVmZYbnhjOVh0Sl90c3EyOFFMNWdEd2lra3ZMQXJoNUxzMmo5bmU4UnJxSm5DaFVJRTRDZjhQZHdMSUpqVWh2WFFjWmVlemZ3U2lBWVZwSm1lMzQ1ZjZnYkxCMTNyNGVQSWpzUmR1SnJjeGZPeUE5aTBOcTNkc1J4MWpXOGgtY01oUTIwUQ?oc=5",
+     "date": "2026-10-23T05:37:30.000Z",
+     "snippet": ""
+    },
+    {
+     "title": "Tamil Nadu Dalit Student Dies By Suicide, Parents Allege Discrimination",
+     "outlet": "NDTV on MSN",
+     "link": "https://www.msn.com/en-in/news/other/tamil-nadu-dalit-student-dies-by-suicide-parents-allege-discrimination/ar-AA2fNR8Q",
+     "date": "2026-10-22T01:52:00.000Z",
+     "snippet": "Police said the parents had not lodged a police complaint before the student's death, but had taken up the issue with the school."
+    }
+   ]
+  },
+  {
+   "id": "e4ad5793e5",
+   "title": "Annadani questions Priyank’s silence on ‘OMR tampering’",
+   "category": "Achievers",
+   "image": null,
+   "date": "2026-10-23T03:47:48.000Z",
+   "outlets": [
+    "The New Indian Express"
+   ],
+   "reports": [
+    {
+     "title": "Annadani questions Priyank’s silence on ‘OMR tampering’",
+     "outlet": "The New Indian Express",
+     "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxNQW5pZy1UQmVZS29pWFVReldHWHdaY245TDhjV2x4ckhUWVl4ckpOWTdzT2pDYUdiYnBVSjBkeHVSUkloSEthZXdyV21pWkZFX0s3UjU3TkRUcS1uNU9aaFdIeHAxMnloZWpFeDc3TkNXTkF1SFBBaEZwd0pDbUlEWHhFdzJrSmpCX3N2T1A3SXk2ZGNkRDNoQjBoR1piV25yYk0xa1JGRUJ1U0ZaZ2ZoQzZrMVbSAcIBQVVfeXFMTWFlUzdMMlRnaVM5a0pfZzhfVnBiSVJWVzZXZWZjOFgwd3RSeUQ2SWtLVk13czlvN1pxTXVwYjlhMHJ5NWhQZFlORkxyM0VyWmdlYnV0NmJKUm9sem1ha21ibDBtOVdoRFR5VFJDMGJzZFVHMUVLRkdEOWxRNDRVanhRT25Wa0lkb2NCbVlvU3FnRWdMWW9YUUZTcFJjX1RhRUg1SDhvVTRJSTlLLTl4Qk0wSlBTdXpaZDQ4VzZIcVRzRUE?oc=5",
+     "date": "2026-10-23T03:47:48.000Z",
+     "snippet": ""
+    }
+   ]
+  },
+  {
+   "id": "8bffbad787",
+   "title": "UP School Principal Accused of Breaking Dalit Student’s Hand, Father Alleges Casteist Remarks",
+   "category": "Social work & community",
+   "image": "https://www.bing.com/th?id=ONUT.XXWNQFftXx__llvovDVEHg&pid=News&w=640&h=400&c=7&rs=1",
+   "date": "2026-10-23T03:07:00.000Z",
+   "outlets": [
+    "theobserverpost"
+   ],
+   "reports": [
+    {
+     "title": "UP School Principal Accused of Breaking Dalit Student’s Hand, Father Alleges Casteist Remarks",
+     "outlet": "theobserverpost",
+     "link": "https://theobserverpost.com/up-school-principal-accused-of-breaking-dalit-students-hand-father-alleges-casteist-remarks/",
+     "date": "2026-10-23T03:07:00.000Z",
+     "snippet": "A school principal in Uttar Pradesh’s Meerut has been accused of assaulting a 13-year-old Dalit student, allegedly breaking bones in ... <a title=\"UP School Principal Accused of Breaking Dalit Student ..."
     }
    ]
   },
@@ -231,6 +356,25 @@
      "link": "https://english.pravda.ru/news/world/170576-delhi-census-2027-phase-two-caste-self-enumeration/",
      "date": "2026-10-23T02:50:00.000Z",
      "snippet": "Delhi begins the second phase of Census 2027 on January 10 with a 15-day self-enumeration window, followed by door-to-door visits. The questionnaire includes caste ..."
+    }
+   ]
+  },
+  {
+   "id": "c4cbef6ad6",
+   "title": "School student in Tamil Nadu hangs himself after caste-based bullying for eating beef",
+   "category": "Protests & justice",
+   "image": "https://www.bing.com/th?id=ONUT.b9PZm7ROJFv4f2LkVSXWfg&pid=News&w=640&h=400&c=7&rs=1",
+   "date": "2026-10-23T02:10:00.000Z",
+   "outlets": [
+    "Telegraph India"
+   ],
+   "reports": [
+    {
+     "title": "School student in Tamil Nadu hangs himself after caste-based bullying for eating beef",
+     "outlet": "Telegraph India",
+     "link": "https://www.telegraphindia.com/india/government-school-student-in-tamil-nadu-hangs-himself-after-caste-based-bullying-for-eating-beef/cid/2185881",
+     "date": "2026-10-23T02:10:00.000Z",
+     "snippet": "In her complaint the boy's mother says that her son complained about the repeated taunts to the class teacher, school principal but no action was taken ..."
     }
    ]
   },
@@ -349,7 +493,7 @@
    "id": "f1b19c1dbc",
    "title": "Rejoinder: Use of Kafka’s cockroach metaphor for Dalit identity undermines anti-caste politics",
    "category": "Protests & justice",
-   "image": "https://www.bing.com/th?id=ONUT.IaVvebnVe4AnS12fYaGRGw&pid=News&w=640&h=400&c=7&rs=1",
+   "image": null,
    "date": "2026-10-22T14:00:00.000Z",
    "outlets": [
     "Scroll.in"
@@ -478,7 +622,7 @@
   {
    "id": "42fc1419b1",
    "title": "Two arrested for allegedly desecrating Ambedkar statue in Belagavi",
-   "category": "Ambedkar in the news",
+   "category": "Ambedkarite events",
    "image": "https://www.bing.com/th?id=ONUT.hMkaf0H2h6kjjsZ9P2e0Yw&pid=News&w=640&h=400&c=7&rs=1",
    "date": "2026-10-22T09:22:00.000Z",
    "outlets": [
@@ -589,7 +733,7 @@
      "title": "Hindus converting to Islam & other religions cannot claim backward classes reservation says Supreme Court",
      "outlet": "News On AIR",
      "link": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxQTFV4Tjg1RFVxMWZvSmV0bnQ0SnI2NFUtLTNQb2hDaUdGZWJSTkhzbmw1eVpFdzV3YW1rODJOb2YxRU9FaW1rY0VPekdZQmFjWGpDV1FmeWFiWlVOdkgtVWg5OTFYNDF4RWJ6emJJcTZoXzJMeTc2cGZUZlFMaFFoaWsyaEtHYzhlV2tuU21Lc0JUN2tHaUtFblBuNzVzQzFKaDdPd0xwUjNZNnZDeDdQWklIVmg4alNuRHZOb1BRSFlsVE5WTGZ0ag?oc=5",
-     "date": "2026-10-15T08:55:00.000Z",
+     "date": "2026-10-15T07:00:00.000Z",
      "snippet": ""
     }
    ]
@@ -652,116 +796,21 @@
    ]
   },
   {
-   "id": "4b442a14f5",
-   "title": "Addressing discrimination: building safer, inclusive campuses",
+   "id": "fc12dab10e",
+   "title": "15-year-old ends life, parents flag caste discrimination at Tamil Nadu school",
    "category": "Protests & justice",
-   "image": "https://www.bing.com/th?id=ONUT._mJ0haHpMI12xklDLytaJA&pid=News&w=640&h=400&c=7&rs=1",
-   "date": "2026-10-22T04:57:00.000Z",
+   "image": "https://www.bing.com/th?id=ONUT.Hu1UDiSxnDIPa2t8_Ay9nQ&pid=News&w=640&h=400&c=7&rs=1",
+   "date": "2026-10-21T19:13:00.000Z",
    "outlets": [
-    "The Hindu"
-   ],
-   "reports": [
-    {
-     "title": "Addressing discrimination: building safer, inclusive campuses",
-     "outlet": "The Hindu",
-     "link": "https://www.thehindu.com/education/addressing-discrimination-building-safer-inclusive-campuses/article71611002.ece",
-     "date": "2026-10-22T04:57:00.000Z",
-     "snippet": "Webinar on building safer, inclusive campuses amid caste-based discrimination in India's higher education, featuring distinguished experts and policy discussions."
-    }
-   ]
-  },
-  {
-   "id": "bb937db94a",
-   "title": "Tamil Nadu Dalit Student Dies By Suicide, Parents Allege Discrimination",
-   "category": "Social work & community",
-   "image": "https://www.bing.com/th?id=ORMS.55eee4f3bbdde1fafb98765af4ad1a8f&pid=News&w=640&h=400&c=7&rs=1",
-   "date": "2026-10-22T01:52:00.000Z",
-   "outlets": [
-    "NDTV on MSN",
     "The New Indian Express"
    ],
    "reports": [
-    {
-     "title": "Tamil Nadu Dalit Student Dies By Suicide, Parents Allege Discrimination",
-     "outlet": "NDTV on MSN",
-     "link": "https://www.msn.com/en-in/news/other/tamil-nadu-dalit-student-dies-by-suicide-parents-allege-discrimination/ar-AA2fNR8Q",
-     "date": "2026-10-22T01:52:00.000Z",
-     "snippet": "Police said the parents had not lodged a police complaint before the student's death, but had taken up the issue with the school."
-    },
     {
      "title": "15-year-old ends life, parents flag caste discrimination at Tamil Nadu school",
      "outlet": "The New Indian Express",
      "link": "https://www.newindianexpress.com/states/tamil-nadu/2026/Oct/22/15-year-old-ends-life-parents-flag-caste-discrimination-at-tamil-nadu-school",
      "date": "2026-10-21T19:13:00.000Z",
      "snippet": "COIMBATORE: A Class 11 student, who was allegedly distressed about attending school due to caste-based discrimination by fellow students, died by suicide at his ..."
-    }
-   ]
-  },
-  {
-   "id": "51f31c08b3",
-   "title": "Lakhs Gather For Dhammachakra Pravartan Din",
-   "category": "Ambedkarite events",
-   "image": null,
-   "date": "2026-10-21T18:39:00.000Z",
-   "outlets": [
-    "The Times of India",
-    "The Hitavada",
-    "Nagpur Today"
-   ],
-   "reports": [
-    {
-     "title": "Lakhs Gather For Dhammachakra Pravartan Din",
-     "outlet": "The Times of India",
-     "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxObXZPNElDRlQwSkdyTlZSNHFyMzU4Vkt4SmplTEJ3MkxMaU1OMFJGbFd2TXJkdHJuQVhLLXBxS05KTHRZV1VGU1o2TzVhak1adGU1bGZycjMtYTRmb1NMYzZlbmVxdmVYcGRYdE9ueG5uZU9SVDFGZ243VW14NDRmQmY5MGZmV0tSSmhFclBvUVpKaENMSkFubGh1WUFYTXFyY0x1T1BpWGN0VTF0RHpXZF9NU0hOVE050gG-AUFVX3lxTFBQc0YyOHpSQ1J3dlRGRVRnSFZuNGVQVzZJWUY5LTdPZ2tQbzRjekstaEtwOVZNWElkZTF3cFlRMnZiUEJGMzRXSkl3M1ZUSG5HRC1PZW9zN25SdUJFWnhoUE5yejRVWGhnbW5nVDBZUXN6Tlhsd1B2Q2JrTzFLeTVBMkxGWG5DZjlueGRkZmVBVmgtaDRVdzljLWVjbWlfa1VJVFJudEJaMmhsM19LRmoxMjJyWVI0NXdvbzh6SXc?oc=5",
-     "date": "2026-10-21T18:39:00.000Z",
-     "snippet": ""
-    },
-    {
-     "title": "NMC sets up bathing facilities at Ambazari for devotees ahead of Dhammachakra Pravartan Din",
-     "outlet": "The Times of India",
-     "link": "https://news.google.com/rss/articles/CBMi-AFBVV95cUxNSWhNUjRBN2xWS2toODZndDFNNU9zcnUxZGxzRWhxMDg4MFdkblpVbVlkb3IxNmdWbENSTU1fdENhWGJVNWp1dmtPRHF5SnVGQmMzN2hwSzJqUVc2UmptYVB4MTBJa0ZVRnpzcDE4a3RLZVlkdGJSOU5sekJlY1ZYYWV6b0J6d0FyODVuSFZKM1VlbFlDRy1QLURHUGR4SkhmelpkcHUzMUc2Zngwb1U3cTRTZU0xQlNSYTIzRG9ITWROUFppVFVOWkg0MkdKUWdiMjM4dnI4T2lNM2xaaWxIcENmN2tYcXVuQzlKX18xcE16NEFGYnhvV9IB_gFBVV95cUxPaFZ3cTI0NFpoUi1kR2tVRG1KLU5CSkNQS3J4cHVUaHNfcTdRclpXQXFQMGxUa3JEOV9DZ241UjdUNVRNODgzbnlIdGlKcEhKdHJ0WGdjWWxJMFFnTG8xbG1oN0pCQnJsZmx4MDhWS0dZS2M3aG5Nb3lVanl5QmJobG5GRmlpUEF5eEo0TjZBcERzX2dnWF93dEVaa3I4N3JKU1ZTMk5yN0Z2V0RrZGFWTDlDa2tvNjVDNHBpd1c2ZFZmREJqRjJWRDZrQWk5ZFJhN3JzM0NnN1RqVXZIR2ItemdfeDd6YXdLaDc0V2pkbC1BckNKdm5zZTVKQzgxUQ?oc=5",
-     "date": "2026-10-19T18:49:00.000Z",
-     "snippet": ""
-    },
-    {
-     "title": "MSRTC to deploy 102 special buses for Dhammachakra Pravartan Din",
-     "outlet": "The Times of India",
-     "link": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxQeERyUXcxVk5xRGVWVEFaWlZhSGFXT1U2ZFpkRklhR2dhWEJzaVNSZkNjQm9MTWhYX19SaXhQbFlrTDQ1aUZZd0o2WlFiV05yRnRmVXJndk5zSUE1bWd3aU4zMlJPcTVpWEVQZGJOLTJRVmx6RXpRMVIzU0lwZkVLdHdUTEREdk9VMU5xMV8tQjROS1BhR1k4Zzczb1FqWU55SlNoNVA4cEIyenF1ZzQwb1BtcGdlaUdiamZnRGVIdHFsdzQ4WUdqdjE3TmsxNVBLNERPYdIB2gFBVV95cUxOaVktRmxNb3BySHpjVW5hbnpXTWY3eFBaY3VqVTRtZVF2Q0ZGYlcwQUpLQS0zV3QyQ1BpSFdBQTdJTFpzZzVGeWUyMjZQOGpNcGN6bHAzeVc4R0ZiMmFWSV8zemVfaHRtOElwenp4QnpzYzk1VXBrTk9GUDBSbHJDazhHMlhJMnFqNG1ua1NtSTRlSk9wT0V0amFuS2dLVzB3SWxtNVpVUVVHcElTMjk0SjRQLURPaWdoVGUzOU1fOFV3OW82TFg2c3AwYTFZbFdNbWFoLXVoMWdadw?oc=5",
-     "date": "2026-10-19T18:47:00.000Z",
-     "snippet": ""
-    },
-    {
-     "title": "5,000 cops to guard city for Dhammachakra Pravartan Din, Vijayadashami",
-     "outlet": "The Hitavada",
-     "link": "https://news.google.com/rss/articles/CBMifkFVX3lxTFA0c3VRUlBOREpKd1FFa1BqYmh0SXd2TEc2WnBrWk5DRzM2TUcxTTBieWhxc0NyMHBlUUxlWEFtMWN5blRyNm12RVZkeEFMaC10aXBOLUZzUjZkY0stMUJoSEZRZ3FvMURTZUpMR2tGYTBheUJDMTFPT1ludVYxUQ?oc=5",
-     "date": "2026-10-19T07:01:08.000Z",
-     "snippet": ""
-    },
-    {
-     "title": "Nagpur Deploys 5,000 Cops for Dhammachakra Pravartan Din, Dussehra",
-     "outlet": "Nagpur Today",
-     "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxPZ2l0azdYN0l5Qm1fTEt6UEVrenY3RHd1czdtWmxrWmlvUTVmVGotSGQxNXhTN0hrbC1pMU9QS0NhMmVlNU1lYzV5YVVrUFF0RU5MWEZjMkxKRHo4bUpsNWJsT2ZQUU4tRmlveVZFRlhlRDhueWJNUV95YW15RV9SSS0zeDAwck5iZWg1anY0VjBaMk44dWJR?oc=5",
-     "date": "2026-10-19T01:22:31.000Z",
-     "snippet": ""
-    }
-   ]
-  },
-  {
-   "id": "fc34ddc1f6",
-   "title": "Kharge Says Caste Discrimination Threatens Hinduism",
-   "category": "Protests & justice",
-   "image": null,
-   "date": "2026-10-21T17:00:00.000Z",
-   "outlets": [
-    "The Hindustan Gazette"
-   ],
-   "reports": [
-    {
-     "title": "Kharge Says Caste Discrimination Threatens Hinduism",
-     "outlet": "The Hindustan Gazette",
-     "link": "https://thehindustangazette.com/election/kharge-says-caste-discrimination-threatens-hinduism-49079",
-     "date": "2026-10-21T17:00:00.000Z",
-     "snippet": "Kalaburagi: AICC president Mallikarjun Kharge has said that caste discrimination and untouchability are pushing Hinduism towards decline. Speaking at the 70th Dhamma Chakra Pravartan Day ..."
     }
    ]
   },
@@ -812,7 +861,7 @@
    ]
   },
   {
-   "id": "efa9239087",
+   "id": "2a85f503c1",
    "title": "Conversion and reservation: What the Supreme Court ruled | Explained",
    "category": "Constitution & rights",
    "image": "https://www.bing.com/th?id=ONUT.1-xx3XKdWs6MqaDILxtIxQ&pid=News&w=640&h=400&c=7&rs=1",
@@ -822,6 +871,7 @@
     "Drishti IAS",
     "SCC Online",
     "The Hindu",
+    "The Indian Express",
     "The Logical Indian",
     "CNBCTV18",
     "Zee News"
@@ -853,6 +903,13 @@
      "outlet": "The Hindu",
      "link": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxQdk5QaGJFeDVTWUNoNS15dUp2MG5RZHZGcFk0bERraDRNS3oxUEhsTWhBNkZmVksyT1BFZEs5a0hPQUZQemllQnRYMlVxMmtWSTJNQVpQNXROQWl5N3FZRUhURHpZRDRNQU9GcWU0Sm4xZ2dsMUZGVVJTU0lRUGRHU2c1WUViS2pIa3JMV2pOeWJ1MlNIYWpOdWJMWDRORHFyRWZXNGlGNTd1V0ZxQTRHY1NNNEZNZ09RdktsWGgwNlhsQdIByAFBVV95cUxQQ0hQSEREdHhSYnJBMUdlbXQ4V21ib2FzZ1BEaXg0MlY1Zlh0bkozdlFyMGZ4a210a0pySjZrcTN2VUdsbGd1TjFzRXZyU3B5ZW1zNHpVOW1raVhEZ2p6WF9VLXUtb3hLVDhkUkRIbEt4YW9wMWJYSHZMYlpqSFB5VGw4M0JpQlE3S3FOT1RFeE0tOExyQ205azduQVV6OG9NbVB6WHdsY0drZzRiUFdoNU1MaEZJV3pUaE4zY3MxWTNVNDJSWkdOSg?oc=5",
      "date": "2026-10-17T06:18:20.000Z",
+     "snippet": ""
+    },
+    {
+     "title": "‘Can’t claim reservation after conversion’: Big Supreme Court ruling",
+     "outlet": "The Indian Express",
+     "link": "https://news.google.com/rss/articles/CBMi6gFBVV95cUxPUzY4aGVUT2FuQ0FvWGlid1lFSFUxVFk5TnJUUWxlY210THNsWHRJOXBHSTJmSnF0UjdSMExxbFNsRWxHeTBhbW9XSi1qNUhWVmpScTBEVXZ3WnpPMkV3bm9rVE8tTFFvbFAtV0cwRHVndnhMMDhYZ2hJYmU4ZC1sdmVTc2VINDFlOGVvU250NjV1MzNudFpKRVpjZ01oWUV0WXRROWoyNjlwbS1vcjZLS0ludkh6bmdFREpwclhjdG5rNHRyTDEtcGpWeGVGZUUxOFhhYUxjdnNQOHFvd2d0amtUaGxDS3VIQUHSAfABQVVfeXFMT21QR0szSVpENzZ2SUFYVEo3QUJHU29SM19Wenptd0dFbzRNM2Fyc1NxUTYtVFpCSW5halFld3ZjYWIxWnM3b1FocjcwT3Zqd2JZSlQtemFvb3RmTVFYOVJvSHo1bDNHbVVWMnk0bnFBTWUzWDNhTmpZQnBUV0lBOF92X1ktVVBWUnF2ZnJLd3AtRk1yYUVOMDdnWlhZaVNRMUdkM0JPOWVYVWVRN2N2SmNQdmZ6VmVkYnhFMi1IWjl5cXJsd1REZ1loV0tHVmp3ZXV6UGJQbEJIc2xoODg0dm5ra0s1WU9Xano3SWhuYm04?oc=5",
+     "date": "2026-10-15T22:45:00.000Z",
      "snippet": ""
     },
     {
@@ -898,32 +955,14 @@
    ]
   },
   {
-   "id": "68e7f308c9",
-   "title": "Former MP CM Digvijaya Singh Claims Sanatan Dharma Is Being Misrepresented, Hails Dr BR Ambedkar’s Wisdom | VIDEO",
-   "category": "Ambedkar in the news",
-   "image": "https://www.bing.com/th?id=ONUT.JvaL5II-vp_FkUEufgnvyA&pid=News&w=640&h=400&c=7&rs=1",
-   "date": "2026-10-21T05:10:00.000Z",
-   "outlets": [
-    "Free Press Journal"
-   ],
-   "reports": [
-    {
-     "title": "Former MP CM Digvijaya Singh Claims Sanatan Dharma Is Being Misrepresented, Hails Dr BR Ambedkar’s Wisdom | VIDEO",
-     "outlet": "Free Press Journal",
-     "link": "https://www.freepressjournal.in/indore/former-mp-cm-digvijaya-singh-claims-sanatan-dharma-is-being-misrepresented-hails-dr-br-ambedkars-wisdom-video",
-     "date": "2026-10-21T05:10:00.000Z",
-     "snippet": "Congress leader Digvijaya Singh, during the Satya Sanatan Swabhiman Yatra 2026, said Sanatan Dharma was being misrepresented and argued that the traditional varna vyavastha was based on deeds, not ..."
-    }
-   ]
-  },
-  {
    "id": "9dcf2543d1",
    "title": "How conversion affects reservation",
    "category": "Constitution & rights",
    "image": null,
    "date": "2026-10-21T01:30:00.000Z",
    "outlets": [
-    "The Hindu"
+    "The Hindu",
+    "The Indian Express"
    ],
    "reports": [
     {
@@ -932,24 +971,12 @@
      "link": "https://news.google.com/rss/articles/CBMipwFBVV95cUxQYTMwVW5adzhSWm5paWJNUnV4dXRydjdCRG9md0s4enRzNWtzS011dTRzLWtjRk5jQXhPbjI3bW1ObHAxNFRMSWxEQ21mMEhicDdKb1dIYmJUNTBmLTlfUGtIbGw3cm5odGlabTA4cjRiM05sNnVVNDd2b2xCbU9qLThacXNtV29CS292MGVJeS04QU91bFNqMVBiUnVZekRDMnNHejBqMNIBrgFBVV95cUxQSmstdUlERG9LeTg4ZzgtcEo5V1BTZFB0ZTYzV0I5T0F5Nm9CSFpYZUlUM3k4SlA5SThDREh5NmhYdlNmZFRxTFJVVGdwZ2NCMmR6Q2otWDBOUjB1RUlzeFhPQl82dWxXTVBYeWI5UXplcWUxbWp0aExzWEdnb1dvc080UDNaZjdiakRhTVBIcW1jdXdRNldUZ3h3dEhyYzJSeEM2OVlYdkppRnVJQmc?oc=5",
      "date": "2026-10-21T01:30:00.000Z",
      "snippet": ""
-    }
-   ]
-  },
-  {
-   "id": "bb8162a074",
-   "title": "Photo Album",
-   "category": "Ambedkarite events",
-   "image": null,
-   "date": "2026-10-20T20:19:09.000Z",
-   "outlets": [
-    "Press Information Bureau"
-   ],
-   "reports": [
+    },
     {
-     "title": "Photo Album",
-     "outlet": "Press Information Bureau",
-     "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTFA0a2JIVk85dkFtbVh0aS0zU0hSZk43ZEVMYkVHMUpoblhCekppckY3d0N2TEZldGhvdVVtaGVzOHRvdmhEZmNDLVBkckRaYXF5VVQ1T3podXBLM0p1S1NWQUNXQnZMWG56RlZmeVRpVXNZVTA?oc=5",
-     "date": "2026-10-20T20:19:09.000Z",
+     "title": "How religious conversion affects eligibility for caste-based reservation",
+     "outlet": "The Indian Express",
+     "link": "https://news.google.com/rss/articles/CBMivgFBVV95cUxPbExtamIyYUJkQjVFU2dhOWFPX0ZhU0dIejNNYUJERmxGbTMzQkxQb3o4Tm9JMURJWkNBWnFLTi1PN09veksxU3kybndEQkFOVFJfU0dpTi0zOGFtMzhtVGFYVW9fN3FnazV6Ukt3bXpybFlFYjZTblZWX2NLR2ZvUE5NeTVHZmtDUkREcnk3eGhGRkN2RWJrVVc0QmdBRm1BRS16WWd1LUxsUHBkSks1X1pwbWtKSUdNV0JCT3J30gHEAUFVX3lxTE1UMGZGVk5Ga0VrMFFxM25jMUpwZ210SmNrWUFzUXRtNU55MDRyWHVvd0FfdnVmVU9qakxJa3JuWTJ6dzlPRURqdkExbG42UmhNdGkwa2dFM2VEQWdTVER3MDhoY2EyaDZ0MnR5cFMyRTVQYWwySE81aDNyNjFCc0FwTUoxNTJQaTZDcXdZN3JmSENaU1doNERleExlQVB1cnhnYnBFV3dTQ0hMc0ZQckE4XzV5cHh0ZjgxcGJXYW10eGtVZGs?oc=5",
+     "date": "2026-10-16T10:31:54.000Z",
      "snippet": ""
     }
    ]
@@ -974,20 +1001,28 @@
    ]
   },
   {
-   "id": "051d8709c4",
-   "title": "JDS attacks Priyank Kharge over quota, recruitment scam allegations",
-   "category": "Social work & community",
-   "image": null,
-   "date": "2026-10-20T01:04:00.000Z",
+   "id": "6bf300ab9b",
+   "title": "WCL Launches Free Medical Camp at Deekshabhoomi, Nagpur to Benefit 5,000 People",
+   "category": "Ambedkarite events",
+   "image": "https://www.bing.com/th?id=ONUT.UtfNbYogv_n4NE3QYV3UUQ&pid=News&w=640&h=400&c=7&rs=1",
+   "date": "2026-10-20T05:54:26.000Z",
    "outlets": [
-    "The New Indian Express"
+    "PSU India",
+    "PSU Connect"
    ],
    "reports": [
     {
-     "title": "JDS attacks Priyank Kharge over quota, recruitment scam allegations",
-     "outlet": "The New Indian Express",
-     "link": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxPMzMwREw5cEo5amlUdmtadkY1Tkw3WHRfRkNWX2ZMSDVmWERqUXktNUVzUnNfS3Z4SGdQQ0dmSDB3RFluZEc1ajJWN0lodGtqZC1BU0VMcUQ2ZlpXVjNtTENMTTBVcldGdHdmV1JyU1Nady0zdUd5QTlWa2FZb29KX1lMYlpIX1hYM0l5a0FKMnd6OWhsdkwzZEdQX1Q5eXk4eVBPNFF4Zy1VMWtEYUNjM3J5Y1JIYU9kQkdma1lBV01Va2g5RFBxQUlXOTdMQXBLdXRHWdIB1AFBVV95cUxPMzMwREw5cEo5amlUdmtadkY1Tkw3WHRfRkNWX2ZMSDVmWERqUXktNUVzUnNfS3Z4SGdQQ0dmSDB3RFluZEc1ajJWN0lodGtqZC1BU0VMcUQ2ZlpXVjNtTENMTTBVcldGdHdmV1JyU1Nady0zdUd5QTlWa2FZb29KX1lMYlpIX1hYM0l5a0FKMnd6OWhsdkwzZEdQX1Q5eXk4eVBPNFF4Zy1VMWtEYUNjM3J5Y1JIYU9kQkdma1lBV01Va2g5RFBxQUlXOTdMQXBLdXRHWQ?oc=5",
-     "date": "2026-10-20T01:04:00.000Z",
+     "title": "Western Coalfields Launches Free Medical Camp at Deekshabhoomi, Nagpur",
+     "outlet": "PSU India",
+     "link": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxNb2RMR2Qxenp6RlY3bEJIemFHVTJCV21PWHl3aEVGOW5DQUg0aWJ5bGZmdmZzdllFRjhlWlFhRkZpbU9RZkVVeU9FSk1vVE1TUlc5Y01KTVl4SktSbktpcVpNRjNIdk5uelBpLUctMHVEMTNXYVlHbDV1dVV0QW94a3VQLU8yRG9NVFFHOGNVS1BPTDRBT0RWM3NpRExkQ08wMlFPM242d3bSAa4BQVVfeXFMTlZlZ3ZVWHNlZjRaZzNvRGxWMWk5LVFYd1Q5U2luWkJIQzZrTURpRWNJUW1pWUxuRjMwLUxrWWZ1ZVFwc1pHMnFFeFBoYVBoSmRRZjhrMHkzS2xDZFRLLXBjSlVGb0FFUWJBSEZBWnpYMkVXUEI4UENaVGlkY2tPYWlwRVM3SlMzVFhPV0IwaVNUTkU4MFJtWUp4WXhBZFI0RmpKdGI2MDI2eUpBVHV3?oc=5",
+     "date": "2026-10-20T05:54:26.000Z",
+     "snippet": ""
+    },
+    {
+     "title": "WCL Launches Free Medical Camp at Deekshabhoomi, Nagpur to Benefit 5,000 People",
+     "outlet": "PSU Connect",
+     "link": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxPOU1BNFFyT2lnWXEtc19IcXNhdVVWTHVPU1o0THRFNlVwNnFZY3FxZ2VrbXBPS0lueDhqd2xvLUN5VVJwZzl3OWMzbDNzLVFYUElTbnBjX3U5aVBuNzA1a01aMmJnY0hYbTQ0d1paM3dTY1h3OVpNN0cwRHZDZk1Nek1mZWg5MWpDUk1xTmtTWFl6ZjRHRUFBNmI2STJTRnBxV05fcFJnRE9MTE5TSzdwX0VPUFNPWEpqX3Z1Tmx2UHZXYUNtcnladjN5T3VfQno5LVE?oc=5",
+     "date": "2026-10-20T05:30:00.000Z",
      "snippet": ""
     }
    ]
@@ -1031,14 +1066,13 @@
    ]
   },
   {
-   "id": "54b2b96d3c",
+   "id": "7814fef77c",
    "title": "Dalit man attacked for worshipping at Hindu temple in India",
    "category": "Social work & community",
    "image": null,
    "date": "2026-10-19T22:39:01.000Z",
    "outlets": [
-    "Muslim Network TV",
-    "Rediff"
+    "Muslim Network TV"
    ],
    "reports": [
     {
@@ -1047,32 +1081,6 @@
      "link": "https://news.google.com/rss/articles/CBMikwFBVV95cUxNck9vVUZaeHlLVVdIZlFuMkFQZ0ZENDhfVFYxc0RETkQ2N1BLcE5MaTh0OXFrUVBWZE1mRnlGci0wWC1uSDE5TFVMRVdybU5jQ1pnRmJ4OWYwaFhkb0ptMUVhbmFyTmhucHU2V2gzS2hMUjJWUTc0ak12TksyS2pZdmQ5SDR1SjNTRlNBRTBCd25pUms?oc=5",
      "date": "2026-10-19T22:39:01.000Z",
      "snippet": ""
-    },
-    {
-     "title": "Dalit man assaulted for staying, worshipping at UP temple; 2 booked",
-     "outlet": "Rediff",
-     "link": "https://news.google.com/rss/articles/CBMi4wFBVV95cUxQXzJaOG1QNE11NE1OMjVFRVJyYkhTdFBHU0NhN09HRkdDRENRNzNRS3k3Q0JjbmJOZGVzTUF3OWFnNHdHOWdSY0k2WS1MY216empPOVNsUTlxNXo3WnNIeVpWYzhjb1lMNV90cEZkdzRHTHJIUEJhSXhjR04xSzdvd1IxS0M1cktVVWdfdi1neWpJNUhWdUVuWnZFa2t1cjJRY3pYdUlkc3VFeWV3REFuVUZ6NmRfeXhQeFQ4eGhjdW42Z0tncjlLQzN1N3pSdTBrTVN3UVIxMUdsbXFhQ1g3M2hTYw?oc=5",
-     "date": "2026-10-19T07:21:30.000Z",
-     "snippet": ""
-    }
-   ]
-  },
-  {
-   "id": "b6ae754917",
-   "title": "WCL Launches Free Medical Camp at Deekshabhoomi, Nagpur to Benefit 5,000 People",
-   "category": "Ambedkarite events",
-   "image": "https://www.bing.com/th?id=ONUT.UtfNbYogv_n4NE3QYV3UUQ&pid=News&w=640&h=400&c=7&rs=1",
-   "date": "2026-10-19T22:29:00.000Z",
-   "outlets": [
-    "PSU Connect"
-   ],
-   "reports": [
-    {
-     "title": "WCL Launches Free Medical Camp at Deekshabhoomi, Nagpur to Benefit 5,000 People",
-     "outlet": "PSU Connect",
-     "link": "https://www.psuconnect.in/corporate-social-responsibility/wcl-launches-free-medical-camp-at-deekshabhoomi-nagpur-to-benefit-5-000-people",
-     "date": "2026-10-19T22:29:00.000Z",
-     "snippet": "Western Coalfields Limited inaugurates a three-day free medical camp at Deekshabhoomi, Nagpur. Camp will provide BP and blood sugar check-ups, ..."
     }
    ]
   },
@@ -1091,6 +1099,25 @@
      "outlet": "Deccan Herald",
      "link": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxOVmF6UmVjWnJtUTVkN2FSUEJEczlBa2RzODRCMHg4ZS1nMExudlJKUF9GOXpjRzJicmg2aHRMbXlKUVNQbWUwZlFHMmI4ZXpoTE1ZYVJOR1FIVDJlM3U2N3JUUEUtdGdQdUFaS0NSZmlsdnNXQUpTYXB4LUdZWWdUZGx3aUV5RTNYZDRnYkROanlVVTFUd2RNY2QtdWJ0LWpHNXhaVWt6X05hMDlXb1lKNzlRZmlKOGh4YUdETFNXY0VhUnRlQVI4Xw?oc=5",
      "date": "2026-10-19T20:54:49.000Z",
+     "snippet": ""
+    }
+   ]
+  },
+  {
+   "id": "e81a0697ec",
+   "title": "MSRTC to deploy 102 special buses for Dhammachakra Pravartan Din",
+   "category": "Ambedkarite events",
+   "image": null,
+   "date": "2026-10-19T18:47:00.000Z",
+   "outlets": [
+    "The Times of India"
+   ],
+   "reports": [
+    {
+     "title": "MSRTC to deploy 102 special buses for Dhammachakra Pravartan Din",
+     "outlet": "The Times of India",
+     "link": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxQeERyUXcxVk5xRGVWVEFaWlZhSGFXT1U2ZFpkRklhR2dhWEJzaVNSZkNjQm9MTWhYX19SaXhQbFlrTDQ1aUZZd0o2WlFiV05yRnRmVXJndk5zSUE1bWd3aU4zMlJPcTVpWEVQZGJOLTJRVmx6RXpRMVIzU0lwZkVLdHdUTEREdk9VMU5xMV8tQjROS1BhR1k4Zzczb1FqWU55SlNoNVA4cEIyenF1ZzQwb1BtcGdlaUdiamZnRGVIdHFsdzQ4WUdqdjE3TmsxNVBLNERPYdIB2gFBVV95cUxOaVktRmxNb3BySHpjVW5hbnpXTWY3eFBaY3VqVTRtZVF2Q0ZGYlcwQUpLQS0zV3QyQ1BpSFdBQTdJTFpzZzVGeWUyMjZQOGpNcGN6bHAzeVc4R0ZiMmFWSV8zemVfaHRtOElwenp4QnpzYzk1VXBrTk9GUDBSbHJDazhHMlhJMnFqNG1ua1NtSTRlSk9wT0V0amFuS2dLVzB3SWxtNVpVUVVHcElTMjk0SjRQLURPaWdoVGUzOU1fOFV3OW82TFg2c3AwYTFZbFdNbWFoLXVoMWdadw?oc=5",
+     "date": "2026-10-19T18:47:00.000Z",
      "snippet": ""
     }
    ]
@@ -1229,15 +1256,32 @@
    ]
   },
   {
+   "id": "85a5df9a60",
+   "title": "Nagpur Deploys 5,000 Cops for Dhammachakra Pravartan Din, Dussehra",
+   "category": "Ambedkarite events",
+   "image": null,
+   "date": "2026-10-19T01:22:31.000Z",
+   "outlets": [
+    "Nagpur Today"
+   ],
+   "reports": [
+    {
+     "title": "Nagpur Deploys 5,000 Cops for Dhammachakra Pravartan Din, Dussehra",
+     "outlet": "Nagpur Today",
+     "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxPZ2l0azdYN0l5Qm1fTEt6UEVrenY3RHd1czdtWmxrWmlvUTVmVGotSGQxNXhTN0hrbC1pMU9QS0NhMmVlNU1lYzV5YVVrUFF0RU5MWEZjMkxKRHo4bUpsNWJsT2ZQUU4tRmlveVZFRlhlRDhueWJNUV95YW15RV9SSS0zeDAwck5iZWg1anY0VjBaMk44dWJR?oc=5",
+     "date": "2026-10-19T01:22:31.000Z",
+     "snippet": ""
+    }
+   ]
+  },
+  {
    "id": "8df815614b",
-   "title": "IIT Bombay Student Sahil Wakode's Death Sparks Continued Protests; Parents Demand Independent Probe Into Caste Discrimination Allegations",
-   "category": "Protests & justice",
-   "image": "https://www.bing.com/th?id=ONUT.ENFXSX52nLliMrLoUhWpgw&pid=News&w=640&h=400&c=7&rs=1",
+   "title": "IIT Bombay student suicide highlights caste oppression",
+   "category": "Research & reports",
+   "image": null,
    "date": "2026-10-18T23:00:00.000Z",
    "outlets": [
     "Times Higher Education",
-    "Free Press Journal",
-    "News18",
     "Maktoob",
     "Frontline Magazine",
     "The Hindu"
@@ -1249,20 +1293,6 @@
      "link": "https://news.google.com/rss/articles/CBMioAFBVV95cUxQVlNyLWlJT2gwUUxKLVdGbWNvMVUyRTY5RjN5TGFjY1VTNXlNMmFlYVJkOENKTFNpVWlMVXhmTklBcE5iNlNiWXM0amhCc1NRUEFQeHVIREVpREQxZmdkOF91UEFnVEV1NWVtQXRZRnVnSmI3S0I2bWkxSUl3UlJpNlcxZEVlU205TWFUcWxVVGYyVnk1NlJIZkFBbmgxb2c4?oc=5",
      "date": "2026-10-18T23:00:00.000Z",
      "snippet": ""
-    },
-    {
-     "title": "IIT Bombay Student Sahil Wakode's Death Sparks Continued Protests; Parents Demand Independent Probe Into Caste Discrimination Allegations",
-     "outlet": "Free Press Journal",
-     "link": "https://www.freepressjournal.in/education/iit-bombay-student-sahil-wakodes-death-sparks-continued-protests-parents-demand-independent-probe-into-caste-discrimination-allegations",
-     "date": "2026-10-18T06:34:00.000Z",
-     "snippet": "A month after IIT Bombay student Sahil Wakode's death, his parents and students continue protesting, demanding an independent investigation into alleged caste discrimination and accountability from ..."
-    },
-    {
-     "title": "Days After Student’s Suicide, IIT Bombay Tells Students Not To Ask Peers About Caste, Admission Category, Exam Ranks",
-     "outlet": "News18",
-     "link": "https://www.news18.com/india/days-after-students-suicide-iit-bombay-tells-students-not-to-ask-peers-about-caste-admission-category-exam-ranks-ws-l-10383887.html",
-     "date": "2026-10-15T08:13:00.000Z",
-     "snippet": "IIT Bombay has advised students not to ask peers about their caste, admission category or exam ranks, warning that such questions could promote bias and discrimination."
     },
     {
      "title": "Protesters detained outside IIT Bombay demanding justice for Dalit student Sahil Wakode",
@@ -1288,33 +1318,6 @@
    ]
   },
   {
-   "id": "49fbe7cae6",
-   "title": "‘He can’t tolerate a Dalit moving ahead’: Priyank Kharge targets HD Kumaraswamy",
-   "category": "Protests & justice",
-   "image": "https://www.bing.com/th?id=ONUT.2G_MaqH_RcWj13SFDROfmw&pid=News&w=640&h=400&c=7&rs=1",
-   "date": "2026-10-18T21:10:00.000Z",
-   "outlets": [
-    "The News Minute",
-    "The Hindu"
-   ],
-   "reports": [
-    {
-     "title": "‘He can’t tolerate a Dalit moving ahead’: Priyank Kharge targets HD Kumaraswamy",
-     "outlet": "The News Minute",
-     "link": "https://www.thenewsminute.com/karnataka/he-cant-tolerate-a-dalit-moving-ahead-priyank-kharge-targets-hd-kumaraswamy",
-     "date": "2026-10-18T21:10:00.000Z",
-     "snippet": "Karnataka Home Minister Priyank Kharge on Sunday, October 18, accused Union Minister and Janata Dal (Secular) leader HD Kumaraswamy of resenting the political a ..."
-    },
-    {
-     "title": "Protest in Mandya over Kumaraswamy's remarks against Priyank Kharge",
-     "outlet": "The Hindu",
-     "link": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxNc0JrWUhOMTV3NmxsNEc5eXQyR0ZDWEc0aUlVN0d6eUZ2UEQtbm5LLWVBWC1EQU0wM0V1N0RPSlJnNVNELUhZT2FsOUNJMzIwZm5zZURiWDF4ME1VRGljTUdaeUxYdGloWnRXN0Mtc3JoY2dxaFUzWWdlY0swN3otV1ZoLTY3dF9kZDMxdktlSWVoOHBSc0V0dXhKa2VmT0lSUDFQWHRFdnNkZlF4QnZXaUt2R0h5cWtZVkhoa2lQRzlUUTU5UVE5QlQ3aHE3b2px0gHXAUFVX3lxTE5TRjFHTXBYeDZhVTRsZ2F0OEJzNE9rTXpvNWxzSmY1NzlCd1FIUG5BendVSGEzd3JqYU56OVY0Zm1wdEVrYVhWeTd3ZmtjUzJScFhUYjBLVS1ySjVZNkRGdUE4M21yMVdTUENwdWRMMXZyVWh5V2ZHd0dIMlRJNmZEMFM5SG4xTjh1WUdfdXZIOVhiYjI2SkJGejZGcWxURG9TMlJGYmpTN2E0RWF2X1BuTGxFb1c3UGRmQlB5aVZ0UkFGcVM5NGlMb0d6eTlNVjlBQnlCZDRN?oc=5",
-     "date": "2026-10-17T13:04:50.000Z",
-     "snippet": ""
-    }
-   ]
-  },
-  {
    "id": "7efd48828c",
    "title": "In Sumitra Mehrol’s ‘A Flight on Broken Wings, Her Sharp Gaze Upon Those Closest to Her Shines",
    "category": "Achievers",
@@ -1329,6 +1332,32 @@
      "outlet": "TheWire.in",
      "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxQLTd2M0FYejlnLXVSTVA4bC10LUlvRlRMbV80Mm1tbkFMYjFrcWxuS0pHZ3VfQlhFYkpucXNGYVFOSTZjY3ZDRS1iUjBPdS1rVEFtdWlaUE9VTFAzUHpjMzZGVV96QXRUcEgzbEh5R0ZJRmkyYWJ2QnViM1FIeENDYUw4TXFYazE3enUyNXZGZTVRZWljdXAzNVNnTHRHMFIteHA4Tk1FV2RES2RoVVNnQ1JjOU5fWDjSAcoBQVVfeXFMTXlqUjRoQzRIYW5tUXQ0WURNS1NMdlJoR2ZaSmpRNHRHVXVnUUhpVGdpdzdQbUhDenU3dVdkX1NJMl8wT1VwVjZMeGkzbFNNOVBWd2xSdXhCYjBrT3c2S1g2aXN5S3NLanIySlM0a29scUdIZTdVTEVIdGpobmVlc3VScGhMdUxEVVBjd3BlV3d0Z0MyNkN6NDZiNXVNdzlZUUU2WVlpRXR6Njl1TURGbXlYS19teEVudE5CT3RudVBiSjV4RmNJRjB4UQ?oc=5",
      "date": "2026-10-18T13:45:47.000Z",
+     "snippet": ""
+    }
+   ]
+  },
+  {
+   "id": "478e9c91d5",
+   "title": "Dhammachakra Pravartan Din: Mahavitaran Gears Up for Uninterrupted Power at Deekshabhoomi",
+   "category": "Ambedkarite events",
+   "image": null,
+   "date": "2026-10-18T11:57:19.000Z",
+   "outlets": [
+    "The Live Nagpur"
+   ],
+   "reports": [
+    {
+     "title": "Dhammachakra Pravartan Din: Mahavitaran Gears Up for Uninterrupted Power at Deekshabhoomi",
+     "outlet": "The Live Nagpur",
+     "link": "https://news.google.com/rss/articles/CBMixAFBVV95cUxNQWc1TVpiS05BbnRtUDYxb1o1NEVfOFMxbGdmWkdZRHRhOS03c05OYzhjZ2ZZeFZuQUdPX1g3aFhOQnk1N09QODh4alFtcjg3aTduVFZPQjJXSkVxQnRhb0JuM28xZFdoTVU5Y1dFWTBjdGlIU3ppbVpnSnlFRHdXY0h4NDE0bEVnY3I0VEp4azA3dm1uWW5uR1FDVFJwWG02WWF1cHYzVUN1NnhqX0cwUlVBVkNwbzFrcU5zN2ZNblFVLVZi?oc=5",
+     "date": "2026-10-18T11:57:19.000Z",
+     "snippet": ""
+    },
+    {
+     "title": "Deekshabhoomi to Get \"Bhimsrushti,\" German Hangar Shelters for Dhammachakra Pravartan Din",
+     "outlet": "The Live Nagpur",
+     "link": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxONk13cGx1Qks1V2xtR1hkNGdaTllhS0tHVE0wOUtDcVhibFBCSG5BZ2tZZHNBZzFSSXlWWlRYbWo5YkpSUnNLREhSSFcyd3dhajJ1MXJoNU5MZ2hYWlpLckFqNlJ4V2g5Z2pmcTNuM1ZxYllmWW5fbmJIT1dpVVZzeU1pUThfdE1NQmtWcWVwNXJoVW5XeXdqaE4zRzYxZnhSUmVDQVp0RXZIM01aazdMVjdiSmw2XzdEWXZWRl9PVE84UQ?oc=5",
+     "date": "2026-09-28T07:00:00.000Z",
      "snippet": ""
     }
    ]
@@ -1391,6 +1420,25 @@
    ]
   },
   {
+   "id": "49fbe7cae6",
+   "title": "Protest in Mandya over Kumaraswamy's remarks against Priyank Kharge",
+   "category": "Protests & justice",
+   "image": null,
+   "date": "2026-10-17T13:04:50.000Z",
+   "outlets": [
+    "The Hindu"
+   ],
+   "reports": [
+    {
+     "title": "Protest in Mandya over Kumaraswamy's remarks against Priyank Kharge",
+     "outlet": "The Hindu",
+     "link": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxNc0JrWUhOMTV3NmxsNEc5eXQyR0ZDWEc0aUlVN0d6eUZ2UEQtbm5LLWVBWC1EQU0wM0V1N0RPSlJnNVNELUhZT2FsOUNJMzIwZm5zZURiWDF4ME1VRGljTUdaeUxYdGloWnRXN0Mtc3JoY2dxaFUzWWdlY0swN3otV1ZoLTY3dF9kZDMxdktlSWVoOHBSc0V0dXhKa2VmT0lSUDFQWHRFdnNkZlF4QnZXaUt2R0h5cWtZVkhoa2lQRzlUUTU5UVE5QlQ3aHE3b2px0gHXAUFVX3lxTE5TRjFHTXBYeDZhVTRsZ2F0OEJzNE9rTXpvNWxzSmY1NzlCd1FIUG5BendVSGEzd3JqYU56OVY0Zm1wdEVrYVhWeTd3ZmtjUzJScFhUYjBLVS1ySjVZNkRGdUE4M21yMVdTUENwdWRMMXZyVWh5V2ZHd0dIMlRJNmZEMFM5SG4xTjh1WUdfdXZIOVhiYjI2SkJGejZGcWxURG9TMlJGYmpTN2E0RWF2X1BuTGxFb1c3UGRmQlB5aVZ0UkFGcVM5NGlMb0d6eTlNVjlBQnlCZDRN?oc=5",
+     "date": "2026-10-17T13:04:50.000Z",
+     "snippet": ""
+    }
+   ]
+  },
+  {
    "id": "240b478455",
    "title": "Dalit Man Beaten to Death In Sitapur, Family Alleges Caste Abuse",
    "category": "Achievers",
@@ -1429,25 +1477,6 @@
    ]
   },
   {
-   "id": "d851b5da7b",
-   "title": "Protest in Mandya over Kumaraswamy's 'anti-Dalit' remark on Kharge",
-   "category": "Protests & justice",
-   "image": "https://www.bing.com/th?id=ONUT.tw30Qqy3q9zpOz8_HXAjnA&pid=News&w=640&h=400&c=7&rs=1",
-   "date": "2026-10-17T02:01:00.000Z",
-   "outlets": [
-    "Asianet Newsable"
-   ],
-   "reports": [
-    {
-     "title": "Protest in Mandya over Kumaraswamy's 'anti-Dalit' remark on Kharge",
-     "outlet": "Asianet Newsable",
-     "link": "https://newsable.asianetnews.com/india/protest-in-mandya-over-kumaraswamy-s-anti-dalit-remark-on-kharge-articleshow-mglu8zr",
-     "date": "2026-10-17T02:01:00.000Z",
-     "snippet": "Congress workers and Dalit groups staged a protest in Mandya against Union Minister HD Kumaraswamy's remarks targeting Home Minister Priyank Kharge. They blocked a highway, calling Kumaraswamy ..."
-    }
-   ]
-  },
-  {
    "id": "df582f703a",
    "title": "Ruth Manorama",
    "category": "Social work & community",
@@ -1467,32 +1496,15 @@
    ]
   },
   {
-   "id": "760019d263",
-   "title": "Implement caste survey report in a week: Karnataka BC forum",
-   "category": "Research & reports",
-   "image": "https://www.bing.com/th?id=ONUT.Y65ISs2CLyIAwwH7J_iHMg&pid=News&w=640&h=400&c=7&rs=1",
-   "date": "2026-10-16T19:33:17.000Z",
-   "outlets": [
-    "The New Indian Express on MSN"
-   ],
-   "reports": [
-    {
-     "title": "Implement caste survey report in a week: Karnataka BC forum",
-     "outlet": "The New Indian Express on MSN",
-     "link": "https://www.msn.com/en-in/news/other/implement-caste-survey-report-in-a-week-karnataka-bc-forum/ar-AA2epGdO",
-     "date": "2026-10-16T19:33:17.000Z",
-     "snippet": "BENGALURU: The Karnataka State Backward Classes Federation on Friday gave the state government a one-week deadline to implement the socio-economic and educational survey (caste census) report, failing ..."
-    }
-   ]
-  },
-  {
-   "id": "7ccfc82154",
+   "id": "3c665baf5d",
    "title": "Madhya Pradesh Government Moves Supreme Court Against High Court Verdict Scrapping 27% OBC Reservation, Files Special Leave Petition",
    "category": "Constitution & rights",
    "image": "https://www.bing.com/th?id=ONUT._ubQP03CEMkSfDtN6tQLmg&pid=News&w=640&h=400&c=7&rs=1",
    "date": "2026-10-16T19:30:00.000Z",
    "outlets": [
-    "Free Press Journal"
+    "Free Press Journal",
+    "The New Indian Express",
+    "The Hindu"
    ],
    "reports": [
     {
@@ -1501,6 +1513,20 @@
      "link": "https://www.freepressjournal.in/bhopal/madhya-pradesh-government-moves-supreme-court-against-high-court-verdict-scrapping-27-obc-reservation-files-special-leave-petition",
      "date": "2026-10-16T19:30:00.000Z",
      "snippet": "Madhya Pradesh government has filed a Special Leave Petition in the Supreme Court challenging the High Court's October 9 verdict striking down 27% OBC reservation. The court upheld the existing 14% ..."
+    },
+    {
+     "title": "MP government moves Supreme Court against HC verdict striking down 27% OBC quota",
+     "outlet": "The New Indian Express",
+     "link": "https://news.google.com/rss/articles/CBMiygFBVV95cUxOSUg3emljRi1pNVVoY21rMkY0ZXNIaHJ0dzg0a3dQZkxVUVFnb1J1Ni1oNGE0YUpLT1hGV25QT3pObWRJaFNDSE5WOHhFUjVqeFBhdVVnUkY1bGVoTFNsZ2lyUGJqMDN6RTJWd0ttVUMxem1OVDlzTnRNeGNzbmIzd04ycjRKQTc3dy1LQXotZHgyaWpxUFZ1MWNKYmp6TmNYdEM0YmV6OFIxOUhWWjZYOU83RWdkMVlyOE11azJDSk5nVXRKbXZHN3lB0gHXAUFVX3lxTE9yRmhrOHJGeW9LVHFkSDdnYk5xeEdka2ttRkNUQ3B4Y21JVlZ1QUlOdFU0dktWVVBHMFRrT044bmdUU2NWbTNjdll1RnQwNHJhQUMwUGJaOFhlWGtZM29VSk51azlFeVBRR1dtcFo4dW1TN2xQMTNEaWYyd0dBYXpoWmpjOFJsYUNnb1N6RzhfZDc3RUYyZi1lU0F1TGc0SVp0RnRrOERRYUJ2MDdaN291aUtXcGtoMy1JM2NRS0JDNVlSVnRNblhSRGhWcTE2TS1XODJLV193?oc=5",
+     "date": "2026-10-16T15:46:56.000Z",
+     "snippet": ""
+    },
+    {
+     "title": "Supreme Court upholds Andhra Pradesh High Court judgment on BC reservations",
+     "outlet": "The Hindu",
+     "link": "https://news.google.com/rss/articles/CBMi4wFBVV95cUxPRE5kMFlDeG5INkQ5X1lPazlRaUptWFZWQzZOODIxNjdlV2FGamRDNVZzOC01bXV3QTQ0YVBJVHpWbXQycEZtNkNLd1VvVG5OQWtxUHVva0tQalVkZDl5anRwNnVsd0dtN3MwN0NFZzQ1NTM3UUhaTWxYc2wyVWJPSWpwcXBMZ05ubTJxMzZRZXhFR3JxWndxZ2NMSDZqZmlGSXRwbVZBaXl0cEVxQzBpWklKZ2FVUTZiR1pWT3FkUGljb1NhY25hMmRHeE10eWoxNzBCQVlTQzFoZC1JVVZiLUJMd9IB6gFBVV95cUxOQWFZY0Q2NWV4ME1LbFNsanhFZ0M1bFVOWklJQUZrcUQtdTE2UlZHMWhGdU04NWVRQUhkUWFaV1pIampWR2IzRlpzbmtvYWd4WjR5TkstX3pybmRmRTIwR1g5UUV5WWNXU1U1LTNRdWFwOVk3MVBrZmZCWHVfSmZZLU9KbmVRTFRLbGpPTmxXMkFpM1JwN3A4V1ZwZXQ2VlJBdWxYc3JhcHZWWklxTjJCMFJIREM5RGlxNno5bDhuZ2o1cDVqTFRhTGlFZlhUTzhSeEE1OEdQdGU4VkdEX3hvelJ6RUtvLXRscGc?oc=5",
+     "date": "2026-10-09T07:00:00.000Z",
+     "snippet": ""
     }
    ]
   },
@@ -1589,25 +1615,6 @@
    ]
   },
   {
-   "id": "52a517111d",
-   "title": "TISS CUET PG 2027 Cut Off: Check Topper List and Expected Subject Wise Cut Off Here",
-   "category": "Social work & community",
-   "image": null,
-   "date": "2026-10-16T07:00:00.000Z",
-   "outlets": [
-    "Shiksha.com"
-   ],
-   "reports": [
-    {
-     "title": "TISS CUET PG 2027 Cut Off: Check Topper List and Expected Subject Wise Cut Off Here",
-     "outlet": "Shiksha.com",
-     "link": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxONUNSWmtxWjVxTC1iUHVmNUlXYUlsQzdxWksxT2k2T3VXS2lISGhpb1Zzd1pBQ293NWdaUk1qS3lXb044MnZBa0haTVI1UnJOb2lfemROZC1KcW1GSjNEbGk3Q3JhdG9RTnhzLXVWUFBoVnh3WEFsUlhmbWFCaFlMcjBLQXNJR19sWWNkQVlvd3p2UjRFLTdmSWprU3lsajJQVmJ5V1doVVREYWdDSFB5OTkzSkM5aVQ3TUow?oc=5",
-     "date": "2026-10-16T07:00:00.000Z",
-     "snippet": ""
-    }
-   ]
-  },
-  {
    "id": "199ec3eb51",
    "title": "News18 UP Mega Survey: BJP Has Clear Edge, But Caste, Youth And Jobs Could Shape Contest",
    "category": "Research & reports",
@@ -1654,7 +1661,7 @@
    ]
   },
   {
-   "id": "e17cec65cc",
+   "id": "d88af99e1f",
    "title": "‘Theyre Unable to Tolerate Our Voices,’ Say Students as Ambedkar University Suspends 11 For ‘Indiscipline’ Over Protests",
    "category": "Ambedkar in the news",
    "image": null,
@@ -1666,7 +1673,7 @@
     {
      "title": "‘Theyre Unable to Tolerate Our Voices,’ Say Students as Ambedkar University Suspends 11 For ‘Indiscipline’ Over Protests",
      "outlet": "TheWire.in",
-     "link": "https://news.google.com/rss/articles/CBMi2AFBVV95cUxPNmltbnpIOGlwV2psU2pjZnFQNjhFU0hmZEpHeW1pMFNMSnhDV1YzQXFXOC16WDFzWk85a2lJbFRSVWJtNk1IdW1MY244RkM3djBad284VHRBY3ZLRTVXSVh1bGgxSnpYcXF4V1p2dzM3ZExmVlpfNWFGZGVPTlhhaWFma2xGdE0ycm1FQkNHWkVDRFBSVnEzZXhoU0x2QTZTRFRkTldPZHhia0xCUU5MQThiVHdwTV9FNDVkbE9uSENUZlJ5akduUi03S2phZFN2eHNkUmhmbEXSAesBQVVfeXFMTmJjcXk4c3RmTmJ4VVdOcW0wXzR1XzAxbGZ1dmljS25FTXY4Vm1NVVBMNFFteFB3TXpxbGpnMFB5S3RCeVhYVTgxaVFRQkJteDRfQl9DWEZyWnBkRmttV3lwSE5jbXpMbHR6ZWlBMlFNOUwxQTRhSTg1c01yVmU2UW1QUi0tc0FGUDlkQWFYV3Y5RS14eHg4cVl1VHE5QVFUUy1OTHRGZ19tQ29telRsSFVBNXhQZVFKYmRVZWhXdjljN3c0STE2dEhjcXJlZENzTlU4MEZTYjJ5WXdtNHpCUTMyZ2N3UVBObklNWQ?oc=5",
+     "link": "https://news.google.com/rss/articles/CBMi5gFBVV95cUxNYnZRMDU3eHU3dW1xam5adVRBcVpEdmYzSmktbHlkZnhZLXFzWFItN0syVzdIR3A2eWw2YUhnSWlZM3FOa190ZWpCZ0RSZzNCaWplblhHNVhwY2ljR3ctM1o3VEQ4N3JSUXhqOGk0c3VSRHFxOTV3U01NVUh2bTJ2MXp6elpkRzhzejBOcnpwTVBVSm8yYmVWV09kclNhQ0RDWkdUVml6RldOYkNrenp0SHZadXI2YlZucU51YUhKajV1SnZnT0daX1I2S1BzZUFsakFiWnhHOFlXMGxZeWNyRGtwRnVHQdIB6wFBVV95cUxOYmNxeThzdGZOYnhVV05xbTBfNHVfMDFsZnV2aWNLbkVNdjhWbU1VUEw0UW14UHdNenFsamcwUHlLdEJ5WFhVODFpUVFCQm14NF9CX0NYRnJacGRGa21XeXBITmNtekxsdHplaUEyUU05TDFBNGFJODVzTXJWZTZRbVBSLS1zQUZQOWRBYVhXdjlFLXh4eDhxWXVUcTlBUVRTLU5MdEZnX21Db216VGxIVUE1eFBlUUpiZFVlaFd2OWM3dzRJMTZ0SGNxcmVkQ3NOVTgwRlNiMnlZd200ekJRMzJnY3dRUE5uSU1Z?oc=5",
      "date": "2026-10-15T18:35:30.000Z",
      "snippet": ""
     }
@@ -1833,13 +1840,33 @@
    ]
   },
   {
+   "id": "70935a19a3",
+   "title": "Can't claim Backward Classes Muslim quota after converting: SC upholds order",
+   "category": "Constitution & rights",
+   "image": null,
+   "date": "2026-10-15T07:00:00.000Z",
+   "outlets": [
+    "India Today"
+   ],
+   "reports": [
+    {
+     "title": "Can't claim Backward Classes Muslim quota after converting: SC upholds order",
+     "outlet": "India Today",
+     "link": "https://news.google.com/rss/articles/CBMi-AFBVV95cUxPUE9NdVRDelhNSHlIWkNSb0taM2tCcEZ6YmpQRE05aklUakh3Z0FGLXhSLVMwLXcxN1dGNEFpVkRtdFM0dHRtSk5yOEhJd1RBZ1k4Vk5vajFPd2xGT3ExdnU2aGJoVUdMQkh0NF9TTXg1TGVjc0NKSGFjeWxtNzUwaDJCM1J5WEFJOVlkbTNyVDVuZUtVc0MyQjNzVFBnbnRPUm50a2FtLXJUdnVyUGllUzlnak9Tb0lPcVVNY1FXc3o5aWxGS2R6MHpyQWdtTEJteGx2d3FacWZLNzhmWWdzbW9vY1Q5NW9xZFFYb18ybU1QRXYzcjVMeNIB_gFBVV95cUxNMGtWNFpxVUd6YjFUUnpnVzhjVEdpOGwtZl8xcEtTM3ZqZk80TS12N3hhSzhVQWZYVmZvS2dUOWNZWTI3Tjh3TWdjZTZtLVp2a0VmNzExSS1MMTFIdDA5OUJoTUlWOTVCbEdXSl9vc1daQzF1RXVSU0NGYndsWDY1OEdtaXdxT1pTVzdCUUZNS3FtSHFOZHdWUTduVFVZb183OG5PeGEzSXpmSzByekFFaDcxYVBUS2ZnUzM1MXhnRGhaRkNVZWx0WTFwMm9JRzY0RHY3Q3pqM1BoZGVQblduQkpaeXJuR2xOQTBqVkNyNmVIUkNESmNjcGJDMF9fUQ?oc=5",
+     "date": "2026-10-15T07:00:00.000Z",
+     "snippet": ""
+    }
+   ]
+  },
+  {
    "id": "887a664807",
    "title": "Conversion does not automatically grant quota benefits: Supreme Court",
    "category": "Constitution & rights",
    "image": "https://www.bing.com/th?id=ONUT.2DqmIqptZf3nz0MzhqDCxA&pid=News&w=640&h=400&c=7&rs=1",
    "date": "2026-10-15T07:00:00.000Z",
    "outlets": [
-    "The Hindu"
+    "The Hindu",
+    "NDTV"
    ],
    "reports": [
     {
@@ -1848,18 +1875,24 @@
      "link": "https://news.google.com/rss/articles/CBMi9gFBVV95cUxQR1JDeDBrb05BVHlZUWszOUloTHF6b2FCQzl5N1BhY0dYUTBRdDloYXktbkNwUFJmdFJTa0JpSjJOcVNwWnh6WUNsSHpHVFY1TlM2WDdXTmhVeE1CbkVHTENqUF96WVR6NHpfaV96SmFZbTJveTkxLWFMdnQ5N1FWeW9JcFFJZXZMZ3pZVnVYWEJBdDRoMDRZMnZ2TzRWWnoyNERldUp4alVXWFpndTdZNmNOOTU4VFpaV25RRVZCcWxUMkE4VldYeE1FRUJkVzREdHR2MFVKbVNtWkNvVG9nUWU3S1RMZFBzLWtzeUtKRjQ3ejVub0HSAfwBQVVfeXFMTzd4bE1SLU41QWoxbkVOdE1nR0pHMW8zbFRtMDRLQjQwVUJaN0JWR3FHczlnMjhxbVZoUXFiemVBNGFSamljd2lCTzZDYkxKYXhkbkl3UjZnWXVtbFdXbkxUamZDZEM5UWJtTGNxaU0xc29LNWlSX3hfSDBTUzVDTnpRdnd4RU9QU1hhOHZDLTBCaTJoMURuRGZtSjJqbEVkbGZhR2tJTEh4REZaaXdNbGNCLVRSNW9Ua2p2enVRcmR5ZWt1T1JzTjc0ZEtadEtLS2ctVlFURlg3S1dCMmw0aElxVks3NDJISzAwYmhyTFNac3U3X1lKUXJpM0FS?oc=5",
      "date": "2026-10-15T07:00:00.000Z",
      "snippet": ""
+    },
+    {
+     "title": "No Automatic Backward Quota Benefits For Converts, Rules Supreme Court",
+     "outlet": "NDTV",
+     "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxOTGtDNmRGMExDTDBtN1JFVjV3WFFsUk1CbEM3eTBKWnpCRzMtQndwSTdFcWZjQkhpbkhkWGpyNFV3OERKWHNYbmFXUk1PUlB0aEtHSDdDbE1acWs5ZVhlZUU2YnNHbWxrTXBIU2dmMVB2Sno2UXRiYWcyZHRneWVieEJpQlRTbVNZSjdRZWg2MzNwSU9UYmxmTGpCSkJkZjlPM21NYjJKUWJIMDRJNS1z0gG3AUFVX3lxTE10LWJSMTM5SlNmcU92NS1TLWJieU82aUphVFZSVjlKUnd0Y0V4V2ctcS1wYnRickVHM3dsUG5rYW0wTEthX01CelhnejA4RG5KWV9QX3V0S2k1ZlJSR2hIZmVBUy1FNzZQVU9JaUxWbDVzSzh1dEpOcHgzbVFhOXVUY3pYY25qbnpQaXNlVmRnZEl3WjZwbE84ODlaM1RvUVNjY3phTlFVZnpDcTFmczlxenRIUl9YYw?oc=5",
+     "date": "2026-10-15T06:41:08.000Z",
+     "snippet": ""
     }
    ]
   },
   {
-   "id": "7b6775dfb9",
+   "id": "9752ac3f7a",
    "title": "IIT Bombay bars questions on caste, admission category, JEE ranks",
    "category": "Protests & justice",
    "image": "https://www.bing.com/th?id=ONUT.LF0E5jGBvTYDSZeoGDQKJw&pid=News&w=640&h=400&c=7&rs=1",
    "date": "2026-10-15T06:19:00.000Z",
    "outlets": [
-    "Rediff.com",
-    "Deccan Herald"
+    "Rediff.com"
    ],
    "reports": [
     {
@@ -1868,13 +1901,25 @@
      "link": "https://www.rediff.com/news/report/iit-bombay-bars-questions-on-caste-admission-category-jee-ranks/20261015.htm",
      "date": "2026-10-15T06:19:00.000Z",
      "snippet": "Bombay has released 'anti-discrimination guidelines' advising students, faculty, and staff against inquiring about birth, admission category, or entrance exam ranks to prevent bias. This move follows ..."
-    },
+    }
+   ]
+  },
+  {
+   "id": "389abe60e1",
+   "title": "SC upholds HC order denying OBC reservation benefits to Hindu converts to Islam",
+   "category": "Constitution & rights",
+   "image": null,
+   "date": "2026-10-15T06:11:00.000Z",
+   "outlets": [
+    "The Times of India"
+   ],
+   "reports": [
     {
-     "title": "No asking peers their exam ranks, caste or admission category: IIT Bombay reiterates anti-discrimination rules",
-     "outlet": "Deccan Herald",
-     "link": "https://www.deccanherald.com/education/no-asking-peers-their-exam-ranks-caste-or-admission-category-iit-bombay-reiterates-anti-discrimination-rules-4183824",
-     "date": "2026-10-14T16:06:00.000Z",
-     "snippet": "IIT Bombay anti-discrimination guidelines ban students and faculty from asking about JEE ranks or caste details. The institute reiterates the policy following student suicides and ongoing police ..."
+     "title": "SC upholds HC order denying OBC reservation benefits to Hindu converts to Islam",
+     "outlet": "The Times of India",
+     "link": "https://news.google.com/rss/articles/CBMi4AFBVV95cUxPaWZGWVpCaWp5NENkbjVQOXNhVmJXNk5weWRzdlczdUh4akRnanJlVWtBeWswR2kyeHp0MmRuWXZBc2JGOVo5YVdWZDVmbVJqN0FLeS1MYUtBRVFHRGZLODh6ZzVfQ2xCcFJZcUhJazEyWEVqYmJmM0RUT0QwdnBVTGdNbnRQZjIyR201aUVjRnRrOHlHcWs3NFFFcV9pSkR0MmE0eWpOWWRTdElIbHQ4UTcxZzF3S0g4QmhwTE14ZjVnR09naElQaUc5b0hLYjcwd3hhcE5YZm45VWpFX1BubdIB5gFBVV95cUxQc1J0T0tidW5ldnlBVUo4OEEzWVN0TzNnbjRVUk53LU1rbTctZjFTZlNZYngwTDhIbGpBR0R1VTF1aVJSck5LRHh3aWp0bmxXOXZWM1FOMDFKT2xzVk0xc3Q3T1drZ0ZlcnJ5a2YxRnd5VUdjWjJkMGJnUEo0VGliMU1tN2hmLTZoTUdSWE1Fd1JkeGx3SWJLT2ZFOHN3cGYxeGF6WnB3dEJkYzdiOVBRWUtfM2IySlFqd2h1aDJTa2tLYzl0ZGlBRWJjbF9mVll6bjZ5RWtlRnR6Y3FtVzBpREJEY0tlZw?oc=5",
+     "date": "2026-10-15T06:11:00.000Z",
+     "snippet": ""
     }
    ]
   },
@@ -1893,6 +1938,25 @@
      "outlet": "Frontline Magazine",
      "link": "https://news.google.com/rss/articles/CBMiywFBVV95cUxOaFV0cEVoNjF1T1d0LUJkbU5DWkNET2R2YWxQX2RGVHV1dTlHNGVEUk5laEN0UlRFQ19jRGU1YWlidkpDQ25DMnM2dGVwUnVqSWtERGI2WnBoMzNHWWFrbWVFV2FaZ3ByZHFpWllKU1kxYktIYlVJSko0dVE4WUxVLTVBeHFfUS1od1ZxR2sxT2NzZEpKV2dsQWtfSUUxU1gyTW1SUG9fSWsxVGR0eDNHekZ1Q0xtdDNZcDFUamJ0eHZwa3R2dXZZRi1QRQ?oc=5",
      "date": "2026-10-14T23:00:00.000Z",
+     "snippet": ""
+    }
+   ]
+  },
+  {
+   "id": "2c293b12c9",
+   "title": "Deputy Speaker Anna Bansode Seeks 50 Acres In Thanes Jambhul For Dr Babasaheb Ambedkar Memorial",
+   "category": "Ambedkarite events",
+   "image": null,
+   "date": "2026-10-14T18:36:53.000Z",
+   "outlets": [
+    "Free Press Journal"
+   ],
+   "reports": [
+    {
+     "title": "Deputy Speaker Anna Bansode Seeks 50 Acres In Thanes Jambhul For Dr Babasaheb Ambedkar Memorial",
+     "outlet": "Free Press Journal",
+     "link": "https://news.google.com/rss/articles/CBMizwFBVV95cUxNY016Ykg0MlpzQnJxRHdqRkVOYlVjYnRTQUlKenFDZm9qUlVjR0Q2UWZRWTZhX2R1U0M5czVnSldVQzYzZUpQa1JHTjRZcHVzU2N3Q092czNkR3I4LVFjQ0FSS3FfLTVHMDQtM0w3Nk1aa0pYOHdsQlE0QW9ZdUFpRURSQkMwOVhCT1FzN0M5U0hkeEY3VkJ2eE1KRjNQRS02T2pOU3ZTUm92SXIzdmNjWXIwdUlHX0RMSk5yakFDN0h0N1JxX3VKUFFTZjhEQ2vSAdQBQVVfeXFMT3A5M05sRHNsNEtQeUxJUzFBX0drTHQ2X19BVERGMl9OQjV3Ti02UTVwam9vY0R2U0tHeXpWUUNCYVI3MHM1b3E1RjNtRncxM1phd1pxdzc5MHh6RVZraFNpSUkyWlVTTTdNSVMtUVdjTjdRdUNHT29zUDYtM2YzWm9VTVVsd3RUZ0tZRk1SdmZTYUYwQmxnNDI1eXoxVG0tTTAzcUpQVWNGUmJJMEI2b0IwQTE0N2xjdXJBeERvZVUxUUtadFlNR083dURTNldxVGJiV2c?oc=5",
+     "date": "2026-10-14T18:36:53.000Z",
      "snippet": ""
     }
    ]
@@ -1917,25 +1981,6 @@
    ]
   },
   {
-   "id": "8d9028739b",
-   "title": "Deputy Speaker Anna Bansode Seeks 50 Acres In Thane's Jambhul For Dr Babasaheb Ambedkar Memorial",
-   "category": "Ambedkar in the news",
-   "image": "https://www.bing.com/th?id=ONUT.FhqFwcWJEREhyTDiJQQMBQ&pid=News&w=640&h=400&c=7&rs=1",
-   "date": "2026-10-14T11:35:00.000Z",
-   "outlets": [
-    "Free Press Journal"
-   ],
-   "reports": [
-    {
-     "title": "Deputy Speaker Anna Bansode Seeks 50 Acres In Thane's Jambhul For Dr Babasaheb Ambedkar Memorial",
-     "outlet": "Free Press Journal",
-     "link": "https://www.freepressjournal.in/mumbai/deputy-speaker-anna-bansode-seeks-50-acres-in-thanes-jambhul-for-dr-babasaheb-ambedkar-memorial",
-     "date": "2026-10-14T11:35:00.000Z",
-     "snippet": "Maharashtra Assembly Deputy Speaker Anna Bansode has directed the Social Justice Department to seek 50 acres at Jambhul in Thane district for a proposed Dr Babasaheb Ambedkar memorial. The land is ..."
-    }
-   ]
-  },
-  {
    "id": "3b1dd6829c",
    "title": "UGC Rules Halted as Caste Discrimination Persists in IITs",
    "category": "Protests & justice",
@@ -1949,25 +1994,6 @@
      "title": "UGC Rules Halted as Caste Discrimination Persists in IITs",
      "outlet": "Frontline Magazine",
      "link": "https://news.google.com/rss/articles/CBMixgFBVV95cUxORlV5bUVRQUpScVBEWUl2ZHNBSFFBaFBPVzVnNUo2MzU4eG5zMnFLeExLTnRuRkRXSWhHVjc3NDgtQXZiMnRFMTI5bFlldmxRM2U5TDk4bFZseVNzbW9RdjJsZnFPdnZ1NHBHOVhWSmJ6U04wOWtRLUZTTGRIYjd2VFFPc3ZqMjdvU1pZV0NCNVBvMVlGVFlVQm5qcGN5MHgweXlQbnBsM2JNd3pSM3RjY3BWMlhyM1B6ZEJZR0lHa0lfVGZIWkHSAcwBQVVfeXFMT21naU9tM2p5ck5rWjE2bl9YeElIdURFblRudTZISlRTbVpmNDQ4V2xNaTlaNTVZT2RYMGE0bWk5TmF4REhiQVJhSGdldTVrVmJYbnVidGZqdzdIcDA0Zk5SMHNTRzBoaDhGaS01ZHUyOVZLQVl1OGlOMWpGRHVuZk5TbFFmV0xLWkh5RXAyUGpOcU0zOUJsbXFxNWVHbHkycW9KTFhZY3NuSGZoSWxBanZUei1NaFB1emgwUUpHazhWM1ltM09nYVpEWF9R?oc=5",
-     "date": "2026-10-14T07:00:00.000Z",
-     "snippet": ""
-    }
-   ]
-  },
-  {
-   "id": "100d26d106",
-   "title": "IIT-B student death case: Around 30 detained over protest outside Powai campus; delegation submits letter to director",
-   "category": "Protests & justice",
-   "image": null,
-   "date": "2026-10-14T07:00:00.000Z",
-   "outlets": [
-    "The Hindu"
-   ],
-   "reports": [
-    {
-     "title": "IIT-B student death case: Around 30 detained over protest outside Powai campus; delegation submits letter to director",
-     "outlet": "The Hindu",
-     "link": "https://news.google.com/rss/articles/CBMi4AFBVV95cUxOOE1KSGpDTk5xTU9xenM3UkZSU0xzcDMtMFpsWG05R3hWSXpKRVUtZE5GZlgwc003TjktTkRseXl5Zjhhd1pTQ29XQUZuUTBDS0FTS3ozcHFDdl9uVTJqWGZ6alBRdmlEOEUwQ1B5eUVnQ1NUcGdkMktoQTdLaVNNUkVkRkFleHBEOWpsTEVIQnZ4ekUwakhMa2xUb04tQmg5cC15b0hrRzEyRHd1X3dmX3J4ZThkNTVaZHlfVTJiX04zVXhpSHhIUUlqVmJaU1psMkhHWk5TRzJ5ZkIzb01rWNIB5wFBVV95cUxNa0VCSVVZckNWQ0hsdFNHY1dMQmktX1E4UE1oWE55M3E0U0tUekIxRWNrcHVxclBrNWNsZ2VrZkpuSmptMnEwZkNIYlZYWDZvS2NyVnpMQTlqY2JXSnpMUHZMeG5qY3lCZ0hQX1plMVZLczRzYllWUnJ6NEFpc0lyTzk4bjRkd1p0WXppb0VtUmtuWWZiWEhQc0IzQ1NYLVZaVFJyTlZQazlqSEx0WUNBWmNuWS1ka1JNVjI0WHpZdHBEckF2U3BBNjg0U1ZVZHVkSWlfTm56TEFIQlgtNTl3XzJQS1l6R0k?oc=5",
      "date": "2026-10-14T07:00:00.000Z",
      "snippet": ""
     }
@@ -2031,6 +2057,44 @@
    ]
   },
   {
+   "id": "e92ea22172",
+   "title": "Breaking: Conversion Alone Doesn't Confer Membership In Backward Class Muslim Communities: Apex Court...",
+   "category": "Constitution & rights",
+   "image": null,
+   "date": "2026-10-14T07:00:00.000Z",
+   "outlets": [
+    "Verdictum"
+   ],
+   "reports": [
+    {
+     "title": "Breaking: Conversion Alone Doesn't Confer Membership In Backward Class Muslim Communities: Apex Court...",
+     "outlet": "Verdictum",
+     "link": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxQRWtUNUJYNkdKS2tHSGZlV0tCWE00SXF1VUNXYWdmT0xxa1V6bl9aY0lPWkRCQlhfQlEyNVpGeGcyYWN5emVaT3BUSGxRM2N4OUU5ekJ4QTAwMVRfbk5WUlFUa0lKVWU4TWJyU3Rxd0VoVkhsazNTb2U3eU04MTRDaElmbzNjczVra2F3aU04WkFKZVMtQ3REX3REckNfajhpMW5FZUxPelc4bVZZT3NyckRVMnFlYXk5eTY5ZUFkZE9iUdIBxwFBVV95cUxQMExrdXVsZnNpY0RIUEE0cElWeWM4eHdBQ2F1RjZhZ0I3RzIzazVWdTVveUF1b3IyNWpxa0tVQUJOSE5wRl9JdG9fNUQyd21LNXNsUS1MZUVNQndobmhoQ0x2NHJnaVl5N04wTDRPUWpHNFJjRDcwNFY4dGRkNEVRSm42Z0JJVlNCMHR3TkdwUmtUSi1reGZxUDhYLXZhdDlubnNiVWxYaTZpV2MxNURvSzZ2TGNHeGFYeTB4SDJqajBZeEhfQ19j?oc=5",
+     "date": "2026-10-14T07:00:00.000Z",
+     "snippet": ""
+    }
+   ]
+  },
+  {
+   "id": "09a386170e",
+   "title": "Converts To Non-Hindu Religions Can't Claim Backward Class Quota Solely Based On Pre-Conversion Status :...",
+   "category": "Constitution & rights",
+   "image": null,
+   "date": "2026-10-14T07:00:00.000Z",
+   "outlets": [
+    "Live Law"
+   ],
+   "reports": [
+    {
+     "title": "Converts To Non-Hindu Religions Can't Claim Backward Class Quota Solely Based On Pre-Conversion Status :...",
+     "outlet": "Live Law",
+     "link": "https://news.google.com/rss/articles/CBMi7gFBVV95cUxOMmF5X1V5ZDgwd2ttX3FXTThrTWw5NXJjcXhTRzJyTW14cEd5dURoeVRYcXJWd1UzOTRqRnNHdWlNeTdoaGtRNE1sTWJ1R1EteTJIUnI5bExabjh0SzRzZkk1aDd5N2hpRjdnVmZMUFdhYmo3Ymxab3FDYzI2a2RoVjBpVnRMZkV3ZlNWbC1tMnlDVzB2VGw5aDVBT2N5SG9SRGxRTDJlYllnc25rNWpDalg4YVhCaXVsTnFwZWpOY1MtR2JHakxHb2xKamZtSEE4M2E4bUl1d181elF0Qmx5Tnh0OFV3MERLYzRtZm530gHzAUFVX3lxTE8zRkJuQjlaY2doT2N6UndEajBUTW9COWhwQTduaHBWdGNycmlONGNrcVpJZWNjb2NqMVhYVHBGakw1TWtVOGlNR2ZUN2pRS3paNkFDS29JNU1rb2prQncyeHlLdTN6ckNSZVlERU1rZkxvSFJaamlUS2NQVmdwSl9VcU5IdS1BQW55X0pYQjUtZlJBZnpnczV0TmZqb1dseXdCOEh4TEpvUnhWRlRnQkZwRlpEQ3BaLUdtOHV2V3psMFBteWZXTGk4OWVVaHh1VjU0MmtOaU1xdm9OdXF5cElYVnFwT3BTbFRqWHBNZmNWN0lQNA?oc=5",
+     "date": "2026-10-14T07:00:00.000Z",
+     "snippet": ""
+    }
+   ]
+  },
+  {
    "id": "2e1fc2d169",
    "title": "Emancipation and Legacy: Dr Ambedkar, Buddhism and the Community",
    "category": "Ambedkar in the news",
@@ -2045,6 +2109,25 @@
      "outlet": "Countercurrents",
      "link": "https://news.google.com/rss/articles/CBMioAFBVV95cUxPY1ZQMjNjVHZrM1ZHRmdVaXhtNHNtT3FRUlNUcndVVzlITjh3M0FDY2xqdjRCZ3BqWU5lNWVFeEhuYzY2Vk04V3dQbE4xTE1TTEo0QS1hT01qaVNWUnZLeDhtckxzMno1cXB4Y0x2VDZwUVVfS2VUSERuUlhvM3VYeFVuLThaZ1hteTdTdHBJT0wyYVpFUWtYMHFwY014eEJn?oc=5",
      "date": "2026-10-14T06:37:46.000Z",
+     "snippet": ""
+    }
+   ]
+  },
+  {
+   "id": "882a55a758",
+   "title": "Abhijit Dipke visits Deekshabhoomi on Dhammachakra Pravartan Day, accuses Modi government of imposing 'unofficial Emergency'",
+   "category": "Ambedkarite events",
+   "image": null,
+   "date": "2026-10-14T05:28:35.000Z",
+   "outlets": [
+    "The Live Nagpur"
+   ],
+   "reports": [
+    {
+     "title": "Abhijit Dipke visits Deekshabhoomi on Dhammachakra Pravartan Day, accuses Modi government of imposing 'unofficial Emergency'",
+     "outlet": "The Live Nagpur",
+     "link": "https://news.google.com/rss/articles/CBMi8AFBVV95cUxPS1RNWUtPZXYyMnJuVEtoV19yeS1STC1XUVk2NEFTZjZMdVBPemRGY2Z1M3Jnd1ZLN2paTGllbFFkVDBxV0VRTHlXYkpiV2lCbkRNR1lVcnZWdERLNVlUTm0zTEVPWjZFd041TE1fUFlOSGxuVzlja1M1VHZyRHlTckhXaXlEanNOQnJJUmMwNlZLYW5MQXZudEJnMjQ4dUdYekxRTGZZaXlLZVN4azdGdzlZd0J2WnlRdlNVN3hjY2xRQ3pjb2dWaS1PUmlYbjM4MlZPQld3OGVFekxLRHN5NFQ4OXpYMDMybW13a3VWQ1A?oc=5",
+     "date": "2026-10-14T05:28:35.000Z",
      "snippet": ""
     }
    ]
@@ -2107,25 +2190,6 @@
    ]
   },
   {
-   "id": "c62eb73eae",
-   "title": "विपक्ष के ज्ञापन पर राष्ट्रपति के मौन रहने के मायने",
-   "category": "Ambedkarite voices",
-   "image": "https://www.forwardpress.in/wp-content/uploads/2026/10/IMG-20261013-WA0002-1024x683.jpg",
-   "date": "2026-10-13T11:26:35.000Z",
-   "outlets": [
-    "Forward Press"
-   ],
-   "reports": [
-    {
-     "title": "विपक्ष के ज्ञापन पर राष्ट्रपति के मौन रहने के मायने",
-     "outlet": "Forward Press",
-     "link": "https://www.forwardpress.in/2026/10/news-analysis-president-remark-on-opposition-memorandum/",
-     "date": "2026-10-13T11:26:35.000Z",
-     "snippet": "राष्ट्रपति के अधिकारिक भाषण को तैयार करने की एक प्रक्रिया होती है और उसमें राष्ट्रपति का कार्यालय मुख्य रूप से शामिल होता है। लेकिन एक नागरिक के रूप में राष्ट्रपति की प्रतिक्रिया की भाषा शिकायत व आरोप का खंडन नहीं करने के रूप में भी हो सकती है। बता रहे हैं अनिल चमड़िया The post विपक्ष के ज्ञापन पर राष्ट्रपति के मौन रहने के मायने appeared first on Forward Press ."
-    }
-   ]
-  },
-  {
    "id": "4cb244864b",
    "title": "B. R. Ambedkar and the Dalit Quest for Dignity",
    "category": "Ambedkar in the news",
@@ -2149,7 +2213,7 @@
    "title": "White Elephant: The Forgotten History of Chennai’s Ice House",
    "category": "Protests & justice",
    "image": null,
-   "date": "2026-10-13T08:30:34.000Z",
+   "date": "2026-10-13T07:00:00.000Z",
    "outlets": [
     "Frontline Magazine"
    ],
@@ -2158,7 +2222,7 @@
      "title": "White Elephant: The Forgotten History of Chennai’s Ice House",
      "outlet": "Frontline Magazine",
      "link": "https://news.google.com/rss/articles/CBMioAFBVV95cUxOX1BqUEx4emwtejcwMFZ3eTlZT09uQ3d5QjFqMTRSUnptRFRvT0hpY19JcU8zY2VDYTNnSWFzUEdmaTdoUFRJSHdwZW9XM1QyalNzd3hrNGJmN1Z4OEZhX09QWlRHYzBHbkdtZVhiV1lhYkFrY2NKVTdOZC14MUJKQ2lxWnNITHFtTzh2ME1TcDc3WTZjOUh3eEc2MWdOUm830gGnAUFVX3lxTFBFQzBRdFlSMkpsUEpRVnhpc3FzdkhWR21EMkRSMEJta2t6dnlPUDBsZEQxREJjc0FiN00zTXJpbG1ieGVtcll2eVBaUk1VME83ZldIVW16NlpIQkhVc3B5NTEyVkMzT2NSRUM2UHFhQTJGamxZTXlxY3JUUnU1WjlOZEZfa2Q5ZlRpZkROR3Q4UnN1WnpEb0VlcmhLTUppQ1N4R19pUGg0?oc=5",
-     "date": "2026-10-13T08:30:34.000Z",
+     "date": "2026-10-13T07:00:00.000Z",
      "snippet": ""
     }
    ]
@@ -2178,25 +2242,6 @@
      "outlet": "The Hindu",
      "link": "https://news.google.com/rss/articles/CBMigAJBVV95cUxNR24zNXRiV0YzMVZlelg5WGtKUGV6MzFycUdMdXFKZHlLcm91ZWU3WWQxYzdTUXFmZVF3Q1FoVXZ1cHZDaHhOT0Z5MHVUU3NIeklyZ3Bzc05SSTktX3VkdW1jR2k1WnY4OTc2SnZSRFBwMXFHdnczY3JUMFZOWEtFb2diN2FaR2Z3bXQtOHRuc3pLUzhPdE1EUTJsNE1jbGY0Q1hhQ1cyVVZ1X2h6cWpLaXFkYzIxaWxjbkNMSElUUi1pVWl2aG5pZWd1SWM4VFBOX1FOdDZfV3pYa0xYU0JtVFUxaWtFdHFIYXFJWUJXaUV0LVdocFIxNUNYRk5wS2ZR0gGHAkFVX3lxTE9BcWZNalVNS0dCdF8talhUaDdkSEVNd2tUQmZnVzZ3VVVNdzhlLXZtRzJqSThTWkZQM3FKeHRrS2ZTd2NqNjR4aEVjZUZaVEJYWkU5YWx4VjRpTndobnVhaG94NTVlNURIOEVMeTY4cWVmd21tMWZWTGlJVEs0RGx2U05JQ2hBT2pDQzV2eFh1azA1b01hQkdEM2dmejVMSGRja0JxU0JENUJZaFNDMnRycXJ5QUFrSFFudnZXM3I2UHNIcEVVME1OZ2szaU10QnFnTFpnaE9RZTVhdGl5MFZGM2xudWNINkZLaXQ2T0I3SHBPSlJzTEZ4aDF4MWJqOU5paGpUVkhN?oc=5",
      "date": "2026-10-13T07:00:00.000Z",
-     "snippet": ""
-    }
-   ]
-  },
-  {
-   "id": "6ef8942e7f",
-   "title": "Anakapalle Villagers Stage Cook-Out Protest Over Pending Pattas",
-   "category": "Protests & justice",
-   "image": null,
-   "date": "2026-10-12T16:27:06.000Z",
-   "outlets": [
-    "Deccan Chronicle"
-   ],
-   "reports": [
-    {
-     "title": "Anakapalle Villagers Stage Cook-Out Protest Over Pending Pattas",
-     "outlet": "Deccan Chronicle",
-     "link": "https://news.google.com/rss/articles/CBMizwFBVV95cUxNcDh6NXRBTGhrTGNJRUJ6OUM2OFhqS19Ncm1vdXZ5dUZtVVVad0ZFNXFsZVdwaDE3WWpia3JyM1VaZHdCT1BQRjM1UzFUMVNFR05qWFoyaTNjbDFTMjBBZThqQ2JvdTd2RVFBUEZ5bU84S3NRQkFMZzJUQTY0UzFQaXBsSTRHZkI4UFFLU3oyNGU1alFxX0FScTBVbnB6UktwWjdTbkFjVGI1aHlTN3VtWUkxZkdEX0xkb2tKcWdDR1BUdzJEb3pZMTNBWnBzV3PSAdQBQVVfeXFMUGxHUnpDeVpHMmxNS2pDXzdzSk9MS3NCcjhZZ1JMSXFNZEtSRXBVNFdNRXBfTzVWYVdoODdxaEFRNWN4TzIzM2dOdjJjSlk5X1RvRUl4UGRSNnNSdXktQ0JBa2pQbGRKazZFSEJFLUVESGhZcVAtMzhwTEZtbDU3RXh3eTJuX2NNakhReEcwUEJoQlpWazBVLUtXazFvS0VoYjdoTHNVZ3J3V3F0TDNaMU15NXQ0M0dGVEVSQ25yTkRXVk1ub2tKbGVLNk1DOGpkdnVFUjQ?oc=5",
-     "date": "2026-10-12T16:27:06.000Z",
      "snippet": ""
     }
    ]
@@ -2278,25 +2323,6 @@
    ]
   },
   {
-   "id": "29bba2208b",
-   "title": "Fundamental Rights – Articles 12 to 35 of the Indian Constitution",
-   "category": "Constitution & rights",
-   "image": null,
-   "date": "2026-10-12T07:00:00.000Z",
-   "outlets": [
-    "Vajiram & Ravi"
-   ],
-   "reports": [
-    {
-     "title": "Fundamental Rights – Articles 12 to 35 of the Indian Constitution",
-     "outlet": "Vajiram & Ravi",
-     "link": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTFBoN21Iay1yV1R3dXJyZy1YMklqenNQWERnU0J0Ri05c1dwSFVMcHNoUzFpYUN1bE9hcGR5d21WQ3AwTjZwZ0xXTE1Ec2lWbmIxTG9aQkwzV2N4X1V4ZDBEemtFN2Jmdmc?oc=5",
-     "date": "2026-10-12T07:00:00.000Z",
-     "snippet": ""
-    }
-   ]
-  },
-  {
    "id": "da3258bd99",
    "title": "HC strikes down law to increase reservation for SCs/STs",
    "category": "Constitution & rights",
@@ -2316,33 +2342,13 @@
    ]
   },
   {
-   "id": "d838897401",
-   "title": "Writs in India, Meaning, Types, Provisions, UPSC Notes",
-   "category": "Constitution & rights",
-   "image": null,
-   "date": "2026-10-12T07:00:00.000Z",
-   "outlets": [
-    "Vajiram & Ravi"
-   ],
-   "reports": [
-    {
-     "title": "Writs in India, Meaning, Types, Provisions, UPSC Notes",
-     "outlet": "Vajiram & Ravi",
-     "link": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE5wODFxOHZfbTFJRW5QemhmZ3gxWV95WnZSUjhWQW5mVFh0TVl4Vmt2TmFJdXZrR2luUnNlNk9wWUY1c0JBcnJMcF96UW9ITmtKNFQ1Nm1B?oc=5",
-     "date": "2026-10-12T07:00:00.000Z",
-     "snippet": ""
-    }
-   ]
-  },
-  {
-   "id": "aec841f023",
+   "id": "449a5169b0",
    "title": "Reservation cannot be proportionate to population of castes, says Karnataka High Court",
    "category": "Constitution & rights",
    "image": null,
    "date": "2026-10-12T07:00:00.000Z",
    "outlets": [
-    "The Hindu",
-    "Live Law"
+    "The Hindu"
    ],
    "reports": [
     {
@@ -2350,89 +2356,6 @@
      "outlet": "The Hindu",
      "link": "https://news.google.com/rss/articles/CBMi6gFBVV95cUxOWHhXbTJjNWZMYWxIUnY4WGFLN28xYTVEclpENW5KNHNiVjVveWtfYUhBN3BCdmdNVkdvUk9wWTJfVUhqbGw4NnNjRGdudVh4bGtFaHQ3cUtRZE96eGVpSjBERENONnV0OHNGN3gyNUlaQUFNMm5YMlBkM3ZnSXFhRGQybHZGbVJnd3VpSGRpOTNVTzVmZXpiR2FPOGozQl9oWndaSzNLZ19FU3Q2a2dMd0tONlY4b01vRUZXZ3poVzJlMmFDSUZwX0Y2X1ZsWTE0NDNQMFVoN25fa0FNWnhON3B4MGc4SjZvZkHSAfABQVVfeXFMTk9KMzIyaHZCUk5LeW9naTI5b04zdGhTLWZnbjZjZHZ5U3M4RlJvWWVpZGVqWmk4b0N4TzVHcldWRG1uYXJWVVRJVE5Kd2N5NHFNNVN3UFJEbHp6SVhxakZCWld6dDZST2ZkQ3B0bWdLYlBtYWJ3a0Y3a3h1eGdTSjZCNzFyVV9rRWVoZ0lfR0lVODZFYklYanIwZ2tEN3U1LWVZWjlIZ1JNaDFQSFU1ZDJZT2RvUUNGdGtuaGFBRHBNZGpQZFhtOVV4OVVHdlY3VXVaUmQwanlJcVBjX2NBYlpVcGozVkhTMHhZNUtXdTZn?oc=5",
      "date": "2026-10-12T07:00:00.000Z",
-     "snippet": ""
-    },
-    {
-     "title": "SC, ST, OBC Reservation Cannot Be Applied To NRI Quota Seats: Karnataka High Court",
-     "outlet": "Live Law",
-     "link": "https://news.google.com/rss/articles/CBMi4wFBVV95cUxPWFpmME05NUh4UlBGWkFJM1VPWi1hWXhEOFVNcElvUDJPRjREQmlleFh4TUpJVkN4WHJ3Nl93akl6ZVhNQ0dtWmlpOTRfYk1jSFE2RmpPOG9JekNJb2xGSzdrcFlsWk9ZeGZFMEZFdVVpT1J2T3B0SVp4bnVHcmRtVE5nMVdLUUdLdFRRakpPQ2RnUlQxekRCejJseFR0cTVpRFFKVm1LRVN2Zi1aekFhYXYzWTlOZUxITnZxRmtzWjh2NWxZa0N4amVfTjRmMUpMSjZ2ZVpURjZZM3VOc3hncWk4c9IB6AFBVV95cUxPNEZGTzB4dHRHNnh6RG56TlpoQ09td0xPZ0pJZ25IQWlZRWg4bGJVTHhydmFIdEFUZTI2VUE5UnM5R1BRNzJlX2p3MFFzWkUwYktmY0xjWU1FVnJITEFUOVp4YkoxcmRZclR4QlRPYklKeGdEMUdwRWV2amJ6SGhlZVgtTzh2eTZRX0NwTVd1UndoNEdETGpodEZOb0ZIZEF1UDg1OXNmT1ZBTlFPeXBBUVhfTDBsbFc1allUTkxSYkZMS1NrT19Ea3liQWxUX3FmZXktdTJrYjB1MlVDa3piekhpZnQ2X2RR?oc=5",
-     "date": "2026-09-29T07:00:00.000Z",
-     "snippet": ""
-    }
-   ]
-  },
-  {
-   "id": "3bc647098a",
-   "title": "Right to Privacy, Evolution, Significance, Challenges",
-   "category": "Constitution & rights",
-   "image": null,
-   "date": "2026-10-12T07:00:00.000Z",
-   "outlets": [
-    "Vajiram & Ravi"
-   ],
-   "reports": [
-    {
-     "title": "Right to Privacy, Evolution, Significance, Challenges",
-     "outlet": "Vajiram & Ravi",
-     "link": "https://news.google.com/rss/articles/CBMiZEFVX3lxTFB2aHNWcnBleUlPMGxReEEyUDhSVFlnWmZRd1h5bnJvRkpRMDNUUllCVEwtZHJ0bUtDakNSclVleG1MMEpXNHBMNUlPdER5bnprRTY5cUdCLVA0X0kxS1ZtVjkxeUo?oc=5",
-     "date": "2026-10-12T07:00:00.000Z",
-     "snippet": ""
-    }
-   ]
-  },
-  {
-   "id": "48c78c0a13",
-   "title": "103rd Constitutional Amendment Act, Features, Need, SC Verdict",
-   "category": "Constitution & rights",
-   "image": null,
-   "date": "2026-10-11T07:00:00.000Z",
-   "outlets": [
-    "Vajiram & Ravi"
-   ],
-   "reports": [
-    {
-     "title": "103rd Constitutional Amendment Act, Features, Need, SC Verdict",
-     "outlet": "Vajiram & Ravi",
-     "link": "https://news.google.com/rss/articles/CBMifEFVX3lxTE1XZUR2LWFUQzJ0dHBncXBzSkkyTXhUZEZUSURKRkNCUktZc252VktrR25sZFJFRmV3MFdZSkRWOFJmNXRzY3c5WjJPWE5ELXYtZlZScU12X09IeVU4WXg2TEVUNURQUmJ0cTNoWlR1b2h4NVFKcHVKSzRHMEo?oc=5",
-     "date": "2026-10-11T07:00:00.000Z",
-     "snippet": ""
-    }
-   ]
-  },
-  {
-   "id": "3f4ba26fff",
-   "title": "Basic Structure Doctrine, Meaning, Significance, Evolution",
-   "category": "Constitution & rights",
-   "image": null,
-   "date": "2026-10-11T07:00:00.000Z",
-   "outlets": [
-    "Vajiram & Ravi"
-   ],
-   "reports": [
-    {
-     "title": "Basic Structure Doctrine, Meaning, Significance, Evolution",
-     "outlet": "Vajiram & Ravi",
-     "link": "https://news.google.com/rss/articles/CBMiY0FVX3lxTFBzdmlkUHlmX24ydTkzcE1jVkVGVFVwQXZpYlV6RnlDU1lZR29iVFJhbTF0X1ExVFN4d2lKRmtkUlBqc3RPNU1BMzREaXdzbWJHV2NlZkhHd2dzVzJOeE1GbGZfSQ?oc=5",
-     "date": "2026-10-11T07:00:00.000Z",
-     "snippet": ""
-    }
-   ]
-  },
-  {
-   "id": "44b2046bf1",
-   "title": "Salient Features of Indian Constitution, Length, Source, Criticisms",
-   "category": "Constitution & rights",
-   "image": null,
-   "date": "2026-10-11T07:00:00.000Z",
-   "outlets": [
-    "Vajiram & Ravi"
-   ],
-   "reports": [
-    {
-     "title": "Salient Features of Indian Constitution, Length, Source, Criticisms",
-     "outlet": "Vajiram & Ravi",
-     "link": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxPenFQdTVMSUYtUXFhSGFETW1CaUdUVXZXYU41amhDZjNJWmlHVE91WDlybldGUzNGRnFSLVpCZ1NPdDFfVUtKUTM5NmRmcW42VkxKZmVuRlVsYkI5Rkt6UG1JS3FtTU40dm1qLXpnR3BPVUI5dm1EcHNhOFRTUXlJb0padmo5ZUdUVlJF?oc=5",
-     "date": "2026-10-11T07:00:00.000Z",
      "snippet": ""
     }
    ]
@@ -2489,6 +2412,25 @@
      "title": "Ambedkar University Delhi’s administrative crisis",
      "outlet": "The Hindu",
      "link": "https://news.google.com/rss/articles/CBMipgFBVV95cUxPVnJwcVk4NWNOeG5xZnFBOEdjUEVYV3hiOXlIMWZYUUpTZkUyY0ZYTUotWi15N1daZXJzVllvQ280V19vQ3gzZWl1YnZ3dlgyM25BV3ZxcDNvblN5RG9KeG1CMDNudU9EWWY0MkhGRm1jbFEwTEQtSFBkU1d1SkpWTU5mS2NqbTdPaUtZUkNMYktGY2k5STdEMXZmeTRZRmRmNjVZcjRB0gGsAUFVX3lxTFA4Z2QyMGxQZHdLVkEwb2RqZ1ZpYWtPajhGQ0gtS1gzX3ctTXhjRWxsbFJjWTc4Z3pHTUVnZ0NKOExqOUo2OExRenI1MGhqam5QbGdBbGpHbzlreHlwRWZSc1ZsQ0NYdjlGM0JJUDNBeGFtZ0FnalZYRk14TGFzdmd6ZnU0MUU4VzRRc0Q4cmtxa2dHM0QyTURpZFA3MjJuZXVrTzdKREl2TXdYUjA?oc=5",
+     "date": "2026-10-10T07:00:00.000Z",
+     "snippet": ""
+    }
+   ]
+  },
+  {
+   "id": "67a1aee9ef",
+   "title": "HC strikes down Madhya Pradesh’s 27% OBC quota law, calls it ‘unconstitutional’",
+   "category": "Constitution & rights",
+   "image": null,
+   "date": "2026-10-10T07:00:00.000Z",
+   "outlets": [
+    "The Hindu"
+   ],
+   "reports": [
+    {
+     "title": "HC strikes down Madhya Pradesh’s 27% OBC quota law, calls it ‘unconstitutional’",
+     "outlet": "The Hindu",
+     "link": "https://news.google.com/rss/articles/CBMi4gFBVV95cUxOWldNd2d4TGNGbTd2SDJQZ0RFRnNzdXBTdjM2OHlXYXc1WkpOZ1Rnam5mRUNhTm8tUnlLV09GcURLZ011TnZfMDZTVEpmRzduTkljZDRjdkV0V1hNV3JXUHNJTzA0LXQyVTN6amZFNE5QRmx6WmtEZWNZX3o0aHdmb0hRYnVtSnZ6Vm5LYXNSTUJqZGpya2FSZG54elA3TVZjN3RLMzRLZEM3Qzhta1RVaUwwR0NJQU5PQk1NXy1NZ0dqcWVScVJxRS0zeVpOd3BzVERUU3JWQXVXUVBzUVdMWW5n0gHoAUFVX3lxTE9DbUNwLWJkWF80MGcwWWhORTJUQVZ2c3Jkd2RRdmt6QTVDTU5JNGdGLUUtU1IxRTRLWVI2UHNMNnI3alZKS3dKSlV4cDNRNW1XVG9qdnVFU1lvbXl6dHVGbUV5SUtVUGVvRVQ1SEkwUUdHLW1tYnFFSGd0OG1Na3FRc0ZYd3VpOHZWOElab3cyMVV4RjgyN2VqU2Zjd0s1WFg0RTVDTkJRMVd4VHEzeFpYVk5WWGxWbm1CUXdXV0gyd3d2eTVWRTkxUEVYRTgwdUN5MF9VbHh6ZjFaRnd6QjVlV2xPRDFxLUE?oc=5",
      "date": "2026-10-10T07:00:00.000Z",
      "snippet": ""
     }
@@ -2571,20 +2513,96 @@
    ]
   },
   {
-   "id": "4f7f5dd2b5",
-   "title": "Fundamental Duties, List, Amendment, Evolution, UPSC Notes",
+   "id": "a97a039830",
+   "title": "Supreme Court rejects A.P. government plea to restore 34% quota for Backward Classes in local bodies",
    "category": "Constitution & rights",
    "image": null,
    "date": "2026-10-09T07:00:00.000Z",
    "outlets": [
-    "Vajiram & Ravi"
+    "The Hindu"
    ],
    "reports": [
     {
-     "title": "Fundamental Duties, List, Amendment, Evolution, UPSC Notes",
-     "outlet": "Vajiram & Ravi",
-     "link": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE50VmlKcUlXMmZ1Q1FWMHUtVm14WkhiUnNCRmFxcVJodjVoQWRDYXlkemRtemp5UnZOVGp4a2NXalpwODdTWUlsQXRheTg2UTIxd2JHSVhtcUZSWnAzYWtlakktcVBnWEE?oc=5",
+     "title": "Supreme Court rejects A.P. government plea to restore 34% quota for Backward Classes in local bodies",
+     "outlet": "The Hindu",
+     "link": "https://news.google.com/rss/articles/CBMi7AFBVV95cUxNQjZOUHJZMkFXNDhXcm9LV2dtNXRxR0lnMVNDb2NCUzlUdWxyTEhvTm1TeC1oZ2IwOThzMmRqQU9TWFRWQnhuZEtNODFOZTZWdG0wQkNDU2NVTEd5R29OQ3AyWGtKdWxiTUZCQkFZWDdlaFI0aFltWW8wUWZzdnhDMmx0N0wycEpWbDJYYThZS3JsUk16MEQ4UE0zNzIyYzVVb2lHTm9TdFFWRkhEWkY4NHJLQ00wUlpYTmdPM2h1RjNhMm90Tm9iTEpDRDVpVlRHN190aUJhR3dCZWo5QzBHRHhiWG02WVg2RGg1c9IB8wFBVV95cUxPMlowQ3Y5Vk1DeEhORDNTbGtyMmZYNzFSeTNPTVlRSzdxMUtjUVFIb1VrMENUWEJZb0poREZlLWRweW9ObFczTk41bzlOSU9QbHgwd29Ed0ZqN0publo1aTZOLUMxbVNESFdackV1TWd4VWdhM212b3lZV1RFVW5jcWh4Smo5WEl6bWVMUUtoM01SVngwMmh5cXM3YnJPcVFDYU8zR1JMV2lhVzdKcE5vM3dIazJtSlY2R2NJQ1doVllCN1RNcFZHOWJlM19OdktQOUJXcFFtWVBFeWlEYWVZS0ZuVUpmWWZuLTNwQ1JqREpwZUU?oc=5",
      "date": "2026-10-09T07:00:00.000Z",
+     "snippet": ""
+    }
+   ]
+  },
+  {
+   "id": "10d6697c8f",
+   "title": "Punjab CM gives property rights to houses built in Lal Lakir",
+   "category": "Social work & community",
+   "image": null,
+   "date": "2026-10-08T07:30:00.000Z",
+   "outlets": [
+    "ET Realty"
+   ],
+   "reports": [
+    {
+     "title": "Punjab CM gives property rights to houses built in Lal Lakir",
+     "outlet": "ET Realty",
+     "link": "https://news.google.com/rss/articles/CBMiywFBVV95cUxQdTk3QTN4V0xsMHo0YjhJdWlRNk5CdUJOWUx5TEVnMlNscVRndS16am9sVW1aaGtvYjJBb1IyY2Z6Wno1cmoyTWJYTnh2cUFuSDRNYTQ3MkpJRmI5cm1CMmtaSnd3Q2FGcnphUHpWcm01cktZQWJCR2tCN2dPMzZ4aGFGR2dwNy1vdW9RTlV3VFZ3Tm8wLV9xRU9pZllsT2N0T3FzWGxmc0MxeXZHUHNVbWpDVkxYRUduTzVIbzZmMUxwcXVjN2J0eTgxQdIB0AFBVV95cUxOWVNlOWtVQjUtV0FCWlBJV3kzZmU0UFJVWFRWMGlXN0RiOFBtNE1kZzc2MjlwRkxQUG9vajNlQnIzNjgtWnAzb29jMURZRU9zdGJoVE85V3BqMnk5ejgyZE91QXBLMThNUlVoTmlFcmN4VlJaalZyYlFlLWlQN3FOU2htdHZzSWp4ai1xR1hOTG1ZRXBnMU13WGJ2TUpTMXNFb00wZzRmYnFhVUFkVVBTRHc0YVB4LWI5OUtxcUJkeXhtRE5hSTUxV0VwYm5lLXBq?oc=5",
+     "date": "2026-10-08T07:30:00.000Z",
+     "snippet": ""
+    }
+   ]
+  },
+  {
+   "id": "b6643b25ed",
+   "title": "CJP, Congress, and Left Reveal Fault Lines in Protest Politics",
+   "category": "Protests & justice",
+   "image": null,
+   "date": "2026-10-08T07:00:00.000Z",
+   "outlets": [
+    "Frontline Magazine"
+   ],
+   "reports": [
+    {
+     "title": "CJP, Congress, and Left Reveal Fault Lines in Protest Politics",
+     "outlet": "Frontline Magazine",
+     "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxNNmRQVm1KQUFXeUpMYm55ckg4RnhxQlJiVzVUQ3hLUU9kTl9wT3lQd1J2WF9fVGw0YXZqNmV2ZFFFWmpaR09MU2ZPQ2tPOFp3V2Y4d3hhQWVUT29fczNlQnI1eUFGRmxjMWJEU2NkTmNmMGtQdFZtZW96NVluNUVkRjBQY3lPZl9aVXAxaVlfbEdNd19GMVM4OGJNa3NLUlFJVXVUWGMxQWp0QXVKMTR30gG2AUFVX3lxTFA5TFpENG1KVHBlMnJrSkx3NTZhRlpIdE91cEMtOHhJOXE3Y09YWk1LRDF4bk1nRTczdmtvZ09rZW5ubzFLeWtMWDdERTlDX25LUW1wb3FpQXZTNG93cWc1NUhhUWFVQ2Q0WTZfZVdGNlFtTkdVblVDNmwxQTVyRWdLajVJczhhdFo4N2FEa1V6T09uQ1FBWXJaNjJOSVFFSEh3ZWJWUVhzWEZkbFY5UEYwWXA2d2tn?oc=5",
+     "date": "2026-10-08T07:00:00.000Z",
+     "snippet": ""
+    }
+   ]
+  },
+  {
+   "id": "04a35e69a6",
+   "title": "Why do we Protest? A Moral and Philosophical Basis",
+   "category": "Ambedkarite voices",
+   "image": null,
+   "date": "2026-10-07T10:14:50.000Z",
+   "outlets": [
+    "Round Table India"
+   ],
+   "reports": [
+    {
+     "title": "Why do we Protest? A Moral and Philosophical Basis",
+     "outlet": "Round Table India",
+     "link": "https://www.roundtableindia.co.in/why-do-we-protest-a-moral-and-philosophical-basis/",
+     "date": "2026-10-07T10:14:50.000Z",
+     "snippet": "Jitendra Suna The protests that have sparked in most South Asian countries in the last few years have sparked hope for socio-political, economic, and cultural change. Bangladesh’s protest over the job crisis in 2024, Nepal&#8217;s Gen Z protest (2025), and Sri Lanka’s protest of 2022 shocked the nations and their corrupt political systems. The Gen &#8230;"
+    }
+   ]
+  },
+  {
+   "id": "ab7de10580",
+   "title": "NCSC Push: Banks to report Scheduled Caste beneficiaries under credit schemes",
+   "category": "Research & reports",
+   "image": null,
+   "date": "2026-10-07T07:00:00.000Z",
+   "outlets": [
+    "The Tribune"
+   ],
+   "reports": [
+    {
+     "title": "NCSC Push: Banks to report Scheduled Caste beneficiaries under credit schemes",
+     "outlet": "The Tribune",
+     "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxPY3J3cGFvY1IxSU1iZDJoT0Eyd3c2UG9kNmhkRVVBcDBqVDN5b0p1T19CajZ3aXFGdGQxb2F3SlREV3lYRVh0MTE5bjJoclU0WlNMbjllSWVfM3pUd3lvX3hLV0tVc1c1YzFPMklSQ25QV3o1Q0Y5di01T0NyeUR3Y0QzYjk0Z2NwLWdEWjdFeWtLNHJuZ0FlamdsV1ZoNkRkcmxNMGtSTVNHNlF0aXpuZmpqblE4dzBtaGfSAb4BQVVfeXFMTnJrMXlfbkVaUXlSdjZnU0JuRDVoNkNJS0g5REZBSXdER3hCdHZXTF9wWTRMdXZZLV9OeXItT0x6OTNKN1FUWGhJdzUzOVVGUmVYMklRMWVGeE55VmhzdkJ0SEQtNkdBTWVSWEhuMFp6VUlNVEE1MDhsSktUQTJvV2RWNzUybjBWbmJMc0pjR2huQ0N2QXMzQlN2SWFsRXJGUFc2UjRPanZqeXNwdkdTdXRQYjVOQTQ3UUtkRy1wZw?oc=5",
+     "date": "2026-10-07T07:00:00.000Z",
      "snippet": ""
     }
    ]
