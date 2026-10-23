@@ -417,3 +417,42 @@ No Kruti Dev text. Acharya part 1 ends mid-sentence (Sir Samuel Hoare: “…ख
 6. **p. 764.** “preserve with our amendment” (persevere) → आमची दुरुस्ती कायम ठेवण्याखेरीज.
 7. **Terms.** Unapproachable(s) / unapproachability → अगम्य / अगम्यता; Scheduled Tribes / Caste (Bhai Parmanand's usage) → अनुसूचित जमाती / जात; sporting offer → खेळाडूवृत्तीचा प्रस्ताव, with his reply “the sport of party politics” → पक्षीय राजकारणाचा खेळ (wordplay kept); heckle → प्रश्नांचा भडिमार करणे; ultima thule → अंतिम मर्यादा; “proof of the pudding is in the eating” → खीर कशी आहे ते खाल्ल्यावरच कळते; excluded areas → वगळलेले प्रदेश; Liberty / Statesman → “लिबर्टी” / “स्टेट्समन”. Speakers include श्री. गवई, श्री. जे. बॅनर्जी, श्री. बी. सी. चॅटर्जी, श्री. भाई परमानंद, पंडित नानकचंद, श्री. देशपांडे, लेफ्टनंट कर्नल सी. ई. ब्रूस, विंग कमांडर ए. डब्ल्यू. एच. जेम्स, डॉ. जे. एच. हटन, सर रेजिनाल्ड क्रॅडॉक, सर विन्स्टन चर्चिल, श्री. एस. एच. मिल्स.
 8. **Speaker label for Ambedkar** is डॉ. आंबेडकर: in chapter 100 and Acharya part 1, but डॉ. बी. आर. आंबेडकर: in Acharya part 2 (the source prints the full name). Make consistent.
+
+## Chapter 101, parts 3–4 — Mr. M. K. Acharya and others, 2 Aug 1933 (concluded), and the volume's index and back matter (PDF pp. 792–830)
+
+No Kruti Dev text. A script compared the digits in every block with the English; the only differences are the misprint “1 think” (pp. 795, 798), “World War-2” written as दुसरे महायुद्ध (index), and “4t” for “At” (index). “zzz” on p. 813 kept as its own block.
+
+1. **Marked [मूळ मजकूर अस्पष्ट], nothing supplied that changes affirmative or negative:** p. 796 (Zafrulla Khan) “every audited copies of their accounts” (probably “every year”); p. 801 “that paper is influencing the Press Act” (probably “infringing”) and “see that the law is corrected” (probably “enforced”); p. 802 Q13,130 “While subjects although they are made Provincial…”, Q13,131 “legislate upon the whole of that Central subject” (sense needs “Provincial”; केंद्रीय kept), Q13,132 “as being subject to the Central expressly reserved…”; p. 804 (Hoare) “incessant between the two kinds of Government” (noun missing, perhaps “friction”); p. 810 (Hoare) “by a contract but get over a period of years”.
+2. **Doubtful, translated as printed:** p. 797 Q11,526 “denudation of the services of the local element”; p. 797 (Hoare) “substituted ‘Imperial’ for ‘Provincial’ services” (logic may be the reverse); p. 794 Q8640 “borne by both apart” → दोघांनाही वेगवेगळेपणे; p. 803 Q13,138 “upto 1901” and “regarded as more than of local importance”; p. 802 Q13,136 broken sentence; p. 803 Q13,141 “non-concurrent”.
+3. **Misprints read silently:** “these certainly will be discussion” (there), “bad accepted” (had), “will regard” (with regard), “now is this dispute” (how), “(his clause” (this).
+4. **Words supplied in brackets:** p. 804 (Joshi) “as regards transferred” → हस्तांतरित [विषयां]बाबत; p. 796 “these contributories” → अंशदान देणारी ही संस्थाने (“ही संस्थाने” added; meaning unchanged).
+5. **p. 812 (Reading).** “Qia timet” (quia timet) → क्विया टायमेट (Qia timet).
+6. **Index and back matter.** Entries follow the Volume 1 index style (Devanagari names, English alphabetical order and Latin section letters kept). Garbled numbers (“139-W”, “54M2”, “15758”, “40809”, “648-19”) kept exactly. Normalised: Kurnaon → कुमाऊँ; Kaira → खेडा; “Mir Mqbool” → मीर मक्बूल. The list of published volumes (pp. 826–828) reuses Volume 1's Marathi; the English is identical.
+7. **Terms.** concurrent field / list → समवर्ती क्षेत्र / सूची; surtax → अतिरिक्त कर; tariff wall → जकातीची भिंत; Devolution Rules → अधिकार-हस्तांतरण नियम (a third form in this volume; make consistent); Criminal Tribes Act → गुन्हेगार जमाती कायदा; exclusive original jurisdiction → अनन्य मूळ अधिकारक्षेत्र; relief (legal) → दादरसी; cause of action → दाव्याचे कारण; “existing and accruing rights” → “विद्यमान आणि उपार्जित होणारे हक्क”; “religion and religious usages” → “धर्म आणि धार्मिक रूढी”; “articles of faith” → “श्रद्धेची तत्त्वे”. Speakers include लॉर्ड रँकेलर, रावबहादूर सर किश्नमा चारी (as printed), सर मनुभाई एन. मेहता, मार्क्वेस ऑफ रीडिंग, श्री. एन. एम. जोशी.
+
+---
+
+## Volume-wide consistency checklist
+
+Different translators made different choices for these terms. A reviewer should pick one form for each and apply it across the volume.
+
+- Ambedkar's speaker label: डॉ. बी. आर. आंबेडकर: / डॉ. बी. आर. आंबेडकर : / डॉ. आंबेडकर:
+- His signature: भी. रा. आंबेडकर vs बी. आर. आंबेडकर
+- Prime Minister (provincial, 1937–39): प्रधानमंत्री / पंतप्रधान
+- Statutory Commission: वैधानिक आयोग / वैधानिक कमिशन; Commissions generally: आयोग / कमिशन
+- Presidency: प्रांत / इलाखा
+- Federal Structure Committee: संघराज्य रचना समिती / संघराज्य संरचना समिती; Federal Court: संघराज्य न्यायालय / संघीय न्यायालय
+- Joint Parliamentary / Select Committee: संयुक्त संसदीय समिती / संयुक्त निवड समिती
+- Minutes of Evidence: साक्षीपुराव्याचे इतिवृत्त / साक्षींचे इतिवृत्त / साक्षीचे इतिवृत्त / मिनिट्स ऑफ एव्हिडन्स
+- Devolution Rules: अधिकार-विभाजन नियम / हस्तांतरण नियम / अधिकार-हस्तांतरण नियम
+- Indian Civil Service: भारतीय मुलकी सेवा / भारतीय नागरी सेवा
+- Legislative Council: विधान परिषद / कायदे परिषद
+- convention: परंपरा / संकेत; minute of dissent: असहमतीचे टिपण / मतभेदपत्रिका
+- nomination: नियुक्ती / नामनियुक्ती / नामनिर्देशन
+- officiator: कामकरी / सेवा बजावणारा; money cess: रोख उपकर / रोख कर
+- disabilities: निर्बंध / बंधने; excise: अबकारी / उत्पादन शुल्क
+- Governor-General in Council: सपरिषद गव्हर्नर-जनरल / गव्हर्नर-जनरल इन कौन्सिल
+- Muddiman Committee: मुडिमन / मुडीमन; Chamar: चमार / चांभार
+- millions: दशलक्ष (most chapters) / कोटी–लाख (chapter 72)
+- “zz” scan artefact: kept verbatim in most chapters, replaced by [मूळ मजकूर अस्पष्ट] in chapters 8–21. Best fix: strip it from the source text.
+- Footnote form for the Bombay debates: बी.एल.ए. डिबेट्स / मुंबई विधानसभा कामकाज (B.L.A. Debates)
