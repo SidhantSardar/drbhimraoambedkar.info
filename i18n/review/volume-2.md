@@ -150,3 +150,46 @@ No Kruti Dev text. “zz” kept verbatim (p. 256, end of p. 260). Part 1 of the
 7. **Consistency fixes made by the second translator:** पंतप्रधान → प्रधानमंत्री and सभापती महोदय → अध्यक्ष महोदय in the pieces written before the usage-limit stop.
 8. **Footnote style varies:** chapter 44 uses “बी.एल.ए. डिबेट्स”, chapter 45 “मुंबई विधानसभा कामकाज (B.L.A. Debates)”; make consistent.
 9. **Terms.** clause → कलम; public utility services → सार्वजनिक उपयोगिता सेवा; social security services → सामाजिक सुरक्षा सेवा; conciliator → समेटक; collective bargaining → सामूहिक सौदेबाजी; picketing → निदर्शने (picketing); minute of dissent → असहमतीचे टिपण; home rule → स्वराज्य (home rule); civilian (ICS) → सनदी अधिकारी; “Three Tailors of Tooley Street” → टूली स्ट्रीटच्या तीन शिंप्यांनी (English in brackets); hirelings / assassins → भाडोत्री / मारेकरी; minor communities → अल्पसंख्य जमाती; “Question proposed.” → प्रश्न मांडण्यात आला.
+
+## Chapters 58–62 — Lucknow Pact, Second Chamber, Powers of the Legislature, Provincial Government in relation to the Government of India (PDF pp. 389–407)
+
+No Kruti Dev text. Sentences that run across chapters 59→60 and 60→61 are joined naturally in the Marathi.
+
+1. **p. 390.** Vincent quote: “will complain with some injustice that the Government of India should have endorsed it” — “injustice” is probably a misprint for “justice”. Rendered as printed: भारत सरकारने याला मान्यता दिली हा काहीसा अन्याय होता, अशी तक्रार करतील. **Check against the printed page.** Also “drat” (that) and “ninetenths” read normally.
+2. **p. 394, ¶96.** “a greater presence than the members of the lower chamber” is almost certainly “prescience” → अधिक दूरदृष्टी. **Please confirm.**
+3. **p. 396, ¶99.** “better to have a single efficient chamber than to have two effective ones” (“ineffective” may be meant) kept literal; “lended and monied interests” → जमीनदार आणि धनिक.
+4. **p. 399.** Block 107 (“Power of altering the Constitution”) is typed as a footnote in the source though it is body text; type kept.
+5. **p. 405.** “Following the role prevalent” (rule) → नियम. **p. 406.** “Regulation Act of 1773” (the Regulating Act) → 1773 चा रेग्युलेशन ॲक्ट; proposed section (1) “the King and a Council of the King and a Council of Representatives” may be a duplication in the source, translated as printed.
+6. **Terms.** communal electorates → जातीय मतदारसंघ; Mohamedan(s) → मुसलमान; “local governments” (meaning provincial) → प्रांतिक सरकारे, but literal स्थानिक सरकारे inside the quoted Section 45; Despatch → खलिता; Statutory Commission → वैधानिक कमिशन here (chapter 55: वैधानिक आयोग; make consistent); “governing caste” → शासक जात (his word kept); Section → विभाग; Governor-General in Council → सपरिषद गव्हर्नर-जनरल; Home Government → इंग्लंडमधील सरकार; Secretary of State for Colonies → वसाहतमंत्री; residuary powers → शेषाधिकार; concurrent → समवर्ती; confederacy → राज्यमंडळ; commonwealth → राष्ट्रकुल; veto → नकाराधिकार; appropriation → विनियोजन; vested rights → हितसंबंधी हक्क; Muddiman Committee → मुडिमन समिती.
+
+## Chapters 46–47 — On Participation in the War 2 and 3 (PDF pp. 261–281)
+
+No Kruti Dev text. “zz” kept as printed. Pages 276 and 281 are empty in the source and stay empty.
+
+1. **p. 267.** Hindustani slogans written in Devanagari, untranslated: “कौन्सिल में जाना हराम है.”; “कौन्सिल में कौन जायेगा? ढेड जायेगा; चमार जायेगा.”
+2. **p. 261.** Yayati's son is called “Pururava” (in the Mahabharata it is Puru); kept as पुरूरवा, bride देवयानी as printed.
+3. **p. 263.** “Statute of Westminister” kept as printed; “intonement” (probably “enthronement”) → प्रतिष्ठापनेसाठी (intonement).
+4. **p. 265.** Both “year 1929” and “year 1928”, both “Mr. Thakkar” and “Dr. Thakkar” kept as printed. **pp. 272–273.** “7 Hindus” vs “these nine people” kept as printed.
+5. **p. 269.** “on the payment of the verandah” (pavement) → व्हरांड्याच्या फरशीवर (payment).
+6. **p. 270.** “some people began to come to the village library. I could not understand why an educated person should have led this mob.” — something seems missing; translated literally. **Please check.**
+7. **p. 274.** Thatwadi passage on the pleader, the “fabricated first information” and who “entered the names” is unclear; translated closely in the passive, so it does not say who entered the names. **Please check.**
+8. **p. 278.** “…join with the Prime Minister” is missing “I”; translated as मी … सुरात सूर मिसळतो. “I will quote chapter and verse” → अध्याय आणि श्लोकासह संदर्भ देईन (literal; a plainer idiom may suit).
+9. **Place names.** “Kavita” (Dholka) → कविठा (actual village; literal would be कविता); “Kekatnim-bhore” → केकत-निंभोरे; “Manded” (Amalner) → मांडेड (probably मांडळ); “Vadgaon Langda” → वडगाव लांगडा (probably वडगाव लांडगा); “Head Karknns” → हेड कारकून. Others: आकुशी, थाटवाडी, जेंत्राल, साईजपूर, रावणिया, धारिया, बोरसद, खेडा (Kaira).
+10. **Chapter 47 wordplay.** “I am not a part of the whole ; I am a part apart.” → मी संपूर्णाचा भाग नाही; मी वेगळा असलेला भाग आहे. The pun is lost. **Please review.**
+11. **Terms.** safeguards → संरक्षक तरतुदी; weightage → भारांक; Ulstermen / Carsonites → अल्स्टरवासी / कार्सनवादी; “Damn your safeguards…” → “तुमच्या संरक्षक तरतुदी गेल्या खड्ड्यात…”; “a dog can eat a dog” kept literal; enfant terrible → “उपद्रवी पोर”; chathur varna → चातुर्वर्ण्य; Adi Sudras → अतिशूद्र; “political Sudras” → राजकीय शूद्र; party caucus → पक्षाच्या अंतर्गत गटाचा (party caucus); tenants at will → मालकाच्या मर्जीनुसार केव्हाही काढून टाकता येणारे कूळ; Aboriginal Tribes → आदिवासी जमाती.
+
+## Chapters 48–49 — Appendix I: P. J. Roham's speech on birth control; Appendix II: Questions asked by Dr. Ambedkar and replies (PDF pp. 282–310)
+
+“zz” kept as printed. Page 290 is empty in the source.
+
+1. **Kruti Dev conversions (chapter 48). Check each against the printed page.**
+   - p. 283: “CkqHkqf{kr % fde~ u djksrh ikie~” → “बुभुक्षितः किं न करोति पापम्” (as printed it decodes to “किम् न करोती”; the standard form of the saying is used).
+   - p. 287: “ojesdks xq.khiq=kks u p eq[kZ'krkU;fi” → “वरमेको गुणी पुत्रो न च मूर्खशतान्यपि” (as printed “मुर्ख”; “शतान्यपि” kept though the usual reading is “शतैरपि”).
+   - p. 289: “¯gnq /eZ vkf.k lqèkkj.kk” → “हिंदु धर्म आणि सुधारणा”, the title of Principal Gole's book (प्राचार्य गोळे).
+2. **Typos translated as meant (chapter 48):** bith-control, test-books (text-books), remair, “come into vague” (vogue), “fertility or marriage” (of), “absenquial feast” (obsequial → उत्तरकार्याचे जेवण), “Indian marred” (Indians).
+3. **Names corrected (chapter 48):** Gooring → गोअरिंग; Sir Damiel Hall → सर डॅनियल हॉल; Count Karlo Sforra → काउंट कार्लो स्फोर्झा; Federick Keeble → फ्रेडरिक कीबल. Kept as printed: “Bernhardt” (probably General Bernhardi) → बर्नहार्ट; Maria Stopes → मारिया स्टोप्स; the year “2,035”; mismatched quote marks around the Radhakamal Mukerjee book title.
+4. **pp. 303–304 (chapter 49).** Forest-land tables scrambled in the source (a row split across blocks, runs of “..” blocks). Words translated, every number and block kept, the table not rebuilt. “Shikapur” → शिकारपूर; “Sind Cir” → सिंध मंडळ; “Do.” → वरीलप्रमाणे.
+5. **Citation errors kept as printed:** “B.T.C. Debates” (should be B.L.C.); “1st March 1927” on p. 309 (volume XXV, session 1929); “27th February 1980” on p. 310 (probably 1930). The summary says “1927 पासून” without an end year.
+6. **p. 301.** “It is not a fact that…” (misprint for “Is it not a fact”) translated as a question (…हे खरे नाही काय?). Watandar Mahars table headings jumbled in the source; kept in printed order except “From inami and Government salary” placed ahead of “From Baluta”. Mr. Rieu's answer “As the time and trouble…” is broken by a stray full stop; joined into one sentence.
+7. **p. 306.** The answer to (a)–(e) appears to concern survey number 220 only, but the source does not say so; translated exactly as printed.
+8. **Terms.** birth-control → संततिनियमन; continence / Brahmacharya → ब्रह्मचर्य; eugenic / dysgenic → सुप्रजनन / कुप्रजननकारी; vasectomy → पुरुष नसबंदी; Deputy Speaker → उपाध्यक्ष; Bombay Presidency → मुंबई इलाखा (elsewhere मुंबई प्रांत; make consistent); “Will Government be pleased to state—” → सरकार कृपया पुढील गोष्टी सांगेल काय —; The Honourable Member → माननीय सदस्य; Dewan Bahadur → दिवाण बहादूर; Moulvi → मौलवी; Watandar / officiating Mahars → वतनदार / काम करणारे महार; Gaonkaris → गावकारी; Emperor v. → सम्राट विरुद्ध; causeway → रस्ता-बांध; upset price → किमान किंमत (upset price).
