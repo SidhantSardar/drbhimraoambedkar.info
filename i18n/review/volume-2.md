@@ -241,3 +241,41 @@ No Kruti Dev text. Every table number kept exactly as printed. Marginal side-not
 4. **Kept as printed:** p. 428 “53 George IV” (the statute is George III); p. 429 “the Pearl of Auckland” (probably Earl) → पर्ल ऑफ ऑकलंड; p. 433 “Brahmannis proxmi” kept in Latin script; p. 438 Elphinstone “found the lowest classes the best peoples” (probably “pupils”) → सर्वोत्तम लोक; p. 446 “to make the prosecutor the ruler” (“judge” may be meant) → फिर्यादीलाच शासक बनवणे.
 5. **p. 445.** “punitive post” → दंडात्मक चौकी; p. 444 “the situation for in Backward classes” → मागासवर्गांसाठी निर्माण झालेली परिस्थिती.
 6. **Terms.** Native → एतद्देशीय; Court of Directors → कोर्ट ऑफ डायरेक्टर्स; Director of Public Instruction → सार्वजनिक शिक्षण संचालक; Board of Education → शिक्षण मंडळ; Quinquennial Report → पंचवार्षिक अहवाल; touchable / untouchable classes → स्पृश्य / अस्पृश्य वर्ग; co-opt → स्वीकृत सदस्य म्हणून निवड; purgatory → यातनास्थान; patronage → सरकारी आश्रय (नोकऱ्या); Indian Statutory Commission → इंडियन स्टॅट्युटरी कमिशन (भारतीय वैधानिक आयोग); Cherumans, Nayars, Tiyas → चेरुमन, नायर, तिया.
+
+## Chapter 67, part 1 — Evidence before the Indian Statutory Commission (PDF pp. 478–493)
+
+No Kruti Dev text and no “zz”. Question numbers kept as printed, including gaps (42 and 84–97 missing in the source, ***** markers kept) and “106A”. Speaker labels: अध्यक्ष, डॉ. आंबेडकर, डॉ. सोळंकी, रावबहादूर राजा, कर्नल लेन फॉक्स, सर हरिसिंग गौर, श्री. हार्टशॉर्न, श्री. मिलर, खानसाहेब अब्दुल लतीफ, सरदार मुजुमदार, सय्यद मीरान मुहम्मद शाह, मेजर ॲटली, श्री. कॅडोगन, श्री. प्रेमचंद.
+
+1. **Q53.** “how many reserved seats in the Bombay Presidency you would suggest classes ?” (words missing) → “… किती राखीव जागा तुम्ही सुचवाल हे मला सांगाल का … वर्ग?”; nothing guessed.
+2. **Q17.** “ten castes, which are undoubtedly castes” (probably “untouchable castes”) translated literally: ज्या निःसंशय जाती आहेत.
+3. **Q72.** “a most fragrant abuse” (flagrant) → अत्यंत ढळढळीत दुरुपयोग. **Q109.** “out I certainly” read as “but”. Footnote “Satutory” read normally.
+4. **Q16.** Ends with “Qualification of the figures.”, apparently a stray heading; kept in its block as “आकड्यांविषयी एक मर्यादा.”
+5. **Q108.** “representation of minorities according to population of the legislature” odd, rendered literally. **Q82.** “consideration to the project” → प्रकल्पाचा (“project” unclear).
+6. **Q12, after Q33.** Ellipses kept; **Q29** “(Both witnesses) No.” → “(दोन्ही साक्षीदार)”.
+7. **Chapter letter** “D” rendered “ड.” in the opening block and title; check against the convention for the other appendix letters.
+8. **Terms.** millions with a digit → दशलक्ष (55 ते 60 दशलक्ष, 31 दशलक्ष, 1½ दशलक्ष); “28 lakhs” and “5,77,000” kept as printed; India proper → मुख्य भारत; Indian States → संस्थाने; Memorandum → निवेदन; nomination → नियुक्ती; official bloc → अधिकृत गट; instrument (to the Governor) → आदेशपत्र; Mamlatdars → मामलेदार; throstle department → थ्रॉसल खाते; mofussil → मुफस्सल (ग्रामीण भाग); Taluka Local Board → तालुका लोकल बोर्ड; castes which cause pollution → विटाळ करणाऱ्या जाती; criminal / hill tribes → गुन्हेगार / डोंगरी जमाती; aborigines → आदिवासी; cross-division → छेदक विभागणी.
+
+## Chapter 67, part 2 — Evidence before the Indian Statutory Commission (PDF pp. 494–509)
+
+No Kruti Dev text. Page 509 is empty. Question numbers, “*****” omission markers and the source's block types kept. The first block continues part 1's last sentence (“एक गट भांडवलदारांना अनुकूल आणि / दुसरा मजुरांची बाजू घेणारा.”). Speaker labels as in part 1, plus लॉर्ड बर्नहॅम, रावसाहेब पाटील, डॉ. सुहरावर्दी.
+
+1. **p. 498.** “whose rights are denied or the majority” read as “by” → ज्याचे हक्क बहुसंख्याकांकडून नाकारले जातात.
+2. **p. 506 (Q265).** “Find that there are so many objections raised” (subject missing) → इतके आक्षेप घेतले जातात, असे आढळते.
+3. **Q254.** Answer cut off at “Ordinarily the medicine is dispensed out” → सामान्यतः औषध बाहेरच्या बाहेर दिले जाते; nothing added. **Q181, Q188** break off in the source; kept as fragments. **Q170** ellipsis kept.
+4. **Q253.** “the same thing would have happened to me when I tried to enter a temple in Bombay” ambiguous; translated literally.
+5. **Q240.** “Ambalal Sarlal School” (probably Ambalal Sarabhai) kept as अंबालाल सरलाल शाळा. **Q263.** “Deoo” (near Poona) unidentified → देऊ.
+6. **Q282.** “Yes, very few” contradicts itself; kept. **Q269.** He says “the Conference” meaning the Commission; kept as परिषदेला.
+7. **Typos read silently:** “five” → live (Q215); “belter” → better (Q262); “some ideal” → idea (Q213); “arc” → are (p. 508); “be was” → he was (Q234).
+8. **Terms.** universal suffrage → सार्वत्रिक मताधिकार; nomination → नामनियुक्ती here (part 1: नियुक्ती; make consistent); League of Nations → राष्ट्रसंघ; “Act 30 of 1923” → 1923 चा कायदा क्र. 30; stipendiary Magistrate → पगारी मॅजिस्ट्रेट; honorary bench magistrates → मानद बेंच मॅजिस्ट्रेट; judi → जुडी (सारा); watan tenure → वतन धारणा; non-caste Hindus → जातिबाह्य हिंदू; Bhungi → भंगी; waiters → वाढपी; Warkari Panth → वारकरी पंथ; Mang → मांग; Mr. Medhe → श्री. मेढे; Dr. Paranjpye → डॉ. परांजपे; B.B. & C.I. Railway → बी. बी. अँड सी. आय. रेल्वे.
+
+## Chapter 68, part 1 — Note to the Indian Franchise Committee; Part III opening: plenary speech, 20 Nov 1930; Committee of the Whole Conference, 16 Dec 1930 (PDF pp. 510–532)
+
+No Kruti Dev text and no “zz”. This source file covers more than the Lothian note; all of it is translated and the summary mentions both parts.
+
+1. **Garbled source:** p. 512 “conuningling” (commingling) → सरमिसळ; p. 514 “ted as touchable” (treated) → [वागवले] with brackets, “public wel .” → सार्वजनिक विहिरी, “Koril” kept as कोरिल; p. 515 “Mr. Blum's” (Blunt) → ब्लंट; p. 524 “assigned to them a statute” (status) → दर्जा; other OCR slips (“at me same time”, “mat will”, “nowever”, “loathed”) read by their obvious meaning.
+2. **p. 515.** “the population of persons who on the basis of untouchability… was 13 millions” has no verb; [गणलेल्या] added in brackets.
+3. **p. 517.** “The census of 1931 mentions only castes” — the number is missing; marked [मूळ मजकूर अस्पष्ट]. “1-3 millions” (probably 1.3) kept as 1-3 दशलक्ष. **p. 518.** Stray “II.” mid-text kept.
+4. **p. 516 (ii).** “I am not at all certain that when the Committee says… were ad-idem…” broken; rendered as doubt whether the members were ad idem (एकमताचे) on all implications of the agreement.
+5. **p. 517.** “…all depressed classes were not untouchables, and to include all untouchables irrespective…” incomplete in the source; the Marathi is equally incomplete.
+6. **p. 528.** “We cannot therefore hope for the effectuation… unless we are to have another revolution” broken by a stray full stop; fragment structure kept. “The Hindus claim them only to deny them or, better still, to appropriate rights” translated literally without adding whose rights.
+7. **Terms.** Chapter letter E → इ. (following ब., ड.); Indian / Provincial Franchise Committee → भारतीय / प्रांतिक मताधिकार समिती; Census Superintendent / Commissioner → जनगणना अधीक्षक / आयुक्त; United Provinces → संयुक्त प्रांत; notional / literal sense → संकल्पनात्मक (notional) / शब्दशः अर्थ; consciousness of kind → स्वजातीयतेची जाणीव; Chamar (UP and Bengal) → चमार rather than चांभार (volume usage is mixed; check); exterior / excluded castes → बहिःस्थ / बहिष्कृत जाती; Reservations (qualifications to an agreement) → अटी (Reservations); Minorities Pact → अल्पसंख्याक करार; nomination from a panel → नामवलीतून नामनिर्देशन; Committee of the Whole Conference → संपूर्ण परिषदेची समिती; Unitary Government → एकात्म (Unitary) सरकार; “LETTERS DE CACHET” kept in Latin script; signature → भी. रा. आंबेडकर.
