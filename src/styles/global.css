@@ -994,3 +994,22 @@ span.cat::before { content: ''; width: 18px; height: 18px; flex: none; border-ra
 .docs details.orig { margin: 4px 0 8px; font-size: 0.9rem; }
 .docs details.orig > summary { cursor: pointer; color: var(--link); font-weight: 600; font-size: 0.82rem; }
 .docs .reader-en { font-size: 0.98rem; line-height: 1.7; color: var(--ink-2); border-left: 2px solid var(--line); padding-left: 14px; margin-top: 10px; }
+
+/* =====================================================================
+   Mobile only (< 980px): the reader's contents slide in from the left
+   ===================================================================== */
+@media (max-width: 979px) {
+  .docs-toggle { justify-content: flex-start; gap: 10px; background: var(--bg); z-index: 40; }
+  .docs-toggle::before { content: '☰'; display: inline-grid; place-items: center; width: 34px; height: 34px; border: 1px solid var(--line); font-size: 1rem; }
+  .docs-toggle[aria-expanded='true']::before { content: '✕'; }
+  .docs-toggle-label { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .docs-nav { display: block; position: fixed; top: 113px; bottom: 0; left: 0; z-index: 45; width: min(86vw, 340px); max-height: none; overflow-y: auto; border-bottom: 0; border-right: 1px solid var(--line); transform: translateX(-102%); visibility: hidden; transition: transform 0.25s ease, visibility 0s linear 0.25s; }
+  .docs-nav.show { transform: none; visibility: visible; transition: transform 0.25s ease; box-shadow: 0 0 0 100vmax rgb(0 0 0 / 55%); }
+  .docs-main { padding-top: 20px; }
+  .docs-overview .book-cover { width: min(180px, 50vw); }
+  .page-mark { flex-wrap: wrap; }
+}
+@media (max-width: 520px) {
+  .brand-name { font-size: 0.98rem; }
+  .brand-name small { display: none; }
+}

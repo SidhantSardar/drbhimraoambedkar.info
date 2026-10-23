@@ -343,3 +343,8 @@
 [data-skin='ai'] .in-simple { border-color: rgb(125 211 252 / 22%); background: var(--hud), linear-gradient(160deg, rgb(125 211 252 / 9%), rgb(29 78 216 / 5%)); }
 [data-skin='ai'] .in-simple h2 { background: none; color: #7dd3fc; -webkit-text-fill-color: currentColor; filter: none; }
 [data-skin='ai'] .docs .reader-en { color: #b9c0d4; border-left-color: rgb(125 211 252 / 25%); }
+@media (max-width: 979px) {
+  [data-skin='ai'] .docs-toggle { background: #070b16; }
+  [data-skin='ai'] .docs-toggle::before { border-color: rgb(125 211 252 / 35%); color: #7dd3fc; }
+  [data-skin='ai'] .docs-nav { background: #070b16; }
+}

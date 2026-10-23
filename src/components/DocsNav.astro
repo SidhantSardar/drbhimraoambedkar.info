@@ -25,7 +25,7 @@ for (const c of chapters) {
 }
 const isCurrent = (c: (typeof chapters)[number]) => c.parts.some((p) => p.slug === current);
 ---
-<aside class="docs-nav" aria-label={t(`Contents of ${vol.label}`, `${volLabelIn(vol, lang)} — अनुक्रमणिका`)}>
+<aside class="docs-nav" id="docs-nav" aria-label={t(`Contents of ${vol.label}`, `${volLabelIn(vol, lang)} — अनुक्रमणिका`)}>
   <a class="docs-vol" href={url(`/library/${vol.id}/`)}>
     <img src={url(coverOf(vol))} alt="" width="56" height="86" loading="lazy" />
     <span title={lang === 'mr' ? vol.title : undefined}><small>{volLabelIn(vol, lang)}</small>{volTitleIn(vol, lang)}</span>

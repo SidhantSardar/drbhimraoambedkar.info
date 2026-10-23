@@ -12,7 +12,7 @@ const t = translator(lang);
 ---
 <Base title={title} description={description}>
   <div class="docs">
-    <button class="docs-toggle" type="button" aria-expanded="false" data-docs-toggle>☰ {t(`Contents of ${vol.label}`, `${volLabelIn(vol, lang)} — अनुक्रमणिका`)}</button>
+    <button class="docs-toggle" type="button" aria-expanded="false" data-docs-toggle aria-controls="docs-nav"><span class="docs-toggle-label">{t(`Contents of ${vol.label}`, `${volLabelIn(vol, lang)} — अनुक्रमणिका`)}</span></button>
     <DocsNav vol={vol} current={current} />
     <div class="docs-main">
       <slot />
@@ -28,11 +28,17 @@ const t = translator(lang);
         if (!cur || !nav.offsetHeight) return;
         nav.scrollTop += cur.getBoundingClientRect().top - nav.getBoundingClientRect().top - nav.clientHeight / 2;
       };
-      if (btn) btn.addEventListener('click', function () {
-        var open = nav.classList.toggle('show');
+      var setOpen = function (open) {
+        nav.classList.toggle('show', open);
         btn.setAttribute('aria-expanded', open ? 'true' : 'false');
         if (open) reveal();
+      };
+      if (btn) btn.addEventListener('click', function () { setOpen(!nav.classList.contains('show')); });
+      // Phones: close the sliding contents when tapping outside it or pressing Escape.
+      document.addEventListener('click', function (e) {
+        if (nav.classList.contains('show') && !nav.contains(e.target) && !btn.contains(e.target)) setOpen(false);
       });
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && nav.classList.contains('show')) setOpen(false); });
       reveal();
       var f = document.querySelector('[data-docs-filter]');
       if (f) f.addEventListener('input', function () {
