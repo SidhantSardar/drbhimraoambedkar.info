@@ -1032,3 +1032,14 @@ span.cat::before { content: ''; width: 18px; height: 18px; flex: none; border-ra
   .band { margin-top: 28px; }
   :lang(mr) .ticker-head, :lang(mr) .ticker-sub, :lang(mr) .ticker-tags button, :lang(mr) .ticker-foot { letter-spacing: 0 !important; }
 }
+
+/* Live-updates drawer controls and footer logo (shown by the light design) */
+.ticker-open, .ticker-mobile, .ticker-close { display: none; }
+.footer-brand { display: none; }
+
+/* Layered hero photo: the cutout layer and the spatial button exist only in the light design */
+.hero-full .bg .bg-back { display: block; width: 100%; height: 100%; }
+.hero-full .bg .bg-front, .hero-spatial { display: none; }
+
+.home-ask { display: none; }
+.home-why { display: none; }

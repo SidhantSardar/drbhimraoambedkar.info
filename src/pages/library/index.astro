@@ -34,14 +34,16 @@ const totalDone = vols.reduce((s, v) => s + translatedCount(v), 0);
         const done = translatedCount(v);
         return (
           <li class="book">
-            <a class="book-cover" href={read} aria-label={`${t('Read', 'वाचा')} ${volLabelIn(v, lang)}: ${volTitleIn(v, lang)}`}>
-              <img src={url(coverOf(v))} alt="" width="360" height="540" loading="lazy" decoding="async" />
-              <span class="book-spine" aria-hidden="true"></span>
-            </a>
+            <div class="book-top">
+              <span class="book-cover">
+                <img src={url(coverOf(v))} alt="" width="360" height="540" loading="lazy" decoding="async" />
+                <span class="book-spine" aria-hidden="true"></span>
+              </span>
+            </div>
             <div class="book-body">
               <span class="book-vol">{volLabelIn(v, lang)}</span>
               <h2 class="book-title"><a href={url(`/library/${v.id}/`)} title={lang === 'mr' ? v.title : undefined}>{volTitleIn(v, lang)}</a></h2>
-              <p class="book-meta">{t(`${chapters} chapters · ${v.pages} pages`, `${chapters} प्रकरणे · ${v.pages} पाने`)}{lang === 'mr' && done > 0 && <> · <span class="mr-badge">मराठी {done} पाने</span></>}</p>
+              <p class="book-meta">{t(`${chapters} chapters · ${v.pages} pages`, `${chapters} प्रकरणे · ${v.pages} पाने`)}</p>
               <div class="book-actions">
                 <a class="read-now" href={read}>{t('Read now →', 'आता वाचा →')}</a>
                 <a class="pdf-link" href={v.officialUrl} target="_blank" rel="noopener noreferrer">{t('Official PDF ↗', 'अधिकृत PDF ↗')}</a>

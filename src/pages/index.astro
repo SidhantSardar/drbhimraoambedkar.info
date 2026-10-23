@@ -2,7 +2,7 @@
 import Base from '../layouts/Base.astro';
 import Picture from '../components/Picture.astro';
 import { url } from '../lib/site';
-import { chapters, images, loadJSON, type Img, type Work, type Speech } from '../lib/data';
+import { chapters, themes, images, loadJSON, type Img, type Work, type Speech } from '../lib/data';
 import { originalFor, credit, inLang } from '../lib/images-core.mjs';
 import { volumes } from '../lib/library';
 import { loadNews, mixed, catOf as category, thumbFor, fallbackFor, ONERROR, isHindi, cleanTitle } from '../lib/news';
@@ -15,48 +15,62 @@ const life = await chapters(lang);
 const imgs = images(lang);
 const byId = (id: string) => imgs.find((i) => i.id === id) as Img | undefined;
 
-const heroImg = byId('ambedkar-1950');
+const heroImg = byId('ambedkar-portrait-classic');
 const bandConst = byId('constituent-assembly-first-day-1946');
 
 const pages = volumes().reduce((s, v) => s + v.pages, 0);
 const works = loadJSON<Work[]>('works', []).length;
 const speeches = loadJSON<Speech[]>('speeches', []).length;
+// Key dates across the life story, themes and the Constitution — the timeline's events, de-duplicated.
+const eventKeys = new Set<string>();
+for (const c of [...(await chapters()), ...(await themes())]) for (const k of c.data.keyDates) eventKeys.add(`${k.date}|${k.label.toLowerCase().replace(/[^a-z0-9]/g, '')}`);
+for (const k of loadJSON<any>('constitution', {}).timeline || []) eventKeys.add(`${k.date}|${String(k.label).toLowerCase().replace(/[^a-z0-9]/g, '')}`);
+const events = eventKeys.size;
+const coverVol1 = url('/images/covers/volume-1.jpg');
 
 // Live updates: newest first, every kind of news represented
 const news = loadNews();
 const updates = mixed(news.stories, 36);
 const cats = [...new Set(updates.map((n) => n.category))];
 ---
-<Base image={heroImg ? url(heroImg.file) : undefined}>
+<Base image={heroImg ? url(heroImg.file) : undefined} description={t('The first platform to bring all of Dr. B. R. Ambedkar\'s work together in one place — every book, speech and newspaper, word for word, open to people and to AI — so that what he really said is protected and shared.', 'डॉ. बाबासाहेब आंबेडकर यांचे संपूर्ण कार्य एकाच ठिकाणी आणणारे पहिले व्यासपीठ — प्रत्येक ग्रंथ, भाषण आणि वृत्तपत्र, शब्दशः, माणसांसाठी आणि AI साठी खुले — जेणेकरून ते खरोखर काय म्हणाले ते जपले आणि पोहोचवले जाईल.')}>
   <!-- 1. HERO -->
   <section class="hero-full">
-    {heroImg && <div class="bg"><Picture img={heroImg} eager sizes="100vw" alt="" /></div>}
+    {heroImg && (
+      <div class="bg" aria-hidden="true">
+        <span class="bg-back"><Picture img={heroImg} eager sizes="60vw" alt="" /></span>
+        <span class="bg-front"><img src={url('/images/archive/ambedkar-portrait-classic-cutout.webp')} alt="" width="1075" height="1400" loading="eager" fetchpriority="high" decoding="async" /></span>
+      </div>
+    )}
     <div class="hero-fx" aria-hidden="true"><span class="grid-floor"></span></div>
 
     <div class="hero-main">
       <a class="status-pill" href={url('/ask/')}>
         <span class="live-dot" aria-hidden="true"></span>
-        {t(`Archive online · ${pages.toLocaleString('en-IN')} pages of his writings, searchable`, `संग्रह ऑनलाइन · त्यांच्या लेखनाची ${pages.toLocaleString('en-IN')} पाने, शोधण्याजोगी`)}
+        <span class="status-pill-text">{t(`Open archive · ${pages.toLocaleString('en-IN')} pages of his work, for people and for AI`, `खुला संग्रह · त्यांच्या साहित्याची ${pages.toLocaleString('en-IN')} पाने, माणसांसाठी आणि AI साठी`)}</span>
         <span aria-hidden="true">→</span>
       </a>
       <span class="eyebrow">{t('1891 – 1956 · Scholar · Economist · Jurist · Reformer', '1891 – 1956 · विद्वान · अर्थशास्त्रज्ञ · कायदेपंडित · समाजसुधारक')}</span>
-      {lang === 'mr' ? <h1>डॉ. भीमराव<br />रामजी आंबेडकर</h1> : <h1>Dr. Bhimrao<br />Ramji Ambedkar</h1>}
-      <p class="hero-sub">{t('The boy who was not allowed to drink from the school tap became one of the most educated people of his time — and led the writing of the Constitution that promises every Indian equal dignity.', 'शाळेतील नळाचे पाणी पिण्याचीही परवानगी नसलेले ते मूल पुढे आपल्या काळातील सर्वाधिक उच्चशिक्षित व्यक्तींपैकी एक झाले — आणि प्रत्येक भारतीयाला समान प्रतिष्ठेचे वचन देणाऱ्या संविधानाच्या निर्मितीचे नेतृत्व त्यांनी केले.')}</p>
+      {lang === 'mr' ? <h1>बाबासाहेब<br />आंबेडकर</h1> : <h1>Babasaheb<br />Ambedkar</h1>}
+      <p class="hero-sub">{t('The world is moving fast, and millions have still not met the man who wrote equality into India\'s Constitution. This is the first place that brings all of his work together, word for word, open to people and to AI — so that what he really said is protected, shared, and keeps working for a more liberal and democratic India.', 'जग वेगाने पुढे जात आहे, आणि ज्यांनी भारताच्या संविधानात समता लिहिली, त्या माणसाची ओळख अजूनही कोट्यवधी लोकांना झालेली नाही. त्यांचे संपूर्ण कार्य एकाच ठिकाणी, शब्दशः, माणसांसाठी आणि AI साठी खुले करणारे हे पहिले व्यासपीठ आहे — जेणेकरून ते खरोखर काय म्हणाले ते जपले जाईल, पोहोचवले जाईल आणि अधिक उदारमतवादी, लोकशाही भारतासाठी काम करत राहील.')}</p>
       <div class="btn-row">
         <a class="btn btn-primary btn-beam" href={url('/life/')}><span>{t('Begin his story →', 'त्यांची कथा वाचायला सुरुवात करा →')}</span></a>
         <a class="btn btn-ghost" href={url('/ask/')}>{t('Ask the archive', 'संग्रहात शोधा')}</a>
       </div>
       <dl class="hero-stats">
-        <div><dt>{t('Chapters', 'प्रकरणे')}</dt><dd>{life.length}</dd></div>
-        <div><dt>{t('Works', 'साहित्य')}</dt><dd>{works}</dd></div>
-        <div><dt>{t('Speeches', 'भाषणे')}</dt><dd>{speeches}</dd></div>
-        <div><dt>{t('Pages', 'पाने')}</dt><dd>{pages.toLocaleString('en-IN')}</dd></div>
+        <div><dt>{t('Events', 'घटना')}</dt><dd data-count={events}>{events}</dd></div>
+        <div><dt>{t('Works', 'साहित्य')}</dt><dd data-count={works}>{works}</dd></div>
+        <div><dt>{t('Speeches', 'भाषणे')}</dt><dd data-count={speeches}>{speeches}</dd></div>
+        <div><dt>{t('Pages', 'पाने')}</dt><dd data-count={pages}>{pages.toLocaleString('en-IN')}</dd></div>
       </dl>
     </div>
 
     {updates.length > 0 && (
-      <aside class="ticker" aria-label={t('Live updates', 'थेट घडामोडी')}>
+      <a class="ticker-mobile" href={url('/news/')}><span class="live-dot" aria-hidden="true"></span><span><strong>{t('Live updates from the movement', 'चळवळीतील थेट घडामोडी')}</strong><small>{t('See the latest news →', 'ताज्या बातम्या पाहा →')}</small></span></a>
+      <button class="ticker-open" type="button" aria-controls="ticker" aria-expanded="false" data-ticker-open><span aria-hidden="true">←</span><span class="ticker-open-label"><span class="live-dot" aria-hidden="true"></span>{t('Live updates', 'थेट घडामोडी')}</span></button>
+      <aside class="ticker" id="ticker" aria-label={t('Live updates', 'थेट घडामोडी')}>
         <div class="ticker-head">
+          <button class="ticker-close" type="button" aria-label={t('Close live updates', 'थेट घडामोडी बंद करा')} data-ticker-close>→</button>
           <strong><span class="live-dot" aria-hidden="true"></span>{t('Live updates', 'थेट घडामोडी')}</strong>
           <p class="ticker-sub">{t('Educate · Agitate · Organise — the movement today', 'शिका · संघर्ष करा · संघटित व्हा — आजची चळवळ')}</p>
           <div class="ticker-tags" role="group" aria-label={t('Filter updates', 'घडामोडी निवडा')}>
@@ -84,57 +98,66 @@ const cats = [...new Set(updates.map((n) => n.category))];
     {heroImg && <p class="credit">{heroImg.caption} {credit(heroImg)} · <a href={heroImg.sourceUrl} target="_blank" rel="noopener noreferrer">{heroImg.sourceName}</a></p>}
   </section>
 
-  <!-- 2. LIFE STORY: full-screen chapter slides; arrows bottom-right, or simply scroll on -->
-  <section class="ls" id="life-story" aria-roledescription="carousel" aria-label={t('His life in chapters', 'प्रकरणांतून त्यांचे जीवन')}>
-    <div class="ls-head">
-      <span class="eyebrow">{t('The life story', 'जीवनकथा')}</span>
-      <h2>{t(`His life, in ${life.length} chapters`, `त्यांचे जीवन, ${life.length} प्रकरणांत`)}</h2>
+  <!-- 1b. WHY THIS EXISTS -->
+  <section class="home-why" aria-labelledby="home-why-h">
+    <div class="wrap">
+      <div class="why-lead" data-reveal>
+        <span class="eyebrow">{t('Why this platform exists', 'हे व्यासपीठ का')}</span>
+        <h2 id="home-why-h">{t('Time moves fast. His work must not be left behind.', 'काळ वेगाने पुढे जातो. त्यांचे कार्य मागे राहता कामा नये.')}</h2>
+        <p>{t('Until now there was no single place that held all of Dr. Ambedkar\'s work. It sat scattered across government volumes, scanned PDFs and second-hand summaries, while technology raced ahead without him. This platform is a source that people and AI can both trust — so that his real words strengthen the vision of a liberal, democratic nation and society.', 'आजवर डॉ. आंबेडकरांचे संपूर्ण कार्य एकाच ठिकाणी ठेवणारे कोणतेही व्यासपीठ नव्हते. ते सरकारी खंड, स्कॅन केलेल्या PDF आणि ऐकीव सारांशांमध्ये विखुरलेले होते, आणि तंत्रज्ञान त्यांच्याशिवाय पुढे धावत होते. हे व्यासपीठ म्हणजे माणसे आणि AI या दोघांनाही विश्वास ठेवता येईल असा स्रोत — जेणेकरून त्यांचे खरे शब्द उदारमतवादी, लोकशाही राष्ट्र आणि समाजाच्या दृष्टीला बळ देतील.')}</p>
+      </div>
+      <div class="why-cards">
+        <a class="why-card" href={url('/works/')} data-reveal style="--i:0">
+          <span class="why-ic"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7l9-4 9 4-9 4-9-4z"/><path d="M3 12l9 4 9-4"/><path d="M3 17l9 4 9-4"/></svg></span>
+          <span class="why-num" aria-hidden="true">01</span>
+          <strong>{t('All in one place', 'सर्व एकाच ठिकाणी')}</strong>
+          <span class="why-txt">{t(`${works} works, ${speeches} speeches, four newspapers, the Constitution and the life behind them — together for the first time.`, `${works} ग्रंथ, ${speeches} भाषणे, चार वृत्तपत्रे, संविधान आणि त्यामागचे जीवन — प्रथमच एकत्र.`)}</span>
+          <span class="why-go">{t('Browse the works', 'साहित्य पाहा')} <i aria-hidden="true">→</i></span>
+        </a>
+        <a class="why-card" href={url('/about/')} data-reveal style="--i:1">
+          <span class="why-ic"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 11H6.5a3.5 3.5 0 0 1 3.5-3.5V5a6 6 0 0 0-6 6v6h6v-6z"/><path d="M20 11h-3.5A3.5 3.5 0 0 1 20 7.5V5a6 6 0 0 0-6 6v6h6v-6z"/></svg></span>
+          <span class="why-num" aria-hidden="true">02</span>
+          <strong>{t('Word for word', 'शब्दशः')}</strong>
+          <span class="why-txt">{t('Nothing paraphrased, nothing softened. Every page is taken from the official volumes and links back to the original.', 'काहीही पुनर्लेखित नाही, काहीही सौम्य केलेले नाही. प्रत्येक पान अधिकृत खंडांतून घेतले आहे आणि मूळ प्रतीशी जोडलेले आहे.')}</span>
+          <span class="why-go">{t('Our source policy', 'आमचे संदर्भ धोरण')} <i aria-hidden="true">→</i></span>
+        </a>
+        <a class="why-card" href={url('/ask/')} data-reveal style="--i:2">
+          <span class="why-ic"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><path d="M18 2.5l1 2.5 2.5 1-2.5 1-1 2.5-1-2.5-2.5-1 2.5-1z"/><path d="M19 14v6M16 17h6"/></svg></span>
+          <span class="why-num" aria-hidden="true">03</span>
+          <strong>{t('For people and for AI', 'माणसांसाठी आणि AI साठी')}</strong>
+          <span class="why-txt">{t('Open, searchable and free, so that a student, a reader or an AI assistant can answer from the source instead of from hearsay.', 'खुले, शोधता येणारे आणि मोफत — जेणेकरून विद्यार्थी, वाचक किंवा AI सहाय्यक ऐकीव माहितीऐवजी मूळ स्रोतातून उत्तर देऊ शकेल.')}</span>
+          <span class="why-go">{t('Ask the archive', 'संग्रहात शोधा')} <i aria-hidden="true">→</i></span>
+        </a>
+      </div>
     </div>
-    <div class="ls-track" id="ls-track" tabindex="0" aria-label={t('Chapters — use the arrow keys to move between them', 'प्रकरणे — पुढे-मागे जाण्यासाठी बाण कळा वापरा')}>
-      {life.map((c, i) => {
-        const img = inLang(originalFor(c.id), lang);
-        const cover = img && (img.width || 0) >= 1100 && (img.width || 0) >= (img.height || 0);
-        return (
-          <article class={`ls-slide ${cover ? 'cover' : ''}`} aria-roledescription="slide" aria-label={`${i + 1} / ${life.length}: ${c.data.title}`} style={img ? `--img-h:${img.height}px` : undefined}>
-            <span class="ls-media" aria-hidden="true">
-              {img && <span class="blur"><Picture img={img} sizes="40vw" alt="" /></span>}
-              {img && <span class="fg"><Picture img={img} sizes="(min-width: 900px) 60vw, 100vw" alt="" /></span>}
-            </span>
-            <div class="ls-cap">
-              <span class="ls-k">{String(i + 1).padStart(2, '0')} · {c.data.period}</span>
-              <h3><a href={url(`/life/${c.id}/`)}>{c.data.title}</a></h3>
-              {c.data.summary && <p>{c.data.summary}</p>}
-              <a class="ls-more" href={url(`/life/${c.id}/`)} tabindex="-1">{t('Read chapter →', 'प्रकरण वाचा →')}</a>
-              {img && <p class="ls-credit">{img.caption?.split(/\.\s/)[0].replace(/\.$/, '')}. {credit(img)}</p>}
-            </div>
-          </article>
-        );
-      })}
-      <article class="ls-slide ls-end" aria-roledescription="slide" aria-label={t('Explore more', 'अधिक पाहा')}>
-        <div class="ls-cap">
-          <span class="ls-k">{t('Keep going', 'पुढे चला')}</span>
-          <h3>{t('Explore more of his life', 'त्यांच्या जीवनाविषयी अधिक')}</h3>
-          <p>{t('Every date, every degree, every photograph — with sources.', 'प्रत्येक तारीख, प्रत्येक पदवी, प्रत्येक छायाचित्र — संदर्भांसह.')}</p>
-          <span class="ls-links">
-            <a class="btn btn-primary" href={url('/timeline/')}>{t('Timeline', 'कालपट')}</a>
-            <a class="btn btn-ghost" href={url('/education/')}>{t('Educational journey', 'शैक्षणिक प्रवास')}</a>
-            <a class="btn btn-ghost" href={url('/gallery/')}>{t('Gallery', 'छायाचित्रे')}</a>
-          </span>
-        </div>
-      </article>
-    </div>
-    <div class="ls-ctrl">
-      <span class="ls-count" aria-live="polite"><b id="ls-n">01</b> / {String(life.length).padStart(2, '0')}</span>
-      <span class="ls-bar" aria-hidden="true"><i id="ls-bar"></i></span>
-      <button class="ls-btn" type="button" data-ls="-1" aria-label={t('Previous chapter', 'मागील प्रकरण')} disabled>←</button>
-      <button class="ls-btn" type="button" data-ls="1" aria-label={t('Next chapter', 'पुढील प्रकरण')}>→</button>
+  </section>
+  <!-- 2. HIS WORK -->
+  <section class="home-works" aria-labelledby="home-works-h">
+    <div class="wrap">
+      <span class="eyebrow" data-reveal>{t('His work, in one place', 'त्यांचे साहित्य, एकाच ठिकाणी')}</span>
+      <h2 id="home-works-h" data-reveal>{t('Everything he wrote and said, from the source', 'त्यांनी लिहिलेले आणि सांगितलेले सर्व काही, मूळ स्रोतातून')}</h2>
+      <div class="hw-grid">
+        <a class="hw-card" href={url('/works/speeches/')} data-reveal style="--i:0">
+          {byId('ambedkar-bhawan-delhi-conference-1951') && <span class="hw-img"><span class="hw-ic"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3M8 21h8"/></svg></span><Picture img={byId('ambedkar-bhawan-delhi-conference-1951')!} sizes="(min-width: 1000px) 300px, 100vw" alt="" /></span>}
+          <span class="hw-body"><strong>{t('Speeches', 'भाषणे')}</strong><span>{t(`${speeches} major speeches, from conferences to the Constituent Assembly`, `परिषदांपासून संविधान सभेपर्यंत ${speeches} महत्त्वाची भाषणे`)}</span><em>{t('Read the speeches →', 'भाषणे वाचा →')}</em></span>
+        </a>
+        <a class="hw-card" href={url('/library/')} data-reveal style="--i:1">
+          <span class="hw-img"><span class="hw-ic"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h5a3 3 0 0 1 3 3v13a2 2 0 0 0-2-2H4z"/><path d="M20 4h-5a3 3 0 0 0-3 3v13a2 2 0 0 1 2-2h6z"/></svg></span><img src={coverVol1} alt="" loading="lazy" /></span>
+          <span class="hw-body"><strong>{t('Writings & Speeches', 'लेखन आणि भाषणे')}</strong><span>{t(`All 17 volumes, ${pages.toLocaleString('en-IN')} pages, chapter by chapter`, `सर्व 17 खंड, ${pages.toLocaleString('en-IN')} पाने, प्रकरणानुसार`)}</span><em>{t('Open the library →', 'ग्रंथालय उघडा →')}</em></span>
+        </a>
+        <a class="hw-card" href={url('/works/journals/')} data-reveal style="--i:2">
+          {byId('mooknayak-bahishkrit-bharat-mastheads') && <span class="hw-img"><span class="hw-ic"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14"/><path d="M7 9h5v4H7zM14 9h3M14 13h3M7 16h10"/></svg></span><Picture img={byId('mooknayak-bahishkrit-bharat-mastheads')!} sizes="(min-width: 1000px) 300px, 100vw" alt="" /></span>}
+          <span class="hw-body"><strong>{t('His newspapers', 'त्यांची वृत्तपत्रे')}</strong><span>{t('Mooknayak, Bahishkrit Bharat, Janata and Prabuddha Bharat', 'मूकनायक, बहिष्कृत भारत, जनता आणि प्रबुद्ध भारत')}</span><em>{t('See the newspapers →', 'वृत्तपत्रे पाहा →')}</em></span>
+        </a>
+      </div>
+      <div class="hw-more"><a class="btn btn-primary" href={url('/works/')}>{t('View all works →', 'सर्व साहित्य पाहा →')}</a></div>
     </div>
   </section>
 
   <!-- 3. CONSTITUTION -->
   <section class="band">
     {bandConst && <div class="bg"><Picture img={bandConst} sizes="100vw" alt="" /></div>}
-    <div class="wrap band-inner">
+    <div class="wrap band-inner" data-reveal>
       <span class="eyebrow">{t('The flagship · 1946–1950', 'मुख्य विभाग · 1946–1950')}</span>
       <h2 style="max-width:14ch">{t('The Constitution of India', 'भारताचे संविधान')}</h2>
       <p class="lede" style="max-width:52ch">{t("As chairman of the Drafting Committee, he guided India's Constitution through the Constituent Assembly. Read what it promises in plain words, the articles he fought for, his speeches — and download the official text.", 'मसुदा समितीचे अध्यक्ष म्हणून त्यांनी भारताचे संविधान संविधान सभेत मार्गी लावले. ते सोप्या शब्दांत काय वचन देते, त्यांनी आग्रहाने मांडलेले अनुच्छेद आणि त्यांची भाषणे वाचा — आणि अधिकृत मजकूर डाउनलोड करा.')}</p>
@@ -152,10 +175,71 @@ const cats = [...new Set(updates.map((n) => n.category))];
     {bandConst && <p class="credit">{bandConst.caption?.slice(0, 80)}… · {bandConst.license}</p>}
   </section>
 
+  <!-- 4. ASK THE ARCHIVE -->
+  <section class="home-ask" aria-labelledby="home-ask-h">
+    <div class="wrap" data-reveal>
+      <span class="eyebrow">{t('For people and for AI', 'माणसांसाठी आणि AI साठी')}</span>
+      <h2 id="home-ask-h">{t('Ask him, in his own words', 'त्यांनाच विचारा, त्यांच्याच शब्दांत')}</h2>
+      <p class="lede">{t(`${pages.toLocaleString('en-IN')} pages of his writings and speeches, searchable word for word. Whether you are a student, a reader or an AI assistant, the answer comes from the source, not from hearsay.`, `त्यांच्या लेखन आणि भाषणांची ${pages.toLocaleString('en-IN')} पाने, शब्दशः शोधता येणारी. तुम्ही विद्यार्थी असा, वाचक असा किंवा AI सहाय्यक — उत्तर ऐकीव माहितीतून नाही, मूळ स्रोतातून येते.`)}</p>
+      <form class="home-ask-form" action={url('/ask/')} method="get" role="search">
+        <label class="visually-hidden" for="home-q">{t('Search the archive', 'संग्रहात शोधा')}</label>
+        <span class="home-ask-ic"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.3-4.3"/></svg></span>
+        <input id="home-q" name="q" type="search" autocomplete="off" placeholder={t('e.g. What did he say about education?', 'उदा. शिक्षणाबद्दल ते काय म्हणाले?')} />
+        <button class="btn btn-primary" type="submit">{t('Search →', 'शोधा →')}</button>
+      </form>
+      <ul class="home-ask-eg">
+        <li><span>{t('Try:', 'उदा.:')}</span></li>
+        {[['Annihilation of Caste', 'जातिप्रथेचे उच्चाटन'], ['separate electorates', 'स्वतंत्र मतदारसंघ'], ['Article 32', 'अनुच्छेद 32'], ['Buddhism', 'बौद्ध धर्म'], ['education', 'शिक्षण']].map(([en, mr]) => <li><a href={`${url('/ask/')}?q=${encodeURIComponent(en)}`}>{t(en, mr)}</a></li>)}
+      </ul>
+    </div>
+  </section>
+
   <script is:inline>
     (function () {
+      /* ---------- Hero and Constitution: photographs follow the pointer (3D), numbers count up ---------- */
+      /* ---------- Scroll reveal: blocks marked data-reveal fade and rise in once, when they enter the viewport ---------- */
+      var rev = document.querySelectorAll('[data-reveal]');
+      if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); } }); }, { rootMargin: '0px 0px -10% 0px', threshold: 0.15 });
+        rev.forEach(function (el) { io.observe(el); });
+      } else { rev.forEach(function (el) { el.classList.add('is-in'); }); }
+      /* safety net: whatever happens, nothing stays hidden for long */
+      setTimeout(function () { rev.forEach(function (el) { el.classList.add('is-in'); }); }, 3000);
+      var still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      ['.band'].forEach(function (sel) {
+        var el = document.querySelector(sel);
+        if (!el || still) return;
+        el.addEventListener('pointermove', function (e) {
+          var r = el.getBoundingClientRect();
+          el.style.setProperty('--ry', ((e.clientX - r.left) / r.width - 0.5) * 10 + 'deg');
+          el.style.setProperty('--rx', -((e.clientY - r.top) / r.height - 0.5) * 8 + 'deg');
+        });
+        el.addEventListener('pointerleave', function () { el.style.setProperty('--ry', '0deg'); el.style.setProperty('--rx', '0deg'); });
+      });
+      document.querySelectorAll('[data-count]').forEach(function (dd) {
+        var end = Number(dd.dataset.count);
+        if (still || !end) return;
+        var t0 = performance.now(), dur = 1600;
+        var step = function (now) {
+          var p = Math.min(1, (now - t0) / dur), v = Math.round(end * (1 - Math.pow(1 - p, 3)));
+          dd.textContent = v.toLocaleString('en-IN');
+          if (p < 1) requestAnimationFrame(step);
+        };
+        requestAnimationFrame(step);
+      });
+
       /* ---------- Live updates: auto-scroll, hover to browse, filter by tag ---------- */
       var ticker = document.querySelector('.ticker');
+      // Light design: the column is a drawer that slides in from the right.
+      var openBtn = document.querySelector('[data-ticker-open]');
+      var closeBtn = document.querySelector('[data-ticker-close]');
+      var setDrawer = function (open) {
+        ticker.classList.toggle('open', open);
+        if (openBtn) openBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      };
+      if (ticker && openBtn) openBtn.addEventListener('click', function () { setDrawer(true); });
+      if (ticker && closeBtn) closeBtn.addEventListener('click', function () { setDrawer(false); });
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && ticker) setDrawer(false); });
       if (ticker) {
         var view = ticker.querySelector('.ticker-view');
         var list = ticker.querySelector('.ticker-list');

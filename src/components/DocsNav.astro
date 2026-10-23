@@ -42,10 +42,10 @@ const isCurrent = (c: (typeof chapters)[number]) => c.parts.some((p) => p.slug =
           {g.items.map((c) => (
             <li class:list={[{ open: isCurrent(c) }]} data-title={`${c.title} ${name(c.title)}`.toLowerCase()}>
               {c.parts.length === 1 ? (
-                <a href={url(`/library/${vol.id}/${c.parts[0].slug}/`)} aria-current={c.parts[0].slug === current ? 'page' : undefined} title={tip(c.title)}>{name(c.title)}{mark(c.parts) && <span class="mr-badge" title="मराठी अनुवाद उपलब्ध">मराठी</span>}</a>
+                <a href={url(`/library/${vol.id}/${c.parts[0].slug}/`)} aria-current={c.parts[0].slug === current ? 'page' : undefined} title={tip(c.title)}>{name(c.title)}</a>
               ) : (
                 <details open={isCurrent(c)}>
-                  <summary title={tip(c.title)}>{name(c.title)}{mark(c.parts) && <span class="mr-badge" title="मराठी अनुवाद उपलब्ध">मराठी</span>}</summary>
+                  <summary title={tip(c.title)}>{name(c.title)}</summary>
                   <ul>
                     {c.parts.map((p) => (
                       <li><a href={url(`/library/${vol.id}/${p.slug}/`)} aria-current={p.slug === current ? 'page' : undefined}>{name(p.title)} <small>{t('pp.', 'पृ.')} {p.start}–{p.end}</small></a></li>

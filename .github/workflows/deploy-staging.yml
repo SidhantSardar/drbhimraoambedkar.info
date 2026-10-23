@@ -22,7 +22,7 @@ jobs:
     env:
       SITE_URL: https://www.sidhantsardar.com
       BASE_PATH: /drbhimraoambedkar.info
-      PUBLIC_SKIN: ai
+      PUBLIC_SKIN: light
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
