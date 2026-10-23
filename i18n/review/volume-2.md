@@ -112,3 +112,41 @@ No Kruti Dev text. Stray “zz” kept as printed (p. 52 after “(Applause.)”
 ## Chapters 37–39 — Ministers' Salaries Bill, Probation of Offenders Bill, Tobacco Duty Act Amendment Bill (PDF pp. ~189–202)
 
 The translator stopped at a usage limit after these chapters passed the checks, before sending its notes. No passages were flagged for these three chapters; a reviewer should read them in full.
+
+## Chapters 53–54 — Report on provincial government: Dual versus Unified Government, The Executive in Working (PDF pp. 341–353)
+
+No Kruti Dev text.
+
+1. **dyarchy** is rendered द्विदल शासनपद्धती, as in the style-guide glossary; “communal dyarchy” / “dyarchy or triarchy” (§23) → जातीय द्विदल शासन / द्विदल शासन (dyarchy) / त्रिदल शासन (triarchy).
+2. **§15.** “argued against the view that dyarchy is not a system which is made unworkable by certain other factors” — confusing double negative, translated as printed.
+3. **§15.** dyarchy “with complete dualism” is said to escape the criticism of “dyarchy-with-dualism such as is in operation”, and the next sentence says “the alternative of dyarchy-with-dualism was rejected”. The sense suggests “dyarchy-without-dualism”; the printed wording is kept (पूर्ण द्वैत असलेली / द्वैतयुक्त द्विदल शासनपद्धती). **Check against the printed page.**
+4. **Scan errors read by the intended word:** “leap of the Governor” → lap (गव्हर्नरच्या कुशीतून, §14); “unless jacked by” → propped (टेकू मिळाला नाही तर, §13); “mat administration” → that (§18); “European personal” → personnel (§19); “better conflict” → bitter (कटू संघर्ष, §24); “date do” → dare do (§26); “menoeuvres” → manoeuvres (डावपेच, §26).
+5. **Names and titles.** “Sir Iliajah Impey” → सर इलायजा इम्पे; Barker's book title *Future of Government of India and the I.C.S.* left in English.
+6. **p. 344.** Division table: header words translated, every number and row kept as printed; rows 1924/1925 and 1926/1927 are merged in the scan.
+7. **Text split across chapters.** Chapter 53 ends mid-sentence (§20) and chapter 54 continues it; headings “प्रकरण 2 …” (p. 350) and “प्रकरण 3 …” (p. 353) sit inside paragraph blocks as in the source; chapter 54 ends mid-sentence in §29.
+8. **Terms.** Executive Councillor → कार्यकारी मंडळ सदस्य; Council → कौन्सिल; Legislative Council → विधान परिषद; impeachment → महाभियोग; convention → परंपरा (convention); certification → प्रमाणीकरण (certification); supplies → पैसा मंजूर करणे (supplies); ministers without portfolios → खातेविरहित मंत्री; chief minister → मुख्यमंत्री; Joint Report → संयुक्त अहवाल; Joint Parliamentary Committee → संयुक्त संसदीय समिती; Central Provinces → मध्य प्रांत; Mr. Gandhi → श्री. गांधी.
+
+## Chapters 55–56 — Position and Powers of the Governor, Franchise (PDF pp. 353–361)
+
+No Kruti Dev text and no “zz” artefact. Chapter 55 continues chapter 54's last sentence (“…ज्यामुळे त्याला / प्रांताच्या कारभाराचे संपूर्ण संचालन सोपवले जाईल”); the join reads correctly.
+
+1. **Scan errors read by the intended word:** ¶35 “the permit of good carried on” (Dewey's “pursuit of good”) → हिताचा पाठपुरावा; ¶35 “Form in every society” → For (कारण); ¶39 “may be are long removed” → ere long (लवकरच दूर होतील); ¶42 “is now said by” → settled (ठरवला जातो), “leases his mind” → leaves (मन…हवाली करते), “Bottles” is Matthew Arnold's character (बॉटल्स); ¶41 “his follows in the workshop” → fellows (सहकारी).
+2. **¶44.** First sentence broken in the source (“the extension of the franchise from forty shilling freehold in 1429 to adult suffrage in 1832 there were less than 500,000…”); broken structure kept with a dash, not repaired.
+3. **¶44.** “The facts relied upon… do not go to support a government based upon a restricted franchise is a worse form of government…” split into two parts: the facts do not support such a government; such a government is worse because it gives rise to oligarchy. **Check against the printed page.**
+4. **¶43.** “British Democracy — say the British Empire” → ब्रिटिश लोकशाही — म्हणा ब्रिटिश साम्राज्य; “unjust and visionaries” → अन्यायी आणि स्वप्नाळू; “pocket their political power” → त्यांची राजकीय सत्ता खिशात घालत आहेत (“their” left ambiguous as in the source); “hypercritical” → अतिचिकित्सकपणा (possibly a misprint for “hypocritical”).
+5. **¶34.** “the land revenue assessment should be halved” translated literally; in context it means the land-revenue qualification for voting is halved.
+6. **Terms.** Crown → राजसत्ता; His Majesty's pleasure → सम्राटांची इच्छा; constitutional head → घटनात्मक प्रमुख; Cabinet → मंत्रिमंडळ; Prime Minister (provincial) → पंतप्रधान here (chapters 41–43 use प्रधानमंत्री; make consistent); countersigned → प्रतिस्वाक्षरी; Legislature → विधिमंडळ; oligarchy → अल्पजनसत्ता; social tories and political radicals → सामाजिकदृष्ट्या प्रतिगामी (tories) आणि राजकीयदृष्ट्या जहाल (radicals); Statutory Commission → वैधानिक आयोग; Reform Act → सुधारणा कायदा; People's Representation Act 1918 → लोकप्रतिनिधित्व कायदा; Hunter Commission → हंटर कमिशन.
+
+## Chapters 43 (both parts)–45 — Industrial Disputes Bill, Disturbances Enquiry Committee's Report, Participation in the War 1 (PDF pp. 220–260)
+
+No Kruti Dev text. “zz” kept verbatim (p. 256, end of p. 260). Part 1 of the Industrial Disputes chapter ends mid-quotation (Sir Robert Bell, clause 15) and part 2 continues it; the join reads correctly.
+
+1. **p. 231.** “that it could not be persuaded to bureaucratic purposes” (“it” unclear) → “कारण तिला नोकरशाहीच्या हेतूंसाठी वळवता येणार नाही”.
+2. **p. 232.** 1929 dissent minute: “it is monstrous to claim that if any body of men refuses to minister to our comforts if any to claim that body as criminals” (garbled) → the clear sense: “एखाद्या माणसांच्या समूहाने आपल्या सुखसोयी पुरवण्यास नकार दिला, तर त्या समूहाला गुन्हेगार ठरवण्याचा दावा करणे राक्षसी आहे”.
+3. **p. 234.** Emergency Powers Act: “His Majesty's Court” (probably “Council”) translated literally: सम्राटांच्या न्यायालयाला (His Majesty's Court). **Check against the printed page.**
+4. **p. 235.** “You have enough, and you need not have been abashed…” → “तुमच्याकडे पुरेसे आहे, आणि … लाजण्याचे कारण नव्हते”.
+5. **p. 229.** “I have been an active worker in the labour field. I cannot say that I am a fieldman” looks self-contradictory; both kept as printed. “All mobilisation, included a word or a speech or an action” read as “including”.
+6. **p. 254.** “the late Sir, Edward Thompson” (stray comma) → दिवंगत सर एडवर्ड थॉम्पसन; name may need checking.
+7. **Consistency fixes made by the second translator:** पंतप्रधान → प्रधानमंत्री and सभापती महोदय → अध्यक्ष महोदय in the pieces written before the usage-limit stop.
+8. **Footnote style varies:** chapter 44 uses “बी.एल.ए. डिबेट्स”, chapter 45 “मुंबई विधानसभा कामकाज (B.L.A. Debates)”; make consistent.
+9. **Terms.** clause → कलम; public utility services → सार्वजनिक उपयोगिता सेवा; social security services → सामाजिक सुरक्षा सेवा; conciliator → समेटक; collective bargaining → सामूहिक सौदेबाजी; picketing → निदर्शने (picketing); minute of dissent → असहमतीचे टिपण; home rule → स्वराज्य (home rule); civilian (ICS) → सनदी अधिकारी; “Three Tailors of Tooley Street” → टूली स्ट्रीटच्या तीन शिंप्यांनी (English in brackets); hirelings / assassins → भाडोत्री / मारेकरी; minor communities → अल्पसंख्य जमाती; “Question proposed.” → प्रश्न मांडण्यात आला.
