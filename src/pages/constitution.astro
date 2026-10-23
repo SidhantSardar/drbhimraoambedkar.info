@@ -3,10 +3,15 @@ import Base from '../layouts/Base.astro';
 import Chakra from '../components/Chakra.astro';
 import Picture from '../components/Picture.astro';
 import { loadJSON, images } from '../lib/data';
-import { url, formatDate } from '../lib/site';
+import { url } from '../lib/site';
 import { credit } from '../lib/images-core.mjs';
+import { getLang, translator, formatDateIn } from '../i18n';
+const lang = getLang(Astro);
+const t = translator(lang);
+const mr = lang === 'mr';
+const formatDate = (d: string) => formatDateIn(d, lang);
 
-const c = loadJSON<any>('constitution', {});
+const c = loadJSON<any>('constitution', {}, lang);
 const keyFacts: any[] = c.keyFacts || [];
 const timeline: any[] = c.timeline || [];
 const committee: any[] = c.draftingCommittee || [];
@@ -14,19 +19,20 @@ const articles: any[] = c.articles || [];
 const speeches: any[] = c.keySpeeches || [];
 const quotes: any[] = c.quotes || [];
 const documents: any[] = c.documents || [];
-const pics = images().filter((i) => i.tags?.includes('constitution')).slice(0, 6);
+const pics = images(lang).filter((i) => i.tags?.includes('constitution')).slice(0, 6);
+const src = t('source', 'संदर्भ');
 ---
-<Base title="The Constitution of India" description="Dr. B. R. Ambedkar and the Constitution of India: how it was drafted, what it promises in plain words, the articles he fought for, his speeches, and the official text to download.">
+<Base title={t('The Constitution of India', 'भारताचे संविधान')} description={t('Dr. B. R. Ambedkar and the Constitution of India: how it was drafted, what it promises in plain words, the articles he fought for, his speeches, and the official text to download.', 'डॉ. बाबासाहेब आंबेडकर आणि भारताचे संविधान: ते कसे तयार झाले, ते सोप्या शब्दांत काय वचन देते, त्यांनी आग्रहाने मांडलेले अनुच्छेद, त्यांची भाषणे आणि डाउनलोड करण्यासाठी अधिकृत मजकूर.')}>
   <section class="hero">
     <Chakra class="chakra-bg" />
     <div class="wrap section">
-      <span class="eyebrow">The flagship · 1946–1950</span>
-      <h1 style="font-size:var(--step-4)">The Constitution of India</h1>
-      <p class="lede" style="max-width:64ch">India's highest law — the rulebook for how the country is governed and the promise of equal rights to every citizen. Dr. Ambedkar chaired the committee that drafted it and explained and defended it, clause by clause, in the Constituent Assembly.</p>
+      <span class="eyebrow">{t('The flagship · 1946–1950', 'मुख्य विभाग · 1946–1950')}</span>
+      <h1 style="font-size:var(--step-4)">{t('The Constitution of India', 'भारताचे संविधान')}</h1>
+      <p class="lede" style="max-width:64ch">{t("India's highest law — the rulebook for how the country is governed and the promise of equal rights to every citizen. Dr. Ambedkar chaired the committee that drafted it and explained and defended it, clause by clause, in the Constituent Assembly.", 'भारताचा सर्वोच्च कायदा — देशाचा कारभार कसा चालेल याची नियमावली आणि प्रत्येक नागरिकाला समान हक्कांचे वचन. डॉ. आंबेडकर यांनी त्याचा मसुदा तयार करणाऱ्या समितीचे अध्यक्षपद भूषवले आणि संविधान सभेत त्याचे कलमवार स्पष्टीकरण देऊन त्याचे समर्थन केले.')}</p>
       <div class="btn-row" style="margin-top:24px">
-        <a class="btn btn-light" href={url('/life/constitution/')}>Read the full story →</a>
-        <a class="btn btn-ghost" href="#documents">Download the official text</a>
-        <a class="btn btn-ghost" href={url('/library/volume-13/')}>His Constitution speeches (Vol. 13)</a>
+        <a class="btn btn-light" href={url('/life/constitution/')}>{t('Read the full story →', 'संपूर्ण कथा वाचा →')}</a>
+        <a class="btn btn-ghost" href="#documents">{t('Download the official text', 'अधिकृत मजकूर डाउनलोड करा')}</a>
+        <a class="btn btn-ghost" href={url('/library/volume-13/')}>{t('His Constitution speeches (Vol. 13)', 'संविधानावरील त्यांची भाषणे (खंड 13)')}</a>
       </div>
     </div>
   </section>
@@ -36,7 +42,7 @@ const pics = images().filter((i) => i.tags?.includes('constitution')).slice(0, 6
       <div class="wrap">
         <div class="facts">
           {keyFacts.map((f) => (
-            <div class="fact"><strong>{f.value}</strong><span>{f.label} {f.source && <a class="src" href={f.source} target="_blank" rel="noopener noreferrer">source</a>}</span></div>
+            <div class="fact"><strong>{f.value}</strong><span>{f.label} {f.source && <a class="src" href={f.source} target="_blank" rel="noopener noreferrer">{src}</a>}</span></div>
           ))}
         </div>
       </div>
@@ -45,10 +51,11 @@ const pics = images().filter((i) => i.tags?.includes('constitution')).slice(0, 6
 
   <section class="section-tight">
     <div class="narrow">
-      <span class="eyebrow">The promise</span>
-      <h2>The Preamble</h2>
-      <p>The Preamble is the Constitution's opening statement. It says who the Constitution comes from — the people — and what it promises.</p>
-      <div class="preamble">
+      <span class="eyebrow">{t('The promise', 'वचन')}</span>
+      <h2>{t('The Preamble', 'उद्देशिका')}</h2>
+      <p>{t("The Preamble is the Constitution's opening statement. It says who the Constitution comes from — the people — and what it promises.", 'उद्देशिका हे संविधानाचे सुरुवातीचे निवेदन आहे. संविधान कोणाकडून आले आहे — लोकांकडून — आणि ते काय वचन देते, हे ती सांगते.')}</p>
+      {mr && <p class="muted" style="font-size:0.9rem">खाली उद्देशिकेचा अधिकृत इंग्रजी मजकूर जसाच्या तसा दिला आहे; त्याखाली या संकेतस्थळाने केलेला मराठी अनुवाद आहे.</p>}
+      <div class="preamble" lang="en">
         <p><span class="caps">We, the people of India,</span> having solemnly resolved to constitute India into a <span class="caps">Sovereign Socialist Secular Democratic Republic</span> and to secure to all its citizens:</p>
         <p><span class="caps">Justice,</span> social, economic and political;</p>
         <p><span class="caps">Liberty</span> of thought, expression, belief, faith and worship;</p>
@@ -56,31 +63,51 @@ const pics = images().filter((i) => i.tags?.includes('constitution')).slice(0, 6
         <p><span class="caps">Fraternity</span> assuring the dignity of the individual and the unity and integrity of the Nation;</p>
         <p><span class="caps">In our Constituent Assembly</span> this twenty-sixth day of November, 1949, do <span class="caps">hereby adopt, enact and give to ourselves this Constitution.</span></p>
       </div>
-      <p class="muted" style="margin-top:12px;font-size:0.9rem">Text as it stands today. The words "Socialist", "Secular" and "and integrity" were added by the 42nd Amendment in 1976. <a class="src" href="https://legislative.gov.in/constitution-of-india/" target="_blank" rel="noopener noreferrer">Legislative Department, Government of India</a></p>
-      <h3>In simple words</h3>
-      <ul>
-        <li><strong>Justice</strong> — fair treatment in society, in earning a living, and in politics.</li>
-        <li><strong>Liberty</strong> — freedom to think, speak, believe and worship.</li>
-        <li><strong>Equality</strong> — the same standing and the same chances for everyone.</li>
-        <li><strong>Fraternity</strong> — a feeling of brotherhood and sisterhood that protects every person's dignity. Dr. Ambedkar argued that without fraternity, liberty and equality cannot last.</li>
-      </ul>
+      {mr && (
+        <div class="preamble" style="margin-top:16px">
+          <p><strong>मराठी अनुवाद (या संकेतस्थळाने केलेला; अधिकृत मराठी पाठ नव्हे):</strong></p>
+          <p>आम्ही, भारताचे लोक, भारताला एक सार्वभौम, समाजवादी, धर्मनिरपेक्ष, लोकशाही गणराज्य घडवण्याचा आणि त्याच्या सर्व नागरिकांना:</p>
+          <p>सामाजिक, आर्थिक आणि राजकीय <strong>न्याय</strong>;</p>
+          <p>विचार, अभिव्यक्ती, विश्वास, श्रद्धा आणि उपासना यांचे <strong>स्वातंत्र्य</strong>;</p>
+          <p>दर्जाची आणि संधीची <strong>समानता</strong> प्राप्त करून देण्याचा; आणि त्या सर्वांमध्ये</p>
+          <p>व्यक्तीची प्रतिष्ठा आणि राष्ट्राची एकता व एकात्मता यांचे आश्वासन देणारी <strong>बंधुता</strong> वाढवण्याचा गांभीर्यपूर्वक निर्धार करून;</p>
+          <p>आमच्या संविधान सभेत आज, सव्वीस नोव्हेंबर 1949 रोजी, हे संविधान स्वीकारत आहोत, अधिनियमित करत आहोत आणि स्वतःला अर्पण करत आहोत.</p>
+        </div>
+      )}
+      <p class="muted" style="margin-top:12px;font-size:0.9rem">{t('Text as it stands today. The words "Socialist", "Secular" and "and integrity" were added by the 42nd Amendment in 1976.', 'आजचा मजकूर. “समाजवादी”, “धर्मनिरपेक्ष” आणि “एकात्मता” हे शब्द 1976 मध्ये 42 व्या घटनादुरुस्तीने जोडले गेले.')} <a class="src" href="https://legislative.gov.in/constitution-of-india/" target="_blank" rel="noopener noreferrer">{t('Legislative Department, Government of India', 'विधि विभाग, भारत सरकार')}</a></p>
+      <h3>{t('In simple words', 'सोप्या शब्दांत')}</h3>
+      {mr ? (
+        <ul>
+          <li><strong>न्याय</strong> — समाजात, उपजीविका मिळवताना आणि राजकारणात न्याय्य वागणूक.</li>
+          <li><strong>स्वातंत्र्य</strong> — विचार करण्याचे, बोलण्याचे, विश्वास ठेवण्याचे आणि उपासनेचे स्वातंत्र्य.</li>
+          <li><strong>समानता</strong> — सर्वांना समान दर्जा आणि समान संधी.</li>
+          <li><strong>बंधुता</strong> — प्रत्येक व्यक्तीच्या प्रतिष्ठेचे रक्षण करणारी बंधुभावाची आणि भगिनीभावाची भावना. बंधुतेशिवाय स्वातंत्र्य आणि समता टिकू शकत नाहीत, असे डॉ. आंबेडकर यांनी मांडले.</li>
+        </ul>
+      ) : (
+        <ul>
+          <li><strong>Justice</strong> — fair treatment in society, in earning a living, and in politics.</li>
+          <li><strong>Liberty</strong> — freedom to think, speak, believe and worship.</li>
+          <li><strong>Equality</strong> — the same standing and the same chances for everyone.</li>
+          <li><strong>Fraternity</strong> — a feeling of brotherhood and sisterhood that protects every person's dignity. Dr. Ambedkar argued that without fraternity, liberty and equality cannot last.</li>
+        </ul>
+      )}
     </div>
   </section>
 
   {articles.length > 0 && (
     <section class="section" style="background:var(--surface-2)">
       <div class="wrap">
-        <span class="eyebrow">Know your rights</span>
-        <h2>Key articles, explained simply</h2>
+        <span class="eyebrow">{t('Know your rights', 'तुमचे हक्क जाणा')}</span>
+        <h2>{t('Key articles, explained simply', 'महत्त्वाचे अनुच्छेद, सोप्या भाषेत')}</h2>
         <div class="grid" style="margin-top:24px">
           {articles.map((a) => (
             <div class="article-card">
-              <span class="num">{/^\d/.test(a.number) ? `Article ${a.number}` : a.number}</span>
+              <span class="num">{/^\d/.test(a.number) ? t(`Article ${a.number}`, `अनुच्छेद ${a.number}`) : a.number}</span>
               <h3 style="margin:0">{a.title}</h3>
               <p style="margin:0">{a.plainMeaning}</p>
-              {a.whyItMatters && <p class="muted" style="margin:0;font-size:0.93rem"><strong>Why it matters:</strong> {a.whyItMatters}</p>}
-              {a.ambedkarConnection && <p class="muted" style="margin:0;font-size:0.93rem"><strong>Dr. Ambedkar's role:</strong> {a.ambedkarConnection}</p>}
-              {a.source && <p style="margin:0"><a class="src" href={a.source} target="_blank" rel="noopener noreferrer">source</a></p>}
+              {a.whyItMatters && <p class="muted" style="margin:0;font-size:0.93rem"><strong>{t('Why it matters:', 'हे का महत्त्वाचे:')}</strong> {a.whyItMatters}</p>}
+              {a.ambedkarConnection && <p class="muted" style="margin:0;font-size:0.93rem"><strong>{t("Dr. Ambedkar's role:", 'डॉ. आंबेडकर यांची भूमिका:')}</strong> {a.ambedkarConnection}</p>}
+              {a.source && <p style="margin:0"><a class="src" href={a.source} target="_blank" rel="noopener noreferrer">{src}</a></p>}
             </div>
           ))}
         </div>
@@ -91,14 +118,14 @@ const pics = images().filter((i) => i.tags?.includes('constitution')).slice(0, 6
   {timeline.length > 0 && (
     <section class="section">
       <div class="narrow">
-        <span class="eyebrow">How it was made</span>
-        <h2>From the first sitting to Republic Day</h2>
+        <span class="eyebrow">{t('How it was made', 'ते कसे घडले')}</span>
+        <h2>{t('From the first sitting to Republic Day', 'पहिल्या बैठकीपासून प्रजासत्ताक दिनापर्यंत')}</h2>
         <ol class="tl-list" style="margin-top:24px">
-          {timeline.map((t) => (
+          {timeline.map((e) => (
             <li class="tl-item">
-              <time datetime={t.date}>{formatDate(t.date)}</time>
-              <p><strong>{t.label}</strong>{t.detail && <> — {t.detail}</>}</p>
-              {t.source && <div class="tl-links"><a class="src" href={t.source} target="_blank" rel="noopener noreferrer">source</a></div>}
+              <time datetime={e.date}>{formatDate(e.date)}</time>
+              <p><strong>{e.label}</strong>{e.detail && <> — {e.detail}</>}</p>
+              {e.source && <div class="tl-links"><a class="src" href={e.source} target="_blank" rel="noopener noreferrer">{src}</a></div>}
             </li>
           ))}
         </ol>
@@ -121,11 +148,11 @@ const pics = images().filter((i) => i.tags?.includes('constitution')).slice(0, 6
   {committee.length > 0 && (
     <section class="section-tight">
       <div class="narrow">
-        <span class="eyebrow">The team</span>
-        <h2>The Drafting Committee</h2>
+        <span class="eyebrow">{t('The team', 'चमू')}</span>
+        <h2>{t('The Drafting Committee', 'मसुदा समिती')}</h2>
         <ul>
           {committee.map((m) => (
-            <li><strong>{m.name}</strong>{m.role && ` — ${m.role}`}{m.note && `. ${m.note}`} {m.source && <a class="src" href={m.source} target="_blank" rel="noopener noreferrer">source</a>}</li>
+            <li><strong>{m.name}</strong>{m.role && ` — ${m.role}`}{m.note && `. ${m.note}`} {m.source && <a class="src" href={m.source} target="_blank" rel="noopener noreferrer">{src}</a>}</li>
           ))}
         </ul>
       </div>
@@ -135,15 +162,15 @@ const pics = images().filter((i) => i.tags?.includes('constitution')).slice(0, 6
   {speeches.length > 0 && (
     <section class="section-tight">
       <div class="narrow">
-        <span class="eyebrow">In his words</span>
-        <h2>His key speeches in the Constituent Assembly</h2>
+        <span class="eyebrow">{t('In his words', 'त्यांच्याच शब्दांत')}</span>
+        <h2>{t('His key speeches in the Constituent Assembly', 'संविधान सभेतील त्यांची महत्त्वाची भाषणे')}</h2>
         <div class="list-stack" style="margin-top:20px">
           {speeches.map((s) => (
             <div class="work">
               <div class="meta"><span>{formatDate(s.date)}</span></div>
               <h3>{s.title}</h3>
               <p class="why">{s.summary}</p>
-              {s.url && <div class="links"><a class="chip" href={s.url} target="_blank" rel="noopener noreferrer">Read the record ↗</a></div>}
+              {s.url && <div class="links"><a class="chip" href={s.url} target="_blank" rel="noopener noreferrer">{t('Read the record ↗', 'मूळ नोंद वाचा ↗')}</a></div>}
             </div>
           ))}
         </div>
@@ -154,11 +181,12 @@ const pics = images().filter((i) => i.tags?.includes('constitution')).slice(0, 6
   {quotes.length > 0 && (
     <section class="section-tight">
       <div class="narrow prose">
-        <h2>Verified quotes</h2>
+        <h2>{t('Verified quotes', 'पडताळलेली अवतरणे')}</h2>
+        {mr && <p class="muted" style="font-size:0.9rem">अवतरणे इंग्रजीतून मराठीत अनुवादित केली आहेत; मूळ इंग्रजी शब्दांसाठी दिलेला स्रोत पाहा.</p>}
         {quotes.map((q) => (
           <blockquote>
             <p>“{q.text}”</p>
-            <p>— {q.context}{q.date && `, ${formatDate(q.date)}`}. {q.url ? <a class="src" href={q.url} target="_blank" rel="noopener noreferrer">{q.citation || 'source'}</a> : q.citation}</p>
+            <p>— {q.context}{q.date && `, ${formatDate(q.date)}`}. {q.url ? <a class="src" href={q.url} target="_blank" rel="noopener noreferrer">{q.citation || src}</a> : q.citation}</p>
           </blockquote>
         ))}
       </div>
@@ -167,9 +195,9 @@ const pics = images().filter((i) => i.tags?.includes('constitution')).slice(0, 6
 
   <section class="section" id="documents" style="background:var(--surface-2)">
     <div class="narrow">
-      <span class="eyebrow">Read it yourself</span>
-      <h2>Official documents</h2>
-      <p>Download the Constitution from official sources. Files saved on this site are exact copies; the "official" link always points to the government page in case there is a newer edition.</p>
+      <span class="eyebrow">{t('Read it yourself', 'स्वतः वाचा')}</span>
+      <h2>{t('Official documents', 'अधिकृत दस्तऐवज')}</h2>
+      <p>{t('Download the Constitution from official sources. Files saved on this site are exact copies; the "official" link always points to the government page in case there is a newer edition.', 'संविधान अधिकृत स्रोतांतून डाउनलोड करा. या संकेतस्थळावर ठेवलेल्या फाइल्स मूळ फाइल्सच्या जशाच्या तशा प्रती आहेत; नवी आवृत्ती आली असल्यास “अधिकृत” दुवा नेहमी सरकारी पानाकडे नेतो.')}</p>
       <div class="doc-list" style="margin-top:20px">
         {documents.map((d) => (
           <div class="doc">
@@ -177,15 +205,15 @@ const pics = images().filter((i) => i.tags?.includes('constitution')).slice(0, 6
             <span class="muted" style="font-size:0.93rem">{d.description}</span>
             <span style="font-size:0.85rem" class="muted">{[d.publisher, d.language, d.sizeMB ? `${d.sizeMB} MB` : ''].filter(Boolean).join(' · ')}</span>
             <div class="btn-row">
-              {d.localFile && <a class="btn btn-primary" href={url(d.localFile)} download>Download</a>}
-              {d.officialUrl && <a class="btn btn-ghost" href={d.officialUrl} target="_blank" rel="noopener noreferrer">Official source ↗</a>}
+              {d.localFile && <a class="btn btn-primary" href={url(d.localFile)} download>{t('Download', 'डाउनलोड')}</a>}
+              {d.officialUrl && <a class="btn btn-ghost" href={d.officialUrl} target="_blank" rel="noopener noreferrer">{t('Official source ↗', 'अधिकृत स्रोत ↗')}</a>}
             </div>
           </div>
         ))}
         {documents.length === 0 && (
           <div class="doc">
-            <strong>The Constitution of India (latest official text)</strong>
-            <div class="btn-row"><a class="btn btn-ghost" href="https://legislative.gov.in/constitution-of-india/" target="_blank" rel="noopener noreferrer">Legislative Department ↗</a></div>
+            <strong>{t('The Constitution of India (latest official text)', 'भारताचे संविधान (ताजा अधिकृत मजकूर)')}</strong>
+            <div class="btn-row"><a class="btn btn-ghost" href="https://legislative.gov.in/constitution-of-india/" target="_blank" rel="noopener noreferrer">{t('Legislative Department ↗', 'विधि विभाग ↗')}</a></div>
           </div>
         )}
       </div>

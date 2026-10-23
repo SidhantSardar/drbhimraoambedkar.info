@@ -2,55 +2,62 @@
 import Base from '../layouts/Base.astro';
 import Chakra from '../components/Chakra.astro';
 import { SITE } from '../lib/site';
+import { getLang, translator } from '../i18n';
+const lang = getLang(Astro);
+const t = translator(lang);
+const mr = lang === 'mr';
 // Each form opens a pre-filled GitHub issue, so every submission is saved publicly in the
 // project's repository where anyone can follow it. (Needs a free GitHub account.)
+// Issue titles stay in English (with the label) so the maintainers can sort them in one list.
 const FORMS = [
-  { id: 'correction', label: 'Suggest a correction', title: 'Correction: ', labels: 'correction',
-    fields: [['page', 'Which page?', 'Paste the link to the page'], ['wrong', 'What is wrong?', ''], ['right', 'What should it say?', ''], ['source', 'Your source (link or book and page)', 'Required — we only change facts with a source']] },
-  { id: 'source', label: 'Share a source or document', title: 'New source: ', labels: 'source',
-    fields: [['what', 'What is it?', 'Book, letter, speech, newspaper, photo, recording…'], ['where', 'Where can it be found?', 'Link, library, archive or person who holds it'], ['why', 'Why is it useful?', '']] },
-  { id: 'photo', label: 'Share a photograph', title: 'Photograph: ', labels: 'image',
-    fields: [['what', 'What does it show?', 'People, place, date if known'], ['link', 'Link to the image', ''], ['rights', 'Who owns it / its licence', 'We can only use photos that are public domain or that the owner allows']] },
-  { id: 'write', label: 'Write an article', title: 'Article proposal: ', labels: 'article',
-    fields: [['topic', 'Topic', ''], ['summary', 'What will you argue or explain?', ''], ['about', 'About you', 'Optional']] },
+  { id: 'correction', label: t('Suggest a correction', 'दुरुस्ती सुचवा'), title: 'Correction: ', labels: 'correction',
+    fields: [['page', t('Which page?', 'कोणते पान?'), t('Paste the link to the page', 'पानाचा दुवा येथे चिकटवा')], ['wrong', t('What is wrong?', 'काय चुकीचे आहे?'), ''], ['right', t('What should it say?', 'तेथे काय असायला हवे?'), ''], ['source', t('Your source (link or book and page)', 'तुमचा संदर्भ (दुवा किंवा पुस्तक आणि पान)'), t('Required — we only change facts with a source', 'आवश्यक — आम्ही संदर्भ असल्याशिवाय तथ्ये बदलत नाही')]] },
+  { id: 'translation', label: t('Improve a Marathi translation', 'मराठी अनुवाद सुधारा'), title: 'Marathi translation: ', labels: 'translation',
+    fields: [['page', t('Which page?', 'कोणते पान?'), t('Paste the link to the page', 'पानाचा दुवा येथे चिकटवा')], ['wrong', t('Which sentence is wrong or unclear?', 'कोणते वाक्य चुकीचे किंवा अस्पष्ट आहे?'), t('Copy the Marathi sentence', 'मराठी वाक्य येथे कॉपी करा')], ['right', t('Your suggested translation', 'तुम्ही सुचवलेला अनुवाद'), t('Keep the meaning of the English original exactly', 'मूळ इंग्रजीचा अर्थ जसाच्या तसा ठेवा')]] },
+  { id: 'source', label: t('Share a source or document', 'संदर्भ किंवा दस्तऐवज द्या'), title: 'New source: ', labels: 'source',
+    fields: [['what', t('What is it?', 'ते काय आहे?'), t('Book, letter, speech, newspaper, photo, recording…', 'पुस्तक, पत्र, भाषण, वृत्तपत्र, छायाचित्र, ध्वनिमुद्रण…')], ['where', t('Where can it be found?', 'ते कुठे मिळेल?'), t('Link, library, archive or person who holds it', 'दुवा, ग्रंथालय, संग्रह किंवा ते जपणारी व्यक्ती')], ['why', t('Why is it useful?', 'ते का उपयुक्त आहे?'), '']] },
+  { id: 'photo', label: t('Share a photograph', 'छायाचित्र द्या'), title: 'Photograph: ', labels: 'image',
+    fields: [['what', t('What does it show?', 'त्यात काय दिसते?'), t('People, place, date if known', 'व्यक्ती, ठिकाण, माहीत असल्यास तारीख')], ['link', t('Link to the image', 'छायाचित्राचा दुवा'), ''], ['rights', t('Who owns it / its licence', 'त्याचे हक्क कोणाचे / परवाना'), t('We can only use photos that are public domain or that the owner allows', 'आम्ही फक्त सार्वजनिक क्षेत्रातील किंवा मालकाने परवानगी दिलेली छायाचित्रे वापरू शकतो')]] },
+  { id: 'write', label: t('Write an article', 'लेख लिहा'), title: 'Article proposal: ', labels: 'article',
+    fields: [['topic', t('Topic', 'विषय'), ''], ['summary', t('What will you argue or explain?', 'तुम्ही काय मांडणार किंवा समजावणार?'), ''], ['about', t('About you', 'तुमच्याविषयी'), t('Optional', 'ऐच्छिक')]] },
 ];
 ---
-<Base title="Contribute" description="Help build the most complete and accurate record of Dr. B. R. Ambedkar's life and work: suggest corrections, share sources and photographs, or write an article.">
+<Base title={t('Contribute', 'सहभागी व्हा')} description={t("Help build the most complete and accurate record of Dr. B. R. Ambedkar's life and work: suggest corrections, share sources and photographs, or write an article.", 'डॉ. बाबासाहेब आंबेडकर यांच्या जीवन आणि कार्याची सर्वांत परिपूर्ण आणि अचूक नोंद घडवण्यात मदत करा: दुरुस्ती सुचवा, संदर्भ आणि छायाचित्रे द्या, अनुवाद सुधारा किंवा लेख लिहा.')}>
   <section class="hero">
     <Chakra class="chakra-bg" />
     <div class="wrap section-tight">
-      <span class="eyebrow">Take part</span>
-      <h1 style="font-size:var(--step-4)">Help bring his work together</h1>
-      <p class="lede" style="max-width:64ch">This is a public, open project. Every correction and contribution is recorded openly on GitHub, so anyone can see what changed and why.</p>
+      <span class="eyebrow">{t('Take part', 'सहभागी व्हा')}</span>
+      <h1 style="font-size:var(--step-4)">{t('Help bring his work together', 'त्यांचे कार्य एकत्र आणण्यात मदत करा')}</h1>
+      <p class="lede" style="max-width:64ch">{t('This is a public, open project. Every correction and contribution is recorded openly on GitHub, so anyone can see what changed and why.', 'हा एक सार्वजनिक, खुला प्रकल्प आहे. प्रत्येक दुरुस्ती आणि योगदानाची नोंद GitHub वर खुलेपणाने होते, त्यामुळे काय बदलले आणि का, हे कोणालाही पाहता येते.')}</p>
     </div>
   </section>
   <div class="narrow section-tight">
-    <div class="tabs" role="tablist" aria-label="Contribution type">
+    <div class="tabs" role="tablist" aria-label={t('Contribution type', 'योगदानाचा प्रकार')}>
       {FORMS.map((f, i) => <a class="chip" href={`#${f.id}`} role="tab" aria-selected={i === 0 ? 'true' : 'false'}>{f.label}</a>)}
     </div>
     {FORMS.map((f) => (
       <section id={f.id} class="callout" style="margin-bottom:24px">
         <h2 style="font-size:var(--step-1)">{f.label}</h2>
         <form class="form" data-title={f.title} data-labels={f.labels}>
-          <label>Short title<input name="title" required maxlength="120" /></label>
+          <label>{t('Short title', 'छोटे शीर्षक')}<input name="title" required maxlength="120" /></label>
           {f.fields.map(([name, label, hint]) => (
             <label>{label}{hint && <span class="hint">{hint}</span>}<textarea name={name} required={name !== 'about'}></textarea></label>
           ))}
-          <button class="btn btn-primary" type="submit">Continue on GitHub →</button>
-          <p class="hint muted" style="margin:0;font-size:0.85rem">This opens GitHub with your text filled in. Sign in (free) and press "Create" to send it. Your submission will be public.</p>
+          <button class="btn btn-primary" type="submit">{t('Continue on GitHub →', 'GitHub वर पुढे जा →')}</button>
+          <p class="hint muted" style="margin:0;font-size:0.85rem">{t('This opens GitHub with your text filled in. Sign in (free) and press "Create" to send it. Your submission will be public.', 'यामुळे तुमचा मजकूर भरलेले GitHub पान उघडेल. (मोफत) साइन इन करा आणि पाठवण्यासाठी “Create” दाबा. तुमचे योगदान सार्वजनिक असेल.')}</p>
         </form>
       </section>
     ))}
     <div class="callout">
-      <h2 style="font-size:var(--step-1)">Our promise</h2>
+      <h2 style="font-size:var(--step-1)">{t('Our promise', 'आमचे वचन')}</h2>
       <ul>
-        <li>We change facts only when there is a reliable source.</li>
-        <li>Where historians disagree, we show every side and its source.</li>
-        <li>We credit every contributor who wants to be credited.</li>
+        <li>{t('We change facts only when there is a reliable source.', 'विश्वसनीय संदर्भ असेल तेव्हाच आम्ही तथ्ये बदलतो.')}</li>
+        <li>{t('Where historians disagree, we show every side and its source.', 'इतिहासकारांमध्ये मतभेद असतील तिथे आम्ही प्रत्येक बाजू तिच्या संदर्भासह दाखवतो.')}</li>
+        <li>{t('We credit every contributor who wants to be credited.', 'श्रेय हवे असलेल्या प्रत्येक योगदानकर्त्याला आम्ही श्रेय देतो.')}</li>
       </ul>
     </div>
   </div>
-  <script is:inline define:vars={{ repoUrl: SITE.repoUrl }}>
+  <script is:inline define:vars={{ repoUrl: SITE.repoUrl, sentFrom: mr ? 'येथून पाठवले:' : 'Sent from', none: mr ? '_(काही नाही)_' : '_(none)_' }}>
     document.querySelectorAll('form[data-title]').forEach(function (form) {
       form.addEventListener('submit', function (e) {
         e.preventDefault();
@@ -58,9 +65,9 @@ const FORMS = [
         var body = '';
         form.querySelectorAll('textarea').forEach(function (t) {
           var label = t.parentElement.childNodes[0].textContent.trim();
-          body += '### ' + label + '\n\n' + (data.get(t.name) || '_(none)_') + '\n\n';
+          body += '### ' + label + '\n\n' + (data.get(t.name) || none) + '\n\n';
         });
-        body += '---\nSent from ' + location.href;
+        body += '---\n' + sentFrom + ' ' + location.href;
         var u = repoUrl + '/issues/new?labels=' + encodeURIComponent(form.dataset.labels) +
           '&title=' + encodeURIComponent(form.dataset.title + data.get('title')) + '&body=' + encodeURIComponent(body);
         window.open(u, '_blank', 'noopener');

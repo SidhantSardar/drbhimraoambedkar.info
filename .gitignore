@@ -20,3 +20,4 @@ src/data/image-variants.json
 
 # Local tool settings
 .claude/
+src/pages/mr/

@@ -36,7 +36,7 @@ jobs:
         run: |
           mv dist dist-main
           rm -rf .astro node_modules/.astro
-          BASE_PATH=/drbhimraoambedkar.info/preview-classic PUBLIC_SKIN= npm run build
+          BASE_PATH=/drbhimraoambedkar.info/preview-classic PUBLIC_SKIN= SKIP_MARATHI=1 npm run build
           mv dist dist-main/preview-classic
           mv dist-main dist
       - uses: actions/upload-pages-artifact@v3

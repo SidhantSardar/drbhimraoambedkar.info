@@ -1,7 +1,8 @@
 ---
 import DocsShell from '../../../components/DocsShell.astro';
-import { volumes, leavesOf, pagesOf, formatPage, type Volume, type Leaf } from '../../../lib/library';
+import { volumes, leavesOf, pagesOf, formatPage, chapterBlocks, marathiOf, titleIn, volLabelIn, type Volume, type Leaf } from '../../../lib/library';
 import { url } from '../../../lib/site';
+import { getLang, translator } from '../../../i18n';
 
 export function getStaticPaths() {
   return volumes().flatMap((vol) => {
@@ -15,56 +16,99 @@ export function getStaticPaths() {
 
 interface Props { vol: Volume; leaf: Leaf; prev?: Leaf; next?: Leaf }
 const { vol, leaf, prev, next } = Astro.props;
+const lang = getLang(Astro);
+const t = translator(lang);
+const mr = lang === 'mr';
 const rows = pagesOf(vol).filter((r) => r.p >= leaf.start && r.p <= leaf.end);
 const hasText = rows.some((r) => r.t.length > 40);
-const chapterTitle = leaf.chapter.title;
-const partLabel = leaf.chapter.parts.length > 1 ? leaf.title : '';
+
+// Marathi: the translation is stored as aligned paragraphs (chapterBlocks), so the English shown beside it uses the same paragraphs.
+const marathi = marathiOf(vol);
+const translated = mr && rows.length > 0 && rows.every((r) => marathi.pages.has(r.p));
+const aligned = translated ? chapterBlocks(rows) : [];
+const reviewed = translated && rows.every((r) => /reviewed: yes/.test(marathi.pages.get(r.p)?.by || ''));
+const summary = translated ? marathi.summaries[leaf.slug] : undefined;
+const pagesShown = rows.map((r, i) => ({
+  ...r,
+  blocks: translated ? marathi.pages.get(r.p)!.b : formatPage(r.t),
+  english: translated ? aligned[i].blocks : [],
+}));
+
+const name = (s: string) => titleIn(vol, s, lang);
+const chapterTitle = name(leaf.chapter.title);
+const partLabel = leaf.chapter.parts.length > 1 ? name(leaf.title) : '';
+const labelOf = (l: Leaf) => (l.chapter.parts.length > 1 ? `${name(l.chapter.title)} — ${name(l.title)}` : name(l.chapter.title));
+const volLabel = volLabelIn(vol, lang);
 ---
-<DocsShell vol={vol} current={leaf.slug} title={`${chapterTitle}${partLabel ? ` (${partLabel})` : ''} — ${vol.label}`} description={`${chapterTitle}, from ${vol.label} of Dr. Babasaheb Ambedkar: Writings and Speeches — the full text, page by page.`}>
+<DocsShell vol={vol} current={leaf.slug} title={`${chapterTitle}${partLabel ? ` (${partLabel})` : ''} — ${volLabel}`} description={t(`${leaf.chapter.title}, from ${vol.label} of Dr. Babasaheb Ambedkar: Writings and Speeches — the full text, page by page.`, translated ? `${chapterTitle} — डॉ. बाबासाहेब आंबेडकर: लेखन आणि भाषणे, ${volLabel}. पान न् पान मराठी अनुवाद, मूळ इंग्रजीसह.` : `${chapterTitle} — डॉ. बाबासाहेब आंबेडकर: लेखन आणि भाषणे, ${volLabel}. पान न् पान संपूर्ण मजकूर.`)}>
   <article
     class="docs-article"
     data-pagefind-body={hasText ? '' : undefined}
     data-pagefind-filter="collection:Writings and Speeches"
-    data-pagefind-meta={`title:${chapterTitle}${partLabel ? ` · ${partLabel}` : ''} — ${vol.label}`}
+    data-pagefind-meta={`title:${chapterTitle}${partLabel ? ` · ${partLabel}` : ''} — ${volLabel}`}
   >
     <span hidden data-pagefind-filter="volume">{vol.label}</span>
     <span hidden data-pagefind-meta="pdf">{vol.sourceUrl}</span>
     <span hidden data-pagefind-meta="volumeTitle">{vol.title}</span>
 
-    <nav class="docs-crumbs" aria-label="Breadcrumb" data-pagefind-ignore>
-      <a href={url('/library/')}>Library</a> <span>/</span>
-      <a href={url(`/library/${vol.id}/`)}>{vol.label}</a>
-      {leaf.chapter.group && <><span>/</span> <span>{leaf.chapter.group}</span></>}
+    <nav class="docs-crumbs" aria-label={t('Breadcrumb', 'मार्ग')} data-pagefind-ignore>
+      <a href={url('/library/')}>{t('Library', 'ग्रंथालय')}</a> <span>/</span>
+      <a href={url(`/library/${vol.id}/`)}>{volLabel}</a>
+      {leaf.chapter.group && <><span>/</span> <span>{name(leaf.chapter.group)}</span></>}
     </nav>
     <header class="docs-head" data-pagefind-ignore>
       <h1>{chapterTitle}</h1>
+      {mr && chapterTitle !== leaf.chapter.title && <p class="docs-orig-title"><span>मूळ इंग्रजी शीर्षक:</span> <span lang="en">{leaf.chapter.title}</span></p>}
       <p class="docs-meta">
         {partLabel && <span>{partLabel} · </span>}
-        <span>PDF pages {leaf.start}–{leaf.end}</span>
-        <span> · Dr. Babasaheb Ambedkar: Writings and Speeches, {vol.label}</span>
+        <span>{t(`PDF pages ${leaf.start}–${leaf.end}`, `PDF पृष्ठे ${leaf.start}–${leaf.end}`)}</span>
+        <span> · {t(`Dr. Babasaheb Ambedkar: Writings and Speeches, ${vol.label}`, `डॉ. बाबासाहेब आंबेडकर: लेखन आणि भाषणे, ${volLabel}`)}</span>
       </p>
     </header>
 
-    {rows.map((r) => {
-      const blocks = formatPage(r.t);
-      return (
-        <section class="docs-page">
-          <div class="page-mark">
-            <h2 id={`p${r.p}`}>{r.n ? `Page ${r.n}` : `PDF page ${r.p}`}</h2>
-            <a href={`${vol.sourceUrl}#page=${r.p}`} target="_blank" rel="noopener noreferrer" data-pagefind-ignore title="Compare with the original PDF page">PDF p. {r.p} ↗</a>
-          </div>
-          <div class="reader">
-            {blocks.length ? blocks.map((b) => (b.type === 'h' ? <h3>{b.text}</h3> : b.type === 'fn' ? <p class="fn">{b.text}</p> : <p>{b.text}</p>)) : <p class="muted">(This page has no text — it may be blank or an image.)</p>}
-          </div>
-        </section>
-      );
-    })}
+    {mr && translated && (
+      <div class="mr-translation-note" data-pagefind-ignore>
+        <p><strong>मराठी अनुवाद.</strong> {reviewed
+          ? 'हा अनुवाद मराठी अभ्यासकांनी मूळ इंग्रजीशी तपासला आहे.'
+          : 'हा अनुवाद AI (Claude) च्या मदतीने, आमच्या सार्वजनिक अनुवाद-मार्गदर्शिकेनुसार केलेला मसुदा आहे; अजून अभ्यासकांनी तपासलेला नाही.'} प्रत्येक परिच्छेदाचा मूळ इंग्रजी मजकूर पानाखालील “मूळ इंग्रजी” मध्ये आणि मूळ PDF चे पान उजवीकडील दुव्यावर पाहा. <a href={url('/contribute/#translation')}>अनुवादात चूक कळवा</a>.</p>
+      </div>
+    )}
+    {mr && !translated && (
+      <p class="mr-note" data-pagefind-ignore>या प्रकरणाचा मराठी अनुवाद अजून झालेला नाही. खाली मूळ इंग्रजी मजकूर (अधिकृत PDF मधून जसाच्या तसा) दिला आहे.</p>
+    )}
+    {summary && (
+      <aside class="in-simple" data-pagefind-ignore>
+        <h2>सोप्या शब्दांत</h2>
+        <p>{summary}</p>
+        <p class="muted">हा सारांश समजण्यासाठी आहे; हा बाबासाहेबांचा मूळ मजकूर नाही.</p>
+      </aside>
+    )}
 
-    <p class="docs-note" data-pagefind-ignore>Text taken word for word from the official PDF published by the Government of India. Line breaks have been joined into paragraphs; automatic extraction can still leave small errors, so check the original page before quoting.</p>
+    {pagesShown.map((r) => (
+      <section class="docs-page">
+        <div class="page-mark">
+          <h2 id={`p${r.p}`}>{r.n ? t(`Page ${r.n}`, `पृष्ठ ${r.n}`) : t(`PDF page ${r.p}`, `PDF पृष्ठ ${r.p}`)}</h2>
+          <a href={`${vol.sourceUrl}#page=${r.p}`} target="_blank" rel="noopener noreferrer" data-pagefind-ignore title={t('Compare with the original PDF page', 'मूळ PDF पानाशी तुलना करा')}>{t(`PDF p. ${r.p} ↗`, `PDF पृ. ${r.p} ↗`)}</a>
+        </div>
+        <div class="reader" lang={translated ? 'mr' : 'en'}>
+          {r.blocks.length ? r.blocks.map((b) => (b.type === 'h' ? <h3>{b.text}</h3> : b.type === 'fn' ? <p class="fn">{b.text}</p> : <p>{b.text}</p>)) : <p class="muted">{t('(This page has no text — it may be blank or an image.)', '(या पानावर मजकूर नाही — ते कोरे किंवा चित्राचे पान असू शकते.)')}</p>}
+        </div>
+        {translated && r.english.length > 0 && (
+          <details class="orig" data-pagefind-ignore>
+            <summary>मूळ इंग्रजी</summary>
+            <div class="reader reader-en" lang="en">{r.english.map((b) => (b.type === 'h' ? <h3>{b.text}</h3> : b.type === 'fn' ? <p class="fn">{b.text}</p> : <p>{b.text}</p>))}</div>
+          </details>
+        )}
+      </section>
+    ))}
 
-    <nav class="docs-pager" aria-label="Chapters" data-pagefind-ignore>
-      {prev ? <a href={url(`/library/${vol.id}/${prev.slug}/`)}><small>← Previous</small><strong>{prev.label}</strong></a> : <span></span>}
-      {next && <a class="next" href={url(`/library/${vol.id}/${next.slug}/`)}><small>Next →</small><strong>{next.label}</strong></a>}
+    <p class="docs-note" data-pagefind-ignore>{translated
+      ? 'मूळ इंग्रजी मजकूर भारत सरकारने प्रकाशित केलेल्या अधिकृत PDF मधून शब्दशः घेतला आहे. पानांच्या सीमेवर तुटलेला परिच्छेद अनुवादात तो सुरू होणाऱ्या पानावर पूर्ण दिला आहे. उद्धृत करण्यापूर्वी मूळ पान तपासा.'
+      : t('Text taken word for word from the official PDF published by the Government of India. Line breaks have been joined into paragraphs; automatic extraction can still leave small errors, so check the original page before quoting.', 'मजकूर भारत सरकारने प्रकाशित केलेल्या अधिकृत PDF मधून शब्दशः घेतला आहे. ओळी जोडून परिच्छेद केले आहेत; स्वयंचलित प्रक्रियेत लहान चुका राहू शकतात, म्हणून उद्धृत करण्यापूर्वी मूळ पान तपासा.')}</p>
+
+    <nav class="docs-pager" aria-label={t('Chapters', 'प्रकरणे')} data-pagefind-ignore>
+      {prev ? <a href={url(`/library/${vol.id}/${prev.slug}/`)}><small>{t('← Previous', '← मागील')}</small><strong>{labelOf(prev)}</strong></a> : <span></span>}
+      {next && <a class="next" href={url(`/library/${vol.id}/${next.slug}/`)}><small>{t('Next →', 'पुढील →')}</small><strong>{labelOf(next)}</strong></a>}
     </nav>
   </article>
 </DocsShell>

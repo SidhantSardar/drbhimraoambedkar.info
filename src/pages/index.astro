@@ -3,12 +3,16 @@ import Base from '../layouts/Base.astro';
 import Picture from '../components/Picture.astro';
 import { url } from '../lib/site';
 import { chapters, images, loadJSON, type Img, type Work, type Speech } from '../lib/data';
-import { originalFor, credit } from '../lib/images-core.mjs';
+import { originalFor, credit, inLang } from '../lib/images-core.mjs';
 import { volumes } from '../lib/library';
-import { loadNews, mixed, catOf, thumbFor, fallbackFor, ONERROR, isHindi, cleanTitle } from '../lib/news';
+import { loadNews, mixed, catOf as category, thumbFor, fallbackFor, ONERROR, isHindi, cleanTitle } from '../lib/news';
+import { getLang, translator } from '../i18n';
+const lang = getLang(Astro);
+const t = translator(lang);
+const catOf = (s: { category: string }) => category(s, lang);
 
-const life = await chapters();
-const imgs = images();
+const life = await chapters(lang);
+const imgs = images(lang);
 const byId = (id: string) => imgs.find((i) => i.id === id) as Img | undefined;
 
 const heroImg = byId('ambedkar-1950');
@@ -32,66 +36,66 @@ const cats = [...new Set(updates.map((n) => n.category))];
     <div class="hero-main">
       <a class="status-pill" href={url('/ask/')}>
         <span class="live-dot" aria-hidden="true"></span>
-        Archive online · {pages.toLocaleString('en-IN')} pages of his writings, searchable
+        {t(`Archive online · ${pages.toLocaleString('en-IN')} pages of his writings, searchable`, `संग्रह ऑनलाइन · त्यांच्या लेखनाची ${pages.toLocaleString('en-IN')} पाने, शोधण्याजोगी`)}
         <span aria-hidden="true">→</span>
       </a>
-      <span class="eyebrow">1891 – 1956 · Scholar · Economist · Jurist · Reformer</span>
-      <h1>Dr. Bhimrao<br />Ramji Ambedkar</h1>
-      <p class="hero-sub">The boy who was not allowed to drink from the school tap became one of the most educated people of his time — and led the writing of the Constitution that promises every Indian equal dignity.</p>
+      <span class="eyebrow">{t('1891 – 1956 · Scholar · Economist · Jurist · Reformer', '1891 – 1956 · विद्वान · अर्थशास्त्रज्ञ · कायदेपंडित · समाजसुधारक')}</span>
+      {lang === 'mr' ? <h1>डॉ. भीमराव<br />रामजी आंबेडकर</h1> : <h1>Dr. Bhimrao<br />Ramji Ambedkar</h1>}
+      <p class="hero-sub">{t('The boy who was not allowed to drink from the school tap became one of the most educated people of his time — and led the writing of the Constitution that promises every Indian equal dignity.', 'शाळेतील नळाचे पाणी पिण्याचीही परवानगी नसलेले ते मूल पुढे आपल्या काळातील सर्वाधिक उच्चशिक्षित व्यक्तींपैकी एक झाले — आणि प्रत्येक भारतीयाला समान प्रतिष्ठेचे वचन देणाऱ्या संविधानाच्या निर्मितीचे नेतृत्व त्यांनी केले.')}</p>
       <div class="btn-row">
-        <a class="btn btn-primary btn-beam" href={url('/life/')}><span>Begin his story →</span></a>
-        <a class="btn btn-ghost" href={url('/ask/')}>Ask the archive</a>
+        <a class="btn btn-primary btn-beam" href={url('/life/')}><span>{t('Begin his story →', 'त्यांची कथा वाचायला सुरुवात करा →')}</span></a>
+        <a class="btn btn-ghost" href={url('/ask/')}>{t('Ask the archive', 'संग्रहात शोधा')}</a>
       </div>
       <dl class="hero-stats">
-        <div><dt>Chapters</dt><dd>{life.length}</dd></div>
-        <div><dt>Works</dt><dd>{works}</dd></div>
-        <div><dt>Speeches</dt><dd>{speeches}</dd></div>
-        <div><dt>Pages</dt><dd>{pages.toLocaleString('en-IN')}</dd></div>
+        <div><dt>{t('Chapters', 'प्रकरणे')}</dt><dd>{life.length}</dd></div>
+        <div><dt>{t('Works', 'साहित्य')}</dt><dd>{works}</dd></div>
+        <div><dt>{t('Speeches', 'भाषणे')}</dt><dd>{speeches}</dd></div>
+        <div><dt>{t('Pages', 'पाने')}</dt><dd>{pages.toLocaleString('en-IN')}</dd></div>
       </dl>
     </div>
 
     {updates.length > 0 && (
-      <aside class="ticker" aria-label="Live updates">
+      <aside class="ticker" aria-label={t('Live updates', 'थेट घडामोडी')}>
         <div class="ticker-head">
-          <strong><span class="live-dot" aria-hidden="true"></span>Live updates</strong>
-          <p class="ticker-sub">Educate · Agitate · Organise — the movement today</p>
-          <div class="ticker-tags" role="group" aria-label="Filter updates">
-            <button type="button" data-tcat="all" aria-pressed="true">All</button>
-            {cats.map((c) => <button type="button" data-tcat={c} aria-pressed="false" class={catOf({ category: c } as any).cls}>{catOf({ category: c } as any).label}</button>)}
+          <strong><span class="live-dot" aria-hidden="true"></span>{t('Live updates', 'थेट घडामोडी')}</strong>
+          <p class="ticker-sub">{t('Educate · Agitate · Organise — the movement today', 'शिका · संघर्ष करा · संघटित व्हा — आजची चळवळ')}</p>
+          <div class="ticker-tags" role="group" aria-label={t('Filter updates', 'घडामोडी निवडा')}>
+            <button type="button" data-tcat="all" aria-pressed="true">{t('All', 'सर्व')}</button>
+            {cats.map((c) => <button type="button" data-tcat={c} aria-pressed="false" class={catOf({ category: c }).cls}>{catOf({ category: c }).label}</button>)}
           </div>
         </div>
-        <div class="ticker-view" tabindex="0" aria-label="Scroll the updates">
+        <div class="ticker-view" tabindex="0" aria-label={t('Scroll the updates', 'घडामोडी स्क्रोल करा')}>
           <ul class="ticker-list" style={`--dur:${updates.length * 6}s`}>
             {[...updates, ...updates].map((n, i) => (
               <li data-cat={n.category} aria-hidden={i >= updates.length ? 'true' : undefined}>
                 <div class="ticker-thumb"><img src={thumbFor(n)} data-fallback={fallbackFor(n)} onerror={ONERROR} alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" /></div>
                 <div>
                   <span class={`cat ${catOf(n).cls}`}>{catOf(n).label}</span>
-                  <a href={url(`/news/#${n.id}`)} tabindex={i >= updates.length ? -1 : undefined} lang={isHindi(n.title) ? 'hi' : undefined}>{cleanTitle(n.title)}</a>
-                  <small>{n.outlets.length > 1 ? `${n.outlets.length} outlets reporting` : n.outlets[0]}</small>
+                  <a href={url(`/news/#${n.id}`)} tabindex={i >= updates.length ? -1 : undefined} lang={isHindi(n.title) ? 'hi' : 'en'}>{cleanTitle(n.title)}</a>
+                  <small>{n.outlets.length > 1 ? t(`${n.outlets.length} outlets reporting`, `${n.outlets.length} माध्यमांत बातमी`) : n.outlets[0]}</small>
                 </div>
               </li>
             ))}
           </ul>
         </div>
-        <div class="ticker-foot"><span>Hover to browse</span><a href={url('/news/')}>All news →</a></div>
+        <div class="ticker-foot"><span>{t('Hover to browse', 'पाहण्यासाठी पॉइंटर ठेवा')}</span><a href={url('/news/')}>{t('All news →', 'सर्व बातम्या →')}</a></div>
       </aside>
     )}
     {heroImg && <p class="credit">{heroImg.caption} {credit(heroImg)} · <a href={heroImg.sourceUrl} target="_blank" rel="noopener noreferrer">{heroImg.sourceName}</a></p>}
   </section>
 
   <!-- 2. LIFE STORY: full-screen chapter slides; arrows bottom-right, or simply scroll on -->
-  <section class="ls" id="life-story" aria-roledescription="carousel" aria-label="His life in chapters">
+  <section class="ls" id="life-story" aria-roledescription="carousel" aria-label={t('His life in chapters', 'प्रकरणांतून त्यांचे जीवन')}>
     <div class="ls-head">
-      <span class="eyebrow">The life story</span>
-      <h2>His life, in {life.length} chapters</h2>
+      <span class="eyebrow">{t('The life story', 'जीवनकथा')}</span>
+      <h2>{t(`His life, in ${life.length} chapters`, `त्यांचे जीवन, ${life.length} प्रकरणांत`)}</h2>
     </div>
-    <div class="ls-track" id="ls-track" tabindex="0" aria-label="Chapters — use the arrow keys to move between them">
+    <div class="ls-track" id="ls-track" tabindex="0" aria-label={t('Chapters — use the arrow keys to move between them', 'प्रकरणे — पुढे-मागे जाण्यासाठी बाण कळा वापरा')}>
       {life.map((c, i) => {
-        const img = originalFor(c.id);
+        const img = inLang(originalFor(c.id), lang);
         const cover = img && (img.width || 0) >= 1100 && (img.width || 0) >= (img.height || 0);
         return (
-          <article class={`ls-slide ${cover ? 'cover' : ''}`} aria-roledescription="slide" aria-label={`${i + 1} of ${life.length}: ${c.data.title}`} style={img ? `--img-h:${img.height}px` : undefined}>
+          <article class={`ls-slide ${cover ? 'cover' : ''}`} aria-roledescription="slide" aria-label={`${i + 1} / ${life.length}: ${c.data.title}`} style={img ? `--img-h:${img.height}px` : undefined}>
             <span class="ls-media" aria-hidden="true">
               {img && <span class="blur"><Picture img={img} sizes="40vw" alt="" /></span>}
               {img && <span class="fg"><Picture img={img} sizes="(min-width: 900px) 60vw, 100vw" alt="" /></span>}
@@ -100,21 +104,21 @@ const cats = [...new Set(updates.map((n) => n.category))];
               <span class="ls-k">{String(i + 1).padStart(2, '0')} · {c.data.period}</span>
               <h3><a href={url(`/life/${c.id}/`)}>{c.data.title}</a></h3>
               {c.data.summary && <p>{c.data.summary}</p>}
-              <a class="ls-more" href={url(`/life/${c.id}/`)} tabindex="-1">Read chapter →</a>
-              {img && <p class="ls-credit">{img.caption?.split('. ')[0].replace(/\.$/, '')}. {credit(img)}</p>}
+              <a class="ls-more" href={url(`/life/${c.id}/`)} tabindex="-1">{t('Read chapter →', 'प्रकरण वाचा →')}</a>
+              {img && <p class="ls-credit">{img.caption?.split(/\.\s/)[0].replace(/\.$/, '')}. {credit(img)}</p>}
             </div>
           </article>
         );
       })}
-      <article class="ls-slide ls-end" aria-roledescription="slide" aria-label="Explore more">
+      <article class="ls-slide ls-end" aria-roledescription="slide" aria-label={t('Explore more', 'अधिक पाहा')}>
         <div class="ls-cap">
-          <span class="ls-k">Keep going</span>
-          <h3>Explore more of his life</h3>
-          <p>Every date, every degree, every photograph — with sources.</p>
+          <span class="ls-k">{t('Keep going', 'पुढे चला')}</span>
+          <h3>{t('Explore more of his life', 'त्यांच्या जीवनाविषयी अधिक')}</h3>
+          <p>{t('Every date, every degree, every photograph — with sources.', 'प्रत्येक तारीख, प्रत्येक पदवी, प्रत्येक छायाचित्र — संदर्भांसह.')}</p>
           <span class="ls-links">
-            <a class="btn btn-primary" href={url('/timeline/')}>Timeline</a>
-            <a class="btn btn-ghost" href={url('/education/')}>Educational journey</a>
-            <a class="btn btn-ghost" href={url('/gallery/')}>Gallery</a>
+            <a class="btn btn-primary" href={url('/timeline/')}>{t('Timeline', 'कालपट')}</a>
+            <a class="btn btn-ghost" href={url('/education/')}>{t('Educational journey', 'शैक्षणिक प्रवास')}</a>
+            <a class="btn btn-ghost" href={url('/gallery/')}>{t('Gallery', 'छायाचित्रे')}</a>
           </span>
         </div>
       </article>
@@ -122,8 +126,8 @@ const cats = [...new Set(updates.map((n) => n.category))];
     <div class="ls-ctrl">
       <span class="ls-count" aria-live="polite"><b id="ls-n">01</b> / {String(life.length).padStart(2, '0')}</span>
       <span class="ls-bar" aria-hidden="true"><i id="ls-bar"></i></span>
-      <button class="ls-btn" type="button" data-ls="-1" aria-label="Previous chapter" disabled>←</button>
-      <button class="ls-btn" type="button" data-ls="1" aria-label="Next chapter">→</button>
+      <button class="ls-btn" type="button" data-ls="-1" aria-label={t('Previous chapter', 'मागील प्रकरण')} disabled>←</button>
+      <button class="ls-btn" type="button" data-ls="1" aria-label={t('Next chapter', 'पुढील प्रकरण')}>→</button>
     </div>
   </section>
 
@@ -131,18 +135,18 @@ const cats = [...new Set(updates.map((n) => n.category))];
   <section class="band">
     {bandConst && <div class="bg"><Picture img={bandConst} sizes="100vw" alt="" /></div>}
     <div class="wrap band-inner">
-      <span class="eyebrow">The flagship · 1946–1950</span>
-      <h2 style="max-width:14ch">The Constitution of India</h2>
-      <p class="lede" style="max-width:52ch">As chairman of the Drafting Committee, he guided India's Constitution through the Constituent Assembly. Read what it promises in plain words, the articles he fought for, his speeches — and download the official text.</p>
+      <span class="eyebrow">{t('The flagship · 1946–1950', 'मुख्य विभाग · 1946–1950')}</span>
+      <h2 style="max-width:14ch">{t('The Constitution of India', 'भारताचे संविधान')}</h2>
+      <p class="lede" style="max-width:52ch">{t("As chairman of the Drafting Committee, he guided India's Constitution through the Constituent Assembly. Read what it promises in plain words, the articles he fought for, his speeches — and download the official text.", 'मसुदा समितीचे अध्यक्ष म्हणून त्यांनी भारताचे संविधान संविधान सभेत मार्गी लावले. ते सोप्या शब्दांत काय वचन देते, त्यांनी आग्रहाने मांडलेले अनुच्छेद आणि त्यांची भाषणे वाचा — आणि अधिकृत मजकूर डाउनलोड करा.')}</p>
       <div class="stats" style="margin:32px 0">
-        <div class="stat"><strong>26 Nov 1949</strong><span>Adopted by the Constituent Assembly</span></div>
-        <div class="stat"><strong>26 Jan 1950</strong><span>Came into force — Republic Day</span></div>
-        <div class="stat"><strong>Article 17</strong><span>Abolished untouchability</span></div>
-        <div class="stat"><strong>Article 32</strong><span>"The very soul of the Constitution"</span></div>
+        <div class="stat"><strong>{t('26 Nov 1949', '26 नोव्हेंबर 1949')}</strong><span>{t('Adopted by the Constituent Assembly', 'संविधान सभेने स्वीकारले')}</span></div>
+        <div class="stat"><strong>{t('26 Jan 1950', '26 जानेवारी 1950')}</strong><span>{t('Came into force — Republic Day', 'अंमलात आले — प्रजासत्ताक दिन')}</span></div>
+        <div class="stat"><strong>{t('Article 17', 'अनुच्छेद 17')}</strong><span>{t('Abolished untouchability', 'अस्पृश्यता नष्ट केली')}</span></div>
+        <div class="stat"><strong>{t('Article 32', 'अनुच्छेद 32')}</strong><span>{t('"The very soul of the Constitution"', '“संविधानाचा आत्मा” (त्यांच्या शब्दांत)')}</span></div>
       </div>
       <div class="btn-row">
-        <a class="btn btn-primary" href={url('/constitution/')}>Explore the Constitution →</a>
-        <a class="btn btn-ghost" href={url('/constitution/#documents')}>Download the official text</a>
+        <a class="btn btn-primary" href={url('/constitution/')}>{t('Explore the Constitution →', 'संविधान समजून घ्या →')}</a>
+        <a class="btn btn-ghost" href={url('/constitution/#documents')}>{t('Download the official text', 'अधिकृत मजकूर डाउनलोड करा')}</a>
       </div>
     </div>
     {bandConst && <p class="credit">{bandConst.caption?.slice(0, 80)}… · {bandConst.license}</p>}

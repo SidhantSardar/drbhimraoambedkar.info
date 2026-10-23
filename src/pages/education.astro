@@ -5,42 +5,47 @@ import Picture from '../components/Picture.astro';
 import { loadJSON, images } from '../lib/data';
 import { url } from '../lib/site';
 import { credit } from '../lib/images-core.mjs';
+import { getLang, translator } from '../i18n';
+const lang = getLang(Astro);
+const t = translator(lang);
 
 type Stage = { stage: string; institution: string; place: string; startYear: number; endYear: number; qualification: string; thesisOrSubject?: string; notes?: string; sources?: string[] };
-const stages = loadJSON<Stage[]>('education', []);
-const pics = images().filter((i) => i.tags?.some((t) => ['columbia', 'london', 'school-years'].includes(t))).slice(0, 6);
+const stages = loadJSON<Stage[]>('education', [], lang);
+const english = loadJSON<Stage[]>('education', []);
+const pics = images(lang).filter((i) => i.tags?.some((tag) => ['columbia', 'london', 'school-years'].includes(tag))).slice(0, 6);
 const host = (u: string) => { try { return new URL(u).hostname.replace(/^www\./, ''); } catch { return 'source'; } };
-const isDegree = (s: Stage) => /BA|MA|PhD|MSc|DSc|Bar|LLD|DLitt/.test(s.qualification || '');
+// Degrees are recognised from the English record, so the Marathi page highlights the same ones.
+const isDegree = (i: number) => /BA|MA|PhD|MSc|DSc|Bar|LLD|DLitt/.test(english[i]?.qualification || '');
 ---
-<Base title="Educational Journey" description="Dr. B. R. Ambedkar's complete education, step by step: from a gunny sack in a Satara classroom to degrees from Columbia University and the London School of Economics, and the Bar at Gray's Inn.">
+<Base title={t('Educational Journey', 'शैक्षणिक प्रवास')} description={t("Dr. B. R. Ambedkar's complete education, step by step: from a gunny sack in a Satara classroom to degrees from Columbia University and the London School of Economics, and the Bar at Gray's Inn.", 'डॉ. बाबासाहेब आंबेडकर यांचे संपूर्ण शिक्षण, टप्प्याटप्प्याने: साताऱ्याच्या वर्गातील गोणपाटापासून कोलंबिया विद्यापीठ आणि लंडन स्कूल ऑफ इकॉनॉमिक्सच्या पदव्या आणि ग्रेज इनमधील बॅरिस्टर पदापर्यंत.')}>
   <section class="hero">
     <Chakra class="chakra-bg" />
     <div class="wrap section">
-      <span class="eyebrow">Educational journey · 1894–1923</span>
-      <h1 style="font-size:var(--step-4)">From a gunny sack to two doctorates</h1>
-      <p class="lede" style="max-width:64ch">At school in Satara he had to sit apart on a piece of sacking. Within twenty years he had earned an MA and a PhD from Columbia University in New York, an MSc and a DSc from the London School of Economics, and become a barrister at Gray's Inn — at a time when almost no one from his community could go to school at all.</p>
+      <span class="eyebrow">{t('Educational journey · 1894–1923', 'शैक्षणिक प्रवास · 1894–1923')}</span>
+      <h1 style="font-size:var(--step-4)">{t('From a gunny sack to two doctorates', 'गोणपाटापासून दोन डॉक्टरेटपर्यंत')}</h1>
+      <p class="lede" style="max-width:64ch">{t("At school in Satara he had to sit apart on a piece of sacking. Within twenty years he had earned an MA and a PhD from Columbia University in New York, an MSc and a DSc from the London School of Economics, and become a barrister at Gray's Inn — at a time when almost no one from his community could go to school at all.", 'साताऱ्याच्या शाळेत त्यांना गोणपाटाच्या तुकड्यावर वेगळे बसावे लागे. वीस वर्षांच्या आत त्यांनी न्यूयॉर्कच्या कोलंबिया विद्यापीठातून MA आणि PhD, लंडन स्कूल ऑफ इकॉनॉमिक्समधून MSc आणि DSc मिळवली आणि ग्रेज इनमधून बॅरिस्टर झाले — तेही अशा काळात, जेव्हा त्यांच्या समाजातील जवळजवळ कोणालाच शाळेत जाता येत नव्हते.')}</p>
       <div class="stats" style="margin-top:28px">
-        <div class="stat"><strong>BA</strong><span>Bombay, 1912</span></div>
-        <div class="stat"><strong>MA · PhD</strong><span>Columbia University, New York</span></div>
-        <div class="stat"><strong>MSc · DSc</strong><span>London School of Economics</span></div>
-        <div class="stat"><strong>Barrister</strong><span>Gray's Inn, London</span></div>
+        <div class="stat"><strong>BA</strong><span>{t('Bombay, 1912', 'मुंबई, 1912')}</span></div>
+        <div class="stat"><strong>MA · PhD</strong><span>{t('Columbia University, New York', 'कोलंबिया विद्यापीठ, न्यूयॉर्क')}</span></div>
+        <div class="stat"><strong>MSc · DSc</strong><span>{t('London School of Economics', 'लंडन स्कूल ऑफ इकॉनॉमिक्स')}</span></div>
+        <div class="stat"><strong>{t('Barrister', 'बॅरिस्टर')}</strong><span>{t("Gray's Inn, London", 'ग्रेज इन, लंडन')}</span></div>
       </div>
     </div>
   </section>
 
   <div class="narrow section">
-    <p class="lede">Satara → Bombay → New York → London → Bonn → London → Bombay. Follow each step below. Tap "More detail" for the full story and the sources behind it.</p>
+    <p class="lede">{t('Satara → Bombay → New York → London → Bonn → London → Bombay. Follow each step below. Tap "More detail" for the full story and the sources behind it.', 'सातारा → मुंबई → न्यूयॉर्क → लंडन → बॉन → लंडन → मुंबई. खाली प्रत्येक टप्पा पाहा. संपूर्ण माहिती आणि तिचे संदर्भ पाहण्यासाठी “अधिक माहिती” वर टॅप करा.')}</p>
     <ol class="tl-list" style="margin-top:32px">
-      {stages.map((s) => (
+      {stages.map((s, i) => (
         <li class="tl-item">
           <time>{s.startYear === s.endYear ? s.startYear : `${s.startYear}–${s.endYear}`}</time>
           <h2 style="font-size:var(--step-1);margin:4px 0 2px;font-family:var(--font-serif)">{s.institution}</h2>
           <p class="muted" style="margin:0 0 6px;font-size:0.95rem">{s.stage} · {s.place}</p>
-          {s.qualification && <p style="margin:0 0 6px">{isDegree(s) ? <strong>{s.qualification}</strong> : s.qualification}</p>}
+          {s.qualification && <p style="margin:0 0 6px">{isDegree(i) ? <strong>{s.qualification}</strong> : s.qualification}</p>}
           {s.thesisOrSubject && <p style="margin:0 0 6px;font-size:0.97rem"><em>{s.thesisOrSubject}</em></p>}
           {(s.notes || s.sources?.length) && (
             <details style="font-size:0.95rem">
-              <summary style="cursor:pointer;font-weight:600;color:var(--link)">More detail</summary>
+              <summary style="cursor:pointer;font-weight:600;color:var(--link)">{t('More detail', 'अधिक माहिती')}</summary>
               {s.notes && <p style="margin:8px 0">{s.notes}</p>}
               {s.sources?.length ? <p style="margin:0">{s.sources.map((u) => <a class="src" href={u} target="_blank" rel="noopener noreferrer">{host(u)}</a>)}</p> : null}
             </details>
@@ -48,7 +53,7 @@ const isDegree = (s: Stage) => /BA|MA|PhD|MSc|DSc|Bar|LLD|DLitt/.test(s.qualific
         </li>
       ))}
     </ol>
-    {stages.length === 0 && <p class="notice">The education record is being compiled.</p>}
+    {stages.length === 0 && <p class="notice">{t('The education record is being compiled.', 'शिक्षणाची नोंद तयार केली जात आहे.')}</p>}
 
     {pics.length > 0 && (
       <div class="masonry" style="margin:40px 0">
@@ -59,8 +64,8 @@ const isDegree = (s: Stage) => /BA|MA|PhD|MSc|DSc|Bar|LLD|DLitt/.test(s.qualific
     )}
 
     <div class="chapter-nav">
-      <a href={url('/life/columbia/')}><span>Read the story</span><strong>New York and Columbia, 1913–1916</strong></a>
-      <a class="next" href={url('/life/london/')}><span>Read the story</span><strong>London, LSE and Gray's Inn, 1916–1923</strong></a>
+      <a href={url('/life/columbia/')}><span>{t('Read the story', 'कथा वाचा')}</span><strong>{t('New York and Columbia, 1913–1916', 'न्यूयॉर्क आणि कोलंबिया, 1913–1916')}</strong></a>
+      <a class="next" href={url('/life/london/')}><span>{t('Read the story', 'कथा वाचा')}</span><strong>{t("London, LSE and Gray's Inn, 1916–1923", 'लंडन, LSE आणि ग्रेज इन, 1916–1923')}</strong></a>
     </div>
   </div>
 </Base>

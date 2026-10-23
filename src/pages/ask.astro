@@ -3,35 +3,62 @@ import Base from '../layouts/Base.astro';
 import Chakra from '../components/Chakra.astro';
 import { volumes } from '../lib/library';
 import { url, ASK_ENDPOINT } from '../lib/site';
+import { mrTitle } from '../lib/library';
+import { getLang, translator } from '../i18n';
+const lang = getLang(Astro);
+const t = translator(lang);
 const vols = volumes();
 const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : import.meta.env.BASE_URL + '/';
 const endpoint = ASK_ENDPOINT || `${base}api/ask`;
-const examples = ['education', 'women', 'democracy', 'fraternity', 'annihilation of caste', 'Buddha', 'labour', 'state socialism'];
+const examples = lang === 'mr'
+  ? ['शिक्षण', 'स्त्रिया', 'लोकशाही', 'बंधुता', 'जातिनिर्मूलन', 'बुद्ध', 'education', 'democracy']
+  : ['education', 'women', 'democracy', 'fraternity', 'annihilation of caste', 'Buddha', 'labour', 'state socialism'];
+const volLabel = (v: (typeof vols)[number]) => (lang === 'mr' ? v.label.replace('Vol.', 'खंड').replace('Part', 'भाग') : v.label);
+const volTitle = (v: (typeof vols)[number]) => (lang === 'mr' && mrTitle(v, v.title)) || v.title;
+// Messages used by the search script, in the page language.
+const L = {
+  searching: t('Searching…', 'शोधत आहे…'),
+  unavailable: t('Search is not available in this preview. It works on the published site.', 'या पूर्वदर्शनात शोध उपलब्ध नाही. प्रकाशित संकेतस्थळावर तो चालतो.'),
+  found: t('{n} matching sections. Showing the best {k}.', '{n} जुळणारे भाग. सर्वोत्तम {k} दाखवत आहोत.'),
+  none: t('No pages matched. Try simpler words, or a different spelling.', 'एकही पान जुळले नाही. सोपे शब्द किंवा वेगळे स्पेलिंग वापरून पाहा.'),
+  read: t('Read this page', 'हे पान वाचा'),
+  pdf: t('Original PDF ↗', 'मूळ PDF ↗'),
+  pages: t('Pages that match', 'जुळणारी पाने'),
+  reading: t('Reading these pages to write a short answer…', 'छोटे उत्तर लिहिण्यासाठी ही पाने वाचत आहे…'),
+  original: t('original ↗', 'मूळ ↗'),
+  aiLabel: t('AI summary — check the sources', 'AI सारांश — स्रोत तपासा'),
+  used: t('Sources used', 'वापरलेले स्रोत'),
+  off: t('AI answers will switch on once the answer service is connected. Meanwhile, the pages below are the best matches from his writings.', 'उत्तर-सेवा जोडल्यानंतर AI उत्तरे सुरू होतील. तोपर्यंत खालील पाने त्यांच्या लेखनातील सर्वोत्तम जुळणी आहेत.'),
+};
 ---
-<Base title="Ask the Archive" description="Search everything Dr. B. R. Ambedkar wrote and said — 17 volumes of Writings and Speeches — and get answers that cite the exact page.">
+<Base title={t('Ask the Archive', 'संग्रहात शोधा')} description={t('Search everything Dr. B. R. Ambedkar wrote and said — 17 volumes of Writings and Speeches — and get answers that cite the exact page.', 'डॉ. बाबासाहेब आंबेडकर यांनी लिहिलेले आणि बोललेले सर्व शोधा — लेखन आणि भाषणे यांचे 17 खंड — आणि नेमक्या पानाचा संदर्भ देणारी उत्तरे मिळवा.')}>
   <section class="hero">
     <Chakra class="chakra-bg" />
     <div class="wrap section-tight">
-      <span class="eyebrow">Ask the archive</span>
-      <h1 style="font-size:var(--step-4)">What did Dr. Ambedkar say?</h1>
-      <p class="lede" style="max-width:64ch">Search all {vols.length} files of <em>Dr. Babasaheb Ambedkar: Writings and Speeches</em> — more than 13,800 pages. Every result shows the volume and page, with a link to the original.</p>
+      <span class="eyebrow">{t('Ask the archive', 'संग्रहात शोधा')}</span>
+      <h1 style="font-size:var(--step-4)">{t('What did Dr. Ambedkar say?', 'डॉ. आंबेडकर काय म्हणाले?')}</h1>
+      {lang === 'mr' ? (
+        <p class="lede" style="max-width:64ch"><em>डॉ. बाबासाहेब आंबेडकर: लेखन आणि भाषणे</em> यांच्या सर्व {vols.length} फाइल्समध्ये — 13,800 हून अधिक पाने — शोधा. मराठीत अनुवादित पाने मराठी शब्दांनी, बाकीची इंग्रजी शब्दांनी सापडतात. प्रत्येक निकालात खंड आणि पान, मूळ PDF च्या दुव्यासह दिसते.</p>
+      ) : (
+        <p class="lede" style="max-width:64ch">Search all {vols.length} files of <em>Dr. Babasaheb Ambedkar: Writings and Speeches</em> — more than 13,800 pages. Every result shows the volume and page, with a link to the original.</p>
+      )}
     </div>
   </section>
   <div class="narrow section-tight">
     <div class="ask-box">
       <form class="ask-form" id="ask-form" role="search">
-        <label class="visually-hidden" for="q">Your question or search words</label>
-        <input class="search-input" id="q" name="q" type="search" autocomplete="off" placeholder="Ask a question, e.g. What did he say about education?" />
-        <button class="btn btn-primary" type="submit">Search</button>
+        <label class="visually-hidden" for="q">{t('Your question or search words', 'तुमचा प्रश्न किंवा शोधाचे शब्द')}</label>
+        <input class="search-input" id="q" name="q" type="search" autocomplete="off" placeholder={t('Ask a question, e.g. What did he say about education?', 'प्रश्न विचारा, उदा. शिक्षणाबद्दल ते काय म्हणाले?')} />
+        <button class="btn btn-primary" type="submit">{t('Search', 'शोधा')}</button>
       </form>
       <div class="filter-row" style="margin-top:12px">
-        <label class="visually-hidden" for="vol">Volume</label>
+        <label class="visually-hidden" for="vol">{t('Volume', 'खंड')}</label>
         <select class="search-input" id="vol" style="max-width:100%">
-          <option value="">All volumes</option>
-          {vols.map((v) => <option value={v.label}>{v.label} — {v.title.length > 60 ? v.title.slice(0, 60) + '…' : v.title}</option>)}
+          <option value="">{t('All volumes', 'सर्व खंड')}</option>
+          {vols.map((v) => <option value={v.label}>{volLabel(v)} — {volTitle(v).length > 60 ? volTitle(v).slice(0, 60) + '…' : volTitle(v)}</option>)}
         </select>
       </div>
-      <p class="muted" style="font-size:0.9rem;margin:12px 0 0">Try: {examples.map((e, i) => <><a href={`?q=${encodeURIComponent(e)}`} data-example={e}>{e}</a>{i < examples.length - 1 ? ', ' : ''}</>)}</p>
+      <p class="muted" style="font-size:0.9rem;margin:12px 0 0">{t('Try:', 'उदा.:')} {examples.map((e, i) => <><a href={`?q=${encodeURIComponent(e)}`} data-example={e}>{e}</a>{i < examples.length - 1 ? ', ' : ''}</>)}</p>
     </div>
 
     <div id="answer" hidden></div>
@@ -39,14 +66,24 @@ const examples = ['education', 'women', 'democracy', 'fraternity', 'annihilation
     <div id="results"></div>
 
     <details class="callout" style="margin-top:32px">
-      <summary style="cursor:pointer;font-weight:700">How this works</summary>
-      <p style="margin-top:12px">Your words are matched against the text of every page of his collected works, taken from the official PDFs published by the Government of India. You see the best-matching pages, each with a link to read it on this site and to open the original PDF at that exact page.</p>
-      <p>When the AI answer service is connected, it reads only those pages and writes a short summary with numbered citations. It is told never to answer from memory and to say so when the pages do not answer your question. Always check the original before you quote it.</p>
-      <p>Text was extracted automatically and may contain small errors. Volumes 14 and 16 come from the Internet Archive's OCR copies.</p>
+      <summary style="cursor:pointer;font-weight:700">{t('How this works', 'हे कसे चालते')}</summary>
+      {lang === 'mr' ? (
+        <>
+          <p style="margin-top:12px">तुमचे शब्द त्यांच्या समग्र साहित्याच्या प्रत्येक पानाच्या मजकुराशी जुळवले जातात. हा मजकूर भारत सरकारने प्रकाशित केलेल्या अधिकृत PDF मधून घेतला आहे. तुम्हाला सर्वाधिक जुळणारी पाने दिसतात — प्रत्येक पान या संकेतस्थळावर वाचण्याचा आणि मूळ PDF मध्ये नेमके तेच पान उघडण्याचा दुवा सोबत असतो.</p>
+          <p>AI उत्तर-सेवा जोडलेली असताना ती फक्त तीच पाने वाचते आणि क्रमांकित संदर्भांसह छोटा सारांश मराठीत लिहिते. तिला स्मरणातून उत्तर न देण्याची आणि पानांमध्ये उत्तर नसल्यास तसे स्पष्ट सांगण्याची सूचना दिलेली आहे. उद्धृत करण्यापूर्वी नेहमी मूळ मजकूर तपासा.</p>
+          <p>मजकूर स्वयंचलितपणे काढलेला असल्याने त्यात लहान चुका असू शकतात. खंड 14 आणि 16 इंटरनेट आर्काइव्हच्या OCR प्रतींमधून घेतले आहेत.</p>
+        </>
+      ) : (
+        <>
+          <p style="margin-top:12px">Your words are matched against the text of every page of his collected works, taken from the official PDFs published by the Government of India. You see the best-matching pages, each with a link to read it on this site and to open the original PDF at that exact page.</p>
+          <p>When the AI answer service is connected, it reads only those pages and writes a short summary with numbered citations. It is told never to answer from memory and to say so when the pages do not answer your question. Always check the original before you quote it.</p>
+          <p>Text was extracted automatically and may contain small errors. Volumes 14 and 16 come from the Internet Archive's OCR copies.</p>
+        </>
+      )}
     </details>
   </div>
 
-  <script is:inline define:vars={{ base, endpoint }}>
+  <script is:inline define:vars={{ base, endpoint, L, lang }}>
     (function () {
       var form = document.getElementById('ask-form');
       var q = document.getElementById('q');
@@ -73,7 +110,7 @@ const examples = ['education', 'women', 'democracy', 'fraternity', 'annihilation
         if (!term) return;
         answerEl.hidden = true;
         answerEl.innerHTML = '';
-        statusEl.textContent = 'Searching…';
+        statusEl.textContent = L.searching;
         resultsEl.innerHTML = '';
         var params = new URLSearchParams(location.search);
         params.set('q', term);
@@ -82,19 +119,20 @@ const examples = ['education', 'women', 'democracy', 'fraternity', 'annihilation
 
         var pf;
         try { pf = await load(); } catch (e) {
-          statusEl.textContent = 'Search is not available in this preview. It works on the published site.';
+          statusEl.textContent = L.unavailable;
           return;
         }
         var filters = { collection: 'Writings and Speeches' };
         if (vol.value) filters.volume = vol.value;
         // Questions contain words every page has; search on the meaningful words only.
-        var STOP = ' a an the is are was were be been of on in to for and or but with by about what which who whom whose why how when where did does do say said tell me his her he she it its this that these those dr dr. babasaheb ambedkar ambedkars bhimrao b r b.r. think thought view views opinion according ';
-        var words = term.toLowerCase().replace(/[?!.,;:"'’]/g, ' ').split(/\s+/).filter(function (w) { return w && STOP.indexOf(' ' + w + ' ') < 0; });
+        var STOP = ' a an the is are was were be been of on in to for and or but with by about what which who whom whose why how when where did does do say said tell me his her he she it its this that these those dr dr. babasaheb ambedkar ambedkars bhimrao b r b.r. think thought view views opinion according ' +
+          'काय कसे का कोणते कोण की आणि व हे ही ते त्या या आहे आहेत होते होता होती म्हणाले म्हणतात म्हटले सांगितले सांगा लिहिले बद्दल विषयी संबंधी बाबत डॉ डॉ. बाबासाहेब आंबेडकर आंबेडकरांनी आंबेडकरांचे आंबेडकरांचा आंबेडकरांची यांनी त्यांनी त्यांचे त्यांचा त्यांची विचार मत ';
+        var words = term.toLowerCase().replace(/[?!.,;:"'’।]/g, ' ').split(/\s+/).filter(function (w) { return w && STOP.indexOf(' ' + w + ' ') < 0; });
         var search = await pf.search(words.length ? words.join(' ') : term, { filters: filters });
         var top = await Promise.all(search.results.slice(0, 10).map(function (r) { return r.data(); }));
         statusEl.textContent = search.results.length
-          ? search.results.length + ' matching sections. Showing the best ' + top.length + '.'
-          : 'No pages matched. Try simpler words, or a different spelling.';
+          ? L.found.replace('{n}', search.results.length).replace('{k}', top.length)
+          : L.none;
 
         var refs = [];
         var html = top.map(function (d) {
@@ -104,30 +142,31 @@ const examples = ['education', 'women', 'democracy', 'fraternity', 'annihilation
             var m = s.url.match(/#p(\d+)$/);
             var page = m ? Number(m[1]) : null;
             var pdf = d.meta.pdf ? d.meta.pdf + (page ? '#page=' + page : '') : '';
-            if (page) refs.push({ path: sitePath(s.url.replace(/#.*$/, '')), page: page, title: (d.filters.volume || [''])[0] + ' · ' + s.title, url: s.url, pdf: pdf });
+            // The answer service always reads the original English page; Marathi readers are linked to the Marathi page.
+            if (page) refs.push({ path: sitePath(s.url.replace(/#.*$/, '')).replace(/^\/mr\//, '/'), page: page, title: (d.filters.volume || [''])[0] + ' · ' + s.title, url: s.url, pdf: pdf });
             return '<div class="passage">' +
               '<div class="ref">' + esc((d.filters.volume || [''])[0]) + ' · ' + esc(s.title || d.meta.title) + '</div>' +
               '<p class="excerpt">' + (s.excerpt || d.excerpt) + '</p>' +
               '<div class="links" style="display:flex;gap:8px;flex-wrap:wrap">' +
-              '<a class="chip" href="' + esc(s.url) + '">Read this page</a>' +
-              (pdf ? '<a class="chip" href="' + esc(pdf) + '" target="_blank" rel="noopener noreferrer">Original PDF ↗</a>' : '') +
+              '<a class="chip" href="' + esc(s.url) + '">' + L.read + '</a>' +
+              (pdf ? '<a class="chip" href="' + esc(pdf) + '" target="_blank" rel="noopener noreferrer">' + L.pdf + '</a>' : '') +
               '</div>' + (d.meta.volumeTitle ? '<p class="muted" style="font-size:0.82rem;margin:6px 0 0">' + esc(d.meta.volumeTitle) + '</p>' : '') +
               '</div>';
           }).join('');
         }).join('');
-        resultsEl.innerHTML = html ? '<h2 style="font-size:var(--step-1);margin-top:24px">Pages that match</h2>' + html : '';
+        resultsEl.innerHTML = html ? '<h2 style="font-size:var(--step-1);margin-top:24px">' + L.pages + '</h2>' + html : '';
         if (refs.length && term.split(/\s+/).length >= 3) ask(term, refs.slice(0, 8));
       }
 
       async function ask(question, refs) {
         answerEl.hidden = false;
         answerEl.className = 'answer';
-        answerEl.innerHTML = '<p class="muted">Reading these pages to write a short answer…</p>';
+        answerEl.innerHTML = '<p class="muted">' + L.reading + '</p>';
         try {
           var res = await fetch(endpoint, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ question: question, refs: refs.map(function (r) { return { path: r.path, page: r.page }; }) })
+            body: JSON.stringify({ question: question, lang: lang, refs: refs.map(function (r) { return { path: r.path, page: r.page }; }) })
           });
           var data = await res.json().catch(function () { return {}; });
           if (!res.ok || data.error || !data.answer) throw new Error(data.error || 'unavailable');
@@ -136,20 +175,20 @@ const examples = ['education', 'women', 'democracy', 'fraternity', 'annihilation
             var marks = (b.cites || []).map(function (i) {
               var s = srcs[i];
               if (!s) return '';
-              var href = base + s.path.replace(/^\//, '') + '#p' + s.page;
+              var href = base + (lang === 'mr' ? 'mr/' : '') + s.path.replace(/^\//, '') + '#p' + s.page;
               return '<a class="cite-num" href="' + esc(href) + '" title="' + esc(s.title) + '">' + (i + 1) + '</a>';
             }).join('');
             return esc(b.text).replace(/\n\n+/g, '</p><p>').replace(/\n/g, '<br>') + marks;
           }).join('');
           var list = srcs.map(function (s, i) {
-            var href = base + s.path.replace(/^\//, '') + '#p' + s.page;
-            return '<li><a href="' + esc(href) + '">' + esc(s.title) + '</a>' + (s.pdf ? ' · <a href="' + esc(s.pdf) + '" target="_blank" rel="noopener noreferrer">original ↗</a>' : '') + '</li>';
+            var href = base + (lang === 'mr' ? 'mr/' : '') + s.path.replace(/^\//, '') + '#p' + s.page;
+            return '<li><a href="' + esc(href) + '">' + esc(s.title) + '</a>' + (s.pdf ? ' · <a href="' + esc(s.pdf) + '" target="_blank" rel="noopener noreferrer">' + L.original + '</a>' : '') + '</li>';
           }).join('');
-          answerEl.innerHTML = '<p class="eyebrow" style="margin:0 0 8px">AI summary — check the sources</p><p>' + body + '</p>' +
-            '<details style="margin-top:12px"><summary style="cursor:pointer;font-weight:600">Sources used</summary><ol>' + list + '</ol></details>';
+          answerEl.innerHTML = '<p class="eyebrow" style="margin:0 0 8px">' + L.aiLabel + '</p><p>' + body + '</p>' +
+            '<details style="margin-top:12px"><summary style="cursor:pointer;font-weight:600">' + L.used + '</summary><ol>' + list + '</ol></details>';
         } catch (e) {
           answerEl.className = 'notice';
-          answerEl.innerHTML = 'AI answers will switch on once the answer service is connected. Meanwhile, the pages below are the best matches from his writings.';
+          answerEl.innerHTML = L.off;
         }
       }
 

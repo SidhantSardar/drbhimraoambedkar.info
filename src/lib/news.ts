@@ -7,23 +7,24 @@ export type Story = {
   outlets: string[]; reports: Report[]; summary?: string;
 };
 
-export const CATEGORIES: Record<string, { cls: string; label: string; fallback: string }> = {
-  'Protests & justice': { cls: 'cat-protests', label: 'Protest & justice', fallback: 'bhima-koregaon-vijaystambha-1927' },
-  'Research & reports': { cls: 'cat-research', label: 'Research', fallback: 'riddles-in-hinduism-handwriting' },
-  'Social work & community': { cls: 'cat-social', label: 'Social work', fallback: 'peoples-education-society-1945' },
-  'Ambedkarite events': { cls: 'cat-events', label: 'Events', fallback: 'ambedkar-jayanti-2026' },
-  Achievers: { cls: 'cat-achievers', label: 'Achievers', fallback: 'scf-womens-conference-nagpur-1942' },
-  'Constitution & rights': { cls: 'cat-rights', label: 'Rights', fallback: 'constitution-preamble-page-calligraphed' },
-  'Ambedkar in the news': { cls: 'cat-events', label: 'Ambedkar', fallback: 'ambedkar-portrait-classic' },
-  'Ambedkarite voices': { cls: 'cat-voices', label: 'Voices', fallback: 'mooknayak-bahishkrit-bharat-mastheads' },
+export const CATEGORIES: Record<string, { cls: string; label: string; mr: string; fallback: string }> = {
+  'Protests & justice': { cls: 'cat-protests', label: 'Protest & justice', mr: 'आंदोलन आणि न्याय', fallback: 'bhima-koregaon-vijaystambha-1927' },
+  'Research & reports': { cls: 'cat-research', label: 'Research', mr: 'संशोधन', fallback: 'riddles-in-hinduism-handwriting' },
+  'Social work & community': { cls: 'cat-social', label: 'Social work', mr: 'समाजकार्य', fallback: 'peoples-education-society-1945' },
+  'Ambedkarite events': { cls: 'cat-events', label: 'Events', mr: 'कार्यक्रम', fallback: 'ambedkar-jayanti-2026' },
+  Achievers: { cls: 'cat-achievers', label: 'Achievers', mr: 'यशस्वी', fallback: 'scf-womens-conference-nagpur-1942' },
+  'Constitution & rights': { cls: 'cat-rights', label: 'Rights', mr: 'हक्क', fallback: 'constitution-preamble-page-calligraphed' },
+  'Ambedkar in the news': { cls: 'cat-events', label: 'Ambedkar', mr: 'आंबेडकर', fallback: 'ambedkar-portrait-classic' },
+  'Ambedkarite voices': { cls: 'cat-voices', label: 'Voices', mr: 'आंबेडकरी आवाज', fallback: 'mooknayak-bahishkrit-bharat-mastheads' },
 };
 
 export function loadNews() {
   return loadJSON<{ updated?: string; stories: Story[] }>('news', { stories: [] });
 }
 
-export function catOf(s: Story) {
-  return CATEGORIES[s.category] || { cls: '', label: s.category, fallback: 'ambedkar-portrait-classic' };
+export function catOf(s: Pick<Story, 'category'>, lang: 'en' | 'mr' = 'en') {
+  const c = CATEGORIES[s.category] || { cls: '', label: s.category, mr: s.category, fallback: 'ambedkar-portrait-classic' };
+  return lang === 'mr' ? { ...c, label: c.mr } : c;
 }
 
 /** A matching photograph from the site's archive (used when a story has no picture, or its picture fails). */

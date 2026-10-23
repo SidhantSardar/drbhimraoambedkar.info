@@ -1,45 +1,47 @@
 ---
 import { SITE, url } from '../lib/site';
+import { getLang, translator } from '../i18n';
+const t = translator(getLang(Astro));
 const year = new Date().getFullYear();
 ---
 <footer class="site-footer">
   <div class="wrap">
     <div class="footer-grid">
       <div>
-        <h2>About this initiative</h2>
-        <p>An open, independent effort to bring Dr. B. R. Ambedkar's life and work together in one place — from authoritative sources, explained simply, and free for everyone. Built by <a href="https://www.sidhantsardar.com/" target="_blank" rel="noopener noreferrer">Sidhant Sardar</a>.</p>
-        <p><a href={url('/about/')}>Read our mission and source policy →</a></p>
+        <h2>{t('About this initiative', 'या उपक्रमाविषयी')}</h2>
+        <p>{t("An open, independent effort to bring Dr. B. R. Ambedkar's life and work together in one place — from authoritative sources, explained simply, and free for everyone. Built by", 'डॉ. बाबासाहेब आंबेडकर यांचे जीवन आणि कार्य एकाच ठिकाणी आणण्याचा एक खुला, स्वतंत्र प्रयत्न — विश्वसनीय संदर्भांतून, सोप्या भाषेत आणि सर्वांसाठी मोफत. निर्मिती:')} <a href="https://www.sidhantsardar.com/" target="_blank" rel="noopener noreferrer">{t('Sidhant Sardar', 'सिद्धांत सरदार')}</a>.</p>
+        <p><a href={url('/about/')}>{t('Read our mission and source policy →', 'आमचे ध्येय आणि संदर्भ धोरण वाचा →')}</a></p>
       </div>
       <div>
-        <h2>Explore</h2>
+        <h2>{t('Explore', 'पाहा')}</h2>
         <ul>
-          <li><a href={url('/life/')}>Life story</a></li>
-          <li><a href={url('/timeline/')}>Timeline</a></li>
-          <li><a href={url('/education/')}>Educational journey</a></li>
-          <li><a href={url('/library/')}>Library: Writings &amp; Speeches</a></li>
-          <li><a href={url('/gallery/')}>Gallery</a></li>
-          <li><a href={url('/constitution/')}>The Constitution</a></li>
-          <li><a href={url('/works/')}>All works</a></li>
-          <li><a href={url('/works/archives/')}>Where the originals are</a></li>
-          <li><a href={url('/themes/flag-and-symbols/')}>The blue flag & symbols</a></li>
+          <li><a href={url('/life/')}>{t('Life story', 'जीवनकथा')}</a></li>
+          <li><a href={url('/timeline/')}>{t('Timeline', 'कालपट')}</a></li>
+          <li><a href={url('/education/')}>{t('Educational journey', 'शैक्षणिक प्रवास')}</a></li>
+          <li><a href={url('/library/')}>{t('Library: Writings & Speeches', 'ग्रंथालय: लेखन आणि भाषणे')}</a></li>
+          <li><a href={url('/gallery/')}>{t('Gallery', 'छायाचित्रे')}</a></li>
+          <li><a href={url('/constitution/')}>{t('The Constitution', 'भारताचे संविधान')}</a></li>
+          <li><a href={url('/works/')}>{t('All works', 'सर्व साहित्य')}</a></li>
+          <li><a href={url('/works/archives/')}>{t('Where the originals are', 'मूळ प्रती कुठे आहेत')}</a></li>
+          <li><a href={url('/themes/flag-and-symbols/')}>{t('The blue flag & symbols', 'निळा ध्वज आणि प्रतीके')}</a></li>
         </ul>
       </div>
       <div>
-        <h2>Take part</h2>
+        <h2>{t('Take part', 'सहभागी व्हा')}</h2>
         <ul>
-          <li><a href={url('/ask/')}>Ask the archive</a></li>
-          <li><a href={url('/blog/')}>Blog & discussion</a></li>
-          <li><a href={url('/news/')}>News</a></li>
-          <li><a href={url('/resources/')}>Resources</a></li>
-          <li><a href={url('/about/')}>About</a></li>
-          <li><a href={url('/contribute/')}>Suggest a correction or source</a></li>
-          <li><a href={SITE.repoUrl} target="_blank" rel="noopener noreferrer">Open source on GitHub</a></li>
+          <li><a href={url('/ask/')}>{t('Ask the archive', 'संग्रहात शोधा')}</a></li>
+          <li><a href={url('/blog/')}>{t('Blog & discussion', 'ब्लॉग आणि चर्चा')}</a></li>
+          <li><a href={url('/news/')}>{t('News', 'बातम्या')}</a></li>
+          <li><a href={url('/resources/')}>{t('Resources', 'संदर्भ साधने')}</a></li>
+          <li><a href={url('/about/')}>{t('About', 'आमच्याविषयी')}</a></li>
+          <li><a href={url('/contribute/')}>{t('Suggest a correction or source', 'दुरुस्ती किंवा संदर्भ सुचवा')}</a></li>
+          <li><a href={SITE.repoUrl} target="_blank" rel="noopener noreferrer">{t('Open source on GitHub', 'GitHub वर खुला स्रोत')}</a></li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© {year} {SITE.domain}. Original writing is shared under <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer">CC BY-SA 4.0</a>. Images and documents keep their own licences, shown with each one.</span>
-      <a href="#top">Back to top ↑</a>
+      <span>© {year} {SITE.domain}. {t('Original writing is shared under', 'मूळ लेखन या परवान्याखाली उपलब्ध आहे:')} <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer">CC BY-SA 4.0</a>. {t('Images and documents keep their own licences, shown with each one.', 'छायाचित्रे आणि दस्तऐवजांचे परवाने त्यांच्यासोबत दिलेले आहेत.')}</span>
+      <a href="#top">{t('Back to top ↑', 'वर जा ↑')}</a>
     </div>
   </div>
 </footer>

@@ -3,19 +3,27 @@ import { getCollection } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 import Chakra from '../../components/Chakra.astro';
 import { url } from '../../lib/site';
-const posts = (await getCollection('blog')).filter((p) => !p.data.draft).sort((a, b) => +b.data.date - +a.data.date);
+import { getLang, translator } from '../../i18n';
+const lang = getLang(Astro);
+const t = translator(lang);
+const marathi = lang === 'mr' ? await getCollection('blogMr') : [];
+const posts = (await getCollection('blog'))
+  .filter((p) => !p.data.draft)
+  .sort((a, b) => +b.data.date - +a.data.date)
+  .map((p) => marathi.find((m) => m.id === p.id) || p);
+const date = (d: Date) => d.toLocaleDateString(lang === 'mr' ? 'mr-IN' : 'en-IN', { day: 'numeric', month: 'long', year: 'numeric' });
 ---
-<Base title="Blog" description="Articles and discussion on Dr. B. R. Ambedkar's ideas, social justice, equality and the Constitution today.">
+<Base title={t('Blog', 'ब्लॉग')} description={t("Articles and discussion on Dr. B. R. Ambedkar's ideas, social justice, equality and the Constitution today.", 'डॉ. बाबासाहेब आंबेडकर यांचे विचार, सामाजिक न्याय, समता आणि आजचे संविधान यांवरील लेख आणि चर्चा.')}>
   <section class="hero">
     <Chakra class="chakra-bg" />
     <div class="wrap section-tight">
-      <span class="eyebrow">Blog &amp; discussion</span>
-      <h1 style="font-size:var(--step-4)">Ideas that still matter</h1>
-      <p class="lede" style="max-width:64ch">Articles on his ideas and on justice, equality and dignity in India today. Every article is open for discussion.</p>
+      <span class="eyebrow">{t('Blog & discussion', 'ब्लॉग आणि चर्चा')}</span>
+      <h1 style="font-size:var(--step-4)">{t('Ideas that still matter', 'आजही महत्त्वाचे विचार')}</h1>
+      <p class="lede" style="max-width:64ch">{t('Articles on his ideas and on justice, equality and dignity in India today. Every article is open for discussion.', 'त्यांच्या विचारांवर आणि आजच्या भारतातील न्याय, समता आणि प्रतिष्ठा यांवर लेख. प्रत्येक लेखावर चर्चा करता येते.')}</p>
       <div class="btn-row" style="margin-top:20px">
-        <a class="btn btn-light" href={url('/news/')}>Latest news →</a>
-        <a class="btn btn-ghost" href={url('/contribute/#write')}>Write for us</a>
-        <a class="btn btn-ghost" href={url('/rss.xml')}>RSS feed</a>
+        <a class="btn btn-light" href={url('/news/')}>{t('Latest news →', 'ताज्या बातम्या →')}</a>
+        <a class="btn btn-ghost" href={url('/contribute/#write')}>{t('Write for us', 'आमच्यासाठी लिहा')}</a>
+        <a class="btn btn-ghost" href={url('/rss.xml')}>{t('RSS feed', 'RSS फीड')}</a>
       </div>
     </div>
   </section>
@@ -24,7 +32,7 @@ const posts = (await getCollection('blog')).filter((p) => !p.data.draft).sort((a
       {posts.map((p) => (
         <a class="card" href={url(`/blog/${p.id}/`)}>
           <div class="card-body">
-            <span class="card-meta">{p.data.date.toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' })} · {p.data.author}</span>
+            <span class="card-meta">{date(p.data.date)} · {p.data.author}</span>
             <h3>{p.data.title}</h3>
             <p>{p.data.description}</p>
           </div>

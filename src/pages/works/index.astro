@@ -6,8 +6,15 @@ import { loadJSON, type Work } from '../../lib/data';
 import { url } from '../../lib/site';
 import { volumes, coverOf } from '../../lib/library';
 import { bawsVolumeId, bawsReaderPath } from '../../lib/sources.mjs';
+import { getLang, translator } from '../../i18n';
+const lang = getLang(Astro);
+const t = translator(lang);
+const mr = lang === 'mr';
 
-const works = loadJSON<Work[]>('works', []).sort((a, b) => Number(a.year || 9999) - Number(b.year || 9999));
+const byYear = (a: Work, b: Work) => Number(a.year || 9999) - Number(b.year || 9999);
+const works = loadJSON<Work[]>('works', [], lang).sort(byYear);
+// English titles stay searchable on the Marathi page too.
+const englishTitle = new Map(loadJSON<Work[]>('works', []).map((w) => [w.id, w.title]));
 const types = [...new Set(works.map((w) => w.type))].sort();
 const topics = [...new Set(works.flatMap((w) => w.topics || []))].sort();
 const vols = volumes();
@@ -18,51 +25,71 @@ const bookOf = (w: Work) => {
   const here = b ? bawsReaderPath(b) : null;
   return { cover: vol ? url(coverOf(vol)) : null, read: here ? url(here) : null, label: vol?.label };
 };
-const statusLabel: Record<string, string> = {
+const TYPES: Record<string, [string, string]> = {
+  article: ['Article', 'लेख'], autobiographical: ['Autobiographical', 'आत्मकथनपर'], book: ['Book', 'ग्रंथ'], essay: ['Essay', 'निबंध'],
+  evidence: ['Evidence', 'साक्ष'], journal: ['Newspaper', 'वृत्तपत्र'], letters: ['Letters', 'पत्रे'], manuscript: ['Manuscript', 'हस्तलिखित'],
+  memorandum: ['Memorandum', 'निवेदन-पत्र'], pamphlet: ['Pamphlet', 'पुस्तिका'], paper: ['Paper', 'शोधनिबंध'], preface: ['Preface', 'प्रस्तावना'],
+  review: ['Review', 'परीक्षण'], statement: ['Statement', 'निवेदन'], thesis: ['Thesis', 'प्रबंध'],
+};
+const TOPICS: Record<string, [string, string]> = {
+  buddhism: ['Buddhism', 'बौद्ध धम्म'], caste: ['Caste', 'जात'], constitution: ['Constitution', 'संविधान'], economics: ['Economics', 'अर्थशास्त्र'],
+  education: ['Education', 'शिक्षण'], history: ['History', 'इतिहास'], journalism: ['Journalism', 'पत्रकारिता'], labour: ['Labour', 'कामगार'],
+  law: ['Law', 'कायदा'], politics: ['Politics', 'राजकारण'], religion: ['Religion', 'धर्म'], women: ['Women', 'स्त्रिया'],
+};
+const label = (map: Record<string, [string, string]>, k: string) => (map[k] ? map[k][mr ? 1 : 0] : k);
+const statusLabel: Record<string, string> = mr ? {
+  'published-in-lifetime': 'हयातीत प्रकाशित',
+  posthumous: 'निधनानंतर प्रकाशित',
+  unfinished: 'अपूर्ण',
+  unpublished: 'अप्रकाशित',
+  lost: 'हरवलेले',
+} : {
   'published-in-lifetime': 'Published in his lifetime',
   posthumous: 'Published after his death',
   unfinished: 'Unfinished',
   unpublished: 'Unpublished',
   lost: 'Lost',
 };
+const LANGUAGE: Record<string, string> = { English: 'इंग्रजी', Marathi: 'मराठी', 'English / Marathi': 'इंग्रजी / मराठी', 'Pali / Marathi': 'पाली / मराठी' };
+const language = (l: string) => (mr ? LANGUAGE[l] || l : l);
 ---
-<Base title="All Works" description="Every known book, thesis, essay, paper, newspaper and statement by Dr. B. R. Ambedkar — explained simply, with links to read the original or find the physical copy.">
+<Base title={t('All Works', 'सर्व साहित्य')} description={t('Every known book, thesis, essay, paper, newspaper and statement by Dr. B. R. Ambedkar — explained simply, with links to read the original or find the physical copy.', 'डॉ. बाबासाहेब आंबेडकर यांचे प्रत्येक ज्ञात पुस्तक, प्रबंध, निबंध, शोधनिबंध, वृत्तपत्र आणि निवेदन — सोप्या भाषेत, मूळ वाचण्याच्या किंवा प्रत्यक्ष प्रत शोधण्याच्या दुव्यांसह.')}>
   <section class="hero">
     <Chakra class="chakra-bg" />
     <div class="wrap section-tight">
-      <span class="eyebrow">His work</span>
-      <h1 style="font-size:var(--step-4)">Everything he wrote</h1>
-      <p class="lede" style="max-width:64ch">{works.length} books, theses, essays, papers, newspapers and statements, from 1915 to 1956 — each explained in a few simple lines, with links to read it here, download the official PDF, or find the library that holds the original.</p>
+      <span class="eyebrow">{t('His work', 'त्यांचे साहित्य')}</span>
+      <h1 style="font-size:var(--step-4)">{t('Everything he wrote', 'त्यांनी लिहिलेले सर्व')}</h1>
+      <p class="lede" style="max-width:64ch">{t(`${works.length} books, theses, essays, papers, newspapers and statements, from 1915 to 1956 — each explained in a few simple lines, with links to read it here, download the official PDF, or find the library that holds the original.`, `1915 ते 1956 मधील ${works.length} ग्रंथ, प्रबंध, निबंध, शोधनिबंध, वृत्तपत्रे आणि निवेदने — प्रत्येक काही सोप्या ओळींत समजावलेले; येथे वाचण्याच्या, अधिकृत PDF डाउनलोड करण्याच्या किंवा मूळ प्रत असलेले ग्रंथालय शोधण्याच्या दुव्यांसह.`)}</p>
       <div class="btn-row" style="margin-top:20px">
-        <a class="btn btn-primary btn-beam" href={url('/library/')}><span>Read all 17 volumes →</span></a>
-        <a class="btn btn-ghost" href={url('/works/speeches/')}>Speeches</a>
-        <a class="btn btn-ghost" href={url('/works/archives/')}>Where the originals are</a>
-        <a class="btn btn-ghost" href={url('/works/journals/')}>His newspapers</a>
+        <a class="btn btn-primary btn-beam" href={url('/library/')}><span>{t('Read all 17 volumes →', 'सर्व 17 खंड वाचा →')}</span></a>
+        <a class="btn btn-ghost" href={url('/works/speeches/')}>{t('Speeches', 'भाषणे')}</a>
+        <a class="btn btn-ghost" href={url('/works/archives/')}>{t('Where the originals are', 'मूळ प्रती कुठे आहेत')}</a>
+        <a class="btn btn-ghost" href={url('/works/journals/')}>{t('His newspapers', 'त्यांची वृत्तपत्रे')}</a>
       </div>
     </div>
   </section>
   <div class="wrap section-tight">
     <div class="toolbar">
-      <label class="visually-hidden" for="wq">Search works</label>
-      <input class="search-input" id="wq" type="search" placeholder="Search by title, topic or year…" />
-      <div class="filter-row" role="group" aria-label="Type">
-        <button class="chip" type="button" data-type="all" aria-pressed="true">All types</button>
-        {types.map((t) => <button class="chip" type="button" data-type={t} aria-pressed="false">{t}</button>)}
+      <label class="visually-hidden" for="wq">{t('Search works', 'साहित्य शोधा')}</label>
+      <input class="search-input" id="wq" type="search" placeholder={t('Search by title, topic or year…', 'शीर्षक, विषय किंवा वर्षाने शोधा…')} />
+      <div class="filter-row" role="group" aria-label={t('Type', 'प्रकार')}>
+        <button class="chip" type="button" data-type="all" aria-pressed="true">{t('All types', 'सर्व प्रकार')}</button>
+        {types.map((ty) => <button class="chip" type="button" data-type={ty} aria-pressed="false">{label(TYPES, ty)}</button>)}
       </div>
-      <label class="visually-hidden" for="wt">Topic</label>
+      <label class="visually-hidden" for="wt">{t('Topic', 'विषय')}</label>
       <select class="search-input" id="wt">
-        <option value="">All topics</option>
-        {topics.map((t) => <option value={t}>{t}</option>)}
+        <option value="">{t('All topics', 'सर्व विषय')}</option>
+        {topics.map((tp) => <option value={tp}>{label(TOPICS, tp)}</option>)}
       </select>
-      <p class="count" aria-live="polite"><span id="wcount">{works.length}</span> works shown</p>
+      <p class="count" aria-live="polite">{mr ? <><span id="wcount">{works.length}</span> साहित्यकृती दिसत आहेत</> : <><span id="wcount">{works.length}</span> works shown</>}</p>
     </div>
     <div class="list-stack works-shelf" id="works">
       {works.map((w) => (
-        <article class="work work-book" id={w.id} data-type={w.type} data-topics={(w.topics || []).join(' ')} data-search={[w.title, ...(w.altTitles || []), w.year, w.summary, (w.topics || []).join(' ')].join(' ').toLowerCase()}>
+        <article class="work work-book" id={w.id} data-type={w.type} data-topics={(w.topics || []).join(' ')} data-search={[w.title, englishTitle.get(w.id), ...(w.altTitles || []), w.year, w.summary, ...(w.topics || []).map((tp) => `${tp} ${label(TOPICS, tp)}`)].join(' ').toLowerCase()}>
           {(() => {
             const bk = bookOf(w);
             return bk.cover ? (
-              <a class="book-cover sm" href={bk.read ?? '#'} aria-label={`Read ${w.title}`} tabindex="-1">
+              <a class="book-cover sm" href={bk.read ?? '#'} aria-label={`${t('Read', 'वाचा')}: ${w.title}`} tabindex="-1">
                 <img src={bk.cover} alt="" width="120" height="180" loading="lazy" decoding="async" />
                 <span class="book-spine" aria-hidden="true"></span>
               </a>
@@ -73,28 +100,28 @@ const statusLabel: Record<string, string> = {
           <div class="work-body">
           <div class="meta">
             <span>{w.year}{w.yearNote ? ` (${w.yearNote})` : ''}</span>
-            <span>{w.type}</span>
+            <span>{label(TYPES, w.type)}</span>
             {w.status && <span>{statusLabel[w.status] || w.status}</span>}
-            {w.language && <span>{w.language}</span>}
+            {w.language && <span>{language(w.language)}</span>}
           </div>
           <h3>{w.title}</h3>
           {w.summary && <p style="margin:0 0 6px">{w.summary}</p>}
-          {w.whyItMatters && <p class="why" style="margin:0"><strong>Why it matters:</strong> {w.whyItMatters}</p>}
+          {w.whyItMatters && <p class="why" style="margin:0"><strong>{t('Why it matters:', 'हे का महत्त्वाचे:')}</strong> {w.whyItMatters}</p>}
           <div class="links"><WorkLinks baws={w.baws} online={w.online} /></div>
           {(w.physical?.length || w.sources?.length) ? (
             <details>
-              <summary>Physical copies and sources</summary>
+              <summary>{t('Physical copies and sources', 'प्रत्यक्ष प्रती आणि संदर्भ')}</summary>
               {w.physical?.length ? (
-                <ul>{w.physical.map((p) => <li><strong>{p.holder}</strong>{p.location && `, ${p.location}`}{p.note && ` — ${p.note}`} {p.url && <a class="src" href={p.url} target="_blank" rel="noopener noreferrer">details</a>}</li>)}</ul>
+                <ul>{w.physical.map((p) => <li><strong>{p.holder}</strong>{p.location && `, ${p.location}`}{p.note && ` — ${p.note}`} {p.url && <a class="src" href={p.url} target="_blank" rel="noopener noreferrer">{t('details', 'तपशील')}</a>}</li>)}</ul>
               ) : null}
-              {w.sources?.length ? <p>Sources: {w.sources.map((s, i) => <a class="src" href={s} target="_blank" rel="noopener noreferrer">{`source ${i + 1}`}</a>)}</p> : null}
+              {w.sources?.length ? <p>{t('Sources:', 'संदर्भ:')} {w.sources.map((s, i) => <a class="src" href={s} target="_blank" rel="noopener noreferrer">{t(`source ${i + 1}`, `संदर्भ ${i + 1}`)}</a>)}</p> : null}
             </details>
           ) : null}
           </div>
         </article>
       ))}
     </div>
-    {works.length === 0 && <p class="notice">The catalogue of works is being compiled.</p>}
+    {works.length === 0 && <p class="notice">{t('The catalogue of works is being compiled.', 'साहित्याची सूची तयार केली जात आहे.')}</p>}
   </div>
   <script is:inline>
     (function () {
@@ -109,8 +136,7 @@ const statusLabel: Record<string, string> = {
         count.textContent = n;
       }
       q.addEventListener('input', apply); topic.addEventListener('change', apply);
-      document.querySelectorAll('[data-type]').forEach(function (b) {
-        if (b.tagName !== 'BUTTON') return;
+      document.querySelectorAll('button[data-type]').forEach(function (b) {
         b.addEventListener('click', function () {
           type = b.dataset.type;
           document.querySelectorAll('button[data-type]').forEach(function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });

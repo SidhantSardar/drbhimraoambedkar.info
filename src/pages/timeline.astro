@@ -2,25 +2,30 @@
 import Base from '../layouts/Base.astro';
 import Chakra from '../components/Chakra.astro';
 import { chapters, themes, loadJSON } from '../lib/data';
-import { url, formatDate } from '../lib/site';
+import { url } from '../lib/site';
+import { getLang, translator, formatDateIn } from '../i18n';
+const lang = getLang(Astro);
+const t = translator(lang);
 
-type Item = { date: string; label: string; source?: string; chapter: string; chapterTitle: string; href: string };
+// `key` is the English wording, used to spot duplicates in either language.
+type Item = { date: string; label: string; key: string; source?: string; chapter: string; chapterTitle: string; href: string };
 const items: Item[] = [];
-for (const c of await chapters()) {
-  for (const k of c.data.keyDates) items.push({ ...k, chapter: c.id, chapterTitle: c.data.title, href: `/life/${c.id}/` });
-}
-for (const t of await themes()) {
-  for (const k of t.data.keyDates) items.push({ ...k, chapter: t.id, chapterTitle: t.data.title, href: `/themes/${t.id}/` });
-}
+const add = (en: any[], here: any[], kind: string) => en.forEach((c, i) => {
+  const local = here[i] || c;
+  c.data.keyDates.forEach((k: any, j: number) => items.push({ ...k, key: k.label, label: local.data.keyDates[j]?.label || k.label, chapter: c.id, chapterTitle: local.data.title, href: `/${kind}/${c.id}/` }));
+});
+add(await chapters(), await chapters(lang), 'life');
+add(await themes(), await themes(lang), 'themes');
 const constitution = loadJSON<any>('constitution', {});
-for (const k of constitution.timeline || []) {
-  items.push({ date: k.date, label: k.label, source: k.source, chapter: 'constitution', chapterTitle: 'The Constitution', href: '/constitution/' });
-}
+const constitutionHere = loadJSON<any>('constitution', {}, lang);
+(constitution.timeline || []).forEach((k: any, i: number) => {
+  items.push({ date: k.date, label: constitutionHere.timeline?.[i]?.label || k.label, key: k.label, source: k.source, chapter: 'constitution', chapterTitle: t('The Constitution', 'संविधान'), href: '/constitution/' });
+});
 
 // Remove exact duplicates (same date and same wording).
 const seen = new Set<string>();
 const unique = items.filter((i) => {
-  const key = `${i.date}|${i.label.toLowerCase().replace(/[^a-z0-9]/g, '')}`;
+  const key = `${i.date}|${i.key.toLowerCase().replace(/[^a-z0-9]/g, '')}`;
   if (seen.has(key)) return false;
   seen.add(key);
   return true;
@@ -29,10 +34,10 @@ unique.sort((a, b) => String(a.date).localeCompare(String(b.date)));
 
 const decadeOf = (d: string) => {
   const y = Number(String(d).slice(0, 4));
-  if (!y) return 'Undated';
-  if (y < 1890) return 'Before 1890';
-  if (y >= 1960) return '1960 – today';
-  return `${Math.floor(y / 10) * 10}s`;
+  if (!y) return t('Undated', 'तारीख अज्ञात');
+  if (y < 1890) return t('Before 1890', '1890 पूर्वी');
+  if (y >= 1960) return t('1960 – today', '1960 – आजपर्यंत');
+  return t(`${Math.floor(y / 10) * 10}s`, `${Math.floor(y / 10) * 10} चे दशक`);
 };
 const groups = new Map<string, Item[]>();
 for (const i of unique) {
@@ -42,18 +47,18 @@ for (const i of unique) {
 }
 const filters = [...new Map(unique.map((i) => [i.chapter, i.chapterTitle])).entries()];
 ---
-<Base title="Timeline" description="Every key date in the life and work of Dr. B. R. Ambedkar, from before his birth to today — each with a source.">
+<Base title={t('Timeline', 'कालपट')} description={t('Every key date in the life and work of Dr. B. R. Ambedkar, from before his birth to today — each with a source.', 'डॉ. बाबासाहेब आंबेडकर यांच्या जीवन आणि कार्यातील प्रत्येक महत्त्वाची तारीख, त्यांच्या जन्मापूर्वीपासून आजपर्यंत — प्रत्येक संदर्भासह.')}>
   <section class="hero">
     <Chakra class="chakra-bg" />
     <div class="wrap section-tight">
-      <span class="eyebrow">Timeline</span>
-      <h1 style="font-size:var(--step-4)">{unique.length} moments, one life</h1>
-      <p class="lede" style="max-width:62ch">Scroll through the decades, or pick a chapter to see only its events. Each event links to its source and to the chapter that tells the full story.</p>
+      <span class="eyebrow">{t('Timeline', 'कालपट')}</span>
+      <h1 style="font-size:var(--step-4)">{t(`${unique.length} moments, one life`, `${unique.length} क्षण, एक जीवन`)}</h1>
+      <p class="lede" style="max-width:62ch">{t('Scroll through the decades, or pick a chapter to see only its events. Each event links to its source and to the chapter that tells the full story.', 'दशकांमधून पुढे जा, किंवा फक्त त्या प्रकरणातील घटना पाहण्यासाठी एखादे प्रकरण निवडा. प्रत्येक घटनेसोबत तिचा संदर्भ आणि संपूर्ण कथा सांगणाऱ्या प्रकरणाचा दुवा आहे.')}</p>
     </div>
   </section>
   <div class="narrow section-tight">
-    <div class="tl-filters" role="group" aria-label="Filter by chapter">
-      <button class="chip" type="button" data-filter="all" aria-pressed="true">All</button>
+    <div class="tl-filters" role="group" aria-label={t('Filter by chapter', 'प्रकरणानुसार निवडा')}>
+      <button class="chip" type="button" data-filter="all" aria-pressed="true">{t('All', 'सर्व')}</button>
       {filters.map(([id, title]) => <button class="chip" type="button" data-filter={id} aria-pressed="false">{title}</button>)}
     </div>
     {[...groups.entries()].map(([decade, list]) => (
@@ -62,18 +67,18 @@ const filters = [...new Map(unique.map((i) => [i.chapter, i.chapterTitle])).entr
         <ol class="tl-list">
           {list.map((i) => (
             <li class="tl-item" data-chapter={i.chapter}>
-              <time datetime={i.date}>{formatDate(i.date)}</time>
+              <time datetime={i.date}>{formatDateIn(i.date, lang)}</time>
               <p>{i.label}</p>
               <div class="tl-links">
                 <a href={url(i.href)}>{i.chapterTitle} →</a>
-                {i.source && <a class="src" href={i.source} target="_blank" rel="noopener noreferrer">source</a>}
+                {i.source && <a class="src" href={i.source} target="_blank" rel="noopener noreferrer">{t('source', 'संदर्भ')}</a>}
               </div>
             </li>
           ))}
         </ol>
       </section>
     ))}
-    {unique.length === 0 && <p class="notice">The timeline fills in automatically as chapters are added.</p>}
+    {unique.length === 0 && <p class="notice">{t('The timeline fills in automatically as chapters are added.', 'प्रकरणे जोडली जातील तसा कालपट आपोआप भरतो.')}</p>}
   </div>
   <script is:inline>
     (function () {

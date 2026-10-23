@@ -4,6 +4,7 @@ import '../styles/skin-ai.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { SITE, url } from '../lib/site';
+import { getLang, pathIn } from '../i18n';
 
 interface Props {
   title?: string;
@@ -15,24 +16,32 @@ interface Props {
 const { title, description = SITE.description, image, progress = false, noindex = false } = Astro.props;
 // Optional visual skin, chosen at build time (PUBLIC_SKIN=ai for the AI SaaS look).
 const skin = import.meta.env.PUBLIC_SKIN || undefined;
-const fullTitle = title ? `${title} · Dr. B. R. Ambedkar` : SITE.title;
+const lang = getLang(Astro);
+const mr = lang === 'mr';
+const fullTitle = title ? `${title} · ${mr ? 'डॉ. बाबासाहेब आंबेडकर' : 'Dr. B. R. Ambedkar'}` : mr ? SITE.mrTitle : SITE.title;
+const metaDescription = description === SITE.description && mr ? SITE.mrDescription : description;
 const canonical = new URL(Astro.url.pathname, Astro.site);
+const alternate = (to: 'en' | 'mr') => new URL(pathIn(Astro.url.pathname, to), Astro.site).toString();
 const ogImage = image ? new URL(image, Astro.site).toString() : undefined;
 ---
 <!doctype html>
-<html lang="en" data-skin={skin}>
+<html lang={lang} data-skin={skin}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{fullTitle}</title>
-    <meta name="description" content={description} />
+    <meta name="description" content={metaDescription} />
     <link rel="canonical" href={canonical} />
+    <link rel="alternate" hreflang="en" href={alternate('en')} />
+    <link rel="alternate" hreflang="mr" href={alternate('mr')} />
+    <link rel="alternate" hreflang="x-default" href={alternate('en')} />
     <link rel="icon" href={url('/favicon.svg')} type="image/svg+xml" />
     <meta name="theme-color" content="#f7f2e8" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content={SITE.domain} />
     <meta property="og:title" content={fullTitle} />
-    <meta property="og:description" content={description} />
+    <meta property="og:description" content={metaDescription} />
+    <meta property="og:locale" content={mr ? 'mr_IN' : 'en_IN'} />
     <meta property="og:url" content={canonical} />
     {ogImage && <meta property="og:image" content={ogImage} />}
     <meta name="twitter:card" content={ogImage ? 'summary_large_image' : 'summary'} />
@@ -43,7 +52,7 @@ const ogImage = image ? new URL(image, Astro.site).toString() : undefined;
     <slot name="head" />
   </head>
   <body>
-    <a class="skip-link" href="#main">Skip to content</a>
+    <a class="skip-link" href="#main">{mr ? 'मुख्य मजकुराकडे जा' : 'Skip to content'}</a>
     {progress && <div class="progress" aria-hidden="true"></div>}
     <Header />
     <main id="main">

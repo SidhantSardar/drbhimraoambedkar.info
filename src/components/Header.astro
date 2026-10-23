@@ -1,37 +1,48 @@
 ---
 import Chakra from './Chakra.astro';
 import { NAV, url } from '../lib/site';
+import { getLang, pathIn } from '../i18n';
+const lang = getLang(Astro);
+const mr = lang === 'mr';
+const bilingual = process.env.SKIP_MARATHI !== '1';
 const current = Astro.url.pathname;
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
-const here = (href: string) => current === base + href || (href !== '/' && current.startsWith(base + href));
+const here = (href: string) => {
+  const target = pathIn(base + href, lang);
+  return current === target || (href !== '/' && current.startsWith(target));
+};
 ---
 <header class="site-header" id="top">
   <div class="wrap bar">
-    <a class="brand" href={url('/')} aria-label="Dr. Bhimrao Ambedkar — home">
+    <a class="brand" href={url('/')} aria-label={mr ? 'डॉ. भीमराव आंबेडकर — मुख्यपृष्ठ' : 'Dr. Bhimrao Ambedkar — home'}>
       <Chakra />
-      <span class="brand-name">Dr. Bhimrao Ambedkar<small>His life and work, together</small></span>
+      <span class="brand-name">{mr ? 'डॉ. भीमराव आंबेडकर' : 'Dr. Bhimrao Ambedkar'}<small>{mr ? 'जीवन आणि कार्य, एकाच ठिकाणी' : 'His life and work, together'}</small></span>
     </a>
     <nav class="site-nav" id="site-nav" aria-label="Main">
       <ul>
         {NAV.map((g) => g.items ? (
           <li class="has-menu">
             <details>
-              <summary class={g.items.some((i) => here(i.href)) ? 'active' : undefined}>{g.label}</summary>
+              <summary class={g.items.some((i) => here(i.href)) ? 'active' : undefined}>{mr ? g.mr : g.label}</summary>
               <ul class="menu">
                 {g.items.map((i) => (
-                  <li><a href={url(i.href)} aria-current={here(i.href) ? 'page' : undefined}>{i.label}{i.hint && <small>{i.hint}</small>}</a></li>
+                  <li><a href={url(i.href)} aria-current={here(i.href) ? 'page' : undefined}>{mr ? i.mr : i.label}{i.hint && <small>{mr ? i.mrHint : i.hint}</small>}</a></li>
                 ))}
               </ul>
             </details>
           </li>
         ) : (
-          <li><a href={url(g.href!)} aria-current={here(g.href!) ? 'page' : undefined}>{g.label}</a></li>
+          <li><a href={url(g.href!)} aria-current={here(g.href!) ? 'page' : undefined}>{mr ? g.mr : g.label}</a></li>
         ))}
       </ul>
     </nav>
     <div class="header-actions">
-      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" id="nav-toggle">
-        <span aria-hidden="true">☰</span> Menu
+      {bilingual && <div class="lang-switch" role="group" aria-label={mr ? 'भाषा' : 'Language'}>
+        <a href={pathIn(current, 'en')} hreflang="en" lang="en" data-lang-switch aria-current={mr ? undefined : 'true'}>EN</a>
+        <a href={pathIn(current, 'mr')} hreflang="mr" lang="mr" data-lang-switch aria-current={mr ? 'true' : undefined}>मराठी</a>
+      </div>}
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" id="nav-toggle" data-open={mr ? ' बंद करा' : ' Close'} data-closed={mr ? ' मेनू' : ' Menu'}>
+        <span aria-hidden="true">☰</span>{mr ? ' मेनू' : ' Menu'}
       </button>
     </div>
   </div>
@@ -42,7 +53,7 @@ const here = (href: string) => current === base + href || (href !== '/' && curre
     btn.addEventListener('click', function () {
       var open = document.body.classList.toggle('nav-open');
       btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-      btn.lastChild.textContent = open ? ' Close' : ' Menu';
+      btn.lastChild.textContent = open ? btn.dataset.open : btn.dataset.closed;
     });
     var menus = document.querySelectorAll('.site-nav details');
     var desktop = window.matchMedia('(min-width: 1080px)');
@@ -60,6 +71,15 @@ const here = (href: string) => current === base + href || (href !== '/' && curre
       if (e.key !== 'Escape') return;
       menus.forEach(function (d) { d.open = false; });
       if (document.body.classList.contains('nav-open')) btn.click();
+    });
+    // Mouse users: menus open on hover and close shortly after the pointer leaves.
+    var hover = window.matchMedia('(hover: hover) and (min-width: 1080px)');
+    menus.forEach(function (d) {
+      var li = d.parentElement, timer = 0;
+      li.addEventListener('mouseenter', function () { if (!hover.matches) return; clearTimeout(timer); d.open = true; });
+      li.addEventListener('mouseleave', function () { if (!hover.matches) return; timer = setTimeout(function () { d.open = false; }, 200); });
+      // A mouse click on an already-open (hovered) menu keeps it open; keyboard Enter still toggles it.
+      d.querySelector('summary').addEventListener('click', function (e) { if (hover.matches && e.detail > 0) { e.preventDefault(); d.open = true; } });
     });
     // On phones, show every group open inside the menu.
     if (!desktop.matches) menus.forEach(function (d) { d.open = true; });

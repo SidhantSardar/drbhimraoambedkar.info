@@ -1,11 +1,19 @@
 ---
 // Left-hand navigation of the documentation-style reader: the volume's parts, chapters and sub-parts.
-import { tocOf, coverOf, type Volume } from '../lib/library';
+import { tocOf, coverOf, titleIn, volLabelIn, volTitleIn, leafTranslated, type Volume } from '../lib/library';
 import { url } from '../lib/site';
+import { getLang, translator } from '../i18n';
 
 interface Props { vol: Volume; current?: string }
 const { vol, current } = Astro.props;
+const lang = getLang(Astro);
+const t = translator(lang);
 const chapters = tocOf(vol);
+const name = (s: string) => titleIn(vol, s, lang);
+// On the Marathi site, hovering a title shows the original English title.
+const tip = (s: string) => (lang === 'mr' && name(s) !== s ? s : undefined);
+// In Marathi, chapters that have been translated carry a small mark.
+const mark = (parts: { start: number; end: number; slug: string; title: string }[]) => lang === 'mr' && parts.every((p) => leafTranslated(vol, p));
 
 // Group consecutive chapters under their printed Part / Section / Book heading.
 type G = { name: string; items: typeof chapters };
@@ -17,30 +25,30 @@ for (const c of chapters) {
 }
 const isCurrent = (c: (typeof chapters)[number]) => c.parts.some((p) => p.slug === current);
 ---
-<aside class="docs-nav" aria-label={`Contents of ${vol.label}`}>
+<aside class="docs-nav" aria-label={t(`Contents of ${vol.label}`, `${volLabelIn(vol, lang)} — अनुक्रमणिका`)}>
   <a class="docs-vol" href={url(`/library/${vol.id}/`)}>
     <img src={url(coverOf(vol))} alt="" width="56" height="86" loading="lazy" />
-    <span><small>{vol.label}</small>{vol.title}</span>
+    <span title={lang === 'mr' ? vol.title : undefined}><small>{volLabelIn(vol, lang)}</small>{volTitleIn(vol, lang)}</span>
   </a>
   <label class="docs-filter">
-    <span class="visually-hidden">Filter chapters</span>
-    <input type="search" placeholder="Filter chapters…" data-docs-filter />
+    <span class="visually-hidden">{t('Filter chapters', 'प्रकरणे शोधा')}</span>
+    <input type="search" placeholder={t('Filter chapters…', 'प्रकरणे शोधा…')} data-docs-filter />
   </label>
   <nav>
     {groups.map((g) => (
       <div class="docs-group">
-        {g.name && <p class="docs-group-name">{g.name}</p>}
+        {g.name && <p class="docs-group-name" title={tip(g.name)}>{name(g.name)}</p>}
         <ul>
           {g.items.map((c) => (
-            <li class:list={[{ open: isCurrent(c) }]} data-title={c.title.toLowerCase()}>
+            <li class:list={[{ open: isCurrent(c) }]} data-title={`${c.title} ${name(c.title)}`.toLowerCase()}>
               {c.parts.length === 1 ? (
-                <a href={url(`/library/${vol.id}/${c.parts[0].slug}/`)} aria-current={c.parts[0].slug === current ? 'page' : undefined}>{c.title}</a>
+                <a href={url(`/library/${vol.id}/${c.parts[0].slug}/`)} aria-current={c.parts[0].slug === current ? 'page' : undefined} title={tip(c.title)}>{name(c.title)}{mark(c.parts) && <span class="mr-badge" title="मराठी अनुवाद उपलब्ध">मराठी</span>}</a>
               ) : (
                 <details open={isCurrent(c)}>
-                  <summary>{c.title}</summary>
+                  <summary title={tip(c.title)}>{name(c.title)}{mark(c.parts) && <span class="mr-badge" title="मराठी अनुवाद उपलब्ध">मराठी</span>}</summary>
                   <ul>
                     {c.parts.map((p) => (
-                      <li><a href={url(`/library/${vol.id}/${p.slug}/`)} aria-current={p.slug === current ? 'page' : undefined}>{p.title} <small>pp. {p.start}–{p.end}</small></a></li>
+                      <li><a href={url(`/library/${vol.id}/${p.slug}/`)} aria-current={p.slug === current ? 'page' : undefined}>{name(p.title)} <small>{t('pp.', 'पृ.')} {p.start}–{p.end}</small></a></li>
                     ))}
                   </ul>
                 </details>

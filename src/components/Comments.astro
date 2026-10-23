@@ -2,17 +2,19 @@
 // Comments are stored as GitHub Discussions in the site's repository via giscus (https://giscus.app).
 // Readers sign in with GitHub to comment; everyone can read the discussion.
 import { GISCUS, SITE } from '../lib/site';
+import { getLang, translator } from '../i18n';
 interface Props { term: string }
 const { term } = Astro.props;
+const t = translator(getLang(Astro));
 const ready = GISCUS.repoId && GISCUS.categoryId;
 ---
 <section class="callout" style="margin-top:48px" aria-labelledby="comments-h">
-  <h2 id="comments-h" style="font-size:var(--step-1)">Discussion</h2>
-  <p class="muted" style="font-size:0.92rem">Comments are public and saved in this site's <a href={`${SITE.repoUrl}/discussions`} target="_blank" rel="noopener noreferrer">GitHub Discussions</a>. Please be respectful and back up facts with a source.</p>
+  <h2 id="comments-h" style="font-size:var(--step-1)">{t('Discussion', 'चर्चा')}</h2>
+  <p class="muted" style="font-size:0.92rem">{t("Comments are public and saved in this site's", 'प्रतिक्रिया सार्वजनिक असतात आणि या संकेतस्थळाच्या')} <a href={`${SITE.repoUrl}/discussions`} target="_blank" rel="noopener noreferrer">GitHub Discussions</a>{t('. Please be respectful and back up facts with a source.', ' मध्ये जतन होतात. कृपया आदराने लिहा आणि तथ्यांसाठी संदर्भ द्या.')}</p>
   {ready ? (
     <div class="giscus"></div>
   ) : (
-    <p class="notice">Comments will appear here once the discussion board is connected.</p>
+    <p class="notice">{t('Comments will appear here once the discussion board is connected.', 'चर्चा फलक जोडल्यानंतर प्रतिक्रिया येथे दिसतील.')}</p>
   )}
   {ready && (
     <script

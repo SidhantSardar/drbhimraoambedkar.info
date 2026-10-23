@@ -28,8 +28,8 @@
   --glass-border: rgb(255 255 255 / 10%);
   --glass-hi: rgb(255 255 255 / 16%);
   --card-shadow: 0 1px 0 rgb(255 255 255 / 6%) inset, 0 20px 60px rgb(0 0 0 / 45%);
-  --font-serif: 'DM Sans Variable', 'DM Sans', system-ui, sans-serif;
-  --font-mono: ui-monospace, 'SF Mono', 'JetBrains Mono', Menlo, Consolas, monospace;
+  --font-serif: 'DM Sans Variable', 'DM Sans', 'Noto Sans Devanagari Variable', system-ui, sans-serif;
+  --font-mono: ui-monospace, 'SF Mono', 'JetBrains Mono', Menlo, Consolas, 'Noto Sans Devanagari Variable', monospace;
   color-scheme: dark;
 }
 
@@ -330,3 +330,16 @@
 [data-skin='ai'] .docs-toc a { color: #e6e9f3; }
 [data-skin='ai'] .docs-toc a:hover { color: var(--cyan-2); }
 [data-skin='ai'] .docs-toc-title { background: none; color: #fff; -webkit-text-fill-color: currentColor; }
+
+/* ---------- Language switch ---------- */
+[data-skin='ai'] .lang-switch { border-color: rgb(125 211 252 / 28%); background: rgb(255 255 255 / 3%); }
+[data-skin='ai'] .lang-switch a { color: #b9c0d4; }
+[data-skin='ai'] .lang-switch a:hover { color: #fff; }
+[data-skin='ai'] .lang-switch a[aria-current='true'] { background: linear-gradient(135deg, #7dd3fc, #38bdf8 50%, #2563eb); color: #03111f; box-shadow: 0 0 16px rgb(56 189 248 / 40%); }
+
+/* Marathi reader */
+[data-skin='ai'] .mr-badge { background: linear-gradient(135deg, #7dd3fc, #38bdf8); color: #03111f; }
+[data-skin='ai'] .mr-translation-note { border-color: rgb(125 211 252 / 18%); border-left-color: var(--led); background: rgb(56 189 248 / 5%); }
+[data-skin='ai'] .in-simple { border-color: rgb(125 211 252 / 22%); background: var(--hud), linear-gradient(160deg, rgb(125 211 252 / 9%), rgb(29 78 216 / 5%)); }
+[data-skin='ai'] .in-simple h2 { background: none; color: #7dd3fc; -webkit-text-fill-color: currentColor; filter: none; }
+[data-skin='ai'] .docs .reader-en { color: #b9c0d4; border-left-color: rgb(125 211 252 / 25%); }

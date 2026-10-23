@@ -2,17 +2,20 @@
 // "Read now" opens the exact chapter in this site's reader; the official PDF is a small secondary link.
 import { fixBawsUrl, bawsReaderPath } from '../lib/sources.mjs';
 import { url } from '../lib/site';
+import { getLang, translator } from '../i18n';
 interface Props { baws?: { volume?: string; pages?: string; url?: string }[]; online?: { label: string; url: string }[] }
 const { baws: rawBaws = [], online = [] } = Astro.props;
+const t = translator(getLang(Astro));
 const baws = rawBaws.map((b) => {
   const here = bawsReaderPath(b);
   return { ...b, url: fixBawsUrl(b.url), here: here ? url(here) : null };
 });
+const vol = (v = '') => t(`Vol. ${v}`, `खंड ${v.replace('Part', 'भाग')}`);
 ---
 {baws.map((b) => (
   <>
-    {b.here && <a class="read-now" href={b.here}>Read now <span>· Vol. {b.volume}{b.pages ? `, pp. ${b.pages}` : ''}</span></a>}
-    {b.url && <a class="pdf-link" href={b.url} target="_blank" rel="noopener noreferrer">Official PDF ↗</a>}
+    {b.here && <a class="read-now" href={b.here}>{t('Read now', 'आता वाचा')} <span>· {vol(b.volume)}{b.pages ? t(`, pp. ${b.pages}`, `, पृ. ${b.pages}`) : ''}</span></a>}
+    {b.url && <a class="pdf-link" href={b.url} target="_blank" rel="noopener noreferrer">{t('Official PDF ↗', 'अधिकृत PDF ↗')}</a>}
   </>
 ))}
 {online.map((o) => <a class="pdf-link" href={o.url} target="_blank" rel="noopener noreferrer">{o.label} ↗</a>)}

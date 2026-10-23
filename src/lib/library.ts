@@ -105,3 +105,79 @@ export function formatPage(text: string): Block[] {
   for (let i = blocks.length - 1; i > 0 && blocks[i].type === 'p' && FOOTNOTE.test(blocks[i].text) && blocks[i].text.length < 400; i--) blocks[i].type = 'fn';
   return blocks;
 }
+
+/* ---------- Chapters as aligned paragraphs (the unit of translation) ---------- */
+export type PageBlocks = { p: number; n: number | null; blocks: Block[] };
+
+/**
+ * The pages of a chapter as paragraphs, with a paragraph that runs over a page break kept whole on the
+ * page where it starts, so that a translation can follow it sentence by sentence.
+ */
+export function chapterBlocks(rows: Page[]): PageBlocks[] {
+  const out = rows.map((r) => ({ p: r.p, n: r.n, blocks: formatPage(r.t) }));
+  for (let i = 0; i < out.length - 1; i++) {
+    const last = out[i].blocks[out[i].blocks.length - 1];
+    const next = out[i + 1].blocks[0];
+    if (last && next && last.type === 'p' && next.type === 'p' && !/[.?!:"”’)\]]$/.test(last.text)) {
+      last.text = `${last.text} ${next.text}`;
+      out[i + 1].blocks.shift();
+    }
+  }
+  return out;
+}
+
+/* ---------- Marathi translations (library/baws-mr) ---------- */
+/** A translated page: its paragraphs, and who made the translation (e.g. "ai:claude (reviewed: no)"). */
+export type MrPage = { b: Block[]; by?: string };
+type MrVolume = { pages: Map<number, MrPage>; summaries: Record<string, string> };
+const mrCache = new Map<string, MrVolume>();
+let mrTitles: Record<string, Record<string, string>> | null = null;
+
+export function marathiOf(vol: Volume): MrVolume {
+  if (!mrCache.has(vol.id)) {
+    const pages = new Map<number, MrPage>();
+    let summaries: Record<string, string> = {};
+    try {
+      for (const l of fs.readFileSync(path.join(root, 'library/baws-mr', `${vol.id}.jsonl`), 'utf8').trim().split('\n')) {
+        if (!l) continue;
+        const r = JSON.parse(l);
+        pages.set(r.p, { b: r.b, by: r.by });
+      }
+    } catch {}
+    try { summaries = JSON.parse(fs.readFileSync(path.join(root, 'library/baws-mr', `${vol.id}.summaries.json`), 'utf8')); } catch {}
+    mrCache.set(vol.id, { pages, summaries });
+  }
+  return mrCache.get(vol.id)!;
+}
+
+/** Marathi title of a volume, chapter or group heading, if one has been written. */
+export function mrTitle(vol: Volume | string, title: string): string | undefined {
+  if (!mrTitles) {
+    try { mrTitles = JSON.parse(fs.readFileSync(path.join(root, 'library/toc-mr.json'), 'utf8')); } catch { mrTitles = {}; }
+  }
+  const id = typeof vol === 'string' ? vol : vol.id;
+  return mrTitles![id]?.[title];
+}
+
+/* ---------- Names in the reader's language ---------- */
+type L = 'en' | 'mr';
+export const volLabelIn = (vol: Volume, lang: L) => (lang === 'mr' ? vol.label.replace('Vol.', 'खंड').replace('Part', 'भाग') : vol.label);
+export const volTitleIn = (vol: Volume, lang: L) => (lang === 'mr' && mrTitle(vol, vol.title)) || vol.title;
+/** Chapter, part or group title in the reader's language (falls back to English). */
+export function titleIn(vol: Volume, title: string, lang: L): string {
+  if (lang !== 'mr' || !title) return title;
+  if (title === 'Front matter') return 'प्रारंभिक पाने';
+  const part = title.match(/^Part (\d+)$/);
+  if (part) return `भाग ${part[1]}`;
+  const pages = title.match(/^Pages (\d+)[–-](\d+)$/);
+  if (pages) return `पृष्ठे ${pages[1]}–${pages[2]}`;
+  return mrTitle(vol, title) || title;
+}
+/** How many pages of a volume have a Marathi translation. */
+export const translatedCount = (vol: Volume) => marathiOf(vol).pages.size;
+/** Whether every page of a reading page (leaf) has been translated. */
+export const leafTranslated = (vol: Volume, part: Part) => {
+  const mr = marathiOf(vol).pages;
+  for (let p = part.start; p <= part.end; p++) if (!mr.has(p)) return false;
+  return true;
+};

@@ -31,9 +31,7 @@ const themes = defineCollection({
   schema: story,
 });
 
-const blog = defineCollection({
-  loader: glob({ pattern: '*.md', base: './src/content/blog' }),
-  schema: z.object({
+const blogSchema = z.object({
     title: z.string(),
     description: z.string(),
     date: z.coerce.date(),
@@ -41,7 +39,10 @@ const blog = defineCollection({
     image: z.string().optional(),
     tags: z.array(z.string()).default([]),
     draft: z.boolean().default(false),
-  }),
+  });
+const blog = defineCollection({
+  loader: glob({ pattern: '*.md', base: './src/content/blog' }),
+  schema: blogSchema,
 });
 
 // Long-form research files that are also published as pages (e.g. where the physical archives are).
@@ -50,4 +51,16 @@ const research = defineCollection({
   schema: z.object({ title: z.string().optional() }).passthrough(),
 });
 
-export const collections = { life, themes, blog, research };
+// Marathi translations: same file names and ids under src/content/mr/ and research/mr/.
+const lifeMr = defineCollection({
+  loader: glob({ pattern: '*.md', base: './src/content/mr/life', generateId: ({ entry }) => entry.replace(/^\d+-/, '').replace(/\.md$/, '') }),
+  schema: story,
+});
+const themesMr = defineCollection({ loader: glob({ pattern: '*.md', base: './src/content/mr/themes' }), schema: story });
+const blogMr = defineCollection({ loader: glob({ pattern: '*.md', base: './src/content/mr/blog' }), schema: blogSchema });
+const researchMr = defineCollection({
+  loader: glob({ pattern: ['works/*.md', 'constitution/*.md'], base: './research/mr' }),
+  schema: z.object({ title: z.string().optional() }).passthrough(),
+});
+
+export const collections = { life, themes, blog, research, lifeMr, themesMr, blogMr, researchMr };

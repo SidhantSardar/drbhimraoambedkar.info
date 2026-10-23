@@ -1,17 +1,28 @@
 ---
 import Base from '../../layouts/Base.astro';
-import { volumes, tocOf, firstChapter, coverOf } from '../../lib/library';
+import { volumes, tocOf, firstChapter, coverOf, volLabelIn, volTitleIn, translatedCount } from '../../lib/library';
 import { url } from '../../lib/site';
+import { getLang, translator } from '../../i18n';
+const lang = getLang(Astro);
+const t = translator(lang);
 const vols = volumes();
 const totalPages = vols.reduce((s, v) => s + v.pages, 0);
+const totalDone = vols.reduce((s, v) => s + translatedCount(v), 0);
 ---
-<Base title="Library — Writings and Speeches" description="Read every volume of Dr. Babasaheb Ambedkar: Writings and Speeches online, chapter by chapter, word for word from the official Government of India edition.">
+<Base title={t('Library — Writings and Speeches', 'ग्रंथालय — लेखन आणि भाषणे')} description={t('Read every volume of Dr. Babasaheb Ambedkar: Writings and Speeches online, chapter by chapter, word for word from the official Government of India edition.', 'डॉ. बाबासाहेब आंबेडकर: लेखन आणि भाषणे यांचे प्रत्येक खंड ऑनलाइन, प्रकरणानुसार वाचा — भारत सरकारच्या अधिकृत आवृत्तीतून शब्दशः, मराठी अनुवादासह.')}>
   <section class="hero">
     <div class="wrap section-tight">
-      <span class="eyebrow">The library</span>
-      <h1 style="font-size:var(--step-3)">Dr. Babasaheb Ambedkar: Writings and Speeches</h1>
-      <p class="lede" style="max-width:64ch">The complete English edition — {vols.length} books, {totalPages.toLocaleString('en-IN')} pages — to read here, chapter by chapter. The text is taken word for word from the official volumes published by the Government of India, and every page links to the original.</p>
-      <div class="btn-row" style="margin-top:20px"><a class="btn btn-ghost" href={url('/ask/')}>Search all volumes →</a></div>
+      <span class="eyebrow">{t('The library', 'ग्रंथालय')}</span>
+      <h1 style="font-size:var(--step-3)">{t('Dr. Babasaheb Ambedkar: Writings and Speeches', 'डॉ. बाबासाहेब आंबेडकर: लेखन आणि भाषणे')}</h1>
+      {lang === 'mr' ? (
+        <>
+          <p class="lede" style="max-width:64ch">संपूर्ण इंग्रजी आवृत्ती — {vols.length} पुस्तके, {totalPages.toLocaleString('en-IN')} पाने — येथे प्रकरणानुसार वाचा. मूळ मजकूर भारत सरकारने प्रकाशित केलेल्या अधिकृत खंडांतून शब्दशः घेतला आहे आणि प्रत्येक पानासोबत मूळ PDF चा दुवा आहे.</p>
+          <p class="lede" style="max-width:64ch">हे सर्व लेखन आम्ही मराठीत आणत आहोत — अर्थ आणि हेतू न बदलता, प्रत्येक परिच्छेदाशेजारी मूळ इंग्रजीसह. आतापर्यंत {totalDone.toLocaleString('en-IN')} पाने अनुवादित झाली आहेत.</p>
+        </>
+      ) : (
+        <p class="lede" style="max-width:64ch">The complete English edition — {vols.length} books, {totalPages.toLocaleString('en-IN')} pages — to read here, chapter by chapter. The text is taken word for word from the official volumes published by the Government of India, and every page links to the original.</p>
+      )}
+      <div class="btn-row" style="margin-top:20px"><a class="btn btn-ghost" href={url('/ask/')}>{t('Search all volumes →', 'सर्व खंडांत शोधा →')}</a></div>
     </div>
   </section>
   <div class="wrap section">
@@ -20,19 +31,20 @@ const totalPages = vols.reduce((s, v) => s + v.pages, 0);
         const start = firstChapter(v);
         const chapters = tocOf(v).filter((c) => c.title !== 'Front matter').length;
         const read = url(start ? `/library/${v.id}/${start.slug}/` : `/library/${v.id}/`);
+        const done = translatedCount(v);
         return (
           <li class="book">
-            <a class="book-cover" href={read} aria-label={`Read ${v.label}: ${v.title}`}>
+            <a class="book-cover" href={read} aria-label={`${t('Read', 'वाचा')} ${volLabelIn(v, lang)}: ${volTitleIn(v, lang)}`}>
               <img src={url(coverOf(v))} alt="" width="360" height="540" loading="lazy" decoding="async" />
               <span class="book-spine" aria-hidden="true"></span>
             </a>
             <div class="book-body">
-              <span class="book-vol">{v.label}</span>
-              <h2 class="book-title"><a href={url(`/library/${v.id}/`)}>{v.title}</a></h2>
-              <p class="book-meta">{chapters} chapters · {v.pages} pages</p>
+              <span class="book-vol">{volLabelIn(v, lang)}</span>
+              <h2 class="book-title"><a href={url(`/library/${v.id}/`)} title={lang === 'mr' ? v.title : undefined}>{volTitleIn(v, lang)}</a></h2>
+              <p class="book-meta">{t(`${chapters} chapters · ${v.pages} pages`, `${chapters} प्रकरणे · ${v.pages} पाने`)}{lang === 'mr' && done > 0 && <> · <span class="mr-badge">मराठी {done} पाने</span></>}</p>
               <div class="book-actions">
-                <a class="read-now" href={read}>Read now →</a>
-                <a class="pdf-link" href={v.officialUrl} target="_blank" rel="noopener noreferrer">Official PDF ↗</a>
+                <a class="read-now" href={read}>{t('Read now →', 'आता वाचा →')}</a>
+                <a class="pdf-link" href={v.officialUrl} target="_blank" rel="noopener noreferrer">{t('Official PDF ↗', 'अधिकृत PDF ↗')}</a>
               </div>
             </div>
           </li>
@@ -40,8 +52,8 @@ const totalPages = vols.reduce((s, v) => s + v.pages, 0);
       })}
     </ul>
     <div class="callout" style="margin-top:40px">
-      <h2 style="font-size:var(--step-1)">In Hindi — सम्पूर्ण वाङ्मय</h2>
-      <p>The Government of India also publishes the collected works in Hindi, in 40 volumes. They are available as PDFs from the Ministry of External Affairs: <a href="https://www.mea.gov.in/books-writings-of-ambedkar" target="_blank" rel="noopener noreferrer">Books &amp; Writings of Ambedkar ↗</a>. A readable Hindi library is planned.</p>
+      <h2 style="font-size:var(--step-1)">{t('In Hindi — सम्पूर्ण वाङ्मय', 'हिंदीत — सम्पूर्ण वाङ्मय')}</h2>
+      <p>{t('The Government of India also publishes the collected works in Hindi, in 40 volumes. They are available as PDFs from the Ministry of External Affairs:', 'भारत सरकार हे समग्र साहित्य हिंदीत 40 खंडांतही प्रकाशित करते. ते परराष्ट्र मंत्रालयाकडून PDF स्वरूपात उपलब्ध आहेत:')} <a href="https://www.mea.gov.in/books-writings-of-ambedkar" target="_blank" rel="noopener noreferrer">Books &amp; Writings of Ambedkar ↗</a>. {t('A readable Hindi library is planned.', 'हिंदी ग्रंथालयही नियोजित आहे.')}</p>
     </div>
   </div>
 </Base>

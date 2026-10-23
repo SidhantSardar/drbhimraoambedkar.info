@@ -3,10 +3,11 @@ import { render } from 'astro:content';
 import Base from '../layouts/Base.astro';
 import Chakra from './Chakra.astro';
 import Picture from './Picture.astro';
-import { heroFor, credit } from '../lib/images-core.mjs';
-import { url, formatDate, SITE } from '../lib/site';
+import { heroFor, credit, inLang } from '../lib/images-core.mjs';
+import { url, SITE } from '../lib/site';
 import { libraryPathFor } from '../lib/sources.mjs';
-import type { Story } from '../lib/data';
+import { storyIn, chapters, themes, type Story } from '../lib/data';
+import { getLang, translator, formatDateIn } from '../i18n';
 
 interface Props {
   entry: Story;
@@ -16,20 +17,29 @@ interface Props {
   prev?: { href: string; title: string };
   next?: { href: string; title: string };
 }
-const { entry, kind, num, total, prev, next } = Astro.props;
+const lang = getLang(Astro);
+const t = translator(lang);
+const { entry: english, kind, num, total } = Astro.props;
+const entry = await storyIn(english, kind, lang);
+const translated = lang === 'mr' && entry !== english;
+// Previous / next titles in the reader's language
+const list = kind === 'life' ? await chapters(lang) : await themes(lang);
+const titleOf = (href?: string) => list.find((e) => href?.endsWith(`/${e.id}/`))?.data.title;
+const prev = Astro.props.prev && { ...Astro.props.prev, title: titleOf(Astro.props.prev.href) || Astro.props.prev.title };
+const next = Astro.props.next && { ...Astro.props.next, title: titleOf(Astro.props.next.href) || Astro.props.next.title };
 const { Content } = await render(entry);
 const d = entry.data;
-const hero = heroFor(entry.id);
+const hero = inLang(heroFor(entry.id), lang);
 const issueUrl = `${SITE.repoUrl}/issues/new?labels=correction&title=${encodeURIComponent(`Correction: ${d.title}`)}&body=${encodeURIComponent(`Page: ${Astro.url.href}\n\nWhat is wrong:\n\nWhat it should say (with a source link):\n`)}`;
 ---
 <Base title={d.title} description={d.summary} image={hero ? url(hero.file) : undefined} progress>
-  <article data-pagefind-body data-pagefind-filter="collection:Life story">
+  <article data-pagefind-body data-pagefind-filter={t('collection:Life story', 'collection:जीवनकथा')}>
     <header class="story-hero">
       <Chakra class="chakra-bg" />
       <div class="narrow story-hero-inner">
         <p style="margin-bottom:8px" data-pagefind-ignore>
-          <a href={url(kind === 'life' ? '/life/' : '/life/#themes')} class="muted">{kind === 'life' ? 'Life story' : 'Themes'}</a>
-          {num && total && <span class="muted"> · Chapter {num} of {total}</span>}
+          <a href={url(kind === 'life' ? '/life/' : '/life/#themes')} class="muted">{kind === 'life' ? t('Life story', 'जीवनकथा') : t('Themes', 'विषय')}</a>
+          {num && total && <span class="muted"> · {t(`Chapter ${num} of ${total}`, `प्रकरण ${num} / ${total}`)}</span>}
         </p>
         {d.period && <span class="chip period">{d.period}</span>}
         <h1>{d.title}</h1>
@@ -39,13 +49,14 @@ const issueUrl = `${SITE.repoUrl}/issues/new?labels=correction&title=${encodeURI
     {hero && (
       <figure class="story-hero-img" data-pagefind-ignore>
         <Picture img={hero} eager sizes="100vw" />
-        <figcaption>{hero.caption} — {credit(hero)} · {hero.sourceUrl && <a href={hero.sourceUrl} target="_blank" rel="noopener noreferrer">{hero.sourceName || 'Source'}</a>}</figcaption>
+        <figcaption>{hero.caption} — {credit(hero)} · {hero.sourceUrl && <a href={hero.sourceUrl} target="_blank" rel="noopener noreferrer">{hero.sourceName || t('Source', 'स्रोत')}</a>}</figcaption>
       </figure>
     )}
     <div class="narrow">
+      {lang === 'mr' && !translated && <p class="mr-note" data-pagefind-ignore>या प्रकरणाचा मराठी अनुवाद तयार होत आहे. तोपर्यंत मूळ इंग्रजी मजकूर येथे दिला आहे.</p>}
       {d.inShort.length > 0 && (
-        <aside class="in-short" aria-label="In short">
-          <h2>In short</h2>
+        <aside class="in-short" aria-label={t('In short', 'थोडक्यात')}>
+          <h2>{t('In short', 'थोडक्यात')}</h2>
           <ul>{d.inShort.map((s) => <li>{s}</li>)}</ul>
         </aside>
       )}
@@ -55,32 +66,36 @@ const issueUrl = `${SITE.repoUrl}/issues/new?labels=correction&title=${encodeURI
 
       {d.keyDates.length > 0 && (
         <section class="dates-box callout" data-pagefind-ignore>
-          <h2 style="font-size:var(--step-1)">Key dates in this chapter</h2>
+          <h2 style="font-size:var(--step-1)">{t('Key dates in this chapter', 'या प्रकरणातील महत्त्वाच्या तारखा')}</h2>
           <ol>
             {d.keyDates.map((k) => (
               <li>
-                <time datetime={k.date}>{formatDate(k.date)}</time>
+                <time datetime={k.date}>{formatDateIn(k.date, lang)}</time>
                 {k.label} {k.source && (libraryPathFor(k.source)
-                  ? <a class="src" href={url(libraryPathFor(k.source)!)}>Writings &amp; Speeches</a>
-                  : <a class="src" href={k.source} target="_blank" rel="noopener noreferrer">source</a>)}
+                  ? <a class="src" href={url(libraryPathFor(k.source)!)}>{t('Writings & Speeches', 'लेखन आणि भाषणे')}</a>
+                  : <a class="src" href={k.source} target="_blank" rel="noopener noreferrer">{t('source', 'संदर्भ')}</a>)}
               </li>
             ))}
           </ol>
-          <a href={url('/timeline/')}>See the full timeline →</a>
+          <a href={url('/timeline/')}>{t('See the full timeline →', 'संपूर्ण कालपट पाहा →')}</a>
         </section>
       )}
 
       <details class="callout" style="margin:24px 0" data-pagefind-ignore>
-        <summary style="cursor:pointer;font-weight:700">Cite this page</summary>
-        <p style="margin:12px 0 0;font-size:0.95rem">“{d.title}{d.subtitle ? `: ${d.subtitle}` : ''}.” <em>Dr. B. R. Ambedkar — His Life and Work, Together</em>, {SITE.domain}. {new URL(Astro.url.pathname, Astro.site).toString()}</p>
+        <summary style="cursor:pointer;font-weight:700">{t('Cite this page', 'हे पान संदर्भ म्हणून द्या')}</summary>
+        <p style="margin:12px 0 0;font-size:0.95rem">“{d.title}{d.subtitle ? `: ${d.subtitle}` : ''}.” <em>{t('Dr. B. R. Ambedkar — His Life and Work, Together', SITE.mrTitle)}</em>, {SITE.domain}. {new URL(Astro.url.pathname, Astro.site).toString()}</p>
       </details>
 
-      <p class="notice" data-pagefind-ignore>Spotted a mistake or know a better source? <a href={issueUrl} target="_blank" rel="noopener noreferrer">Suggest a correction</a> — it is recorded publicly on GitHub — or use the <a href={url('/contribute/')}>contribution form</a>.</p>
+      {lang === 'mr' ? (
+        <p class="notice" data-pagefind-ignore>चूक आढळली किंवा अधिक चांगला संदर्भ माहीत आहे? <a href={issueUrl} target="_blank" rel="noopener noreferrer">दुरुस्ती सुचवा</a> — ती GitHub वर सार्वजनिकपणे नोंदवली जाते — किंवा <a href={url('/contribute/')}>सहभाग अर्ज</a> वापरा.</p>
+      ) : (
+        <p class="notice" data-pagefind-ignore>Spotted a mistake or know a better source? <a href={issueUrl} target="_blank" rel="noopener noreferrer">Suggest a correction</a> — it is recorded publicly on GitHub — or use the <a href={url('/contribute/')}>contribution form</a>.</p>
+      )}
 
       {(prev || next) && (
-        <nav class="chapter-nav" aria-label="Chapters" data-pagefind-ignore>
-          {prev ? <a href={url(prev.href)}><span>← Previous</span><strong>{prev.title}</strong></a> : <span></span>}
-          {next && <a class="next" href={url(next.href)}><span>Next →</span><strong>{next.title}</strong></a>}
+        <nav class="chapter-nav" aria-label={t('Chapters', 'प्रकरणे')} data-pagefind-ignore>
+          {prev ? <a href={url(prev.href)}><span>{t('← Previous', '← मागील')}</span><strong>{prev.title}</strong></a> : <span></span>}
+          {next && <a class="next" href={url(next.href)}><span>{t('Next →', 'पुढील →')}</span><strong>{next.title}</strong></a>}
         </nav>
       )}
     </div>

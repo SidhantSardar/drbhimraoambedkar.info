@@ -2,14 +2,17 @@
 // Two-column documentation layout (navigation left, reading area right) used by every volume.
 import Base from '../layouts/Base.astro';
 import DocsNav from './DocsNav.astro';
-import type { Volume } from '../lib/library';
+import { volLabelIn, type Volume } from '../lib/library';
+import { getLang, translator } from '../i18n';
 
 interface Props { vol: Volume; current?: string; title: string; description: string }
 const { vol, current, title, description } = Astro.props;
+const lang = getLang(Astro);
+const t = translator(lang);
 ---
 <Base title={title} description={description}>
   <div class="docs">
-    <button class="docs-toggle" type="button" aria-expanded="false" data-docs-toggle>☰ Contents of {vol.label}</button>
+    <button class="docs-toggle" type="button" aria-expanded="false" data-docs-toggle>☰ {t(`Contents of ${vol.label}`, `${volLabelIn(vol, lang)} — अनुक्रमणिका`)}</button>
     <DocsNav vol={vol} current={current} />
     <div class="docs-main">
       <slot />

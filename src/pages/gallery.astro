@@ -5,43 +5,49 @@ import Picture from '../components/Picture.astro';
 import { images } from '../lib/data';
 import { url } from '../lib/site';
 import { credit, imageSources } from '../lib/images-core.mjs';
+import { getLang, translator } from '../i18n';
+const lang = getLang(Astro);
+const t = translator(lang);
 
-const all = images().filter((i) => !/\.svg$/i.test(i.file));
-const LABELS: Record<string, string> = {
+const all = images(lang).filter((i) => !/\.svg$/i.test(i.file));
+const LABELS: Record<string, string> = lang === 'mr' ? {
+  portrait: 'व्यक्तिचित्रे', family: 'कुटुंब', events: 'घटना', places: 'ठिकाणे', documents: 'दस्तऐवज', statues: 'पुतळे आणि स्मारके',
+  constitution: 'संविधान', buddhism: 'बौद्ध धम्म', legacy: 'वारसा', 'flag-and-symbols': 'ध्वज आणि प्रतीके', context: 'पार्श्वभूमी',
+} : {
   portrait: 'Portraits', family: 'Family', events: 'Events', places: 'Places', documents: 'Documents', statues: 'Statues & memorials',
   constitution: 'Constitution', buddhism: 'Buddhism', legacy: 'Legacy', 'flag-and-symbols': 'Flag & symbols', context: 'Context',
 };
-const tags = Object.keys(LABELS).filter((t) => all.some((i) => i.tags?.includes(t)));
+const tags = Object.keys(LABELS).filter((tag) => all.some((i) => i.tags?.includes(tag)));
 ---
-<Base title="Gallery" description="Photographs and images of Dr. B. R. Ambedkar's life and legacy, each with its source and licence.">
+<Base title={t('Gallery', 'छायाचित्रे')} description={t("Photographs and images of Dr. B. R. Ambedkar's life and legacy, each with its source and licence.", 'डॉ. बाबासाहेब आंबेडकर यांच्या जीवनाची आणि वारशाची छायाचित्रे, प्रत्येकाच्या स्रोत आणि परवान्यासह.')}>
   <section class="hero">
     <Chakra class="chakra-bg" />
     <div class="wrap section-tight">
-      <span class="eyebrow">Gallery</span>
-      <h1 style="font-size:var(--step-4)">His life in pictures</h1>
-      <p class="lede" style="max-width:64ch">{all.length} freely licensed photographs and images. Tap any picture to see its full caption, who made it, and where it comes from.</p>
+      <span class="eyebrow">{t('Gallery', 'छायाचित्रे')}</span>
+      <h1 style="font-size:var(--step-4)">{t('His life in pictures', 'छायाचित्रांतून त्यांचे जीवन')}</h1>
+      <p class="lede" style="max-width:64ch">{t(`${all.length} freely licensed photographs and images. Tap any picture to see its full caption, who made it, and where it comes from.`, `मुक्त परवान्याची ${all.length} छायाचित्रे आणि चित्रे. संपूर्ण माहिती, ते कोणी काढले आणि ते कुठून आले हे पाहण्यासाठी कोणत्याही चित्रावर टॅप करा.`)}</p>
     </div>
   </section>
   <div class="wrap section-tight">
-    <div class="filter-row" role="group" aria-label="Filter pictures" style="margin-bottom:20px">
-      <button class="chip" type="button" data-tag="all" aria-pressed="true">All</button>
-      {tags.map((t) => <button class="chip" type="button" data-tag={t} aria-pressed="false">{LABELS[t]}</button>)}
+    <div class="filter-row" role="group" aria-label={t('Filter pictures', 'चित्रे निवडा')} style="margin-bottom:20px">
+      <button class="chip" type="button" data-tag="all" aria-pressed="true">{t('All', 'सर्व')}</button>
+      {tags.map((tag) => <button class="chip" type="button" data-tag={tag} aria-pressed="false">{LABELS[tag]}</button>)}
     </div>
     <div class="masonry" id="gallery">
       {all.map((img) => (
         <figure data-tags={(img.tags || []).join(' ')}>
-          <button type="button" data-full={imageSources(img).src} data-caption={img.caption || img.title || ''} data-credit={credit(img)} data-source={img.sourceUrl || ''} data-source-name={img.sourceName || 'Source'} data-license-url={img.licenseUrl || ''} aria-label={`Open: ${img.title || img.caption || 'image'}`}>
+          <button type="button" data-full={imageSources(img).src} data-caption={img.caption || img.title || ''} data-credit={credit(img)} data-source={img.sourceUrl || ''} data-source-name={img.sourceName || t('Source', 'स्रोत')} data-license-url={img.licenseUrl || ''} aria-label={`${t('Open', 'उघडा')}: ${img.title || img.caption || ''}`}>
             <Picture img={img} sizes="(min-width: 900px) 25vw, 50vw" />
           </button>
           <figcaption>{img.title || img.caption}{img.date ? ` · ${img.date}` : ''}</figcaption>
         </figure>
       ))}
     </div>
-    {all.length === 0 && <p class="notice">The image library is being gathered.</p>}
-    <p class="muted" style="margin-top:28px;font-size:0.92rem">Every image is public domain or released under a free licence (Creative Commons or the Unsplash Licence). Have a historical photo you can share? <a href={url('/contribute/')}>Send it to us</a>.</p>
+    {all.length === 0 && <p class="notice">{t('The image library is being gathered.', 'छायाचित्रांचा संग्रह गोळा केला जात आहे.')}</p>}
+    <p class="muted" style="margin-top:28px;font-size:0.92rem">{t('Every image is public domain or released under a free licence (Creative Commons or the Unsplash Licence). Have a historical photo you can share?', 'प्रत्येक चित्र सार्वजनिक क्षेत्रातील आहे किंवा मुक्त परवान्याखाली (Creative Commons किंवा Unsplash Licence) उपलब्ध आहे. तुमच्याकडे देण्याजोगे ऐतिहासिक छायाचित्र आहे?')} <a href={url('/contribute/')}>{t('Send it to us', 'आम्हाला पाठवा')}</a>.</p>
   </div>
-  <dialog class="lightbox" id="lightbox" aria-label="Image">
-    <button class="btn btn-light lb-close" type="button" id="lb-close" aria-label="Close">✕</button>
+  <dialog class="lightbox" id="lightbox" aria-label={t('Image', 'चित्र')}>
+    <button class="btn btn-light lb-close" type="button" id="lb-close" aria-label={t('Close', 'बंद करा')}>✕</button>
     <img id="lb-img" alt="" />
     <div class="lb-body"><p id="lb-cap" style="margin:0 0 6px"></p><p class="muted" id="lb-credit" style="margin:0;font-size:0.85rem"></p></div>
   </dialog>

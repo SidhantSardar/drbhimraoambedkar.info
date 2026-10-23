@@ -1,91 +1,94 @@
 ---
 import Base from '../layouts/Base.astro';
 import { url } from '../lib/site';
+import { getLang, translator } from '../i18n';
+const lang = getLang(Astro);
+const t = translator(lang);
 
 type R = { name: string; href: string; text: string };
-const host = (u: string) => (u.startsWith('/') ? 'On this website' : new URL(u).hostname.replace(/^www\./, ''));
+const host = (u: string) => (u.startsWith('/') ? t('On this website', 'या संकेतस्थळावर') : new URL(u).hostname.replace(/^www\./, ''));
 
 const GROUPS: { title: string; intro: string; items: R[] }[] = [
   {
-    title: 'On this website',
-    intro: 'Everything here is free to read, search and share.',
+    title: t('On this website', 'या संकेतस्थळावर'),
+    intro: t('Everything here is free to read, search and share.', 'येथील सर्व काही वाचण्यासाठी, शोधण्यासाठी आणि शेअर करण्यासाठी मोफत आहे.'),
     items: [
-      { name: 'Writings and Speeches — the library', href: '/library/', text: 'All 17 volumes published by the Government of India, readable page by page, each page linked to the official PDF.' },
-      { name: 'Ask the archive', href: '/ask/', text: 'Search more than 13,800 pages of his writings and speeches by word or question.' },
-      { name: 'All works', href: '/works/', text: 'Every book, thesis, essay and statement, explained simply, with where to read it.' },
-      { name: 'Speeches', href: '/works/speeches/', text: 'His major speeches, with dates, places and the key idea of each.' },
-      { name: 'Where the originals are kept', href: '/works/archives/', text: 'Manuscripts, theses, letters and his personal library — which archive or museum holds them and how to visit.' },
-      { name: 'The Constitution of India', href: '/constitution/', text: 'The official text to download, key articles explained, and his speeches in the Constituent Assembly.' },
-      { name: 'Timeline', href: '/timeline/', text: 'Every key date in his life, each with its source.' },
+      { name: t('Writings and Speeches — the library', 'लेखन आणि भाषणे — ग्रंथालय'), href: '/library/', text: t('All 17 volumes published by the Government of India, readable page by page, each page linked to the official PDF.', 'भारत सरकारने प्रकाशित केलेले सर्व 17 खंड, पान न् पान वाचता येतील असे; प्रत्येक पानासोबत अधिकृत PDF चा दुवा.') },
+      { name: t('Ask the archive', 'संग्रहात शोधा'), href: '/ask/', text: t('Search more than 13,800 pages of his writings and speeches by word or question.', 'त्यांच्या लेखन आणि भाषणांची 13,800 हून अधिक पाने शब्दाने किंवा प्रश्नाने शोधा.') },
+      { name: t('All works', 'सर्व साहित्य'), href: '/works/', text: t('Every book, thesis, essay and statement, explained simply, with where to read it.', 'प्रत्येक पुस्तक, प्रबंध, लेख आणि निवेदन, सोप्या भाषेत, ते कुठे वाचता येईल यासह.') },
+      { name: t('Speeches', 'भाषणे'), href: '/works/speeches/', text: t('His major speeches, with dates, places and the key idea of each.', 'त्यांची महत्त्वाची भाषणे, तारखा, ठिकाणे आणि प्रत्येकातील मुख्य विचारासह.') },
+      { name: t('Where the originals are kept', 'मूळ प्रती कुठे जपल्या आहेत'), href: '/works/archives/', text: t('Manuscripts, theses, letters and his personal library — which archive or museum holds them and how to visit.', 'हस्तलिखिते, प्रबंध, पत्रे आणि त्यांचे वैयक्तिक ग्रंथालय — ती कोणत्या संग्रहात किंवा संग्रहालयात आहेत आणि तिथे कसे जावे.') },
+      { name: t('The Constitution of India', 'भारताचे संविधान'), href: '/constitution/', text: t('The official text to download, key articles explained, and his speeches in the Constituent Assembly.', 'डाउनलोड करण्यासाठी अधिकृत मजकूर, महत्त्वाच्या अनुच्छेदांचे स्पष्टीकरण आणि संविधान सभेतील त्यांची भाषणे.') },
+      { name: t('Timeline', 'कालपट'), href: '/timeline/', text: t('Every key date in his life, each with its source.', 'त्यांच्या जीवनातील प्रत्येक महत्त्वाची तारीख, संदर्भासह.') },
     ],
   },
   {
-    title: 'Government of India',
-    intro: 'Official publications and records.',
+    title: t('Government of India', 'भारत सरकार'),
+    intro: t('Official publications and records.', 'अधिकृत प्रकाशने आणि नोंदी.'),
     items: [
-      { name: 'Books & Writings of Ambedkar — Ministry of External Affairs', href: 'https://www.mea.gov.in/books-writings-of-ambedkar', text: 'Official PDFs of Writings and Speeches in English (17 volumes) and Hindi (40 volumes).' },
-      { name: 'Writings and Speeches — Dr. Ambedkar Foundation', href: 'https://drambedkarwritings.gov.in', text: 'The Foundation\'s own website for the collected works, with a photo gallery.' },
-      { name: 'Dr. Ambedkar Foundation', href: 'https://ambedkarfoundation.nic.in', text: 'Autonomous body under the Ministry of Social Justice and Empowerment; runs the National Memorial at 26 Alipur Road, Delhi.' },
-      { name: 'The Constitution of India — Legislative Department', href: 'https://legislative.gov.in/constitution-of-india/', text: 'The latest official text of the Constitution in English and Hindi.' },
-      { name: 'Dr. Ambedkar International Centre, New Delhi', href: 'https://daic.gov.in/', text: 'Research centre with a digital library and a Constitution gallery.' },
-      { name: 'National Archives of India — Abhilekh Patal', href: 'https://www.abhilekh-patal.in/Category/Search/QuerySearch?query=Ambedkar', text: 'Government files mentioning him, and his papers received from the People\'s Education Society.' },
+      { name: 'Books & Writings of Ambedkar — Ministry of External Affairs', href: 'https://www.mea.gov.in/books-writings-of-ambedkar', text: t('Official PDFs of Writings and Speeches in English (17 volumes) and Hindi (40 volumes).', 'लेखन आणि भाषणे यांच्या इंग्रजी (17 खंड) आणि हिंदी (40 खंड) अधिकृत PDF.') },
+      { name: 'Writings and Speeches — Dr. Ambedkar Foundation', href: 'https://drambedkarwritings.gov.in', text: t("The Foundation's own website for the collected works, with a photo gallery.", 'समग्र साहित्यासाठी फाउंडेशनचे स्वतःचे संकेतस्थळ, छायाचित्र दालनासह.') },
+      { name: 'Dr. Ambedkar Foundation', href: 'https://ambedkarfoundation.nic.in', text: t('Autonomous body under the Ministry of Social Justice and Empowerment; runs the National Memorial at 26 Alipur Road, Delhi.', 'सामाजिक न्याय आणि अधिकारिता मंत्रालयाअंतर्गत स्वायत्त संस्था; 26 अलीपूर रोड, दिल्ली येथील राष्ट्रीय स्मारक चालवते.') },
+      { name: 'The Constitution of India — Legislative Department', href: 'https://legislative.gov.in/constitution-of-india/', text: t('The latest official text of the Constitution in English and Hindi.', 'संविधानाचा इंग्रजी आणि हिंदीतील ताजा अधिकृत मजकूर.') },
+      { name: 'Dr. Ambedkar International Centre, New Delhi', href: 'https://daic.gov.in/', text: t('Research centre with a digital library and a Constitution gallery.', 'डिजिटल ग्रंथालय आणि संविधान दालन असलेले संशोधन केंद्र.') },
+      { name: 'National Archives of India — Abhilekh Patal', href: 'https://www.abhilekh-patal.in/Category/Search/QuerySearch?query=Ambedkar', text: t("Government files mentioning him, and his papers received from the People's Education Society.", 'त्यांचा उल्लेख असलेल्या सरकारी फाइल्स आणि पीपल्स एज्युकेशन सोसायटीकडून मिळालेली त्यांची कागदपत्रे.') },
     ],
   },
   {
-    title: 'The Constitution and its making',
-    intro: 'Debates and documents from 1946–1950.',
+    title: t('The Constitution and its making', 'संविधान आणि त्याची निर्मिती'),
+    intro: t('Debates and documents from 1946–1950.', '1946–1950 मधील चर्चा आणि दस्तऐवज.'),
     items: [
-      { name: 'Constituent Assembly Debates — Constitution of India (CLPR)', href: 'https://www.constitutionofindia.net', text: 'Full text of the debates, by date and by article, including his speeches of 4 November 1948 and 25 November 1949.' },
-      { name: 'Writings and Speeches, Vol. 13 — on this site', href: '/library/volume-13/', text: 'His speeches and work as chairman of the Drafting Committee.' },
+      { name: 'Constituent Assembly Debates — Constitution of India (CLPR)', href: 'https://www.constitutionofindia.net', text: t('Full text of the debates, by date and by article, including his speeches of 4 November 1948 and 25 November 1949.', 'तारखेनुसार आणि अनुच्छेदानुसार चर्चांचा संपूर्ण मजकूर, त्यांच्या 4 नोव्हेंबर 1948 आणि 25 नोव्हेंबर 1949 च्या भाषणांसह.') },
+      { name: t('Writings and Speeches, Vol. 13 — on this site', 'लेखन आणि भाषणे, खंड 13 — या संकेतस्थळावर'), href: '/library/volume-13/', text: t('His speeches and work as chairman of the Drafting Committee.', 'मसुदा समितीचे अध्यक्ष म्हणून त्यांची भाषणे आणि कार्य.') },
     ],
   },
   {
-    title: 'Universities and archives abroad',
-    intro: 'Where his student years are documented.',
+    title: t('Universities and archives abroad', 'परदेशातील विद्यापीठे आणि संग्रह'),
+    intro: t('Where his student years are documented.', 'त्यांच्या विद्यार्थीदशेच्या नोंदी जिथे आहेत.'),
     items: [
-      { name: 'Columbia University Archives — Notable Columbians', href: 'https://guides.library.columbia.edu/uarchives/notables', text: 'His degrees, photographs and records held at Columbia, with how to see them.' },
-      { name: 'Caste, Ambedkar, and Contemporary India — Columbia Libraries', href: 'https://exhibitions.library.columbia.edu/exhibits/show/ambedkar', text: 'Online exhibition created for a 2009 Columbia conference in his honour.' },
-      { name: 'Ambedkar timeline — Frances Pritchett, Columbia', href: 'https://franpritchett.com/00ambedkar/timeline', text: 'A decade-by-decade timeline with many original documents and translations.' },
-      { name: 'Educate. Agitate. Organise. — LSE Library', href: 'https://www.lse.ac.uk/library/whats-on/online-exhibitions/educate-agitate-organise', text: 'Online exhibition on his years at the London School of Economics.' },
-      { name: 'His LSE student file (PDF)', href: 'https://www.lse.ac.uk/library/assets/documents/Ambedkars-LSE-student-file.pdf', text: 'Application forms, record card and letters from his professors.' },
-      { name: 'British Library — India Office Records', href: 'https://searcharchives.bl.uk/?q=Ambedkar&search_field=all_fields', text: 'About 45 records: Round Table Conference papers, the Poona Pact, government files.' },
+      { name: 'Columbia University Archives — Notable Columbians', href: 'https://guides.library.columbia.edu/uarchives/notables', text: t('His degrees, photographs and records held at Columbia, with how to see them.', 'कोलंबियामध्ये जपलेल्या त्यांच्या पदव्या, छायाचित्रे आणि नोंदी, आणि त्या कशा पाहता येतील.') },
+      { name: 'Caste, Ambedkar, and Contemporary India — Columbia Libraries', href: 'https://exhibitions.library.columbia.edu/exhibits/show/ambedkar', text: t('Online exhibition created for a 2009 Columbia conference in his honour.', 'त्यांच्या सन्मानार्थ 2009 मध्ये कोलंबियात झालेल्या परिषदेसाठी तयार केलेले ऑनलाइन प्रदर्शन.') },
+      { name: 'Ambedkar timeline — Frances Pritchett, Columbia', href: 'https://franpritchett.com/00ambedkar/timeline', text: t('A decade-by-decade timeline with many original documents and translations.', 'अनेक मूळ दस्तऐवज आणि अनुवादांसह दशकनिहाय कालपट.') },
+      { name: 'Educate. Agitate. Organise. — LSE Library', href: 'https://www.lse.ac.uk/library/whats-on/online-exhibitions/educate-agitate-organise', text: t('Online exhibition on his years at the London School of Economics.', 'लंडन स्कूल ऑफ इकॉनॉमिक्समधील त्यांच्या वर्षांवरील ऑनलाइन प्रदर्शन.') },
+      { name: t('His LSE student file (PDF)', 'त्यांची LSE मधील विद्यार्थी फाइल (PDF)'), href: 'https://www.lse.ac.uk/library/assets/documents/Ambedkars-LSE-student-file.pdf', text: t('Application forms, record card and letters from his professors.', 'प्रवेश अर्ज, नोंद पत्रक आणि त्यांच्या प्राध्यापकांची पत्रे.') },
+      { name: 'British Library — India Office Records', href: 'https://searcharchives.bl.uk/?q=Ambedkar&search_field=all_fields', text: t('About 45 records: Round Table Conference papers, the Poona Pact, government files.', 'सुमारे 45 नोंदी: गोलमेज परिषदेची कागदपत्रे, पुणे करार, सरकारी फाइल्स.') },
     ],
   },
   {
-    title: 'Digital libraries',
-    intro: 'Free scanned copies of his works.',
+    title: t('Digital libraries', 'डिजिटल ग्रंथालये'),
+    intro: t('Free scanned copies of his works.', 'त्यांच्या साहित्याच्या मोफत स्कॅन प्रती.'),
     items: [
-      { name: 'Collected Works — Internet Archive', href: 'https://archive.org/details/collected-works-of-ambedkar', text: 'The Dr. Ambedkar Foundation volumes as PDF and searchable text.' },
-      { name: 'Writings and Speeches, all volumes — Internet Archive', href: 'https://archive.org/details/Dr.BabasahebAmbedkarWritingsAndSpeechespdfsAllVolumes', text: 'Another complete set, including searchable copies of Volumes 14 and 16.' },
-      { name: 'सम्पूर्ण वाङ्मय (Hindi) — Internet Archive', href: 'https://archive.org/details/05_20220926_202209', text: 'The collected works in Hindi.' },
-      { name: 'Dr. Ambedkar: Life and Mission — Dhananjay Keer', href: 'https://archive.org/details/dr-ambedkar-life-and-mission-dhananjay-keer', text: 'The classic biography, first published in 1954 during his lifetime.' },
-      { name: 'Velivada — Dr. B. R. Ambedkar books', href: 'https://velivada.com/dr-b-r-ambedkar-books-2/', text: 'Downloads of his books in several languages.' },
+      { name: 'Collected Works — Internet Archive', href: 'https://archive.org/details/collected-works-of-ambedkar', text: t('The Dr. Ambedkar Foundation volumes as PDF and searchable text.', 'डॉ. आंबेडकर फाउंडेशनचे खंड PDF आणि शोधण्याजोग्या मजकुराच्या स्वरूपात.') },
+      { name: 'Writings and Speeches, all volumes — Internet Archive', href: 'https://archive.org/details/Dr.BabasahebAmbedkarWritingsAndSpeechespdfsAllVolumes', text: t('Another complete set, including searchable copies of Volumes 14 and 16.', 'आणखी एक संपूर्ण संच, खंड 14 आणि 16 च्या शोधण्याजोग्या प्रतींसह.') },
+      { name: 'सम्पूर्ण वाङ्मय (Hindi) — Internet Archive', href: 'https://archive.org/details/05_20220926_202209', text: t('The collected works in Hindi.', 'हिंदीतील समग्र साहित्य.') },
+      { name: 'Dr. Ambedkar: Life and Mission — Dhananjay Keer', href: 'https://archive.org/details/dr-ambedkar-life-and-mission-dhananjay-keer', text: t('The classic biography, first published in 1954 during his lifetime.', 'त्यांच्या हयातीत, 1954 मध्ये प्रथम प्रकाशित झालेले अभिजात चरित्र.') },
+      { name: 'Velivada — Dr. B. R. Ambedkar books', href: 'https://velivada.com/dr-b-r-ambedkar-books-2/', text: t('Downloads of his books in several languages.', 'अनेक भाषांतील त्यांची पुस्तके डाउनलोडसाठी.') },
     ],
   },
   {
-    title: 'Museums and memorials',
-    intro: 'Places that keep his belongings and memory.',
+    title: t('Museums and memorials', 'संग्रहालये आणि स्मारके'),
+    intro: t('Places that keep his belongings and memory.', 'त्यांच्या वस्तू आणि आठवणी जपणारी ठिकाणे.'),
     items: [
-      { name: 'Dr. Babasaheb Ambedkar Museum & Memorial, Pune (Symbiosis)', href: 'https://www.symbiosis-ambedkarmemorial.org/', text: 'Personal belongings including his Bharat Ratna, manuscripts and photographs.' },
-      { name: 'Dr. Ambedkar National Memorial, 26 Alipur Road, Delhi', href: 'https://www.ambedkarfoundation.nic.in/danm.html', text: 'The house where he died, now a national memorial.' },
+      { name: 'Dr. Babasaheb Ambedkar Museum & Memorial, Pune (Symbiosis)', href: 'https://www.symbiosis-ambedkarmemorial.org/', text: t('Personal belongings including his Bharat Ratna, manuscripts and photographs.', 'त्यांचा भारतरत्न, हस्तलिखिते आणि छायाचित्रांसह वैयक्तिक वस्तू.') },
+      { name: 'Dr. Ambedkar National Memorial, 26 Alipur Road, Delhi', href: 'https://www.ambedkarfoundation.nic.in/danm.html', text: t('The house where he died, now a national memorial.', 'त्यांचे जिथे निधन झाले ते घर, आता राष्ट्रीय स्मारक.') },
     ],
   },
   {
-    title: 'Ambedkarite media',
-    intro: 'Independent journalism and writing from the movement.',
+    title: t('Ambedkarite media', 'आंबेडकरी माध्यमे'),
+    intro: t('Independent journalism and writing from the movement.', 'चळवळीतील स्वतंत्र पत्रकारिता आणि लेखन.'),
     items: [
-      { name: 'Forward Press', href: 'https://www.forwardpress.in/', text: 'Bilingual magazine on Bahujan history, politics and culture.' },
-      { name: 'Round Table India', href: 'https://www.roundtableindia.co.in/', text: 'Essays and opinion from Ambedkarite writers.' },
-      { name: 'The Mooknayak', href: 'https://www.themooknayak.com/', text: 'News on Dalit, Adivasi and Bahujan communities, named after his 1920 newspaper.' },
+      { name: 'Forward Press', href: 'https://www.forwardpress.in/', text: t('Bilingual magazine on Bahujan history, politics and culture.', 'बहुजन इतिहास, राजकारण आणि संस्कृतीवरील द्विभाषिक मासिक.') },
+      { name: 'Round Table India', href: 'https://www.roundtableindia.co.in/', text: t('Essays and opinion from Ambedkarite writers.', 'आंबेडकरवादी लेखकांचे निबंध आणि मते.') },
+      { name: 'The Mooknayak', href: 'https://www.themooknayak.com/', text: t('News on Dalit, Adivasi and Bahujan communities, named after his 1920 newspaper.', 'दलित, आदिवासी आणि बहुजन समाजांविषयीच्या बातम्या; त्यांच्या 1920 मधील वृत्तपत्राच्या नावावरून.') },
     ],
   },
 ];
 ---
-<Base title="Resources" description="Every important resource on Dr. B. R. Ambedkar in one place: official publications, the Constitution, university archives, digital libraries, museums and Ambedkarite media.">
+<Base title={t('Resources', 'संदर्भ साधने')} description={t('Every important resource on Dr. B. R. Ambedkar in one place: official publications, the Constitution, university archives, digital libraries, museums and Ambedkarite media.', 'डॉ. बाबासाहेब आंबेडकर यांच्याविषयीची प्रत्येक महत्त्वाची साधने एकाच ठिकाणी: अधिकृत प्रकाशने, संविधान, विद्यापीठांचे संग्रह, डिजिटल ग्रंथालये, संग्रहालये आणि आंबेडकरी माध्यमे.')}>
   <div class="narrow section">
-    <span class="eyebrow">Resources</span>
-    <h1>Everything in one place</h1>
-    <p class="lede">The best places to read, research and learn about Dr. Ambedkar — official, academic and community sources, checked and described simply.</p>
+    <span class="eyebrow">{t('Resources', 'संदर्भ साधने')}</span>
+    <h1>{t('Everything in one place', 'सर्व काही एकाच ठिकाणी')}</h1>
+    <p class="lede">{t('The best places to read, research and learn about Dr. Ambedkar — official, academic and community sources, checked and described simply.', 'डॉ. आंबेडकर यांच्याविषयी वाचण्यासाठी, संशोधनासाठी आणि शिकण्यासाठी सर्वोत्तम ठिकाणे — अधिकृत, शैक्षणिक आणि समाजातील स्रोत, तपासून आणि सोप्या भाषेत वर्णन करून.')}</p>
     {GROUPS.map((g) => (
       <section class="res-group">
         <h2>{g.title}</h2>
@@ -103,6 +106,6 @@ const GROUPS: { title: string; intro: string; items: R[] }[] = [
         </ul>
       </section>
     ))}
-    <p class="muted" style="margin-top:48px">Know a resource we should add? <a href={url('/contribute/')}>Suggest it</a>.</p>
+    <p class="muted" style="margin-top:48px">{t('Know a resource we should add?', 'आम्ही जोडावे असे एखादे साधन माहीत आहे?')} <a href={url('/contribute/')}>{t('Suggest it', 'सुचवा')}</a>.</p>
   </div>
 </Base>

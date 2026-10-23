@@ -2,21 +2,28 @@
 import Base from '../layouts/Base.astro';
 import { loadNews, catOf, thumbFor, fallbackFor, ONERROR, mixed, isHindi, cleanTitle } from '../lib/news';
 import { url } from '../lib/site';
+import { getLang, translator } from '../i18n';
+const lang = getLang(Astro);
+const t = translator(lang);
+const mr = lang === 'mr';
+const cat = (s: { category: string }) => catOf(s, lang);
+const outlets = (n: number) => t(`${n} ${n === 1 ? 'outlet' : 'outlets'}`, `${n} माध्यमे`);
 
 const news = loadNews();
 const stories = mixed(news.stories, news.stories.length);
 const categories = [...new Set(stories.map((s) => s.category))];
-const day = (d: string | null) => (d ? new Date(d).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'Asia/Kolkata' }) : '');
+const day = (d: string | null) => (d ? new Date(d).toLocaleDateString(mr ? 'mr-IN' : 'en-IN', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'Asia/Kolkata' }) : '');
 ---
-<Base title="News" description="Daily news on caste, justice, the Constitution and the Ambedkarite movement — each story explained, with every source listed.">
+<Base title={t('News', 'बातम्या')} description={t('Daily news on caste, justice, the Constitution and the Ambedkarite movement — each story explained, with every source listed.', 'जात, न्याय, संविधान आणि आंबेडकरी चळवळीविषयी दररोजच्या बातम्या — प्रत्येक बातमी स्पष्ट करून, सर्व स्रोतांसह.')}>
   <section class="news-app">
-    <aside class="news-list" aria-label="Stories">
+    <aside class="news-list" aria-label={t('Stories', 'बातम्या')}>
       <div class="news-list-head">
-        <h1>News</h1>
-        <p class="muted">Updated every six hours. Select a story to read what happened and who reported it.</p>
-        <div class="filter-row" role="group" aria-label="Topics">
-          <button class="chip" type="button" data-cat="all" aria-pressed="true">All</button>
-          {categories.map((c) => <button class="chip" type="button" data-cat={c} aria-pressed="false">{catOf({ category: c } as any).label}</button>)}
+        <h1>{t('News', 'बातम्या')}</h1>
+        <p class="muted">{t('Updated every six hours. Select a story to read what happened and who reported it.', 'दर सहा तासांनी अद्ययावत. काय घडले आणि ते कोणी नोंदवले हे वाचण्यासाठी बातमी निवडा.')}</p>
+        {mr && <p class="muted" style="font-size:0.85rem">बातम्यांचे मथळे आणि सारांश मूळ भाषेत (इंग्रजी/हिंदी) दिले आहेत.</p>}
+        <div class="filter-row" role="group" aria-label={t('Topics', 'विषय')}>
+          <button class="chip" type="button" data-cat="all" aria-pressed="true">{t('All', 'सर्व')}</button>
+          {categories.map((c) => <button class="chip" type="button" data-cat={c} aria-pressed="false">{cat({ category: c }).label}</button>)}
         </div>
       </div>
       <ol>
@@ -25,9 +32,9 @@ const day = (d: string | null) => (d ? new Date(d).toLocaleDateString('en-IN', {
             <a href={`#${s.id}`} data-story={s.id} aria-current={i === 0 ? 'true' : undefined}>
               <img src={thumbFor(s)} data-fallback={fallbackFor(s)} onerror={ONERROR} alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" />
               <span>
-                <span class={`cat ${catOf(s).cls}`}>{catOf(s).label}</span>
-                <strong lang={isHindi(s.title) ? 'hi' : undefined}>{cleanTitle(s.title)}</strong>
-                <small>{s.outlets.length > 1 ? `${s.outlets.length} outlets` : s.outlets[0]}</small>
+                <span class={`cat ${cat(s).cls}`}>{cat(s).label}</span>
+                <strong lang={isHindi(s.title) ? 'hi' : 'en'}>{cleanTitle(s.title)}</strong>
+                <small>{s.outlets.length > 1 ? outlets(s.outlets.length) : s.outlets[0]}</small>
               </span>
             </a>
           </li>
@@ -40,27 +47,27 @@ const day = (d: string | null) => (d ? new Date(d).toLocaleDateString('en-IN', {
         <article id={s.id} class="story" hidden={i !== 0} data-pagefind-ignore>
           <figure class="story-img"><img src={thumbFor(s, 960)} data-fallback={fallbackFor(s, 960)} onerror={ONERROR} alt="" loading={i === 0 ? 'eager' : 'lazy'} decoding="async" referrerpolicy="no-referrer" /></figure>
           <div class="story-body">
-            <span class={`cat ${catOf(s).cls}`}>{catOf(s).label}</span>
-            <h2 lang={isHindi(s.title) ? 'hi' : undefined}>{cleanTitle(s.title)}</h2>
-            <p class="muted story-meta">{day(s.date)} · Reported by {s.outlets.length} {s.outlets.length === 1 ? 'outlet' : 'outlets'}</p>
+            <span class={`cat ${cat(s).cls}`}>{cat(s).label}</span>
+            <h2 lang={isHindi(s.title) ? 'hi' : 'en'}>{cleanTitle(s.title)}</h2>
+            <p class="muted story-meta">{day(s.date)} · {t(`Reported by ${outlets(s.outlets.length)}`, s.outlets.length === 1 ? '1 माध्यमाने दिलेली बातमी' : `${s.outlets.length} माध्यमांनी दिलेली बातमी`)}</p>
 
             {s.summary ? (
-              <div class="story-summary">
-                <h3>What happened</h3>
+              <div class="story-summary" lang="en">
+                <h3 lang={lang}>{t('What happened', 'काय घडले')}</h3>
                 {s.summary.split(/\n\n+/).map((p) => <p>{p}</p>)}
-                <p class="note">Summary written by AI from the reports listed below. Read the original reports before quoting.</p>
+                <p class="note" lang={lang}>{t('Summary written by AI from the reports listed below. Read the original reports before quoting.', 'हा सारांश खालील बातम्यांच्या आधारे AI ने लिहिला आहे. उद्धृत करण्यापूर्वी मूळ बातम्या वाचा.')}</p>
               </div>
             ) : (
               <div class="story-summary">
-                <h3>What the reports say</h3>
-                {s.reports.find((r) => r.snippet) ? <p>{s.reports.find((r) => r.snippet)!.snippet}</p> : <p>{s.title}.</p>}
-                {s.reports.length > 1 && <p>This story was reported by {s.outlets.slice(0, -1).join(', ')}{s.outlets.length > 1 ? ` and ${s.outlets[s.outlets.length - 1]}` : ''}.</p>}
+                <h3>{t('What the reports say', 'बातम्यांमध्ये काय म्हटले आहे')}</h3>
+                {s.reports.find((r) => r.snippet) ? <p lang="en">{s.reports.find((r) => r.snippet)!.snippet}</p> : <p lang="en">{s.title}.</p>}
+                {s.reports.length > 1 && <p>{t('This story was reported by', 'ही बातमी यांनी दिली:')} {s.outlets.slice(0, -1).join(', ')}{s.outlets.length > 1 ? ` ${t('and', 'आणि')} ${s.outlets[s.outlets.length - 1]}` : ''}.</p>}
               </div>
             )}
 
             {s.reports.length > 1 && (
               <div class="story-coverage">
-                <h3>How it was covered</h3>
+                <h3>{t('How it was covered', 'कोणी कसे मांडले')}</h3>
                 <ul>
                   {s.reports.map((r) => <li><strong>{r.outlet}</strong><span lang={isHindi(r.title) ? 'hi' : undefined}>{r.title}</span></li>)}
                 </ul>
@@ -68,7 +75,7 @@ const day = (d: string | null) => (d ? new Date(d).toLocaleDateString('en-IN', {
             )}
 
             <div class="story-sources">
-              <h3>Sources</h3>
+              <h3>{t('Sources', 'स्रोत')}</h3>
               <ol>
                 {s.reports.map((r) => (
                   <li><a href={r.link} target="_blank" rel="noopener noreferrer nofollow">{r.title}</a> <span class="muted">— {r.outlet}{r.date ? `, ${day(r.date)}` : ''}</span></li>
@@ -78,10 +85,10 @@ const day = (d: string | null) => (d ? new Date(d).toLocaleDateString('en-IN', {
           </div>
         </article>
       ))}
-      {stories.length === 0 && <p class="notice" style="margin:40px">News will appear here after the next automatic update.</p>}
+      {stories.length === 0 && <p class="notice" style="margin:40px">{t('News will appear here after the next automatic update.', 'पुढील स्वयंचलित अद्ययावतानंतर बातम्या येथे दिसतील.')}</p>}
     </div>
   </section>
-  <p class="wrap muted" style="font-size:0.85rem;padding-block:24px">Headlines and pictures belong to their publishers; this page links to them and does not copy articles. Listing a report does not mean we endorse it. <a href={url('/contribute/')}>Suggest a news source</a>.</p>
+  <p class="wrap muted" style="font-size:0.85rem;padding-block:24px">{t('Headlines and pictures belong to their publishers; this page links to them and does not copy articles. Listing a report does not mean we endorse it.', 'मथळे आणि छायाचित्रे त्यांच्या प्रकाशकांची आहेत; हे पान त्यांचे दुवे देते, लेखांची नक्कल करत नाही. एखादी बातमी येथे दिल्याचा अर्थ आम्ही तिला दुजोरा देतो असा नाही.')} <a href={url('/contribute/')}>{t('Suggest a news source', 'बातम्यांचा स्रोत सुचवा')}</a>.</p>
 
   <script is:inline>
     (function () {

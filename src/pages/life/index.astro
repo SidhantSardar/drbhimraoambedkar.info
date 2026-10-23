@@ -4,20 +4,23 @@ import Chakra from '../../components/Chakra.astro';
 import StoryCard from '../../components/StoryCard.astro';
 import { chapters, themes } from '../../lib/data';
 import { url } from '../../lib/site';
-const life = await chapters();
-const themeList = await themes();
+import { getLang, translator } from '../../i18n';
+const lang = getLang(Astro);
+const t = translator(lang);
+const life = await chapters(lang);
+const themeList = await themes(lang);
 ---
-<Base title="Life Story" description="The life of Dr. B. R. Ambedkar in simple, sourced chapters — from the world before his birth to the movement that continues today.">
+<Base title={t('Life Story', 'जीवनकथा')} description={t('The life of Dr. B. R. Ambedkar in simple, sourced chapters — from the world before his birth to the movement that continues today.', 'डॉ. बाबासाहेब आंबेडकर यांचे जीवन सोप्या, संदर्भांसहित प्रकरणांत — त्यांच्या जन्मापूर्वीच्या जगापासून आजही सुरू असलेल्या चळवळीपर्यंत.')}>
   <section class="hero">
     <Chakra class="chakra-bg" />
     <div class="wrap section-tight">
-      <span class="eyebrow">The life story</span>
-      <h1 style="font-size:var(--step-4)">From Mhow to the Constitution — and beyond</h1>
-      <p class="lede" style="max-width:62ch">Read it from the beginning, or jump to any chapter. Every chapter starts with a short summary, and every fact links to its source.</p>
+      <span class="eyebrow">{t('The life story', 'जीवनकथा')}</span>
+      <h1 style="font-size:var(--step-4)">{t('From Mhow to the Constitution — and beyond', 'महू ते संविधान — आणि त्यापुढेही')}</h1>
+      <p class="lede" style="max-width:62ch">{t('Read it from the beginning, or jump to any chapter. Every chapter starts with a short summary, and every fact links to its source.', 'सुरुवातीपासून वाचा किंवा कोणत्याही प्रकरणावर थेट जा. प्रत्येक प्रकरण छोट्या सारांशाने सुरू होते आणि प्रत्येक तथ्यासोबत त्याचा संदर्भ दिलेला आहे.')}</p>
       <div class="btn-row" style="margin-top:20px">
-        {life[0] && <a class="btn btn-light" href={url(`/life/${life[0].id}/`)}>Start with chapter 1 →</a>}
-        <a class="btn btn-ghost" href={url('/education/')}>His educational journey</a>
-        <a class="btn btn-ghost" href={url('/timeline/')}>Timeline</a>
+        {life[0] && <a class="btn btn-light" href={url(`/life/${life[0].id}/`)}>{t('Start with chapter 1 →', 'प्रकरण 1 पासून सुरुवात करा →')}</a>}
+        <a class="btn btn-ghost" href={url('/education/')}>{t('His educational journey', 'त्यांचा शैक्षणिक प्रवास')}</a>
+        <a class="btn btn-ghost" href={url('/timeline/')}>{t('Timeline', 'कालपट')}</a>
       </div>
     </div>
   </section>
@@ -33,8 +36,8 @@ const themeList = await themes();
   {themeList.length > 0 && (
     <section class="section-tight" id="themes">
       <div class="wrap">
-        <span class="eyebrow">Themes</span>
-        <h2>The person behind the work</h2>
+        <span class="eyebrow">{t('Themes', 'विषय')}</span>
+        <h2>{t('The person behind the work', 'कार्यामागील माणूस')}</h2>
         <div class="grid" style="margin-top:24px">
           {themeList.map((t) => <StoryCard slug={t.id} href={`/themes/${t.id}/`} title={t.data.title} period={t.data.period} summary={t.data.summary} />)}
         </div>

@@ -43,6 +43,30 @@ node scripts/build-toc.mjs                        # chapters from each volume's 
 
 The reader (`/library/<volume>/<chapter>/`) shows each page's text word for word: only line breaks are joined into paragraphs, and running headers and page numbers are left out. Every page links to the same page of the official PDF.
 
+## Marathi (मराठी)
+
+English is at `/`, Marathi at `/mr/`. Each page is written once and reads its language with `getLang(Astro)`; short texts sit side by side as `t('English', 'मराठी')` (`src/i18n/index.ts`). `scripts/gen-locale-pages.mjs` creates the `/mr/` routes before every build, and `src/middleware.ts` keeps Marathi readers on Marathi pages.
+
+Translated content lives next to the English, with the same file names and structure:
+
+| English | Marathi | Check |
+|---|---|---|
+| `src/content/life/`, `themes/`, `blog/` | `src/content/mr/…` | `node scripts/check-mr-md.mjs <files>` |
+| `src/data/<name>.json` | `src/data/mr/<name>.json` | `node scripts/check-mr-json.mjs <name>` |
+| `research/works/`, `research/constitution/` | `research/mr/…` | — |
+| `library/baws-en/` (the 17 volumes) | `library/baws-mr/` + `library/toc-mr.json` | `node scripts/translate-library.mjs status` |
+
+Every translation follows **`i18n/marathi-style-guide.md`**: the meaning and intent of the original must never change. Passages flagged for a human reviewer are listed in `i18n/review/`.
+
+To translate more of the library (needs `ANTHROPIC_API_KEY`; uses the Message Batches API):
+
+```bash
+node scripts/translate-library.mjs api volume-1          # every chapter of Volume 1 not yet translated
+node scripts/translate-library.mjs status                # progress for all volumes
+```
+
+Translations are checked before they are published (same pages, same paragraphs, nothing left untranslated or dropped), and each reader page shows the original English beside the Marathi.
+
 ## Branches and deploys
 
 - `staging` → GitHub Pages automatically on every push (`.github/workflows/deploy-staging.yml`).

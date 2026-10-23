@@ -30,6 +30,21 @@ export function loadImages() {
   return cache.images;
 }
 
+let mrCache = { mtime: 0, byId: new Map() };
+/** The same photograph with its Marathi title and caption (src/data/mr/images.json), when there is one. */
+export function inLang(img, lang) {
+  if (!img || lang !== 'mr') return img;
+  try {
+    const f = path.join(root, 'src/data/mr/images.json');
+    const { mtimeMs } = fs.statSync(f);
+    if (mtimeMs !== mrCache.mtime) mrCache = { mtime: mtimeMs, byId: new Map(JSON.parse(fs.readFileSync(f, 'utf8')).map((i) => [i.id, i])) };
+  } catch {
+    return img;
+  }
+  const m = mrCache.byId.get(img.id);
+  return m ? { ...img, title: m.title, caption: m.caption, place: m.place, people: m.people, sourceName: m.sourceName } : img;
+}
+
 export function loadVariants() {
   try {
     const { mtimeMs } = fs.statSync(VARIANTS);

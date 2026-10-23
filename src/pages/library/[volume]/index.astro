@@ -1,37 +1,46 @@
 ---
 import DocsShell from '../../../components/DocsShell.astro';
-import { volumes, tocOf, firstChapter, coverOf, type Volume } from '../../../lib/library';
+import { volumes, tocOf, firstChapter, coverOf, titleIn, volLabelIn, volTitleIn, translatedCount, type Volume } from '../../../lib/library';
 import { url } from '../../../lib/site';
+import { getLang, translator } from '../../../i18n';
 
 export function getStaticPaths() {
   return volumes().map((vol) => ({ params: { volume: vol.id }, props: { vol } }));
 }
 const { vol } = Astro.props as { vol: Volume };
+const lang = getLang(Astro);
+const t = translator(lang);
 const chapters = tocOf(vol);
 const start = firstChapter(vol);
+const label = volLabelIn(vol, lang);
+const title = volTitleIn(vol, lang);
+const count = chapters.filter((c) => c.title !== 'Front matter').length;
+const done = translatedCount(vol);
 ---
-<DocsShell vol={vol} title={`${vol.label} — ${vol.title}`} description={`Read ${vol.label} of Dr. Babasaheb Ambedkar: Writings and Speeches online — ${vol.title}.`}>
+<DocsShell vol={vol} title={`${label} — ${title}`} description={t(`Read ${vol.label} of Dr. Babasaheb Ambedkar: Writings and Speeches online — ${vol.title}.`, `डॉ. बाबासाहेब आंबेडकर: लेखन आणि भाषणे, ${label} ऑनलाइन वाचा — ${title}.`)}>
   <div class="docs-overview">
-    <figure class="book-cover large"><img src={url(coverOf(vol))} alt={`Cover of ${vol.label}`} width="360" height="560" /></figure>
+    <figure class="book-cover large"><img src={url(coverOf(vol))} alt={t(`Cover of ${vol.label}`, `${label} चे मुखपृष्ठ`)} width="360" height="560" /></figure>
     <div>
-      <span class="eyebrow">Dr. Babasaheb Ambedkar: Writings and Speeches</span>
-      <h1>{vol.label}</h1>
-      <p class="lede">{vol.title}</p>
-      <p class="muted">{chapters.filter((c) => c.title !== 'Front matter').length} chapters · {vol.pages} pages</p>
+      <span class="eyebrow">{t('Dr. Babasaheb Ambedkar: Writings and Speeches', 'डॉ. बाबासाहेब आंबेडकर: लेखन आणि भाषणे')}</span>
+      <h1>{label}</h1>
+      <p class="lede">{title}</p>
+      {lang === 'mr' && title !== vol.title && <p class="docs-orig-title"><span>मूळ इंग्रजी शीर्षक:</span> <span lang="en">{vol.title}</span></p>}
+      <p class="muted">{t(`${count} chapters · ${vol.pages} pages`, `${count} प्रकरणे · ${vol.pages} पाने`)}</p>
+      {lang === 'mr' && <p class="muted">{done ? `मराठी अनुवाद: ${done} / ${vol.pages} पाने तयार. अनुवादित प्रकरणांवर “मराठी” असे चिन्ह आहे; बाकीची प्रकरणे मूळ इंग्रजीत आहेत.` : 'या खंडाचा मराठी अनुवाद अजून सुरू व्हायचा आहे; सध्या मूळ इंग्रजी मजकूर उपलब्ध आहे.'}</p>}
       <div class="btn-row" style="margin:22px 0 10px">
-        {start && <a class="btn btn-primary btn-beam" href={url(`/library/${vol.id}/${start.slug}/`)}><span>Start reading →</span></a>}
-        <a class="btn btn-ghost" href={url(`/ask/?volume=${encodeURIComponent(vol.label)}`)}>Search this volume</a>
+        {start && <a class="btn btn-primary btn-beam" href={url(`/library/${vol.id}/${start.slug}/`)}><span>{t('Start reading →', 'वाचायला सुरुवात करा →')}</span></a>}
+        <a class="btn btn-ghost" href={url(`/ask/?volume=${encodeURIComponent(vol.label)}`)}>{t('Search this volume', 'या खंडात शोधा')}</a>
       </div>
-      <p class="source-link">Source: <a href={vol.officialUrl} target="_blank" rel="noopener noreferrer">official PDF, Government of India ↗</a></p>
+      <p class="source-link">{t('Source:', 'स्रोत:')} <a href={vol.officialUrl} target="_blank" rel="noopener noreferrer">{t('official PDF, Government of India ↗', 'अधिकृत PDF, भारत सरकार ↗')}</a></p>
     </div>
   </div>
-  <h2 class="docs-toc-title">Contents</h2>
+  <h2 class="docs-toc-title">{t('Contents', 'अनुक्रमणिका')}</h2>
   <ol class="docs-toc">
     {chapters.map((c, i) => (
       <li>
-        {c.group && c.group !== chapters[i - 1]?.group && <span class="g">{c.group}</span>}
-        <a href={url(`/library/${vol.id}/${c.parts[0].slug}/`)}>{c.title}</a>
-        <span class="pp">pp. {c.start}–{c.end}</span>
+        {c.group && c.group !== chapters[i - 1]?.group && <span class="g">{titleIn(vol, c.group, lang)}</span>}
+        <a href={url(`/library/${vol.id}/${c.parts[0].slug}/`)} title={lang === 'mr' ? c.title : undefined}>{titleIn(vol, c.title, lang)}</a>
+        <span class="pp">{t('pp.', 'पृ.')} {c.start}–{c.end}</span>
       </li>
     ))}
   </ol>
