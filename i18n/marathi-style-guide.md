@@ -70,6 +70,16 @@ Explanations for general readers are welcome, but **only as separate notes**, cl
 | Scheduled Castes Federation | शेड्युल्ड कास्ट्स फेडरेशन (अनुसूचित जाती महासंघ) |
 | People's Education Society, Siddharth College | पीपल्स एज्युकेशन सोसायटी, सिद्धार्थ महाविद्यालय |
 | Hindu Code Bill | हिंदू कोड बिल |
+| Federation / Crown / Instrument of Accession | संघराज्य / राजसत्ता / सामीलनामा |
+| Dominion Status | डोमिनियन दर्जा |
+| weightage (in representation) | भारांक |
+| relative / absolute / bare majority | सापेक्ष / निरपेक्ष / निसटते बहुमत |
+| territorial constituency / communal electorate | प्रादेशिक मतदारसंघ / जातीय मतदारसंघ |
+| Paramountcy / Paramount Power | सार्वभौम सत्ता |
+| Indian States / Princes | संस्थाने / संस्थानिक |
+| Secretary of State (for India) | भारतमंत्री |
+| dyarchy / Reserved / Transferred subjects | द्विदल शासनपद्धती / राखीव / हस्तांतरित विषय |
+| Article / Section / Clause (of a constitution) | अनुच्छेद / विभाग / खंड |
 | Viceroy's Executive Council / Labour Member | व्हाइसरॉयचे कार्यकारी मंडळ / मजूर सदस्य |
 | Law Minister | कायदामंत्री |
 | Simon Commission, Southborough Committee | सायमन कमिशन, साउथबरो समिती |
