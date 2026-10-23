@@ -279,3 +279,32 @@ No Kruti Dev text and no “zz”. This source file covers more than the Lothian
 5. **p. 517.** “…all depressed classes were not untouchables, and to include all untouchables irrespective…” incomplete in the source; the Marathi is equally incomplete.
 6. **p. 528.** “We cannot therefore hope for the effectuation… unless we are to have another revolution” broken by a stray full stop; fragment structure kept. “The Hindus claim them only to deny them or, better still, to appropriate rights” translated literally without adding whose rights.
 7. **Terms.** Chapter letter E → इ. (following ब., ड.); Indian / Provincial Franchise Committee → भारतीय / प्रांतिक मताधिकार समिती; Census Superintendent / Commissioner → जनगणना अधीक्षक / आयुक्त; United Provinces → संयुक्त प्रांत; notional / literal sense → संकल्पनात्मक (notional) / शब्दशः अर्थ; consciousness of kind → स्वजातीयतेची जाणीव; Chamar (UP and Bengal) → चमार rather than चांभार (volume usage is mixed; check); exterior / excluded castes → बहिःस्थ / बहिष्कृत जाती; Reservations (qualifications to an agreement) → अटी (Reservations); Minorities Pact → अल्पसंख्याक करार; nomination from a panel → नामवलीतून नामनिर्देशन; Committee of the Whole Conference → संपूर्ण परिषदेची समिती; Unitary Government → एकात्म (Unitary) सरकार; “LETTERS DE CACHET” kept in Latin script; signature → भी. रा. आंबेडकर.
+
+## Chapters 70–71 — Minorities Sub-Committee, 6th sitting (16 Jan 1931); Appendix: Scheme of Political Safeguards (PDF pp. 555–575)
+
+No Kruti Dev text.
+
+1. **p. 557.** “I should like the word “untouchability”. You included there !” → तो तिथे समाविष्ट करावा! (“it should be included there!”). **Please check.**
+2. **p. 563.** “The word “important” docs “that the representation…”” — “docs” garbled; marked [मूळ मजकूर अस्पष्ट].
+3. **Typos read as intended:** “Sir M. Shaft” → सर एम. शफी; “Dr. Ambedker”; “sutfrage” → मताधिकार; p. 567 “equal below the law” → कायद्यापुढे समान.
+4. **Chapter 71 title.** The English title is cut off (“Bahadur R. Srinivasan. Appendix…”); rendered “राव बहादूर आर. श्रीनिवासन. उपसमितीच्या अहवालाचे परिशिष्ट”, adding “राव”. **Please confirm.**
+5. **Footnotes mixed into the main text** (pp. 567–569, 573) translated where they stand; “U. S. Statutes at arge” kept with [U. S. Statutes at Large]; “British North America Act, 1867, sec. 93.” kept in English mid-sentence. p. 567 repeats a broken sentence that p. 568 gives in full; both translated as printed.
+6. **p. 570, proviso.** The source repeats “in pursuance of or in collusion with any other person”; translated once, keeping every element. **Please check.**
+7. **p. 569.** “freedom of contact” → करारस्वातंत्र्य (freedom of contract); judgement call to confirm.
+8. **p. 574.** “India does not breed village Hampdens” → “भारतात गावोगावी हॅम्पडेन निपजत नाहीत”; no gloss added.
+9. **Chapter 71 ends mid-sentence** (“…should impose upon the” → “…संविधानात्मक कायद्याने”); check that it joins the next chapter's first block.
+10. **Speaker labels (Minorities Sub-Committee):** सर पी. सी. मित्तर, लेफ्टनंट कर्नल गिडनी, श्री. फूट, राजा नरेंद्र नाथ, डॉ. शफाअत अहमद खान, श्री. चिंतामणी, डॉ. मुंजे, दिवाण बहादूर रामचंद्र राव, लॉर्ड रीडिंग, सर ए. पी. पात्रो, सर मुहम्मद शफी, श्री. जोशी, राव बहादूर पन्नीर सेल्वम, सरदार उज्जल सिंग, श्री. जफरुल्ला खान; Mr. Prime Minister → पंतप्रधान महोदय.
+11. **Terms.** distinction / discrimination → भेद / भेदभाव; principle of responsibility → जबाबदारीचे तत्त्व; misdemeanour → किरकोळ गुन्हा; Provincial / Federal Executive → प्रांतिक / संघराज्य कार्यकारी मंडळ; Federal Structure Committee → संघराज्य संरचना समिती (other chapters: संघराज्य रचना समिती; make consistent); hereditary bondsmen → आनुवंशिक गुलाम; cognizable → दखलपात्र; bona fide → प्रामाणिक; inns → धर्मशाळा-सराया; Governor-General in Council → गव्हर्नर-जनरल इन कौन्सिल (elsewhere सपरिषद गव्हर्नर-जनरल); subjects of the State → राज्याचे प्रजाजन; tenants at will → मर्जीवरचे कुळ; Pariahs → परया; paracheri → पारचेरी; mirasi → मिरासी; Bania → वाणी; sacred thread → जानवे; Board of Revenue → महसूल मंडळ; “a score of influence” → वीस प्रकारचे प्रभाव.
+
+## Chapter 68, part 2, and Chapter 69 — Sub-Committee No. II (Provincial Constitution), Dec 1930; Committee of the Whole Conference; Sub-Committee No. III (Minorities), 31 Dec 1930; 5th sitting, 14 Jan 1931 (PDF pp. 533–555)
+
+No Kruti Dev text. Despite its title, this second part of the Franchise Committee file holds no franchise-note text: it is his speeches in the Round Table Conference sub-committees. Its first block starts a new section, so there is no sentence join with part 1.
+
+1. **p. 542.** “abolition of anarchy” is almost certainly a scan error for “dyarchy”; translated as printed: अराजकतेच्या (anarchy) उच्चाटनाबरोबर. **Decide whether to change it to द्विदल शासनपद्धती.**
+2. **p. 544.** “milestones round their necks” (millstones) → गळ्यात बांधलेले धोंडे.
+3. **p. 544, last block.** Broken sentence (“he may not agree to the Ministry's advice to dissolve the House, but may instead of being embodied in a Statute, the matter should be left…”); both sides translated, gap marked [मूळ मजकूर अस्पष्ट].
+4. **p. 553.** “freedom of contact” → करारस्वातंत्र्य, matching the same quotation in chapter 71. That quotation (pp. 552–553) reads “more dangerous” here (अधिक धोकादायक) where chapter 71 has सर्वांत.
+5. **p. 549.** Footnote “Appendix I, pp. 546-54” kept as printed though it looks inconsistent.
+6. **p. 539.** “they will not consent to work with when he accepts their advice…” has a word missing; translated as it stands. **p. 555.** Fragment “Regarding the question of the representation of the Depressed Classes in the Central Legislature.” kept as a fragment.
+7. **“this country”** (pp. 544, 554) means Britain in the London speeches; kept literally as या देशात.
+8. **Terms.** “the noble Marquess” → सन्माननीय मार्क्विस; “A Member” → एक सदस्य; Section 52 → विभाग 52; Instrument of Instructions → आदेशपत्र; convention → संकेत (convention) here (chapter 53: परंपरा; make consistent); over-riding powers → सर्वोपरी अधिकार; nomination → नामनिर्देशन; co-option → स्वीकृत सदस्य नेमणूक; civic disabilities → नागरी निर्बंध; Indianisation → भारतीयीकरण; orthodox → सनातनी; “in the hold” → नावेच्या तळघरात. Speakers: सर अहमद सईद खान, सर कावसजी जहांगीर, श्री. पॉल, श्री. वुड, रावबहादूर श्रीनिवासन, and others as in chapter 70.
