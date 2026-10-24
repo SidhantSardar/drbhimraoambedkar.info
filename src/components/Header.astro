@@ -41,8 +41,8 @@ const here = (href: string) => {
         <a href={pathIn(current, 'en')} hreflang="en" lang="en" data-lang-switch aria-current={mr ? undefined : 'true'}>EN</a>
         <a href={pathIn(current, 'mr')} hreflang="mr" lang="mr" data-lang-switch aria-current={mr ? 'true' : undefined}>मराठी</a>
       </div>}
-      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" id="nav-toggle" data-open={mr ? ' बंद करा' : ' Close'} data-closed={mr ? ' मेनू' : ' Menu'}>
-        <span aria-hidden="true">☰</span>{mr ? ' मेनू' : ' Menu'}
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" id="nav-toggle" aria-label={mr ? 'मेनू उघडा' : 'Open menu'} data-open={mr ? 'मेनू बंद करा' : 'Close menu'} data-closed={mr ? 'मेनू उघडा' : 'Open menu'}>
+        <span class="nav-ico" aria-hidden="true">☰</span>
       </button>
     </div>
   </div>
@@ -53,7 +53,8 @@ const here = (href: string) => {
     btn.addEventListener('click', function () {
       var open = document.body.classList.toggle('nav-open');
       btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-      btn.lastChild.textContent = open ? btn.dataset.open : btn.dataset.closed;
+      btn.setAttribute('aria-label', open ? btn.dataset.open : btn.dataset.closed);
+      btn.querySelector('.nav-ico').textContent = open ? '✕' : '☰';
     });
     var menus = document.querySelectorAll('.site-nav details');
     var desktop = window.matchMedia('(min-width: 1080px)');

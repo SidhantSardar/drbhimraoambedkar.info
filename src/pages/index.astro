@@ -16,10 +16,15 @@ const imgs = images(lang);
 const byId = (id: string) => imgs.find((i) => i.id === id) as Img | undefined;
 
 const heroImg = byId('ambedkar-portrait-classic');
+const heroPhoto = byId('ambedkar-bhawan-delhi-conference-1951');
+const factImg = { events: byId('twenty-two-vows-deekshabhoomi-1956'), works: byId('annihilation-of-caste-first-edition'), speeches: byId('yeola-speech-1935'), newspapers: byId('mooknayak-bahishkrit-bharat-mastheads') };
 const bandConst = byId('constituent-assembly-first-day-1946');
+const constImg = { adopted: byId('presenting-draft-constitution-1949'), force: byId('first-republic-day-parade-1950'), art17: byId('constitution-calligraphed-title-page'), art32: byId('ambedkar-in-parliament-1949') };
 
 const pages = volumes().reduce((s, v) => s + v.pages, 0);
-const works = loadJSON<Work[]>('works', []).length;
+const allWorks = loadJSON<Work[]>('works', []);
+const works = allWorks.length;
+const newspapers = allWorks.filter((w: any) => w.type === 'journal').length;
 const speeches = loadJSON<Speech[]>('speeches', []).length;
 // Key dates across the life story, themes and the Constitution — the timeline's events, de-duplicated.
 const eventKeys = new Set<string>();
@@ -43,26 +48,25 @@ const cats = [...new Set(updates.map((n) => n.category))];
       </div>
     )}
     <div class="hero-fx" aria-hidden="true"><span class="grid-floor"></span></div>
+    {heroPhoto && (
+      <div class="hero-photo" aria-hidden="true"><Picture img={heroPhoto} eager sizes="(min-width: 1000px) 130vw, 100vw" alt="" /><canvas class="hero-grain"></canvas></div>
+    )}
 
     <div class="hero-main">
-      <a class="status-pill" href={url('/ask/')}>
-        <span class="live-dot" aria-hidden="true"></span>
-        <span class="status-pill-text">{t(`Open archive · ${pages.toLocaleString('en-IN')} pages of his work, for people and for AI`, `खुला संग्रह · त्यांच्या साहित्याची ${pages.toLocaleString('en-IN')} पाने, माणसांसाठी आणि AI साठी`)}</span>
-        <span aria-hidden="true">→</span>
-      </a>
       <span class="eyebrow">{t('1891 – 1956 · Scholar · Economist · Jurist · Reformer', '1891 – 1956 · विद्वान · अर्थशास्त्रज्ञ · कायदेपंडित · समाजसुधारक')}</span>
       {lang === 'mr' ? <h1>बाबासाहेब<br />आंबेडकर</h1> : <h1>Babasaheb<br />Ambedkar</h1>}
-      <p class="hero-sub">{t('The world is moving fast, and millions have still not met the man who wrote equality into India\'s Constitution. This is the first place that brings all of his work together, word for word, open to people and to AI — so that what he really said is protected, shared, and keeps working for a more liberal and democratic India.', 'जग वेगाने पुढे जात आहे, आणि ज्यांनी भारताच्या संविधानात समता लिहिली, त्या माणसाची ओळख अजूनही कोट्यवधी लोकांना झालेली नाही. त्यांचे संपूर्ण कार्य एकाच ठिकाणी, शब्दशः, माणसांसाठी आणि AI साठी खुले करणारे हे पहिले व्यासपीठ आहे — जेणेकरून ते खरोखर काय म्हणाले ते जपले जाईल, पोहोचवले जाईल आणि अधिक उदारमतवादी, लोकशाही भारतासाठी काम करत राहील.')}</p>
+      <p class="hero-sub">{t('Millions know his name, but few have read his words. His work lies scattered across the internet, and no single place holds all of it. This is the first portal to bring it together: every book, speech and newspaper, word for word, from official sources.', 'कोट्यवधी लोकांना त्यांचे नाव माहीत आहे, पण त्यांचे शब्द फारच थोड्यांनी वाचले आहेत. त्यांचे कार्य इंटरनेटवर विखुरलेले आहे, आणि ते सर्व एकत्र असलेले एकही ठिकाण नाही. ते सर्व एकत्र आणणारे हे पहिले व्यासपीठ आहे: प्रत्येक ग्रंथ, भाषण आणि वृत्तपत्र, शब्दशः, अधिकृत स्रोतांतून.')}</p>
       <div class="btn-row">
         <a class="btn btn-primary btn-beam" href={url('/life/')}><span>{t('Begin his story →', 'त्यांची कथा वाचायला सुरुवात करा →')}</span></a>
         <a class="btn btn-ghost" href={url('/ask/')}>{t('Ask the archive', 'संग्रहात शोधा')}</a>
       </div>
-      <dl class="hero-stats">
-        <div><dt>{t('Events', 'घटना')}</dt><dd data-count={events}>{events}</dd></div>
-        <div><dt>{t('Works', 'साहित्य')}</dt><dd data-count={works}>{works}</dd></div>
-        <div><dt>{t('Speeches', 'भाषणे')}</dt><dd data-count={speeches}>{speeches}</dd></div>
-        <div><dt>{t('Pages', 'पाने')}</dt><dd data-count={pages}>{pages.toLocaleString('en-IN')}</dd></div>
-      </dl>
+      <p class="hero-by">{t('A tribute by', 'आदरांजली —')} <a href="https://www.sidhantsardar.com/" target="_blank" rel="noopener">{t('Sidhant Sardar', 'सिद्धांत सरदार')}</a>{t(', an Ambedkarite and web developer', ', एक आंबेडकरवादी आणि वेब डेव्हलपर')} · <a href="https://www.sidhantsardar.com/" target="_blank" rel="noopener">sidhantsardar.com&nbsp;↗</a></p>
+      <nav class="hero-facts" aria-label={t('The archive in numbers', 'संग्रह आकड्यांत')}>
+        <a class="hf" href={url('/library/')}><span class="hf-img"><img src={coverVol1} alt="" width="360" height="540" loading="lazy" decoding="async" /></span><span class="hf-body"><span class="hf-num" data-count={pages}>{pages.toLocaleString('en-IN')}</span><span class="hf-label">{t('All Volumes', 'सर्व खंड')}</span><span class="hf-note">{t('pages of his writings, in 17 volumes', 'त्यांच्या लेखनाची पाने, 17 खंडांत')}</span></span></a>
+        <a class="hf" href={url('/works/speeches/')}>{factImg.speeches && <span class="hf-img"><Picture img={factImg.speeches} sizes="240px" alt="" /></span>}<span class="hf-body"><span class="hf-num" data-count={speeches}>{speeches}</span><span class="hf-label">{t('Speeches', 'भाषणे')}</span><span class="hf-note">{t('major speeches, 1919–1956', 'प्रमुख भाषणे, 1919–1956')}</span></span></a>
+        <a class="hf" href={url('/works/')}>{factImg.works && <span class="hf-img"><Picture img={factImg.works} sizes="240px" alt="" /></span>}<span class="hf-body"><span class="hf-num" data-count={works}>{works}</span><span class="hf-label">{t('Works', 'साहित्य')}</span><span class="hf-note">{t('books, essays, papers', 'ग्रंथ, निबंध, लेख')}</span></span></a>
+        <a class="hf" href={url('/works/journals/')}>{factImg.newspapers && <span class="hf-img"><Picture img={factImg.newspapers} sizes="240px" alt="" /></span>}<span class="hf-body"><span class="hf-num" data-count={newspapers}>{newspapers}</span><span class="hf-label">{t('Newspapers', 'वृत्तपत्रे')}</span><span class="hf-note">{t('his own papers, 1920–1956', 'त्यांची स्वतःची वृत्तपत्रे, 1920–1956')}</span></span></a>
+      </nav>
     </div>
 
     {updates.length > 0 && (
@@ -70,7 +74,6 @@ const cats = [...new Set(updates.map((n) => n.category))];
       <button class="ticker-open" type="button" aria-controls="ticker" aria-expanded="false" data-ticker-open><span aria-hidden="true">←</span><span class="ticker-open-label"><span class="live-dot" aria-hidden="true"></span>{t('Live updates', 'थेट घडामोडी')}</span></button>
       <aside class="ticker" id="ticker" aria-label={t('Live updates', 'थेट घडामोडी')}>
         <div class="ticker-head">
-          <button class="ticker-close" type="button" aria-label={t('Close live updates', 'थेट घडामोडी बंद करा')} data-ticker-close>→</button>
           <strong><span class="live-dot" aria-hidden="true"></span>{t('Live updates', 'थेट घडामोडी')}</strong>
           <p class="ticker-sub">{t('Educate · Agitate · Organise — the movement today', 'शिका · संघर्ष करा · संघटित व्हा — आजची चळवळ')}</p>
           <div class="ticker-tags" role="group" aria-label={t('Filter updates', 'घडामोडी निवडा')}>
@@ -92,7 +95,7 @@ const cats = [...new Set(updates.map((n) => n.category))];
             ))}
           </ul>
         </div>
-        <div class="ticker-foot"><span>{t('Hover to browse', 'पाहण्यासाठी पॉइंटर ठेवा')}</span><a href={url('/news/')}>{t('All news →', 'सर्व बातम्या →')}</a></div>
+        <div class="ticker-foot"><span>{t('Hover to browse', 'पाहण्यासाठी पॉइंटर ठेवा')}</span><div class="ticker-actions"><button class="ticker-close" type="button" aria-label={t('Close live updates', 'थेट घडामोडी बंद करा')} data-ticker-close>{t('Close', 'बंद करा')}</button><a href={url('/news/')}>{t('All news →', 'सर्व बातम्या →')}</a></div></div>
       </aside>
     )}
     {heroImg && <p class="credit">{heroImg.caption} {credit(heroImg)} · <a href={heroImg.sourceUrl} target="_blank" rel="noopener noreferrer">{heroImg.sourceName}</a></p>}
@@ -104,7 +107,7 @@ const cats = [...new Set(updates.map((n) => n.category))];
       <div class="why-lead" data-reveal>
         <span class="eyebrow">{t('Why this platform exists', 'हे व्यासपीठ का')}</span>
         <h2 id="home-why-h">{t('Time moves fast. His work must not be left behind.', 'काळ वेगाने पुढे जातो. त्यांचे कार्य मागे राहता कामा नये.')}</h2>
-        <p>{t('Until now there was no single place that held all of Dr. Ambedkar\'s work. It sat scattered across government volumes, scanned PDFs and second-hand summaries, while technology raced ahead without him. This platform is a source that people and AI can both trust — so that his real words strengthen the vision of a liberal, democratic nation and society.', 'आजवर डॉ. आंबेडकरांचे संपूर्ण कार्य एकाच ठिकाणी ठेवणारे कोणतेही व्यासपीठ नव्हते. ते सरकारी खंड, स्कॅन केलेल्या PDF आणि ऐकीव सारांशांमध्ये विखुरलेले होते, आणि तंत्रज्ञान त्यांच्याशिवाय पुढे धावत होते. हे व्यासपीठ म्हणजे माणसे आणि AI या दोघांनाही विश्वास ठेवता येईल असा स्रोत — जेणेकरून त्यांचे खरे शब्द उदारमतवादी, लोकशाही राष्ट्र आणि समाजाच्या दृष्टीला बळ देतील.')}</p>
+        <p>{t('Until now there was no single place that held all of Dr. Ambedkar\'s work. It sat scattered across government volumes, scanned PDFs and second-hand summaries, and many people know only his name. This portal is a personal tribute to Babasaheb by Sidhant Sardar. It is independent: not a government website, and not tied to any party or organisation. Everything here comes from legitimate sources, so that people and AI can both trust it.', 'आजवर डॉ. आंबेडकरांचे संपूर्ण कार्य एकाच ठिकाणी ठेवणारे कोणतेही व्यासपीठ नव्हते. ते सरकारी खंड, स्कॅन केलेल्या PDF आणि ऐकीव सारांशांमध्ये विखुरलेले होते, आणि अनेकांना फक्त त्यांचे नाव माहीत आहे. हे व्यासपीठ म्हणजे सिद्धांत सरदार यांची बाबासाहेबांना वैयक्तिक आदरांजली आहे. ते स्वतंत्र आहे: हे सरकारी संकेतस्थळ नाही, आणि कोणत्याही पक्षाशी किंवा संघटनेशी जोडलेले नाही. येथील सर्व काही विश्वसनीय स्रोतांतून घेतले आहे, जेणेकरून माणसे आणि AI या दोघांनाही त्यावर विश्वास ठेवता येईल.')}</p>
       </div>
       <div class="why-cards">
         <a class="why-card" href={url('/works/')} data-reveal style="--i:0">
@@ -117,8 +120,8 @@ const cats = [...new Set(updates.map((n) => n.category))];
         <a class="why-card" href={url('/about/')} data-reveal style="--i:1">
           <span class="why-ic"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 11H6.5a3.5 3.5 0 0 1 3.5-3.5V5a6 6 0 0 0-6 6v6h6v-6z"/><path d="M20 11h-3.5A3.5 3.5 0 0 1 20 7.5V5a6 6 0 0 0-6 6v6h6v-6z"/></svg></span>
           <span class="why-num" aria-hidden="true">02</span>
-          <strong>{t('Word for word', 'शब्दशः')}</strong>
-          <span class="why-txt">{t('Nothing paraphrased, nothing softened. Every page is taken from the official volumes and links back to the original.', 'काहीही पुनर्लेखित नाही, काहीही सौम्य केलेले नाही. प्रत्येक पान अधिकृत खंडांतून घेतले आहे आणि मूळ प्रतीशी जोडलेले आहे.')}</span>
+          <strong>{t('From the source, free to share', 'मूळ स्रोतातून, सर्वांसाठी खुले')}</strong>
+          <span class="why-txt">{t('Every page is taken word for word from the official volumes published by the Government of India, and links to the original. Works he published in his lifetime have been in the public domain in India since 2017, sixty years after his death, so anyone may read and share them.', 'प्रत्येक पान भारत सरकारने प्रकाशित केलेल्या अधिकृत खंडांतून शब्दशः घेतले आहे आणि मूळ प्रतीशी जोडलेले आहे. त्यांनी आपल्या हयातीत प्रकाशित केलेले साहित्य, त्यांच्या निधनानंतर साठ वर्षांनी, 2017 पासून भारतात सार्वजनिक क्षेत्रात (public domain) आहे; त्यामुळे कोणीही ते वाचू आणि सामायिक करू शकतो.')} <span class="src">{t('(Copyright Act, 1957, s. 22)', '(कॉपीराइट कायदा, 1957, कलम 22)')}</span></span>
           <span class="why-go">{t('Our source policy', 'आमचे संदर्भ धोरण')} <i aria-hidden="true">→</i></span>
         </a>
         <a class="why-card" href={url('/ask/')} data-reveal style="--i:2">
@@ -131,48 +134,25 @@ const cats = [...new Set(updates.map((n) => n.category))];
       </div>
     </div>
   </section>
-  <!-- 2. HIS WORK -->
-  <section class="home-works" aria-labelledby="home-works-h">
-    <div class="wrap">
-      <span class="eyebrow" data-reveal>{t('His work, in one place', 'त्यांचे साहित्य, एकाच ठिकाणी')}</span>
-      <h2 id="home-works-h" data-reveal>{t('Everything he wrote and said, from the source', 'त्यांनी लिहिलेले आणि सांगितलेले सर्व काही, मूळ स्रोतातून')}</h2>
-      <div class="hw-grid">
-        <a class="hw-card" href={url('/works/speeches/')} data-reveal style="--i:0">
-          {byId('ambedkar-bhawan-delhi-conference-1951') && <span class="hw-img"><span class="hw-ic"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3M8 21h8"/></svg></span><Picture img={byId('ambedkar-bhawan-delhi-conference-1951')!} sizes="(min-width: 1000px) 300px, 100vw" alt="" /></span>}
-          <span class="hw-body"><strong>{t('Speeches', 'भाषणे')}</strong><span>{t(`${speeches} major speeches, from conferences to the Constituent Assembly`, `परिषदांपासून संविधान सभेपर्यंत ${speeches} महत्त्वाची भाषणे`)}</span><em>{t('Read the speeches →', 'भाषणे वाचा →')}</em></span>
-        </a>
-        <a class="hw-card" href={url('/library/')} data-reveal style="--i:1">
-          <span class="hw-img"><span class="hw-ic"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h5a3 3 0 0 1 3 3v13a2 2 0 0 0-2-2H4z"/><path d="M20 4h-5a3 3 0 0 0-3 3v13a2 2 0 0 1 2-2h6z"/></svg></span><img src={coverVol1} alt="" loading="lazy" /></span>
-          <span class="hw-body"><strong>{t('Writings & Speeches', 'लेखन आणि भाषणे')}</strong><span>{t(`All 17 volumes, ${pages.toLocaleString('en-IN')} pages, chapter by chapter`, `सर्व 17 खंड, ${pages.toLocaleString('en-IN')} पाने, प्रकरणानुसार`)}</span><em>{t('Open the library →', 'ग्रंथालय उघडा →')}</em></span>
-        </a>
-        <a class="hw-card" href={url('/works/journals/')} data-reveal style="--i:2">
-          {byId('mooknayak-bahishkrit-bharat-mastheads') && <span class="hw-img"><span class="hw-ic"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14"/><path d="M7 9h5v4H7zM14 9h3M14 13h3M7 16h10"/></svg></span><Picture img={byId('mooknayak-bahishkrit-bharat-mastheads')!} sizes="(min-width: 1000px) 300px, 100vw" alt="" /></span>}
-          <span class="hw-body"><strong>{t('His newspapers', 'त्यांची वृत्तपत्रे')}</strong><span>{t('Mooknayak, Bahishkrit Bharat, Janata and Prabuddha Bharat', 'मूकनायक, बहिष्कृत भारत, जनता आणि प्रबुद्ध भारत')}</span><em>{t('See the newspapers →', 'वृत्तपत्रे पाहा →')}</em></span>
-        </a>
-      </div>
-      <div class="hw-more"><a class="btn btn-primary" href={url('/works/')}>{t('View all works →', 'सर्व साहित्य पाहा →')}</a></div>
-    </div>
-  </section>
 
   <!-- 3. CONSTITUTION -->
   <section class="band">
-    {bandConst && <div class="bg"><Picture img={bandConst} sizes="100vw" alt="" /></div>}
+    {bandConst && <div class="bg"><Picture img={bandConst} sizes="100vw" alt="" /><canvas class="hero-grain"></canvas></div>}
     <div class="wrap band-inner" data-reveal>
       <span class="eyebrow">{t('The flagship · 1946–1950', 'मुख्य विभाग · 1946–1950')}</span>
       <h2 style="max-width:14ch">{t('The Constitution of India', 'भारताचे संविधान')}</h2>
       <p class="lede" style="max-width:52ch">{t("As chairman of the Drafting Committee, he guided India's Constitution through the Constituent Assembly. Read what it promises in plain words, the articles he fought for, his speeches — and download the official text.", 'मसुदा समितीचे अध्यक्ष म्हणून त्यांनी भारताचे संविधान संविधान सभेत मार्गी लावले. ते सोप्या शब्दांत काय वचन देते, त्यांनी आग्रहाने मांडलेले अनुच्छेद आणि त्यांची भाषणे वाचा — आणि अधिकृत मजकूर डाउनलोड करा.')}</p>
-      <div class="stats" style="margin:32px 0">
-        <div class="stat"><strong>{t('26 Nov 1949', '26 नोव्हेंबर 1949')}</strong><span>{t('Adopted by the Constituent Assembly', 'संविधान सभेने स्वीकारले')}</span></div>
-        <div class="stat"><strong>{t('26 Jan 1950', '26 जानेवारी 1950')}</strong><span>{t('Came into force — Republic Day', 'अंमलात आले — प्रजासत्ताक दिन')}</span></div>
-        <div class="stat"><strong>{t('Article 17', 'अनुच्छेद 17')}</strong><span>{t('Abolished untouchability', 'अस्पृश्यता नष्ट केली')}</span></div>
-        <div class="stat"><strong>{t('Article 32', 'अनुच्छेद 32')}</strong><span>{t('"The very soul of the Constitution"', '“संविधानाचा आत्मा” (त्यांच्या शब्दांत)')}</span></div>
-      </div>
+      <nav class="hero-facts band-facts" aria-label={t('The Constitution in four facts', 'संविधान चार तथ्यांत')}>
+        <a class="hf" href={url('/constitution/')}>{constImg.adopted && <span class="hf-img"><Picture img={constImg.adopted} sizes="240px" alt="" /></span>}<span class="hf-body"><span class="hf-num">{t('26 Nov 1949', '26 नोव्हेंबर 1949')}</span><span class="hf-label">{t('Adopted', 'स्वीकार')}</span><span class="hf-note">{t('by the Constituent Assembly', 'संविधान सभेने')}</span></span></a>
+        <a class="hf" href={url('/constitution/')}>{constImg.force && <span class="hf-img"><Picture img={constImg.force} sizes="240px" alt="" /></span>}<span class="hf-body"><span class="hf-num">{t('26 Jan 1950', '26 जानेवारी 1950')}</span><span class="hf-label">{t('In force', 'अंमलात')}</span><span class="hf-note">{t('the first Republic Day', 'पहिला प्रजासत्ताक दिन')}</span></span></a>
+        <a class="hf" href={url('/constitution/')}>{constImg.art17 && <span class="hf-img"><Picture img={constImg.art17} sizes="240px" alt="" /></span>}<span class="hf-body"><span class="hf-num">{t('Article 17', 'अनुच्छेद 17')}</span><span class="hf-label">{t('Untouchability', 'अस्पृश्यता')}</span><span class="hf-note">{t('abolished', 'नष्ट केली')}</span></span></a>
+        <a class="hf" href={url('/constitution/')}>{constImg.art32 && <span class="hf-img"><Picture img={constImg.art32} sizes="240px" alt="" /></span>}<span class="hf-body"><span class="hf-num">{t('Article 32', 'अनुच्छेद 32')}</span><span class="hf-label">{t('Right to remedies', 'घटनात्मक उपायांचा हक्क')}</span><span class="hf-note">{t('“the very soul of the Constitution”', '“संविधानाचा आत्मा” (त्यांच्या शब्दांत)')}</span></span></a>
+      </nav>
       <div class="btn-row">
         <a class="btn btn-primary" href={url('/constitution/')}>{t('Explore the Constitution →', 'संविधान समजून घ्या →')}</a>
         <a class="btn btn-ghost" href={url('/constitution/#documents')}>{t('Download the official text', 'अधिकृत मजकूर डाउनलोड करा')}</a>
       </div>
     </div>
-    {bandConst && <p class="credit">{bandConst.caption?.slice(0, 80)}… · {bandConst.license}</p>}
   </section>
 
   <!-- 4. ASK THE ARCHIVE -->
@@ -197,6 +177,46 @@ const cats = [...new Set(updates.map((n) => n.category))];
   <script is:inline>
     (function () {
       /* ---------- Hero and Constitution: photographs follow the pointer (3D), numbers count up ---------- */
+      /* ---------- Film grain over the hero and Constitution photographs: fresh random grain every frame, 24 frames a second ---------- */
+      (function () {
+        var canvases = document.querySelectorAll('.hero-grain');
+        if (!canvases.length || document.documentElement.dataset.skin !== 'light') return;
+        var T = 256, FRAMES = 8, sources = [];
+        for (var f = 0; f < FRAMES; f++) {
+          var t = document.createElement('canvas'); t.width = t.height = T;
+          var tc = t.getContext('2d'), img = tc.createImageData(T, T), d = img.data;
+          for (var k = 0; k < d.length; k += 4) {
+            // roughly Gaussian brightness around mid-grey, as real silver grain is
+            var v = (Math.random() + Math.random() + Math.random() + Math.random() - 2) / 2;
+            var g = 128 + v * 150;
+            d[k] = d[k + 1] = d[k + 2] = g < 0 ? 0 : g > 255 ? 255 : g; d[k + 3] = 255;
+          }
+          tc.putImageData(img, 0, 0);
+          sources.push(t);
+        }
+        var still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        canvases.forEach(function (c) {
+          var ctx = c.getContext('2d');
+          var tiles = sources.map(function (t) { return ctx.createPattern(t, 'repeat'); });
+          var size = function () { c.width = c.offsetWidth; c.height = c.offsetHeight; };
+          var draw = function () {
+            var p = tiles[(Math.random() * FRAMES) | 0];
+            var ox = (Math.random() * T) | 0, oy = (Math.random() * T) | 0;
+            ctx.save(); ctx.translate(-ox, -oy); ctx.fillStyle = p; ctx.fillRect(0, 0, c.width + T, c.height + T); ctx.restore();
+          };
+          size(); draw();
+          window.addEventListener('resize', function () { size(); draw(); });
+          if (still) return;
+          var visible = true, last = 0;
+          if ('IntersectionObserver' in window) new IntersectionObserver(function (es) { visible = es[0].isIntersecting; }).observe(c);
+          var loop = function (now) {
+            if (visible && !document.hidden && now - last > 41) { draw(); last = now; }
+            requestAnimationFrame(loop);
+          };
+          requestAnimationFrame(loop);
+        });
+      })();
+
       /* ---------- Scroll reveal: blocks marked data-reveal fade and rise in once, when they enter the viewport ---------- */
       var rev = document.querySelectorAll('[data-reveal]');
       if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
@@ -233,6 +253,11 @@ const cats = [...new Set(updates.map((n) => n.category))];
       // Light design: the column is a drawer that slides in from the right.
       var openBtn = document.querySelector('[data-ticker-open]');
       var closeBtn = document.querySelector('[data-ticker-close]');
+      /* light design: the drawer is fixed to the screen, so lift it (and its tab) out of the hero's stacking layer to sit above every section */
+      if (document.documentElement.dataset.skin === 'light') {
+        if (ticker) document.body.appendChild(ticker);
+        if (openBtn) document.body.appendChild(openBtn);
+      }
       var setDrawer = function (open) {
         ticker.classList.toggle('open', open);
         if (openBtn) openBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
@@ -240,6 +265,7 @@ const cats = [...new Set(updates.map((n) => n.category))];
       if (ticker && openBtn) openBtn.addEventListener('click', function () { setDrawer(true); });
       if (ticker && closeBtn) closeBtn.addEventListener('click', function () { setDrawer(false); });
       document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && ticker) setDrawer(false); });
+      document.addEventListener('click', function (e) { if (ticker && ticker.classList.contains('open') && !ticker.contains(e.target) && !(openBtn && openBtn.contains(e.target))) setDrawer(false); });
       if (ticker) {
         var view = ticker.querySelector('.ticker-view');
         var list = ticker.querySelector('.ticker-list');

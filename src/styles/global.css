@@ -1043,3 +1043,9 @@ span.cat::before { content: ''; width: 18px; height: 18px; flex: none; border-ra
 
 .home-ask { display: none; }
 .home-why { display: none; }
+.hero-photo, .hero-photo-credit { display: none; }
+.hero-facts { display: flex; flex-wrap: wrap; gap: 28px; margin-top: 32px; }
+.hero-facts .hf { display: grid; color: inherit; text-decoration: none; }
+.hero-facts .hf-num { font-size: 2rem; font-weight: 700; }
+.hero-facts .hf-note { display: none; }
+.hero-grain { display: none; }
