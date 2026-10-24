@@ -45,6 +45,8 @@ const t = translator(lang);
         var q = f.value.trim().toLowerCase();
         nav.querySelectorAll('li[data-title]').forEach(function (li) { li.hidden = q && li.dataset.title.indexOf(q) < 0; });
         nav.querySelectorAll('.docs-group').forEach(function (g) { g.hidden = !g.querySelector('li[data-title]:not([hidden])'); });
+        var empty = nav.querySelector('[data-docs-filter-empty]');
+        if (empty) empty.hidden = !q || !!nav.querySelector('li[data-title]:not([hidden])');
       });
     })();
   </script>

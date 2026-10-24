@@ -510,3 +510,95 @@
 @media (max-width: 999px) {
   [data-skin='light'] .band::before { background: linear-gradient(180deg, rgb(7 12 24 / 60%) 0%, rgb(7 12 24 / 82%) 35%, rgb(7 12 24 / 94%) 70%, rgb(7 12 24 / 97%) 100%); }
 }
+
+/* ---------- Film grain placement: under the shade on desktop (as before), above it on phones where the shade is heavy ---------- */
+[data-skin='light'] .hero-full > .hero-grain { z-index: 0; }
+[data-skin='light'] .band > .hero-grain { z-index: -2; }
+@media (max-width: 999px) {
+  [data-skin='light'] .hero-full > .hero-grain { z-index: 2; opacity: 0.16; }
+  [data-skin='light'] .hero-full .hero-main { z-index: 3; }
+  [data-skin='light'] .band > .hero-grain { z-index: -1; opacity: 0.16; }
+}
+
+/* ---------- Compact header on phones: one link to the other language, menu as a bare icon ---------- */
+@media (max-width: 1079px) {
+  [data-skin='light'] .lang-switch { border: 0; }
+  [data-skin='light'] .lang-switch a[aria-current='true'] { display: none; }
+  [data-skin='light'] .lang-switch a { min-height: 40px; padding: 0 10px; font-size: 0.92rem; color: var(--accent-blue); text-decoration: underline; text-decoration-color: rgb(29 78 216 / 35%); text-underline-offset: 4px; }
+  [data-skin='light'] .lang-switch a:hover { color: var(--accent-blue-dark); text-decoration-color: currentColor; }
+  [data-skin='light'] .nav-toggle { width: 40px; height: 40px; border: 0; background: transparent; font-size: 1.45rem; }
+  [data-skin='light'] .nav-toggle:hover { background: var(--sky-50); color: var(--ink); }
+  [data-skin='light'] .site-header .bar { gap: 8px; }
+}
+@media (max-width: 999px) { [data-skin='light'] .hero-full .btn-row .btn { white-space: nowrap; padding-inline: 12px; font-size: 0.95rem; justify-content: center; } }
+
+/* =====================================================================
+   Reader side panel: readable part headings, aligned chapter numbers, clear multi-part chapters,
+   a progress line and a search box that stays at the top while the list scrolls.
+   ===================================================================== */
+[data-skin='light'] .docs-nav { padding: 0 0 40px; font-size: 0.92rem; }
+[data-skin='light'] .docs-nav-top { position: sticky; top: 0; z-index: 2; padding: 16px 16px 12px; background: var(--sky-50); border-bottom: 1px solid var(--line); }
+[data-skin='light'] .docs-nav .docs-vol { padding: 0 0 12px; margin: 0 0 12px; }
+[data-skin='light'] .docs-vol small { color: var(--accent-blue); letter-spacing: 0.08em; }
+[data-skin='light'] .docs-progress { display: grid; gap: 6px; margin: 0 0 12px; font-size: 0.78rem; font-weight: 600; color: var(--muted); }
+[data-skin='light'] .docs-progress-bar { display: block; height: 3px; background: var(--line); overflow: hidden; }
+[data-skin='light'] .docs-progress-bar i { display: block; height: 100%; background: var(--accent-blue); }
+[data-skin='light'] .docs-filter { position: relative; display: block; }
+[data-skin='light'] .docs-filter svg { position: absolute; left: 11px; top: 50%; width: 16px; height: 16px; transform: translateY(-50%); fill: none; stroke: var(--muted); stroke-width: 2; stroke-linecap: round; pointer-events: none; }
+[data-skin='light'] .docs-filter input { margin: 0; min-height: 40px; padding: 6px 12px 6px 34px; background: #fff; border: 1px solid var(--line); font-size: 0.9rem; }
+[data-skin='light'] .docs-filter input:focus { outline: 2px solid var(--sky-200); border-color: var(--accent-blue); }
+[data-skin='light'] .docs-toc { padding: 8px 10px 0; }
+
+/* part headings: a small label over the topic, in normal case (no stretched letters in Devanagari) */
+[data-skin='light'] .docs-group + .docs-group { margin-top: 6px; padding-top: 8px; border-top: 1px solid var(--line); }
+[data-skin='light'] .docs-group-name { display: grid; gap: 1px; margin: 10px 8px 6px; text-transform: none; letter-spacing: 0; font-size: 0.86rem; font-weight: 700; color: var(--ink); line-height: 1.35; }
+[data-skin='light'] .dg-label { font-size: 0.72rem; font-weight: 600; color: var(--accent-blue); }
+
+/* chapter rows: number column + title, one colour for all */
+[data-skin='light'] .docs-nav .dn-row { display: grid; grid-template-columns: 1.7em minmax(0, 1fr) auto auto; align-items: start; gap: 0 6px; padding: 7px 8px; color: var(--ink-2); border-left: 2px solid transparent; line-height: 1.4; text-decoration: none; }
+[data-skin='light'] .docs-nav a.dn-row:visited { color: var(--ink-2); }
+[data-skin='light'] .dn-num { color: var(--muted); font-variant-numeric: tabular-nums; font-weight: 600; }
+[data-skin='light'] .dn-text { min-width: 0; }
+[data-skin='light'] .docs-nav .dn-row:hover { color: var(--ink); background: #fff; }
+[data-skin='light'] .docs-nav a.dn-row[aria-current='page'] { color: var(--accent-blue); font-weight: 700; border-left-color: var(--accent-blue); background: #fff; }
+[data-skin='light'] .docs-nav a.dn-row[aria-current='page'] .dn-num { color: var(--accent-blue); }
+
+/* multi-part chapters */
+[data-skin='light'] .docs-nav summary.dn-row { padding-right: 8px; }
+[data-skin='light'] .docs-nav summary.dn-row::after { display: none; }
+[data-skin='light'] .dn-count { align-self: center; font-size: 0.7rem; font-weight: 600; color: var(--muted); background: #fff; border: 1px solid var(--line); padding: 1px 6px; white-space: nowrap; }
+[data-skin='light'] .dn-chev { align-self: center; width: 16px; height: 16px; fill: none; stroke: var(--muted); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; transition: transform 0.2s ease; }
+[data-skin='light'] .docs-nav details[open] > summary .dn-chev { transform: rotate(90deg); stroke: var(--ink); }
+[data-skin='light'] .docs-nav details[open] > summary .dn-count { display: none; }
+[data-skin='light'] .docs-nav li.open > details > summary { color: var(--ink); font-weight: 600; }
+[data-skin='light'] .docs-nav .dn-parts { margin: 2px 0 6px calc(8px + 1.7em); padding: 0 0 0 10px; border-left: 1px solid var(--line); }
+[data-skin='light'] .docs-nav .dn-parts a { display: flex; justify-content: space-between; gap: 10px; padding: 5px 8px; color: var(--ink-2); border-left: 2px solid transparent; margin-left: -11px; font-size: 0.88rem; }
+[data-skin='light'] .docs-nav .dn-parts a small { color: var(--muted); font-size: 0.74rem; white-space: nowrap; }
+[data-skin='light'] .docs-nav .dn-parts a:hover { background: #fff; color: var(--ink); }
+[data-skin='light'] .docs-nav .dn-parts a[aria-current='page'] { color: var(--accent-blue); font-weight: 700; border-left-color: var(--accent-blue); background: #fff; }
+[data-skin='light'] .docs-filter-empty { margin: 12px 8px; color: var(--muted); font-size: 0.86rem; }
+
+/* ---------- Read aloud bar ---------- */
+.read-aloud { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 18px 0 6px; }
+.read-aloud[hidden] { display: none; }
+.read-aloud button, .read-aloud select { font: inherit; cursor: pointer; }
+.ra-play { display: inline-flex; align-items: center; gap: 8px; min-height: 40px; padding: 0 16px 0 12px; background: var(--accent-blue, #1D4ED8); color: #fff; border: 1px solid var(--accent-blue, #1D4ED8); font-weight: 700; font-size: 0.92rem; }
+.ra-play:hover { background: var(--accent-blue-dark, #1e40af); }
+.ra-play svg, .ra-stop svg { width: 18px; height: 18px; fill: currentColor; }
+.ra-play .ra-i-pause { display: none; }
+.read-aloud.playing .ra-play .ra-i-play { display: none; }
+.read-aloud.playing .ra-play .ra-i-pause { display: inline; }
+.ra-stop { display: inline-grid; place-items: center; width: 40px; height: 40px; background: #fff; color: var(--ink, #0b1220); border: 1px solid var(--line, #dbe3ee); }
+.ra-stop[hidden] { display: none; }
+.ra-stop:hover { border-color: var(--ink, #0b1220); }
+.ra-rate select { min-height: 40px; padding: 0 8px; background: #fff; color: var(--ink, #0b1220); border: 1px solid var(--line, #dbe3ee); font-size: 0.88rem; }
+.ra-lang { font-size: 0.8rem; color: var(--muted, #475569); }
+.ra-msg { flex-basis: 100%; margin: 4px 0 0; font-size: 0.84rem; color: var(--muted, #475569); }
+.reader .ra-now { background: rgb(29 78 216 / 7%); box-shadow: -10px 0 0 rgb(29 78 216 / 7%), inset 3px 0 0 var(--accent-blue, #1D4ED8); transition: background 0.3s ease; }
+
+/* ---------- Home on phones: tighter hero bottom, readable live-updates link, no white gap above the Constitution ---------- */
+[data-skin='light'] .home-why + .band, [data-skin='light'] .band { margin-top: 0; }
+@media (max-width: 999px) {
+  [data-skin='light'] .hero-full { padding-bottom: 28px; }
+  [data-skin='light'] .hero-full .ticker-mobile { position: relative; z-index: 3; margin: 16px 0 0; padding: 12px 14px; }
+}

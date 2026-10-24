@@ -49,8 +49,9 @@ const cats = [...new Set(updates.map((n) => n.category))];
     )}
     <div class="hero-fx" aria-hidden="true"><span class="grid-floor"></span></div>
     {heroPhoto && (
-      <div class="hero-photo" aria-hidden="true"><Picture img={heroPhoto} eager sizes="(min-width: 1000px) 130vw, 100vw" alt="" /><canvas class="hero-grain"></canvas></div>
+      <div class="hero-photo" aria-hidden="true"><Picture img={heroPhoto} eager sizes="(min-width: 1000px) 130vw, 100vw" alt="" /></div>
     )}
+    {heroPhoto && <canvas class="hero-grain" aria-hidden="true"></canvas>}
 
     <div class="hero-main">
       <span class="eyebrow">{t('1891 – 1956 · Scholar · Economist · Jurist · Reformer', '1891 – 1956 · विद्वान · अर्थशास्त्रज्ञ · कायदेपंडित · समाजसुधारक')}</span>
@@ -137,7 +138,8 @@ const cats = [...new Set(updates.map((n) => n.category))];
 
   <!-- 3. CONSTITUTION -->
   <section class="band">
-    {bandConst && <div class="bg"><Picture img={bandConst} sizes="100vw" alt="" /><canvas class="hero-grain"></canvas></div>}
+    {bandConst && <div class="bg"><Picture img={bandConst} sizes="100vw" alt="" /></div>}
+    {bandConst && <canvas class="hero-grain" aria-hidden="true"></canvas>}
     <div class="wrap band-inner" data-reveal>
       <span class="eyebrow">{t('The flagship · 1946–1950', 'मुख्य विभाग · 1946–1950')}</span>
       <h2 style="max-width:14ch">{t('The Constitution of India', 'भारताचे संविधान')}</h2>

@@ -1,6 +1,6 @@
 ---
 // Left-hand navigation of the documentation-style reader: the volume's parts, chapters and sub-parts.
-import { tocOf, coverOf, titleIn, volLabelIn, volTitleIn, leafTranslated, type Volume } from '../lib/library';
+import { tocOf, coverOf, titleIn, volLabelIn, volTitleIn, leavesOf, type Volume } from '../lib/library';
 import { url } from '../lib/site';
 import { getLang, translator } from '../i18n';
 
@@ -8,12 +8,22 @@ interface Props { vol: Volume; current?: string }
 const { vol, current } = Astro.props;
 const lang = getLang(Astro);
 const t = translator(lang);
+const mr = lang === 'mr';
 const chapters = tocOf(vol);
 const name = (s: string) => titleIn(vol, s, lang);
 // On the Marathi site, hovering a title shows the original English title.
-const tip = (s: string) => (lang === 'mr' && name(s) !== s ? s : undefined);
-// In Marathi, chapters that have been translated carry a small mark.
-const mark = (parts: { start: number; end: number; slug: string; title: string }[]) => lang === 'mr' && parts.every((p) => leafTranslated(vol, p));
+const tip = (s: string) => (mr && name(s) !== s ? s : undefined);
+
+// "Part I — On Caste" → a small label ("Part I") above the topic ("On Caste").
+const splitGroup = (g: string) => {
+  const [label, ...rest] = name(g).split(' — ');
+  return rest.length ? { label, topic: rest.join(' — ') } : { label: '', topic: label };
+};
+// "1 Castes in India" → number "1" in its own column, title beside it.
+const splitTitle = (s: string) => {
+  const m = name(s).match(/^(\d+[A-Za-z]?)\.?\s+(.*)$/);
+  return m ? { num: m[1], text: m[2] } : { num: '', text: name(s) };
+};
 
 // Group consecutive chapters under their printed Part / Section / Book heading.
 type G = { name: string; items: typeof chapters };
@@ -24,39 +34,77 @@ for (const c of chapters) {
   else groups.push({ name: c.group, items: [c] });
 }
 const isCurrent = (c: (typeof chapters)[number]) => c.parts.some((p) => p.slug === current);
+
+// Where the reader is: chapter n of N (front matter not counted), for the progress line.
+const numbered = chapters.filter((c) => c.title !== 'Front matter');
+const curIndex = numbered.findIndex(isCurrent);
+const leaves = leavesOf(vol);
+const leafIndex = leaves.findIndex((l) => l.slug === current);
+const progress = leafIndex >= 0 ? Math.round(((leafIndex + 1) / leaves.length) * 100) : 0;
 ---
 <aside class="docs-nav" id="docs-nav" aria-label={t(`Contents of ${vol.label}`, `${volLabelIn(vol, lang)} — अनुक्रमणिका`)}>
-  <a class="docs-vol" href={url(`/library/${vol.id}/`)}>
-    <img src={url(coverOf(vol))} alt="" width="56" height="86" loading="lazy" />
-    <span title={lang === 'mr' ? vol.title : undefined}><small>{volLabelIn(vol, lang)}</small>{volTitleIn(vol, lang)}</span>
-  </a>
-  <label class="docs-filter">
-    <span class="visually-hidden">{t('Filter chapters', 'प्रकरणे शोधा')}</span>
-    <input type="search" placeholder={t('Filter chapters…', 'प्रकरणे शोधा…')} data-docs-filter />
-  </label>
-  <nav>
-    {groups.map((g) => (
-      <div class="docs-group">
-        {g.name && <p class="docs-group-name" title={tip(g.name)}>{name(g.name)}</p>}
-        <ul>
-          {g.items.map((c) => (
-            <li class:list={[{ open: isCurrent(c) }]} data-title={`${c.title} ${name(c.title)}`.toLowerCase()}>
-              {c.parts.length === 1 ? (
-                <a href={url(`/library/${vol.id}/${c.parts[0].slug}/`)} aria-current={c.parts[0].slug === current ? 'page' : undefined} title={tip(c.title)}>{name(c.title)}</a>
-              ) : (
-                <details open={isCurrent(c)}>
-                  <summary title={tip(c.title)}>{name(c.title)}</summary>
-                  <ul>
-                    {c.parts.map((p) => (
-                      <li><a href={url(`/library/${vol.id}/${p.slug}/`)} aria-current={p.slug === current ? 'page' : undefined}>{name(p.title)} <small>{t('pp.', 'पृ.')} {p.start}–{p.end}</small></a></li>
-                    ))}
-                  </ul>
-                </details>
-              )}
-            </li>
-          ))}
-        </ul>
+  <div class="docs-nav-top">
+    <a class="docs-vol" href={url(`/library/${vol.id}/`)}>
+      <img src={url(coverOf(vol))} alt="" width="56" height="86" loading="lazy" />
+      <span title={mr ? vol.title : undefined}><small>{volLabelIn(vol, lang)}</small>{volTitleIn(vol, lang)}</span>
+    </a>
+    {curIndex >= 0 && (
+      <div class="docs-progress" aria-label={t(`Chapter ${curIndex + 1} of ${numbered.length}`, `प्रकरण ${curIndex + 1} / ${numbered.length}`)}>
+        <span>{t(`Chapter ${curIndex + 1} of ${numbered.length}`, `प्रकरण ${curIndex + 1} / ${numbered.length}`)}</span>
+        <span class="docs-progress-bar" aria-hidden="true"><i style={`width:${progress}%`}></i></span>
       </div>
-    ))}
+    )}
+    <label class="docs-filter">
+      <span class="visually-hidden">{t('Filter chapters', 'प्रकरणे शोधा')}</span>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5" /><path d="M20 20l-4.3-4.3" /></svg>
+      <input type="search" placeholder={t('Find a chapter…', 'प्रकरण शोधा…')} data-docs-filter />
+    </label>
+  </div>
+  <nav class="docs-toc">
+    {groups.map((g) => {
+      const head = g.name ? splitGroup(g.name) : null;
+      return (
+        <div class="docs-group">
+          {head && (
+            <p class="docs-group-name" title={tip(g.name)}>
+              {head.label && <span class="dg-label">{head.label}</span>}
+              <span class="dg-topic">{head.topic}</span>
+            </p>
+          )}
+          <ul>
+            {g.items.map((c) => {
+              const tt = splitTitle(c.title);
+              const inner = (
+                <>
+                  <span class="dn-num" aria-hidden={tt.num ? undefined : 'true'}>{tt.num}</span>
+                  <span class="dn-text">{tt.text}</span>
+                </>
+              );
+              return (
+                <li class:list={[{ open: isCurrent(c) }]} data-title={`${c.title} ${name(c.title)}`.toLowerCase()}>
+                  {c.parts.length === 1 ? (
+                    <a class="dn-row" href={url(`/library/${vol.id}/${c.parts[0].slug}/`)} aria-current={c.parts[0].slug === current ? 'page' : undefined} title={tip(c.title)}>{inner}</a>
+                  ) : (
+                    <details open={isCurrent(c)}>
+                      <summary class="dn-row" title={tip(c.title)}>
+                        {inner}
+                        <span class="dn-count">{t(`${c.parts.length} parts`, `${c.parts.length} भाग`)}</span>
+                        <svg class="dn-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6" /></svg>
+                      </summary>
+                      <ul class="dn-parts">
+                        {c.parts.map((p) => (
+                          <li><a href={url(`/library/${vol.id}/${p.slug}/`)} aria-current={p.slug === current ? 'page' : undefined}><span>{name(p.title)}</span><small>{t('pp.', 'पृ.')} {p.start}–{p.end}</small></a></li>
+                        ))}
+                      </ul>
+                    </details>
+                  )}
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      );
+    })}
+    <p class="docs-filter-empty" hidden data-docs-filter-empty>{t('No chapter matches.', 'जुळणारे प्रकरण नाही.')}</p>
   </nav>
 </aside>

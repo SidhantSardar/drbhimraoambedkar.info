@@ -66,6 +66,23 @@ const volLabel = volLabelIn(vol, lang);
       </p>
     </header>
 
+    {hasText && (
+      <div class="read-aloud" data-read-aloud hidden data-pagefind-ignore
+        data-l-play={t('Read aloud', 'मोठ्याने वाचा')} data-l-resume={t('Resume', 'पुढे वाचा')} data-l-pause={t('Pause', 'थांबा')}
+        data-l-novoice={t('No Marathi voice on this device, so a Hindi voice is reading. For better Marathi, add a Marathi voice in your device settings.', 'या उपकरणावर मराठी आवाज नाही, म्हणून हिंदी आवाज वाचत आहे. चांगल्या मराठीसाठी उपकरणाच्या सेटिंग्जमध्ये मराठी आवाज जोडा.')}
+        data-l-none={t('This device has no voice for this language. You can add one in your device settings.', 'या उपकरणावर या भाषेसाठी आवाज नाही. उपकरणाच्या सेटिंग्जमध्ये तो जोडता येईल.')}>
+        <button type="button" class="ra-play" data-ra-play><svg viewBox="0 0 24 24" aria-hidden="true"><path class="ra-i-play" d="M8 5v14l11-7z" /><path class="ra-i-pause" d="M7 5h4v14H7zM13 5h4v14h-4z" /></svg><span>{t('Read aloud', 'मोठ्याने वाचा')}</span></button>
+        <button type="button" class="ra-stop" data-ra-stop hidden aria-label={t('Stop reading', 'वाचन थांबवा')}><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6h12v12H6z" /></svg></button>
+        <label class="ra-rate"><span class="visually-hidden">{t('Reading speed', 'वाचनाचा वेग')}</span>
+          <select data-ra-rate>
+            <option value="0.8">0.8×</option><option value="1" selected>1×</option><option value="1.25">1.25×</option><option value="1.5">1.5×</option>
+          </select>
+        </label>
+        <span class="ra-lang">{translated ? 'मराठी' : 'English'}</span>
+        <p class="ra-msg" data-ra-msg hidden></p>
+      </div>
+    )}
+
     {mr && translated && (
       <div class="mr-translation-note" data-pagefind-ignore>
         <p><strong>मराठी अनुवाद.</strong> {reviewed
@@ -111,4 +128,104 @@ const volLabel = volLabelIn(vol, lang);
       {next && <a class="next" href={url(`/library/${vol.id}/${next.slug}/`)}><small>{t('Next →', 'पुढील →')}</small><strong>{labelOf(next)}</strong></a>}
     </nav>
   </article>
+  <script is:inline>
+    (function () {
+      /* Read aloud with the voices built into the reader's own device (Web Speech API). Nothing is sent anywhere. */
+      var bar = document.querySelector('[data-read-aloud]');
+      if (!bar || !('speechSynthesis' in window) || !window.SpeechSynthesisUtterance) return;
+      var synth = window.speechSynthesis;
+      var playBtn = bar.querySelector('[data-ra-play]'), stopBtn = bar.querySelector('[data-ra-stop]');
+      var rateSel = bar.querySelector('[data-ra-rate]'), msg = bar.querySelector('[data-ra-msg]');
+      var label = playBtn.querySelector('span');
+      bar.hidden = false;
+
+      // what to read: the main text only (not the hidden English originals, not footnotes or page marks)
+      var blocks = Array.prototype.slice.call(document.querySelectorAll('.docs-article .reader:not(.reader-en) > p:not(.fn):not(.muted), .docs-article .reader:not(.reader-en) > h3'));
+      if (!blocks.length) { bar.hidden = true; return; }
+      var lang = (blocks[0].closest('.reader').getAttribute('lang') || 'en');
+
+      var voice = null, fallback = false;
+      var pickVoice = function () {
+        var vs = synth.getVoices(); if (!vs.length) return;
+        var by = function (re) { return vs.filter(function (v) { return re.test(v.lang); }); };
+        if (lang === 'mr') {
+          var m = by(/^mr/i); voice = m[0] || null;
+          if (!voice) { var h = by(/^hi/i); voice = h[0] || null; fallback = !!voice; }
+        } else {
+          var en = by(/^en-IN/i).concat(by(/^en-GB/i), by(/^en/i)); voice = en[0] || null;
+        }
+      };
+      pickVoice();
+      if (synth.onvoiceschanged !== undefined) synth.addEventListener('voiceschanged', pickVoice);
+
+      // speak paragraph by paragraph, and long paragraphs sentence by sentence (some browsers stop long utterances)
+      var chunks = function (text) {
+        var parts = text.match(/[^.!?।॥]+[.!?।॥]*["”’)\]]*\s*/g) || [text], out = [], cur = '';
+        parts.forEach(function (p) { if ((cur + p).length > 220 && cur) { out.push(cur); cur = p; } else cur += p; });
+        if (cur.trim()) out.push(cur);
+        return out;
+      };
+      var idx = 0, state = 'idle', queue = [], qi = 0;
+      var mark = function (el) {
+        blocks.forEach(function (b) { b.classList.remove('ra-now'); });
+        if (!el) return;
+        el.classList.add('ra-now');
+        var r = el.getBoundingClientRect();
+        if (r.top < 90 || r.bottom > innerHeight - 40) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      };
+      var setUI = function () {
+        bar.classList.toggle('playing', state === 'playing');
+        stopBtn.hidden = state === 'idle';
+        label.textContent = state === 'playing' ? bar.dataset.lPause : state === 'paused' ? bar.dataset.lResume : bar.dataset.lPlay;
+        playBtn.setAttribute('aria-pressed', state === 'playing' ? 'true' : 'false');
+      };
+      var speakNext = function () {
+        if (state !== 'playing') return;
+        if (qi >= queue.length) {
+          idx++; if (idx >= blocks.length) { stop(); return; }
+          queue = chunks(blocks[idx].textContent); qi = 0; mark(blocks[idx]);
+        }
+        var u = new SpeechSynthesisUtterance(queue[qi++]);
+        u.lang = voice ? voice.lang : (lang === 'mr' ? 'mr-IN' : 'en-IN');
+        if (voice) u.voice = voice;
+        u.rate = parseFloat(rateSel.value) || 1;
+        u.onend = function () { speakNext(); };
+        u.onerror = function (e) { if (e.error !== 'interrupted' && e.error !== 'canceled') speakNext(); };
+        synth.speak(u);
+      };
+      // start from the first paragraph that is on screen
+      var firstVisible = function () {
+        for (var i = 0; i < blocks.length; i++) { var r = blocks[i].getBoundingClientRect(); if (r.bottom > 100) return i; }
+        return 0;
+      };
+      var start = function () {
+        pickVoice();
+        msg.hidden = true;
+        if (lang === 'mr' && fallback) { msg.textContent = bar.dataset.lNovoice; msg.hidden = false; }
+        else if (!voice && synth.getVoices().length) { msg.textContent = bar.dataset.lNone; msg.hidden = false; }
+        synth.cancel();
+        idx = firstVisible(); queue = chunks(blocks[idx].textContent); qi = 0;
+        state = 'playing'; setUI(); mark(blocks[idx]); speakNext();
+      };
+      var stop = function () { state = 'idle'; synth.cancel(); mark(null); setUI(); };
+      playBtn.addEventListener('click', function () {
+        if (state === 'idle') start();
+        else if (state === 'playing') { synth.pause(); state = 'paused'; setUI(); }
+        else { synth.resume(); state = 'playing'; setUI(); }
+      });
+      stopBtn.addEventListener('click', stop);
+      rateSel.addEventListener('change', function () {
+        if (state === 'playing') { synth.cancel(); qi = Math.max(0, qi - 1); setTimeout(speakNext, 60); }
+      });
+      // click a paragraph while reading to jump there
+      blocks.forEach(function (b, i) {
+        b.addEventListener('click', function () {
+          if (state === 'idle' || window.getSelection().toString()) return;
+          synth.cancel(); idx = i; queue = chunks(b.textContent); qi = 0; state = 'playing'; setUI(); mark(b); setTimeout(speakNext, 60);
+        });
+      });
+      window.addEventListener('pagehide', function () { synth.cancel(); });
+      setUI();
+    })();
+  </script>
 </DocsShell>
