@@ -57,7 +57,7 @@ const cats = [...new Set(updates.map((n) => n.category))];
       {lang === 'mr' ? <h1>बाबासाहेब<br />आंबेडकर</h1> : <h1>Babasaheb<br />Ambedkar</h1>}
       <p class="hero-sub">{t('Millions know his name, but few have read his words. His work lies scattered across the internet, and no single place holds all of it. This is the first portal to bring it together: every book, speech and newspaper, word for word, from official sources.', 'कोट्यवधी लोकांना त्यांचे नाव माहीत आहे, पण त्यांचे शब्द फारच थोड्यांनी वाचले आहेत. त्यांचे कार्य इंटरनेटवर विखुरलेले आहे, आणि ते सर्व एकत्र असलेले एकही ठिकाण नाही. ते सर्व एकत्र आणणारे हे पहिले व्यासपीठ आहे: प्रत्येक ग्रंथ, भाषण आणि वृत्तपत्र, शब्दशः, अधिकृत स्रोतांतून.')}</p>
       <div class="btn-row">
-        <a class="btn btn-primary btn-beam" href={url('/life/')}><span>{t('Begin his story →', 'त्यांची कथा वाचायला सुरुवात करा →')}</span></a>
+        <a class="btn btn-primary btn-beam" href={url('/library/')}><span>{t('Explore Volumes →', 'खंड पाहा →')}</span></a>
         <a class="btn btn-ghost" href={url('/ask/')}>{t('Ask the archive', 'संग्रहात शोधा')}</a>
       </div>
       <p class="hero-by">{t('A tribute by', 'आदरांजली —')} <a href="https://www.sidhantsardar.com/" target="_blank" rel="noopener">{t('Sidhant Sardar', 'सिद्धांत सरदार')}</a>{t(', an Ambedkarite and web developer', ', एक आंबेडकरवादी आणि वेब डेव्हलपर')} · <a href="https://www.sidhantsardar.com/" target="_blank" rel="noopener">sidhantsardar.com&nbsp;↗</a></p>
