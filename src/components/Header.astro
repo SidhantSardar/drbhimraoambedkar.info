@@ -81,6 +81,29 @@ const here = (href: string) => {
       // A mouse click on an already-open (hovered) menu keeps it open; keyboard Enter still toggles it.
       d.querySelector('summary').addEventListener('click', function (e) { if (hover.matches && e.detail > 0) { e.preventDefault(); d.open = true; } });
     });
+    // Light design: the header slides away while reading down and comes back on a small scroll up.
+    if (document.documentElement.dataset.skin === 'light') {
+      var lastY = window.scrollY, ticking = false, body = document.body;
+      var busy = function () { return body.classList.contains('nav-open') || !!document.querySelector('.docs-nav.show') || !!document.querySelector('.site-nav details[open]:hover'); };
+      var onScroll = function () {
+        var y = window.scrollY, d = y - lastY;
+        if (y < 80 || busy()) body.classList.remove('hdr-hidden');
+        else if (d > 6) body.classList.add('hdr-hidden');
+        else if (d < -6) body.classList.remove('hdr-hidden');
+        if (Math.abs(d) > 6 || y < 80) lastY = y;
+        // Safari's bottom toolbar takes its tint from the page background: match it to the section at the bottom edge
+        var el = document.elementFromPoint(window.innerWidth / 2, window.innerHeight - 2), bg = '';
+        while (el && el !== document.documentElement) {
+          var c = getComputedStyle(el).backgroundColor;
+          if (c && c !== 'transparent' && !/rgba\([^)]*,\s*0\)$/.test(c)) { bg = c; break; }
+          el = el.parentElement;
+        }
+        document.documentElement.style.backgroundColor = bg || '';
+        ticking = false;
+      };
+      window.addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
+      onScroll();
+    }
     // On phones the menu is an accordion: only the section holding the current page starts open.
     if (!desktop.matches) menus.forEach(function (d) { d.open = !!d.querySelector('summary.active'); });
   })();

@@ -67,19 +67,31 @@ const volLabel = volLabelIn(vol, lang);
     </header>
 
     {hasText && (
-      <div class="read-aloud" data-read-aloud hidden data-pagefind-ignore
-        data-l-play={t('Read aloud', 'मोठ्याने वाचा')} data-l-resume={t('Resume', 'पुढे वाचा')} data-l-pause={t('Pause', 'थांबा')}
-        data-l-novoice={t('No Marathi voice on this device, so a Hindi voice is reading. For better Marathi, add a Marathi voice in your device settings.', 'या उपकरणावर मराठी आवाज नाही, म्हणून हिंदी आवाज वाचत आहे. चांगल्या मराठीसाठी उपकरणाच्या सेटिंग्जमध्ये मराठी आवाज जोडा.')}
+      <div class="ra-anchor" data-ra-anchor data-pagefind-ignore>
+      <div class="read-aloud" data-read-aloud hidden
+        data-l-play={t('Listen', 'ऐका')} data-l-resume={t('Resume', 'पुढे ऐका')} data-l-pause={t('Pause', 'थांबवा')}
+        data-l-novoice={t('No Marathi voice on this device, so a Hindi voice is reading. For a better Marathi voice, use Microsoft Edge or Chrome on Android, or add a Marathi voice in your device settings.', 'या उपकरणावर मराठी आवाज नाही, म्हणून हिंदी आवाज वाचत आहे. चांगल्या मराठी आवाजासाठी Microsoft Edge किंवा Android वरील Chrome वापरा, किंवा उपकरणाच्या सेटिंग्जमध्ये मराठी आवाज जोडा.')}
         data-l-none={t('This device has no voice for this language. You can add one in your device settings.', 'या उपकरणावर या भाषेसाठी आवाज नाही. उपकरणाच्या सेटिंग्जमध्ये तो जोडता येईल.')}>
-        <button type="button" class="ra-play" data-ra-play><svg viewBox="0 0 24 24" aria-hidden="true"><path class="ra-i-play" d="M8 5v14l11-7z" /><path class="ra-i-pause" d="M7 5h4v14H7zM13 5h4v14h-4z" /></svg><span>{t('Read aloud', 'मोठ्याने वाचा')}</span></button>
-        <button type="button" class="ra-stop" data-ra-stop hidden aria-label={t('Stop reading', 'वाचन थांबवा')}><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6h12v12H6z" /></svg></button>
-        <label class="ra-rate"><span class="visually-hidden">{t('Reading speed', 'वाचनाचा वेग')}</span>
+        <button type="button" class="ra-play" data-ra-play aria-pressed="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path class="ra-i-listen" d="M4 14v-2a8 8 0 0 1 16 0v2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+            <rect class="ra-i-listen" x="3" y="13" width="5" height="7" rx="1.5" />
+            <rect class="ra-i-listen" x="16" y="13" width="5" height="7" rx="1.5" />
+            <path class="ra-i-pause" d="M7 5h4v14H7zM13 5h4v14h-4z" />
+          </svg>
+          <span class="ra-label">{t('Listen', 'ऐका')}</span>
+        </button>
+        <button type="button" class="ra-stop" data-ra-stop hidden aria-label={t('Stop', 'थांबवा')}><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6h12v12H6z" /></svg></button>
+        <label class="ra-rate"><span class="visually-hidden">{t('Listening speed', 'ऐकण्याचा वेग')}</span>
           <select data-ra-rate>
             <option value="0.8">0.8×</option><option value="1" selected>1×</option><option value="1.25">1.25×</option><option value="1.5">1.5×</option>
           </select>
         </label>
-        <span class="ra-lang">{translated ? 'मराठी' : 'English'}</span>
+        <label class="ra-voice"><span class="visually-hidden">{t('Voice', 'आवाज')}</span>
+          <select data-ra-voice></select>
+        </label>
         <p class="ra-msg" data-ra-msg hidden></p>
+      </div>
       </div>
     )}
 
@@ -130,35 +142,59 @@ const volLabel = volLabelIn(vol, lang);
   </article>
   <script is:inline>
     (function () {
-      /* Read aloud with the voices built into the reader's own device (Web Speech API). Nothing is sent anywhere. */
-      var bar = document.querySelector('[data-read-aloud]');
+      /* Listen: text to speech with the voices on the reader's own device (Web Speech API). Nothing is sent anywhere. */
+      var bar = document.querySelector('[data-read-aloud]'), anchor = document.querySelector('[data-ra-anchor]');
       if (!bar || !('speechSynthesis' in window) || !window.SpeechSynthesisUtterance) return;
       var synth = window.speechSynthesis;
       var playBtn = bar.querySelector('[data-ra-play]'), stopBtn = bar.querySelector('[data-ra-stop]');
-      var rateSel = bar.querySelector('[data-ra-rate]'), msg = bar.querySelector('[data-ra-msg]');
-      var label = playBtn.querySelector('span');
+      var rateSel = bar.querySelector('[data-ra-rate]'), voiceSel = bar.querySelector('[data-ra-voice]'), msg = bar.querySelector('[data-ra-msg]');
+      var label = bar.querySelector('.ra-label');
       bar.hidden = false;
 
-      // what to read: the main text only (not the hidden English originals, not footnotes or page marks)
       var blocks = Array.prototype.slice.call(document.querySelectorAll('.docs-article .reader:not(.reader-en) > p:not(.fn):not(.muted), .docs-article .reader:not(.reader-en) > h3'));
-      if (!blocks.length) { bar.hidden = true; return; }
+      if (!blocks.length) { anchor.hidden = true; return; }
       var lang = (blocks[0].closest('.reader').getAttribute('lang') || 'en');
+      var KEY = 'listen-voice-' + lang;
 
-      var voice = null, fallback = false;
-      var pickVoice = function () {
-        var vs = synth.getVoices(); if (!vs.length) return;
-        var by = function (re) { return vs.filter(function (v) { return re.test(v.lang); }); };
-        if (lang === 'mr') {
-          var m = by(/^mr/i); voice = m[0] || null;
-          if (!voice) { var h = by(/^hi/i); voice = h[0] || null; fallback = !!voice; }
-        } else {
-          var en = by(/^en-IN/i).concat(by(/^en-GB/i), by(/^en/i)); voice = en[0] || null;
-        }
+      // rank voices: natural / neural / online voices first, then Indian locales
+      var score = function (v) {
+        var n = (v.name || '') + ' ' + (v.voiceURI || ''), s = 0;
+        if (/natural|neural|online|premium|enhanced|wavenet|studio/i.test(n)) s += 20;
+        // a male voice first: Ambedkar's words in a man's voice (known male voices in Edge, macOS/iOS, Windows, Google)
+        if (/\b(prabhat|manohar|madhur|rishi|ravi|hemant|aaron|daniel|arthur|male)\b/i.test(n)) s += 30;
+        if (/\b(neerja|aarohi|swara|lekha|kalpana|heera|veena|female|samantha|karen|moira|tessa)\b/i.test(n)) s -= 15;
+        if (/google/i.test(n)) s += 8;
+        if (/-IN$/i.test(v.lang) || /_IN$/i.test(v.lang)) s += 5;
+        if (v.localService === false) s += 2;
+        return s;
       };
-      pickVoice();
-      if (synth.onvoiceschanged !== undefined) synth.addEventListener('voiceschanged', pickVoice);
+      var voices = [], voice = null, fallback = false;
+      var load = function () {
+        var all = synth.getVoices(); if (!all.length) return;
+        var NOVELTY = /^(albert|bad news|bahh|bells|boing|bubbles|cellos|good news|jester|organ|superstar|trinoids|whisper|wobble|zarvox|junior|ralph|fred|kathy|grandma|grandpa|eddy|flo|reed|rocko|sandy|shelley)\b/i;
+        var mine = all.filter(function (v) { return new RegExp('^' + lang, 'i').test(v.lang) && !NOVELTY.test(v.name); });
+        fallback = false;
+        if (!mine.length && lang === 'mr') { mine = all.filter(function (v) { return /^hi/i.test(v.lang); }); fallback = mine.length > 0; }
+        voices = mine.sort(function (a, b) { return score(b) - score(a); });
+        var saved = null; try { saved = localStorage.getItem(KEY); } catch (e) {}
+        voice = voices.filter(function (v) { return v.voiceURI === saved; })[0] || voices[0] || null;
+        voiceSel.innerHTML = '';
+        voices.slice(0, 12).forEach(function (v) {
+          var o = document.createElement('option'); o.value = v.voiceURI;
+          o.textContent = v.name.replace(/^(Microsoft|Google)\s+/, '').replace(/\s*\(.*?\)\s*/g, ' ').replace(/\s+-\s+.*$/, '').trim() + (score(v) >= 20 ? ' ★' : '');
+          if (voice && v.voiceURI === voice.voiceURI) o.selected = true;
+          voiceSel.appendChild(o);
+        });
+        voiceSel.parentNode.hidden = voices.length < 2;
+      };
+      load();
+      if (synth.onvoiceschanged !== undefined) synth.addEventListener('voiceschanged', load);
+      voiceSel.addEventListener('change', function () {
+        voice = voices.filter(function (v) { return v.voiceURI === voiceSel.value; })[0] || voice;
+        try { localStorage.setItem(KEY, voiceSel.value); } catch (e) {}
+        if (state === 'playing') { synth.cancel(); qi = Math.max(0, qi - 1); setTimeout(speakNext, 60); }
+      });
 
-      // speak paragraph by paragraph, and long paragraphs sentence by sentence (some browsers stop long utterances)
       var chunks = function (text) {
         var parts = text.match(/[^.!?।॥]+[.!?।॥]*["”’)\]]*\s*/g) || [text], out = [], cur = '';
         parts.forEach(function (p) { if ((cur + p).length > 220 && cur) { out.push(cur); cur = p; } else cur += p; });
@@ -171,12 +207,14 @@ const volLabel = volLabelIn(vol, lang);
         if (!el) return;
         el.classList.add('ra-now');
         var r = el.getBoundingClientRect();
-        if (r.top < 90 || r.bottom > innerHeight - 40) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        if (r.top < 120 || r.bottom > innerHeight - 40) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
       };
       var setUI = function () {
         bar.classList.toggle('playing', state === 'playing');
+        bar.classList.toggle('active', state !== 'idle');
         stopBtn.hidden = state === 'idle';
-        label.textContent = state === 'playing' ? bar.dataset.lPause : state === 'paused' ? bar.dataset.lResume : bar.dataset.lPlay;
+        var l = state === 'playing' ? bar.dataset.lPause : state === 'paused' ? bar.dataset.lResume : bar.dataset.lPlay;
+        label.textContent = l; playBtn.setAttribute('aria-label', l);
         playBtn.setAttribute('aria-pressed', state === 'playing' ? 'true' : 'false');
       };
       var speakNext = function () {
@@ -193,13 +231,12 @@ const volLabel = volLabelIn(vol, lang);
         u.onerror = function (e) { if (e.error !== 'interrupted' && e.error !== 'canceled') speakNext(); };
         synth.speak(u);
       };
-      // start from the first paragraph that is on screen
       var firstVisible = function () {
-        for (var i = 0; i < blocks.length; i++) { var r = blocks[i].getBoundingClientRect(); if (r.bottom > 100) return i; }
+        for (var i = 0; i < blocks.length; i++) { var r = blocks[i].getBoundingClientRect(); if (r.bottom > 120) return i; }
         return 0;
       };
       var start = function () {
-        pickVoice();
+        load();
         msg.hidden = true;
         if (lang === 'mr' && fallback) { msg.textContent = bar.dataset.lNovoice; msg.hidden = false; }
         else if (!voice && synth.getVoices().length) { msg.textContent = bar.dataset.lNone; msg.hidden = false; }
@@ -217,7 +254,6 @@ const volLabel = volLabelIn(vol, lang);
       rateSel.addEventListener('change', function () {
         if (state === 'playing') { synth.cancel(); qi = Math.max(0, qi - 1); setTimeout(speakNext, 60); }
       });
-      // click a paragraph while reading to jump there
       blocks.forEach(function (b, i) {
         b.addEventListener('click', function () {
           if (state === 'idle' || window.getSelection().toString()) return;
@@ -225,6 +261,15 @@ const volLabel = volLabelIn(vol, lang);
         });
       });
       window.addEventListener('pagehide', function () { synth.cancel(); });
+
+      // the floating island: once the bar scrolls out of view it docks in the top-right corner
+      if ('IntersectionObserver' in window) {
+        anchor.style.minHeight = bar.offsetHeight + 'px';
+        new IntersectionObserver(function (es) {
+          var gone = !es[0].isIntersecting && es[0].boundingClientRect.top < 0;
+          bar.classList.toggle('docked', gone);
+        }, { rootMargin: '-70px 0px 0px 0px' }).observe(anchor);
+      }
       setUI();
     })();
   </script>

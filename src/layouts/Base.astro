@@ -37,7 +37,7 @@ const ogImage = image ? new URL(image, Astro.site).toString() : undefined;
     <link rel="alternate" hreflang="mr" href={alternate('mr')} />
     <link rel="alternate" hreflang="x-default" href={alternate('en')} />
     <link rel="icon" href={url('/favicon.svg')} type="image/svg+xml" />
-    <meta name="theme-color" content="#f7f2e8" />
+    <meta name="theme-color" content={skin === 'light' ? '#ffffff' : '#f7f2e8'} />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content={SITE.domain} />
     <meta property="og:title" content={fullTitle} />
