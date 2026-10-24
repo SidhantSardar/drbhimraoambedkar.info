@@ -602,3 +602,21 @@
   [data-skin='light'] .hero-full { padding-bottom: 28px; }
   [data-skin='light'] .hero-full .ticker-mobile { position: relative; z-index: 3; margin: 16px 0 0; padding: 12px 14px; }
 }
+
+/* ---------- Mobile menu: every top item the same size, sub-menus as an indented panel with a rotating arrow ---------- */
+@media (max-width: 1079px) {
+  [data-skin='light'] .nav-open .site-nav { padding: 8px var(--gutter) 40px; }
+  [data-skin='light'] .nav-open .site-nav > ul > li { border-bottom: 1px solid var(--line); }
+  [data-skin='light'] .nav-open .site-nav > ul > li > a,
+  [data-skin='light'] .nav-open .site-nav summary { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 16px 4px; margin: 0; border: 0; font-size: 1.15rem; font-weight: 700; letter-spacing: 0; text-transform: none; color: var(--ink); }
+  [data-skin='light'] .nav-open .site-nav summary.active, [data-skin='light'] .nav-open .site-nav > ul > li > a[aria-current='page'] { color: var(--accent-blue); }
+  [data-skin='light'] .nav-open .site-nav summary::after { content: ''; flex: none; width: 9px; height: 9px; margin: 0 6px 4px 0; border-right: 2px solid currentColor; border-bottom: 2px solid currentColor; opacity: 0.55; transform: rotate(45deg); transition: transform 0.2s ease; }
+  [data-skin='light'] .nav-open .site-nav details[open] > summary::after { transform: rotate(-135deg); margin-bottom: -4px; }
+  [data-skin='light'] .nav-open .site-nav .menu { position: static; display: block; margin: 0 0 12px; padding: 4px 0; background: var(--sky-50); border: 0; border-left: 2px solid var(--accent-blue); box-shadow: none; }
+  [data-skin='light'] .nav-open .site-nav .menu a { padding: 11px 14px; font-size: 1rem; font-weight: 500; color: var(--ink-2); border: 0; }
+  [data-skin='light'] .nav-open .site-nav .menu li + li a { border-top: 1px solid var(--line); }
+  [data-skin='light'] .nav-open .site-nav .menu a[aria-current='page'] { color: var(--accent-blue); }
+  [data-skin='light'] .nav-open .site-nav .menu small { margin-top: 2px; font-size: 0.84rem; font-weight: 400; color: var(--muted); }
+  [data-skin='light'] .nav-open .site-nav a:focus, [data-skin='light'] .nav-open .site-nav summary:focus { outline: none; }
+  [data-skin='light'] .nav-open .site-nav a:focus-visible, [data-skin='light'] .nav-open .site-nav summary:focus-visible { outline: 2px solid var(--accent-blue); outline-offset: -2px; }
+}

@@ -60,7 +60,7 @@ const here = (href: string) => {
     // Only one dropdown open at a time; close on outside click or Escape (desktop).
     menus.forEach(function (d) {
       d.addEventListener('toggle', function () {
-        if (d.open && desktop.matches) menus.forEach(function (o) { if (o !== d) o.open = false; });
+        if (d.open) menus.forEach(function (o) { if (o !== d) o.open = false; });
       });
     });
     document.addEventListener('click', function (e) {
@@ -81,7 +81,7 @@ const here = (href: string) => {
       // A mouse click on an already-open (hovered) menu keeps it open; keyboard Enter still toggles it.
       d.querySelector('summary').addEventListener('click', function (e) { if (hover.matches && e.detail > 0) { e.preventDefault(); d.open = true; } });
     });
-    // On phones, show every group open inside the menu.
-    if (!desktop.matches) menus.forEach(function (d) { d.open = true; });
+    // On phones the menu is an accordion: only the section holding the current page starts open.
+    if (!desktop.matches) menus.forEach(function (d) { d.open = !!d.querySelector('summary.active'); });
   })();
 </script>
