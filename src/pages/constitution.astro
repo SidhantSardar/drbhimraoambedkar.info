@@ -24,6 +24,7 @@ const src = t('source', 'संदर्भ');
 const all = images(lang);
 const byId = (id: string) => all.find((i) => i.id === id);
 const bandConst = byId('constituent-assembly-first-day-1946');
+const factPics = ['constituent-assembly-first-day-1946', 'drafting-committee-1947', 'presenting-draft-constitution-1949', 'constituent-assembly-meeting-1950', 'first-republic-day-parade-1950', 'constitution-calligraphed-title-page', 'ambedkar-in-parliament-1949'].map(byId).filter(Boolean) as any[];
 const constImg = { adopted: byId('presenting-draft-constitution-1949'), force: byId('first-republic-day-parade-1950'), art17: byId('constitution-calligraphed-title-page'), art32: byId('ambedkar-in-parliament-1949') };
 ---
 <Base title={t('The Constitution of India', 'भारताचे संविधान')} description={t('Dr. B. R. Ambedkar and the Constitution of India: how it was drafted, what it promises in plain words, the articles he fought for, his speeches, and the official text to download.', 'डॉ. बाबासाहेब आंबेडकर आणि भारताचे संविधान: ते कसे तयार झाले, ते सोप्या शब्दांत काय वचन देते, त्यांनी आग्रहाने मांडलेले अनुच्छेद, त्यांची भाषणे आणि डाउनलोड करण्यासाठी अधिकृत मजकूर.')}>
@@ -51,13 +52,24 @@ const constImg = { adopted: byId('presenting-draft-constitution-1949'), force: b
   <FilmGrain />
 
   {keyFacts.length > 0 && (
-    <section class="section-tight">
+    <section class="section-tight cf-section" id="making">
       <div class="wrap">
-        <div class="facts">
-          {keyFacts.map((f) => (
-            <div class="fact"><strong>{f.value}</strong><span>{f.label} {f.source && <a class="src" href={f.source} target="_blank" rel="noopener noreferrer">{src}</a>}</span></div>
-          ))}
-        </div>
+        <span class="eyebrow">{t('How it was made', 'ते कसे घडले')}</span>
+        <h2>{t(`The Constitution in ${keyFacts.length} facts`, `${keyFacts.length} तथ्यांत संविधान`)}</h2>
+        <ol class="cf-grid">
+          {keyFacts.map((f, i) => {
+            const bg = factPics[i % factPics.length];
+            return (
+              <li class="cf-card">
+                {bg && <span class="cf-bg" aria-hidden="true"><Picture img={bg} sizes="420px" alt="" /></span>}
+                <span class="cf-num">{String(i + 1).padStart(2, '0')}</span>
+                <span class="cf-label">{f.label}</span>
+                <strong class="cf-value">{f.value}</strong>
+                {f.source && <a class="src" href={f.source} target="_blank" rel="noopener noreferrer">{src}</a>}
+              </li>
+            );
+          })}
+        </ol>
       </div>
     </section>
   )}
@@ -132,23 +144,6 @@ const constImg = { adopted: byId('presenting-draft-constitution-1949'), force: b
     </section>
   )}
 
-  {timeline.length > 0 && (
-    <section class="section" id="making">
-      <div class="narrow">
-        <span class="eyebrow">{t('How it was made', 'ते कसे घडले')}</span>
-        <h2>{t('From the first sitting to Republic Day', 'पहिल्या बैठकीपासून प्रजासत्ताक दिनापर्यंत')}</h2>
-        <ol class="tl-list" style="margin-top:24px">
-          {timeline.map((e) => (
-            <li class="tl-item">
-              <time datetime={e.date}>{formatDate(e.date)}</time>
-              <p><strong>{e.label}</strong>{e.detail && <> — {e.detail}</>}</p>
-              {e.source && <div class="tl-links"><a class="src" href={e.source} target="_blank" rel="noopener noreferrer">{src}</a></div>}
-            </li>
-          ))}
-        </ol>
-      </div>
-    </section>
-  )}
 
   {pics.length > 0 && (
     <section class="section-tight">
