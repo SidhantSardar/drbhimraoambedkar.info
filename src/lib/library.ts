@@ -58,7 +58,9 @@ export function pagesOf(vol: Volume): Page[] {
 export const coverOf = (vol: Volume) => `/images/covers/${vol.id}.jpg`;
 
 /* ---------- Turning a printed PDF page into readable text, word for word ---------- */
-export type Block = { type: 'p' | 'h' | 'fn'; text: string };
+/** p: paragraph · h: heading · fn: footnote · and on display pages (title pages, epigraphs):
+ *  title: stacked title lines · quote: a quotation, with `by` its attribution line · center: a short centred line. */
+export type Block = { type: 'p' | 'h' | 'fn' | 'title' | 'quote' | 'center'; text: string; by?: string };
 
 const isRunningHeader = (l: string) => {
   const s = l.trim();
@@ -76,11 +78,51 @@ const isHeading = (s: string) =>
  */
 const FOOTNOTE = /^(\d{1,3}[.)]|\*+|†)\s*\S/;
 
+/**
+ * A display page (a title page, a dedication, epigraphs) is set in short centred lines, not in paragraphs.
+ * Its lines are kept as the PDF sets them: the title lines stacked, each quotation with its attribution
+ * ("—BUDDHA") under it, and notes such as "Printed from the third edition of 1944" on their own.
+ */
+const isDisplayPage = (lines: string[]) => {
+  const ls = lines.map((l) => l.trim()).filter(Boolean);
+  return ls.length >= 2 && ls.length <= 16 && ls.join('').length <= 650 && ls.every((l) => l.length <= 58) && !/^[a-z(]/.test(ls[0]) && !ls.some((l) => /^[a-z]/.test(l) && l.length >= 45);
+};
+const ATTRIBUTION = /^[—–-]{1,2}\s*\S/;
+function displayBlocks(lines: string[]): Block[] {
+  const ls = lines.map((l) => l.trim()).filter(Boolean);
+  const out: Block[] = [];
+  let quote: string[] | null = null;
+  let seenQuote = false;
+  for (const l of ls) {
+    if (quote) {
+      quote.push(l);
+      if (/[”"]\s*$/.test(l)) { out.push({ type: 'quote', text: quote.join('\n') }); quote = null; }
+      continue;
+    }
+    if (/^[“"]/.test(l)) {
+      seenQuote = true;
+      if (/[”"]\s*$/.test(l) && l.length > 1) out.push({ type: 'quote', text: l });
+      else quote = [l];
+      continue;
+    }
+    const last = out[out.length - 1];
+    if (ATTRIBUTION.test(l) && last && last.type === 'quote' && !last.by) { last.by = l; continue; }
+    // title lines: short, not a sentence, not a numbered list item; the rest of the page is set as centred text
+    const titleLine = isHeading(l) || (l.length <= 40 && !/[.;:]$/.test(l) && !/^\d+[.)]\s/.test(l) && !/^[a-z]/.test(l));
+    const kind = !seenQuote && titleLine && (!last || (last.type === 'title' && last.text.split('\n').length < 6)) ? 'title' : 'center';
+    if (last && last.type === kind) last.text += '\n' + l;
+    else out.push({ type: kind, text: l });
+  }
+  if (quote) out.push({ type: 'quote', text: quote.join('\n') });
+  return out;
+}
+
 export function formatPage(text: string): Block[] {
   let lines = text.split('\n').map((l) => l.replace(/\s+$/, ''));
   if (lines.length && isRunningHeader(lines[0])) lines.shift();
   if (lines.length && /^\s*\d{1,4}\s*$/.test(lines[0])) lines.shift();
   if (lines.length && /^\s*\d{1,4}\s*$/.test(lines[lines.length - 1])) lines.pop();
+  if (isDisplayPage(lines)) return displayBlocks(lines);
   const lens = lines.map((l) => l.trim().length).filter((n) => n > 25).sort((a, b) => a - b);
   const typical = lens.length ? lens[Math.floor(lens.length * 0.75)] : 70;
   const blocks: Block[] = [];
@@ -91,7 +133,7 @@ export function formatPage(text: string): Block[] {
     if (!l) { flush(); continue; }
     if (isHeading(l) && !cur) {
       const prev = blocks[blocks.length - 1];
-      if (prev && prev.type === 'h') prev.text += ' ' + l;
+      if (prev && prev.type === 'h') prev.text += '\n' + l;
       else blocks.push({ type: 'h', text: l });
       continue;
     }

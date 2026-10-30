@@ -1,6 +1,6 @@
 ---
 // Publishes the long-form research files in research/works/ as readable pages:
-// /works/archives/ (physical-archives.md), /works/journals/ (journals.md), /works/bibliography/ (bibliography.md)
+// /works/archives/ (physical-archives.md), /works/bibliography/ (bibliography.md)
 import { getCollection, render } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 import Chakra from '../../components/Chakra.astro';
@@ -13,11 +13,6 @@ export async function getStaticPaths() {
       file: 'works/physical-archives',
       en: { title: 'Where the originals are kept', eyebrow: 'Beyond the internet', lede: 'Some of his work has never been put online. Here is what exists only on paper, which library, archive or museum holds it, and how you can see it.' },
       mr: { title: 'मूळ प्रती कुठे जपल्या आहेत', eyebrow: 'इंटरनेटच्या पलीकडे', lede: 'त्यांचे काही कार्य कधीच ऑनलाइन आलेले नाही. फक्त कागदावर काय आहे, ते कोणत्या ग्रंथालयात, संग्रहात किंवा संग्रहालयात आहे आणि ते तुम्ही कसे पाहू शकता, हे येथे दिले आहे.' },
-    },
-    journals: {
-      file: 'works/journals',
-      en: { title: 'His newspapers', eyebrow: 'The press of the voiceless', lede: 'Mooknayak, Bahishkrit Bharat, Samata, Janata and Prabuddha Bharat — the newspapers he founded to give a voice to people who had none.' },
-      mr: { title: 'त्यांची वृत्तपत्रे', eyebrow: 'मूकांचा आवाज', lede: 'मूकनायक, बहिष्कृत भारत, समता, जनता आणि प्रबुद्ध भारत — ज्यांना आवाज नव्हता त्यांना आवाज देण्यासाठी त्यांनी सुरू केलेली वृत्तपत्रे.' },
     },
     bibliography: {
       file: 'works/bibliography',

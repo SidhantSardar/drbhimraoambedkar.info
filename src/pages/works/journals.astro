@@ -1,0 +1,152 @@
+---
+// His five newspapers: a span chart of the years they ran, a side panel to move between them, and for each one
+// its front page, the facts at a glance, why it mattered, verified facts with sources, and where its issues are reprinted.
+import Base from '../../layouts/Base.astro';
+import Picture from '../../components/Picture.astro';
+import { loadJSON, images, type Img } from '../../lib/data';
+import { credit } from '../../lib/images-core.mjs';
+import { url } from '../../lib/site';
+import { getLang, translator, formatDateIn } from '../../i18n';
+const lang = getLang(Astro);
+const t = translator(lang);
+const mr = lang === 'mr';
+
+type L = { en: string; mr: string };
+type Paper = {
+  id: string; name: string; nameDeva: string; meaning: L; start: string; startNote?: L; end: string; endNote?: L;
+  frequency: L; language: L; place: L; people: L[]; role: L; summary: L; facts: (L & { source?: string })[];
+  quote?: L & { source?: string }; reprint?: L; sources: { label: string; url: string }[];
+};
+const data = loadJSON<{ intro: L; papers: Paper[]; others: (L & { source?: string })[]; unverified?: string[] }>('journals', { intro: { en: '', mr: '' }, papers: [], others: [] });
+const say = (x?: L) => (x ? (mr ? x.mr || x.en : x.en) : '');
+const all = images(lang);
+const byId = (id: string) => all.find((i) => i.id === id) as Img | undefined;
+// Only pictures of the paper itself (or, for Samata, of the league that published it).
+const PIC: Record<string, string[]> = {
+  mooknayak: ['cover-mooknayak'],
+  'bahishkrit-bharat': ['cover-bahishkrit-bharat'],
+  samata: ['samaj-samata-sangh-1927'],
+  janata: [],
+  'prabuddha-bharat': ['cover-prabuddha-bharat'],
+};
+const yearOf = (d: string) => Number(String(d).slice(0, 4)) || 0;
+const papers = data.papers.map((p) => ({ ...p, img: (PIC[p.id] || []).map(byId).find(Boolean), y0: yearOf(p.start), y1: yearOf(p.end) || yearOf(p.start) }));
+const Y0 = 1920, Y1 = 1961;
+const pct = (y: number) => ((y - Y0) / (Y1 - Y0)) * 100;
+const when = (d: string) => (d ? formatDateIn(d, lang) : '');
+const montage = byId('mooknayak-bahishkrit-bharat-mastheads');
+---
+<Base title={t('His newspapers', 'त्यांची वृत्तपत्रे')} description={t('Mooknayak, Bahishkrit Bharat, Samata, Janata and Prabuddha Bharat: the five Marathi newspapers Dr. B. R. Ambedkar founded or guided from 1920 to 1956, with their front pages, dates and verified facts.', 'मूकनायक, बहिष्कृत भारत, समता, जनता आणि प्रबुद्ध भारत: डॉ. बाबासाहेब आंबेडकरांनी 1920 ते 1956 या काळात सुरू केलेली किंवा मार्गदर्शन केलेली पाच मराठी वृत्तपत्रे, त्यांची पहिली पाने, तारखा आणि पडताळलेली माहिती.')}>
+  <section class="jr-hero">
+    <div class="wrap jr-hero-in">
+      <div>
+        <span class="eyebrow">{t('Works · The press of the voiceless', 'साहित्य · मूकांचा आवाज')}</span>
+        <h1>{t('His newspapers', 'त्यांची वृत्तपत्रे')}</h1>
+        <p class="lede">{say(data.intro)}</p>
+      </div>
+      {montage && <figure class="jr-hero-img"><Picture img={montage} sizes="(min-width: 900px) 420px, 90vw" alt={montage.caption || ''} eager /><figcaption>{montage.title} · {credit(montage)}</figcaption></figure>}
+    </div>
+    <div class="wrap">
+      <ol class="jr-span" aria-label={t('The years each paper ran', 'प्रत्येक वृत्तपत्र चाललेली वर्षे')}>
+        {papers.map((p) => (
+          <li>
+            <a href={`#${p.id}`}>
+              <span class="jr-span-name">{mr ? p.nameDeva : p.name}</span>
+              <span class="jr-span-track"><span class="jr-span-bar" style={`left:${pct(p.y0)}%;width:${Math.max(1.6, pct(p.y1 + 1) - pct(p.y0))}%`}></span></span>
+              <span class="jr-span-years">{p.y0}{p.y1 !== p.y0 ? `–${p.y1}` : ''}</span>
+            </a>
+          </li>
+        ))}
+      </ol>
+      <div class="jr-span-axis" aria-hidden="true">{[1920, 1930, 1940, 1950, 1960].map((y) => <span style={`left:${pct(y)}%`}>{y}</span>)}</div>
+    </div>
+  </section>
+
+  <div class="wrap jr-layout">
+    <nav class="jr-nav" aria-label={t('The newspapers', 'वृत्तपत्रे')}>
+      <p class="jr-nav-title">{t('Five papers', 'पाच वृत्तपत्रे')}</p>
+      <ol>
+        {papers.map((p) => (
+          <li>
+            <a href={`#${p.id}`} data-jr-link={p.id}>
+              <span class="jr-nav-thumb">{p.img ? <Picture img={p.img} sizes="56px" alt="" /> : <b>{p.nameDeva.slice(0, 1)}</b>}</span>
+              <span><strong>{mr ? p.nameDeva : p.name}</strong><small>{p.y0}{p.y1 !== p.y0 ? `–${p.y1}` : ''} · {say(p.meaning)}</small></span>
+            </a>
+          </li>
+        ))}
+      </ol>
+    </nav>
+
+    <div class="jr-main">
+      {papers.map((p, i) => (
+        <article class="jr-paper" id={p.id}>
+          <header class="jr-head">
+            <figure class="jr-front">
+              {p.img ? <Picture img={p.img} sizes="(min-width: 900px) 300px, 70vw" alt={p.img.caption || p.name} /> : (
+                <span class="jr-plain" aria-hidden="true"><b>{p.nameDeva}</b><small>{p.name} · {p.y0}</small></span>
+              )}
+              {p.img && <figcaption>{p.img.title} · {credit(p.img)} · <a href={p.img.sourceUrl} target="_blank" rel="noopener noreferrer">{p.img.sourceName}</a></figcaption>}
+              {!p.img && <figcaption>{t('No free image of an original issue was found.', 'मूळ अंकाचे मुक्त छायाचित्र सापडले नाही.')}</figcaption>}
+            </figure>
+            <div class="jr-title">
+              <span class="jr-num">{String(i + 1).padStart(2, '0')}</span>
+              <h2><span lang="mr">{p.nameDeva}</span>{!mr && <small>{p.name}</small>}</h2>
+              <p class="jr-meaning">“{say(p.meaning)}”</p>
+              <dl class="jr-facts">
+                <div><dt>{t('First issue', 'पहिला अंक')}</dt><dd>{when(p.start)}</dd></div>
+                {p.end && <div><dt>{t('Last issue', 'शेवटचा अंक')}</dt><dd>{when(p.end)}</dd></div>}
+                <div><dt>{t('Appeared', 'प्रकाशन')}</dt><dd>{say(p.frequency)}</dd></div>
+                <div><dt>{t('Language', 'भाषा')}</dt><dd>{say(p.language)}</dd></div>
+                <div><dt>{t('From', 'ठिकाण')}</dt><dd>{say(p.place)}</dd></div>
+                <div class="wide"><dt>{t('His role', 'त्यांची भूमिका')}</dt><dd>{say(p.role)}</dd></div>
+              </dl>
+            </div>
+          </header>
+          <p class="jr-summary">{say(p.summary)}</p>
+          {p.people.length > 0 && <p class="jr-people">{p.people.map((x) => say(x)).join(' · ')}</p>}
+          {p.quote && say(p.quote) && <blockquote class="jr-quote">{say(p.quote)}{p.quote.source && <> <a class="src" href={p.quote.source} target="_blank" rel="noopener noreferrer">{t('source', 'संदर्भ')}</a></>}</blockquote>}
+          <h3>{t('Verified facts', 'पडताळलेली माहिती')}</h3>
+          <ul class="jr-list">
+            {p.facts.map((f) => <li>{say(f)}{f.source && <> <a class="src" href={f.source} target="_blank" rel="noopener noreferrer">{t('source', 'संदर्भ')}</a></>}</li>)}
+          </ul>
+          {(say(p.startNote) || say(p.endNote)) && <p class="jr-note">{[say(p.startNote), say(p.endNote)].filter(Boolean).join(' ')}</p>}
+          <div class="jr-foot">
+            {p.reprint && say(p.reprint) && <p class="jr-reprint"><strong>{t('Where to read the issues', 'अंक कुठे वाचायचे')}</strong>{say(p.reprint)}</p>}
+            <p class="jr-sources">{t('Sources:', 'संदर्भ:')} {p.sources.map((s, k) => <>{k > 0 && ' · '}<a href={s.url} target="_blank" rel="noopener noreferrer">{s.label} ↗</a></>)}</p>
+          </div>
+        </article>
+      ))}
+
+      {data.others.length > 0 && (
+        <section class="jr-others">
+          <h2>{t('Other papers of the movement', 'चळवळीतील इतर नियतकालिके')}</h2>
+          <ul class="jr-list">
+            {data.others.map((o) => <li>{say(o)}{o.source && <> <a class="src" href={o.source} target="_blank" rel="noopener noreferrer">{t('source', 'संदर्भ')}</a></>}</li>)}
+          </ul>
+        </section>
+      )}
+      <p class="jr-note">{t('Every fact on this page links to its source. Spotted a mistake or have a better source? ', 'या पानावरील प्रत्येक माहिती तिच्या संदर्भाशी जोडलेली आहे. चूक दिसली किंवा अधिक चांगला संदर्भ आहे? ')}<a href={url('/contribute/')}>{t('Tell us', 'आम्हाला कळवा')}</a>.</p>
+    </div>
+  </div>
+
+  <script is:inline>
+    (function () {
+      // Side panel: highlight the paper being read.
+      var links = {}; document.querySelectorAll('[data-jr-link]').forEach(function (a) { links[a.dataset.jrLink] = a; });
+      var arts = Array.prototype.slice.call(document.querySelectorAll('.jr-paper'));
+      var nav = document.querySelector('.jr-nav ol'), on = null;
+      var update = function () {
+        var pick = arts[0];
+        arts.forEach(function (a) { if (a.getBoundingClientRect().top < innerHeight * 0.4) pick = a; });
+        if (!pick || on === pick.id) return;
+        if (on && links[on]) links[on].removeAttribute('aria-current');
+        on = pick.id; links[on].setAttribute('aria-current', 'true');
+        // phones: keep the active chip in view in the sideways bar
+        if (nav.scrollWidth > nav.clientWidth) nav.scrollTo({ left: links[on].parentElement.offsetLeft - 16, behavior: 'smooth' });
+      };
+      var ticking = false;
+      addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(function () { ticking = false; update(); }); } }, { passive: true });
+      update();
+    })();
+  </script>
+</Base>

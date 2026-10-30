@@ -1,5 +1,5 @@
 ---
-import { SITE, url } from '../lib/site';
+import { SITE, SHOW_NEWS, url } from '../lib/site';
 import { getLang, translator } from '../i18n';
 const t = translator(getLang(Astro));
 const year = new Date().getFullYear();
@@ -19,8 +19,8 @@ const year = new Date().getFullYear();
       <div>
         <h2>{t('Explore', 'पाहा')}</h2>
         <ul>
-          <li><a href={url('/life/')}>{t('Life story', 'जीवनकथा')}</a></li>
-          <li><a href={url('/timeline/')}>{t('Timeline', 'कालपट')}</a></li>
+          <li><a href={url('/timeline/')}>{t('Life story', 'जीवनकथा')}</a></li>
+          <li><a href={url('/life/')}>{t('Life in 13 chapters', 'जीवन 13 प्रकरणांत')}</a></li>
           <li><a href={url('/education/')}>{t('Educational journey', 'शैक्षणिक प्रवास')}</a></li>
           <li><a href={url('/library/')}>{t('Library: Writings & Speeches', 'ग्रंथालय: लेखन आणि भाषणे')}</a></li>
           <li><a href={url('/gallery/')}>{t('Gallery', 'छायाचित्रे')}</a></li>
@@ -34,8 +34,8 @@ const year = new Date().getFullYear();
         <h2>{t('Take part', 'सहभागी व्हा')}</h2>
         <ul>
           <li><a href={url('/ask/')}>{t('Ask the archive', 'संग्रहात शोधा')}</a></li>
-          <li><a href={url('/blog/')}>{t('Blog & discussion', 'ब्लॉग आणि चर्चा')}</a></li>
-          <li><a href={url('/news/')}>{t('News', 'बातम्या')}</a></li>
+          {SHOW_NEWS && <li><a href={url('/blog/')}>{t('Blog & discussion', 'ब्लॉग आणि चर्चा')}</a></li>}
+          {SHOW_NEWS && <li><a href={url('/news/')}>{t('News', 'बातम्या')}</a></li>}
           <li><a href={url('/resources/')}>{t('Resources', 'संदर्भ साधने')}</a></li>
           <li><a href={url('/about/')}>{t('About', 'आमच्याविषयी')}</a></li>
           <li><a href={url('/contribute/')}>{t('Suggest a correction or source', 'दुरुस्ती किंवा संदर्भ सुचवा')}</a></li>

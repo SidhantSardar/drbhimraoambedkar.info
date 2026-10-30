@@ -1,7 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
-import Chakra from '../components/Chakra.astro';
 import Picture from '../components/Picture.astro';
+import FilmGrain from '../components/FilmGrain.astro';
 import { loadJSON, images } from '../lib/data';
 import { url } from '../lib/site';
 import { credit } from '../lib/images-core.mjs';
@@ -21,21 +21,34 @@ const quotes: any[] = c.quotes || [];
 const documents: any[] = c.documents || [];
 const pics = images(lang).filter((i) => i.tags?.includes('constitution')).slice(0, 6);
 const src = t('source', 'संदर्भ');
+const all = images(lang);
+const byId = (id: string) => all.find((i) => i.id === id);
+const bandConst = byId('constituent-assembly-first-day-1946');
+const constImg = { adopted: byId('presenting-draft-constitution-1949'), force: byId('first-republic-day-parade-1950'), art17: byId('constitution-calligraphed-title-page'), art32: byId('ambedkar-in-parliament-1949') };
 ---
 <Base title={t('The Constitution of India', 'भारताचे संविधान')} description={t('Dr. B. R. Ambedkar and the Constitution of India: how it was drafted, what it promises in plain words, the articles he fought for, his speeches, and the official text to download.', 'डॉ. बाबासाहेब आंबेडकर आणि भारताचे संविधान: ते कसे तयार झाले, ते सोप्या शब्दांत काय वचन देते, त्यांनी आग्रहाने मांडलेले अनुच्छेद, त्यांची भाषणे आणि डाउनलोड करण्यासाठी अधिकृत मजकूर.')}>
-  <section class="hero">
-    <Chakra class="chakra-bg" />
-    <div class="wrap section">
+  <section class="band const-hero">
+    {bandConst && <div class="bg"><Picture img={bandConst} sizes="100vw" alt="" /></div>}
+    {bandConst && <canvas class="hero-grain" aria-hidden="true"></canvas>}
+    <div class="wrap band-inner">
       <span class="eyebrow">{t('The flagship · 1946–1950', 'मुख्य विभाग · 1946–1950')}</span>
-      <h1 style="font-size:var(--step-4)">{t('The Constitution of India', 'भारताचे संविधान')}</h1>
-      <p class="lede" style="max-width:64ch">{t("India's highest law — the rulebook for how the country is governed and the promise of equal rights to every citizen. Dr. Ambedkar chaired the committee that drafted it and explained and defended it, clause by clause, in the Constituent Assembly.", 'भारताचा सर्वोच्च कायदा — देशाचा कारभार कसा चालेल याची नियमावली आणि प्रत्येक नागरिकाला समान हक्कांचे वचन. डॉ. आंबेडकर यांनी त्याचा मसुदा तयार करणाऱ्या समितीचे अध्यक्षपद भूषवले आणि संविधान सभेत त्याचे कलमवार स्पष्टीकरण देऊन त्याचे समर्थन केले.')}</p>
-      <div class="btn-row" style="margin-top:24px">
-        <a class="btn btn-light" href={url('/life/constitution/')}>{t('Read the full story →', 'संपूर्ण कथा वाचा →')}</a>
+      <h1>{t('The Constitution of India', 'भारताचे संविधान')}</h1>
+      <p class="lede" style="max-width:52ch">{t("India's highest law, and the promise of equal rights to every citizen. As chairman of the Drafting Committee, Dr. Ambedkar guided it through the Constituent Assembly, explaining and defending it clause by clause. Read what it promises in plain words, the articles he fought for, his speeches, and download the official text.", 'भारताचा सर्वोच्च कायदा आणि प्रत्येक नागरिकाला समान हक्कांचे वचन. मसुदा समितीचे अध्यक्ष म्हणून त्यांनी भारताचे संविधान संविधान सभेत मार्गी लावले. ते सोप्या शब्दांत काय वचन देते, त्यांनी आग्रहाने मांडलेले अनुच्छेद आणि त्यांची भाषणे वाचा — आणि अधिकृत मजकूर डाउनलोड करा.')}</p>
+      <nav class="hero-facts band-facts" aria-label={t('The Constitution in four facts', 'संविधान चार तथ्यांत')}>
+        <a class="hf" href={'#making'}>{constImg.adopted && <span class="hf-img"><Picture img={constImg.adopted} sizes="240px" alt="" /></span>}<span class="hf-body"><span class="hf-num">{t('26 Nov 1949', '26 नोव्हेंबर 1949')}</span><span class="hf-label">{t('Adopted', 'स्वीकार')}</span><span class="hf-note">{t('by the Constituent Assembly', 'संविधान सभेने')}</span></span></a>
+        <a class="hf" href={'#making'}>{constImg.force && <span class="hf-img"><Picture img={constImg.force} sizes="240px" alt="" /></span>}<span class="hf-body"><span class="hf-num">{t('26 Jan 1950', '26 जानेवारी 1950')}</span><span class="hf-label">{t('In force', 'अंमलात')}</span><span class="hf-note">{t('the first Republic Day', 'पहिला प्रजासत्ताक दिन')}</span></span></a>
+        <a class="hf" href={'#articles'}>{constImg.art17 && <span class="hf-img"><Picture img={constImg.art17} sizes="240px" alt="" /></span>}<span class="hf-body"><span class="hf-num">{t('Article 17', 'अनुच्छेद 17')}</span><span class="hf-label">{t('Untouchability', 'अस्पृश्यता')}</span><span class="hf-note">{t('abolished', 'नष्ट केली')}</span></span></a>
+        <a class="hf" href={'#articles'}>{constImg.art32 && <span class="hf-img"><Picture img={constImg.art32} sizes="240px" alt="" /></span>}<span class="hf-body"><span class="hf-num">{t('Article 32', 'अनुच्छेद 32')}</span><span class="hf-label">{t('Right to remedies', 'घटनात्मक उपायांचा हक्क')}</span><span class="hf-note">{t('“the very soul of the Constitution”', '“संविधानाचा आत्मा” (त्यांच्या शब्दांत)')}</span></span></a>
+      </nav>
+      <div class="btn-row">
+        <a class="btn btn-primary" href={url('/life/constitution/')}>{t('Read the full story →', 'संपूर्ण कथा वाचा →')}</a>
         <a class="btn btn-ghost" href="#documents">{t('Download the official text', 'अधिकृत मजकूर डाउनलोड करा')}</a>
         <a class="btn btn-ghost" href={url('/library/volume-13/')}>{t('His Constitution speeches (Vol. 13)', 'संविधानावरील त्यांची भाषणे (खंड 13)')}</a>
       </div>
     </div>
+    {bandConst && <p class="credit">{bandConst.caption} {credit(bandConst)} · <a href={bandConst.sourceUrl} target="_blank" rel="noopener noreferrer">{bandConst.sourceName}</a></p>}
   </section>
+  <FilmGrain />
 
   {keyFacts.length > 0 && (
     <section class="section-tight">
@@ -95,19 +108,23 @@ const src = t('source', 'संदर्भ');
   </section>
 
   {articles.length > 0 && (
-    <section class="section" style="background:var(--surface-2)">
+    <section class="section" id="articles" style="background:var(--surface-2)">
       <div class="wrap">
         <span class="eyebrow">{t('Know your rights', 'तुमचे हक्क जाणा')}</span>
         <h2>{t('Key articles, explained simply', 'महत्त्वाचे अनुच्छेद, सोप्या भाषेत')}</h2>
-        <div class="grid" style="margin-top:24px">
+        <div class="art-grid">
           {articles.map((a) => (
-            <div class="article-card">
-              <span class="num">{/^\d/.test(a.number) ? t(`Article ${a.number}`, `अनुच्छेद ${a.number}`) : a.number}</span>
-              <h3 style="margin:0">{a.title}</h3>
-              <p style="margin:0">{a.plainMeaning}</p>
-              {a.whyItMatters && <p class="muted" style="margin:0;font-size:0.93rem"><strong>{t('Why it matters:', 'हे का महत्त्वाचे:')}</strong> {a.whyItMatters}</p>}
-              {a.ambedkarConnection && <p class="muted" style="margin:0;font-size:0.93rem"><strong>{t("Dr. Ambedkar's role:", 'डॉ. आंबेडकर यांची भूमिका:')}</strong> {a.ambedkarConnection}</p>}
-              {a.source && <p style="margin:0"><a class="src" href={a.source} target="_blank" rel="noopener noreferrer">{src}</a></p>}
+            <div class="article-card art-card">
+              <div class="art-head">
+                <span class="num">{/^\d/.test(a.number) ? t(`Article ${a.number}`, `अनुच्छेद ${a.number}`) : a.number}</span>
+                <h3>{a.title}</h3>
+                {a.source && <a class="src" href={a.source} target="_blank" rel="noopener noreferrer">{src}</a>}
+              </div>
+              <div class="art-body">
+                <p class="art-plain">{a.plainMeaning}</p>
+                {a.whyItMatters && <p class="art-note"><strong>{t('Why it matters:', 'हे का महत्त्वाचे:')}</strong> {a.whyItMatters}</p>}
+                {a.ambedkarConnection && <p class="art-note"><strong>{t("Dr. Ambedkar's role:", 'डॉ. आंबेडकर यांची भूमिका:')}</strong> {a.ambedkarConnection}</p>}
+              </div>
             </div>
           ))}
         </div>
@@ -116,7 +133,7 @@ const src = t('source', 'संदर्भ');
   )}
 
   {timeline.length > 0 && (
-    <section class="section">
+    <section class="section" id="making">
       <div class="narrow">
         <span class="eyebrow">{t('How it was made', 'ते कसे घडले')}</span>
         <h2>{t('From the first sitting to Republic Day', 'पहिल्या बैठकीपासून प्रजासत्ताक दिनापर्यंत')}</h2>

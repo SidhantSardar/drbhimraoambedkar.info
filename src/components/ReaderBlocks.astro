@@ -1,0 +1,14 @@
+---
+// The paragraphs of one reader page. Display pages (title pages, epigraphs) keep the PDF's line breaks.
+import type { Block } from '../lib/library';
+interface Props { blocks: Block[] }
+const { blocks } = Astro.props;
+---
+{blocks.map((b) =>
+  b.type === 'h' ? <h3>{b.text}</h3>
+  : b.type === 'fn' ? <p class="fn">{b.text}</p>
+  : b.type === 'title' ? <h3 class="dp-title">{b.text}</h3>
+  : b.type === 'quote' ? <blockquote class="dp-quote"><p>{b.text}</p>{b.by && <cite>{b.by}</cite>}</blockquote>
+  : b.type === 'center' ? <p class="dp-center">{b.text}</p>
+  : <p>{b.text}</p>
+)}

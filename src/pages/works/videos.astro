@@ -1,0 +1,123 @@
+---
+// Original film and sound of Dr. Ambedkar, from official channels only (BBC, Prasar Bharati, Films Division),
+// playable here, each with its date and what he says in it.
+import Base from '../../layouts/Base.astro';
+import Chakra from '../../components/Chakra.astro';
+import { loadJSON } from '../../lib/data';
+import { url } from '../../lib/site';
+import { getLang, translator, formatDateIn } from '../../i18n';
+const lang = getLang(Astro);
+const t = translator(lang);
+const mr = lang === 'mr';
+
+type Alt = { youtubeId: string; channel: string; duration: string; label: string; labelMr: string };
+type Video = {
+  id: string; group: 'voice' | 'documentary'; youtubeId: string; channel: string; channelUrl: string; date: string; dateNote?: string;
+  place?: string; placeMr?: string; kind: string; film: boolean; duration: string; title: string; titleMr: string; summary: string; summaryMr: string;
+  saying?: string; sayingMr?: string; quote?: string; note?: string; noteMr?: string; baws?: string; also?: Alt[]; sources: { label: string; url: string }[];
+};
+const videos = loadJSON<Video[]>('videos', []);
+const groups = [
+  { key: 'voice', title: t('His own voice', 'त्यांचाच आवाज'), lede: t('Recordings of Dr. Ambedkar himself: a filmed BBC interview, a BBC radio interview and a speech in the Constituent Assembly.', 'स्वतः डॉ. आंबेडकरांची ध्वनिचित्रमुद्रणे: बीबीसीची चित्रित मुलाखत, बीबीसी आकाशवाणी मुलाखत आणि संविधान सभेतील भाषण.') },
+  { key: 'documentary', title: t('Documentaries from official archives', 'अधिकृत संग्रहातील माहितीपट'), lede: t('Films about his life made by Films Division and Doordarshan. They may mix archive film with narration or staged scenes.', 'फिल्म्स डिव्हिजन आणि दूरदर्शनने त्यांच्या जीवनावर केलेले माहितीपट. त्यांत संग्रहातील चित्रफितीसोबत निवेदन किंवा पुनर्रचित दृश्ये असू शकतात.') },
+];
+const KIND: Record<string, [string, string]> = { interview: ['Interview', 'मुलाखत'], speech: ['Speech', 'भाषण'], documentary: ['Documentary', 'माहितीपट'] };
+const thumb = (id: string) => `https://i.ytimg.com/vi/${id}/hqdefault.jpg`;
+---
+<Base title={t('Videos', 'व्हिडिओ')} description={t('Original film and sound of Dr. B. R. Ambedkar from the BBC, All India Radio and Films Division, playable here, with the date of each and what he says in it.', 'बीबीसी, आकाशवाणी आणि फिल्म्स डिव्हिजनकडील डॉ. बाबासाहेब आंबेडकरांची मूळ चित्रफीत आणि आवाज, येथेच पाहता येतील असे, प्रत्येकाची तारीख आणि त्यात ते काय म्हणतात यासह.')}>
+  <section class="hero">
+    <Chakra class="chakra-bg" />
+    <div class="wrap section-tight">
+      <span class="eyebrow">{t('Works · Videos', 'साहित्य · व्हिडिओ')}</span>
+      <h1 style="font-size:var(--step-4)">{t('See and hear him', 'त्यांना पाहा, ऐका')}</h1>
+      <p class="lede" style="max-width:64ch">{t('Only a few recordings of Dr. Ambedkar survive. These come from official channels only: the BBC, Prasar Bharati (All India Radio and Doordarshan) and Films Division. Fan uploads, colourised copies and clips from feature films are left out, because some viral "original voice" clips are actually actors.', 'डॉ. आंबेडकरांची मोजकीच ध्वनिचित्रमुद्रणे उपलब्ध आहेत. येथील सर्व फक्त अधिकृत वाहिन्यांवरून आहेत: बीबीसी, प्रसार भारती (आकाशवाणी आणि दूरदर्शन) आणि फिल्म्स डिव्हिजन. चाहत्यांनी टाकलेल्या, रंगवलेल्या प्रती आणि चित्रपटांतील तुकडे वगळले आहेत, कारण “मूळ आवाज” म्हणून पसरलेले काही तुकडे प्रत्यक्षात अभिनेत्यांचे आहेत.')}</p>
+    </div>
+  </section>
+
+  {groups.map((g) => (
+    <section class="section-tight vid-group">
+      <div class="wrap">
+        <h2>{g.title}</h2>
+        <p class="muted vid-lede">{g.lede}</p>
+        <ol class="vid-list">
+          {videos.filter((v) => v.group === g.key).map((v) => (
+            <li class="vid" id={v.id}>
+              <div class="vid-player" data-player>
+                <button type="button" class="vid-poster" data-play={v.youtubeId} data-title={mr ? v.titleMr : v.title} aria-label={t(`Play: ${v.title}`, `चालू करा: ${v.titleMr}`)}>
+                  <img src={thumb(v.youtubeId)} alt="" width="480" height="360" loading="lazy" decoding="async" referrerpolicy="no-referrer" />
+                  <span class="vid-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z" /></svg></span>
+                  <span class="vid-len">{v.duration}{!v.film && <> · {t('sound only', 'फक्त आवाज')}</>}</span>
+                </button>
+              </div>
+              <div class="vid-info">
+                <p class="vid-meta">
+                  <span class="vid-kind">{t(...(KIND[v.kind] || [v.kind, v.kind]) as [string, string])}</span>
+                  {v.date && <time datetime={v.date}>{formatDateIn(v.date, lang)}</time>}
+                  {v.place && <span>{mr ? v.placeMr || v.place : v.place}</span>}
+                </p>
+                <h3>{mr ? v.titleMr : v.title}</h3>
+                <p class="vid-summary">{mr ? v.summaryMr : v.summary}</p>
+                {v.saying && (
+                  <div class="vid-says">
+                    <strong>{t('What he says', 'ते काय म्हणतात')}</strong>
+                    <p>{mr ? v.sayingMr : v.saying}</p>
+                    {v.quote && <blockquote lang="en">“{v.quote}”</blockquote>}
+                  </div>
+                )}
+                {v.note && <p class="vid-note">{mr ? v.noteMr : v.note}</p>}
+                {v.also && v.also.length > 0 && (
+                  <div class="vid-also">
+                    <span>{t('Also from the BBC:', 'बीबीसीवर आणखी:')}</span>
+                    {v.also.map((a) => (
+                      <button type="button" class="chip" data-swap={a.youtubeId} data-title={mr ? a.labelMr : a.label}>{mr ? a.labelMr : a.label} · {a.duration}</button>
+                    ))}
+                  </div>
+                )}
+                <p class="vid-src">
+                  {t('From', 'स्रोत:')} <a href={v.channelUrl} target="_blank" rel="noopener noreferrer">{v.channel}</a>
+                  {' · '}<a href={`https://www.youtube.com/watch?v=${v.youtubeId}`} target="_blank" rel="noopener noreferrer">{t('YouTube ↗', 'YouTube ↗')}</a>
+                  {v.sources.map((s) => <>{' · '}<a href={s.url} target="_blank" rel="noopener noreferrer">{s.label} ↗</a></>)}
+                  {v.baws && <>{' · '}<a href={url(`/library/${v.baws}/`)}>{t('Full text in Vol. 13', 'संपूर्ण मजकूर खंड 13 मध्ये')}</a></>}
+                </p>
+                {v.dateNote && <p class="vid-datenote">{v.dateNote}</p>}
+              </div>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+  ))}
+
+  <section class="section-tight">
+    <div class="narrow">
+      <p class="muted" style="font-size:0.9rem">{t('Videos play from YouTube in privacy-enhanced mode, and only after you press play. Know of another original recording on an official channel? ', 'व्हिडिओ YouTube वरून गोपनीयता-संरक्षित पद्धतीने, आणि तुम्ही चालू केल्यावरच दिसतात. अधिकृत वाहिनीवरील आणखी एखादे मूळ ध्वनिचित्रमुद्रण माहीत आहे? ')}<a href={url('/contribute/')}>{t('Tell us', 'आम्हाला कळवा')}</a>.</p>
+    </div>
+  </section>
+
+  <script is:inline>
+    (function () {
+      // Load the YouTube player only when asked: the poster becomes the player.
+      var play = function (box, id, title) {
+        box.innerHTML = '';
+        var f = document.createElement('iframe');
+        f.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0&modestbranding=1';
+        f.title = title || 'Video';
+        f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+        f.allowFullscreen = true;
+        f.referrerPolicy = 'strict-origin-when-cross-origin';
+        box.appendChild(f);
+      };
+      document.querySelectorAll('[data-play]').forEach(function (b) {
+        b.addEventListener('click', function () { play(b.parentElement, b.dataset.play, b.dataset.title); });
+      });
+      // The other BBC cuts of the same recording play in the same place.
+      document.querySelectorAll('[data-swap]').forEach(function (b) {
+        b.addEventListener('click', function () {
+          var li = b.closest('.vid');
+          play(li.querySelector('[data-player]'), b.dataset.swap, b.dataset.title);
+          li.querySelector('[data-player]').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        });
+      });
+    })();
+  </script>
+</Base>

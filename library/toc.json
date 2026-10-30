@@ -3602,54 +3602,270 @@
    "title": "XII. the Theory in the Crucible",
    "group": "",
    "start": 223,
-   "end": 406,
+   "end": 247,
    "parts": [
     {
      "slug": "14-xii-the-theory-in-the-crucible-1",
      "title": "Part 1",
      "start": 223,
-     "end": 245
+     "end": 235
     },
     {
      "slug": "14-xii-the-theory-in-the-crucible-2",
      "title": "Part 2",
-     "start": 246,
-     "end": 268
-    },
+     "start": 236,
+     "end": 247
+    }
+   ]
+  },
+  {
+   "title": "Title pages and contents",
+   "group": "The Untouchables",
+   "start": 248,
+   "end": 257,
+   "parts": [
     {
-     "slug": "14-xii-the-theory-in-the-crucible-3",
-     "title": "Part 3",
-     "start": 269,
-     "end": 291
-    },
+     "slug": "15-title-pages-and-contents",
+     "title": "Title pages and contents",
+     "start": 248,
+     "end": 257
+    }
+   ]
+  },
+  {
+   "title": "Preface",
+   "group": "The Untouchables",
+   "start": 258,
+   "end": 267,
+   "parts": [
     {
-     "slug": "14-xii-the-theory-in-the-crucible-4",
-     "title": "Part 4",
-     "start": 292,
-     "end": 314
-    },
+     "slug": "16-preface",
+     "title": "Preface",
+     "start": 258,
+     "end": 267
+    }
+   ]
+  },
+  {
+   "title": "Chapter I. Untouchability Among Non-Hindus",
+   "group": "The Untouchables · Part I — A Comparative Survey",
+   "start": 268,
+   "end": 274,
+   "parts": [
     {
-     "slug": "14-xii-the-theory-in-the-crucible-5",
-     "title": "Part 5",
-     "start": 315,
-     "end": 337
-    },
+     "slug": "17-chapter-i-untouchability-among-non-hindus",
+     "title": "Chapter I. Untouchability Among Non-Hindus",
+     "start": 268,
+     "end": 274
+    }
+   ]
+  },
+  {
+   "title": "Chapter II. Untouchability Among Hindus",
+   "group": "The Untouchables · Part I — A Comparative Survey",
+   "start": 275,
+   "end": 289,
+   "parts": [
     {
-     "slug": "14-xii-the-theory-in-the-crucible-6",
-     "title": "Part 6",
-     "start": 338,
-     "end": 360
-    },
+     "slug": "18-chapter-ii-untouchability-among-hindus",
+     "title": "Chapter II. Untouchability Among Hindus",
+     "start": 275,
+     "end": 289
+    }
+   ]
+  },
+  {
+   "title": "Chapter III. Why Do the Untouchables Live Outside the Village?",
+   "group": "The Untouchables · Part II — Problem of Habitat",
+   "start": 290,
+   "end": 296,
+   "parts": [
     {
-     "slug": "14-xii-the-theory-in-the-crucible-7",
-     "title": "Part 7",
-     "start": 361,
-     "end": 383
-    },
+     "slug": "19-chapter-iii-why-do-the-untouchables-live-outside",
+     "title": "Chapter III. Why Do the Untouchables Live Outside the Village?",
+     "start": 290,
+     "end": 296
+    }
+   ]
+  },
+  {
+   "title": "Chapter IV. Are the Untouchables Broken Men?",
+   "group": "The Untouchables · Part II — Problem of Habitat",
+   "start": 297,
+   "end": 299,
+   "parts": [
     {
-     "slug": "14-xii-the-theory-in-the-crucible-8",
-     "title": "Part 8",
-     "start": 384,
+     "slug": "20-chapter-iv-are-the-untouchables-broken-men",
+     "title": "Chapter IV. Are the Untouchables Broken Men?",
+     "start": 297,
+     "end": 299
+    }
+   ]
+  },
+  {
+   "title": "Chapter V. Are There Parallel Cases?",
+   "group": "The Untouchables · Part II — Problem of Habitat",
+   "start": 300,
+   "end": 302,
+   "parts": [
+    {
+     "slug": "21-chapter-v-are-there-parallel-cases",
+     "title": "Chapter V. Are There Parallel Cases?",
+     "start": 300,
+     "end": 302
+    }
+   ]
+  },
+  {
+   "title": "Chapter VI. How Did Separate Settlements for Broken Men Disappear Elsewhere?",
+   "group": "The Untouchables · Part II — Problem of Habitat",
+   "start": 303,
+   "end": 307,
+   "parts": [
+    {
+     "slug": "22-chapter-vi-how-did-separate-settlements-for-brok",
+     "title": "Chapter VI. How Did Separate Settlements for Broken Men Disappear Elsewhere?",
+     "start": 303,
+     "end": 307
+    }
+   ]
+  },
+  {
+   "title": "Chapter VII. Racial Difference as the Origin of Untouchability",
+   "group": "The Untouchables · Part III — Old Theories of the Origin of Untouchability",
+   "start": 308,
+   "end": 323,
+   "parts": [
+    {
+     "slug": "23-chapter-vii-racial-difference-as-the-origin-of-u",
+     "title": "Chapter VII. Racial Difference as the Origin of Untouchability",
+     "start": 308,
+     "end": 323
+    }
+   ]
+  },
+  {
+   "title": "Chapter VIII. Occupational Origin of Untouchability",
+   "group": "The Untouchables · Part III — Old Theories of the Origin of Untouchability",
+   "start": 324,
+   "end": 329,
+   "parts": [
+    {
+     "slug": "24-chapter-viii-occupational-origin-of-untouchabili",
+     "title": "Chapter VIII. Occupational Origin of Untouchability",
+     "start": 324,
+     "end": 329
+    }
+   ]
+  },
+  {
+   "title": "Chapter IX. Contempt for Buddhists as the Root of Untouchability",
+   "group": "The Untouchables · Part IV — New Theories of the Origin of Untouchability",
+   "start": 330,
+   "end": 336,
+   "parts": [
+    {
+     "slug": "25-chapter-ix-contempt-for-buddhists-as-the-root-of",
+     "title": "Chapter IX. Contempt for Buddhists as the Root of Untouchability",
+     "start": 330,
+     "end": 336
+    }
+   ]
+  },
+  {
+   "title": "Chapter X. Beef Eating as the Root of Untouchability",
+   "group": "The Untouchables · Part IV — New Theories of the Origin of Untouchability",
+   "start": 337,
+   "end": 341,
+   "parts": [
+    {
+     "slug": "26-chapter-x-beef-eating-as-the-root-of-untouchabil",
+     "title": "Chapter X. Beef Eating as the Root of Untouchability",
+     "start": 337,
+     "end": 341
+    }
+   ]
+  },
+  {
+   "title": "Chapter XI. Did the Hindus Never Eat Beef?",
+   "group": "The Untouchables · Part V — The New Theories and Some Questions",
+   "start": 342,
+   "end": 347,
+   "parts": [
+    {
+     "slug": "27-chapter-xi-did-the-hindus-never-eat-beef",
+     "title": "Chapter XI. Did the Hindus Never Eat Beef?",
+     "start": 342,
+     "end": 347
+    }
+   ]
+  },
+  {
+   "title": "Chapter XII. Why Did Non-Brahmins Give Up Beef-Eating?",
+   "group": "The Untouchables · Part V — The New Theories and Some Questions",
+   "start": 348,
+   "end": 352,
+   "parts": [
+    {
+     "slug": "28-chapter-xii-why-did-non-brahmins-give-up-beef-ea",
+     "title": "Chapter XII. Why Did Non-Brahmins Give Up Beef-Eating?",
+     "start": 348,
+     "end": 352
+    }
+   ]
+  },
+  {
+   "title": "Chapter XIII. What Made the Brahmins Become Vegetarians?",
+   "group": "The Untouchables · Part V — The New Theories and Some Questions",
+   "start": 353,
+   "end": 368,
+   "parts": [
+    {
+     "slug": "29-chapter-xiii-what-made-the-brahmins-become-veget",
+     "title": "Chapter XIII. What Made the Brahmins Become Vegetarians?",
+     "start": 353,
+     "end": 368
+    }
+   ]
+  },
+  {
+   "title": "Chapter XIV. Why Should Beef-Eating Make Broken Men Untouchables?",
+   "group": "The Untouchables · Part V — The New Theories and Some Questions",
+   "start": 369,
+   "end": 377,
+   "parts": [
+    {
+     "slug": "30-chapter-xiv-why-should-beef-eating-make-broken-m",
+     "title": "Chapter XIV. Why Should Beef-Eating Make Broken Men Untouchables?",
+     "start": 369,
+     "end": 377
+    }
+   ]
+  },
+  {
+   "title": "Chapter XV. The Impure and the Untouchables",
+   "group": "The Untouchables · Part VI — Untouchability and the Date of its Birth",
+   "start": 378,
+   "end": 388,
+   "parts": [
+    {
+     "slug": "31-chapter-xv-the-impure-and-the-untouchables",
+     "title": "Chapter XV. The Impure and the Untouchables",
+     "start": 378,
+     "end": 388
+    }
+   ]
+  },
+  {
+   "title": "Chapter XVI. When Did Broken Men Become Untouchables?",
+   "group": "The Untouchables · Part VI — Untouchability and the Date of its Birth",
+   "start": 389,
+   "end": 406,
+   "parts": [
+    {
+     "slug": "32-chapter-xvi-when-did-broken-men-become-untouchab",
+     "title": "Chapter XVI. When Did Broken Men Become Untouchables?",
+     "start": 389,
      "end": 406
     }
    ]
@@ -8504,50 +8720,50 @@
    "title": "Book III",
    "group": "",
    "start": 655,
-   "end": 746,
+   "end": 741,
    "parts": [
     {
      "slug": "04-book-iii-1",
      "title": "Part 1",
      "start": 655,
-     "end": 677
+     "end": 676
     },
     {
      "slug": "04-book-iii-2",
      "title": "Part 2",
-     "start": 678,
-     "end": 700
+     "start": 677,
+     "end": 698
     },
     {
      "slug": "04-book-iii-3",
      "title": "Part 3",
-     "start": 701,
-     "end": 723
+     "start": 699,
+     "end": 720
     },
     {
      "slug": "04-book-iii-4",
      "title": "Part 4",
-     "start": 724,
-     "end": 746
+     "start": 721,
+     "end": 741
     }
    ]
   },
   {
-   "title": "Book IV",
-   "group": "",
-   "start": 747,
+   "title": "Title pages and contents",
+   "group": "Bouddha Pooja Path",
+   "start": 742,
    "end": 773,
    "parts": [
     {
-     "slug": "05-book-iv-1",
+     "slug": "05-title-pages-and-contents-1",
      "title": "Part 1",
-     "start": 747,
-     "end": 760
+     "start": 742,
+     "end": 757
     },
     {
-     "slug": "05-book-iv-2",
+     "slug": "05-title-pages-and-contents-2",
      "title": "Part 2",
-     "start": 761,
+     "start": 758,
      "end": 773
     }
    ]

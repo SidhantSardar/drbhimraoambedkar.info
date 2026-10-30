@@ -20,10 +20,18 @@ export function withBase(p) {
   return base() + p.replace(/^\//, '');
 }
 
+// Photographs whose identification or date did not hold up in the image check (src/data/image-audit.json):
+// misdated, unsourced, painted over or a modern graphic. They are kept in images.json for the record but never shown.
+let DOUBTFUL = new Set();
+try {
+  const audit = JSON.parse(fs.readFileSync(path.join(path.dirname(IMAGES), 'image-audit.json'), 'utf8'));
+  DOUBTFUL = new Set((audit.images || []).filter((x) => x.verdict === 'doubtful').map((x) => x.id));
+} catch {}
+
 export function loadImages() {
   try {
     const { mtimeMs } = fs.statSync(IMAGES);
-    if (mtimeMs !== cache.mtime) cache = { mtime: mtimeMs, images: JSON.parse(fs.readFileSync(IMAGES, 'utf8')) };
+    if (mtimeMs !== cache.mtime) cache = { mtime: mtimeMs, images: JSON.parse(fs.readFileSync(IMAGES, 'utf8')).filter((i) => !DOUBTFUL.has(i.id)) };
   } catch {
     cache = { mtime: 0, images: [] };
   }
@@ -73,9 +81,8 @@ export function imagesFor(slug, limit = 12) {
 /** The best header image for a chapter: the largest historical photo with that tag. */
 // Chosen cover photographs (real photos of Dr. Ambedkar where they exist).
 const COVERS = {
-  'school-years': 'young-ambedkar-1912',
   columbia: 'ambedkar-at-columbia-1913-1916',
-  london: 'ambedkar-barrister-1922',
+  london: 'barrister-ambedkar-1922',
   awakening: 'ambedkar-nipani-1925',
   'round-table': 'ambedkar-returns-to-bombay-1932',
   politics: 'ambedkar-lawyer-portrait',
@@ -101,7 +108,6 @@ export function heroFor(slug) {
 // every chapter, even where the chapter page itself opens on a place or a memorial.
 const ORIGINALS = {
   'before-birth': 'ramji-maloji-sakpal-father',
-  childhood: 'ambedkar-as-young-student',
   legacy: 'ambedkar-portrait-navayan',
 };
 export function originalFor(slug) {

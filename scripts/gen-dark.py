@@ -105,14 +105,14 @@ head="""/* =====================================================================
    gets its dark-token equivalent. The white design itself is unchanged.
    ===================================================================== */
 [data-skin='light'][data-theme='dark'] {
-  --bg: #0b111d; --surface: #111a2a; --surface-2: #16213a;
-  --paper: #0b111d; --paper-2: #111a2a; --paper-3: #16213a;
-  --sky-50: #111a2a; --sky-100: #18243c;
+  --bg: #05080f; --surface: #0a0f1a; --surface-2: #0f1626;
+  --paper: #05080f; --paper-2: #0a0f1a; --paper-3: #0f1626;
+  --sky-50: #0a0f1a; --sky-100: #121b2e;
   --ink: #e6edf8; --ink-2: #c9d4e5; --muted: #95a5bd;
-  --line: #24324c;
+  --line: #1b2538;
   --accent-blue: #3a6bf2; --accent-blue-dark: #2c58d6; --link-blue: #8eb1ff;
   --link: #8eb1ff; --accent: #8eb1ff; --earth: #8eb1ff;
-  --chip-bg: #18243c; --chip-ink: #e6edf8;
+  --chip-bg: #121b2e; --chip-ink: #e6edf8;
   color-scheme: dark;
 }
 [data-skin='light']:not([data-theme='dark']) { --link-blue: var(--accent-blue); }

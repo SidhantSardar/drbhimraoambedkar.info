@@ -1,0 +1,66 @@
+---
+// A book inside a volume: its first-edition cover, where it sits in the volume, and its own chapters.
+import DocsShell from '../../../../components/DocsShell.astro';
+import Picture from '../../../../components/Picture.astro';
+import { volLabelIn, coverOf } from '../../../../lib/library';
+import { SHELF_BOOKS, EDITION, bookOf, type Book } from '../../../../lib/books';
+import { images, type Img } from '../../../../lib/data';
+import { credit } from '../../../../lib/images-core.mjs';
+import { url } from '../../../../lib/site';
+import { getLang, translator } from '../../../../i18n';
+
+export function getStaticPaths() {
+  return SHELF_BOOKS.map((row) => ({ row, book: bookOf(row[0]) }))
+    .filter((x) => x.book)
+    .map(({ row, book }) => ({ params: { volume: book!.vol.id, book: row[0] }, props: { row, book } }));
+}
+const { row, book } = Astro.props as { row: (typeof SHELF_BOOKS)[number]; book: Book };
+const [id, en, mrTitle, year, den, dmr] = row;
+const lang = getLang(Astro);
+const t = translator(lang);
+const vol = book.vol;
+const label = volLabelIn(vol, lang);
+const title = t(en, mrTitle);
+const all = images(lang);
+const img = (all.find((i) => i.id === 'cover-' + id) ?? (id === 'annihilation-of-caste' ? all.find((i) => i.id === 'annihilation-of-caste-first-edition') : undefined)) as Img | undefined;
+const edition = img && EDITION[id] && img.id === 'cover-' + id ? t(EDITION[id][0], EDITION[id][1]) : '';
+const first = book.entries[0];
+const pdf = `${vol.officialUrl}#page=${book.start}`;
+---
+<DocsShell vol={vol} title={`${title} — ${label}`} description={t(`Read ${en} (${year}) by Dr. B. R. Ambedkar online, where it appears in Writings and Speeches, ${vol.label}: printed pages ${book.printed}.`, `डॉ. बाबासाहेब आंबेडकर यांचा ${mrTitle} (${year}) ऑनलाइन वाचा: लेखन आणि भाषणे, ${label}, छापील पृष्ठे ${book.printed}.`)} here={title}>
+  <div class="docs-overview book-overview">
+    <figure class="book-first">
+      {img ? <Picture img={img} sizes="260px" alt={img.caption || title} eager /> : <span class="shelf-plain" aria-hidden="true"><b>{title}</b><small>B. R. Ambedkar · {year}</small></span>}
+      {edition && <figcaption>{edition}{img && <> · {credit(img)} · <a href={img.sourceUrl} target="_blank" rel="noopener noreferrer">{img.sourceName}</a></>}</figcaption>}
+    </figure>
+    <div>
+      <span class="eyebrow">{t(`Book · ${year}`, `ग्रंथ · ${year}`)}</span>
+      <h1>{title}</h1>
+      {lang === 'mr' && <p class="docs-orig-title"><span>मूळ इंग्रजी शीर्षक:</span> <span lang="en">{en}</span></p>}
+      <p class="lede">{t(den, dmr)}</p>
+      <a class="book-in-vol" href={url(`/library/${vol.id}/`)}>
+        <img src={url(coverOf(vol))} alt="" width="48" height="74" loading="lazy" decoding="async" />
+        <span>
+          <small>{t('Inside the volume', 'या खंडात')}</small>
+          <strong>{t(`Writings and Speeches, ${vol.label}`, `लेखन आणि भाषणे, ${label}`)}</strong>
+          <span>{t(`Printed pages ${book.printed} · PDF pages ${book.start}–${book.end}`, `छापील पृष्ठे ${book.printed} · PDF पृष्ठे ${book.start}–${book.end}`)}</span>
+        </span>
+      </a>
+      <div class="btn-row" style="margin:22px 0 10px">
+        {first && <a class="btn btn-primary btn-beam" href={first.href}><span>{t('Start reading →', 'वाचायला सुरुवात करा →')}</span></a>}
+        <a class="btn btn-ghost" href={pdf} target="_blank" rel="noopener noreferrer">{t('Official PDF ↗', 'अधिकृत PDF ↗')}</a>
+      </div>
+      <p class="source-link">{t(`Text word for word from the official volume. ${book.entries.length} sections below, each opening at its page.`, `अधिकृत खंडातील मजकूर जसाच्या तसा. खाली ${book.entries.length} विभाग, प्रत्येक त्याच्या पानावर उघडतो.`)}</p>
+    </div>
+  </div>
+  <h2 class="docs-toc-title">{t(`Contents of ${en}`, `${mrTitle}: अनुक्रमणिका`)}</h2>
+  <ol class="docs-toc" lang={lang === 'mr' ? 'en' : undefined}>
+    {book.entries.map((e, i) => (
+      <li>
+        {e.part && e.part !== book.entries[i - 1]?.part && <span class="g">{e.part}</span>}
+        <a href={e.href}>{e.title ? <><span class="book-ch">{e.label}.</span> {e.title}</> : e.label}</a>
+        <span class="pp">{e.printed ? t(`p. ${e.printed}`, `पृ. ${e.printed}`) : t(`PDF p. ${e.page}`, `PDF पृ. ${e.page}`)}</span>
+      </li>
+    ))}
+  </ol>
+</DocsShell>

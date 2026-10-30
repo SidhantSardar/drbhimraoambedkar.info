@@ -121,6 +121,57 @@ function pdfPageFor(printed, allRows, minPdf) {
   return exact ? exact.p : guess;
 }
 
+// A volume can hold more than one book (Vol. 7: Who Were the Shudras? and The Untouchables), and the
+// volume's contents pages list only the first. A book from the works list that starts where no listed chapter
+// does gets its own section, with its chapters read from the headings on its pages.
+const works = JSON.parse(fs.readFileSync(path.join(root, 'src/data/works.json'), 'utf8'));
+const volKey = (s) => 'volume-' + String(s).toLowerCase().replace(/\s*part\s*/, '-part-').replace(/\s+/g, '-');
+const HEAD = /^(CHAPTER|PART|BOOK)\s+([IVXLC]+|\d+)\s*\.?$/i;
+const SOLO = /^(PREFACE|INTRODUCTION|FOREWORD|PROLOGUE|EPILOGUE|CONCLUSION|APPENDIX(?:\s+[IVX\d]+)?)$/;
+const capsLine = (s) => isCaps(s) && s.length < 90 && !/\.\s?\.\s*\d/.test(s);
+function bookHeadings(rows, a, b, book) {
+  const out = [];
+  let part = '';
+  for (const r of rows) {
+    if (r.p < a || r.p > b) continue;
+    const ls = r.t.split('\n').map((l) => l.trim()).filter(Boolean);
+    if (ls.some((l) => /^CONTENTS$/i.test(l)) || ls.filter((l) => /\.\s?\.\s*\d+\s*$/.test(l)).length >= 2) continue; // the book's own contents
+    for (let k = 0; k < ls.length; k++) {
+      const m = ls[k].match(HEAD);
+      if (m) {
+        const t = [];
+        for (const n of ls.slice(k + 1, k + 4)) { if (capsLine(n) && !HEAD.test(n)) t.push(n); else break; }
+        const name = clean(t.join(' ').replace(/\s+[I1]$/, '').replace(/\s+([?.,])/g, '$1'));
+        const label = `${m[1][0].toUpperCase()}${m[1].slice(1).toLowerCase()} ${m[2].toUpperCase()}`;
+        if (/^(Part|Book)/i.test(m[1])) { part = name ? `${label} — ${titleCase(name)}` : label; continue; }
+        out.push({ title: name ? `${label}. ${titleCase(name)}` : label, group: part ? `${book} · ${part}` : book, start: r.p });
+      } else if (SOLO.test(ls[k]) && !out.some((o) => o.title.startsWith('Appendi') && /^APPENDIX/.test(ls[k]))) {
+        out.push({ title: /^APPENDIX/.test(ls[k]) ? 'Appendices' : titleCase(ls[k]), group: part ? `${book} · ${part}` : book, start: r.p });
+      }
+    }
+  }
+  return out.filter((e, i, arr) => i === 0 || e.start !== arr[i - 1].start);
+}
+function addBooks(v, entries, rows) {
+  for (const w of works) {
+    for (const x of w.baws || []) {
+      if (volKey(x.volume) !== v.id || !['book', 'thesis'].includes(w.type)) continue;
+      const a = Number(String(x.url || '').match(/#page=(\d+)/)?.[1] || 0);
+      const [p0, p1] = String(x.pages || '').split(/[–-]/).map(Number);
+      if (!a || !p1 || p1 - p0 < 20) continue;
+      if (!entries.length || entries.some((e) => Math.abs(e.start - a) <= 3) || a < entries[0].start) continue;
+      const b = a + (p1 - p0);
+      const book = w.title.replace(/\s*[:?].*$/, (m) => (m.startsWith('?') ? '?' : ''));
+      const found = bookHeadings(rows, a, b, book);
+      const inner = [{ title: 'Title pages and contents', group: book, start: a }, ...found.filter((e) => e.start > a)];
+      const keep = entries.filter((e) => e.start < a || e.start > b);
+      entries.splice(0, entries.length, ...[...keep, ...inner].sort((p, q) => p.start - q.start));
+      console.log(`  + ${v.id}: "${book}" from PDF page ${a}, ${inner.length} sections`);
+    }
+  }
+  return entries;
+}
+
 const toc = {};
 for (const v of vols) {
   const rows = fs.readFileSync(path.join(root, 'library', v.file), 'utf8').trim().split('\n').map((l) => JSON.parse(l));
@@ -138,6 +189,7 @@ for (const v of vols) {
   entries = entries.filter((e, i, arr) => i === 0 || e.start > Math.max(...arr.slice(0, i).map((x) => x.start)));
   // merge entries that start on the same page (keep the first title)
   entries = entries.filter((e, i, arr) => i === 0 || e.start !== arr[i - 1].start);
+  entries = addBooks(v, entries, rows);
 
   let sections;
   if (entries.length >= 3) {

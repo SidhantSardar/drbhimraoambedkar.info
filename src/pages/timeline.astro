@@ -1,100 +1,355 @@
 ---
+// Life story: every dated event of his life on one horizontal timeline that fills the screen.
+// Scrolling (wheel, trackpad, swipe or arrow keys) moves along it; each stop shows the event's picture and details.
 import Base from '../layouts/Base.astro';
-import Chakra from '../components/Chakra.astro';
-import { chapters, themes, loadJSON } from '../lib/data';
+import Picture from '../components/Picture.astro';
+import { chapters, images, loadJSON, type Img } from '../lib/data';
 import { url } from '../lib/site';
+import { credit } from '../lib/images-core.mjs';
 import { getLang, translator, formatDateIn } from '../i18n';
 const lang = getLang(Astro);
 const t = translator(lang);
 
-// `key` is the English wording, used to spot duplicates in either language.
-type Item = { date: string; label: string; key: string; source?: string; chapter: string; chapterTitle: string; href: string };
-const items: Item[] = [];
-const add = (en: any[], here: any[], kind: string) => en.forEach((c, i) => {
+// The stages of his life, each made of the life-story chapters it covers.
+// `from`/`to` are the dates a stage covers (they overlap where his studies and public work did); an event outside
+// its chapter's stage, such as a later memorial mentioned in a school chapter, goes to the stage of its date.
+const STAGES: { key: string; en: string; mr: string; chapters: string[]; from: string; to: string }[] = [
+  { key: 'childhood', en: 'Roots and childhood', mr: 'मूळ आणि बालपण', chapters: ['before-birth', 'childhood'], from: '0', to: '1904-12-31' },
+  { key: 'education', en: 'Education', mr: 'शिक्षण', chapters: ['school-years', 'columbia', 'london'], from: '1905', to: '1923-12-31' },
+  { key: 'struggle', en: 'The struggle', mr: 'संघर्ष', chapters: ['awakening', 'round-table', 'politics'], from: '1917', to: '1946-12-08' },
+  { key: 'constitution', en: 'Constitution and Law Minister', mr: 'संविधान आणि कायदामंत्री', chapters: ['constitution', 'law-minister'], from: '1946-07', to: '1951-12-31' },
+  { key: 'dhamma', en: 'Dhamma and last days', mr: 'धम्म आणि अखेरचे दिवस', chapters: ['buddhism', 'final-days'], from: '1950', to: '1956-12-06' },
+  { key: 'legacy', en: 'Legacy', mr: 'वारसा', chapters: ['legacy'], from: '1956-12-07', to: '9999' },
+];
+const inStage = (i: number, date: string) => date >= STAGES[i].from && date <= STAGES[i].to + '~';
+const stageOf = (chapter: string, date = '') => {
+  const i = STAGES.findIndex((s) => s.chapters.includes(chapter));
+  if (i < 0 || !date || inStage(i, date)) return i;
+  const j = STAGES.findIndex((_, k) => inStage(k, date));
+  return j < 0 ? i : j;
+};
+
+// A sentence or two from the chapter itself that tells the event (the chapter text is sourced line by line).
+const MONTHS = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'];
+const STOP = new Set('the and for with from that this into his her their was were are has had have who which when where after before about some sources say says them they then than there also only over under born dies died first'.split(' '));
+const sentencesOf = (body = '') => body
+  .replace(/\[source:[^\]]*\]\([^)]*\)/g, '').replace(/\[([^\]]+)\]\([^)]*\)/g, '$1').replace(/[*_`>#]+/g, ' ').replace(/^\s*-\s+/gm, '')
+  .split(/\n+/).flatMap((para) => para.split(/(?<=[.!?।])\s+(?=[A-Z"“‘\u0900-\u097F(])/)).map((x) => x.replace(/\s+/g, ' ').replace(/\s+([,.;:!?)])/g, '$1').trim()).filter((x) => x.length > 30);
+const wordsOf = (x: string) => new Set(x.toLowerCase().split(/[^a-z\u0900-\u097F0-9]+/).filter((w) => w.length > 3 && !STOP.has(w)));
+const describe = (date: string, label: string, body?: string) => {
+  const y = date.slice(0, 4), mo = Number(date.slice(5, 7)), lw = wordsOf(label);
+  let best = -1, score = 0;
+  const list = sentencesOf(body);
+  list.forEach((x, i) => {
+    let sc = 0;
+    if (x.includes(y)) sc += 3;
+    if (mo && x.toLowerCase().includes(MONTHS[mo - 1])) sc += 2;
+    for (const w of wordsOf(x)) if (lw.has(w)) sc += 1;
+    if (sc > score) { score = sc; best = i; }
+  });
+  if (best < 0 || score < 4) return '';
+  let out = list[best];
+  if (out.length < 170 && list[best + 1] && !/^\d{4}/.test(list[best + 1])) out += ' ' + list[best + 1];
+  return out.length > 360 ? out.slice(0, out.lastIndexOf(' ', 350)) + '…' : out;
+};
+
+type Ev = { date: string; label: string; key: string; detail?: string; source?: string; chapter: string; chapterTitle: string; period?: string; href: string; stage: number; img?: Img };
+const items: Ev[] = [];
+const en = await chapters();
+const here = await chapters(lang);
+en.forEach((c, i) => {
   const local = here[i] || c;
-  c.data.keyDates.forEach((k: any, j: number) => items.push({ ...k, key: k.label, label: local.data.keyDates[j]?.label || k.label, chapter: c.id, chapterTitle: local.data.title, href: `/${kind}/${c.id}/` }));
+  if (stageOf(c.id) < 0) return;
+  c.data.keyDates.forEach((k: any, j: number) => items.push({
+    stage: stageOf(c.id, String(k.date)), date: String(k.date), key: k.label, label: local.data.keyDates[j]?.label || k.label, source: k.source,
+    detail: describe(String(k.date), local.data.keyDates[j]?.label || k.label, (local as any).body),
+    chapter: c.id, chapterTitle: local.data.title, period: local.data.period, href: `/life/${c.id}/`,
+  }));
 });
-add(await chapters(), await chapters(lang), 'life');
-add(await themes(), await themes(lang), 'themes');
 const constitution = loadJSON<any>('constitution', {});
 const constitutionHere = loadJSON<any>('constitution', {}, lang);
 (constitution.timeline || []).forEach((k: any, i: number) => {
-  items.push({ date: k.date, label: constitutionHere.timeline?.[i]?.label || k.label, key: k.label, source: k.source, chapter: 'constitution', chapterTitle: t('The Constitution', 'संविधान'), href: '/constitution/' });
+  const local = constitutionHere.timeline?.[i] || k;
+  items.push({ date: String(k.date), key: k.label, label: local.label, detail: local.detail, source: k.source, chapter: 'constitution', chapterTitle: t('The Constitution', 'संविधान'), href: '/constitution/#making', stage: stageOf('constitution', String(k.date)) });
 });
 
-// Remove exact duplicates (same date and same wording).
-const seen = new Set<string>();
-const unique = items.filter((i) => {
-  const key = `${i.date}|${i.key.toLowerCase().replace(/[^a-z0-9]/g, '')}`;
-  if (seen.has(key)) return false;
-  seen.add(key);
-  return true;
-});
-unique.sort((a, b) => String(a.date).localeCompare(String(b.date)));
-
-const decadeOf = (d: string) => {
-  const y = Number(String(d).slice(0, 4));
-  if (!y) return t('Undated', 'तारीख अज्ञात');
-  if (y < 1890) return t('Before 1890', '1890 पूर्वी');
-  if (y >= 1960) return t('1960 – today', '1960 – आजपर्यंत');
-  return t(`${Math.floor(y / 10) * 10}s`, `${Math.floor(y / 10) * 10} चे दशक`);
-};
-const groups = new Map<string, Item[]>();
-for (const i of unique) {
-  const k = decadeOf(i.date);
-  if (!groups.has(k)) groups.set(k, []);
-  groups.get(k)!.push(i);
+// Same date and same wording counts once; keep the one with more detail.
+const seen = new Map<string, Ev>();
+for (const e of items) {
+  const k = `${e.date}|${e.key.toLowerCase().replace(/[^a-z0-9]/g, '')}`;
+  const had = seen.get(k);
+  if (!had || (!had.detail && e.detail)) seen.set(k, e);
 }
-const filters = [...new Map(unique.map((i) => [i.chapter, i.chapterTitle])).entries()];
+const events = [...seen.values()].sort((a, b) => a.date.localeCompare(b.date) || a.stage - b.stage);
+
+// A picture for each event. Only photographs that pass the image check (verified or plausibly identified) are used.
+// First choice: one whose title or caption names what the event names (a place, a person, an institution);
+// otherwise a photograph from the same chapter and as close in time as possible; varied between neighbours.
+const audit: Record<string, { verdict: string }> = Object.fromEntries((loadJSON<any>('image-audit', { images: [] }).images || []).map((x: any) => [x.id, x]));
+const pics = images(lang).filter((i) => !(i as any).kind && i.tags?.length && !['doubtful'].includes(audit[i.id]?.verdict));
+const yearOf = (d?: string) => Number(String(d || '').match(/\d{4}/)?.[0] || 0);
+const enPics = Object.fromEntries(images().map((i) => [i.id, i]));
+const picWords = Object.fromEntries(pics.map((i) => { const e = enPics[i.id] || i; return [i.id, wordsOf(`${e.title} ${e.caption} ${e.place || ''}`)]; }));
+const modern = (i: Img) => yearOf(i.date) > 1960 || audit[i.id]?.verdict === 'modern-context';
+const used = new Map<string, number>();
+let last = '';
+for (const e of events) {
+  const y = yearOf(e.date);
+  const lw = wordsOf(e.key);
+  let best: Img | undefined, score = -Infinity;
+  for (const i of pics) {
+    const tagged = i.tags!.includes(e.chapter);
+    let hits = 0;
+    for (const w of lw) if (picWords[i.id].has(w)) hits++;
+    if (!tagged && hits < 2) continue;
+    if (modern(i) && y && y < 1957 && hits < 2) continue; // a modern photo only when it shows the very place the event names
+    const iy = yearOf(i.date);
+    const gap = iy ? Math.abs(iy - y) : 25;
+    const s = hits * 14 + (tagged ? 6 : 0) - Math.min(gap, 50) * 0.6 - (used.get(i.id) || 0) * 9 - (i.id === last ? 100 : 0) - (modern(i) ? 8 : 0);
+    if (s > score) { score = s; best = i; }
+  }
+  if (best) { e.img = best; used.set(best.id, (used.get(best.id) || 0) + 1); last = best.id; }
+}
+
+const stages = STAGES.map((s, i) => {
+  const list = events.filter((e) => e.stage === i);
+  const ys = list.map((e) => yearOf(e.date)).filter(Boolean);
+  return { ...s, label: t(s.en, s.mr), first: events.findIndex((e) => e.stage === i), n: list.length, from: Math.min(...ys), to: Math.max(...ys) };
+}).filter((s) => s.n > 0);
+const span = (s: { from: number; to: number; key: string }) => (s.key === 'legacy' ? t(`${s.from} – today`, `${s.from} – आजपर्यंत`) : `${s.from}–${s.to}`);
+const pad = (n: number) => String(n).padStart(3, '0');
 ---
-<Base title={t('Timeline', 'कालपट')} description={t('Every key date in the life and work of Dr. B. R. Ambedkar, from before his birth to today — each with a source.', 'डॉ. बाबासाहेब आंबेडकर यांच्या जीवन आणि कार्यातील प्रत्येक महत्त्वाची तारीख, त्यांच्या जन्मापूर्वीपासून आजपर्यंत — प्रत्येक संदर्भासह.')}>
-  <section class="hero">
-    <Chakra class="chakra-bg" />
-    <div class="wrap section-tight">
-      <span class="eyebrow">{t('Timeline', 'कालपट')}</span>
-      <h1 style="font-size:var(--step-4)">{t(`${unique.length} moments, one life`, `${unique.length} क्षण, एक जीवन`)}</h1>
-      <p class="lede" style="max-width:62ch">{t('Scroll through the decades, or pick a chapter to see only its events. Each event links to its source and to the chapter that tells the full story.', 'दशकांमधून पुढे जा, किंवा फक्त त्या प्रकरणातील घटना पाहण्यासाठी एखादे प्रकरण निवडा. प्रत्येक घटनेसोबत तिचा संदर्भ आणि संपूर्ण कथा सांगणाऱ्या प्रकरणाचा दुवा आहे.')}</p>
+<Base title={t('Life story', 'जीवनकथा')} description={t(`The life of Dr. B. R. Ambedkar in ${events.length} dated moments, from his family's roots to his legacy today, on one timeline, each with a picture and a source.`, `डॉ. बाबासाहेब आंबेडकर यांचे जीवन ${events.length} तारखांच्या क्षणांत, कुटुंबाच्या मुळांपासून आजच्या वारशापर्यंत, एकाच कालपटावर, प्रत्येकासोबत छायाचित्र आणि संदर्भ.`)} footer={false}>
+  <div class="lt" data-lt>
+    <div class="lt-bg" aria-hidden="true"><img alt="" data-lt-bg /><img alt="" data-lt-bg /></div>
+    <div class="lt-top">
+      <div class="lt-head">
+        <span class="eyebrow">{t('Life story', 'जीवनकथा')}</span>
+        <h1>{t(`${events.length} moments, one life`, `${events.length} क्षण, एक जीवन`)}</h1>
+      </div>
+      <div class="lt-cats" role="tablist" aria-label={t('Stages of his life', 'जीवनाचे टप्पे')} data-lt-cats>
+        {stages.map((s) => (
+          <button type="button" role="tab" aria-selected="false" data-lt-cat={s.key} data-first={s.first}>
+            <span>{s.label}</span><small>{span(s)}</small>
+          </button>
+        ))}
+      </div>
+      <p class="lt-count" aria-live="polite"><strong data-lt-n>001</strong><span> / {pad(events.length)}</span></p>
     </div>
-  </section>
-  <div class="narrow section-tight">
-    <div class="tl-filters" role="group" aria-label={t('Filter by chapter', 'प्रकरणानुसार निवडा')}>
-      <button class="chip" type="button" data-filter="all" aria-pressed="true">{t('All', 'सर्व')}</button>
-      {filters.map(([id, title]) => <button class="chip" type="button" data-filter={id} aria-pressed="false">{title}</button>)}
-    </div>
-    {[...groups.entries()].map(([decade, list]) => (
-      <section class="tl-decade" data-decade>
-        <h2>{decade}</h2>
-        <ol class="tl-list">
-          {list.map((i) => (
-            <li class="tl-item" data-chapter={i.chapter}>
-              <time datetime={i.date}>{formatDateIn(i.date, lang)}</time>
-              <p>{i.label}</p>
-              <div class="tl-links">
-                <a href={url(i.href)}>{i.chapterTitle} →</a>
-                {i.source && <a class="src" href={i.source} target="_blank" rel="noopener noreferrer">{t('source', 'संदर्भ')}</a>}
+
+    <div class="lt-stage" data-lt-stage tabindex="0" aria-roledescription={t('timeline', 'कालपट')} aria-label={t('Events of his life. Scroll, swipe or use the arrow keys.', 'जीवनातील घटना. स्क्रोल करा, सरकवा किंवा बाणांच्या कळा वापरा.')}>
+      <ol class="lt-track" data-lt-track>
+        {events.map((e, i) => (
+          <li class="lt-slide" data-i={i} data-stage={stages.findIndex((s) => STAGES[e.stage].key === s.key)} aria-label={`${formatDateIn(e.date, lang)}: ${e.label}`}>
+            <figure class="lt-media">
+              {e.img ? <Picture img={e.img} sizes="(min-width: 900px) 560px, 90vw" alt={e.img.caption || ''} /> : <span class="lt-noimg" aria-hidden="true"></span>}
+              {e.img && <figcaption>{e.img.title} · {credit(e.img)} · <a href={e.img.sourceUrl} target="_blank" rel="noopener noreferrer" tabindex="-1">{e.img.sourceName}</a></figcaption>}
+            </figure>
+            <div class="lt-text">
+              <span class="lt-stagename">{t(STAGES[e.stage].en, STAGES[e.stage].mr)}</span>
+              <time datetime={e.date}>{formatDateIn(e.date, lang)}</time>
+              <h2>{e.label}</h2>
+              {e.detail && <p class="lt-detail">{e.detail}</p>}
+              <p class="lt-from">{t('From the chapter', 'प्रकरण')} <strong>{e.chapterTitle}</strong>{e.period && <> · {e.period}</>}</p>
+              <div class="lt-links">
+                <a href={url(e.href)} tabindex="-1">{t('Read the full story →', 'संपूर्ण कथा वाचा →')}</a>
+                {e.source && <a class="src" href={e.source} target="_blank" rel="noopener noreferrer" tabindex="-1">{t('Source ↗', 'संदर्भ ↗')}</a>}
               </div>
-            </li>
-          ))}
-        </ol>
-      </section>
-    ))}
-    {unique.length === 0 && <p class="notice">{t('The timeline fills in automatically as chapters are added.', 'प्रकरणे जोडली जातील तसा कालपट आपोआप भरतो.')}</p>}
+            </div>
+          </li>
+        ))}
+      </ol>
+      <button class="lt-arrow lt-prev" type="button" data-lt-step="-1" aria-label={t('Previous event', 'मागील घटना')}>←</button>
+      <button class="lt-arrow lt-next" type="button" data-lt-step="1" aria-label={t('Next event', 'पुढील घटना')}>→</button>
+    </div>
+
+    <div class="lt-axis" data-lt-axis>
+      <span class="lt-needle" aria-hidden="true"></span>
+      <div class="lt-rail" data-lt-rail>
+        {events.map((e, i) => {
+          const y = String(yearOf(e.date) || '');
+          const newYear = i === 0 || y !== String(yearOf(events[i - 1].date) || '');
+          const newStage = events.findIndex((x) => x.stage === e.stage) === i;
+          return (
+            <button type="button" class:list={['lt-node', { 'is-stage': newStage }]} data-node={i} tabindex="-1" aria-label={`${formatDateIn(e.date, lang)}: ${e.label}`}>
+              {newStage && <span class="lt-node-stage">{t(STAGES[e.stage].en, STAGES[e.stage].mr)}</span>}
+              <i aria-hidden="true"></i>
+              {newYear && <span class="lt-node-year">{y}</span>}
+            </button>
+          );
+        })}
+      </div>
+    </div>
+    <p class="lt-hint" aria-hidden="true">{t('Scroll, swipe or use ← → to move through his life', 'त्यांच्या जीवनातून पुढे जाण्यासाठी स्क्रोल करा, सरकवा किंवा ← → वापरा')}</p>
   </div>
+
   <script is:inline>
     (function () {
-      var buttons = document.querySelectorAll('[data-filter]');
-      buttons.forEach(function (b) {
+      var root = document.querySelector('[data-lt]');
+      if (!root) return;
+      var html = document.documentElement;
+      html.classList.add('lt-lock');
+      var stage = root.querySelector('[data-lt-stage]'), track = root.querySelector('[data-lt-track]');
+      var rail = root.querySelector('[data-lt-rail]'), axis = root.querySelector('[data-lt-axis]');
+      var slides = Array.prototype.slice.call(track.children);
+      var nodes = Array.prototype.slice.call(rail.querySelectorAll('[data-node]'));
+      var tabs = Array.prototype.slice.call(root.querySelectorAll('[data-lt-cat]'));
+      var cats = root.querySelector('[data-lt-cats]'), num = root.querySelector('[data-lt-n]');
+      var N = slides.length, still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var G = null; // GSAP, once loaded
+      var bgs = root.querySelectorAll('[data-lt-bg]'), bgi = 0;
+      var s = { p: 0 }, target = 0, active = -1, near = [];
+      var sw = 0, gap = 0, nodeW = 0;
+
+      // The page fills the screen under the header; nothing scrolls vertically.
+      var fit = function () {
+        var h = document.querySelector('.site-header');
+        root.style.setProperty('--hdr', (h ? h.offsetHeight : 0) + 'px');
+        sw = slides[0] ? slides[0].offsetWidth : 0;
+        gap = parseFloat(getComputedStyle(track).columnGap) || 0;
+        nodeW = nodes[0] ? nodes[0].offsetWidth : 0;
+        render();
+      };
+
+      var render = function () {
+        var p = s.p, step = sw + gap;
+        track.style.transform = 'translate3d(' + (stage.clientWidth / 2 - sw / 2 - p * step) + 'px,0,0)';
+        rail.style.transform = 'translate3d(' + (axis.clientWidth / 2 - nodeW / 2 - p * nodeW) + 'px,0,0)';
+        // Slides near the centre grow and brighten as they arrive.
+        near.forEach(function (el) { el.style.opacity = ''; el.style.transform = ''; });
+        near = [];
+        for (var i = Math.max(0, Math.floor(p) - 2); i <= Math.min(N - 1, Math.ceil(p) + 2); i++) {
+          // arriving from the right it grows into place; leaving to the left it shrinks and fades
+          var d = i - p, a = Math.min(1.4, Math.abs(d)), el = slides[i];
+          el.style.opacity = String(Math.max(0, 1 - a * 0.62));
+          el.style.transform = 'scale(' + (1 - a * (d < 0 ? 0.22 : 0.15)) + ')';
+          near.push(el);
+        }
+        var a = Math.max(0, Math.min(N - 1, Math.round(p)));
+        if (a !== active) activate(a);
+      };
+
+      var activate = function (a) {
+        var prev = active; active = a;
+        if (slides[prev]) { slides[prev].classList.remove('is-active'); slides[prev].querySelectorAll('a').forEach(function (x) { x.tabIndex = -1; }); }
+        if (nodes[prev]) nodes[prev].removeAttribute('aria-current');
+        var el = slides[a];
+        el.classList.add('is-active');
+        el.querySelectorAll('a').forEach(function (x) { x.tabIndex = 0; });
+        nodes[a].setAttribute('aria-current', 'step');
+        slides.forEach(function (x, i) { x.toggleAttribute('inert', Math.abs(i - a) > 1); });
+        num.textContent = String(a + 1).padStart(3, '0');
+        var st = Number(el.dataset.stage);
+        tabs.forEach(function (b, i) {
+          var on = i === st;
+          if ((b.getAttribute('aria-selected') === 'true') === on) return;
+          b.setAttribute('aria-selected', on ? 'true' : 'false');
+          if (on) cats.scrollTo({ left: b.offsetLeft - cats.clientWidth / 2 + b.offsetWidth / 2, behavior: still ? 'auto' : 'smooth' });
+        });
+        root.querySelector('.lt-prev').disabled = a === 0;
+        root.querySelector('.lt-next').disabled = a === N - 1;
+        // The photograph, blurred, fills the background behind the glass card.
+        var pic = el.querySelector('.lt-media img');
+        if (pic) {
+          var src = pic.currentSrc || pic.src, cur = bgs[bgi];
+          if (cur.dataset.src !== src) {
+            bgi = 1 - bgi; var nx = bgs[bgi];
+            nx.onload = function () { nx.classList.add('on'); cur.classList.remove('on'); };
+            nx.dataset.src = src; nx.src = src;
+          }
+        }
+        // The details rise in one after another.
+        if (G && !still && prev !== -1) G.fromTo(el.querySelectorAll('.lt-text > *'), { y: 18, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, stagger: 0.06, ease: 'power3.out', overwrite: true });
+      };
+
+      // Move to a position: GSAP when it has loaded, otherwise a simple ease.
+      var raf = 0;
+      var tween = function (to, dur) {
+        target = Math.max(0, Math.min(N - 1, to));
+        if (still) { s.p = target; render(); return; }
+        if (G) { G.to(s, { p: target, duration: dur, ease: 'power3.out', overwrite: true, onUpdate: render }); return; }
+        cancelAnimationFrame(raf);
+        var loop = function () { s.p += (target - s.p) * 0.14; if (Math.abs(target - s.p) < 0.001) s.p = target; render(); if (s.p !== target) raf = requestAnimationFrame(loop); };
+        raf = requestAnimationFrame(loop);
+      };
+      var go = function (i, dur) { tween(Math.round(i), dur || 0.9); };
+
+      // Wheel and trackpad: either direction moves along the timeline, then it settles on the nearest event.
+      var settle = 0;
+      root.addEventListener('wheel', function (e) {
+        if (e.ctrlKey) return;
+        e.preventDefault();
+        var d = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
+        if (e.deltaMode === 1) d *= 32;
+        tween(target + d / 180, 0.8);
+        clearTimeout(settle);
+        settle = setTimeout(function () { go(target, 0.7); }, 160);
+      }, { passive: false });
+
+      // Swipe or drag.
+      var drag = null;
+      stage.addEventListener('pointerdown', function (e) {
+        if (e.button) return;
+        drag = { x: e.clientX, y: e.clientY, p: s.p, moved: false, t: performance.now() };
+      });
+      window.addEventListener('pointermove', function (e) {
+        if (!drag) return;
+        var dx = e.clientX - drag.x, dy = e.clientY - drag.y;
+        var d = Math.abs(dx) > Math.abs(dy) ? dx : dy;
+        if (Math.abs(d) > 6) drag.moved = true;
+        if (drag.moved) tween(drag.p - d / ((sw + gap) * 0.8), 0.35);
+      });
+      window.addEventListener('pointerup', function () {
+        if (!drag) return;
+        var moved = drag.moved, from = Math.round(drag.p), dir = target - drag.p; drag = null;
+        // a short flick still moves one event
+        if (moved) go(Math.abs(dir) > 0.08 && Math.abs(dir) < 0.5 ? from + (dir > 0 ? 1 : -1) : target, 0.7);
+      });
+      stage.addEventListener('click', function (e) {
+        var li = e.target.closest('.lt-slide');
+        if (li && Number(li.dataset.i) !== active && !e.target.closest('a')) go(Number(li.dataset.i));
+      });
+
+      root.addEventListener('keydown', function (e) {
+        if (/input|textarea|select/i.test(e.target.tagName)) return;
+        var k = e.key, to = null;
+        if (k === 'ArrowRight' || k === 'ArrowDown' || k === 'PageDown' || (k === ' ' && !e.shiftKey)) to = active + 1;
+        if (k === 'ArrowLeft' || k === 'ArrowUp' || k === 'PageUp' || (k === ' ' && e.shiftKey)) to = active - 1;
+        if (k === 'Home') to = 0;
+        if (k === 'End') to = N - 1;
+        if (to === null || e.target.closest('[role=tablist]') && (k === 'ArrowLeft' || k === 'ArrowRight')) return;
+        e.preventDefault(); go(to);
+      });
+      root.querySelectorAll('[data-lt-step]').forEach(function (b) { b.addEventListener('click', function () { go(active + Number(b.dataset.ltStep)); }); });
+      nodes.forEach(function (n, i) { n.addEventListener('click', function () { go(i, 1); }); });
+
+      // Stages: one at a time; picking one travels along the timeline to its first event.
+      tabs.forEach(function (b, i) {
         b.addEventListener('click', function () {
-          var f = b.getAttribute('data-filter');
-          buttons.forEach(function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
-          document.querySelectorAll('.tl-item').forEach(function (li) {
-            li.hidden = f !== 'all' && li.getAttribute('data-chapter') !== f;
-          });
-          document.querySelectorAll('[data-decade]').forEach(function (s) {
-            s.hidden = !s.querySelector('.tl-item:not([hidden])');
-          });
+          go(Number(b.dataset.first), 1.4);
+          try { history.replaceState(null, '', '#' + b.dataset.ltCat); } catch (x) {}
+        });
+        b.addEventListener('keydown', function (e) {
+          var d = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
+          if (!d) return;
+          e.preventDefault(); var nb = tabs[(i + d + tabs.length) % tabs.length]; nb.focus(); nb.click();
         });
       });
+
+      if ('ResizeObserver' in window) new ResizeObserver(function () { fit(); }).observe(stage); else window.addEventListener('resize', fit);
+      window.addEventListener('hashchange', function () {
+        var b = tabs.filter(function (x) { return '#' + x.dataset.ltCat === location.hash; })[0];
+        if (b) go(Number(b.dataset.first), 1.4);
+      });
+      fit();
+      var start = tabs.filter(function (b) { return '#' + b.dataset.ltCat === location.hash; })[0];
+      if (start) { s.p = target = Number(start.dataset.first); render(); }
+      stage.focus({ preventScroll: true });
+
+      var g = document.createElement('script');
+      g.src = 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js';
+      g.onload = function () { G = window.gsap; };
+      document.head.appendChild(g);
     })();
   </script>
 </Base>

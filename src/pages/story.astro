@@ -1,0 +1,367 @@
+---
+// The immersive story: his whole life as a pop-up paper book. One full-screen stage; each chapter of his life is a
+// pinned scene of paper layers (sky, landmark, photographs, his figure, foreground) that rise, drift and fold as
+// the reader scrolls, while the dated events of that chapter turn over in the corner and music made in the
+// browser follows the mood. Photographs are only those that passed the image check; where no photograph of him
+// exists (childhood, school) he is a paper silhouette.
+import Base from '../layouts/Base.astro';
+import Picture from '../components/Picture.astro';
+import { chapters, images, loadJSON, type Img } from '../lib/data';
+import { url } from '../lib/site';
+import { credit } from '../lib/images-core.mjs';
+import { getLang, translator, formatDateIn } from '../i18n';
+const lang = getLang(Astro);
+const t = translator(lang);
+
+type Motif = 'koregaon' | 'mhow' | 'bombay' | 'newyork' | 'london' | 'mahad' | 'roundtable' | 'rally' | 'parliament' | 'delhi' | 'stupa' | 'sea' | 'sunrise';
+type Mood = 'heritage' | 'warm' | 'hope' | 'wonder' | 'resolve' | 'struggle' | 'tense' | 'motivate' | 'triumph' | 'bitter' | 'peace' | 'requiem' | 'dawn';
+type Scene = { id: string; motif: Motif; mood: Mood; sky: [string, string]; far: string; mid: string; ground: string; char?: string; photos: string[] };
+const SCENES: Scene[] = [
+  { id: 'before-birth', motif: 'koregaon', mood: 'heritage', sky: ['#f3d9b1', '#e9b97a'], far: '#c98e55', mid: '#8a5a33', ground: '#5b3a22', photos: ['bhima-koregaon-vijaystambha-1927', 'ramji-maloji-sakpal-father'] },
+  { id: 'childhood', motif: 'mhow', mood: 'warm', sky: ['#fde8c4', '#f6c38a'], far: '#d9a066', mid: '#a86b3c', ground: '#6e4426', char: 'child', photos: ['mhow-cantonment-quarters-c1900', 'ramji-maloji-sakpal-father'] },
+  { id: 'school-years', motif: 'bombay', mood: 'hope', sky: ['#dff1fb', '#a9d6f0'], far: '#7fb3d6', mid: '#3f7cab', ground: '#25506f', char: 'youth', photos: ['elphinstone-college-1904', 'krishnaji-arjun-keluskar', 'bombay-1903'] },
+  { id: 'columbia', motif: 'newyork', mood: 'wonder', sky: ['#e6ecfb', '#b8c7f0'], far: '#8ea2d8', mid: '#4b5f9e', ground: '#2b3766', char: '/images/story/ambedkar-at-columbia-1913-1916-cutout.webp', photos: ['ambedkar-columbia-university-portrait'] },
+  { id: 'london', motif: 'london', mood: 'resolve', sky: ['#e9ecef', '#c3cbd3'], far: '#9aa6b2', mid: '#55626f', ground: '#333d47', char: '/images/story/barrister-ambedkar-1922-cutout.webp', photos: ['ambedkar-lse-professors-friends-1916'] },
+  { id: 'awakening', motif: 'mahad', mood: 'struggle', sky: ['#fbe0cf', '#ee9f78'], far: '#d1704f', mid: '#9b4430', ground: '#5e281d', photos: ['mahad-satyagraha-reception-committee-1927', 'bhima-koregaon-vijaystambha-1927', 'kalaram-temple-satyagraha-1930', 'cover-bahishkrit-bharat'] },
+  { id: 'round-table', motif: 'roundtable', mood: 'tense', sky: ['#e7e3dc', '#bdb3a4'], far: '#998b78', mid: '#5f5446', ground: '#3a332a', photos: ['round-table-conference-1931-gandhi-ambedkar', 'poona-pact-yerwada-jayakar-sapru-ambedkar-1932', 'second-round-table-conference-1931'] },
+  { id: 'politics', motif: 'rally', mood: 'motivate', sky: ['#e3eefc', '#9fc2f2'], far: '#6d9be0', mid: '#2f62b8', ground: '#1b3c78', char: '/images/story/ambedkar-lawyer-portrait-cutout.webp', photos: ['yeola-speech-1935', 'scf-womens-conference-nagpur-1942', 'periyar-jinnah-ambedkar-1940'] },
+  { id: 'constitution', motif: 'parliament', mood: 'triumph', sky: ['#eaf3ff', '#b6d3ff'], far: '#7fa9ea', mid: '#2850a8', ground: '#132b66', char: '/images/archive/ambedkar-portrait-classic-cutout.webp', photos: ['presenting-draft-constitution-1949', 'drafting-committee-1947', 'constituent-assembly-first-day-1946'] },
+  { id: 'law-minister', motif: 'delhi', mood: 'bitter', sky: ['#eef0f4', '#c7ccd8'], far: '#9aa2b6', mid: '#56607a', ground: '#323a50', char: '/images/story/ambedkar-1950-cutout.webp', photos: ['nehru-cabinet-1948', 'hindu-code-bill-conference-1950'] },
+  { id: 'buddhism', motif: 'stupa', mood: 'peace', sky: ['#fff8e6', '#f8e0a8'], far: '#e9c77a', mid: '#c49a45', ground: '#7d6127', char: '/images/story/ambedkar-deeksha-ceremony-thinking-1956-cutout.webp', photos: ['twenty-two-vows-deekshabhoomi-1956', 'ambedkar-savita-holding-buddha-statue-1956', 'dhamma-deeksha-crowd-nagpur-1956'] },
+  { id: 'final-days', motif: 'sea', mood: 'requiem', sky: ['#1d2740', '#0b1020'], far: '#2c3a5c', mid: '#1c2742', ground: '#0e1528', photos: ['buddha-or-karl-marx-kathmandu-1956', 'ambedkar-dalai-lama-delhi-1956', 'funeral-procession-bombay-1956'] },
+  { id: 'legacy', motif: 'sunrise', mood: 'dawn', sky: ['#dbeafe', '#93c5fd'], far: '#60a5fa', mid: '#1d4ed8', ground: '#1e3a8a', char: '/images/story/ambedkar-1952-leaving-for-columbia-cutout.webp', photos: ['milind-college-foundation-stone-1950', 'ambedkar-wallace-stevens-columbia-1952'] },
+];
+
+// Each event can shift the music: a birth is warm, a death is sad, a protest is a struggle, Gandhi and the Poona Pact
+// are tense, a degree or the Constitution is a triumph, the Dhamma is peace. Otherwise the chapter's mood holds.
+const moodFor = (label: string, base: Mood): Mood => {
+  const l = label.toLowerCase();
+  if (/\b(dies|died|death|funeral|cremat|mourn|mahaparinirvan)/.test(l)) return base === 'requiem' ? 'requiem' : 'bitter';
+  if (/\b(is born|born at|birth of|son .* born|daughter .* born)/.test(l)) return 'warm';
+  if (/gandhi|poona pact|fast unto|communal award/.test(l)) return 'tense';
+  if (/satyagraha|protest|burn|agitat|boycott|denied|refused|humiliat|not allowed|march|riot/.test(l)) return 'struggle';
+  if (/buddh|deeksha|diksha|dhamma|vihar|sangha/.test(l)) return 'peace';
+  if (/adopt|elected|degree|doctorate|d\.sc|ph\.?d|m\.a\.|b\.a\.|barrister|called to the bar|appointed|sworn|passes|graduat|honou?r|bharat ratna/.test(l)) return 'triumph';
+  if (/speech|addresses|writes|publishes|founds|launch|starts|book|newspaper|mooknayak|bahishkrit|conference/.test(l)) return 'motivate';
+  return base;
+};
+
+const audit: Record<string, { verdict: string }> = Object.fromEntries((loadJSON<any>('image-audit', { images: [] }).images || []).map((x: any) => [x.id, x]));
+const all = images(lang);
+const byId = (id: string) => all.find((i) => i.id === id && audit[id]?.verdict !== 'doubtful') as Img | undefined;
+const en = await chapters();
+const local = await chapters(lang);
+const scenes = SCENES.map((s, si) => {
+  const ci = en.findIndex((c) => c.id === s.id);
+  const c = en[ci], here = local[ci] || c;
+  const events = (c?.data.keyDates || []).map((k: any, j: number) => {
+    const label = here.data.keyDates[j]?.label || k.label;
+    return { date: String(k.date), when: formatDateIn(String(k.date), lang), label, mood: moodFor(k.label, s.mood), source: k.source as string | undefined };
+  });
+  return { ...s, n: si + 1, title: here?.data.title || s.id, period: here?.data.period || '', summary: here?.data.summary || '', events, pics: s.photos.map(byId).filter(Boolean) as Img[] };
+});
+const total = scenes.reduce((n, s) => n + s.events.length, 0);
+
+// ---------- Paper landmarks (1600 x 600, standing on the bottom edge) ----------
+const hills = (y: number, a: number) => `M0 ${y} C 200 ${y - a} 400 ${y - a * 0.4} 600 ${y - a * 0.8} S 1000 ${y - a * 1.1} 1200 ${y - a * 0.5} S 1500 ${y - a} 1600 ${y - a * 0.7} V600 H0Z`;
+const rect = (x: number, y: number, w: number, h: number) => `M${x} ${y}h${w}v${h}h${-w}Z`;
+const LANDMARK: Record<Motif, string> = {
+  koregaon: `${hills(520, 60)} M760 520 L790 150 L810 130 L830 150 L860 520Z M770 520h80v-30h-80Z M700 520h220v-22H700Z`,
+  mhow: `${hills(540, 40)} ${[0, 1, 2, 3, 4].map((i) => `M${180 + i * 150} 540 l70 -110 l70 110Z`).join(' ')} ${rect(1000, 400, 360, 140)} M980 400 l200 -60 l200 60Z`,
+  bombay: `${rect(0, 500, 1600, 100)} ${rect(560, 260, 480, 260)} M540 260 L800 150 L1060 260Z ${rect(770, 200, 60, 70)} M800 170 l0 -50 M1180 520 c 10 -120 20 -200 60 -260 c -60 20 -110 10 -150 -20 c 60 0 110 -10 150 20 c -10 -60 30 -90 70 -100 c -30 40 -40 70 -60 100 c 50 -20 90 -10 120 20 c -50 -10 -90 0 -120 20 c -30 60 -40 140 -50 240Z`,
+  newyork: `${rect(0, 520, 1600, 80)} ${[[120, 300, 90], [230, 220, 110], [360, 340, 80], [460, 150, 120], [600, 260, 90], [710, 90, 70], [800, 280, 110], [930, 200, 90], [1040, 330, 120], [1180, 240, 80], [1280, 310, 140]].map(([x, y, w]) => rect(x, y, w, 520 - y)).join(' ')} M735 90 l10 -60 l10 60Z M1450 520 l20 -170 l-25 -10 l15 -40 l25 25 l20 -30 l5 40 l-20 15 l10 170Z`,
+  london: `${rect(0, 520, 1600, 80)} ${rect(300, 380, 900, 140)} ${[0, 1, 2, 3, 4, 5, 6, 7, 8].map((i) => `M${320 + i * 100} 380 l20 -40 l20 40Z`).join(' ')} ${rect(1240, 160, 90, 360)} M1240 160 L1285 60 L1330 160Z ${rect(1255, 190, 60, 60)} M200 520 c 40 -40 80 -40 120 0Z`,
+  mahad: `${hills(470, 70)} M260 600 L420 430 H1180 L1340 600Z M360 600 L470 480 H1130 L1240 600Z ${[0, 1, 2, 3].map((i) => rect(440 - i * 30 + 30, 430 + i * 14, 700 + i * 60 - 60, 6)).join(' ')}`,
+  roundtable: `${rect(0, 540, 1600, 60)} ${[200, 420, 1180, 1400].map((x) => rect(x, 120, 50, 420)).join(' ')} ${rect(160, 100, 1290, 30)} M420 470 a 380 70 0 1 0 760 0 a 380 70 0 1 0 -760 0Z ${[0, 1, 2, 3, 4, 5].map((i) => rect(470 + i * 120, 380, 30, 70)).join(' ')}`,
+  rally: `${hills(560, 30)} ${Array.from({ length: 34 }, (_, i) => `M${i * 48} 600 a 22 26 0 0 1 44 0Z M${i * 48 + 22} 556 m -12 0 a 12 12 0 1 0 24 0 a 12 12 0 1 0 -24 0`).join(' ')} ${rect(700, 330, 200, 200)} M760 330 v-140 M760 190 l80 20 l-80 22Z M1180 560 v-220 M1180 340 l90 24 l-90 24Z`,
+  parliament: `${rect(0, 540, 1600, 60)} M300 540 V360 H1300 V540Z ${Array.from({ length: 24 }, (_, i) => rect(320 + i * 41, 380, 14, 160)).join(' ')} ${rect(280, 340, 1040, 24)} M640 340 a 160 110 0 0 1 320 0Z`,
+  delhi: `${rect(0, 540, 1600, 60)} ${rect(250, 300, 1100, 240)} M240 300 H1360 L1300 260 H300Z M700 260 a 100 90 0 0 1 200 0Z ${Array.from({ length: 12 }, (_, i) => rect(290 + i * 90, 330, 30, 210)).join(' ')}`,
+  stupa: `${hills(540, 40)} ${rect(500, 470, 600, 70)} ${rect(560, 430, 480, 40)} M590 430 a 210 200 0 0 1 420 0Z ${rect(770, 210, 60, 30)} M800 210 v-80 M1260 540 c 0 -160 -40 -220 -120 -250 c 90 -10 160 30 190 110 c 20 -90 80 -150 170 -150 c -70 40 -110 100 -120 180 c 40 -30 90 -40 130 -20 c -60 0 -110 40 -130 130Z`,
+  sea: `M0 470 C 200 440 400 500 600 470 S 1000 440 1200 470 S 1500 500 1600 470 V600 H0Z ${rect(1180, 300, 160, 170)} M1160 300 a 100 90 0 0 1 200 0Z`,
+  sunrise: `${hills(520, 50)} ${Array.from({ length: 30 }, (_, i) => `M${30 + i * 52} 600 a 24 30 0 0 1 48 0Z`).join(' ')} ${[300, 700, 1100, 1450].map((x) => `M${x} 560 v-200 M${x} 360 l80 22 l-80 22Z`).join(' ')}`,
+};
+const FAR: Record<Motif, string> = {
+  koregaon: hills(470, 90), mhow: hills(480, 80), bombay: `M0 470 C 300 450 500 490 800 470 S 1300 450 1600 470 V600 H0Z`, newyork: `M0 480 C 400 440 800 500 1200 470 S 1500 460 1600 480 V600 H0Z`,
+  london: hills(500, 60), mahad: hills(420, 120), roundtable: rect(0, 420, 1600, 180), rally: hills(470, 100), parliament: hills(500, 60), delhi: hills(500, 50), stupa: hills(470, 100), sea: hills(440, 80), sunrise: hills(450, 110),
+};
+
+// ---------- Paper figures where no photograph of him exists ----------
+const CHILD = `<svg viewBox="0 0 220 440" aria-hidden="true"><path d="M70 58c2-30 22-46 46-46s42 14 44 40c-6-6-18-10-30-10-18 0-40 6-60 16z"/><ellipse cx="114" cy="72" rx="40" ry="44"/><path d="M68 70c0-8 2-14 6-20h80c4 6 6 12 6 20z" fill-opacity=".85"/><path d="M78 122h72c14 0 22 10 24 24l10 92c1 9-6 14-14 14h-12l-6-60-2 60H78l-2-60-6 60H58c-8 0-15-5-14-14l10-92c2-14 12-24 24-24z"/><path d="M80 252h30l-4 120c0 8-6 12-12 12s-12-4-12-12zM118 252h30l-2 120c0 8-6 12-12 12s-12-4-12-12z"/><path d="M76 380h34v22H66c0-12 4-22 10-22zM118 380h34c6 0 10 10 10 22h-44z"/><rect x="170" y="196" width="46" height="36" rx="4" transform="rotate(10 193 214)"/></svg>`;
+const YOUTH = `<svg viewBox="0 0 200 520" aria-hidden="true"><path d="M100 14c28 0 46 20 46 48s-18 52-46 52-46-24-46-52 18-48 46-48z M54 46c8-26 26-36 48-36 22 0 40 12 44 34-30-10-62-10-92 2z M58 126h84l20 170h-22l-8 210h-34l-4-150-4 150h-34l-8-210h-22z"/><rect x="146" y="210" width="40" height="56" rx="2" transform="rotate(-8 166 238)"/><rect x="72" y="76" width="56" height="10" rx="5" fill="rgb(255 255 255 / 25%)"/></svg>`;
+---
+<Base title={t('His life, a story', 'त्यांचे जीवन, एक कथा')} description={t(`The life of Dr. B. R. Ambedkar from his family's roots to his legacy, told as an immersive pop-up paper story with original photographs, ${total} dated events and music.`, `कुटुंबाच्या मुळांपासून वारशापर्यंत डॉ. बाबासाहेब आंबेडकरांचे जीवन, मूळ छायाचित्रे, ${total} तारखांच्या घटना आणि संगीतासह कागदी पॉप-अप कथेच्या रूपात.`)} header={false} footer={false} noindex>
+  <svg class="st-defs" aria-hidden="true" width="0" height="0">
+    <filter id="st-torn"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="3" seed="7" /><feDisplacementMap in="SourceGraphic" scale="9" /></filter>
+  </svg>
+  <div class="st" data-st>
+    <a class="st-home" href={url('/')} aria-label={t('Back to the site', 'संकेतस्थळावर परत')}><img src={url('/images/brand/ashoka-chakra.svg')} alt="" width="30" height="30" /></a>
+    <button class="st-sound" type="button" data-st-sound aria-pressed="false" aria-label={t('Sound', 'आवाज')}>
+      <svg class="on" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9zM16 8.5a5 5 0 0 1 0 7M18.5 6a8.5 8.5 0 0 1 0 12" /></svg>
+      <svg class="off" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9zM17 9l5 6M22 9l-5 6" /></svg>
+    </button>
+
+    <nav class="st-nav" aria-label={t('Chapters of his life', 'जीवनाची प्रकरणे')}>
+      <ol>
+        {scenes.map((s) => <li><a href={`#s-${s.id}`} data-st-go={s.id}><i aria-hidden="true"></i><span>{s.title}<small>{s.period}</small></span></a></li>)}
+      </ol>
+      <span class="st-nav-bar" aria-hidden="true"><span data-st-progress></span></span>
+    </nav>
+
+    <section class="st-intro" id="s-intro">
+      <div class="st-intro-paper">
+        <span class="st-kicker">{t('1891 – 1956 · A life in paper', '1891 – 1956 · कागदावरचे एक जीवन')}</span>
+        <h1>{t('Bhimrao Ramji Ambedkar', 'भीमराव रामजी आंबेडकर')}</h1>
+        <p>{t(`From a soldier's son made to sit apart on a gunny sack, to the man who drafted India's Constitution and led millions to the Buddha. ${scenes.length} chapters, ${total} moments, told in paper, photographs and sound.`, `गोणपाटावर वेगळे बसवलेल्या एका सैनिकाच्या मुलापासून, भारताचे संविधान घडवणाऱ्या आणि लाखोंना बुद्धाकडे नेणाऱ्या महापुरुषापर्यंत. ${scenes.length} प्रकरणे, ${total} क्षण, कागद, छायाचित्रे आणि आवाजातून.`)}</p>
+        <div class="st-begin">
+          <button type="button" class="st-btn" data-st-begin="1">{t('Begin with sound', 'आवाजासह सुरू करा')}</button>
+          <button type="button" class="st-btn ghost" data-st-begin="0">{t('Begin in silence', 'आवाजाशिवाय सुरू करा')}</button>
+        </div>
+        <p class="st-hint">{t('Scroll to turn the pages · photographs are originals; where none exist he is drawn in paper', 'पाने उलटण्यासाठी स्क्रोल करा · छायाचित्रे मूळ आहेत; जिथे नाहीत तिथे कागदी आकृती')}</p>
+      </div>
+    </section>
+
+    {scenes.map((s) => (
+      <section class="st-scene" id={`s-${s.id}`} data-st-scene={s.id} data-mood={s.mood} data-n={s.events.length} style={`--sky1:${s.sky[0]};--sky2:${s.sky[1]};--far:${s.far};--mid:${s.mid};--ground:${s.ground}`}>
+        <div class="st-stage">
+          <div class="st-l st-sky"><span class="st-sun"></span></div>
+          <svg class="st-l st-far" viewBox="0 0 1600 600" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><path d={FAR[s.motif]} /></svg>
+          <div class="st-l st-prints">
+            {s.pics.map((p, k) => (
+              <figure class={`st-print p${k}`}>
+                <Picture img={p} sizes="(min-width: 900px) 320px, 46vw" alt={p.caption || p.title || ''} />
+                <figcaption>{p.title}</figcaption>
+              </figure>
+            ))}
+          </div>
+          <svg class="st-l st-mid" viewBox="0 0 1600 600" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><path d={LANDMARK[s.motif]} fill-rule="evenodd" /></svg>
+          {s.char && (
+            <div class="st-l st-char">
+              {s.char === 'child' ? <Fragment set:html={CHILD} /> : s.char === 'youth' ? <Fragment set:html={YOUTH} /> : <img src={url(s.char)} alt={t('Dr. Ambedkar (photograph cut out)', 'डॉ. आंबेडकर (छायाचित्रातून कापलेली आकृती)')} loading="lazy" decoding="async" />}
+            </div>
+          )}
+          <svg class="st-l st-front" viewBox="0 0 1600 200" preserveAspectRatio="none" aria-hidden="true"><path d="M0 120 C 200 90 350 140 560 110 S 900 80 1100 120 S 1450 140 1600 100 V200 H0Z" /></svg>
+          <header class="st-title">
+            <span>{t(`Chapter ${s.n}`, `प्रकरण ${s.n}`)} · {s.period}</span>
+            <h2>{s.title}</h2>
+          </header>
+          <div class="st-card" data-st-card aria-live="polite">
+            <div class="st-card-in">
+              <span class="st-count"><b data-st-i>1</b> / {s.events.length}</span>
+              <time data-st-when>{s.events[0]?.when}</time>
+              <p data-st-label>{s.events[0]?.label}</p>
+              <a class="st-src" data-st-src href={s.events[0]?.source || '#'} target="_blank" rel="noopener noreferrer">{t('source ↗', 'संदर्भ ↗')}</a>
+            </div>
+          </div>
+          <script type="application/json" data-st-events set:html={JSON.stringify(s.events.map((e) => [e.when, e.label, e.source || '', e.mood]))} />
+          {s.pics[0] && <p class="st-credit">{s.pics.map((p) => `${p.title}: ${credit(p)}`).join(' · ')}</p>}
+        </div>
+      </section>
+    ))}
+
+    <section class="st-outro">
+      <div class="st-intro-paper">
+        <span class="st-kicker">{t('6 December 1956 – today', '6 डिसेंबर 1956 – आजपर्यंत')}</span>
+        <h2>{t('Educate · Agitate · Organise', 'शिका · संघर्ष करा · संघटित व्हा')}</h2>
+        <p>{t('His words are all here, word for word. Read them, and tell his story onward.', 'त्यांचे शब्द येथे जसेच्या तसे आहेत. ते वाचा, आणि त्यांची कथा पुढे सांगा.')}</p>
+        <div class="st-begin">
+          <a class="st-btn" href={url('/library/')}>{t('Read his writings →', 'त्यांचे लेखन वाचा →')}</a>
+          <a class="st-btn ghost" href={url('/timeline/')}>{t('Every date, with sources', 'प्रत्येक तारीख, संदर्भांसह')}</a>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script is:inline>
+    (function () {
+      var root = document.querySelector('[data-st]');
+      if (!root) return;
+      var still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var scenes = Array.prototype.slice.call(root.querySelectorAll('[data-st-scene]'));
+
+      /* ================= Sound: music made in the browser, one mood at a time ================= */
+      var AC = null, master = null, layer = null, mood = null, soundOn = false, tick = 0;
+      var MOODS = {
+        heritage: { root: 50, scale: [0, 2, 3, 7, 9], chord: [0, 7, 12], step: 0.9, pad: 0.05, pluck: 0.05, wave: 'triangle', cut: 900 },
+        warm:     { root: 60, scale: [0, 2, 4, 7, 9], chord: [0, 4, 7], step: 0.36, pad: 0.035, pluck: 0.07, wave: 'sine', cut: 2400, bell: 1 },
+        hope:     { root: 62, scale: [0, 2, 4, 7, 9, 11], chord: [0, 4, 7, 11], step: 0.42, pad: 0.04, pluck: 0.06, wave: 'triangle', cut: 2200 },
+        wonder:   { root: 65, scale: [0, 2, 4, 6, 7, 9, 11], chord: [0, 4, 7, 14], step: 0.3, pad: 0.04, pluck: 0.055, wave: 'sine', cut: 3000, bell: 1 },
+        resolve:  { root: 55, scale: [0, 2, 3, 5, 7, 10], chord: [0, 3, 7, 10], step: 0.5, pad: 0.045, pluck: 0.05, wave: 'triangle', cut: 1500, pulse: 1.0 },
+        struggle: { root: 45, scale: [0, 2, 3, 5, 7, 8], chord: [0, 3, 7], step: 0.42, pad: 0.05, pluck: 0.045, wave: 'sawtooth', cut: 900, pulse: 0.84 },
+        tense:    { root: 47, scale: [0, 1, 3, 6, 7, 10], chord: [0, 1, 6], step: 0.6, pad: 0.04, pluck: 0.035, wave: 'sawtooth', cut: 700, trem: 6 },
+        motivate: { root: 57, scale: [0, 2, 4, 7, 9], chord: [0, 4, 7, 12], step: 0.28, pad: 0.04, pluck: 0.06, wave: 'triangle', cut: 2200, pulse: 0.56 },
+        triumph:  { root: 60, scale: [0, 2, 4, 5, 7, 9, 11], chord: [0, 4, 7, 12, 16], step: 0.26, pad: 0.05, pluck: 0.06, wave: 'sawtooth', cut: 2600, pulse: 0.52, bell: 1 },
+        bitter:   { root: 52, scale: [0, 2, 3, 7, 8], chord: [0, 3, 7], step: 0.8, pad: 0.05, pluck: 0.045, wave: 'triangle', cut: 1100 },
+        peace:    { root: 57, scale: [0, 2, 4, 7, 9], chord: [0, 7, 12, 16], step: 1.1, pad: 0.04, pluck: 0.05, wave: 'sine', cut: 1800, bell: 2 },
+        requiem:  { root: 45, scale: [0, 2, 3, 7, 8], chord: [0, 3, 7, 12], step: 1.4, pad: 0.05, pluck: 0.04, wave: 'sine', cut: 800 },
+        dawn:     { root: 62, scale: [0, 2, 4, 7, 9, 11], chord: [0, 4, 7, 11, 14], step: 0.34, pad: 0.05, pluck: 0.06, wave: 'triangle', cut: 2800, pulse: 0.68, bell: 1 },
+      };
+      var hz = function (m) { return 440 * Math.pow(2, (m - 69) / 12); };
+      var startAudio = function () {
+        if (AC) return;
+        AC = new (window.AudioContext || window.webkitAudioContext)();
+        master = AC.createGain(); master.gain.value = 0.0001;
+        // a little room: feedback delay as a cheap reverb
+        var dly = AC.createDelay(1); dly.delayTime.value = 0.28; var fb = AC.createGain(); fb.gain.value = 0.32; var wet = AC.createGain(); wet.gain.value = 0.35;
+        master.connect(AC.destination); master.connect(dly); dly.connect(fb); fb.connect(dly); dly.connect(wet); wet.connect(AC.destination);
+        setInterval(schedule, 120);
+      };
+      var setMood = function (m) {
+        if (!AC || m === mood || !MOODS[m]) return;
+        mood = m;
+        var M = MOODS[m], now = AC.currentTime, g = AC.createGain(), f = AC.createBiquadFilter();
+        f.type = 'lowpass'; f.frequency.value = M.cut; g.gain.setValueAtTime(0.0001, now); g.gain.exponentialRampToValueAtTime(1, now + 2.5);
+        g.connect(master); f.connect(g);
+        if (M.trem) { var lfo = AC.createOscillator(), lg = AC.createGain(); lfo.frequency.value = M.trem; lg.gain.value = 0.35; lfo.connect(lg); lg.connect(g.gain); lfo.start(); }
+        // the pad: each chord note on two slightly detuned oscillators
+        var oscs = [];
+        M.chord.forEach(function (n) {
+          [-6, 6].forEach(function (cents) {
+            var o = AC.createOscillator(), og = AC.createGain();
+            o.type = M.wave; o.frequency.value = hz(M.root + n - 12); o.detune.value = cents; og.gain.value = M.pad / M.chord.length;
+            o.connect(og); og.connect(f); o.start(); oscs.push(o);
+          });
+        });
+        var old = layer;
+        layer = { g: g, f: f, M: M, oscs: oscs, next: now + 0.2, beat: 0 };
+        if (old) { old.g.gain.cancelScheduledValues(now); old.g.gain.setValueAtTime(old.g.gain.value, now); old.g.gain.exponentialRampToValueAtTime(0.0001, now + 2.5); setTimeout(function () { old.oscs.forEach(function (o) { try { o.stop(); } catch (e) {} }); old.g.disconnect(); }, 3000); }
+      };
+      var pluck = function (m, at, vol, bell) {
+        var o = AC.createOscillator(), g = AC.createGain();
+        o.type = bell ? 'sine' : 'triangle'; o.frequency.value = hz(m);
+        g.gain.setValueAtTime(0.0001, at); g.gain.exponentialRampToValueAtTime(vol, at + 0.015); g.gain.exponentialRampToValueAtTime(0.0001, at + (bell ? 3.2 : 1.1));
+        o.connect(g); g.connect(layer.f); o.start(at); o.stop(at + (bell ? 3.3 : 1.2));
+        if (bell) { var o2 = AC.createOscillator(), g2 = AC.createGain(); o2.frequency.value = hz(m) * 2.76; g2.gain.setValueAtTime(vol * 0.25, at); g2.gain.exponentialRampToValueAtTime(0.0001, at + 1.6); o2.connect(g2); g2.connect(layer.f); o2.start(at); o2.stop(at + 1.7); }
+      };
+      var thump = function (at, vol) {
+        var o = AC.createOscillator(), g = AC.createGain();
+        o.frequency.setValueAtTime(110, at); o.frequency.exponentialRampToValueAtTime(42, at + 0.18);
+        g.gain.setValueAtTime(vol, at); g.gain.exponentialRampToValueAtTime(0.0001, at + 0.35);
+        o.connect(g); g.connect(layer.g); o.start(at); o.stop(at + 0.4);
+      };
+      function schedule() {
+        if (!layer || !soundOn) return;
+        var M = layer.M;
+        while (layer.next < AC.currentTime + 0.4) {
+          var at = layer.next;
+          if (Math.random() > 0.22) {
+            var deg = M.scale[(Math.random() * M.scale.length) | 0], oct = Math.random() > 0.7 ? 12 : 0;
+            pluck(M.root + deg + oct, at, M.pluck, M.bell && Math.random() < (M.bell === 2 ? 0.6 : 0.2));
+          }
+          if (M.pulse && layer.beat % 2 === 0) thump(at, 0.18);
+          layer.beat++; layer.next += M.step;
+        }
+      }
+      // A paper page turning: a short burst of filtered noise.
+      var rustle = function () {
+        if (!AC || !soundOn) return;
+        var n = AC.sampleRate * 0.45, b = AC.createBuffer(1, n, AC.sampleRate), d = b.getChannelData(0);
+        for (var i = 0; i < n; i++) d[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / n, 2) * (0.6 + 0.4 * Math.sin(i / 90));
+        var s = AC.createBufferSource(), f = AC.createBiquadFilter(), g = AC.createGain();
+        f.type = 'bandpass'; f.frequency.value = 2600; f.Q.value = 0.7; g.gain.value = 0.16;
+        s.buffer = b; s.connect(f); f.connect(g); g.connect(AC.destination); s.start();
+      };
+      var soundBtn = root.querySelector('[data-st-sound]');
+      var setSound = function (on) {
+        soundOn = on; soundBtn.setAttribute('aria-pressed', on ? 'true' : 'false');
+        if (on) { startAudio(); AC.resume(); master.gain.cancelScheduledValues(AC.currentTime); master.gain.setTargetAtTime(0.9, AC.currentTime, 0.6); setMood(current ? current.dataset.mood : 'heritage'); }
+        else if (AC) master.gain.setTargetAtTime(0.0001, AC.currentTime, 0.3);
+        try { localStorage.setItem('story-sound', on ? '1' : '0'); } catch (e) {}
+      };
+      soundBtn.addEventListener('click', function () { setSound(!soundOn); });
+
+      /* ================= Scenes ================= */
+      var current = null;
+      var navLinks = {}; root.querySelectorAll('[data-st-go]').forEach(function (a) { navLinks[a.dataset.stGo] = a; });
+      var bar = root.querySelector('[data-st-progress]');
+      var enter = function (sc) {
+        if (current === sc) return;
+        if (current && navLinks[current.dataset.stScene]) navLinks[current.dataset.stScene].removeAttribute('aria-current');
+        current = sc; navLinks[sc.dataset.stScene].setAttribute('aria-current', 'true');
+        rustle();
+      };
+      var showEvent = function (sc, i) {
+        if (sc._i === i) return;
+        sc._i = i;
+        var ev = sc._events[i]; if (!ev) return;
+        var card = sc.querySelector('[data-st-card]');
+        card.querySelector('[data-st-i]').textContent = i + 1;
+        card.querySelector('[data-st-when]').textContent = ev[0];
+        card.querySelector('[data-st-label]').textContent = ev[1];
+        var src = card.querySelector('[data-st-src]'); src.href = ev[2] || '#'; src.hidden = !ev[2];
+        if (window.gsap && !still) gsap.fromTo(card.querySelector('.st-card-in'), { y: 16, opacity: 0, rotateX: -25 }, { y: 0, opacity: 1, rotateX: 0, duration: 0.5, ease: 'power3.out' });
+        if (soundOn) setMood(ev[3]);
+      };
+      scenes.forEach(function (sc) { sc._events = JSON.parse(sc.querySelector('[data-st-events]').textContent); sc._i = 0; });
+
+      var build = function () {
+        var gsap = window.gsap, ST = window.ScrollTrigger;
+        gsap.registerPlugin(ST);
+        var lenis = null;
+        if (window.Lenis && !still) {
+          lenis = new Lenis({ lerp: 0.09, smoothWheel: true });
+          lenis.on('scroll', ST.update);
+          gsap.ticker.add(function (t) { lenis.raf(t * 1000); });
+          gsap.ticker.lagSmoothing(0);
+        }
+        var mobile = matchMedia('(max-width: 760px)').matches;
+        scenes.forEach(function (sc) {
+          var n = Number(sc.dataset.n) || 1;
+          var q = function (s) { return sc.querySelectorAll(s); };
+          var len = innerHeight * (1.4 + n * (mobile ? 0.32 : 0.38));
+          var tl = gsap.timeline({ defaults: { ease: 'none' }, scrollTrigger: {
+            trigger: sc, start: 'top top', end: '+=' + len, pin: true, scrub: still ? true : 0.8, anticipatePin: 1,
+            onToggle: function (self) { if (self.isActive) { enter(sc); if (soundOn) setMood(sc._events[sc._i] ? sc._events[sc._i][3] : sc.dataset.mood); } },
+            onUpdate: function (self) {
+              if (self.isActive) enter(sc); // a fast jump can fire the toggles out of order
+              var p = Math.min(0.999, Math.max(0, (self.progress - 0.08) / 0.84));
+              showEvent(sc, Math.floor(p * n));
+            },
+          } });
+          if (still) return;
+          // 1. the pop-up: layers hinge up from the page, back to front
+          tl.from(q('.st-far, .st-mid, .st-front'), { rotateX: -80, yPercent: 20, transformOrigin: '50% 100%', stagger: 0.03, duration: 0.1, ease: 'power2.out' }, 0)
+            .from(q('.st-print'), { rotateX: -90, y: 120, opacity: 0, transformOrigin: '50% 100%', stagger: 0.03, duration: 0.1, ease: 'back.out(1.4)' }, 0.03)
+            .from(q('.st-char'), { yPercent: 40, scale: 0.85, opacity: 0, transformOrigin: '50% 100%', duration: 0.12, ease: 'power3.out' }, 0.05)
+            .from(q('.st-title, .st-card'), { y: 40, opacity: 0, duration: 0.08 }, 0.06)
+          // 2. the drift: each layer at its own speed (parallax); the sun climbs; his figure steps forward
+            .fromTo(q('.st-far'), { xPercent: 4 }, { xPercent: -4, duration: 0.8 }, 0.1)
+            .fromTo(q('.st-mid'), { xPercent: 9 }, { xPercent: -9, duration: 0.8 }, 0.1)
+            .fromTo(q('.st-prints'), { xPercent: 14 }, { xPercent: -14, duration: 0.8 }, 0.1)
+            .fromTo(q('.st-front'), { xPercent: 20 }, { xPercent: -20, duration: 0.8 }, 0.1)
+            .fromTo(q('.st-sun'), { yPercent: 60 }, { yPercent: -40, duration: 0.8 }, 0.1)
+            .fromTo(q('.st-char'), { scale: 0.94, xPercent: -6 }, { scale: 1.06, xPercent: 6, duration: 0.8 }, 0.1)
+          // 3. the fold: everything lies back down into the page
+            .to(q('.st-print, .st-char, .st-title, .st-card'), { opacity: 0, y: 60, duration: 0.08 }, 0.92)
+            .to(q('.st-far, .st-mid, .st-front'), { rotateX: 70, opacity: 0.2, transformOrigin: '50% 100%', duration: 0.08 }, 0.92);
+        });
+        // progress bar beside the chapter list
+        ST.create({ trigger: root, start: 'top top', end: 'bottom bottom', onUpdate: function (s) { bar.style.transform = 'scaleY(' + s.progress + ')'; } });
+        root.querySelectorAll('[data-st-go]').forEach(function (a) {
+          a.addEventListener('click', function (e) {
+            e.preventDefault();
+            var sc = document.getElementById('s-' + a.dataset.stGo), st = ST.getAll().filter(function (x) { return x.trigger === sc; })[0];
+            var y = st ? st.start + 2 : sc.offsetTop;
+            if (lenis) lenis.scrollTo(y, { duration: 1.6 }); else window.scrollTo({ top: y, behavior: 'smooth' });
+          });
+        });
+        root.querySelectorAll('[data-st-begin]').forEach(function (b) {
+          b.addEventListener('click', function () {
+            if (b.dataset.stBegin === '1') setSound(true);
+            var first = ST.getAll().filter(function (x) { return x.trigger === scenes[0]; })[0];
+            var y = first ? first.start + 2 : innerHeight;
+            if (lenis) lenis.scrollTo(y, { duration: 2 }); else window.scrollTo({ top: y, behavior: 'smooth' });
+          });
+        });
+      };
+
+      // Libraries: GSAP with ScrollTrigger for the pinned scenes, Lenis for smooth scrolling.
+      var load = function (src) { return new Promise(function (ok, no) { var s = document.createElement('script'); s.src = src; s.onload = ok; s.onerror = no; document.head.appendChild(s); }); };
+      load('https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js')
+        .then(function () { return load('https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js'); })
+        .then(function () { return load('https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js').catch(function () {}); })
+        .then(build)
+        .catch(function () { root.classList.add('st-static'); });
+      document.documentElement.classList.add('st-page');
+    })();
+  </script>
+</Base>

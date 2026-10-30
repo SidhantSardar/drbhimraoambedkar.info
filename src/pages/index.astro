@@ -1,10 +1,12 @@
 ---
 import Base from '../layouts/Base.astro';
 import Picture from '../components/Picture.astro';
-import { url } from '../lib/site';
+import FilmGrain from '../components/FilmGrain.astro';
+import { url, SHOW_NEWS } from '../lib/site';
 import { chapters, themes, images, loadJSON, type Img, type Work, type Speech } from '../lib/data';
 import { originalFor, credit, inLang } from '../lib/images-core.mjs';
-import { volumes } from '../lib/library';
+import { volumes, leafForPage, volLabelIn } from '../lib/library';
+import { SHELF_BOOKS, EDITION, bookHref } from '../lib/books';
 import { loadNews, mixed, catOf as category, thumbFor, fallbackFor, ONERROR, isHindi, cleanTitle } from '../lib/news';
 import { getLang, translator } from '../i18n';
 const lang = getLang(Astro);
@@ -18,8 +20,6 @@ const byId = (id: string) => imgs.find((i) => i.id === id) as Img | undefined;
 const heroImg = byId('ambedkar-portrait-classic');
 const heroPhoto = byId('ambedkar-bhawan-delhi-conference-1951');
 const factImg = { events: byId('twenty-two-vows-deekshabhoomi-1956'), works: byId('annihilation-of-caste-first-edition'), speeches: byId('yeola-speech-1935'), newspapers: byId('mooknayak-bahishkrit-bharat-mastheads') };
-const bandConst = byId('constituent-assembly-first-day-1946');
-const constImg = { adopted: byId('presenting-draft-constitution-1949'), force: byId('first-republic-day-parade-1950'), art17: byId('constitution-calligraphed-title-page'), art32: byId('ambedkar-in-parliament-1949') };
 
 const pages = volumes().reduce((s, v) => s + v.pages, 0);
 const allWorks = loadJSON<Work[]>('works', []);
@@ -32,6 +32,63 @@ for (const c of [...(await chapters()), ...(await themes())]) for (const k of c.
 for (const k of loadJSON<any>('constitution', {}).timeline || []) eventKeys.add(`${k.date}|${String(k.label).toLowerCase().replace(/[^a-z0-9]/g, '')}`);
 const events = eventKeys.size;
 const coverVol1 = url('/images/covers/volume-1.jpg');
+
+// ---------- "Inside the volumes": his books, speeches and newspapers, each opening where it sits in the volumes ----------
+const volById = Object.fromEntries(volumes().map((v) => [v.id, v]));
+const volKey = (s: string) => 'volume-' + s.toLowerCase().replace(/\s*part\s*/, '-part-').replace(/\s+/g, '-');
+const readAt = (b?: { volume?: string; url?: string }) => {
+  const v = b?.volume ? volById[volKey(b.volume)] : undefined;
+  if (!v) return null;
+  const p = Number(b?.url?.match(/#page=(\d+)/)?.[1] || 0);
+  const leaf = p ? leafForPage(v, p) : undefined;
+  return { href: url(leaf ? `/library/${v.id}/${leaf.slug}/` : `/library/${v.id}/`), vol: volLabelIn(v, lang) };
+};
+const workById = Object.fromEntries(allWorks.map((w: any) => [w.id, w]));
+const speechById = Object.fromEntries(loadJSON<any[]>('speeches', []).map((s: any) => [s.id, s]));
+type Shelf = { id: string; title: string; year: string; desc: string; img?: Img; href: string; where: string; edition?: string };
+const BOOKS = SHELF_BOOKS;
+const SPEECHES: [string, string, string, string, string, string, string][] = [
+  ['mahad-satyagraha-december-1927', 'chavdar-tale-mahad-1927', 'Mahad Satyagraha', 'महाड सत्याग्रह', '1927', 'For the right to drink from a public water tank.', 'सार्वजनिक तळ्याचे पाणी पिण्याच्या हक्कासाठी.'],
+  ['yeola-1935', 'yeola-speech-1935', 'Yeola', 'येवला', '1935', '“I will not die a Hindu.”', '“मी हिंदू म्हणून मरणार नाही.”'],
+  ['nagpur-1942-womens-conference', 'scf-womens-conference-nagpur-1942', 'Women’s conference, Nagpur', 'महिला परिषद, नागपूर', '1942', 'A community’s progress is measured by the progress of its women.', 'समाजाची प्रगती स्त्रियांच्या प्रगतीवरून मोजली जाते.'],
+  ['constituent-assembly-final-1949', 'ambedkar-in-parliament-1949', 'Constituent Assembly', 'संविधान सभा', '1949', 'His final speech, with three warnings for the Republic.', 'प्रजासत्ताकासाठी तीन इशारे देणारे त्यांचे शेवटचे भाषण.'],
+  ['nagpur-diksha-speech-1956', 'twenty-two-vows-deekshabhoomi-1956', 'Deekshabhoomi, Nagpur', 'दीक्षाभूमी, नागपूर', '1956', 'The speech the day after he embraced Buddhism.', 'बौद्ध धम्म स्वीकारल्यानंतरच्या दिवशीचे भाषण.'],
+  ['kathmandu-1956', 'buddha-or-karl-marx-kathmandu-1956', 'Buddha or Karl Marx, Kathmandu', 'बुद्ध की कार्ल मार्क्स, काठमांडू', '1956', 'One of his last speeches, weeks before his death.', 'निधनाच्या काही आठवडे आधीचे, त्यांच्या शेवटच्या भाषणांपैकी एक.'],
+];
+const PAPERS: [string, string, string, string, string, string][] = [
+  ['mooknayak', 'Mooknayak', 'मूकनायक', '1920', 'His first newspaper: “Leader of the Voiceless”.', 'त्यांचे पहिले वृत्तपत्र: मूकांचा नायक.'],
+  ['bahishkrit-bharat', 'Bahishkrit Bharat', 'बहिष्कृत भारत', '1927', '“Excluded India”, written largely by himself.', 'बहुतांश त्यांनी स्वतः लिहिलेले पाक्षिक.'],
+  ['samata', 'Samata', 'समता', '1928', 'The paper of the Social Equality League.', 'समाज समता संघाचे वृत्तपत्र.'],
+  ['janata', 'Janata', 'जनता', '1930', 'The longest running of his papers.', 'त्यांचे सर्वाधिक काळ चाललेले वृत्तपत्र.'],
+  ['prabuddha-bharat', 'Prabuddha Bharat', 'प्रबुद्ध भारत', '1956', 'Janata renamed, as he turned to Buddhism.', 'बौद्ध धम्माकडे वळताना जनतेचे नवे नाव.'],
+];
+
+const editionOf = (id: string, img?: Img) => (img && EDITION[id] && img.id === 'cover-' + id ? t(EDITION[id][0], EDITION[id][1]) : '');
+const shelf = {
+  books: BOOKS.map(([id, en, mr, year, den, dmr]): Shelf | null => {
+    const at = readAt(workById[id]?.baws?.[0]);
+    if (!at) return null;
+    const img = byId('cover-' + id) ?? (id === 'annihilation-of-caste' ? byId('annihilation-of-caste-first-edition') : undefined);
+    return { id, title: t(en, mr), year, desc: t(den, dmr), img, edition: editionOf(id, img), href: bookHref(id, volById[volKey(workById[id].baws[0].volume)]), where: at.vol };
+  }).filter(Boolean) as Shelf[],
+  speeches: SPEECHES.map(([id, img, en, mr, year, den, dmr]): Shelf | null => {
+    const at = readAt(speechById[id]?.baws);
+    if (!at) return null;
+    return { id, title: t(en, mr), year, desc: t(den, dmr), img: byId(img), href: at.href, where: at.vol };
+  }).filter(Boolean) as Shelf[],
+  papers: PAPERS.map(([id, en, mr, year, den, dmr]): Shelf => {
+    const img = byId('cover-' + id);
+    // where each paper is reprinted, from the works list (Marathi volumes 19 and 20); some are not reprinted there
+    const vols = [...new Set((workById[id]?.baws || []).map((b: any) => b.volume))] as string[];
+    const where = vols.length > 1 ? t(`Marathi vols. ${vols.join('–')}`, `मराठी खंड ${vols.join('–')}`) : vols.length ? t(`Marathi vol. ${vols[0]}`, `मराठी खंड ${vols[0]}`) : t('About the paper', 'वृत्तपत्राविषयी');
+    return { id, title: t(en, mr), year, desc: t(den, dmr), img, edition: editionOf(id, img), href: url('/works/journals/'), where };
+  }),
+};
+const shelfTabs = [
+  { key: 'books', label: t('Books', 'ग्रंथ'), n: shelf.books.length },
+  { key: 'speeches', label: t('Speeches', 'भाषणे'), n: speeches },
+  { key: 'papers', label: t('Newspapers', 'वृत्तपत्रे'), n: newspapers },
+];
 
 // Live updates: newest first, every kind of news represented
 const news = loadNews();
@@ -58,7 +115,7 @@ const cats = [...new Set(updates.map((n) => n.category))];
       {lang === 'mr' ? <h1>बाबासाहेब<br />आंबेडकर</h1> : <h1>Babasaheb<br />Ambedkar</h1>}
       <p class="hero-sub">{t('Millions know his name, but few have read his words. Here they are as text you can read, search and listen to, not scanned pages: every book, speech and newspaper, word for word from official sources, with the story of his life around them, in English and Marathi.', 'कोट्यवधी लोकांना त्यांचे नाव माहीत आहे, पण त्यांचे शब्द फारच थोड्यांनी वाचले आहेत. येथे ते स्कॅन केलेल्या पानांऐवजी वाचता, शोधता आणि ऐकता येणाऱ्या मजकुराच्या रूपात आहेत: प्रत्येक ग्रंथ, भाषण आणि वृत्तपत्र, अधिकृत स्रोतांतून शब्दशः, त्यांच्या जीवनकथेसह, इंग्रजी आणि मराठीत.')}</p>
       <div class="btn-row">
-        <a class="btn btn-primary btn-beam" href={url('/library/')}><span>{t('Explore Volumes →', 'खंड पाहा →')}</span></a>
+        <a class="btn btn-primary btn-beam" href="#volumes"><span>{t('Explore Volumes →', 'खंड पाहा →')}</span></a>
         <a class="btn btn-ghost" href={url('/ask/')}>{t('Ask the archive', 'संग्रहात शोधा')}</a>
       </div>
       <p class="hero-by">{t('A tribute by', 'आदरांजली —')} <a href="https://www.sidhantsardar.com/" target="_blank" rel="noopener">{t('Sidhant Sardar', 'सिद्धांत सरदार')}</a>{t(', an Ambedkarite and web developer', ', एक आंबेडकरवादी आणि वेब डेव्हलपर')} · <a href="https://www.sidhantsardar.com/" target="_blank" rel="noopener">sidhantsardar.com&nbsp;↗</a></p>
@@ -70,7 +127,7 @@ const cats = [...new Set(updates.map((n) => n.category))];
       </nav>
     </div>
 
-    {updates.length > 0 && (
+    {SHOW_NEWS && updates.length > 0 && (
       <a class="ticker-mobile" href={url('/news/')}><span class="live-dot" aria-hidden="true"></span><span><strong>{t('Live updates from the movement', 'चळवळीतील थेट घडामोडी')}</strong><small>{t('See the latest news →', 'ताज्या बातम्या पाहा →')}</small></span></a>
       <button class="ticker-open" type="button" aria-controls="ticker" aria-expanded="false" data-ticker-open><span aria-hidden="true">←</span><span class="ticker-open-label"><span class="live-dot" aria-hidden="true"></span>{t('Live updates', 'थेट घडामोडी')}</span></button>
       <aside class="ticker" id="ticker" aria-label={t('Live updates', 'थेट घडामोडी')}>
@@ -102,7 +159,61 @@ const cats = [...new Set(updates.map((n) => n.category))];
     {heroImg && <p class="credit">{heroImg.caption} {credit(heroImg)} · <a href={heroImg.sourceUrl} target="_blank" rel="noopener noreferrer">{heroImg.sourceName}</a></p>}
   </section>
 
-  <!-- 1b. WHY THIS EXISTS -->
+  <!-- 2. INSIDE THE VOLUMES: books, speeches, newspapers -->
+  <section class="home-shelf" id="volumes" aria-labelledby="home-shelf-h">
+    <div class="wrap">
+      <div class="shelf-head" data-reveal>
+        <span class="eyebrow">{t('Writings and Speeches · 17 volumes', 'लेखन आणि भाषणे · 17 खंड')}</span>
+        <h2 id="home-shelf-h">{t('His books and speeches are all inside the volumes', 'त्यांचे ग्रंथ आणि भाषणे, सर्व खंडांतच आहेत')}</h2>
+        <p class="lede">{t('You do not need to hunt for each book. His flagship books, his speeches and his papers are compiled, word for word, in the volumes of Dr. Babasaheb Ambedkar: Writings and Speeches. Open a cover to read it where it sits in its volume.', 'प्रत्येक ग्रंथ वेगळा शोधण्याची गरज नाही. त्यांचे प्रमुख ग्रंथ, भाषणे आणि लेख “डॉ. बाबासाहेब आंबेडकर: लेखन आणि भाषणे” या खंडांत शब्दशः संकलित आहेत. मुखपृष्ठ उघडा आणि तो ग्रंथ त्याच्या खंडातच वाचा.')}</p>
+      </div>
+      <div class="shelf-tabs" role="tablist" aria-label={t('What the volumes hold', 'खंडांत काय आहे')}>
+        {shelfTabs.map((tab, i) => (
+          <button type="button" role="tab" id={`shelf-tab-${tab.key}`} aria-controls={`shelf-${tab.key}`} aria-selected={i === 0 ? 'true' : 'false'} tabindex={i === 0 ? 0 : -1} data-shelf-tab={tab.key}>
+            {tab.label} <span class="shelf-n">{tab.n}</span>
+          </button>
+        ))}
+      </div>
+      {shelfTabs.map((tab, i) => (
+        <div class="shelf-panel" role="tabpanel" id={`shelf-${tab.key}`} aria-labelledby={`shelf-tab-${tab.key}`} hidden={i !== 0}>
+          <div class="shelf-row">
+          <button class="shelf-arrow prev" type="button" data-shelf-go="-1" aria-label={t('Previous', 'मागे')} disabled>←</button>
+          <ul class="shelf-grid" tabindex="-1">
+            {(shelf as any)[tab.key].map((b: Shelf) => (
+              <li>
+                <a class="shelf-card" href={b.href}>
+                  <span class:list={['shelf-cover', { photo: tab.key === 'speeches' }]}>
+                    {b.img ? <Picture img={b.img} sizes="(max-width: 600px) 45vw, 220px" alt="" /> : (
+                      <span class="shelf-plain" aria-hidden="true"><b>{b.title}</b><small>B. R. Ambedkar · {b.year}</small></span>
+                    )}
+                  </span>
+                  <span class="shelf-body">
+                    <span class="shelf-year">{b.year}</span>
+                    {b.edition && <span class="shelf-ed">{b.edition}</span>}
+                    <strong>{b.title}</strong>
+                    <span class="shelf-desc">{b.desc}</span>
+                    <span class="shelf-vol">{tab.key === 'papers' ? b.where : t(`Read in ${b.where}`, `${b.where} मध्ये वाचा`)} <i aria-hidden="true">→</i></span>
+                  </span>
+                </a>
+              </li>
+            ))}
+            {tab.key === 'speeches' && (
+              <li><a class="shelf-card shelf-more" href={url('/works/speeches/')}><strong>{t(`All ${speeches} speeches`, `सर्व ${speeches} भाषणे`)}</strong><span>{t('With dates, places and where to read each one', 'तारीख, ठिकाण आणि प्रत्येक भाषण कुठे वाचावे यासह')} <i aria-hidden="true">→</i></span></a></li>
+            )}
+          </ul>
+          <button class="shelf-arrow next" type="button" data-shelf-go="1" aria-label={t('Next', 'पुढे')}>→</button>
+          </div>
+          {tab.key === 'papers' && <p class="shelf-note">{t('His newspapers were in Marathi. Mooknayak, Bahishkrit Bharat and Janata are reprinted in the Marathi volumes published by the Government of Maharashtra, not in the 17 English volumes on this site.', 'त्यांची वृत्तपत्रे मराठीत होती. मूकनायक, बहिष्कृत भारत आणि जनता महाराष्ट्र शासनाच्या मराठी खंडांत पुनर्मुद्रित आहेत; या संकेतस्थळावरील 17 इंग्रजी खंडांत नाहीत.')}</p>}
+        </div>
+      ))}
+      <div class="btn-row shelf-cta">
+        <a class="btn btn-primary" href={url('/library/')}>{t('Explore all 17 volumes →', 'सर्व 17 खंड पाहा →')}</a>
+        <a class="btn btn-ghost" href={url('/works/')}>{t(`See all ${works} works`, `सर्व ${works} साहित्य पाहा`)}</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. WHY THIS EXISTS -->
   <section class="home-why" aria-labelledby="home-why-h">
     <div class="wrap">
       <div class="why-lead" data-reveal>
@@ -136,28 +247,7 @@ const cats = [...new Set(updates.map((n) => n.category))];
     </div>
   </section>
 
-  <!-- 3. CONSTITUTION -->
-  <section class="band">
-    {bandConst && <div class="bg"><Picture img={bandConst} sizes="100vw" alt="" /></div>}
-    {bandConst && <canvas class="hero-grain" aria-hidden="true"></canvas>}
-    <div class="wrap band-inner" data-reveal>
-      <span class="eyebrow">{t('The flagship · 1946–1950', 'मुख्य विभाग · 1946–1950')}</span>
-      <h2 style="max-width:14ch">{t('The Constitution of India', 'भारताचे संविधान')}</h2>
-      <p class="lede" style="max-width:52ch">{t("As chairman of the Drafting Committee, he guided India's Constitution through the Constituent Assembly. Read what it promises in plain words, the articles he fought for, his speeches — and download the official text.", 'मसुदा समितीचे अध्यक्ष म्हणून त्यांनी भारताचे संविधान संविधान सभेत मार्गी लावले. ते सोप्या शब्दांत काय वचन देते, त्यांनी आग्रहाने मांडलेले अनुच्छेद आणि त्यांची भाषणे वाचा — आणि अधिकृत मजकूर डाउनलोड करा.')}</p>
-      <nav class="hero-facts band-facts" aria-label={t('The Constitution in four facts', 'संविधान चार तथ्यांत')}>
-        <a class="hf" href={url('/constitution/')}>{constImg.adopted && <span class="hf-img"><Picture img={constImg.adopted} sizes="240px" alt="" /></span>}<span class="hf-body"><span class="hf-num">{t('26 Nov 1949', '26 नोव्हेंबर 1949')}</span><span class="hf-label">{t('Adopted', 'स्वीकार')}</span><span class="hf-note">{t('by the Constituent Assembly', 'संविधान सभेने')}</span></span></a>
-        <a class="hf" href={url('/constitution/')}>{constImg.force && <span class="hf-img"><Picture img={constImg.force} sizes="240px" alt="" /></span>}<span class="hf-body"><span class="hf-num">{t('26 Jan 1950', '26 जानेवारी 1950')}</span><span class="hf-label">{t('In force', 'अंमलात')}</span><span class="hf-note">{t('the first Republic Day', 'पहिला प्रजासत्ताक दिन')}</span></span></a>
-        <a class="hf" href={url('/constitution/')}>{constImg.art17 && <span class="hf-img"><Picture img={constImg.art17} sizes="240px" alt="" /></span>}<span class="hf-body"><span class="hf-num">{t('Article 17', 'अनुच्छेद 17')}</span><span class="hf-label">{t('Untouchability', 'अस्पृश्यता')}</span><span class="hf-note">{t('abolished', 'नष्ट केली')}</span></span></a>
-        <a class="hf" href={url('/constitution/')}>{constImg.art32 && <span class="hf-img"><Picture img={constImg.art32} sizes="240px" alt="" /></span>}<span class="hf-body"><span class="hf-num">{t('Article 32', 'अनुच्छेद 32')}</span><span class="hf-label">{t('Right to remedies', 'घटनात्मक उपायांचा हक्क')}</span><span class="hf-note">{t('“the very soul of the Constitution”', '“संविधानाचा आत्मा” (त्यांच्या शब्दांत)')}</span></span></a>
-      </nav>
-      <div class="btn-row">
-        <a class="btn btn-primary" href={url('/constitution/')}>{t('Explore the Constitution →', 'संविधान समजून घ्या →')}</a>
-        <a class="btn btn-ghost" href={url('/constitution/#documents')}>{t('Download the official text', 'अधिकृत मजकूर डाउनलोड करा')}</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- 4. ASK THE ARCHIVE -->
+  <!-- 4. ASK HIM -->
   <section class="home-ask" aria-labelledby="home-ask-h">
     <div class="wrap" data-reveal>
       <span class="eyebrow">{t('For people and for AI', 'माणसांसाठी आणि AI साठी')}</span>
@@ -176,49 +266,48 @@ const cats = [...new Set(updates.map((n) => n.category))];
     </div>
   </section>
 
+  <FilmGrain />
   <script is:inline>
     (function () {
-      /* ---------- Hero and Constitution: photographs follow the pointer (3D), numbers count up ---------- */
-      /* ---------- Film grain over the hero and Constitution photographs: fresh random grain every frame, 24 frames a second ---------- */
-      (function () {
-        var canvases = document.querySelectorAll('.hero-grain');
-        if (!canvases.length || document.documentElement.dataset.skin !== 'light') return;
-        var T = 256, FRAMES = 8, sources = [];
-        for (var f = 0; f < FRAMES; f++) {
-          var t = document.createElement('canvas'); t.width = t.height = T;
-          var tc = t.getContext('2d'), img = tc.createImageData(T, T), d = img.data;
-          for (var k = 0; k < d.length; k += 4) {
-            // roughly Gaussian brightness around mid-grey, as real silver grain is
-            var v = (Math.random() + Math.random() + Math.random() + Math.random() - 2) / 2;
-            var g = 128 + v * 150;
-            d[k] = d[k + 1] = d[k + 2] = g < 0 ? 0 : g > 255 ? 255 : g; d[k + 3] = 255;
-          }
-          tc.putImageData(img, 0, 0);
-          sources.push(t);
-        }
-        var still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        canvases.forEach(function (c) {
-          var ctx = c.getContext('2d');
-          var tiles = sources.map(function (t) { return ctx.createPattern(t, 'repeat'); });
-          var size = function () { c.width = c.offsetWidth; c.height = c.offsetHeight; };
-          var draw = function () {
-            var p = tiles[(Math.random() * FRAMES) | 0];
-            var ox = (Math.random() * T) | 0, oy = (Math.random() * T) | 0;
-            ctx.save(); ctx.translate(-ox, -oy); ctx.fillStyle = p; ctx.fillRect(0, 0, c.width + T, c.height + T); ctx.restore();
-          };
-          size(); draw();
-          window.addEventListener('resize', function () { size(); draw(); });
-          if (still) return;
-          var visible = true, last = 0;
-          if ('IntersectionObserver' in window) new IntersectionObserver(function (es) { visible = es[0].isIntersecting; }).observe(c);
-          var loop = function (now) {
-            if (visible && !document.hidden && now - last > 41) { draw(); last = now; }
-            requestAnimationFrame(loop);
-          };
-          requestAnimationFrame(loop);
+      /* ---------- Inside the volumes: Books / Speeches / Newspapers tabs ---------- */
+      var tabs = Array.prototype.slice.call(document.querySelectorAll('[data-shelf-tab]'));
+      var pick = function (b, focus) {
+        tabs.forEach(function (x) {
+          var on = x === b;
+          x.setAttribute('aria-selected', on ? 'true' : 'false'); x.tabIndex = on ? 0 : -1;
+          document.getElementById(x.getAttribute('aria-controls')).hidden = !on;
         });
-      })();
-
+        if (focus) b.focus();
+        arrows();
+      };
+      // One row of cards; the arrows move it by a screenful and switch off at either end.
+      var arrows = function () {
+        document.querySelectorAll('.shelf-row').forEach(function (row) {
+          var ul = row.querySelector('.shelf-grid'), max = ul.scrollWidth - ul.clientWidth - 2;
+          row.querySelector('.prev').disabled = ul.scrollLeft <= 2;
+          row.querySelector('.next').disabled = ul.scrollLeft >= max;
+          row.classList.toggle('fits', max <= 0);
+        });
+      };
+      document.querySelectorAll('.shelf-row').forEach(function (row) {
+        var ul = row.querySelector('.shelf-grid');
+        row.querySelectorAll('[data-shelf-go]').forEach(function (b) {
+          b.addEventListener('click', function () { ul.scrollBy({ left: Number(b.dataset.shelfGo) * ul.clientWidth * 0.85, behavior: 'smooth' }); });
+        });
+        ul.addEventListener('scroll', function () { arrows(); }, { passive: true });
+      });
+      window.addEventListener('resize', arrows);
+      arrows();
+      tabs.forEach(function (b, i) {
+        b.addEventListener('click', function () { pick(b); });
+        b.addEventListener('keydown', function (e) {
+          var d = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
+          if (d) { e.preventDefault(); pick(tabs[(i + d + tabs.length) % tabs.length], true); }
+        });
+      });
+    })();
+    (function () {
+      /* ---------- Hero: numbers count up ---------- */
       /* ---------- Scroll reveal: blocks marked data-reveal fade and rise in once, when they enter the viewport ---------- */
       var rev = document.querySelectorAll('[data-reveal]');
       if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
@@ -228,16 +317,6 @@ const cats = [...new Set(updates.map((n) => n.category))];
       /* safety net: whatever happens, nothing stays hidden for long */
       setTimeout(function () { rev.forEach(function (el) { el.classList.add('is-in'); }); }, 3000);
       var still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      ['.band'].forEach(function (sel) {
-        var el = document.querySelector(sel);
-        if (!el || still) return;
-        el.addEventListener('pointermove', function (e) {
-          var r = el.getBoundingClientRect();
-          el.style.setProperty('--ry', ((e.clientX - r.left) / r.width - 0.5) * 10 + 'deg');
-          el.style.setProperty('--rx', -((e.clientY - r.top) / r.height - 0.5) * 8 + 'deg');
-        });
-        el.addEventListener('pointerleave', function () { el.style.setProperty('--ry', '0deg'); el.style.setProperty('--rx', '0deg'); });
-      });
       document.querySelectorAll('[data-count]').forEach(function (dd) {
         var end = Number(dd.dataset.count);
         if (still || !end) return;

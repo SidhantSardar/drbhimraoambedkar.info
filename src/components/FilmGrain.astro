@@ -1,0 +1,57 @@
+---
+// Moving film grain over the dark photograph sections (.hero-grain canvases), and the band photographs that follow the pointer.
+---
+<script is:inline>
+  (function () {
+      /* ---------- Film grain over the hero and Constitution photographs: fresh random grain every frame, 24 frames a second ---------- */
+    (function () {
+        var canvases = document.querySelectorAll('.hero-grain');
+        if (!canvases.length || document.documentElement.dataset.skin !== 'light') return;
+        var T = 256, FRAMES = 8, sources = [];
+        for (var f = 0; f < FRAMES; f++) {
+          var t = document.createElement('canvas'); t.width = t.height = T;
+          var tc = t.getContext('2d'), img = tc.createImageData(T, T), d = img.data;
+          for (var k = 0; k < d.length; k += 4) {
+            // roughly Gaussian brightness around mid-grey, as real silver grain is
+            var v = (Math.random() + Math.random() + Math.random() + Math.random() - 2) / 2;
+            var g = 128 + v * 150;
+            d[k] = d[k + 1] = d[k + 2] = g < 0 ? 0 : g > 255 ? 255 : g; d[k + 3] = 255;
+          }
+          tc.putImageData(img, 0, 0);
+          sources.push(t);
+        }
+        var still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        canvases.forEach(function (c) {
+          var ctx = c.getContext('2d');
+          var tiles = sources.map(function (t) { return ctx.createPattern(t, 'repeat'); });
+          var size = function () { c.width = c.offsetWidth; c.height = c.offsetHeight; };
+          var draw = function () {
+            var p = tiles[(Math.random() * FRAMES) | 0];
+            var ox = (Math.random() * T) | 0, oy = (Math.random() * T) | 0;
+            ctx.save(); ctx.translate(-ox, -oy); ctx.fillStyle = p; ctx.fillRect(0, 0, c.width + T, c.height + T); ctx.restore();
+          };
+          size(); draw();
+          window.addEventListener('resize', function () { size(); draw(); });
+          if (still) return;
+          var visible = true, last = 0;
+          if ('IntersectionObserver' in window) new IntersectionObserver(function (es) { visible = es[0].isIntersecting; }).observe(c);
+          var loop = function (now) {
+            if (visible && !document.hidden && now - last > 41) { draw(); last = now; }
+            requestAnimationFrame(loop);
+          };
+          requestAnimationFrame(loop);
+        });
+      })();
+
+      var still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      document.querySelectorAll('.band').forEach(function (el) {
+        if (!el || still) return;
+        el.addEventListener('pointermove', function (e) {
+          var r = el.getBoundingClientRect();
+          el.style.setProperty('--ry', ((e.clientX - r.left) / r.width - 0.5) * 10 + 'deg');
+          el.style.setProperty('--rx', -((e.clientY - r.top) / r.height - 0.5) * 8 + 'deg');
+        });
+        el.addEventListener('pointerleave', function () { el.style.setProperty('--ry', '0deg'); el.style.setProperty('--rx', '0deg'); });
+      });
+  })();
+</script>

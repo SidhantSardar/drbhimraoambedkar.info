@@ -33,28 +33,27 @@ export function url(path = '/'): string {
 export type NavItem = { href: string; label: string; hint?: string; mr: string; mrHint?: string; enOnly?: boolean };
 export type NavGroup = { label: string; mr: string; href?: string; items?: NavItem[] };
 
+/** News, blog and the home page's live updates are hidden for now; set to true to bring them back. */
+export const SHOW_NEWS = false;
+
 export const NAV: NavGroup[] = [
-  { label: 'News & Blog', mr: 'बातम्या आणि ब्लॉग', items: [
+  ...(SHOW_NEWS ? [{ label: 'News & Blog', mr: 'बातम्या आणि ब्लॉग', items: [
     { href: '/news/', label: 'Latest news', hint: 'Today\'s stories, explained with sources', mr: 'ताज्या बातम्या', mrHint: 'आजच्या घडामोडी, संदर्भांसह' },
     { href: '/blog/', label: 'Blog', hint: 'Articles and discussion', mr: 'ब्लॉग', mrHint: 'लेख आणि चर्चा' },
+  ] }] : []),
+  { label: 'Life story', mr: 'जीवनकथा', href: '/timeline/' },
+  { label: 'Works', mr: 'साहित्य', items: [
+    { href: '/library/', label: 'All volumes', hint: 'Writings & Speeches, 17 volumes, page by page', mr: 'सर्व खंड', mrHint: 'लेखन आणि भाषणे, 17 खंड, पान न् पान' },
+    { href: '/works/speeches/', label: 'Speeches', hint: 'His major speeches, year by year', mr: 'भाषणे', mrHint: 'त्यांची महत्त्वाची भाषणे, वर्षानुसार' },
+    { href: '/works/videos/', label: 'Videos', hint: 'Original film and sound of him', mr: 'व्हिडिओ', mrHint: 'त्यांची मूळ चित्रफीत आणि आवाज' },
+    { href: '/works/journals/', label: 'His newspapers', hint: 'Mooknayak, Bahishkrit Bharat, Janata and more', mr: 'त्यांची वृत्तपत्रे', mrHint: 'मूकनायक, बहिष्कृत भारत, जनता आणि इतर' },
   ] },
-  { label: 'Life', mr: 'जीवन', items: [
-    { href: '/life/', label: 'Life story', hint: 'His whole life in 13 chapters', mr: 'जीवनकथा', mrHint: 'संपूर्ण जीवन 13 प्रकरणांत' },
-    { href: '/timeline/', label: 'Timeline', hint: 'Every key date, with sources', mr: 'कालपट', mrHint: 'प्रत्येक महत्त्वाची तारीख, संदर्भांसह' },
-    { href: '/education/', label: 'Educational journey', hint: 'From Satara to Columbia and LSE', mr: 'शैक्षणिक प्रवास', mrHint: 'सातारा ते कोलंबिया आणि लंडन' },
+  { label: 'Constitution', mr: 'संविधान', href: '/constitution/' },
+  { label: 'Extra', mr: 'अधिक', items: [
     { href: '/themes/personal-life/', label: 'Family and home', hint: 'Ramabai, Savita, Rajgriha', mr: 'कुटुंब आणि घर', mrHint: 'रमाबाई, सविता, राजगृह' },
     { href: '/themes/inspirations/', label: 'Inspirations', hint: 'Buddha, Kabir, Phule', mr: 'प्रेरणास्थाने', mrHint: 'बुद्ध, कबीर, फुले' },
     { href: '/themes/flag-and-symbols/', label: 'The blue flag & symbols', hint: 'Why blue, Jai Bhim, the Chakra', mr: 'निळा ध्वज आणि प्रतीके', mrHint: 'निळा रंग, जय भीम, चक्र' },
   ] },
-  { label: 'Works', mr: 'साहित्य', items: [
-    { href: '/works/', label: 'All works', hint: 'Books, papers, essays, statements', mr: 'सर्व साहित्य', mrHint: 'ग्रंथ, शोधनिबंध, लेख, निवेदने' },
-    { href: '/works/speeches/', label: 'Speeches', hint: 'His major speeches', mr: 'भाषणे', mrHint: 'त्यांची महत्त्वाची भाषणे' },
-    { href: '/library/', label: 'Writings & Speeches', hint: 'All 17 volumes, page by page', mr: 'लेखन आणि भाषणे', mrHint: 'सर्व 17 खंड, पान न् पान' },
-    { href: '/ask/', label: 'Ask the archive', hint: 'Search everything he wrote', mr: 'संग्रहात शोधा', mrHint: 'त्यांनी लिहिलेले सर्व शोधा' },
-    { href: '/chat/', label: 'Ask in his words', hint: 'A chat that answers with his own passages', mr: 'त्यांच्याच शब्दांत विचारा', mrHint: 'त्यांच्याच परिच्छेदांनी उत्तर देणारा संवाद', enOnly: true },
-    { href: '/works/journals/', label: 'His newspapers', hint: 'Mooknayak, Bahishkrit Bharat, Janata', mr: 'त्यांची वृत्तपत्रे', mrHint: 'मूकनायक, बहिष्कृत भारत, जनता' },
-  ] },
-  { label: 'Constitution', mr: 'संविधान', href: '/constitution/' },
   { label: 'Gallery', mr: 'छायाचित्रे', href: '/gallery/' },
   { label: 'Resources', mr: 'संदर्भ साधने', href: '/resources/' },
   { label: 'About', mr: 'आमच्याविषयी', href: '/about/' },

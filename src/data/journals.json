@@ -1,0 +1,599 @@
+{
+ "intro": {
+  "en": "Between 1920 and 1956 Dr. Ambedkar started or guided five Marathi papers: Mooknayak, Bahishkrit Bharat, Samata, Janata and Prabuddha Bharat. He wrote his scholarly books in English, but he spoke to his own people mainly through this Marathi journalism.",
+  "mr": "1920 ते 1956 या काळात डॉ. आंबेडकरांनी मूकनायक, बहिष्कृत भारत, समता, जनता आणि प्रबुद्ध भारत ही पाच मराठी वृत्तपत्रे सुरू केली किंवा त्यांना मार्गदर्शन केले. त्यांचे अभ्यासपूर्ण ग्रंथ इंग्रजीत आहेत, पण आपल्या लोकांशी ते मुख्यतः या मराठी पत्रकारितेतून बोलले."
+ },
+ "papers": [
+  {
+   "id": "mooknayak",
+   "name": "Mooknayak",
+   "nameDeva": "मूकनायक",
+   "meaning": {
+    "en": "Leader of the Voiceless",
+    "mr": "मुक्यांचा नायक"
+   },
+   "start": "1920-01-31",
+   "startNote": {
+    "en": "First issue: Saturday 31 January 1920.",
+    "mr": "पहिला अंक : शनिवार, 31 जानेवारी 1920."
+   },
+   "end": "1923",
+   "endNote": {
+    "en": "Sources disagree. The last surviving issue is No. 19 of 23 October 1920. The 1990 Government of Maharashtra volume says the paper closed in 1923 (Forward Press: April 1923); LiveLaw says 1922, after Shahu Maharaj's death.",
+    "mr": "संदर्भांमध्ये मतभेद आहेत. आज उपलब्ध असलेला शेवटचा अंक क्र. 19 (23 ऑक्टोबर 1920) आहे. महाराष्ट्र शासनाच्या 1990 च्या खंडानुसार हे पत्र 1923 मध्ये बंद पडले (फॉरवर्ड प्रेसनुसार एप्रिल 1923); लाइव्हलॉनुसार शाहू महाराजांच्या निधनानंतर 1922 मध्ये."
+   },
+   "frequency": {
+    "en": "fortnightly (Saturdays). Pritchett's timeline calls it a weekly.",
+    "mr": "पाक्षिक (शनिवारी). प्रिचेट यांच्या कालपटात त्याला साप्ताहिक म्हटले आहे."
+   },
+   "language": {
+    "en": "Marathi",
+    "mr": "मराठी"
+   },
+   "place": {
+    "en": "Bombay (Parel)",
+    "mr": "मुंबई (परळ)"
+   },
+   "people": [
+    {
+     "en": "Named editor and publisher at first: Pandurang Nandram Bhatkar",
+     "mr": "सुरुवातीचे नामनिर्दिष्ट संपादक व प्रकाशक : पांडुरंग नंदराम भटकर"
+    },
+    {
+     "en": "From July 1920 (issues 13–19): Dnyandev Dhruvnath Gholap",
+     "mr": "जुलै 1920 पासून (अंक 13–19) : ज्ञानदेव ध्रुवनाथ घोलप"
+    }
+   ],
+   "role": {
+    "en": "Founder and real editor of the first 12 issues, which carried his editorials. He was not the named editor because he was then in government employment, as a professor at Sydenham College. He handed the paper to Gholap and left for England on 5 July 1920.",
+    "mr": "संस्थापक, आणि पहिल्या 12 अंकांचे खरे संपादक; त्या अंकांत त्यांचे अग्रलेख होते. त्या वेळी ते सरकारी नोकरीत (सिडनहॅम महाविद्यालयात प्राध्यापक) असल्याने त्यांचे नाव संपादक म्हणून छापले गेले नाही. पत्राची जबाबदारी घोलप यांच्यावर सोपवून ते 5 जुलै 1920 रोजी इंग्लंडला गेले."
+   },
+   "summary": {
+    "en": "Mooknayak was Dr. Ambedkar's first newspaper. In it he argued that the excluded people needed a paper of their own to discuss the injustice done to them and the way forward. It ran only briefly, but it began his life as a journalist.",
+    "mr": "मूकनायक हे डॉ. आंबेडकरांचे पहिले वृत्तपत्र. बहिष्कृत लोकांवरील अन्यायाची आणि त्यांच्या उन्नतीच्या मार्गाची चर्चा करण्यासाठी त्यांना स्वतःचे वृत्तपत्र हवे, असे त्यांनी त्यात मांडले. हे पत्र थोडाच काळ चालले, पण त्यातून त्यांच्या पत्रकारितेची सुरुवात झाली."
+   },
+   "facts": [
+    {
+     "en": "Shahu Maharaj of Kolhapur gave Rs. 2,500 to start it. A copy cost 2.5 annas; a year's subscription was Rs. 2.50.",
+     "mr": "कोल्हापूरच्या शाहू महाराजांनी ते सुरू करण्यासाठी 2,500 रुपये दिले. एका अंकाची किंमत अडीच आणे आणि वार्षिक वर्गणी अडीच रुपये होती.",
+     "source": "https://m.thewire.in/article/caste/mooknayak-ambedkar-newspaper"
+    },
+    {
+     "en": "Its masthead carried a couplet by the saint-poet Tukaram. Roughly: why hold back out of shyness, when no one in the world cares for the mute?",
+     "mr": "त्याच्या शीर्षकाखाली संत तुकारामांचे वचन होते : “काय करूं आतां धरूनियां भीड । निःशंक हें तोंड वाजविलें ॥ नव्हे जगीं कोणी मुकियांचा जाण । सार्थक लाजून नव्हे हित ॥”",
+     "source": "https://archive.org/details/bahishkrit-bharat-and-mooknayak"
+    },
+    {
+     "en": "The imprint says it was printed at the Manoranjan Press, Girgaon, and published from the Mooknayak office, 14 Hararwala Building, Poibawdi, Parel.",
+     "mr": "अंकावरील छपाईच्या नोंदीनुसार ते गिरगावातील ‘मनोरंजन’ छापखान्यात छापले जाई आणि 14, हरारवाला बिल्डिंग, पोयबावडी, परळ येथील ‘मूकनायक’ कार्यालयातून प्रसिद्ध होई.",
+     "source": "https://archive.org/details/bahishkrit-bharat-and-mooknayak"
+    },
+    {
+     "en": "Only some issues survive. The 1990 volume reprinted issues 2, 3, 5, 6 and 13–19 from originals at the People's Education Society's research centre, Rajgruha, and issue 10 from the Dr. Ambedkar Research Institute, Nagpur. Issue 1's editorial survives in a handwritten notebook at the Shivaji University library, Kolhapur.",
+     "mr": "फक्त काही अंक उपलब्ध आहेत. 1990 च्या खंडात अंक 2, 3, 5, 6 आणि 13–19 हे पीपल्स एज्युकेशन सोसायटीच्या राजगृह येथील संशोधन केंद्रातील मूळ अंकांवरून, आणि अंक 10 नागपूरच्या आंबेडकर रिसर्च इन्स्टिट्यूटकडून घेऊन छापले. पहिल्या अंकाचा अग्रलेख कोल्हापूरच्या शिवाजी विद्यापीठ ग्रंथालयातील एका हस्तलिखित वहीतच टिकला आहे.",
+     "source": "https://archive.org/details/bahishkrit-bharat-and-mooknayak"
+    },
+    {
+     "en": "Gholap later restarted it in Satara as Abhinav Mooknayak, which did not last long.",
+     "mr": "पुढे घोलप यांनी साताऱ्यात ‘अभिनव मूकनायक’ नावाने ते पुन्हा सुरू केले, पण तेही फार काळ चालले नाही.",
+     "source": "https://m.thewire.in/article/caste/mooknayak-ambedkar-newspaper"
+    }
+   ],
+   "quote": {
+    "en": "(Translated) To suggest remedies for the injustice done, and still to be done, to our excluded people … there is no other platform like a newspaper.",
+    "mr": "“आमच्या या बहिष्कृत लोकांवर होत असलेल्या व पुढे होणाऱ्या अन्यायावर उपाययोजना सुचविण्यास … वर्तमानपत्रासारखी अन्य भूमीच नाही.”",
+    "source": "https://archive.org/details/bahishkrit-bharat-and-mooknayak"
+   },
+   "reprint": {
+    "en": "Reprinted in Dr. Babasaheb Ambedkaranche Bahishkrut Bharat (1927–1929) ani Mooknayak (Government of Maharashtra, 1990, ed. Vasant Moon); editorials in Dr. Babasaheb Ambedkar: Writings and Speeches (Marathi), Vol. 19; speeches in Vol. 18.",
+    "mr": "पुनर्मुद्रण : डॉ. बाबासाहेब आंबेडकरांचे बहिष्कृत भारत (1927–1929) आणि मूकनायक (महाराष्ट्र शासन, 1990, संपादक वसंत मून); अग्रलेख – डॉ. बाबासाहेब आंबेडकर : लेखन आणि भाषणे (मराठी), खंड 19; भाषणे – खंड 18."
+   },
+   "sources": [
+    {
+     "label": "Govt. of Maharashtra 1990 volume (Internet Archive)",
+     "url": "https://archive.org/details/bahishkrit-bharat-and-mooknayak"
+    },
+    {
+     "label": "BAWS Marathi Vol. 19",
+     "url": "https://archive.org/details/mkbook2600mkga"
+    },
+    {
+     "label": "The Wire (2020)",
+     "url": "https://m.thewire.in/article/caste/mooknayak-ambedkar-newspaper"
+    },
+    {
+     "label": "The Wire (2018)",
+     "url": "https://m.thewire.in/article/caste/the-journalistic-legacy-of-b-r-ambedkar-the-editor"
+    },
+    {
+     "label": "Forward Press (2020)",
+     "url": "https://www.forwardpress.in/2020/01/100-years-of-the-launch-of-mooknayak/"
+    },
+    {
+     "label": "Pritchett timeline, 1920s",
+     "url": "https://franpritchett.com/00ambedkar/timeline/1920s.html"
+    },
+    {
+     "label": "Pritchett timeline, 1910s",
+     "url": "https://franpritchett.com/00ambedkar/timeline/1910s.html"
+    },
+    {
+     "label": "LiveLaw",
+     "url": "https://www.livelaw.in/amp/columns/100-years-of-ambedkars-journalism-152198"
+    }
+   ]
+  },
+  {
+   "id": "bahishkrit-bharat",
+   "name": "Bahishkrit Bharat",
+   "nameDeva": "बहिष्कृत भारत",
+   "meaning": {
+    "en": "Excluded India",
+    "mr": "बहिष्कृत भारत (समाजाने बाहेर ठेवलेला भारत)"
+   },
+   "start": "1927-04-03",
+   "startNote": {
+    "en": "First issue: Sunday 3 April 1927, soon after the Mahad conference of 19–20 March 1927.",
+    "mr": "पहिला अंक : रविवार, 3 एप्रिल 1927 – 19–20 मार्च 1927 च्या महाड परिषदेनंतर लगेच."
+   },
+   "end": "1929-11-15",
+   "endNote": {
+    "en": "The 1990 volume gives a last, combined issue (nos. 21–22) dated 15 November 1929. Forward Press, citing Vasant Moon, gives 19 November 1929.",
+    "mr": "1990 च्या खंडानुसार शेवटचा जोडअंक (क्र. 21–22) 15 नोव्हेंबर 1929 रोजी निघाला. फॉरवर्ड प्रेस वसंत मून यांच्या हवाल्याने 19 नोव्हेंबर 1929 ही तारीख देते."
+   },
+   "frequency": {
+    "en": "fortnightly (Fridays, from the second issue)",
+    "mr": "पाक्षिक (दुसऱ्या अंकापासून शुक्रवारी)"
+   },
+   "language": {
+    "en": "Marathi",
+    "mr": "मराठी"
+   },
+   "place": {
+    "en": "Bombay (Parel)",
+    "mr": "मुंबई (परळ)"
+   },
+   "people": [
+    {
+     "en": "Editor and publisher: Dr. Bhimrao Ramji Ambedkar, Rahim Building, Poibawdi, Parel",
+     "mr": "संपादक व प्रकाशक : डॉ. भीमराव रामजी आंबेडकर, रहिम बिल्डिंग, पोयबावडी, परळ"
+    }
+   ],
+   "role": {
+    "en": "Editor and publisher in his own name, and its main writer. He said the paper could not afford an assistant editor, so he had to fill all 24 columns himself.",
+    "mr": "स्वतःच्या नावाने संपादक व प्रकाशक, आणि त्याचे मुख्य लेखक. दुय्यम संपादक ठेवण्याइतकी पत्राची आर्थिक स्थिती नसल्याने 24 रकाने लिहिण्याची सारी जबाबदारी एकट्या संपादकावर पडली, असे त्यांनी लिहिले."
+   },
+   "summary": {
+    "en": "He started Bahishkrit Bharat to support the movement that grew after the Mahad conference. It became the voice of the Bahishkrit Hitakarini Sabha. Its long editorials on Mahad, the Hindu scriptures and untouchability are among his most important Marathi writings.",
+    "mr": "महाड परिषदेनंतर वाढलेल्या चळवळीला आधार देण्यासाठी त्यांनी बहिष्कृत भारत सुरू केले. ते बहिष्कृत हितकारिणी सभेचे मुखपत्र बनले. महाड, हिंदू धर्मशास्त्रे आणि अस्पृश्यता यांवरील त्यातील दीर्घ अग्रलेख हे त्यांच्या मराठी लेखनातील अत्यंत महत्त्वाचे लेखन आहे."
+   },
+   "facts": [
+    {
+     "en": "A year's subscription cost Rs. 3 and a single copy 1.5 annas.",
+     "mr": "वार्षिक वर्गणी 3 रुपये आणि एका अंकाची किंमत दीड आणा होती.",
+     "source": "https://archive.org/details/bahishkrit-bharat-and-mooknayak"
+    },
+    {
+     "en": "Money troubles made it irregular. A combined issue (nos. 22–24) came out on 3 February 1928, and the second year began only on 16 November 1928, about nine months later.",
+     "mr": "आर्थिक अडचणींमुळे ते अनियमित झाले. 3 फेब्रुवारी 1928 रोजी 22–23–24 असा एकच जोडअंक निघाला, आणि दुसऱ्या वर्षाचा पहिला अंक सुमारे 9 महिन्यांनी, 16 नोव्हेंबर 1928 रोजी निघाला.",
+     "source": "https://archive.org/details/bahishkrit-bharat-and-mooknayak"
+    },
+    {
+     "en": "From issue 2 its masthead carried lines addressed to Arjuna (Partha), telling him to fight without doubt.",
+     "mr": "दुसऱ्या अंकापासून त्याच्या शीर्षकावर अर्जुनाला (पार्थाला) उद्देशून ओळी होत्या : “आतां पार्था निःशंक होई । या संग्रामा चित्त देई ।”",
+     "source": "https://archive.org/details/bahishkrit-bharat-and-mooknayak"
+    },
+    {
+     "en": "Its early editorials included a three-part series on the Mahad struggle, addressed in turn to caste Hindus, the British government and the Untouchables themselves (issues 2–4).",
+     "mr": "सुरुवातीच्या अग्रलेखांत महाडच्या धर्मसंगरावर तीन भागांची लेखमाला होती – वरिष्ठ हिंदू, इंग्रज सरकार आणि अस्पृश्य वर्ग यांची जबाबदारी (अंक 2–4).",
+     "source": "https://archive.org/details/bahishkrit-bharat-and-mooknayak"
+    },
+    {
+     "en": "It closed because of financial problems in 1929.",
+     "mr": "आर्थिक अडचणींमुळे ते 1929 मध्ये बंद पडले.",
+     "source": "https://m.thewire.in/article/caste/the-journalistic-legacy-of-b-r-ambedkar-the-editor"
+    },
+    {
+     "en": "An English translation by B. R. Kamble was published in Kolhapur in 2011.",
+     "mr": "बी. आर. कांबळे यांचे इंग्रजी भाषांतर 2011 मध्ये कोल्हापूर येथे प्रकाशित झाले.",
+     "source": "https://archive.org/details/brk.bahishkritbharat0000part1"
+    }
+   ],
+   "quote": {
+    "en": "(Translated, 3 February 1928) The whirlwind of Bahishkrit Bharat had raised a kind of storm in Hindu society in Maharashtra.",
+    "mr": "“बहिष्कृत भारताच्या झंझावाताने महाराष्ट्रातील हिंदुसमाजात एक प्रकारचे तुफान आले होते.”",
+    "source": "https://archive.org/details/bahishkrit-bharat-and-mooknayak"
+   },
+   "reprint": {
+    "en": "Reprinted in full in the Government of Maharashtra's 1990 volume (ed. Vasant Moon); editorials and articles in Dr. Babasaheb Ambedkar: Writings and Speeches (Marathi), Vols. 19 and 20.",
+    "mr": "संपूर्ण पुनर्मुद्रण : महाराष्ट्र शासनाचा 1990 चा खंड (संपादक वसंत मून); अग्रलेख व लेख – डॉ. बाबासाहेब आंबेडकर : लेखन आणि भाषणे (मराठी), खंड 19 आणि 20."
+   },
+   "sources": [
+    {
+     "label": "Govt. of Maharashtra 1990 volume (Internet Archive)",
+     "url": "https://archive.org/details/bahishkrit-bharat-and-mooknayak"
+    },
+    {
+     "label": "BAWS Marathi Vol. 19",
+     "url": "https://archive.org/details/mkbook2600mkga"
+    },
+    {
+     "label": "BAWS Marathi Vol. 20",
+     "url": "https://archive.org/details/mkbook2700mkga"
+    },
+    {
+     "label": "The Wire (2018)",
+     "url": "https://m.thewire.in/article/caste/the-journalistic-legacy-of-b-r-ambedkar-the-editor"
+    },
+    {
+     "label": "EPW Engage (2022)",
+     "url": "https://www.epw.in/engage/article/seeking-political-alternative-perspectives"
+    },
+    {
+     "label": "Forward Press (2020)",
+     "url": "https://www.forwardpress.in/2020/01/bahishkrit-bharat-ambedkars-decisive-challenge-to-brahmanism/"
+    },
+    {
+     "label": "B. R. Kamble translation, Part 1",
+     "url": "https://archive.org/details/brk.bahishkritbharat0000part1"
+    }
+   ]
+  },
+  {
+   "id": "samata",
+   "name": "Samata",
+   "nameDeva": "समता",
+   "meaning": {
+    "en": "Equality",
+    "mr": "समता"
+   },
+   "start": "1928-06-29",
+   "startNote": {
+    "en": "29 June 1928 (Ashok Gopal; Vasant Moon quoted by Forward Press). The same Forward Press article also gives 29 November 1928 elsewhere.",
+    "mr": "29 जून 1928 (अशोक गोपाळ; फॉरवर्ड प्रेसने उद्धृत केलेले वसंत मून). त्याच फॉरवर्ड प्रेस लेखात दुसऱ्या ठिकाणी 29 नोव्हेंबर 1928 ही तारीख आहे."
+   },
+   "end": "1929-03",
+   "endNote": {
+    "en": "Closed in March 1929 after 19 issues (Ashok Gopal).",
+    "mr": "19 अंकांनंतर मार्च 1929 मध्ये बंद झाले (अशोक गोपाळ)."
+   },
+   "frequency": {
+    "en": "fortnightly (alternate Fridays with Bahishkrit Bharat)",
+    "mr": "पाक्षिक (बहिष्कृत भारताच्या आलटून पालटून शुक्रवारी)"
+   },
+   "language": {
+    "en": "Marathi",
+    "mr": "मराठी"
+   },
+   "place": {
+    "en": "Bombay",
+    "mr": "मुंबई"
+   },
+   "people": [
+    {
+     "en": "Editor: Devrao Vishnu Naik",
+     "mr": "संपादक : देवराव विष्णु नाईक"
+    },
+    {
+     "en": "Writers included B. V. Pradhan and his elder brother Dattatreya",
+     "mr": "लेखकांत बी. व्ही. प्रधान आणि त्यांचे थोरले बंधू दत्तात्रेय यांचा समावेश होता"
+    }
+   ],
+   "role": {
+    "en": "A note above the masthead said it was issued under his leadership, but he did not find time to write for it.",
+    "mr": "शीर्षकावरील नोंदीनुसार ते त्यांच्या नेतृत्वाखाली निघत होते, पण त्यात लिहिण्यास त्यांना वेळ मिळाला नाही."
+   },
+   "summary": {
+    "en": "Samata was the paper of the Samaj Samata Sangh (Social Equality League). Its editor and most of its writers were caste Hindus, so it was an attempt to have caste Hindus themselves write against caste. Its experience fed into the founding of Janata in 1930.",
+    "mr": "समता हे समाज समता संघाचे पत्र होते. त्याचे संपादक आणि बहुतेक लेखक सवर्ण हिंदू होते; म्हणजे सवर्णांनीच जातीविरुद्ध लिहावे, असा हा प्रयोग होता. याच अनुभवातून 1930 मध्ये जनता सुरू झाले."
+   },
+   "facts": [
+    {
+     "en": "Each issue had eight pages and cost 1.5 annas.",
+     "mr": "प्रत्येक अंक 8 पानांचा असून किंमत दीड आणा होती.",
+     "source": "https://www.thenewsminute.com/features/ambedkar-non-brahmins-and-samaj-samata-sangh-176576"
+    },
+    {
+     "en": "Above every editorial it printed the Golden Rule twice: in Sanskrit from the Mahabharata and in English from the Bible.",
+     "mr": "प्रत्येक अग्रलेखावर सुवर्ण नियम दोनदा छापला जाई – महाभारतातून संस्कृतमध्ये आणि बायबलमधून इंग्रजीत.",
+     "source": "https://www.thenewsminute.com/features/ambedkar-non-brahmins-and-samaj-samata-sangh-176576"
+    },
+    {
+     "en": "Its editor Devrao Naik was a Govardhan Brahmin who had earlier run a monthly, Sanjivani, and a fortnightly, Brahman-Brahmanetar.",
+     "mr": "संपादक देवराव नाईक जातीने गोवर्धन ब्राह्मण होते. त्यांनी आधी ‘संजीवनी’ मासिक आणि ‘ब्राह्मण-ब्राह्मणेतर’ पाक्षिक चालवले होते.",
+     "source": "https://archive.org/details/mkbook2600mkga"
+    },
+    {
+     "en": "Naik is named as 'editor, Samata' among those with Ambedkar at the Chiplun conference of 13 April 1929.",
+     "mr": "13 एप्रिल 1929 च्या चिपळूण परिषदेत डॉ. आंबेडकरांसोबत उपस्थित असलेल्यांत नाईक यांचा उल्लेख ‘समता’चे संपादक असा आहे.",
+     "source": "https://www.mea.gov.in/images/CPV/Volume17_Part_III.pdf#page=39"
+    }
+   ],
+   "quote": {
+    "en": "Golden Rule printed above its editorials: \"Do unto others as you would be done by.\"",
+    "mr": "अग्रलेखांवर छापलेला सुवर्ण नियम : “Do unto others as you would be done by.” (इतरांनी आपल्याशी जसे वागावे असे वाटते, तसेच आपण इतरांशी वागावे.)",
+    "source": "https://www.thenewsminute.com/features/ambedkar-non-brahmins-and-samaj-samata-sangh-176576"
+   },
+   "reprint": {
+    "en": "No reprint of Samata was found; Ambedkar did not write for it, so it is not in the Writings and Speeches volumes.",
+    "mr": "समताचे पुनर्मुद्रण आढळले नाही; डॉ. आंबेडकरांनी त्यात लेखन केले नसल्याने ते लेखन आणि भाषणे खंडांत नाही."
+   },
+   "sources": [
+    {
+     "label": "The News Minute – Ashok Gopal (2023)",
+     "url": "https://www.thenewsminute.com/features/ambedkar-non-brahmins-and-samaj-samata-sangh-176576"
+    },
+    {
+     "label": "Forward Press (2020)",
+     "url": "https://www.forwardpress.in/2020/01/bahishkrit-bharat-ambedkars-decisive-challenge-to-brahmanism/"
+    },
+    {
+     "label": "BAWS Marathi Vol. 19 (index of persons)",
+     "url": "https://archive.org/details/mkbook2600mkga"
+    },
+    {
+     "label": "BAWS Vol. 17 Part 3",
+     "url": "https://www.mea.gov.in/images/CPV/Volume17_Part_III.pdf#page=39"
+    }
+   ]
+  },
+  {
+   "id": "janata",
+   "name": "Janata",
+   "nameDeva": "जनता",
+   "meaning": {
+    "en": "The People",
+    "mr": "जनता"
+   },
+   "start": "1930-11-24",
+   "startNote": {
+    "en": "24 November 1930, on the eve of the first Round Table Conference (EPW; BAWS Marathi Vol. 19). Forward Press gives 25 November 1930.",
+    "mr": "24 नोव्हेंबर 1930, पहिल्या गोलमेज परिषदेच्या पूर्वसंध्येला (EPW; लेखन आणि भाषणे मराठी खंड 19). फॉरवर्ड प्रेस 25 नोव्हेंबर 1930 ही तारीख देते."
+   },
+   "end": "1956-02",
+   "endNote": {
+    "en": "Renamed Prabuddha Bharat; its first issue under the new name is dated 4 February 1956.",
+    "mr": "त्याचे नाव बदलून प्रबुद्ध भारत झाले; नव्या नावाचा पहिला अंक 4 फेब्रुवारी 1956 चा आहे."
+   },
+   "frequency": {
+    "en": "began as a fortnightly and later became a weekly",
+    "mr": "सुरुवातीला पाक्षिक, नंतर साप्ताहिक"
+   },
+   "language": {
+    "en": "Marathi",
+    "mr": "मराठी"
+   },
+   "place": {
+    "en": "Bombay",
+    "mr": "मुंबई"
+   },
+   "people": [
+    {
+     "en": "Editor: Devrao Naik (1930–1932)",
+     "mr": "संपादक : देवराव नाईक (1930–1932)"
+    },
+    {
+     "en": "Editor: Bhaskarrao Kadrekar (from 1932)",
+     "mr": "संपादक : भास्करराव कद्रेकर (1932 पासून)"
+    },
+    {
+     "en": "Editor: Gangadhar Sahastrabuddhe (from 1939)",
+     "mr": "संपादक : गंगाधर सहस्रबुद्धे (1939 पासून)"
+    },
+    {
+     "en": "Later colleagues who helped run his papers included R. D. Bhandare and B. C. Kamble",
+     "mr": "नंतर त्यांची वृत्तपत्रे चालवण्यात मदत करणाऱ्या सहकाऱ्यांत आर. डी. भंडारे आणि बी. सी. कांबळे होते"
+    }
+   ],
+   "role": {
+    "en": "Founder and guide. Others were named editor and ran the daily work, though he shaped what it said. In 1945 he was reported as saying he had himself edited a weekly in Bombay for more than 16 years.",
+    "mr": "संस्थापक आणि मार्गदर्शक. संपादक म्हणून इतरांची नावे होती आणि रोजचे काम तेच पाहत, पण पत्राची दिशा डॉ. आंबेडकरच ठरवत. 1945 मध्ये त्यांनी मुंबईत 16 वर्षांहून अधिक काळ एक साप्ताहिक स्वतः संपादित केल्याचे सांगितल्याचे वृत्त आहे."
+   },
+   "summary": {
+    "en": "Janata was the longest-running paper of his movement, from 1930 to 1956. It reported his speeches, conferences and campaigns, and the Writings and Speeches volumes rely on its reports for many of his speeches.",
+    "mr": "जनता हे त्यांच्या चळवळीचे सर्वाधिक काळ (1930 ते 1956) चाललेले वृत्तपत्र होते. त्यांची भाषणे, परिषदा आणि मोहिमा यांचे वृत्तांत त्यात येत; लेखन आणि भाषणे खंडांत त्यांच्या अनेक भाषणांसाठी याच वृत्तांतांचा आधार घेतला आहे."
+   },
+   "facts": [
+    {
+     "en": "Devrao Naik, the editor of Samata, was also Janata's first editor; Janata began as a fortnightly and was later turned into a weekly.",
+     "mr": "समताचे संपादक देवराव नाईक हेच जनताचे पहिले संपादक होते; जनता सुरुवातीला पाक्षिक होते आणि नंतर साप्ताहिक झाले.",
+     "source": "https://archive.org/details/mkbook2600mkga"
+    },
+    {
+     "en": "The English Writings and Speeches (Vol. 17, Part 3) cites Janata issues again and again as the source for his speeches of the 1930s.",
+     "mr": "इंग्रजी लेखन आणि भाषणे (खंड 17, भाग 3) मध्ये 1930 च्या दशकातील त्यांच्या भाषणांसाठी वारंवार जनताच्या अंकांचा संदर्भ दिला आहे.",
+     "source": "https://www.mea.gov.in/images/CPV/Volume17_Part_III.pdf"
+    },
+    {
+     "en": "In a message of 29 May 1947 for the new Nagpur weekly Arun, Ambedkar wrote that the Bombay Janata had stopped publication, so the new paper was badly needed.",
+     "mr": "नागपूरच्या ‘अरुण’ या नव्या साप्ताहिकासाठी 29 मे 1947 रोजी दिलेल्या संदेशात डॉ. आंबेडकरांनी लिहिले की मुंबईच्या ‘जनता’चे प्रकाशन बंद झाल्यामुळे दलित वर्गाला या साप्ताहिकाची फारच आवश्यकता आहे.",
+     "source": "https://archive.org/details/mkbook2700mkga"
+    },
+    {
+     "en": "Speaking at the launch of People's Herald in 1945, he credited the influence of his Bombay weekly with helping him win his 1937 Assembly election.",
+     "mr": "1945 मध्ये पीपल्स हेरल्डच्या उद्घाटनप्रसंगी त्यांनी सांगितले की 1937 च्या विधानसभा निवडणुकीतील विजयात त्यांच्या मुंबईतील साप्ताहिकाच्या प्रभावाचा मोठा वाटा होता.",
+     "source": "https://www.mea.gov.in/images/CPV/Volume17_Part_III.pdf#page=378"
+    },
+    {
+     "en": "The Government of Maharashtra is reprinting Janata in volumes. Vols. 7–9, covering 12 February 1938 to 1 February 1941 (48 issues each), were released at Mantralaya in April 2025, after six earlier volumes.",
+     "mr": "महाराष्ट्र शासन जनताचे खंडशः पुनर्मुद्रण करत आहे. 12 फेब्रुवारी 1938 ते 1 फेब्रुवारी 1941 या काळातील (प्रत्येकी 48 अंक) खंड 7, 8 आणि 9 एप्रिल 2025 मध्ये मंत्रालयात प्रकाशित झाले; त्याआधी सहा खंड निघाले होते.",
+     "source": "https://www.marathiebatmya.com/political/three-volumes-of-dr-babasaheb-ambedkars-janata-newspaper-published/"
+    }
+   ],
+   "quote": {
+    "en": "",
+    "mr": "",
+    "source": ""
+   },
+   "reprint": {
+    "en": "Editorials and articles in Dr. Babasaheb Ambedkar: Writings and Speeches (Marathi), Vol. 20; speeches in Vol. 18; issue-by-issue reprint volumes from the Government of Maharashtra's source-material committee.",
+    "mr": "अग्रलेख व लेख – डॉ. बाबासाहेब आंबेडकर : लेखन आणि भाषणे (मराठी), खंड 20; भाषणे – खंड 18; महाराष्ट्र शासनाच्या चरित्र साधने प्रकाशन समितीचे अंकनिहाय पुनर्मुद्रण खंड."
+   },
+   "sources": [
+    {
+     "label": "EPW Engage (2022)",
+     "url": "https://www.epw.in/engage/article/seeking-political-alternative-perspectives"
+    },
+    {
+     "label": "BAWS Marathi Vol. 19",
+     "url": "https://archive.org/details/mkbook2600mkga"
+    },
+    {
+     "label": "BAWS Marathi Vol. 20",
+     "url": "https://archive.org/details/mkbook2700mkga"
+    },
+    {
+     "label": "BAWS Vol. 17 Part 3",
+     "url": "https://www.mea.gov.in/images/CPV/Volume17_Part_III.pdf"
+    },
+    {
+     "label": "The Wire (2018)",
+     "url": "https://m.thewire.in/article/caste/the-journalistic-legacy-of-b-r-ambedkar-the-editor"
+    },
+    {
+     "label": "Forward Press (2020)",
+     "url": "https://www.forwardpress.in/2020/01/dr-ambedkars-journalism-from-mooknayak-to-prabuddha-bharat/"
+    },
+    {
+     "label": "Marathi e-Batmya (2025)",
+     "url": "https://www.marathiebatmya.com/political/three-volumes-of-dr-babasaheb-ambedkars-janata-newspaper-published/"
+    },
+    {
+     "label": "Directorate of Higher Education, Maharashtra",
+     "url": "https://dhepune.gov.in/dr-babasaheb-ambedkar-biography-resources-publication/"
+    },
+    {
+     "label": "Pritchett timeline, 1920s",
+     "url": "https://franpritchett.com/00ambedkar/timeline/1920s.html"
+    }
+   ]
+  },
+  {
+   "id": "prabuddha-bharat",
+   "name": "Prabuddha Bharat",
+   "nameDeva": "प्रबुद्ध भारत",
+   "meaning": {
+    "en": "Enlightened India",
+    "mr": "प्रबुद्ध भारत (जागृत, ज्ञानी भारत)"
+   },
+   "start": "1956-02-04",
+   "startNote": {
+    "en": "Janata took the new name from 4 February 1956 (The Wire; Forward Press 2020). A 2017 Forward Press article says 1954, and Pritchett's timeline places the change after the October 1956 conversion.",
+    "mr": "4 फेब्रुवारी 1956 पासून जनताला हे नवे नाव मिळाले (द वायर; फॉरवर्ड प्रेस 2020). फॉरवर्ड प्रेसच्या 2017 च्या लेखात 1954 असे आहे, तर प्रिचेट यांच्या कालपटात हा बदल ऑक्टोबर 1956 च्या धर्मांतरानंतर दाखवला आहे."
+   },
+   "end": "1960",
+   "endNote": {
+    "en": "Continued after his death; The Wire says Yashwant Ambedkar tried to keep it going until 1960. The date of the last issue was not found.",
+    "mr": "त्यांच्या निधनानंतरही ते चालू राहिले; द वायरनुसार यशवंत आंबेडकरांनी 1960 पर्यंत ते चालवण्याचा प्रयत्न केला. शेवटच्या अंकाची तारीख आढळली नाही."
+   },
+   "frequency": {
+    "en": "weekly (BAWS Vol. 20 cites issues of 6 and 13 October 1956)",
+    "mr": "साप्ताहिक (लेखन आणि भाषणे खंड 20 मध्ये 6 आणि 13 ऑक्टोबर 1956 च्या अंकांचे संदर्भ आहेत)"
+   },
+   "language": {
+    "en": "Marathi",
+    "mr": "मराठी"
+   },
+   "place": {
+    "en": "Bombay (Gokuldas Pasta Road, Dadar)",
+    "mr": "मुंबई (गोकुळदास पास्ता रोड, दादर)"
+   },
+   "people": [
+    {
+     "en": "Founder: Dr. B. R. Ambedkar (as printed in the paper's imprint)",
+     "mr": "संस्थापक : डॉ. भी. रा. आंबेडकर (पत्रावरील नोंदीनुसार)"
+    }
+   ],
+   "role": {
+    "en": "Founder and guide. He renamed Janata as he moved towards Buddhism; as with Janata, he did not do the editing himself.",
+    "mr": "संस्थापक आणि मार्गदर्शक. बौद्ध धम्माकडे वाटचाल करताना त्यांनी जनताचे नाव बदलले; जनताप्रमाणेच याचेही संपादन त्यांनी स्वतः केले नाही."
+   },
+   "summary": {
+    "en": "Prabuddha Bharat was the renamed Janata, now turned towards Buddhism. In its first months it carried the news of the Nagpur conversion of October 1956 and of his plan for a Republican Party.",
+    "mr": "प्रबुद्ध भारत म्हणजे बौद्ध धम्माकडे वळलेले, नव्या नावाचे जनता. त्याच्या पहिल्या काही महिन्यांत ऑक्टोबर 1956 च्या नागपूर धर्मांतराच्या आणि रिपब्लिकन पक्षाच्या योजनेच्या बातम्या त्यात आल्या."
+   },
+   "facts": [
+    {
+     "en": "Its issues of 6 and 13 October 1956 reported the decision, taken under his chairmanship in New Delhi on 30 September 1956, to form the All-India Republican Party.",
+     "mr": "30 सप्टेंबर 1956 रोजी नवी दिल्लीत त्यांच्या अध्यक्षतेखाली ‘अखिल भारतीय रिपब्लिकन पार्टी’ स्थापन करण्याचा निर्णय झाला; त्याचा वृत्तांत 6 आणि 13 ऑक्टोबर 1956 च्या अंकांत प्रसिद्ध झाला.",
+     "source": "https://archive.org/details/mkbook2700mkga"
+    },
+    {
+     "en": "It brought out an 'Ambedkar Bauddha Deeksha' special issue on 27 October 1956 about the Nagpur conversion; a copy is on the Internet Archive.",
+     "mr": "नागपूर धर्मांतरावर त्याने 27 ऑक्टोबर 1956 रोजी ‘आंबेडकर बौद्ध दीक्षा विशेषांक’ काढला; त्याची एक प्रत इंटरनेट आर्काइव्हवर आहे.",
+     "source": "https://archive.org/details/img04481"
+    },
+    {
+     "en": "Most of its old prints were lost when Ambedkar Bhavan in Dadar, home of the Buddha Bhushan printing press, was demolished in June 2016.",
+     "mr": "जून 2016 मध्ये दादर येथील आंबेडकर भवन (जिथे बुद्ध भूषण छापखाना होता) पाडले गेले, तेव्हा त्याच्या बहुतेक जुन्या प्रती नष्ट झाल्या.",
+     "source": "https://m.thewire.in/article/caste/ambedkars-newspaper-prabuddh-bharat-is-back-in-a-new-avatar"
+    },
+    {
+     "en": "The name was revived in 2017 for a 16-page Marathi fortnightly.",
+     "mr": "2017 मध्ये याच नावाने 16 पानांचे मराठी पाक्षिक पुन्हा सुरू झाले.",
+     "source": "https://m.thewire.in/article/caste/ambedkars-newspaper-prabuddh-bharat-is-back-in-a-new-avatar"
+    }
+   ],
+   "quote": {
+    "en": "",
+    "mr": "",
+    "source": ""
+   },
+   "reprint": {
+    "en": "His speeches reported in it are reprinted in Dr. Babasaheb Ambedkar: Writings and Speeches (Marathi), Vol. 18; Vol. 20 also draws on it.",
+    "mr": "त्यात आलेली त्यांची भाषणे डॉ. बाबासाहेब आंबेडकर : लेखन आणि भाषणे (मराठी), खंड 18 मध्ये पुनर्मुद्रित आहेत; खंड 20 मध्येही त्यातील संदर्भ आहेत."
+   },
+   "sources": [
+    {
+     "label": "The Wire (2018) – Prabuddh Bharat revived",
+     "url": "https://m.thewire.in/article/caste/ambedkars-newspaper-prabuddh-bharat-is-back-in-a-new-avatar"
+    },
+    {
+     "label": "Forward Press (2020)",
+     "url": "https://www.forwardpress.in/2020/01/dr-ambedkars-journalism-from-mooknayak-to-prabuddha-bharat/"
+    },
+    {
+     "label": "Forward Press (2017)",
+     "url": "https://www.forwardpress.in/2017/07/ambedkars-journalism-and-its-significance-today/"
+    },
+    {
+     "label": "BAWS Marathi Vol. 20",
+     "url": "https://archive.org/details/mkbook2700mkga"
+    },
+    {
+     "label": "Internet Archive – special issue, 27 Oct 1956",
+     "url": "https://archive.org/details/img04481"
+    },
+    {
+     "label": "Pritchett timeline, 1920s",
+     "url": "https://franpritchett.com/00ambedkar/timeline/1920s.html"
+    }
+   ]
+  }
+ ],
+ "others": [
+  {
+   "en": "People's Herald – weekly organ of the All-India Scheduled Castes Federation, inaugurated by Ambedkar on 3 January 1945 at the Federation's office in Calcutta. There he said: \"A newspaper in a modern democratic system is the fundamental basis of good government.\"",
+   "mr": "पीपल्स हेरल्ड – अखिल भारतीय शेड्युल्ड कास्ट्स फेडरेशनचे साप्ताहिक मुखपत्र; डॉ. आंबेडकरांच्या हस्ते 3 जानेवारी 1945 रोजी कलकत्ता येथील फेडरेशनच्या कार्यालयात त्याचे उद्घाटन झाले. त्या वेळी ते म्हणाले, “आधुनिक लोकशाही व्यवस्थेत वृत्तपत्र हा चांगल्या शासनाचा मूलभूत पाया आहे.”",
+   "source": "https://www.mea.gov.in/images/CPV/Volume17_Part_III.pdf#page=375"
+  },
+  {
+   "en": "Arun – a Marathi weekly started in Nagpur in 1947 (editor N. K. Tirpude); Ambedkar sent a message of support on 29 May 1947.",
+   "mr": "अरुण – 1947 मध्ये नागपूर येथे सुरू झालेले मराठी साप्ताहिक (संपादक ना. खं. तिरपुडे); डॉ. आंबेडकरांनी 29 मे 1947 रोजी त्यासाठी शुभसंदेश पाठवला.",
+   "source": "https://archive.org/details/mkbook2700mkga"
+  }
+ ],
+ "unverified": [
+  "B. C. Kamble edited Janata from 1948 to 1954, after R. D. Bhandare (Maharashtra Times page could not be opened; only The Wire's general mention of both names was confirmed).",
+  "Bhaskarrao Kadrekar also managed Ambedkar's printing press (not in the EPW article).",
+  "Mooknayak's first editor's middle name given as 'Ranganath' (Maharashtra Times page could not be opened).",
+  "Last surviving Mooknayak issue (No. 19, 23 Oct 1920) attributed to Maharashtra Times (not opened; the 1990 volume itself confirms No. 19 of 23 Oct 1920).",
+  "The two 2019 Mooknayak translations (Vinay Kumar Vasnik; Sheoraj Singh Bechain) are Hindi – Forward Press lists them but does not say the language.",
+  "The Bahishkrit Bharat masthead verses are by Dnyaneshwar (the reprint prints the verses but not the author).",
+  "Samata was later renamed Janata (Forward Press 2017); Ashok Gopal and BAWS treat Janata as a new paper.",
+  "Devrao Naik was a non-Brahmin (The Mooknayak 2026 article; not checked, and BAWS Marathi Vol. 19 calls him a Govardhan Brahmin).",
+  "Pritchett's timeline that Prabuddha Bharat took its name after the conversion, and Forward Press 2017's 1954 date: both printed, but contradicted by the 4 Feb 1956 date in The Wire and Forward Press 2020.",
+  "Gangadhar Pantawane's Mūkanāyaka (Aurangabad, preface 1976) – UW–Madison catalogue not checked.",
+  "Present condition and holdings of the original issues at Rajgruha, Nagpur, Kolhapur and Mumbai University (the locations are as of 1990)."
+ ]
+}

@@ -1,0 +1,121 @@
+[
+  {
+    "id": "bbc-tv-1953",
+    "group": "voice",
+    "youtubeId": "Lz75lLiG0ic",
+    "channel": "BBC News Marathi",
+    "channelUrl": "https://www.youtube.com/@BBCNewsMarathi",
+    "date": "1953-06",
+    "dateNote": "Dated 1953 by the BBC; June 1953 according to The Quint.",
+    "kind": "interview",
+    "film": true,
+    "duration": "4:53",
+    "title": "BBC television interview on democracy in India",
+    "titleMr": "भारतातील लोकशाहीविषयी बीबीसी दूरचित्रवाणी मुलाखत",
+    "summary": "A rare film of him speaking: a BBC television interview about elections, democracy and caste. BBC Marathi first showed the full interview in April 2018.",
+    "summaryMr": "त्यांच्या बोलण्याची दुर्मीळ चित्रफीत: निवडणुका, लोकशाही आणि जात यांविषयी बीबीसी दूरचित्रवाणीवरील मुलाखत. बीबीसी मराठीने एप्रिल 2018 मध्ये ही संपूर्ण मुलाखत प्रथम दाखवली.",
+    "saying": "Asked whether democracy will work in India, he says it will survive only in form, because a social structure built on inequality cannot sit with parliamentary democracy; the social structure must change.",
+    "sayingMr": "भारतात लोकशाही चालेल का, असे विचारल्यावर ते म्हणतात की ती फक्त बाह्य स्वरूपातच टिकेल, कारण विषमतेवर उभी समाजरचना संसदीय लोकशाहीशी जुळत नाही; समाजरचना बदलली पाहिजे.",
+    "quote": "I am sick of speeches, we like to have action.",
+    "also": [
+      { "youtubeId": "WS7P9TKDZ2k", "channel": "BBC News India", "duration": "3:39", "label": "Short edit, English", "labelMr": "छोटी आवृत्ती, इंग्रजी" },
+      { "youtubeId": "9u3ZxaP43b4", "channel": "BBC News Hindi", "duration": "4:54", "label": "With Hindi introduction", "labelMr": "हिंदी प्रस्तावनेसह" }
+    ],
+    "sources": [
+      { "label": "The Quint", "url": "https://www.thequint.com/news/india/why-is-india-glorifying-br-ambedkar" },
+      { "label": "Transcript, Round Table India", "url": "https://roundtableindia.co.in/?p=9257" },
+      { "label": "BBC Marathi", "url": "https://www.bbc.com/marathi/india-43736098" }
+    ]
+  },
+  {
+    "id": "bbc-radio-1955",
+    "group": "voice",
+    "youtubeId": "Wf3VJCpNMqI",
+    "channel": "BBC News India",
+    "channelUrl": "https://www.youtube.com/@bbcnewsindia",
+    "date": "1955",
+    "place": "New Delhi",
+    "placeMr": "नवी दिल्ली",
+    "kind": "interview",
+    "film": false,
+    "duration": "21:41",
+    "title": "BBC radio interview on Gandhi and the Poona Pact",
+    "titleMr": "गांधी आणि पुणे करार यांविषयी बीबीसी आकाशवाणी मुलाखत",
+    "summary": "The full BBC radio interview, sound only, shown over still pictures. He talks about Gandhi, the Round Table Conferences, the Poona Pact and how India became independent. The BBC re-released it from its archives in 2023.",
+    "summaryMr": "बीबीसी आकाशवाणीवरील संपूर्ण मुलाखत; फक्त आवाज, स्थिर छायाचित्रांवर. गांधी, गोलमेज परिषदा, पुणे करार आणि भारताला स्वातंत्र्य कसे मिळाले यांविषयी ते बोलतात. बीबीसीने 2023 मध्ये आपल्या संग्रहातून ती पुन्हा प्रसिद्ध केली.",
+    "saying": "He describes his clash with Gandhi over separate electorates and the Poona Pact, says he agreed to save Gandhi's life only on fair terms, and says he never called Gandhi a Mahatma: he saw him as a politician.",
+    "sayingMr": "स्वतंत्र मतदारसंघ आणि पुणे करार यांवरून गांधींशी झालेल्या संघर्षाचे ते वर्णन करतात; गांधींचे प्राण वाचवण्यास ते फक्त न्याय्य अटींवरच तयार झाले, असे सांगतात; आणि गांधींना आपण कधीच महात्मा म्हटले नाही, ते त्यांना राजकारणी मानत, असे म्हणतात.",
+    "quote": "I am not going to save your life at the cost of life of my people.",
+    "also": [
+      { "youtubeId": "TrS8vkRQhSQ", "channel": "BBC News Hindi", "duration": "3:24", "label": "Short excerpt, Hindi introduction", "labelMr": "छोटा भाग, हिंदी प्रस्तावनेसह" },
+      { "youtubeId": "WcTU6gbqlss", "channel": "BBC News Marathi", "duration": "3:23", "label": "Short excerpt, Marathi introduction", "labelMr": "छोटा भाग, मराठी प्रस्तावनेसह" }
+    ],
+    "sources": [
+      { "label": "Transcript, Round Table India", "url": "https://roundtableindia.co.in/?p=3797" },
+      { "label": "Pritchett, 1950s timeline", "url": "https://franpritchett.com/00ambedkar/timeline/1950s.html" }
+    ]
+  },
+  {
+    "id": "constituent-assembly-1946",
+    "group": "voice",
+    "youtubeId": "lPsZLK540Cg",
+    "channel": "Prasar Bharati Archives",
+    "channelUrl": "https://www.youtube.com/@DDARCHIVES",
+    "date": "1946-12-17",
+    "place": "Constituent Assembly, New Delhi",
+    "placeMr": "संविधान सभा, नवी दिल्ली",
+    "kind": "speech",
+    "film": false,
+    "duration": "11:39",
+    "title": "Speech in the Constituent Assembly on the Objectives Resolution",
+    "titleMr": "उद्दिष्टांच्या ठरावावर संविधान सभेतील भाषण",
+    "summary": "All India Radio archive audio of his speech on Nehru's Objectives Resolution, given while the Muslim League was staying away from the Assembly. The recording is attributed to the All India Radio archives by Prasar Bharati and by the Constitution of India museum.",
+    "summaryMr": "मुस्लिम लीग संविधान सभेपासून दूर असताना नेहरूंच्या उद्दिष्टांच्या ठरावावर त्यांनी केलेल्या भाषणाचे आकाशवाणी संग्रहातील ध्वनिमुद्रण. प्रसार भारती आणि संविधान संग्रहालय हे ध्वनिमुद्रण आकाशवाणी संग्रहाचे असल्याचे सांगतात.",
+    "saying": "He says the Resolution lists rights but gives no remedies, urges the Assembly not to force the issue while the Muslim League is absent, and says he has no doubt that the country, divided as it is, will one day be united.",
+    "sayingMr": "ठरावात हक्कांची यादी आहे पण उपाय नाहीत, असे ते म्हणतात; मुस्लिम लीग अनुपस्थित असताना घाई करू नये असे सभेला सुचवतात; आणि आज विभागलेला हा देश एक दिवस नक्की एक होईल, याविषयी आपल्याला शंका नाही, असे सांगतात.",
+    "note": "Recording as attributed by Prasar Bharati; we found no independent check of the voice.",
+    "noteMr": "प्रसार भारतीने सांगितल्याप्रमाणे ध्वनिमुद्रण; आवाजाची स्वतंत्र पडताळणी आम्हाला सापडली नाही.",
+    "baws": "volume-13",
+    "sources": [
+      { "label": "Constitution of India museum", "url": "https://www.constitutionofindia.net/museum/1946-b-r-ambedkar-on-the-muslim-leagues-absence-from-the-constituent-assembly" }
+    ]
+  },
+  {
+    "id": "films-division-1991",
+    "group": "documentary",
+    "youtubeId": "pnSEYfQaF7g",
+    "channel": "Films Division",
+    "channelUrl": "https://www.youtube.com/@FilmsDivision",
+    "date": "1991",
+    "kind": "documentary",
+    "film": true,
+    "duration": "1:14:13",
+    "title": "Dr. Babasaheb Ambedkar (Films Division, 1991)",
+    "titleMr": "डॉ. बाबासाहेब आंबेडकर (फिल्म्स डिव्हिजन, 1991)",
+    "summary": "The Government of India's documentary on his life, directed by Jabbar Patel and written by Daya Pawar, from the official Films Division channel. This is not the 2000 feature film.",
+    "summaryMr": "त्यांच्या जीवनावरील भारत सरकारचा माहितीपट; दिग्दर्शन जब्बार पटेल, लेखन दया पवार; फिल्म्स डिव्हिजनच्या अधिकृत वाहिनीवरून. हा 2000 सालचा चित्रपट नव्हे.",
+    "note": "A documentary made in 1991: it may mix archive film with narrated or staged scenes.",
+    "noteMr": "1991 मध्ये तयार केलेला माहितीपट: त्यात संग्रहातील चित्रफितीसोबत निवेदन किंवा पुनर्रचित दृश्ये असू शकतात.",
+    "sources": [
+      { "label": "Lok Sabha reply on the film", "url": "https://eparlib.nic.in/bitstream/123456789/444201/1/57695.pdf" }
+    ]
+  },
+  {
+    "id": "prasar-bharati-mooknayak",
+    "group": "documentary",
+    "youtubeId": "IQyGLNK-X9Y",
+    "channel": "Prasar Bharati Archives",
+    "channelUrl": "https://www.youtube.com/@DDARCHIVES",
+    "date": "",
+    "kind": "documentary",
+    "film": true,
+    "duration": "19:17",
+    "title": "Mooknayak: Dr. B. R. Ambedkar (Doordarshan documentary)",
+    "titleMr": "मूकनायक: डॉ. बी. आर. आंबेडकर (दूरदर्शन माहितीपट)",
+    "summary": "A Doordarshan archive documentary on his life and work as a leader, jurist, writer and campaigner against untouchability.",
+    "summaryMr": "नेते, कायदेपंडित, लेखक आणि अस्पृश्यतेविरुद्ध लढणारे म्हणून त्यांच्या जीवन आणि कार्यावरील दूरदर्शन संग्रहातील माहितीपट.",
+    "note": "Year of production not given by the channel; it may mix archive film with narration.",
+    "noteMr": "निर्मितीचे वर्ष वाहिनीने दिलेले नाही; त्यात संग्रहातील चित्रफितीसोबत निवेदन असू शकते.",
+    "sources": []
+  }
+]

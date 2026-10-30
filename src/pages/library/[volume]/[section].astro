@@ -1,5 +1,6 @@
 ---
 import DocsShell from '../../../components/DocsShell.astro';
+import ReaderBlocks from '../../../components/ReaderBlocks.astro';
 import { volumes, leavesOf, pagesOf, formatPage, chapterBlocks, marathiOf, titleIn, volLabelIn, type Volume, type Leaf } from '../../../lib/library';
 import { url } from '../../../lib/site';
 import { getLang, translator } from '../../../i18n';
@@ -44,9 +45,9 @@ const groupName = leaf.chapter.group ? name(leaf.chapter.group) : '';
 // Right-hand "On this page": every printed page, with the first heading on it when there is one.
 const SMALL = /^(a|an|and|as|at|by|for|from|in|of|on|or|the|to|with)$/;
 const tidy = (s: string) => (/[a-z]/.test(s) ? s : s.toLowerCase().replace(/[a-z][a-z'’.]*/g, (w, i) => (i > 0 && SMALL.test(w) ? w : w[0].toUpperCase() + w.slice(1))));
-const short = (s: string) => { const x = tidy(s.trim()); return x.length > 44 ? x.slice(0, 42).trim() + '…' : x; };
+const short = (s: string) => { const x = tidy(s.trim().replace(/\s+/g, ' ')); return x.length > 44 ? x.slice(0, 42).trim() + '…' : x; };
 const outline = pagesShown.filter((r) => r.blocks.length > 0).map((r) => {
-  const h = r.blocks.find((b: { type: string }) => b.type === 'h') as { text: string } | undefined;
+  const h = r.blocks.find((b: { type: string }) => b.type === 'h' || b.type === 'title') as { text: string } | undefined;
   return {
     id: `p${r.p}`,
     label: r.n ? t(`Page ${r.n}`, `पृष्ठ ${r.n}`) : t(`PDF page ${r.p}`, `PDF पृष्ठ ${r.p}`),
@@ -56,6 +57,51 @@ const outline = pagesShown.filter((r) => r.blocks.length > 0).map((r) => {
 const here = partLabel ? `${chapterTitle} · ${partLabel}` : chapterTitle;
 ---
 <DocsShell vol={vol} current={leaf.slug} here={here} outline={outline} pdf={`${vol.sourceUrl}#page=${leaf.start}`} title={`${chapterTitle}${partLabel ? ` (${partLabel})` : ''} — ${volLabel}`} description={t(`${leaf.chapter.title}, from ${vol.label} of Dr. Babasaheb Ambedkar: Writings and Speeches — the full text, page by page.`, translated ? `${chapterTitle} — डॉ. बाबासाहेब आंबेडकर: लेखन आणि भाषणे, ${volLabel}. पान न् पान मराठी अनुवाद, मूळ इंग्रजीसह.` : `${chapterTitle} — डॉ. बाबासाहेब आंबेडकर: लेखन आणि भाषणे, ${volLabel}. पान न् पान संपूर्ण मजकूर.`)}>
+  <div class="rbar" data-rbar data-pagefind-ignore>
+    <div class="rbar-group rbar-view">
+      <span class="rbar-label" aria-hidden="true">{t('Reading view', 'वाचन दृश्य')}</span>
+        <div class="rm-switch" role="radiogroup" aria-label={t('Reading mode', 'वाचन पद्धत')} data-rm>
+          <button type="button" role="radio" aria-checked="true" data-mode="text">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 6h14M5 10h14M5 14h14M5 18h9" /></svg>{t('Text', 'मजकूर')}
+          </button>
+          <button type="button" role="radio" aria-checked="false" data-mode="split">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="1" /><path d="M12 4v16" /></svg>{t('Side by side', 'शेजारी शेजारी')}
+          </button>
+          <button type="button" role="radio" aria-checked="false" data-mode="pdf">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h7l5 5v13H7z" /><path d="M14 3v5h5" /></svg>{t('Official PDF', 'मूळ PDF')}
+          </button>
+        </div>
+    </div>
+    {hasText && (
+      <div class="rbar-group rbar-listen" data-ra-anchor>
+        <span class="rbar-label" aria-hidden="true">{t('Listen', 'ऐका')}</span>
+      <div class="read-aloud" data-read-aloud hidden
+        data-l-play={t('Play', 'सुरू करा')} data-l-resume={t('Resume', 'पुढे ऐका')} data-l-pause={t('Pause', 'थांबवा')}
+        data-l-novoice={t('No Marathi voice on this device, so a Hindi voice is reading. For a better Marathi voice, use Microsoft Edge or Chrome on Android, or add a Marathi voice in your device settings.', 'या उपकरणावर मराठी आवाज नाही, म्हणून हिंदी आवाज वाचत आहे. चांगल्या मराठी आवाजासाठी Microsoft Edge किंवा Android वरील Chrome वापरा, किंवा उपकरणाच्या सेटिंग्जमध्ये मराठी आवाज जोडा.')}
+        data-l-none={t('This device has no voice for this language. You can add one in your device settings.', 'या उपकरणावर या भाषेसाठी आवाज नाही. उपकरणाच्या सेटिंग्जमध्ये तो जोडता येईल.')}>
+        <button type="button" class="ra-play" data-ra-play aria-pressed="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path class="ra-i-listen" d="M4 14v-2a8 8 0 0 1 16 0v2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+            <rect class="ra-i-listen" x="3" y="13" width="5" height="7" rx="1.5" />
+            <rect class="ra-i-listen" x="16" y="13" width="5" height="7" rx="1.5" />
+            <path class="ra-i-pause" d="M7 5h4v14H7zM13 5h4v14h-4z" />
+          </svg>
+          <span class="ra-label">{t('Play', 'सुरू करा')}</span>
+        </button>
+        <button type="button" class="ra-stop" data-ra-stop hidden aria-label={t('Stop', 'थांबवा')}><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6h12v12H6z" /></svg></button>
+        <label class="ra-rate"><span class="visually-hidden">{t('Listening speed', 'ऐकण्याचा वेग')}</span>
+          <select data-ra-rate>
+            <option value="0.8">0.8×</option><option value="1" selected>1×</option><option value="1.25">1.25×</option><option value="1.5">1.5×</option>
+          </select>
+        </label>
+        <label class="ra-voice"><span class="visually-hidden">{t('Voice', 'आवाज')}</span>
+          <select data-ra-voice></select>
+        </label>
+        <p class="ra-msg" data-ra-msg hidden></p>
+      </div>
+      </div>
+    )}
+  </div>
   <article
     class="docs-article"
     data-pagefind-body={hasText ? '' : undefined}
@@ -79,17 +125,6 @@ const here = partLabel ? `${chapterTitle} · ${partLabel}` : chapterTitle;
         <span>{t(`PDF pages ${leaf.start}–${leaf.end}`, `PDF पृष्ठे ${leaf.start}–${leaf.end}`)}</span>
         <span>{t(`Writings and Speeches, ${vol.label}`, `लेखन आणि भाषणे, ${volLabel}`)}</span>
       </p>
-      <div class="rm-switch" role="radiogroup" aria-label={t('Reading mode', 'वाचन पद्धत')} data-rm>
-        <button type="button" role="radio" aria-checked="true" data-mode="text">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 6h14M5 10h14M5 14h14M5 18h9" /></svg>{t('Text', 'मजकूर')}
-        </button>
-        <button type="button" role="radio" aria-checked="false" data-mode="split">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="1" /><path d="M12 4v16" /></svg>{t('Side by side', 'शेजारी शेजारी')}
-        </button>
-        <button type="button" role="radio" aria-checked="false" data-mode="pdf">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h7l5 5v13H7z" /><path d="M14 3v5h5" /></svg>{t('Official PDF', 'मूळ PDF')}
-        </button>
-      </div>
     </header>
 
     <section class="rm-pdf" data-rm-pdf data-src={url(`/pdf/${vol.id}/${leaf.slug}.pdf`)} data-start={leaf.start} data-end={leaf.end} data-pagefind-ignore aria-label={t('Official PDF', 'मूळ PDF')}>
@@ -107,34 +142,6 @@ const here = partLabel ? `${chapterTitle} · ${partLabel}` : chapterTitle;
       </div>
     </section>
 
-    {hasText && (
-      <div class="ra-anchor" data-ra-anchor data-pagefind-ignore>
-      <div class="read-aloud" data-read-aloud hidden
-        data-l-play={t('Listen', 'ऐका')} data-l-resume={t('Resume', 'पुढे ऐका')} data-l-pause={t('Pause', 'थांबवा')}
-        data-l-novoice={t('No Marathi voice on this device, so a Hindi voice is reading. For a better Marathi voice, use Microsoft Edge or Chrome on Android, or add a Marathi voice in your device settings.', 'या उपकरणावर मराठी आवाज नाही, म्हणून हिंदी आवाज वाचत आहे. चांगल्या मराठी आवाजासाठी Microsoft Edge किंवा Android वरील Chrome वापरा, किंवा उपकरणाच्या सेटिंग्जमध्ये मराठी आवाज जोडा.')}
-        data-l-none={t('This device has no voice for this language. You can add one in your device settings.', 'या उपकरणावर या भाषेसाठी आवाज नाही. उपकरणाच्या सेटिंग्जमध्ये तो जोडता येईल.')}>
-        <button type="button" class="ra-play" data-ra-play aria-pressed="false">
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path class="ra-i-listen" d="M4 14v-2a8 8 0 0 1 16 0v2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-            <rect class="ra-i-listen" x="3" y="13" width="5" height="7" rx="1.5" />
-            <rect class="ra-i-listen" x="16" y="13" width="5" height="7" rx="1.5" />
-            <path class="ra-i-pause" d="M7 5h4v14H7zM13 5h4v14h-4z" />
-          </svg>
-          <span class="ra-label">{t('Listen', 'ऐका')}</span>
-        </button>
-        <button type="button" class="ra-stop" data-ra-stop hidden aria-label={t('Stop', 'थांबवा')}><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6h12v12H6z" /></svg></button>
-        <label class="ra-rate"><span class="visually-hidden">{t('Listening speed', 'ऐकण्याचा वेग')}</span>
-          <select data-ra-rate>
-            <option value="0.8">0.8×</option><option value="1" selected>1×</option><option value="1.25">1.25×</option><option value="1.5">1.5×</option>
-          </select>
-        </label>
-        <label class="ra-voice"><span class="visually-hidden">{t('Voice', 'आवाज')}</span>
-          <select data-ra-voice></select>
-        </label>
-        <p class="ra-msg" data-ra-msg hidden></p>
-      </div>
-      </div>
-    )}
 
     {mr && translated && (
       <div class="mr-translation-note" data-pagefind-ignore>
@@ -161,12 +168,12 @@ const here = partLabel ? `${chapterTitle} · ${partLabel}` : chapterTitle;
           <a href={`${vol.sourceUrl}#page=${r.p}`} target="_blank" rel="noopener noreferrer" data-pagefind-ignore title={t('Compare with the original PDF page', 'मूळ PDF पानाशी तुलना करा')}>{t(`PDF p. ${r.p} ↗`, `PDF पृ. ${r.p} ↗`)}</a>
         </div>
         <div class="reader" lang={translated ? 'mr' : 'en'}>
-          {r.blocks.length ? r.blocks.map((b) => (b.type === 'h' ? <h3>{b.text}</h3> : b.type === 'fn' ? <p class="fn">{b.text}</p> : <p>{b.text}</p>)) : <p class="muted">{t('(This page has no text — it may be blank or an image.)', '(या पानावर मजकूर नाही — ते कोरे किंवा चित्राचे पान असू शकते.)')}</p>}
+          {r.blocks.length ? <ReaderBlocks blocks={r.blocks} /> : <p class="muted">{t('(This page has no text — it may be blank or an image.)', '(या पानावर मजकूर नाही — ते कोरे किंवा चित्राचे पान असू शकते.)')}</p>}
         </div>
         {translated && r.english.length > 0 && (
           <details class="orig" data-pagefind-ignore>
             <summary>मूळ इंग्रजी</summary>
-            <div class="reader reader-en" lang="en">{r.english.map((b) => (b.type === 'h' ? <h3>{b.text}</h3> : b.type === 'fn' ? <p class="fn">{b.text}</p> : <p>{b.text}</p>))}</div>
+            <div class="reader reader-en" lang="en"><ReaderBlocks blocks={r.english} /></div>
           </details>
         )}
       </section>
@@ -186,6 +193,9 @@ const here = partLabel ? `${chapterTitle} · ${partLabel}` : chapterTitle;
       /* Reading modes on wide screens: the text; the text and the original pages side by side, scrolling together;
          or the original pages alone, one whole page at a time. */
       var docs = document.querySelector('.docs'), sw = document.querySelector('[data-rm]'), pane = document.querySelector('[data-rm-pdf]');
+      var rbar = document.querySelector('[data-rbar]');
+      var rbarH = function () { if (rbar) document.documentElement.style.setProperty('--rbar-h', rbar.offsetHeight + 'px'); };
+      rbarH(); window.addEventListener('resize', rbarH);
       if (!docs || !sw || !pane) return;
       var box = pane.querySelector('[data-rm-pages]'), open = pane.querySelector('[data-rm-open]');
       var src = pane.dataset.src, start = parseInt(pane.dataset.start, 10), end = parseInt(pane.dataset.end, 10), wide = window.matchMedia('(min-width: 1024px)');
@@ -444,14 +454,6 @@ const here = partLabel ? `${chapterTitle} · ${partLabel}` : chapterTitle;
       });
       window.addEventListener('pagehide', function () { synth.cancel(); });
 
-      // the floating island: once the bar scrolls out of view it docks in the top-right corner
-      if ('IntersectionObserver' in window) {
-        anchor.style.minHeight = bar.offsetHeight + 'px';
-        new IntersectionObserver(function (es) {
-          var gone = !es[0].isIntersecting && es[0].boundingClientRect.top < 0;
-          bar.classList.toggle('docked', gone);
-        }, { rootMargin: '-70px 0px 0px 0px' }).observe(anchor);
-      }
       setUI();
     })();
   </script>
