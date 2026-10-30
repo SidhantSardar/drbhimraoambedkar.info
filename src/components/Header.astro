@@ -24,7 +24,7 @@ const here = (href: string) => {
             <details>
               <summary class={g.items.some((i) => here(i.href)) ? 'active' : undefined}>{mr ? g.mr : g.label}</summary>
               <ul class="menu">
-                {g.items.map((i) => (
+                {g.items.filter((i) => !(mr && i.enOnly)).map((i) => (
                   <li><a href={url(i.href)} aria-current={here(i.href) ? 'page' : undefined}>{mr ? i.mr : i.label}{i.hint && <small>{mr ? i.mrHint : i.hint}</small>}</a></li>
                 ))}
               </ul>
@@ -36,9 +36,15 @@ const here = (href: string) => {
       </ul>
     </nav>
     <div class="header-actions">
+      {process.env.PUBLIC_SKIN === 'light' && (
+        <button class="theme-toggle" type="button" id="theme-toggle" aria-label={mr ? 'गडद रंगसंगती' : 'Dark mode'} data-dark={mr ? 'गडद रंगसंगती' : 'Dark mode'} data-light={mr ? 'फिकट रंगसंगती' : 'Light mode'}>
+          <svg class="ico-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z" /></svg>
+          <svg class="ico-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2" /><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" /></svg>
+        </button>
+      )}
       {bilingual && <div class="lang-switch" role="group" aria-label={mr ? 'भाषा' : 'Language'}>
         <a href={pathIn(current, 'en')} hreflang="en" lang="en" data-lang-switch aria-current={mr ? undefined : 'true'}>EN</a>
-        <a href={pathIn(current, 'mr')} hreflang="mr" lang="mr" data-lang-switch aria-current={mr ? 'true' : undefined}>मराठी</a>
+        <a href={/\/chat\/?$/.test(current) ? pathIn('/', 'mr') : pathIn(current, 'mr')} hreflang="mr" lang="mr" data-lang-switch aria-current={mr ? 'true' : undefined}>मराठी</a>
       </div>}
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" id="nav-toggle" aria-label={mr ? 'मेनू उघडा' : 'Open menu'} data-open={mr ? 'मेनू बंद करा' : 'Close menu'} data-closed={mr ? 'मेनू उघडा' : 'Open menu'}>
         <span class="nav-ico" aria-hidden="true">☰</span>
@@ -48,6 +54,25 @@ const here = (href: string) => {
 </header>
 <script is:inline>
   (function () {
+    // Dark / light switch: remembered on this device; until the reader chooses, the device setting decides.
+    var tt = document.getElementById('theme-toggle');
+    if (tt) {
+      var root = document.documentElement;
+      var label = function () { var d = root.getAttribute('data-theme') === 'dark'; tt.setAttribute('aria-label', d ? tt.dataset.light : tt.dataset.dark); tt.setAttribute('aria-pressed', d ? 'true' : 'false'); };
+      tt.addEventListener('click', function () {
+        var d = root.getAttribute('data-theme') !== 'dark';
+        if (d) root.setAttribute('data-theme', 'dark'); else root.removeAttribute('data-theme');
+        try { localStorage.setItem('theme', d ? 'dark' : 'light'); } catch (e) {}
+        label(); window.dispatchEvent(new Event('scroll'));
+      });
+      if (window.matchMedia) matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function (e) {
+        var saved = null; try { saved = localStorage.getItem('theme'); } catch (x) {}
+        if (saved) return;
+        if (e.matches) root.setAttribute('data-theme', 'dark'); else root.removeAttribute('data-theme');
+        label();
+      });
+      label();
+    }
     var btn = document.getElementById('nav-toggle');
     btn.addEventListener('click', function () {
       var open = document.body.classList.toggle('nav-open');

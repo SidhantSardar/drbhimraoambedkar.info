@@ -1,0 +1,94 @@
+/* =====================================================================
+   Dark mode for the light design. Active when <html data-skin="light" data-theme="dark">.
+   The token block is written by hand; the rules after it are generated from skin-light.css
+   (scripts/gen-dark.py): every hard-coded white background, dark text colour and light border
+   gets its dark-token equivalent. The white design itself is unchanged.
+   ===================================================================== */
+[data-skin='light'][data-theme='dark'] {
+  --bg: #0b111d; --surface: #111a2a; --surface-2: #16213a;
+  --paper: #0b111d; --paper-2: #111a2a; --paper-3: #16213a;
+  --sky-50: #111a2a; --sky-100: #18243c;
+  --ink: #e6edf8; --ink-2: #c9d4e5; --muted: #95a5bd;
+  --line: #24324c;
+  --accent-blue: #3a6bf2; --accent-blue-dark: #2c58d6; --link-blue: #8eb1ff;
+  --link: #8eb1ff; --accent: #8eb1ff; --earth: #8eb1ff;
+  --chip-bg: #18243c; --chip-ink: #e6edf8;
+  color-scheme: dark;
+}
+[data-skin='light']:not([data-theme='dark']) { --link-blue: var(--accent-blue); }
+[data-skin='light'][data-theme='dark'] body { background: var(--bg); color: var(--ink); }
+
+/* ---------- generated ---------- */
+[data-skin='light'][data-theme='dark'] body { background: var(--bg); }
+[data-skin='light'][data-theme='dark'] a { color: var(--link-blue); }
+[data-skin='light'][data-theme='dark'] .eyebrow { color: var(--link-blue); }
+[data-skin='light'][data-theme='dark'] .btn-ghost { color: var(--link-blue); background: var(--surface); }
+[data-skin='light'][data-theme='dark'] .btn-light { background: var(--surface); color: var(--link-blue); }
+[data-skin='light'][data-theme='dark'] .brand svg { color: var(--link-blue); }
+[data-skin='light'][data-theme='dark'] .site-nav a[aria-current='page'] { color: var(--link-blue); }
+[data-skin='light'][data-theme='dark'] .site-nav summary.active { color: var(--link-blue); }
+[data-skin='light'][data-theme='dark'] .has-menu .menu { background: var(--surface); }
+[data-skin='light'][data-theme='dark'] .nav-open .site-nav { background: var(--surface); }
+[data-skin='light'][data-theme='dark'] .nav-toggle { background: var(--surface); }
+[data-skin='light'][data-theme='dark'] .ticker { background: var(--surface) !important; }
+[data-skin='light'][data-theme='dark'] .ticker-close { background: var(--surface); }
+[data-skin='light'][data-theme='dark'] .ticker-list a:hover { color: var(--link-blue); }
+[data-skin='light'][data-theme='dark'] .card { background: var(--surface); }
+[data-skin='light'][data-theme='dark'] .work { background: var(--surface); }
+[data-skin='light'][data-theme='dark'] .callout { background: var(--surface); }
+[data-skin='light'][data-theme='dark'] .doc { background: var(--surface); }
+[data-skin='light'][data-theme='dark'] .fact { background: var(--surface); }
+[data-skin='light'][data-theme='dark'] .stat { background: var(--surface); }
+[data-skin='light'][data-theme='dark'] .article-card { background: var(--surface); }
+[data-skin='light'][data-theme='dark'] .in-short { background: var(--surface); }
+[data-skin='light'][data-theme='dark'] .ask-box { background: var(--surface); }
+[data-skin='light'][data-theme='dark'] .latest-card { background: var(--surface); }
+[data-skin='light'][data-theme='dark'] .tn { background: var(--surface); }
+[data-skin='light'][data-theme='dark'] .reader { color: var(--ink); }
+[data-skin='light'][data-theme='dark'] .prose { color: var(--ink); }
+[data-skin='light'][data-theme='dark'] .story-summary p { color: var(--ink); }
+[data-skin='light'][data-theme='dark'] .search-input { background: var(--surface); border: 1px solid var(--line); }
+[data-skin='light'][data-theme='dark'] .form input { background: var(--surface); border: 1px solid var(--line); }
+[data-skin='light'][data-theme='dark'] .form textarea { background: var(--surface); border: 1px solid var(--line); }
+[data-skin='light'][data-theme='dark'] .form select { background: var(--surface); border: 1px solid var(--line); }
+[data-skin='light'][data-theme='dark'] .book-vol { color: var(--link-blue); }
+[data-skin='light'][data-theme='dark'] .docs-nav a[aria-current='page'] { color: var(--link-blue); background: var(--surface); }
+[data-skin='light'][data-theme='dark'] .tl-item::before { background: var(--surface); }
+[data-skin='light'][data-theme='dark'] .hw-card { background: var(--surface); }
+[data-skin='light'][data-theme='dark'] .hw-body em { color: var(--link-blue); }
+[data-skin='light'][data-theme='dark'] .home-ask-form { background: var(--surface); }
+[data-skin='light'][data-theme='dark'] .home-ask-eg a { color: var(--link-blue); background: var(--surface); }
+[data-skin='light'][data-theme='dark'] .home-why { background: linear-gradient(180deg, var(--bg), var(--sky-50)); }
+[data-skin='light'][data-theme='dark'] .why-card { background: var(--surface); }
+[data-skin='light'][data-theme='dark'] .why-ic { color: var(--link-blue); }
+[data-skin='light'][data-theme='dark'] .why-card:hover .why-num { color: var(--link-blue); }
+[data-skin='light'][data-theme='dark'] .why-go { color: var(--link-blue); }
+[data-skin='light'][data-theme='dark'] .hw-ic { color: var(--link-blue); }
+[data-skin='light'][data-theme='dark'] .home-ask-form:focus-within .home-ask-ic { color: var(--link-blue); }
+[data-skin='light'][data-theme='dark'] .hero { background: linear-gradient(90deg, var(--bg) 35%, var(--sky-50) 100%); }
+[data-skin='light'][data-theme='dark'] .hero .chakra-bg { color: var(--link-blue); }
+[data-skin='light'][data-theme='dark'] .book { background: var(--surface); }
+[data-skin='light'][data-theme='dark'] .book-title a:hover { color: var(--link-blue); }
+[data-skin='light'][data-theme='dark'] .ticker-foot .ticker-close { background: var(--surface); color: var(--link-blue); }
+[data-skin='light'][data-theme='dark'] .why-txt .src { color: var(--link-blue); }
+@media (max-width: 1079px) {
+  [data-skin='light'][data-theme='dark'] .lang-switch a { color: var(--link-blue); }
+}
+[data-skin='light'][data-theme='dark'] .docs-vol small { color: var(--link-blue); }
+[data-skin='light'][data-theme='dark'] .docs-filter input { background: var(--surface); }
+[data-skin='light'][data-theme='dark'] .dg-label { color: var(--link-blue); }
+[data-skin='light'][data-theme='dark'] .docs-nav .dn-row:hover { background: var(--surface); }
+[data-skin='light'][data-theme='dark'] .docs-nav a.dn-row[aria-current='page'] { color: var(--link-blue); background: var(--surface); }
+[data-skin='light'][data-theme='dark'] .docs-nav a.dn-row[aria-current='page'] .dn-num { color: var(--link-blue); }
+[data-skin='light'][data-theme='dark'] .dn-count { background: var(--surface); }
+[data-skin='light'][data-theme='dark'] .docs-nav .dn-parts a:hover { background: var(--surface); }
+[data-skin='light'][data-theme='dark'] .docs-nav .dn-parts a[aria-current='page'] { color: var(--link-blue); background: var(--surface); }
+[data-skin='light'][data-theme='dark'] .ra-stop { background: var(--surface); border: 1px solid var(--line, var(--line)); }
+[data-skin='light'][data-theme='dark'] .ra-rate select { background: var(--surface); border: 1px solid var(--line, var(--line)); }
+[data-skin='light'][data-theme='dark'] .ra-voice select { background: var(--surface); border: 1px solid var(--line, var(--line)); }
+[data-skin='light'][data-theme='dark'] .read-aloud.docked { border: 1px solid var(--line, var(--line)); }
+@media (max-width: 1079px) {
+  [data-skin='light'][data-theme='dark'] .nav-open .site-nav summary.active { color: var(--link-blue); }
+  [data-skin='light'][data-theme='dark'] .nav-open .site-nav > ul > li > a[aria-current='page'] { color: var(--link-blue); }
+  [data-skin='light'][data-theme='dark'] .nav-open .site-nav .menu a[aria-current='page'] { color: var(--link-blue); }
+}

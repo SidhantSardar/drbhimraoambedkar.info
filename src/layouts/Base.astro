@@ -2,6 +2,8 @@
 import '../styles/global.css';
 import '../styles/skin-ai.css';
 import '../styles/skin-light.css';
+import '../styles/skin-light-dark.gen.css';
+import '../styles/skin-light-dark.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { SITE, url } from '../lib/site';
@@ -13,8 +15,10 @@ interface Props {
   image?: string;
   progress?: boolean;
   noindex?: boolean;
+  /** Leave out the site footer (app-like pages such as the chat). */
+  footer?: boolean;
 }
-const { title, description = SITE.description, image, progress = false, noindex = false } = Astro.props;
+const { title, description = SITE.description, image, progress = false, noindex = false, footer = true } = Astro.props;
 // Optional visual skin, chosen at build time (PUBLIC_SKIN=ai for the AI SaaS look).
 const skin = import.meta.env.PUBLIC_SKIN || undefined;
 const lang = getLang(Astro);
@@ -29,12 +33,21 @@ const ogImage = image ? new URL(image, Astro.site).toString() : undefined;
 <html lang={lang} data-skin={skin}>
   <head>
     <meta charset="utf-8" />
+    {skin === 'light' && <script is:inline>
+      // Dark mode: the reader's own choice, else the device setting. Runs before anything is drawn, so there is no flash.
+      (function () {
+        var d = document.documentElement, saved = null;
+        try { saved = localStorage.getItem('theme'); } catch (e) {}
+        var dark = saved ? saved === 'dark' : window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches;
+        if (dark) d.setAttribute('data-theme', 'dark');
+      })();
+    </script>}
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{fullTitle}</title>
     <meta name="description" content={metaDescription} />
     <link rel="canonical" href={canonical} />
     <link rel="alternate" hreflang="en" href={alternate('en')} />
-    <link rel="alternate" hreflang="mr" href={alternate('mr')} />
+    {!/\/chat\/?$/.test(Astro.url.pathname) && <link rel="alternate" hreflang="mr" href={alternate('mr')} />}
     <link rel="alternate" hreflang="x-default" href={alternate('en')} />
     <link rel="icon" href={url('/favicon.svg')} type="image/svg+xml" />
     <meta name="theme-color" content={skin === 'light' ? '#ffffff' : '#f7f2e8'} />
@@ -59,7 +72,7 @@ const ogImage = image ? new URL(image, Astro.site).toString() : undefined;
     <main id="main">
       <slot />
     </main>
-    <Footer />
+    {footer && <Footer />}
     {skin === 'ai' && (
       <script is:inline>
         // Spotlight: cards light up where the pointer is.

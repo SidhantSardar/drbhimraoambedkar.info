@@ -30,7 +30,7 @@ export function url(path = '/'): string {
   return base + path.replace(/^\//, '');
 }
 
-export type NavItem = { href: string; label: string; hint?: string; mr: string; mrHint?: string };
+export type NavItem = { href: string; label: string; hint?: string; mr: string; mrHint?: string; enOnly?: boolean };
 export type NavGroup = { label: string; mr: string; href?: string; items?: NavItem[] };
 
 export const NAV: NavGroup[] = [
@@ -51,6 +51,7 @@ export const NAV: NavGroup[] = [
     { href: '/works/speeches/', label: 'Speeches', hint: 'His major speeches', mr: 'भाषणे', mrHint: 'त्यांची महत्त्वाची भाषणे' },
     { href: '/library/', label: 'Writings & Speeches', hint: 'All 17 volumes, page by page', mr: 'लेखन आणि भाषणे', mrHint: 'सर्व 17 खंड, पान न् पान' },
     { href: '/ask/', label: 'Ask the archive', hint: 'Search everything he wrote', mr: 'संग्रहात शोधा', mrHint: 'त्यांनी लिहिलेले सर्व शोधा' },
+    { href: '/chat/', label: 'Ask in his words', hint: 'A chat that answers with his own passages', mr: 'त्यांच्याच शब्दांत विचारा', mrHint: 'त्यांच्याच परिच्छेदांनी उत्तर देणारा संवाद', enOnly: true },
     { href: '/works/journals/', label: 'His newspapers', hint: 'Mooknayak, Bahishkrit Bharat, Janata', mr: 'त्यांची वृत्तपत्रे', mrHint: 'मूकनायक, बहिष्कृत भारत, जनता' },
   ] },
   { label: 'Constitution', mr: 'संविधान', href: '/constitution/' },

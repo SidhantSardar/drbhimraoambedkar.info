@@ -38,7 +38,7 @@ const news = loadNews();
 const updates = mixed(news.stories, 36);
 const cats = [...new Set(updates.map((n) => n.category))];
 ---
-<Base image={heroImg ? url(heroImg.file) : undefined} description={t('The first platform to bring all of Dr. B. R. Ambedkar\'s work together in one place — every book, speech and newspaper, word for word, open to people and to AI — so that what he really said is protected and shared.', 'डॉ. बाबासाहेब आंबेडकर यांचे संपूर्ण कार्य एकाच ठिकाणी आणणारे पहिले व्यासपीठ — प्रत्येक ग्रंथ, भाषण आणि वृत्तपत्र, शब्दशः, माणसांसाठी आणि AI साठी खुले — जेणेकरून ते खरोखर काय म्हणाले ते जपले आणि पोहोचवले जाईल.')}>
+<Base image={heroImg ? url(heroImg.file) : undefined} description={t('Dr. B. R. Ambedkar\'s writings and speeches as readable, searchable text, word for word from the official volumes, with his life and the Constitution explained around them, in English and Marathi. A personal tribute, open to people and to AI.', 'डॉ. बाबासाहेब आंबेडकर यांचे लेखन आणि भाषणे वाचता व शोधता येणाऱ्या मजकुराच्या रूपात, अधिकृत खंडांतून शब्दशः, त्यांच्या जीवनाची आणि संविधानाची सोपी ओळख यांसह, इंग्रजी आणि मराठीत. माणसांसाठी आणि AI साठी खुली, एक वैयक्तिक आदरांजली.')}>
   <!-- 1. HERO -->
   <section class="hero-full">
     {heroImg && (
@@ -56,7 +56,7 @@ const cats = [...new Set(updates.map((n) => n.category))];
     <div class="hero-main">
       <span class="eyebrow">{t('1891 – 1956 · Scholar · Economist · Jurist · Reformer', '1891 – 1956 · विद्वान · अर्थशास्त्रज्ञ · कायदेपंडित · समाजसुधारक')}</span>
       {lang === 'mr' ? <h1>बाबासाहेब<br />आंबेडकर</h1> : <h1>Babasaheb<br />Ambedkar</h1>}
-      <p class="hero-sub">{t('Millions know his name, but few have read his words. His work lies scattered across the internet, and no single place holds all of it. This is the first portal to bring it together: every book, speech and newspaper, word for word, from official sources.', 'कोट्यवधी लोकांना त्यांचे नाव माहीत आहे, पण त्यांचे शब्द फारच थोड्यांनी वाचले आहेत. त्यांचे कार्य इंटरनेटवर विखुरलेले आहे, आणि ते सर्व एकत्र असलेले एकही ठिकाण नाही. ते सर्व एकत्र आणणारे हे पहिले व्यासपीठ आहे: प्रत्येक ग्रंथ, भाषण आणि वृत्तपत्र, शब्दशः, अधिकृत स्रोतांतून.')}</p>
+      <p class="hero-sub">{t('Millions know his name, but few have read his words. Here they are as text you can read, search and listen to, not scanned pages: every book, speech and newspaper, word for word from official sources, with the story of his life around them, in English and Marathi.', 'कोट्यवधी लोकांना त्यांचे नाव माहीत आहे, पण त्यांचे शब्द फारच थोड्यांनी वाचले आहेत. येथे ते स्कॅन केलेल्या पानांऐवजी वाचता, शोधता आणि ऐकता येणाऱ्या मजकुराच्या रूपात आहेत: प्रत्येक ग्रंथ, भाषण आणि वृत्तपत्र, अधिकृत स्रोतांतून शब्दशः, त्यांच्या जीवनकथेसह, इंग्रजी आणि मराठीत.')}</p>
       <div class="btn-row">
         <a class="btn btn-primary btn-beam" href={url('/library/')}><span>{t('Explore Volumes →', 'खंड पाहा →')}</span></a>
         <a class="btn btn-ghost" href={url('/ask/')}>{t('Ask the archive', 'संग्रहात शोधा')}</a>
@@ -108,14 +108,14 @@ const cats = [...new Set(updates.map((n) => n.category))];
       <div class="why-lead" data-reveal>
         <span class="eyebrow">{t('Why this platform exists', 'हे व्यासपीठ का')}</span>
         <h2 id="home-why-h">{t('Time moves fast. His work must not be left behind.', 'काळ वेगाने पुढे जातो. त्यांचे कार्य मागे राहता कामा नये.')}</h2>
-        <p>{t('Until now there was no single place that held all of Dr. Ambedkar\'s work. It sat scattered across government volumes, scanned PDFs and second-hand summaries, and many people know only his name. This portal is a personal tribute to Babasaheb by Sidhant Sardar. It is independent: not a government website, and not tied to any party or organisation. Everything here comes from legitimate sources, so that people and AI can both trust it.', 'आजवर डॉ. आंबेडकरांचे संपूर्ण कार्य एकाच ठिकाणी ठेवणारे कोणतेही व्यासपीठ नव्हते. ते सरकारी खंड, स्कॅन केलेल्या PDF आणि ऐकीव सारांशांमध्ये विखुरलेले होते, आणि अनेकांना फक्त त्यांचे नाव माहीत आहे. हे व्यासपीठ म्हणजे सिद्धांत सरदार यांची बाबासाहेबांना वैयक्तिक आदरांजली आहे. ते स्वतंत्र आहे: हे सरकारी संकेतस्थळ नाही, आणि कोणत्याही पक्षाशी किंवा संघटनेशी जोडलेले नाही. येथील सर्व काही विश्वसनीय स्रोतांतून घेतले आहे, जेणेकरून माणसे आणि AI या दोघांनाही त्यावर विश्वास ठेवता येईल.')}</p>
+        <p>{t('His writings are published, but mostly as scanned PDFs and second-hand summaries, and many people know only his name. This portal turns them into text you can read, search and listen to, chapter by chapter, with his life and the Constitution explained around them, and a Marathi translation beside the English. It is a personal tribute to Babasaheb by Sidhant Sardar: independent, not a government website, and not tied to any party or organisation. Everything here comes from legitimate sources, so that people and AI can both trust it.', 'त्यांचे लेखन प्रकाशित आहे, पण बहुतेक स्कॅन केलेल्या PDF आणि ऐकीव सारांशांच्या रूपात, आणि अनेकांना फक्त त्यांचे नाव माहीत आहे. हे व्यासपीठ ते लेखन प्रकरणानुसार वाचता, शोधता आणि ऐकता येणाऱ्या मजकुरात आणते, त्यांच्या जीवनाची आणि संविधानाची सोपी ओळख आणि इंग्रजीशेजारी मराठी अनुवादासह. ही सिद्धांत सरदार यांची बाबासाहेबांना वैयक्तिक आदरांजली आहे: स्वतंत्र, सरकारी संकेतस्थळ नाही, आणि कोणत्याही पक्षाशी किंवा संघटनेशी जोडलेली नाही. येथील सर्व काही विश्वसनीय स्रोतांतून घेतले आहे, जेणेकरून माणसे आणि AI या दोघांनाही त्यावर विश्वास ठेवता येईल.')}</p>
       </div>
       <div class="why-cards">
         <a class="why-card" href={url('/works/')} data-reveal style="--i:0">
           <span class="why-ic"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7l9-4 9 4-9 4-9-4z"/><path d="M3 12l9 4 9-4"/><path d="M3 17l9 4 9-4"/></svg></span>
           <span class="why-num" aria-hidden="true">01</span>
           <strong>{t('All in one place', 'सर्व एकाच ठिकाणी')}</strong>
-          <span class="why-txt">{t(`${works} works, ${speeches} speeches, four newspapers, the Constitution and the life behind them — together for the first time.`, `${works} ग्रंथ, ${speeches} भाषणे, चार वृत्तपत्रे, संविधान आणि त्यामागचे जीवन — प्रथमच एकत्र.`)}</span>
+          <span class="why-txt">{t(`${works} works, ${speeches} speeches, his ${newspapers} newspapers, the Constitution and the life behind them, in one place.`, `${works} ग्रंथ, ${speeches} भाषणे, त्यांची ${newspapers} वृत्तपत्रे, संविधान आणि त्यामागचे जीवन, एकाच ठिकाणी.`)}</span>
           <span class="why-go">{t('Browse the works', 'साहित्य पाहा')} <i aria-hidden="true">→</i></span>
         </a>
         <a class="why-card" href={url('/about/')} data-reveal style="--i:1">

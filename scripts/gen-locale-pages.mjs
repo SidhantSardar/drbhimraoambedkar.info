@@ -6,7 +6,8 @@ import { fileURLToPath } from 'node:url';
 
 const pages = path.join(path.dirname(fileURLToPath(import.meta.url)), '../src/pages');
 const out = path.join(pages, 'mr');
-const SKIP = new Set(['404.astro']);
+// English-only pages (no Marathi version yet): the chat that answers with passages, English first.
+const SKIP = new Set(['404.astro', 'chat.astro']);
 fs.rmSync(out, { recursive: true, force: true });
 // The classic-design preview on staging is built in English only, to keep the deploy small.
 if (process.env.SKIP_MARATHI === '1') { console.log('Marathi pages: skipped (SKIP_MARATHI=1)'); process.exit(0); }
