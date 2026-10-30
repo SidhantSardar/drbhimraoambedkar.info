@@ -39,8 +39,23 @@ const chapterTitle = name(leaf.chapter.title);
 const partLabel = leaf.chapter.parts.length > 1 ? name(leaf.title) : '';
 const labelOf = (l: Leaf) => (l.chapter.parts.length > 1 ? `${name(l.chapter.title)} — ${name(l.title)}` : name(l.chapter.title));
 const volLabel = volLabelIn(vol, lang);
+const groupName = leaf.chapter.group ? name(leaf.chapter.group) : '';
+
+// Right-hand "On this page": every printed page, with the first heading on it when there is one.
+const SMALL = /^(a|an|and|as|at|by|for|from|in|of|on|or|the|to|with)$/;
+const tidy = (s: string) => (/[a-z]/.test(s) ? s : s.toLowerCase().replace(/[a-z][a-z'’.]*/g, (w, i) => (i > 0 && SMALL.test(w) ? w : w[0].toUpperCase() + w.slice(1))));
+const short = (s: string) => { const x = tidy(s.trim()); return x.length > 44 ? x.slice(0, 42).trim() + '…' : x; };
+const outline = pagesShown.filter((r) => r.blocks.length > 0).map((r) => {
+  const h = r.blocks.find((b: { type: string }) => b.type === 'h') as { text: string } | undefined;
+  return {
+    id: `p${r.p}`,
+    label: r.n ? t(`Page ${r.n}`, `पृष्ठ ${r.n}`) : t(`PDF page ${r.p}`, `PDF पृष्ठ ${r.p}`),
+    sub: h ? short(h.text) : undefined,
+  };
+});
+const here = partLabel ? `${chapterTitle} · ${partLabel}` : chapterTitle;
 ---
-<DocsShell vol={vol} current={leaf.slug} title={`${chapterTitle}${partLabel ? ` (${partLabel})` : ''} — ${volLabel}`} description={t(`${leaf.chapter.title}, from ${vol.label} of Dr. Babasaheb Ambedkar: Writings and Speeches — the full text, page by page.`, translated ? `${chapterTitle} — डॉ. बाबासाहेब आंबेडकर: लेखन आणि भाषणे, ${volLabel}. पान न् पान मराठी अनुवाद, मूळ इंग्रजीसह.` : `${chapterTitle} — डॉ. बाबासाहेब आंबेडकर: लेखन आणि भाषणे, ${volLabel}. पान न् पान संपूर्ण मजकूर.`)}>
+<DocsShell vol={vol} current={leaf.slug} here={here} outline={outline} pdf={`${vol.sourceUrl}#page=${leaf.start}`} title={`${chapterTitle}${partLabel ? ` (${partLabel})` : ''} — ${volLabel}`} description={t(`${leaf.chapter.title}, from ${vol.label} of Dr. Babasaheb Ambedkar: Writings and Speeches — the full text, page by page.`, translated ? `${chapterTitle} — डॉ. बाबासाहेब आंबेडकर: लेखन आणि भाषणे, ${volLabel}. पान न् पान मराठी अनुवाद, मूळ इंग्रजीसह.` : `${chapterTitle} — डॉ. बाबासाहेब आंबेडकर: लेखन आणि भाषणे, ${volLabel}. पान न् पान संपूर्ण मजकूर.`)}>
   <article
     class="docs-article"
     data-pagefind-body={hasText ? '' : undefined}
@@ -51,20 +66,46 @@ const volLabel = volLabelIn(vol, lang);
     <span hidden data-pagefind-meta="pdf">{vol.sourceUrl}</span>
     <span hidden data-pagefind-meta="volumeTitle">{vol.title}</span>
 
-    <nav class="docs-crumbs" aria-label={t('Breadcrumb', 'मार्ग')} data-pagefind-ignore>
-      <a href={url('/library/')}>{t('Library', 'ग्रंथालय')}</a> <span>/</span>
-      <a href={url(`/library/${vol.id}/`)}>{volLabel}</a>
-      {leaf.chapter.group && <><span>/</span> <span>{name(leaf.chapter.group)}</span></>}
-    </nav>
     <header class="docs-head" data-pagefind-ignore>
+      <nav class="docs-crumbs" aria-label={t('Breadcrumb', 'मार्ग')}>
+        <a href={url('/library/')}>{t('Library', 'ग्रंथालय')}</a><span aria-hidden="true">›</span>
+        <a href={url(`/library/${vol.id}/`)}>{volLabel}</a>
+        {groupName && <><span aria-hidden="true">›</span><span class="dc-here">{groupName}</span></>}
+      </nav>
       <h1>{chapterTitle}</h1>
       {mr && chapterTitle !== leaf.chapter.title && <p class="docs-orig-title"><span>मूळ इंग्रजी शीर्षक:</span> <span lang="en">{leaf.chapter.title}</span></p>}
       <p class="docs-meta">
-        {partLabel && <span>{partLabel} · </span>}
+        {partLabel && <span class="docs-part">{partLabel}</span>}
         <span>{t(`PDF pages ${leaf.start}–${leaf.end}`, `PDF पृष्ठे ${leaf.start}–${leaf.end}`)}</span>
-        <span> · {t(`Dr. Babasaheb Ambedkar: Writings and Speeches, ${vol.label}`, `डॉ. बाबासाहेब आंबेडकर: लेखन आणि भाषणे, ${volLabel}`)}</span>
+        <span>{t(`Writings and Speeches, ${vol.label}`, `लेखन आणि भाषणे, ${volLabel}`)}</span>
       </p>
+      <div class="rm-switch" role="radiogroup" aria-label={t('Reading mode', 'वाचन पद्धत')} data-rm>
+        <button type="button" role="radio" aria-checked="true" data-mode="text">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 6h14M5 10h14M5 14h14M5 18h9" /></svg>{t('Text', 'मजकूर')}
+        </button>
+        <button type="button" role="radio" aria-checked="false" data-mode="split">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="1" /><path d="M12 4v16" /></svg>{t('Side by side', 'शेजारी शेजारी')}
+        </button>
+        <button type="button" role="radio" aria-checked="false" data-mode="pdf">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h7l5 5v13H7z" /><path d="M14 3v5h5" /></svg>{t('Official PDF', 'मूळ PDF')}
+        </button>
+      </div>
     </header>
+
+    <section class="rm-pdf" data-rm-pdf data-src={url(`/pdf/${vol.id}/${leaf.slug}.pdf`)} data-start={leaf.start} data-end={leaf.end} data-pagefind-ignore aria-label={t('Official PDF', 'मूळ PDF')}>
+      <div class="rm-pdf-bar">
+        <span class="rm-pdf-src">{t(`Original · pp. ${leaf.start}–${leaf.end}`, `मूळ · पृ. ${leaf.start}–${leaf.end}`)}</span>
+        <span class="rm-zoom">
+          <button type="button" data-rm-zoom="-1" aria-label={t('Zoom out', 'लहान करा')}>−</button>
+          <button type="button" data-rm-zoom="0" aria-label={t('Fit', 'बसवा')}>{t('Fit', 'बसवा')}</button>
+          <button type="button" data-rm-zoom="1" aria-label={t('Zoom in', 'मोठे करा')}>+</button>
+        </span>
+        <a href={url(`/pdf/${vol.id}/${leaf.slug}.pdf`)} target="_blank" rel="noopener" data-rm-open>{t('Open in a new tab ↗', 'नवीन टॅबमध्ये उघडा ↗')}</a>
+      </div>
+      <div class="rm-pages" data-rm-pages tabindex="0" data-l-page={t('PDF page', 'PDF पृष्ठ')} data-l-fail={t('The PDF could not be shown here. Use “Open in a new tab”.', 'PDF येथे दाखवता आले नाही. “नवीन टॅबमध्ये उघडा” वापरा.')}>
+        <p class="rm-loading">{t('Loading the original pages…', 'मूळ पाने उघडत आहे…')}</p>
+      </div>
+    </section>
 
     {hasText && (
       <div class="ra-anchor" data-ra-anchor data-pagefind-ignore>
@@ -140,6 +181,147 @@ const volLabel = volLabelIn(vol, lang);
       {next && <a class="next" href={url(`/library/${vol.id}/${next.slug}/`)}><small>{t('Next →', 'पुढील →')}</small><strong>{labelOf(next)}</strong></a>}
     </nav>
   </article>
+  <script is:inline>
+    (function () {
+      /* Reading modes on wide screens: the text; the text and the original pages side by side, scrolling together;
+         or the original pages alone, one whole page at a time. */
+      var docs = document.querySelector('.docs'), sw = document.querySelector('[data-rm]'), pane = document.querySelector('[data-rm-pdf]');
+      if (!docs || !sw || !pane) return;
+      var box = pane.querySelector('[data-rm-pages]'), open = pane.querySelector('[data-rm-open]');
+      var src = pane.dataset.src, start = parseInt(pane.dataset.start, 10), end = parseInt(pane.dataset.end, 10), wide = window.matchMedia('(min-width: 1024px)');
+      var secs = Array.prototype.slice.call(document.querySelectorAll('.docs-article .docs-page'));
+      var secOf = {}; secs.forEach(function (s) { var h = s.querySelector('h2[id^="p"]'); if (h) secOf[parseInt(h.id.slice(1), 10)] = s; });
+      var mode = 'text';
+      try { mode = localStorage.getItem('read-mode') || 'text'; } catch (e) {}
+      var cur = function () { return docs.getAttribute('data-mode') || 'text'; };
+
+      // The original pages, drawn with pdf.js from this site's copy of the chapter (loaded only when asked for).
+      var PDFJS = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/';
+      var doc = null, loading = null, zoom = 1, slots = [], ratio = 1.5;
+      var loadLib = function () {
+        if (window.pdfjsLib) return Promise.resolve(window.pdfjsLib);
+        return new Promise(function (ok, bad) {
+          var sc = document.createElement('script'); sc.src = PDFJS + 'pdf.min.js';
+          sc.onload = function () { window.pdfjsLib.GlobalWorkerOptions.workerSrc = PDFJS + 'pdf.worker.min.js'; ok(window.pdfjsLib); };
+          sc.onerror = bad; document.head.appendChild(sc);
+        });
+      };
+      var draw = function (slot) {
+        if (slot.drawn || !doc) return;
+        slot.drawn = true;
+        doc.getPage(slot.n).then(function (page) {
+          var base = page.getViewport({ scale: 1 });
+          var vp = page.getViewport({ scale: (slot.el.clientWidth / base.width) * (window.devicePixelRatio || 1) });
+          var c = document.createElement('canvas'); c.width = vp.width; c.height = vp.height;
+          return page.render({ canvasContext: c.getContext('2d'), viewport: vp }).promise.then(function () {
+            var old = slot.el.querySelector('canvas'); if (old) old.remove();
+            slot.el.appendChild(c);
+          });
+        }).catch(function () { slot.drawn = false; });
+      };
+      var io = 'IntersectionObserver' in window ? new IntersectionObserver(function (es) {
+        es.forEach(function (e) { if (e.isIntersecting) draw(slots[e.target.dataset.i]); });
+      }, { root: box, rootMargin: '1200px 0px' }) : null;
+      // Page size: side by side fits the pane's width; the PDF view fits one whole page in the screen's height.
+      var layout = function () {
+        if (!slots.length) return;
+        var cs = getComputedStyle(box);
+        var w = box.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight);
+        var h = box.clientHeight - parseFloat(cs.paddingTop) - parseFloat(cs.paddingBottom);
+        var fit = cur() === 'pdf' ? Math.min(w, h / ratio) : w;
+        box.style.setProperty('--rm-w', Math.round(fit * zoom) + 'px');
+        slots.forEach(function (s) { s.drawn = false; if (io) { io.unobserve(s.el); io.observe(s.el); } else draw(s); });
+      };
+      var ensure = function () {
+        if (loading) return loading;
+        loading = loadLib().then(function (lib) { return lib.getDocument(src).promise; }).then(function (d) {
+          doc = d; box.innerHTML = '';
+          return d.getPage(1).then(function (p1) {
+            var vp = p1.getViewport({ scale: 1 }); ratio = vp.height / vp.width;
+            for (var i = 1; i <= d.numPages; i++) {
+              var el = document.createElement('figure'); el.className = 'rm-page'; el.dataset.i = i - 1;
+              el.style.aspectRatio = vp.width + ' / ' + vp.height;
+              var cap = document.createElement('figcaption'); cap.textContent = box.dataset.lPage + ' ' + (start + i - 1);
+              el.appendChild(cap); box.appendChild(el); slots.push({ el: el, n: i, drawn: false });
+            }
+            layout();
+          });
+        }).catch(function () { box.innerHTML = '<p class="rm-loading">' + box.dataset.lFail + '</p>'; });
+        return loading;
+      };
+      var gotoPage = function (p) {
+        var s = slots[Math.min(Math.max(p - start, 0), slots.length - 1)];
+        if (s) box.scrollTop = s.el.offsetTop - 26;
+      };
+
+      // Side by side: both sides move together, page for page, from whichever side the reader is scrolling.
+      var lead = 'text', busy = false;
+      var anchorT = function () { return window.innerHeight * 0.3; };
+      var anchorP = function () { return box.clientHeight * 0.3; };
+      var fromText = function () {
+        if (!slots.length) return;
+        var a = anchorT(), sec = null;
+        for (var i = 0; i < secs.length; i++) { if (secs[i].getBoundingClientRect().top <= a) sec = secs[i]; else break; }
+        sec = sec || secs[0]; if (!sec) return;
+        var r = sec.getBoundingClientRect(), f = Math.min(1, Math.max(0, (a - r.top) / (r.height || 1)));
+        var p = parseInt(sec.querySelector('h2').id.slice(1), 10), s = slots[p - start]; if (!s) return;
+        box.scrollTo({ top: s.el.offsetTop + f * s.el.offsetHeight - anchorP(), behavior: 'instant' });
+      };
+      var fromPdf = function () {
+        if (!slots.length) return;
+        var y = box.scrollTop + anchorP(), s = slots[0];
+        for (var i = 0; i < slots.length; i++) { if (slots[i].el.offsetTop <= y) s = slots[i]; else break; }
+        var f = Math.min(1, Math.max(0, (y - s.el.offsetTop) / s.el.offsetHeight));
+        var sec = secOf[start + s.n - 1]; if (!sec) return;
+        var r = sec.getBoundingClientRect();
+        window.scrollTo({ top: window.scrollY + r.top + f * r.height - anchorT(), behavior: 'instant' });
+      };
+      // one update per frame, always with the latest position (the side being scrolled leads, so the other never echoes back)
+      var sync = function (fn) {
+        if (busy || cur() !== 'split') return;
+        busy = true; requestAnimationFrame(function () { busy = false; fn(); });
+      };
+      ['wheel', 'touchstart', 'pointerdown', 'keydown'].forEach(function (ev) {
+        box.addEventListener(ev, function () { lead = 'pdf'; }, { passive: true });
+        window.addEventListener(ev, function (e) { if (!box.contains(e.target)) lead = 'text'; }, { passive: true, capture: true });
+      });
+      window.addEventListener('scroll', function () { if (lead === 'text') sync(fromText); }, { passive: true });
+      box.addEventListener('scroll', function () { if (lead === 'pdf') sync(fromPdf); }, { passive: true });
+
+      var apply = function (m, save) {
+        var was = cur(), from = was === 'text' ? (function () {
+          var a = anchorT(), p = start;
+          secs.forEach(function (s) { if (s.getBoundingClientRect().top <= a) p = parseInt(s.querySelector('h2').id.slice(1), 10); });
+          return p;
+        })() : 0;
+        mode = m;
+        docs.setAttribute('data-mode', wide.matches ? m : 'text');
+        document.documentElement.classList.toggle('rm-lock', wide.matches && m === 'pdf');
+        sw.querySelectorAll('[data-mode]').forEach(function (b) { b.setAttribute('aria-checked', b.dataset.mode === m ? 'true' : 'false'); });
+        if (save) { try { localStorage.setItem('read-mode', m); } catch (e) {} }
+        if (!wide.matches || m === 'text') return;
+        if (m === 'pdf') window.scrollTo(0, 0);
+        ensure().then(function () {
+          layout();
+          if (m === 'split') { lead = 'text'; fromText(); }
+          else if (from) gotoPage(from);
+        });
+      };
+      sw.addEventListener('click', function (e) { var b = e.target.closest('[data-mode]'); if (b) apply(b.dataset.mode, true); });
+      wide.addEventListener('change', function () { apply(mode); });
+      pane.querySelectorAll('[data-rm-zoom]').forEach(function (b) {
+        b.addEventListener('click', function () {
+          var d = parseInt(b.dataset.rmZoom, 10), y = box.scrollTop / (box.scrollHeight || 1);
+          zoom = d === 0 ? 1 : Math.min(3, Math.max(0.5, Math.round((zoom + d * 0.25) * 100) / 100));
+          layout();
+          if (cur() === 'split') fromText(); else box.scrollTop = y * box.scrollHeight;
+        });
+      });
+      var rt = null;
+      window.addEventListener('resize', function () { clearTimeout(rt); rt = setTimeout(function () { layout(); if (cur() === 'split') fromText(); }, 200); });
+      apply(mode);
+    })();
+  </script>
   <script is:inline>
     (function () {
       /* Listen: text to speech with the voices on the reader's own device (Web Speech API). Nothing is sent anywhere. */

@@ -77,12 +77,10 @@
 [data-skin='light'][data-theme='dark'] .docs-vol small { color: var(--link-blue); }
 [data-skin='light'][data-theme='dark'] .docs-filter input { background: var(--surface); }
 [data-skin='light'][data-theme='dark'] .dg-label { color: var(--link-blue); }
-[data-skin='light'][data-theme='dark'] .docs-nav .dn-row:hover { background: var(--surface); }
-[data-skin='light'][data-theme='dark'] .docs-nav a.dn-row[aria-current='page'] { color: var(--link-blue); background: var(--surface); }
+[data-skin='light'][data-theme='dark'] .docs-nav a.dn-row[aria-current='page'] { color: var(--link-blue); }
 [data-skin='light'][data-theme='dark'] .docs-nav a.dn-row[aria-current='page'] .dn-num { color: var(--link-blue); }
 [data-skin='light'][data-theme='dark'] .dn-count { background: var(--surface); }
-[data-skin='light'][data-theme='dark'] .docs-nav .dn-parts a:hover { background: var(--surface); }
-[data-skin='light'][data-theme='dark'] .docs-nav .dn-parts a[aria-current='page'] { color: var(--link-blue); background: var(--surface); }
+[data-skin='light'][data-theme='dark'] .docs-nav .dn-parts a[aria-current='page'] { color: var(--link-blue); }
 [data-skin='light'][data-theme='dark'] .ra-stop { background: var(--surface); border: 1px solid var(--line, var(--line)); }
 [data-skin='light'][data-theme='dark'] .ra-rate select { background: var(--surface); border: 1px solid var(--line, var(--line)); }
 [data-skin='light'][data-theme='dark'] .ra-voice select { background: var(--surface); border: 1px solid var(--line, var(--line)); }
@@ -92,3 +90,9 @@
   [data-skin='light'][data-theme='dark'] .nav-open .site-nav > ul > li > a[aria-current='page'] { color: var(--link-blue); }
   [data-skin='light'][data-theme='dark'] .nav-open .site-nav .menu a[aria-current='page'] { color: var(--link-blue); }
 }
+[data-skin='light'][data-theme='dark'] .docs-nav a.dn-row[aria-current='page'] { color: var(--link-blue); }
+[data-skin='light'][data-theme='dark'] .docs-nav .dn-parts a[aria-current='page'] { color: var(--link-blue); }
+[data-skin='light'][data-theme='dark'] .docs-head .docs-crumbs .dc-here { color: var(--link-blue); }
+[data-skin='light'][data-theme='dark'] .docs-pager a:hover strong { color: var(--link-blue); }
+[data-skin='light'][data-theme='dark'] .docs-rail-list a[aria-current='true'] { color: var(--link-blue); }
+[data-skin='light'][data-theme='dark'] .docs-rail-tools a:hover { color: var(--link-blue); }

@@ -1,8 +1,8 @@
 ---
 // Left-hand navigation of the documentation-style reader: the volume's parts, chapters and sub-parts.
-import { tocOf, coverOf, titleIn, volLabelIn, volTitleIn, leavesOf, type Volume } from '../lib/library';
+import { volumes, tocOf, coverOf, titleIn, volLabelIn, volTitleIn, leavesOf, type Volume } from '../lib/library';
 import { url } from '../lib/site';
-import { getLang, translator } from '../i18n';
+import { getLang, translator, pathIn } from '../i18n';
 
 interface Props { vol: Volume; current?: string }
 const { vol, current } = Astro.props;
@@ -48,6 +48,13 @@ const progress = leafIndex >= 0 ? Math.round(((leafIndex + 1) / leaves.length) *
       <img src={url(coverOf(vol))} alt="" width="56" height="86" loading="lazy" />
       <span title={mr ? vol.title : undefined}><small>{volLabelIn(vol, lang)}</small>{volTitleIn(vol, lang)}</span>
     </a>
+    <label class="docs-volswitch">
+      <span class="visually-hidden">{t('Switch volume', 'खंड बदला')}</span>
+      <select data-vol-switch>
+        <option value="" selected>{t('Switch volume…', 'दुसरा खंड निवडा…')}</option>
+        {volumes().map((v) => <option value={pathIn(`/library/${v.id}/`, lang)} disabled={v.id === vol.id}>{volLabelIn(v, lang)} · {volTitleIn(v, lang)}</option>)}
+      </select>
+    </label>
     {curIndex >= 0 && (
       <div class="docs-progress" aria-label={t(`Chapter ${curIndex + 1} of ${numbered.length}`, `प्रकरण ${curIndex + 1} / ${numbered.length}`)}>
         <span>{t(`Chapter ${curIndex + 1} of ${numbered.length}`, `प्रकरण ${curIndex + 1} / ${numbered.length}`)}</span>

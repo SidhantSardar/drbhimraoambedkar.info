@@ -1,22 +1,74 @@
 ---
-// Two-column documentation layout (navigation left, reading area right) used by every volume.
+// Documentation-style reader: contents on the left, the text in the middle, "On this page" on the right.
 import Base from '../layouts/Base.astro';
 import DocsNav from './DocsNav.astro';
 import { volLabelIn, type Volume } from '../lib/library';
+import { url } from '../lib/site';
 import { getLang, translator } from '../i18n';
 
-interface Props { vol: Volume; current?: string; title: string; description: string }
-const { vol, current, title, description } = Astro.props;
+export interface OutlineItem { id: string; label: string; sub?: string }
+interface Props {
+  vol: Volume;
+  current?: string;
+  title: string;
+  description: string;
+  /** Where the reader is, for the bar above the text on phones ("Vol. 1 › Castes in India"). */
+  here?: string;
+  /** Headings of this page, for the right-hand "On this page" list. */
+  outline?: OutlineItem[];
+  /** Link to the official PDF page range. */
+  pdf?: string;
+}
+const { vol, current, title, description, here, outline = [], pdf } = Astro.props;
 const lang = getLang(Astro);
 const t = translator(lang);
+const volLabel = volLabelIn(vol, lang);
+const rail = outline.length > 0;
+const year = new Date().getFullYear();
 ---
-<Base title={title} description={description}>
-  <div class="docs">
-    <button class="docs-toggle" type="button" aria-expanded="false" data-docs-toggle aria-controls="docs-nav"><span class="docs-toggle-label">{t(`Contents of ${vol.label}`, `${volLabelIn(vol, lang)} — अनुक्रमणिका`)}</span></button>
+<Base title={title} description={description} footer={false}>
+  <div class:list={['docs', { 'has-rail': rail }]}>
+    <button class="docs-toggle" type="button" aria-expanded="false" data-docs-toggle aria-controls="docs-nav">
+      <span class="docs-toggle-label">
+        <span class="dt-vol">{volLabel}</span>
+        {here && <><span class="dt-sep" aria-hidden="true">›</span><span class="dt-here">{here}</span></>}
+        {!here && <span class="dt-here">{t('Contents', 'अनुक्रमणिका')}</span>}
+      </span>
+    </button>
     <DocsNav vol={vol} current={current} />
     <div class="docs-main">
       <slot />
+      <footer class="docs-foot" data-pagefind-ignore>
+        <a class="docs-foot-brand" href={url('/')}>
+          <img src={url('/images/brand/ashoka-chakra.svg')} alt="" width="22" height="22" />
+          <span>{t('Dr. Bhimrao Ambedkar', 'डॉ. भीमराव आंबेडकर')}</span>
+        </a>
+        <nav aria-label={t('More', 'अधिक')}>
+          <a href={url('/library/')}>{t('All volumes', 'सर्व खंड')}</a>
+          <a href={url('/about/')}>{t('About', 'आमच्याविषयी')}</a>
+          <a href={url('/contribute/')}>{t('Report an error', 'चूक कळवा')}</a>
+        </nav>
+        <p>{t(`A tribute by Sidhant Sardar · ${year}`, `सिद्धांत सरदार यांची आदरांजली · ${year}`)}</p>
+      </footer>
     </div>
+    {rail && (
+      <aside class="docs-rail" aria-label={t('On this page', 'या पानावर')} data-pagefind-ignore>
+        <p class="docs-rail-title">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h10M4 18h13" /></svg>
+          {t('On this page', 'या पानावर')}
+        </p>
+        <ol class="docs-rail-list" data-rail>
+          {outline.map((o) => (
+            <li><a href={`#${o.id}`} data-rail-link={o.id}><span>{o.label}</span>{o.sub && <small>{o.sub}</small>}</a></li>
+          ))}
+        </ol>
+        <div class="docs-rail-tools">
+          {pdf && <a href={pdf} target="_blank" rel="noopener noreferrer">{t('Official PDF ↗', 'अधिकृत PDF ↗')}</a>}
+          <a href={url('/contribute/')}>{t('Report an error', 'चूक कळवा')}</a>
+          <a href="#top" data-rail-top>{t('Back to top ↑', 'वर जा ↑')}</a>
+        </div>
+      </aside>
+    )}
   </div>
   <script is:inline>
     (function () {
@@ -48,6 +100,39 @@ const t = translator(lang);
         var empty = nav.querySelector('[data-docs-filter-empty]');
         if (empty) empty.hidden = !q || !!nav.querySelector('li[data-title]:not([hidden])');
       });
+      // "/" jumps to the chapter search, as in documentation sites.
+      document.addEventListener('keydown', function (e) {
+        if (e.key !== '/' || !f || /input|textarea|select/i.test((e.target.tagName || '')) || e.target.isContentEditable) return;
+        e.preventDefault(); if (window.innerWidth < 980) setOpen(true); f.focus();
+      });
+      // Switch volume from the contents panel.
+      var vs = document.querySelector('[data-vol-switch]');
+      if (vs) vs.addEventListener('change', function () { if (vs.value) location.href = vs.value; });
+
+      // "On this page": highlight the page being read and keep it in view in the list.
+      var rail = document.querySelector('[data-rail]');
+      if (rail && 'IntersectionObserver' in window) {
+        var links = {}; rail.querySelectorAll('[data-rail-link]').forEach(function (a) { links[a.dataset.railLink] = a; });
+        var heads = Object.keys(links).map(function (id) { return document.getElementById(id); }).filter(Boolean);
+        var active = null;
+        var setActive = function (id) {
+          if (active === id || !links[id]) return;
+          if (active && links[active]) links[active].removeAttribute('aria-current');
+          active = id; links[id].setAttribute('aria-current', 'true');
+          var box = rail.getBoundingClientRect(), r = links[id].getBoundingClientRect();
+          if (r.top < box.top || r.bottom > box.bottom) rail.scrollTop += r.top - box.top - box.height / 3;
+        };
+        var update = function () {
+          var pick = heads[0];
+          for (var i = 0; i < heads.length; i++) { if (heads[i].getBoundingClientRect().top < window.innerHeight * 0.35) pick = heads[i]; else break; }
+          if (pick) setActive(pick.id);
+        };
+        var ticking = false;
+        window.addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(function () { ticking = false; update(); }); } }, { passive: true });
+        update();
+      }
+      var top = document.querySelector('[data-rail-top]');
+      if (top) top.addEventListener('click', function (e) { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); });
     })();
   </script>
 </Base>

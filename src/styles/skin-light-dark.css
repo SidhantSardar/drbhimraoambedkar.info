@@ -58,3 +58,5 @@
 [data-skin='light'][data-theme='dark'] :is(.latest-card, .card, .tn, .work, .article-card, .doc) { background: var(--surface) !important; box-shadow: 0 0 0 1px var(--line); }
 [data-skin='light'][data-theme='dark'] .ticker { background: var(--surface) !important; }
 [data-skin='light'][data-theme='dark'] .prose strong { color: #fff; }
+[data-skin='light'][data-theme='dark'] .rm-pages { background: #070b14; }
+[data-skin='light'][data-theme='dark'] .rm-page { box-shadow: 0 0 0 1px var(--line); }
