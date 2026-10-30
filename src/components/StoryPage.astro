@@ -83,7 +83,7 @@ const issueUrl = `${SITE.repoUrl}/issues/new?labels=correction&title=${encodeURI
 
       <details class="callout" style="margin:24px 0" data-pagefind-ignore>
         <summary style="cursor:pointer;font-weight:700">{t('Cite this page', 'हे पान संदर्भ म्हणून द्या')}</summary>
-        <p style="margin:12px 0 0;font-size:0.95rem">“{d.title}{d.subtitle ? `: ${d.subtitle}` : ''}.” <em>{t('Dr. B. R. Ambedkar — His Life and Work, Together', SITE.mrTitle)}</em>, {SITE.domain}. {new URL(Astro.url.pathname, Astro.site).toString()}</p>
+        <p style="margin:12px 0 0;font-size:0.95rem">“{d.title}{d.subtitle ? `: ${d.subtitle}` : ''}.” <em>{t(SITE.title, SITE.mrTitle)}</em>, {SITE.domain}. {new URL(Astro.url.pathname, Astro.site).toString()}</p>
       </details>
 
       {lang === 'mr' ? (

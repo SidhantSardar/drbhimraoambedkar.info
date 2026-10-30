@@ -226,21 +226,21 @@ const cats = [...new Set(updates.map((n) => n.category))];
           <span class="why-ic"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7l9-4 9 4-9 4-9-4z"/><path d="M3 12l9 4 9-4"/><path d="M3 17l9 4 9-4"/></svg></span>
           <span class="why-num" aria-hidden="true">01</span>
           <strong>{t('All in one place', 'सर्व एकाच ठिकाणी')}</strong>
-          <span class="why-txt">{t(`${works} works, ${speeches} speeches, his ${newspapers} newspapers, the Constitution and the life behind them, in one place.`, `${works} ग्रंथ, ${speeches} भाषणे, त्यांची ${newspapers} वृत्तपत्रे, संविधान आणि त्यामागचे जीवन, एकाच ठिकाणी.`)}</span>
+          <span class="why-txt">{t(`${works} works, ${speeches} speeches, his ${newspapers} newspapers, the Constitution and the story of his life, gathered in one place. No more hunting through scattered PDFs and websites: start from any book, speech or date and follow it straight to the full text.`, `${works} ग्रंथ, ${speeches} भाषणे, त्यांची ${newspapers} वृत्तपत्रे, संविधान आणि त्यांच्या जीवनाची कथा, सर्व एकाच ठिकाणी. विखुरलेल्या PDF आणि संकेतस्थळांवर शोधत फिरण्याची गरज नाही: कोणत्याही ग्रंथ, भाषण किंवा तारखेपासून सुरुवात करा आणि थेट संपूर्ण मजकुरापर्यंत पोहोचा.`)}</span>
           <span class="why-go">{t('Browse the works', 'साहित्य पाहा')} <i aria-hidden="true">→</i></span>
         </a>
         <a class="why-card" href={url('/about/')} data-reveal style="--i:1">
           <span class="why-ic"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 11H6.5a3.5 3.5 0 0 1 3.5-3.5V5a6 6 0 0 0-6 6v6h6v-6z"/><path d="M20 11h-3.5A3.5 3.5 0 0 1 20 7.5V5a6 6 0 0 0-6 6v6h6v-6z"/></svg></span>
           <span class="why-num" aria-hidden="true">02</span>
           <strong>{t('From the source, free to share', 'मूळ स्रोतातून, सर्वांसाठी खुले')}</strong>
-          <span class="why-txt">{t('Every page is taken word for word from the official volumes published by the Government of India, and links to the original. Works he published in his lifetime have been in the public domain in India since 2017, sixty years after his death, so anyone may read and share them.', 'प्रत्येक पान भारत सरकारने प्रकाशित केलेल्या अधिकृत खंडांतून शब्दशः घेतले आहे आणि मूळ प्रतीशी जोडलेले आहे. त्यांनी आपल्या हयातीत प्रकाशित केलेले साहित्य, त्यांच्या निधनानंतर साठ वर्षांनी, 2017 पासून भारतात सार्वजनिक क्षेत्रात (public domain) आहे; त्यामुळे कोणीही ते वाचू आणि सामायिक करू शकतो.')} <span class="src">{t('(Copyright Act, 1957, s. 22)', '(कॉपीराइट कायदा, 1957, कलम 22)')}</span></span>
+          <span class="why-txt">{t('Every page is taken word for word from the official volumes published by the Government of India, with a link to the original page. What he published in his lifetime has been in the public domain in India since 2017, so anyone may read and share it.', 'प्रत्येक पान भारत सरकारने प्रकाशित केलेल्या अधिकृत खंडांतून शब्दशः घेतले आहे आणि मूळ पानाशी जोडलेले आहे. त्यांनी हयातीत प्रकाशित केलेले साहित्य 2017 पासून भारतात सार्वजनिक क्षेत्रात (public domain) आहे; त्यामुळे कोणीही ते वाचू आणि सामायिक करू शकतो.')} <span class="src">{t('(Copyright Act, 1957, s. 22)', '(कॉपीराइट कायदा, 1957, कलम 22)')}</span></span>
           <span class="why-go">{t('Our source policy', 'आमचे संदर्भ धोरण')} <i aria-hidden="true">→</i></span>
         </a>
         <a class="why-card" href={url('/ask/')} data-reveal style="--i:2">
           <span class="why-ic"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><path d="M18 2.5l1 2.5 2.5 1-2.5 1-1 2.5-1-2.5-2.5-1 2.5-1z"/><path d="M19 14v6M16 17h6"/></svg></span>
           <span class="why-num" aria-hidden="true">03</span>
           <strong>{t('For people and for AI', 'माणसांसाठी आणि AI साठी')}</strong>
-          <span class="why-txt">{t('Open, searchable and free, so that a student, a reader or an AI assistant can answer from the source instead of from hearsay.', 'खुले, शोधता येणारे आणि मोफत — जेणेकरून विद्यार्थी, वाचक किंवा AI सहाय्यक ऐकीव माहितीऐवजी मूळ स्रोतातून उत्तर देऊ शकेल.')}</span>
+          <span class="why-txt">{t('Open, searchable and free for everyone. A student checking a quote, a reader exploring a subject or an AI assistant answering a question can all go straight to his own words, page by page, instead of relying on hearsay.', 'सर्वांसाठी खुले, शोधता येणारे आणि मोफत. एखादे अवतरण तपासणारा विद्यार्थी, एखादा विषय समजून घेणारा वाचक किंवा प्रश्नाचे उत्तर देणारा AI सहाय्यक, सर्वांना ऐकीव माहितीऐवजी पानोपानी त्यांच्याच शब्दांपर्यंत थेट पोहोचता येते.')}</span>
           <span class="why-go">{t('Ask the archive', 'संग्रहात शोधा')} <i aria-hidden="true">→</i></span>
         </a>
       </div>

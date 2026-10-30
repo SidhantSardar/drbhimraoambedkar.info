@@ -807,3 +807,6 @@
 .shelf-grid { padding: 24px 28px 56px; margin: -24px -28px -56px; scroll-padding-inline: 28px; }
 .shelf-cta { margin-top: 48px; }
 @media (max-width: 760px) { .shelf-grid { padding: 20px 16px 44px; margin: -20px -16px -44px; scroll-padding-inline: 16px; } }
+/* why cards: the link sits on the bottom edge of every card, whatever the text length */
+[data-skin='light'] .why-card { grid-template-rows: auto auto 1fr auto; align-content: stretch; }
+[data-skin='light'] .why-go { align-self: end; }

@@ -1,10 +1,13 @@
 export const SITE = {
-  name: 'Dr. Bhimrao Ambedkar',
+  name: 'Prabuddha Pathak',
+  mrName: 'प्रबुद्ध पाठक',
+  tagline: 'Dr. B. R. Ambedkar, in his own words',
+  mrTagline: 'डॉ. बाबासाहेब आंबेडकर, त्यांच्याच शब्दांत',
   domain: 'drbhimraoambedkar.info',
-  title: 'Dr. B. R. Ambedkar — His Life and Work, Together',
+  title: 'Prabuddha Pathak — Dr. B. R. Ambedkar, in his own words',
   description:
     'The life and work of Dr. Bhimrao Ramji Ambedkar — his struggle, education, movements, the Constitution of India, and every book and speech — brought together from authoritative sources and explained simply. Free for everyone.',
-  mrTitle: 'डॉ. बाबासाहेब आंबेडकर — जीवन आणि कार्य, एकाच ठिकाणी',
+  mrTitle: 'प्रबुद्ध पाठक — डॉ. बाबासाहेब आंबेडकर, त्यांच्याच शब्दांत',
   mrDescription:
     'डॉ. भीमराव रामजी आंबेडकर यांचे जीवन आणि कार्य — त्यांचा संघर्ष, शिक्षण, चळवळी, भारताचे संविधान आणि त्यांचे प्रत्येक पुस्तक व भाषण — विश्वसनीय संदर्भांतून एकत्र आणि सोप्या भाषेत. सर्वांसाठी मोफत.',
   repo: 'SidhantSardar/drbhimraoambedkar.info',

@@ -1,5 +1,5 @@
 ---
-import { NAV, url } from '../lib/site';
+import { NAV, SITE, url } from '../lib/site';
 import { getLang, pathIn } from '../i18n';
 const lang = getLang(Astro);
 const mr = lang === 'mr';
@@ -13,9 +13,9 @@ const here = (href: string) => {
 ---
 <header class="site-header" id="top">
   <div class="wrap bar">
-    <a class="brand" href={url('/')} aria-label={mr ? 'डॉ. भीमराव आंबेडकर — मुख्यपृष्ठ' : 'Dr. Bhimrao Ambedkar — home'}>
-      <img class="brand-mark" src={url('/images/brand/ashoka-chakra.svg')} alt="" width="36" height="36" />
-      <span class="brand-name">{mr ? 'डॉ. भीमराव आंबेडकर' : 'Dr. Bhimrao Ambedkar'}<small>{mr ? 'जीवन आणि कार्य, एकाच ठिकाणी' : 'His life and work, together'}</small></span>
+    <a class="brand" href={url('/')} aria-label={mr ? `${SITE.mrName} — मुख्यपृष्ठ` : `${SITE.name} — home`}>
+      <img class="brand-mark" src={url('/images/brand/reader-mark.svg')} alt="" width="36" height="36" />
+      <span class="brand-name">{mr ? SITE.mrName : SITE.name}<small>{mr ? SITE.mrTagline : SITE.tagline}</small></span>
     </a>
     <nav class="site-nav" id="site-nav" aria-label="Main">
       <ul>

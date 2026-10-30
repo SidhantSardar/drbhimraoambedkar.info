@@ -25,7 +25,7 @@ const { title, description = SITE.description, image, progress = false, noindex 
 const skin = import.meta.env.PUBLIC_SKIN || undefined;
 const lang = getLang(Astro);
 const mr = lang === 'mr';
-const fullTitle = title ? `${title} · ${mr ? 'डॉ. बाबासाहेब आंबेडकर' : 'Dr. B. R. Ambedkar'}` : mr ? SITE.mrTitle : SITE.title;
+const fullTitle = title ? `${title} · ${mr ? SITE.mrName : SITE.name}` : mr ? SITE.mrTitle : SITE.title;
 const metaDescription = description === SITE.description && mr ? SITE.mrDescription : description;
 const canonical = new URL(Astro.url.pathname, Astro.site);
 const alternate = (to: 'en' | 'mr') => new URL(pathIn(Astro.url.pathname, to), Astro.site).toString();

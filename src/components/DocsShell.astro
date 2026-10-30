@@ -3,7 +3,7 @@
 import Base from '../layouts/Base.astro';
 import DocsNav from './DocsNav.astro';
 import { volLabelIn, type Volume } from '../lib/library';
-import { url } from '../lib/site';
+import { SITE, url } from '../lib/site';
 import { getLang, translator } from '../i18n';
 
 export interface OutlineItem { id: string; label: string; sub?: string }
@@ -40,8 +40,8 @@ const year = new Date().getFullYear();
       <slot />
       <footer class="docs-foot" data-pagefind-ignore>
         <a class="docs-foot-brand" href={url('/')}>
-          <img src={url('/images/brand/ashoka-chakra.svg')} alt="" width="22" height="22" />
-          <span>{t('Dr. Bhimrao Ambedkar', 'डॉ. भीमराव आंबेडकर')}</span>
+          <img src={url('/images/brand/reader-mark.svg')} alt="" width="22" height="22" />
+          <span>{t(SITE.name, SITE.mrName)}</span>
         </a>
         <nav aria-label={t('More', 'अधिक')}>
           <a href={url('/library/')}>{t('All volumes', 'सर्व खंड')}</a>
