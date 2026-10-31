@@ -14,7 +14,8 @@ export default defineConfig({
   site,
   base,
   trailingSlash: 'always',
-  integrations: [sitemap()],
+  // Pages that are not in the menu (chat, blog while news is off, the story) stay out of the sitemap; they are also noindex.
+  integrations: [sitemap({ filter: (page) => !/^\/(mr\/)?(chat|blog|story)\//.test(new URL(page).pathname) })],
   markdown: {
     processor: unified({ rehypePlugins: [rehypeSourceLinks, rehypeChapterImages] }),
   },

@@ -1,5 +1,5 @@
 ---
-import { SITE, SHOW_NEWS, url } from '../lib/site';
+import { SITE, SHOW_NEWS, url, mailto } from '../lib/site';
 import { getLang, translator } from '../i18n';
 const t = translator(getLang(Astro));
 const year = new Date().getFullYear();
@@ -38,6 +38,7 @@ const year = new Date().getFullYear();
           {SHOW_NEWS && <li><a href={url('/news/')}>{t('News', 'बातम्या')}</a></li>}
           <li><a href={url('/resources/')}>{t('Resources', 'संदर्भ साधने')}</a></li>
           <li><a href={url('/about/')}>{t('About', 'आमच्याविषयी')}</a></li>
+          <li><a href={mailto()}>{t('Send feedback by email', 'ईमेलने अभिप्राय पाठवा')}</a></li>
           <li><a href={url('/contribute/')}>{t('Suggest a correction or source', 'दुरुस्ती किंवा संदर्भ सुचवा')}</a></li>
           <li><a href={SITE.repoUrl} target="_blank" rel="noopener noreferrer">{t('Open source on GitHub', 'GitHub वर खुला स्रोत')}</a></li>
         </ul>

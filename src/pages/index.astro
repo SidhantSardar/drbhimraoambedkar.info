@@ -266,7 +266,7 @@ const cats = [...new Set(updates.map((n) => n.category))];
   <section class="home-ask" aria-labelledby="home-ask-h">
     <div class="wrap" data-reveal>
       <span class="eyebrow">{t('For people and for AI', 'माणसांसाठी आणि AI साठी')}</span>
-      <h2 id="home-ask-h">{t('Ask him, in his own words', 'त्यांनाच विचारा, त्यांच्याच शब्दांत')}</h2>
+      <h2 id="home-ask-h">{t('Search his own words', 'त्यांच्याच शब्दांत शोधा')}</h2>
       <p class="lede">{t(`${pages.toLocaleString('en-IN')} pages of his writings and speeches, searchable word for word. Whether you are a student, a reader or an AI assistant, the answer comes from the source, not from hearsay.`, `त्यांच्या लेखन आणि भाषणांची ${pages.toLocaleString('en-IN')} पाने, शब्दशः शोधता येणारी. तुम्ही विद्यार्थी असा, वाचक असा किंवा AI सहाय्यक — उत्तर ऐकीव माहितीतून नाही, मूळ स्रोतातून येते.`)}</p>
       <form class="home-ask-form" action={url('/ask/')} method="get" role="search">
         <label class="visually-hidden" for="home-q">{t('Search the archive', 'संग्रहात शोधा')}</label>

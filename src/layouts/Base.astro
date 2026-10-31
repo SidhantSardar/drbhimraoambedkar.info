@@ -56,7 +56,7 @@ const ogImage = image ? new URL(image, Astro.site).toString() : undefined;
     <meta property="og:url" content={canonical} />
     {ogImage && <meta property="og:image" content={ogImage} />}
     <meta name="twitter:card" content={ogImage ? 'summary_large_image' : 'summary'} />
-    {noindex && <meta name="robots" content="noindex" />}
+    {(noindex || import.meta.env.PUBLIC_NOINDEX === '1') && <meta name="robots" content="noindex" />}
     <link rel="alternate" type="application/rss+xml" title="Blog" href={url('/rss.xml')} />
     <link rel="sitemap" href={url('/sitemap-index.xml')} />
     {skin === 'ai' && <meta name="theme-color" content="#05060b" />}

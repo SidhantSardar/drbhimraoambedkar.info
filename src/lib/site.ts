@@ -10,6 +10,8 @@ export const SITE = {
   mrTitle: 'प्रबुद्ध पाठक — डॉ. बाबासाहेब आंबेडकर, त्यांच्याच शब्दांत',
   mrDescription:
     'डॉ. भीमराव रामजी आंबेडकर यांचे जीवन आणि कार्य — त्यांचा संघर्ष, शिक्षण, चळवळी, भारताचे संविधान आणि त्यांचे प्रत्येक पुस्तक व भाषण — विश्वसनीय संदर्भांतून एकत्र आणि सोप्या भाषेत. सर्वांसाठी मोफत.',
+  /** Where readers send feedback, corrections and rights requests without a GitHub account. */
+  email: 'sidhantsardar93@gmail.com',
   repo: 'SidhantSardar/drbhimraoambedkar.info',
   repoUrl: 'https://github.com/SidhantSardar/drbhimraoambedkar.info',
 };
@@ -24,6 +26,9 @@ export const GISCUS = {
 };
 
 /** Where the AI answer service lives. On GitHub Pages there is none, so the page falls back to search results. */
+/** A mailto link with the subject filled in. */
+export const mailto = (subject = 'Feedback on Prabuddha Pathak') => `mailto:${SITE.email}?subject=${encodeURIComponent(subject)}`;
+
 export const ASK_ENDPOINT: string = import.meta.env.PUBLIC_ASK_ENDPOINT || '';
 
 /** Prefix a site path with the deploy base (/ on prabuddhapathak.com; a sub-path when deployed elsewhere). */

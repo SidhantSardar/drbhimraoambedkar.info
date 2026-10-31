@@ -1,6 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
-import { url, SITE, SHOW_NEWS } from '../lib/site';
+import { url, SITE, SHOW_NEWS, mailto } from '../lib/site';
 import { getLang, translator } from '../i18n';
 const lang = getLang(Astro);
 const t = translator(lang);
@@ -54,7 +54,7 @@ const guide = `${SITE.repoUrl}/blob/main/i18n/marathi-style-guide.md`;
           <li>डॉ. आंबेडकर यांचे 1956 मध्ये निधन झाले. भारतीय प्रताधिकार कायद्यानुसार त्यांनी हयातीत प्रकाशित केलेले लेखन 2017 मध्ये भारतात सार्वजनिक क्षेत्रात (public domain) आले. त्यांच्या निधनानंतर प्रथम प्रकाशित झालेले लेखन (<em>लेखन आणि भाषणे</em> खंडांतील अनेक लेख) पहिल्या प्रकाशनापासून 60 वर्षे संरक्षित असते; हे खंड महाराष्ट्र शासनाने प्रकाशित केले असून भारत सरकारने ते ऑनलाइन मोफत उपलब्ध करून दिले आहेत. हे संकेतस्थळ ते मोफत, ना-नफा शिक्षणासाठी, नेहमी अधिकृत फाइल्सच्या दुव्यासह, पुनःप्रकाशित आणि अनुवादित करते.</li>
           <li>छायाचित्रे आणि दस्तऐवजांचे परवाने त्यांच्यासोबत दिलेले आहेत. आम्ही फक्त सार्वजनिक क्षेत्रातील किंवा मुक्त परवान्याची छायाचित्रे वापरतो.</li>
           <li>या संकेतस्थळासाठी लिहिलेला मूळ मजकूर <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer">Creative Commons BY-SA 4.0</a> परवान्याखाली उपलब्ध आहे.</li>
-          <li>येथे वापरलेल्या एखाद्या गोष्टीचे हक्क तुमच्याकडे असतील आणि ती बदलावी किंवा काढावी असे वाटत असेल, तर कृपया <a href={url('/contribute/')}>संपर्क करा</a>.</li>
+          <li>येथे वापरलेल्या एखाद्या गोष्टीचे हक्क तुमच्याकडे असतील आणि ती बदलावी किंवा काढावी असे वाटत असेल, तर कृपया <a href={mailto('Rights request: Prabuddha Pathak')}>{SITE.email}</a> वर ईमेल करा.</li>
         </ul>
 
         <h2>पुढे काय</h2>
@@ -109,7 +109,7 @@ const guide = `${SITE.repoUrl}/blob/main/i18n/marathi-style-guide.md`;
           <li>Dr. Ambedkar died in 1956. Under Indian copyright law, the works he published in his lifetime entered the public domain in India in 2017. Writings first published after his death (many papers in the <em>Writings and Speeches</em> volumes) are protected for 60 years from their first publication; the volumes are published by the Government of Maharashtra and made freely available online by the Government of India. This site reproduces and translates them for free, non-commercial education, always linking to the official files.</li>
           <li>Photographs and documents keep their own licences, shown with each one. We only use images that are public domain or freely licensed.</li>
           <li>Original text written for this website is shared under <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer">Creative Commons BY-SA 4.0</a>.</li>
-          <li>If you hold rights to something used here and want it changed or removed, please <a href={url('/contribute/')}>get in touch</a>.</li>
+          <li>If you hold rights to something used here and want it changed or removed, please email <a href={mailto('Rights request: Prabuddha Pathak')}>{SITE.email}</a>.</li>
         </ul>
 
         <h2>What's next</h2>

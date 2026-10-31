@@ -131,7 +131,7 @@ At his conversion in Nagpur on 14 October 1956, people streamed in "with Buddhis
 
 ## "Jai Bhim"
 
-"Jai Bhim" means "Victory to Bhim", from his name Bhimrao. Followers turned the national cry "Jai Hind" into "Jai Bhim", and invitations say "Saprem Jai Bhim" ("Jai Bhim, with love") [source: Zelliot, p. 144](https://archive.org/details/sochara.fromuntouchablet0000zell). He accepted it, and replied to his followers with "Jai Bhim" at the end of his letters [source: Keer, p. 469](https://archive.org/details/dr-ambedkar-life-and-mission-dhananjay-keer).
+"Jai Bhim" means "Victory to Bhim", from his name Bhimrao. Eleanor Zelliot compares it with the nationalist cry "Jai Hind", and notes that invitations say "Saprem Jai Bhim" ("Jai Bhim, with love") [source: Zelliot, p. 144](https://archive.org/details/sochara.fromuntouchablet0000zell). He accepted it, and replied to his followers with "Jai Bhim" at the end of his letters [source: Keer, p. 469](https://archive.org/details/dr-ambedkar-life-and-mission-dhananjay-keer).
 
 The greeting is usually credited to **Babu Hardas L. N.** (Laxman Nagrale, 1904–1939), a leader from Kamptee near Nagpur and a devoted follower of Dr. Ambedkar [source: BAWS Vol. 17 Part III, p. 15](https://www.mea.gov.in/images/CPV/Volume17_Part_III.pdf#page=44) [source: BBC News Hindi](https://www.bbc.com/hindi/india-59297949). BBC News, quoting the Dalit Panther co-founder J. V. Pawar, reports that Hardas asked Samata Sainik Dal volunteers to greet each other with "Jai Bhim" instead of older greetings like "Ram Ram" [source: BBC News Hindi](https://www.bbc.com/hindi/india-59297949).
 

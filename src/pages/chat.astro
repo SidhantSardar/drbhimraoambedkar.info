@@ -28,7 +28,7 @@ const L = {
   micNo: t('Voice input is not supported in this browser. Try Chrome, Edge or Safari.', 'या ब्राउझरमध्ये आवाजाने प्रश्न विचारता येत नाही. Chrome, Edge किंवा Safari वापरून पाहा.'),
 };
 ---
-<Base footer={false} title={t('Ask in his words', 'त्यांच्याच शब्दांत विचारा')} description={t('Ask a question and read the answer in Dr. Ambedkar’s own words: passages from Writings and Speeches, exactly as printed, with the page and the official PDF. Nothing is generated.', 'प्रश्न विचारा आणि उत्तर डॉ. आंबेडकरांच्याच शब्दांत वाचा: लेखन आणि भाषणे मधील परिच्छेद, जसे छापले तसे, पान आणि अधिकृत PDF सह. काहीही नव्याने लिहिलेले नाही.')}>
+<Base footer={false} noindex title={t('Ask in his words', 'त्यांच्याच शब्दांत विचारा')} description={t('Ask a question and read the answer in Dr. Ambedkar’s own words: passages from Writings and Speeches, exactly as printed, with the page and the official PDF. Nothing is generated.', 'प्रश्न विचारा आणि उत्तर डॉ. आंबेडकरांच्याच शब्दांत वाचा: लेखन आणि भाषणे मधील परिच्छेद, जसे छापले तसे, पान आणि अधिकृत PDF सह. काहीही नव्याने लिहिलेले नाही.')}>
   <div class="chat-wrap" data-pagefind-ignore="all">
     <header class="chat-head">
       <span class="eyebrow">{t('Writings and Speeches', 'लेखन आणि भाषणे')}</span>
@@ -220,13 +220,11 @@ const L = {
         if (byVoice) speak(items, sayBtn);
       }
 
-      /* ---------- speaking the passages: device voices, a natural male voice first ---------- */
+      /* ---------- speaking the passages: device voices, the most natural-sounding first ---------- */
       var synth = window.speechSynthesis, speaking = null;
       var score = function (v) {
         var n = (v.name || '') + ' ' + (v.voiceURI || ''), s = 0;
         if (/natural|neural|online|premium|enhanced/i.test(n)) s += 20;
-        if (/\b(prabhat|manohar|madhur|rishi|ravi|hemant|aaron|daniel|arthur|male)\b/i.test(n)) s += 30;
-        if (/\b(neerja|aarohi|swara|lekha|kalpana|heera|veena|female|samantha|karen|moira|tessa)\b/i.test(n)) s -= 15;
         if (/-IN$/i.test(v.lang)) s += 5;
         return s;
       };

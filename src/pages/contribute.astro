@@ -1,7 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import Chakra from '../components/Chakra.astro';
-import { SITE } from '../lib/site';
+import { SITE, mailto } from '../lib/site';
 import { getLang, translator } from '../i18n';
 const lang = getLang(Astro);
 const t = translator(lang);
@@ -29,6 +29,7 @@ const FORMS = [
       <span class="eyebrow">{t('Take part', 'सहभागी व्हा')}</span>
       <h1 style="font-size:var(--step-4)">{t('Help bring his work together', 'त्यांचे कार्य एकत्र आणण्यात मदत करा')}</h1>
       <p class="lede" style="max-width:64ch">{t('This is a public, open project. Every correction and contribution is recorded openly on GitHub, so anyone can see what changed and why.', 'हा एक सार्वजनिक, खुला प्रकल्प आहे. प्रत्येक दुरुस्ती आणि योगदानाची नोंद GitHub वर खुलेपणाने होते, त्यामुळे काय बदलले आणि का, हे कोणालाही पाहता येते.')}</p>
+      <p style="max-width:64ch">{t('No GitHub account? Email your feedback, correction or source to', 'GitHub खाते नाही? तुमचा अभिप्राय, दुरुस्ती किंवा संदर्भ ईमेलने पाठवा:')} <a href={mailto()}>{SITE.email}</a>{t('. Emails are not published.', '. ईमेल प्रसिद्ध केले जात नाहीत.')}</p>
     </div>
   </section>
   <div class="narrow section-tight">

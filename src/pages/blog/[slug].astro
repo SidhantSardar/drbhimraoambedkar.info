@@ -3,7 +3,7 @@ import { getCollection, render } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 import Chakra from '../../components/Chakra.astro';
 import Comments from '../../components/Comments.astro';
-import { url } from '../../lib/site';
+import { url, SHOW_NEWS } from '../../lib/site';
 import { getLang, translator } from '../../i18n';
 
 export async function getStaticPaths() {
@@ -17,7 +17,7 @@ const post = lang === 'mr' ? (await getCollection('blogMr')).find((m) => m.id ==
 const { Content } = await render(post);
 const date = post.data.date.toLocaleDateString(lang === 'mr' ? 'mr-IN' : 'en-IN', { day: 'numeric', month: 'long', year: 'numeric' });
 ---
-<Base title={post.data.title} description={post.data.description} image={post.data.image ? url(post.data.image) : undefined} progress>
+<Base noindex={!SHOW_NEWS} title={post.data.title} description={post.data.description} image={post.data.image ? url(post.data.image) : undefined} progress>
   <article data-pagefind-body data-pagefind-filter={t('collection:Blog', 'collection:ब्लॉग')}>
     <header class="story-hero">
       <Chakra class="chakra-bg" />

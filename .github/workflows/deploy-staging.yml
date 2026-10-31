@@ -31,12 +31,12 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run build
-      # The earlier warm-paper (Godna) design, kept for reference at /preview-classic/
+      # The earlier warm-paper (Godna) design, kept for reference at /preview-classic/ (noindex: not for search engines)
       - name: Build classic design preview
         run: |
           mv dist dist-main
           rm -rf .astro node_modules/.astro
-          BASE_PATH=/preview-classic PUBLIC_SKIN= SKIP_MARATHI=1 npm run build
+          BASE_PATH=/preview-classic PUBLIC_SKIN= PUBLIC_NOINDEX=1 SKIP_MARATHI=1 npm run build
           mv dist dist-main/preview-classic
           mv dist-main dist
       - uses: actions/upload-pages-artifact@v3

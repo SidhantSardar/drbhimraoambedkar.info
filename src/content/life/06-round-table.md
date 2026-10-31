@@ -114,7 +114,7 @@ The second conference ran from 7 September to 1 December 1931, and this time Gan
 
 Gandhi and Dr. Ambedkar first met on 14 August 1931 at Mani Bhavan in Bombay. Gandhi's tone was mild; Dr. Ambedkar spoke with passion and bitterness about how little had changed, according to Keer and Columbia's timeline [source: Keer, pp. 164–166](https://archive.org/details/dr-ambedkar-life-and-mission-dhananjay-keer) [source: Pritchett timeline, 1930s](https://franpritchett.com/00ambedkar/timeline/1930s.html).
 
-Both wanted untouchability to end. They disagreed about how. On 8 October 1931 Gandhi explained his position:
+Both said they opposed untouchability. They disagreed about how to end it. On 8 October 1931 Gandhi explained his position:
 
 > "I am opposed to their special representation. I am convinced that it can do them no good, and may do much harm."
 >
@@ -160,7 +160,7 @@ The day after signing, Dr. Ambedkar spoke generously at a meeting in Bombay:
 >
 > — Dr. B. R. Ambedkar on Gandhi, Bombay, 25 September 1932 [source: BAWS Vol. 17 Part I, p. 170](https://www.mea.gov.in/images/CPV/Volume17_Part_I.pdf#page=195)
 
-Later he judged the pact harshly. In 1945 he wrote that the extra seats did not make up for losing the second vote, which would have made caste-Hindu candidates depend on Depressed Classes votes [source: BAWS Vol. 9, p. 90](https://www.mea.gov.in/images/CPV/Volume9.pdf#page=119). The caste-Hindu leaders who met in Bombay on 25 September 1932 also promised to work to remove untouchability, including the bar on entering temples [source: BAWS Vol. 17 Part I, p. 170](https://www.mea.gov.in/images/CPV/Volume17_Part_I.pdf#page=195). In 1933 Gandhi started a weekly paper named *Harijan*, the word he used for untouchables [source: Pritchett timeline, 1930s](https://franpritchett.com/00ambedkar/timeline/1930s.html) [source: BAWS Vol. 17 Part III, p. 98](https://www.mea.gov.in/images/CPV/Volume17_Part_III.pdf#page=127).
+Later he judged the pact harshly. In 1945 he wrote that the extra seats did not make up for losing the second vote, which would have made caste-Hindu candidates depend on Depressed Classes votes [source: BAWS Vol. 9, p. 90](https://www.mea.gov.in/images/CPV/Volume9.pdf#page=119). In the same book he wrote of Gandhi's fast: "There was nothing noble in the fast. It was a foul and filthy act." [source: BAWS Vol. 9, p. 259](https://www.mea.gov.in/images/CPV/Volume9.pdf#page=288). The caste-Hindu leaders who met in Bombay on 25 September 1932 also promised to work to remove untouchability, including the bar on entering temples [source: BAWS Vol. 17 Part I, p. 170](https://www.mea.gov.in/images/CPV/Volume17_Part_I.pdf#page=195). In 1933 Gandhi started a weekly paper named *Harijan*, the word he used for untouchables [source: Pritchett timeline, 1930s](https://franpritchett.com/00ambedkar/timeline/1930s.html) [source: BAWS Vol. 17 Part III, p. 98](https://www.mea.gov.in/images/CPV/Volume17_Part_III.pdf#page=127).
 
 ## Principal, and a great loss (1935)
 

@@ -2,7 +2,7 @@
 import { getCollection } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 import Chakra from '../../components/Chakra.astro';
-import { url } from '../../lib/site';
+import { url, SHOW_NEWS } from '../../lib/site';
 import { getLang, translator } from '../../i18n';
 const lang = getLang(Astro);
 const t = translator(lang);
@@ -13,7 +13,7 @@ const posts = (await getCollection('blog'))
   .map((p) => marathi.find((m) => m.id === p.id) || p);
 const date = (d: Date) => d.toLocaleDateString(lang === 'mr' ? 'mr-IN' : 'en-IN', { day: 'numeric', month: 'long', year: 'numeric' });
 ---
-<Base title={t('Blog', 'ब्लॉग')} description={t("Articles and discussion on Dr. B. R. Ambedkar's ideas, social justice, equality and the Constitution today.", 'डॉ. बाबासाहेब आंबेडकर यांचे विचार, सामाजिक न्याय, समता आणि आजचे संविधान यांवरील लेख आणि चर्चा.')}>
+<Base noindex={!SHOW_NEWS} title={t('Blog', 'ब्लॉग')} description={t("Articles and discussion on Dr. B. R. Ambedkar's ideas, social justice, equality and the Constitution today.", 'डॉ. बाबासाहेब आंबेडकर यांचे विचार, सामाजिक न्याय, समता आणि आजचे संविधान यांवरील लेख आणि चर्चा.')}>
   <section class="hero">
     <Chakra class="chakra-bg" />
     <div class="wrap section-tight">
