@@ -1,0 +1,44 @@
+---
+// Home-page section showcasing the people directory, with a button to the full /people/ page.
+import PersonCard from './PersonCard.astro';
+import { url } from '../lib/site';
+import { getLang, translator } from '../i18n';
+import { people, isIndian, stateOf, ALL_INDIA } from '../lib/people';
+import '../styles/people.css';
+
+const t = translator(getLang(Astro));
+const all = people();
+const indian = all.filter(isIndian).length;
+const states = new Set(all.filter(isIndian).map(stateOf).filter((s) => s !== ALL_INDIA)).size;
+const countries = new Set(all.map((p) => p.country)).size;
+const quiet = all.filter((p) => p.silent).length;
+// Six from India (one per state where possible) and two from abroad, people with a photo first.
+const withPhotoFirst = (a: typeof all[number], b: typeof all[number]) => Number(!!b.image) - Number(!!a.image);
+const seen = new Set<string>();
+const FEATURED = [
+  ...all.filter(isIndian).sort(withPhotoFirst).filter((p) => !seen.has(stateOf(p)) && seen.add(stateOf(p))).slice(0, 6),
+  ...all.filter((p) => !isIndian(p)).sort(withPhotoFirst).slice(0, 2),
+];
+---
+<section class="home-people" aria-labelledby="home-people-h">
+  <div class="wrap">
+    <div class="home-people-head">
+      <div>
+        <span class="eyebrow">{t('Jai Bhim', 'जय भीम')}</span>
+        <h2 id="home-people-h">{t('The people carrying his work forward', 'त्यांचे कार्य पुढे नेणारी माणसे')}</h2>
+        <p>{t('From the world stage to village reading rooms, people are spreading Babasaheb’s ideas and living the freedom he fought for. Many of them work quietly, without any fame.', 'जागतिक व्यासपीठापासून गावातील वाचनालयांपर्यंत, लोक बाबासाहेबांचे विचार पसरवत आहेत आणि त्यांनी मिळवून दिलेले स्वातंत्र्य जगत आहेत. त्यांतील अनेक जण कोणत्याही प्रसिद्धीशिवाय शांतपणे काम करतात.')}</p>
+      </div>
+      <div class="people-counts">
+        <span><b>{indian}</b>{t(`Indian, in ${states} states`, `भारतीय, ${states} राज्यांत`)}</span>
+        <span><b>{all.length - indian}</b>{t(`Global, ${countries} countries`, `जागतिक, ${countries} देश`)}</span>
+        <span><b>{quiet}</b>{t('Quiet workers', 'शांतपणे काम करणारे')}</span>
+      </div>
+    </div>
+    <div class="people-stage"><div class="person-grid">
+      {FEATURED.map((p) => <PersonCard p={p} />)}
+    </div></div>
+    <div class="home-people-cta">
+      <a class="btn btn-primary" href={url('/people/')}>{t(`Show all ${all.length} people →`, `सर्व ${all.length} जण पाहा →`)}</a>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,128 @@
+---
+import Base from '../layouts/Base.astro';
+import Chakra from '../components/Chakra.astro';
+import PersonCard from '../components/PersonCard.astro';
+import { url } from '../lib/site';
+import { getLang, translator } from '../i18n';
+import { people, isIndian, stateOf, ALL_INDIA } from '../lib/people';
+import '../styles/people.css';
+
+const t = translator(getLang(Astro));
+// People with a photo first, then everyone else, keeping the data's order within each.
+const all = people().sort((a, b) => Number(!!b.image) - Number(!!a.image));
+const quiet = all.filter((p) => p.silent).length;
+const fields = [...new Set(all.map((p) => p.field))].sort();
+const indian = all.filter(isIndian);
+const world = all.filter((p) => !isIndian(p));
+// States with their counts, most people first; "All India" (no single state) last.
+const stateCounts = [...indian.reduce((m, p) => m.set(stateOf(p), (m.get(stateOf(p)) || 0) + 1), new Map<string, number>())]
+  .sort((a, b) => (a[0] === ALL_INDIA ? 1 : b[0] === ALL_INDIA ? -1 : b[1] - a[1] || a[0].localeCompare(b[0])));
+const countries = new Set(world.map((p) => p.country).filter((c) => c !== 'India')).size;
+const blurbs = {
+  india: t(`People working across India, from national campaigns to village reading rooms, in ${stateCounts.length - 1} states and union territories.`, `भारतभर काम करणारे लोक, राष्ट्रीय मोहिमांपासून गावातील वाचनालयांपर्यंत, ${stateCounts.length - 1} राज्ये आणि केंद्रशासित प्रदेशांमध्ये.`),
+  global: t(`People in ${countries} other countries, and foreign-born people whose work is in India: diaspora groups, campaigns against caste discrimination abroad, and scholars.`, `इतर ${countries} देशांतील लोक आणि भारतात काम करणारे परदेशात जन्मलेले लोक: परदेशातील समुदाय, जातिभेदाविरुद्धच्या मोहिमा आणि अभ्यासक.`),
+};
+---
+<Base title={t('People of the movement', 'चळवळीतील माणसे')} description={t(`${all.length} people carrying Dr. Ambedkar's work forward, from global campaigners to quiet village workers, with every fact linked to its source.`, `डॉ. आंबेडकरांचे कार्य पुढे नेणारी ${all.length} माणसे, जागतिक मोहिमांपासून गावपातळीवर शांतपणे काम करणाऱ्यांपर्यंत, प्रत्येक तथ्य संदर्भासह.`)}>
+  <section class="hero">
+    <Chakra class="chakra-bg" />
+    <div class="wrap section-tight">
+      <span class="eyebrow">{t('Jai Bhim', 'जय भीम')}</span>
+      <h1 style="font-size:var(--step-4)">{t('The people carrying his work forward', 'त्यांचे कार्य पुढे नेणारी माणसे')}</h1>
+      <p class="lede">{t(`From village reading rooms to Roma schools in Hungary, people everywhere are spreading Babasaheb's ideas and using the rights he fought for. Here are ${all.length} of them, ${quiet} of whom work quietly in their own neighbourhoods. Every fact carries a small number that links to its source.`, `गावातील वाचनालयांपासून हंगेरीतील रोमा शाळांपर्यंत, सर्वत्र लोक बाबासाहेबांचे विचार पसरवत आहेत आणि त्यांनी मिळवून दिलेले हक्क वापरत आहेत. येथे त्यांपैकी ${all.length} जण आहेत; त्यांतील ${quiet} जण आपापल्या वस्तीत शांतपणे काम करतात. प्रत्येक तथ्यासोबत त्याच्या संदर्भाचा दुवा आहे.`)}</p>
+    </div>
+  </section>
+
+  <div class="wrap section-tight" data-people>
+    <div class="people-tabs" role="tablist" aria-label={t('Choose a group', 'गट निवडा')}>
+      <button type="button" role="tab" aria-selected="true" data-tab="india">{t('Indian', 'भारतीय')}<span class="n">{indian.length}</span></button>
+      <button type="button" role="tab" aria-selected="false" data-tab="global">{t('Global', 'जागतिक')}<span class="n">{world.length}</span></button>
+    </div>
+    <p class="people-blurb" data-blurb></p>
+    <div class="people-filters">
+      <input id="people-q" type="search" placeholder={t('Search a name, place or kind of work', 'नाव, ठिकाण किंवा कामाचा प्रकार शोधा')} aria-label={t('Search', 'शोधा')} />
+      <select id="people-state" aria-label={t('State', 'राज्य')}>
+        <option value="">{t('All states', 'सर्व राज्ये')}</option>
+        {stateCounts.map(([st, n]) => <option value={st}>{st} ({n})</option>)}
+      </select>
+      <select id="people-field" aria-label={t('Kind of work', 'कामाचा प्रकार')}>
+        <option value="">{t('All kinds of work', 'सर्व प्रकारचे काम')}</option>
+        {fields.map((f) => <option value={f}>{f}</option>)}
+      </select>
+      <label class="pf-quiet"><input id="people-quiet" type="checkbox" /> {t('Quiet workers only', 'फक्त शांतपणे काम करणारे')}</label>
+      <span class="people-count" data-count aria-live="polite"></span>
+    </div>
+    <div class="people-stage"><div class="person-grid is-full" data-grid>
+      {all.map((p) => <PersonCard p={p} full />)}
+    </div></div>
+    <dialog class="person-dialog" id="person-dialog" aria-label={t('Full story', 'संपूर्ण कथा')}>
+      <button type="button" class="pd-close" data-close>{t('Close ✕', 'बंद करा ✕')}</button>
+      <div data-dialog-body></div>
+    </dialog>
+    <p class="people-empty" data-empty hidden>{t('No one matches these filters.', 'या निवडीशी जुळणारे कोणी नाही.')}</p>
+
+    <section class="people-note">
+      <div>
+        <h2>{t('Who is in this list', 'या यादीत कोण आहे')}</h2>
+        <p>{t("People whose published work spreads Dr. Ambedkar's ideas, or whose lives show the rights he fought for in use. Quiet workers (gold top edge) are not widely famous, but their work has been reported. The list is not a ranking, is not complete, and does not endorse any political party.", 'ज्यांचे प्रकाशित कार्य डॉ. आंबेडकरांचे विचार पसरवते, किंवा ज्यांच्या जीवनात त्यांनी मिळवून दिलेले हक्क दिसतात असे लोक. शांतपणे काम करणारे (वर सोनेरी रेषा) फारसे प्रसिद्ध नाहीत, पण त्यांच्या कार्याची नोंद झाली आहे. ही यादी क्रमवारी नाही, पूर्ण नाही आणि कोणत्याही राजकीय पक्षाचे समर्थन करत नाही.')}</p>
+      </div>
+      <div>
+        <h2>{t('How the sources work', 'संदर्भ कसे पाहावेत')}</h2>
+        <p>{t('Each small number in a story links to the page that reports that fact. Open "Sources" under a card to see them all. Compiled 31 October 2026.', 'कथेतील प्रत्येक लहान अंक ते तथ्य देणाऱ्या पानाशी जोडलेला आहे. सर्व संदर्भ पाहण्यासाठी कार्डखालील "संदर्भ" उघडा. संकलन: 31 ऑक्टोबर 2026.')}</p>
+      </div>
+      <div>
+        <h2>{t('Know someone who belongs here?', 'येथे असायला हवे असे कोणी माहीत आहे?')}</h2>
+        <p>{t('Many people do this work without any coverage. Send their story, with a link to anything published about them.', 'अनेक जण कोणत्याही प्रसिद्धीशिवाय हे काम करतात. त्यांची कथा, त्यांच्याविषयी प्रकाशित झालेल्या मजकुराच्या दुव्यासह, पाठवा.')} <a href={url('/contribute/')}>{t('Contribute →', 'सहभागी व्हा →')}</a></p>
+      </div>
+    </section>
+  </div>
+
+  <script is:inline define:vars={{ blurbs }}>
+    (function () {
+      var root = document.querySelector('[data-people]');
+      var tabs = root.querySelectorAll('[data-tab]');
+      var cards = root.querySelectorAll('.person-card');
+      var state = document.getElementById('people-state');
+      var q = document.getElementById('people-q'), field = document.getElementById('people-field'), quiet = document.getElementById('people-quiet');
+      var blurb = root.querySelector('[data-blurb]'), count = root.querySelector('[data-count]'), empty = root.querySelector('[data-empty]');
+      var group = location.hash.slice(1) === 'global' ? 'global' : 'india';
+      function render() {
+        var shown = 0, s = q.value.trim().toLowerCase();
+        tabs.forEach(function (b) { b.setAttribute('aria-selected', String(b.dataset.tab === group)); });
+        blurb.textContent = blurbs[group];
+        state.hidden = group !== 'india';
+        cards.forEach(function (c) {
+          var ok = c.dataset.group === group && (group !== 'india' || !state.value || c.dataset.state === state.value) && (!field.value || c.dataset.field === field.value)
+            && (!quiet.checked || c.dataset.quiet) && (!s || c.dataset.search.indexOf(s) >= 0);
+          c.hidden = !ok; if (ok) shown++;
+        });
+        count.textContent = shown + ' / ' + root.querySelectorAll('.person-card[data-group="' + group + '"]').length;
+        empty.hidden = shown > 0;
+      }
+      tabs.forEach(function (b) {
+        b.addEventListener('click', function () {
+          group = b.dataset.tab;
+          history.replaceState(null, '', group === 'india' ? location.pathname : '#global');
+          render();
+        });
+      });
+      // "Read full story": show a copy of the card, with the story and sources, in a dialog.
+      var dlg = document.getElementById('person-dialog'), dlgBody = dlg.querySelector('[data-dialog-body]');
+      root.addEventListener('click', function (e) {
+        var btn = e.target.closest('[data-read]');
+        if (!btn) return;
+        var copy = btn.closest('.person-card').cloneNode(true);
+        copy.hidden = false;
+        copy.querySelector('.pc-more').hidden = false;
+        copy.querySelectorAll('img').forEach(function (i) { i.loading = 'eager'; });
+        dlgBody.replaceChildren(copy);
+        dlg.showModal();
+        dlg.scrollTop = 0;
+      });
+      dlg.querySelector('[data-close]').addEventListener('click', function () { dlg.close(); });
+      dlg.addEventListener('click', function (e) { if (e.target === dlg) dlg.close(); });
+      [q, state, field, quiet].forEach(function (el) { el.addEventListener('input', render); el.addEventListener('change', render); });
+      render();
+    })();
+  </script>
+</Base>

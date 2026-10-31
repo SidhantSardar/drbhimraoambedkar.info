@@ -2,6 +2,7 @@
 import Base from '../layouts/Base.astro';
 import Picture from '../components/Picture.astro';
 import FilmGrain from '../components/FilmGrain.astro';
+import HomePeople from '../components/HomePeople.astro';
 import { url, SHOW_NEWS } from '../lib/site';
 import { chapters, themes, images, loadJSON, type Img, type Work, type Speech } from '../lib/data';
 import { originalFor, credit, inLang } from '../lib/images-core.mjs';
@@ -280,6 +281,9 @@ const cats = [...new Set(updates.map((n) => n.category))];
       </ul>
     </div>
   </section>
+
+  <!-- 5. PEOPLE OF THE MOVEMENT -->
+  <HomePeople />
 
   <FilmGrain />
   <script is:inline>

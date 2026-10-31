@@ -1,0 +1,66 @@
+---
+// One person in the Ambedkarite movement directory (src/data/people.json): a horizontal card with the photo
+// (or initials) filling the left side, the kind of work tagged in its top corner, and name, links and text beside it.
+// `full` (the /people/ page) adds a short story preview and a "Read full story" button; the full story and its
+// sources sit in .pc-more, which the page opens in a dialog so every card keeps the same height.
+import { url } from '../lib/site';
+import { getLang, translator } from '../i18n';
+import type { Person } from '../lib/people';
+import { initials, isIndian, stateOf } from '../lib/people';
+
+interface Props { p: Person; full?: boolean }
+const { p, full = false } = Astro.props;
+const t = translator(getLang(Astro));
+const group = isIndian(p) ? 'india' : 'global';
+const img = p.image ? url(p.image) : '';
+// The site's fonts cover Latin and Devanagari only, so show the native-script name only when it is in Devanagari
+// (other scripts would show as empty boxes on many devices).
+const native = /^[ऀ-ॿ\s.()-]+$/.test(p.nameLocal) ? p.nameLocal : '';
+// The story with each run of [n] markers turned into one superscript of source links: [1][2] -> "1, 2".
+const storyHtml = p.story
+  .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+  .replace(/(?:\[\d+\])+/g, (group) => {
+    const links = [...group.matchAll(/\[(\d+)\]/g)].map(([, n]) => {
+      const s = p.sources[+n - 1];
+      return s ? `<a href="${s.url}" target="_blank" rel="noopener" title="${s.title.replace(/"/g, '&quot;')}">${n}</a>` : '';
+    }).filter(Boolean);
+    return links.length ? `<sup>${links.join(', ')}</sup>` : '';
+  });
+// A plain preview of the story for the card itself (markers removed).
+const preview = p.story.replace(/\s*(?:\[\d+\])+/g, '');
+---
+<article class:list={['person-card', { 'is-quiet': p.silent, 'is-full': full, 'has-photo': !!img }]} data-group={group} data-state={isIndian(p) ? stateOf(p) : ''} data-field={p.field} data-quiet={p.silent ? '1' : ''}
+  data-search={[p.name, p.nameLocal, p.place, p.work, p.field].join(' ').toLowerCase()}>
+  <figure class="pc-photo">
+    {img ? <img src={img} alt={p.name} loading="lazy" decoding="async" /> : <span class="pc-initials" aria-hidden="true">{initials(p.name)}</span>}
+    <span class="pc-flags">
+      <span class="pc-flag">{p.field}</span>
+      {p.silent && <span class="pc-flag pc-flag-quiet">{t('Quiet worker', 'शांतपणे काम करणारे')}</span>}
+    </span>
+    {img && p.imageCredit && <figcaption class="pc-credit">{t('Photo:', 'छायाचित्र:')} {p.imageCredit}</figcaption>}
+  </figure>
+  <div class="pc-body">
+    <span class="pc-where">{p.place.replace(/, India$/, '')}{p.status !== 'Active' && <span class="pc-status"> · {p.status}</span>}</span>
+    <h3>{p.name}{native && <span class="pc-native" lang="mr">{native}</span>}</h3>
+    {p.links.length > 0 && (
+      <ul class="pc-links" aria-label={t('Official links', 'अधिकृत दुवे')}>
+        {p.links.map((l) => <li><a href={l.url} target="_blank" rel="noopener">{l.label}</a></li>)}
+      </ul>
+    )}
+    <p class="pc-work">{p.work}</p>
+    {full && <p class="pc-preview">{preview}</p>}
+    {full && (
+      <div class="pc-actions">
+        <button type="button" class="pc-read" data-read>{t('Read full story', 'संपूर्ण कथा वाचा')} <span aria-hidden="true">→</span></button>
+        <span class="pc-srcn">{t(`${p.sources.length} sources`, `${p.sources.length} संदर्भ`)}</span>
+      </div>
+    )}
+    {full && (
+      <div class="pc-more" hidden>
+        <p class="pc-story" set:html={storyHtml} />
+        <h4>{t('Sources', 'संदर्भ')}</h4>
+        <ol class="pc-src">{p.sources.map((s) => <li><a href={s.url} target="_blank" rel="noopener">{s.title}</a></li>)}</ol>
+      </div>
+    )}
+  </div>
+</article>
