@@ -1,11 +1,11 @@
-# Refreshes src/data/news.json from the feeds in src/data/news-feeds.json every 6 hours,
+# Refreshes src/data/news.json from the feeds in src/data/news-feeds.json,
 # commits it to the staging branch, and redeploys staging.
+# Paused: the news page is switched off (SHOW_NEWS in src/lib/site.ts) until each story is reviewed
+# before it is published. To restart, add back `schedule: - cron: '17 */6 * * *'` under `on:`.
 # When the production site is live, add `main` to the branch list below.
 name: Update news
 
 on:
-  schedule:
-    - cron: '17 */6 * * *'
   workflow_dispatch:
 
 permissions:

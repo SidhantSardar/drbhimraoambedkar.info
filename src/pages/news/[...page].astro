@@ -1,8 +1,13 @@
 ---
-import Base from '../layouts/Base.astro';
-import { loadNews, catOf, thumbFor, fallbackFor, ONERROR, mixed, isHindi, cleanTitle } from '../lib/news';
-import { url } from '../lib/site';
-import { getLang, translator } from '../i18n';
+import Base from '../../layouts/Base.astro';
+import { loadNews, catOf, thumbFor, fallbackFor, ONERROR, mixed, isHindi, cleanTitle } from '../../lib/news';
+import { url, SHOW_NEWS } from '../../lib/site';
+import { getLang, translator } from '../../i18n';
+
+// Builds /news/ only while SHOW_NEWS is on; otherwise the page does not exist at all (and is left out of the sitemap).
+export function getStaticPaths() {
+  return SHOW_NEWS ? [{ params: { page: undefined } }] : [];
+}
 const lang = getLang(Astro);
 const t = translator(lang);
 const mr = lang === 'mr';

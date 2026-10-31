@@ -56,7 +56,7 @@ const outline = pagesShown.filter((r) => r.blocks.length > 0).map((r) => {
 });
 const here = partLabel ? `${chapterTitle} · ${partLabel}` : chapterTitle;
 ---
-<DocsShell vol={vol} current={leaf.slug} here={here} outline={outline} pdf={`${vol.sourceUrl}#page=${leaf.start}`} title={`${chapterTitle}${partLabel ? ` (${partLabel})` : ''} — ${volLabel}`} description={t(`${leaf.chapter.title}, from ${vol.label} of Dr. Babasaheb Ambedkar: Writings and Speeches — the full text, page by page.`, translated ? `${chapterTitle} — डॉ. बाबासाहेब आंबेडकर: लेखन आणि भाषणे, ${volLabel}. पान न् पान मराठी अनुवाद, मूळ इंग्रजीसह.` : `${chapterTitle} — डॉ. बाबासाहेब आंबेडकर: लेखन आणि भाषणे, ${volLabel}. पान न् पान संपूर्ण मजकूर.`)}>
+<DocsShell vol={vol} current={leaf.slug} here={here} outline={outline} pdf={`${vol.sourceUrl}#page=${leaf.start}`} title={`${chapterTitle}${partLabel ? ` (${partLabel})` : ''} — ${volLabel}${translated && !reviewed ? ' (AI अनुवाद-मसुदा)' : ''}`} description={t(`${leaf.chapter.title}, from ${vol.label} of Dr. Babasaheb Ambedkar: Writings and Speeches — the full text, page by page.`, translated ? `${chapterTitle} — डॉ. बाबासाहेब आंबेडकर: लेखन आणि भाषणे, ${volLabel}. पान न् पान मराठी अनुवाद — AI च्या मदतीने केलेला, अजून न तपासलेला मसुदा — मूळ इंग्रजीसह.` : `${chapterTitle} — डॉ. बाबासाहेब आंबेडकर: लेखन आणि भाषणे, ${volLabel}. पान न् पान संपूर्ण मजकूर.`)}>
   <div class="rbar" data-rbar data-pagefind-ignore>
     <div class="rbar-group rbar-view">
       <span class="rbar-label" aria-hidden="true">{t('Reading view', 'वाचन दृश्य')}</span>
@@ -157,7 +157,7 @@ const here = partLabel ? `${chapterTitle} · ${partLabel}` : chapterTitle;
       <aside class="in-simple" data-pagefind-ignore>
         <h2>सोप्या शब्दांत</h2>
         <p>{summary}</p>
-        <p class="muted">हा सारांश समजण्यासाठी आहे; हा बाबासाहेबांचा मूळ मजकूर नाही.</p>
+        <p class="muted">हा सारांश समजण्यासाठी AI (Claude) च्या मदतीने लिहिला आहे; हा बाबासाहेबांचा मूळ मजकूर नाही.</p>
       </aside>
     )}
 

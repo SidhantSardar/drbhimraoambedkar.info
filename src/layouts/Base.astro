@@ -66,6 +66,9 @@ const ogImage = image ? new URL(image, Astro.site).toString() : undefined;
     <a class="skip-link" href="#main">{mr ? 'मुख्य मजकुराकडे जा' : 'Skip to content'}</a>
     {progress && <div class="progress" aria-hidden="true"></div>}
     {header && <Header />}
+    {mr && header && (
+      <p class="mr-ai-banner" data-pagefind-ignore>या संकेतस्थळावरील मराठी मजकूर AI (Claude) च्या मदतीने केलेला अनुवाद-मसुदा आहे; मराठी अभ्यासकांनी तो अजून तपासलेला नाही. मूळ इंग्रजीसाठी वरचे “EN” निवडा. <a href={url('/contribute/#translation')}>चूक आढळल्यास कळवा →</a></p>
+    )}
     <main id="main">
       <slot />
     </main>

@@ -26,7 +26,7 @@ const done = translatedCount(vol);
       <p class="lede">{title}</p>
       {lang === 'mr' && title !== vol.title && <p class="docs-orig-title"><span>मूळ इंग्रजी शीर्षक:</span> <span lang="en">{vol.title}</span></p>}
       <p class="muted">{t(`${count} chapters · ${vol.pages} pages`, `${count} प्रकरणे · ${vol.pages} पाने`)}</p>
-      {lang === 'mr' && <p class="muted">{done ? `मराठी अनुवाद: ${done} / ${vol.pages} पाने तयार. अनुवादित प्रकरणांवर “मराठी” असे चिन्ह आहे; बाकीची प्रकरणे मूळ इंग्रजीत आहेत.` : 'या खंडाचा मराठी अनुवाद अजून सुरू व्हायचा आहे; सध्या मूळ इंग्रजी मजकूर उपलब्ध आहे.'}</p>}
+      {lang === 'mr' && <p class="muted">{done ? `मराठी अनुवाद: ${done} / ${vol.pages} पाने तयार. हा अनुवाद AI (Claude) च्या मदतीने केलेला मसुदा आहे; मराठी अभ्यासकांनी तो अजून तपासलेला नाही. अनुवादित प्रकरणांवर “मराठी” असे चिन्ह आहे; बाकीची प्रकरणे मूळ इंग्रजीत आहेत.` : 'या खंडाचा मराठी अनुवाद अजून सुरू व्हायचा आहे; सध्या मूळ इंग्रजी मजकूर उपलब्ध आहे.'}</p>}
       <div class="btn-row" style="margin:22px 0 10px">
         {start && <a class="btn btn-primary btn-beam" href={url(`/library/${vol.id}/${start.slug}/`)}><span>{t('Start reading →', 'वाचायला सुरुवात करा →')}</span></a>}
         <a class="btn btn-ghost" href={url(`/ask/?volume=${encodeURIComponent(vol.label)}`)}>{t('Search this volume', 'या खंडात शोधा')}</a>

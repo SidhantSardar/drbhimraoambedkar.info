@@ -93,6 +93,6 @@ Read `research/CONVENTIONS.md` first. In short: plain English, and a source link
 
 ## Licences
 
-- Dr. Ambedkar's own writings are in the public domain in India (he died in 1956; Indian copyright lasts 60 years after the author's death).
+- What Dr. Ambedkar published in his lifetime is in the public domain in India (he died in 1956; copyright lasted 60 years after his death, Copyright Act s. 22). Writings first published after his death are protected for 60 years from their first publication (s. 24). The *Writings and Speeches* volumes are © Education Department, Government of Maharashtra, reprinted by the Government of India's Dr. Ambedkar Foundation; this site reproduces and translates them for free, non-commercial education and removes material on request.
 - Images and documents keep their own licences, recorded in `src/data/images.json` and `research/images/credits.md`.
-- Original text written for this site: [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). Code: MIT.
+- Original text written for this site: [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). Code: MIT (the code only, not the texts or images).

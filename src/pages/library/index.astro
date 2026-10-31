@@ -9,18 +9,18 @@ const vols = volumes();
 const totalPages = vols.reduce((s, v) => s + v.pages, 0);
 const totalDone = vols.reduce((s, v) => s + translatedCount(v), 0);
 ---
-<Base title={t('Library — Writings and Speeches', 'ग्रंथालय — लेखन आणि भाषणे')} description={t('Read every volume of Dr. Babasaheb Ambedkar: Writings and Speeches online, chapter by chapter, word for word from the official Government of India edition.', 'डॉ. बाबासाहेब आंबेडकर: लेखन आणि भाषणे यांचे प्रत्येक खंड ऑनलाइन, प्रकरणानुसार वाचा — भारत सरकारच्या अधिकृत आवृत्तीतून शब्दशः, मराठी अनुवादासह.')}>
+<Base title={t('Library — Writings and Speeches', 'ग्रंथालय — लेखन आणि भाषणे')} description={t('Read every volume of Dr. Babasaheb Ambedkar: Writings and Speeches online, chapter by chapter, word for word from the official edition, first published by the Government of Maharashtra and reprinted by the Government of India.', 'डॉ. बाबासाहेब आंबेडकर: लेखन आणि भाषणे यांचे प्रत्येक खंड ऑनलाइन, प्रकरणानुसार वाचा — महाराष्ट्र शासनाच्या अधिकृत आवृत्तीतून (भारत सरकारचे पुनर्मुद्रण) मूळ इंग्रजी मजकूर, आणि AI च्या मदतीने केलेला, अजून न तपासलेला मराठी अनुवाद-मसुदा.')}>
   <section class="hero">
     <div class="wrap section-tight">
       <span class="eyebrow">{t('The library', 'ग्रंथालय')}</span>
       <h1 style="font-size:var(--step-3)">{t('Dr. Babasaheb Ambedkar: Writings and Speeches', 'डॉ. बाबासाहेब आंबेडकर: लेखन आणि भाषणे')}</h1>
       {lang === 'mr' ? (
         <>
-          <p class="lede" style="max-width:64ch">संपूर्ण इंग्रजी आवृत्ती — {vols.length} पुस्तके, {totalPages.toLocaleString('en-IN')} पाने — येथे प्रकरणानुसार वाचा. मूळ मजकूर भारत सरकारने प्रकाशित केलेल्या अधिकृत खंडांतून शब्दशः घेतला आहे आणि प्रत्येक पानासोबत मूळ PDF चा दुवा आहे.</p>
-          <p class="lede" style="max-width:64ch">हे सर्व लेखन आम्ही मराठीत आणत आहोत — अर्थ आणि हेतू न बदलता, प्रत्येक परिच्छेदाशेजारी मूळ इंग्रजीसह. आतापर्यंत {totalDone.toLocaleString('en-IN')} पाने अनुवादित झाली आहेत.</p>
+          <p class="lede" style="max-width:64ch">संपूर्ण इंग्रजी आवृत्ती — {vols.length} पुस्तके, {totalPages.toLocaleString('en-IN')} पाने — येथे प्रकरणानुसार वाचा. मूळ इंग्रजी मजकूर अधिकृत खंडांतून शब्दशः घेतला आहे आणि प्रत्येक पानासोबत मूळ PDF चा दुवा आहे. हे खंड प्रथम महाराष्ट्र शासनाने प्रकाशित केले आणि भारत सरकारने पुनर्मुद्रित केले.</p>
+          <p class="lede" style="max-width:64ch">हे सर्व लेखन आम्ही मराठीत आणत आहोत — अर्थ आणि हेतू न बदलता, प्रत्येक परिच्छेदाशेजारी मूळ इंग्रजीसह. आतापर्यंत {totalDone.toLocaleString('en-IN')} पाने अनुवादित झाली आहेत. हा अनुवाद AI (Claude) च्या मदतीने केलेला पहिला मसुदा आहे; मराठी अभ्यासकांनी तो अजून तपासलेला नाही.</p>
         </>
       ) : (
-        <p class="lede" style="max-width:64ch">The complete English edition — {vols.length} books, {totalPages.toLocaleString('en-IN')} pages — to read here, chapter by chapter. The text is taken word for word from the official volumes published by the Government of India, and every page links to the original.</p>
+        <p class="lede" style="max-width:64ch">The complete English edition — {vols.length} books, {totalPages.toLocaleString('en-IN')} pages — to read here, chapter by chapter. The text is taken word for word from the official volumes, first published by the Government of Maharashtra and reprinted by the Government of India, and every page links to the original.</p>
       )}
       <div class="btn-row" style="margin-top:20px"><a class="btn btn-ghost" href={url('/ask/')}>{t('Search all volumes →', 'सर्व खंडांत शोधा →')}</a></div>
     </div>

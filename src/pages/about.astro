@@ -1,6 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
-import { url, SITE } from '../lib/site';
+import { url, SITE, SHOW_NEWS } from '../lib/site';
 import { getLang, translator } from '../i18n';
 const lang = getLang(Astro);
 const t = translator(lang);
@@ -41,8 +41,10 @@ const guide = `${SITE.repoUrl}/blob/main/i18n/marathi-style-guide.md`;
           <li>अनुवादात चूक आढळल्यास कृपया <a href={url('/contribute/')}>कळवा</a>. मराठी अभ्यासकांनी तपासलेली पाने तसे स्पष्टपणे दाखवली जातील.</li>
         </ul>
 
-        <h2>या संकेतस्थळावरील बातम्या</h2>
-        <p>बातम्या विभाग दर सहा तासांनी अनेक माध्यमांमधून जात, न्याय, संविधान आणि आंबेडकरी चळवळीविषयीच्या बातम्या गोळा करतो. एकाच घटनेच्या बातम्या एकत्र दाखवल्या जातात, म्हणजे ती कोणी दिली — स्थानिक, राष्ट्रीय किंवा आंतरराष्ट्रीय — हे दिसते, आणि प्रत्येक बातमी स्रोत म्हणून दिली जाते. बातम्यांचे मथळे मूळ भाषेतच दिले जातात. छोटे सारांश AI च्या मदतीने, फक्त त्या बातम्यांच्या आधारे लिहिले जाऊ शकतात आणि तसे नेहमी नमूद केले जाते.</p>
+        {SHOW_NEWS && <>
+          <h2>या संकेतस्थळावरील बातम्या</h2>
+          <p>बातम्या विभाग दर सहा तासांनी अनेक माध्यमांमधून जात, न्याय, संविधान आणि आंबेडकरी चळवळीविषयीच्या बातम्या गोळा करतो. एकाच घटनेच्या बातम्या एकत्र दाखवल्या जातात, म्हणजे ती कोणी दिली — स्थानिक, राष्ट्रीय किंवा आंतरराष्ट्रीय — हे दिसते, आणि प्रत्येक बातमी स्रोत म्हणून दिली जाते. बातम्यांचे मथळे मूळ भाषेतच दिले जातात. छोटे सारांश AI च्या मदतीने, फक्त त्या बातम्यांच्या आधारे लिहिले जाऊ शकतात आणि तसे नेहमी नमूद केले जाते.</p>
+        </>}
 
         <h2>या संकेतस्थळाचे रूप</h2>
         <p>या संकेतस्थळावरील रेषांची नक्षी <strong>गोदना</strong> चित्रकलेपासून प्रेरित आहे — बिहारमधील मिथिला भागातील दलित (दुसाध) स्त्रियांनी त्यांच्या समाजातील गोंदणाच्या परंपरेतून निर्माण केलेली, हाताने बनवलेल्या कागदावर बारीक काळ्या रेषांनी काढलेली कला <a class="src" href="https://behanbox.com/2023/05/25/an-art-form-of-bihars-dalit-women-asserts-its-unique-identity/" target="_blank" rel="noopener noreferrer">Behanbox</a> <a class="src" href="https://sarmaya.in/tag/godna-painting/" target="_blank" rel="noopener noreferrer">Sarmaya</a>. 2024 मध्ये गोदना कलाकार शांती देवी पासवान यांना पद्मश्री मिळाली <a class="src" href="https://en.wikipedia.org/wiki/Shanti_Devi_Paswan" target="_blank" rel="noopener noreferrer">Wikipedia</a>. येथील नक्षी त्या प्रेरणेतून आम्ही स्वतः काढलेली साधी चित्रे आहेत, कोणत्याही कलाकाराच्या कामाची नक्कल नाही. कलाकारांच्या परवानगीने आणि श्रेयासह खरी गोदना चित्रे येथे दाखवायला आम्हाला आवडेल.</p>
@@ -94,8 +96,10 @@ const guide = `${SITE.repoUrl}/blob/main/i18n/marathi-style-guide.md`;
           <li>If you find a mistake in a translation, please <a href={url('/contribute/')}>tell us</a>. Pages checked by Marathi scholars will be marked as reviewed.</li>
         </ul>
 
-        <h2>News on this website</h2>
-        <p>The news section gathers reports on caste, justice, the Constitution and the Ambedkarite movement from many outlets every six hours. Reports about the same event are grouped together, so you can see who reported it — local, national or international — and every report is listed as a source. Short summaries may be written with the help of AI, using only those reports, and are always labelled.</p>
+        {SHOW_NEWS && <>
+          <h2>News on this website</h2>
+          <p>The news section gathers reports on caste, justice, the Constitution and the Ambedkarite movement from many outlets every six hours. Reports about the same event are grouped together, so you can see who reported it — local, national or international — and every report is listed as a source. Short summaries may be written with the help of AI, using only those reports, and are always labelled.</p>
+        </>}
 
         <h2>The look of this website</h2>
         <p>The line patterns on this website are inspired by <strong>Godna</strong> painting — an art form created by Dalit (Dusadh) women of Mithila, Bihar, from the tattoo traditions of their community, drawn in fine black lines on handmade paper <a class="src" href="https://behanbox.com/2023/05/25/an-art-form-of-bihars-dalit-women-asserts-its-unique-identity/" target="_blank" rel="noopener noreferrer">Behanbox</a> <a class="src" href="https://sarmaya.in/tag/godna-painting/" target="_blank" rel="noopener noreferrer">Sarmaya</a>. In 2024 the Godna artist Shanti Devi Paswan received the Padma Shri <a class="src" href="https://en.wikipedia.org/wiki/Shanti_Devi_Paswan" target="_blank" rel="noopener noreferrer">Wikipedia</a>. The patterns here are our own simple drawings in that spirit, not copies of any artist's work. We would love to feature real Godna artworks with the artists' permission and credit.</p>
