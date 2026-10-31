@@ -3,7 +3,7 @@ export const SITE = {
   mrName: 'प्रबुद्ध पाठक',
   tagline: 'Dr. B. R. Ambedkar, in his own words',
   mrTagline: 'डॉ. बाबासाहेब आंबेडकर, त्यांच्याच शब्दांत',
-  domain: 'drbhimraoambedkar.info',
+  domain: 'prabuddhapathak.com',
   title: 'Prabuddha Pathak — Dr. B. R. Ambedkar, in his own words',
   description:
     'The life and work of Dr. Bhimrao Ramji Ambedkar — his struggle, education, movements, the Constitution of India, and every book and speech — brought together from authoritative sources and explained simply. Free for everyone.',
@@ -26,7 +26,7 @@ export const GISCUS = {
 /** Where the AI answer service lives. On GitHub Pages there is none, so the page falls back to search results. */
 export const ASK_ENDPOINT: string = import.meta.env.PUBLIC_ASK_ENDPOINT || '';
 
-/** Prefix a site path with the deploy base (e.g. /drbhimraoambedkar.info/ on GitHub Pages). */
+/** Prefix a site path with the deploy base (/ on prabuddhapathak.com; a sub-path when deployed elsewhere). */
 export function url(path = '/'): string {
   const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : import.meta.env.BASE_URL + '/';
   if (/^https?:\/\//.test(path)) return path;

@@ -1,5 +1,5 @@
 # Builds the site from the `staging` branch and publishes it to GitHub Pages:
-# https://www.sidhantsardar.com/drbhimraoambedkar.info/ (the account's GitHub Pages custom domain)
+# https://prabuddhapathak.com/ (the repository's GitHub Pages custom domain)
 name: Deploy staging
 
 on:
@@ -20,8 +20,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      SITE_URL: https://www.sidhantsardar.com
-      BASE_PATH: /drbhimraoambedkar.info
+      SITE_URL: https://prabuddhapathak.com
+      BASE_PATH: /
       PUBLIC_SKIN: light
     steps:
       - uses: actions/checkout@v4
@@ -36,7 +36,7 @@ jobs:
         run: |
           mv dist dist-main
           rm -rf .astro node_modules/.astro
-          BASE_PATH=/drbhimraoambedkar.info/preview-classic PUBLIC_SKIN= SKIP_MARATHI=1 npm run build
+          BASE_PATH=/preview-classic PUBLIC_SKIN= SKIP_MARATHI=1 npm run build
           mv dist dist-main/preview-classic
           mv dist-main dist
       - uses: actions/upload-pages-artifact@v3
