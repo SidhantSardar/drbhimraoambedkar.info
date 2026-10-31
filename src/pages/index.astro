@@ -18,7 +18,17 @@ const imgs = images(lang);
 const byId = (id: string) => imgs.find((i) => i.id === id) as Img | undefined;
 
 const heroImg = byId('ambedkar-portrait-classic');
+// The status cards (volumes, speeches, works, newspapers in numbers) beside the hero text: hidden for now.
+const SHOW_STATUS_CARDS = false;
 const heroPhoto = byId('ambedkar-bhawan-delhi-conference-1951');
+// The hero's background photographs, shown one after another, each filling the whole hero.
+// fx is where Ambedkar stands across the photograph (0 to 1), at where he should stand across the hero on desktop,
+// mpos the crop on phones.
+const heroSlides = [
+  { id: 'ambedkar-family-rajgriha-1934', fx: 0.3, at: 56, mpos: '30% 30%' },
+  { id: 'law-minister-at-office-1950', fx: 0.42, at: 66, mpos: '40% 30%' },
+  { id: 'varanasi-airport-november-1956', fx: 0.78, at: 85, mpos: '72% 25%' },
+].map((s) => ({ ...s, img: byId(s.id) })).filter((s) => s.img);
 const factImg = { events: byId('twenty-two-vows-deekshabhoomi-1956'), works: byId('annihilation-of-caste-first-edition'), speeches: byId('yeola-speech-1935'), newspapers: byId('mooknayak-bahishkrit-bharat-mastheads') };
 
 const pages = volumes().reduce((s, v) => s + v.pages, 0);
@@ -106,26 +116,31 @@ const cats = [...new Set(updates.map((n) => n.category))];
     )}
     <div class="hero-fx" aria-hidden="true"><span class="grid-floor"></span></div>
     {heroPhoto && (
-      <div class="hero-photo" aria-hidden="true"><Picture img={heroPhoto} eager sizes="(min-width: 1000px) 130vw, 100vw" alt="" /></div>
+      <div class="hero-photo" aria-hidden="true" data-hero-slides>
+        <span class="hp-slide is-on"><Picture img={heroPhoto} eager sizes="(min-width: 1000px) 130vw, 100vw" alt="" /></span>
+        {heroSlides.map((s) => <span class="hp-slide hp-framed" style={`--fx:${s.fx};--at:${s.at}cqw;--mpos:${s.mpos};--ar:${(s.img!.width || 4) / (s.img!.height || 3)}`}><Picture img={s.img!} sizes="(min-width: 1000px) 70vw, 100vw" alt="" /></span>)}
+      </div>
     )}
     {heroPhoto && <canvas class="hero-grain" aria-hidden="true"></canvas>}
 
     <div class="hero-main">
       <span class="eyebrow">{t('1891 – 1956 · Scholar · Economist · Jurist · Reformer', '1891 – 1956 · विद्वान · अर्थशास्त्रज्ञ · कायदेपंडित · समाजसुधारक')}</span>
       {lang === 'mr' ? <h1>बाबासाहेब<br />आंबेडकर</h1> : <h1>Babasaheb<br />Ambedkar</h1>}
-      <p class="hero-sub">{t('Millions know his name, but few have read his words. Here they are as text you can read, search and listen to, not scanned pages: every book, speech and newspaper, word for word from official sources, with the story of his life around them, in English and Marathi.', 'कोट्यवधी लोकांना त्यांचे नाव माहीत आहे, पण त्यांचे शब्द फारच थोड्यांनी वाचले आहेत. येथे ते स्कॅन केलेल्या पानांऐवजी वाचता, शोधता आणि ऐकता येणाऱ्या मजकुराच्या रूपात आहेत: प्रत्येक ग्रंथ, भाषण आणि वृत्तपत्र, अधिकृत स्रोतांतून शब्दशः, त्यांच्या जीवनकथेसह, इंग्रजी आणि मराठीत.')}</p>
+      <p class="hero-sub">{t('Millions know his name, but few have read his words, because the official volumes are mostly read as scanned government PDFs. Here every book, speech and newspaper is made easy to read: clean text you can search, listen to and read on any screen, word for word from the official edition, with the story of his life around it, in English and Marathi.', 'कोट्यवधी लोकांना त्यांचे नाव माहीत आहे, पण त्यांचे शब्द फारच थोड्यांनी वाचले आहेत, कारण अधिकृत खंड बहुतेक स्कॅन केलेल्या सरकारी PDF स्वरूपातच वाचले जातात. येथे प्रत्येक ग्रंथ, भाषण आणि वृत्तपत्र वाचायला सोपे केले आहे: शोधता, ऐकता आणि कोणत्याही स्क्रीनवर वाचता येणारा स्वच्छ मजकूर, अधिकृत आवृत्तीतून शब्दशः, त्यांच्या जीवनकथेसह, इंग्रजी आणि मराठीत.')}</p>
       <div class="btn-row">
         <a class="btn btn-primary btn-beam" href="#volumes"><span>{t('Explore Volumes →', 'खंड पाहा →')}</span></a>
         <a class="btn btn-ghost" href={url('/ask/')}>{t('Ask the archive', 'संग्रहात शोधा')}</a>
       </div>
       <p class="hero-by">{t('A tribute by', 'आदरांजली —')} <a href="https://www.sidhantsardar.com/" target="_blank" rel="noopener">{t('Sidhant Sardar', 'सिद्धांत सरदार')}</a>{t(', an Ambedkarite and web developer', ', एक आंबेडकरवादी आणि वेब डेव्हलपर')} · <a href="https://www.sidhantsardar.com/" target="_blank" rel="noopener">sidhantsardar.com&nbsp;↗</a></p>
+    </div>
+    {SHOW_STATUS_CARDS && (
       <nav class="hero-facts" aria-label={t('The archive in numbers', 'संग्रह आकड्यांत')}>
         <a class="hf" href={url('/library/')}><span class="hf-img"><img src={coverVol1} alt="" width="360" height="540" loading="lazy" decoding="async" /></span><span class="hf-body"><span class="hf-num" data-count="17">17</span><span class="hf-label">{t('All Volumes', 'सर्व खंड')}</span><span class="hf-note">{t(`${pages.toLocaleString('en-IN')} pages of his writings`, `त्यांच्या लेखनाची ${pages.toLocaleString('en-IN')} पाने`)}</span></span></a>
         <a class="hf" href={url('/works/speeches/')}>{factImg.speeches && <span class="hf-img"><Picture img={factImg.speeches} sizes="240px" alt="" /></span>}<span class="hf-body"><span class="hf-num" data-count={speeches}>{speeches}</span><span class="hf-label">{t('Speeches', 'भाषणे')}</span><span class="hf-note">{t('major speeches, 1919–1956', 'प्रमुख भाषणे, 1919–1956')}</span></span></a>
         <a class="hf" href={url('/works/')}>{factImg.works && <span class="hf-img"><Picture img={factImg.works} sizes="240px" alt="" /></span>}<span class="hf-body"><span class="hf-num" data-count={works}>{works}</span><span class="hf-label">{t('Works', 'साहित्य')}</span><span class="hf-note">{t('books, essays, papers', 'ग्रंथ, निबंध, लेख')}</span></span></a>
         <a class="hf" href={url('/works/journals/')}>{factImg.newspapers && <span class="hf-img"><Picture img={factImg.newspapers} sizes="240px" alt="" /></span>}<span class="hf-body"><span class="hf-num" data-count={newspapers}>{newspapers}</span><span class="hf-label">{t('Newspapers', 'वृत्तपत्रे')}</span><span class="hf-note">{t('his own papers, 1920–1956', 'त्यांची स्वतःची वृत्तपत्रे, 1920–1956')}</span></span></a>
       </nav>
-    </div>
+    )}
 
     {SHOW_NEWS && updates.length > 0 && (
       <a class="ticker-mobile" href={url('/news/')}><span class="live-dot" aria-hidden="true"></span><span><strong>{t('Live updates from the movement', 'चळवळीतील थेट घडामोडी')}</strong><small>{t('See the latest news →', 'ताज्या बातम्या पाहा →')}</small></span></a>
@@ -269,6 +284,25 @@ const cats = [...new Set(updates.map((n) => n.category))];
   <FilmGrain />
   <script is:inline>
     (function () {
+      /* ---------- Hero background: the photographs cross-fade one after another, slowly ---------- */
+      var deck = document.querySelector('[data-hero-slides]');
+      var slides = deck ? Array.prototype.slice.call(deck.querySelectorAll('.hp-slide')) : [];
+      if (slides.length > 1 && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        var at = 0;
+        var next = function () {
+          var prev = slides[at];
+          at = (at + 1) % slides.length;
+          // each photograph stays fully visible for 3 s, then cross-fades over 1.5 s; the leaving one keeps its slow zoom while it fades
+          prev.classList.remove('is-on'); prev.classList.add('is-off');
+          slides[at].classList.remove('is-off'); slides[at].classList.add('is-on');
+          setTimeout(function () { prev.classList.remove('is-off'); }, 1600);
+        };
+        var timer = setInterval(next, 4500);
+        document.addEventListener('visibilitychange', function () {
+          clearInterval(timer); if (!document.hidden) timer = setInterval(next, 4500);
+        });
+      }
+
       /* ---------- Inside the volumes: Books / Speeches / Newspapers tabs ---------- */
       var tabs = Array.prototype.slice.call(document.querySelectorAll('[data-shelf-tab]'));
       var pick = function (b, focus) {

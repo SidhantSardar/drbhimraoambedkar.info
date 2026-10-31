@@ -810,3 +810,66 @@
 /* why cards: the link sits on the bottom edge of every card, whatever the text length */
 [data-skin='light'] .why-card { grid-template-rows: auto auto 1fr auto; align-content: stretch; }
 [data-skin='light'] .why-go { align-self: end; }
+
+/* ---------- Hero facts on desktop: a vertical column of cards at the hero's right edge ---------- */
+@media (min-width: 1000px) {
+  [data-skin='light'] .hero-facts { position: relative; z-index: 2; grid-column: 2; grid-row: 1; align-self: center; justify-self: end; width: clamp(280px, 24vw, 340px); max-width: none; margin: 0; grid-template-columns: 1fr; gap: 12px; animation: hero-in 0.7s cubic-bezier(.2,.7,.2,1) 0.3s both; }
+  [data-skin='light'] .hero-facts .hf { grid-template-columns: 84px minmax(0, 1fr); min-height: 104px; }
+  [data-skin='light'] .hero-facts .hf:hover, [data-skin='light'] .hero-facts .hf:focus-visible { transform: translateX(-4px); }
+}
+@media (min-width: 1000px) and (prefers-reduced-motion: reduce) { [data-skin='light'] .hero-facts { animation: none; } }
+/* with the cards on the right, Ambedkar stands at about 55% across, between the words and the cards */
+@media (min-width: 1000px) {
+  [data-skin='light'] .hero-photo img { left: calc(55cqw - 0.455 * max(118cqw, 178cqh)); transform-origin: 55% 30%; }
+}
+/* the column is only as wide as its longest line, so no empty space at the cards' right */
+@media (min-width: 1000px) {
+  [data-skin='light'] .hero-facts { width: max-content; max-width: 320px; }
+  [data-skin='light'] .hero-facts .hf { grid-template-columns: 76px minmax(0, 1fr); min-height: 96px; }
+  [data-skin='light'] .hero-facts .hf-body { padding: 12px 20px 12px 16px; }
+}
+
+/* ---------- Hero background slideshow: photographs cross-fade under one fixed gradient and grain ---------- */
+[data-skin='light'] .hp-slide { position: absolute; inset: 0; opacity: 0; transition: opacity 1.5s ease-in-out; }
+[data-skin='light'] .hp-slide.is-on { opacity: 1; }
+[data-skin='light'] .hp-slide.is-off { opacity: 0; }
+[data-skin='light'] .hero-photo .hp-slide img { animation: none; }
+[data-skin='light'] .hero-photo .hp-slide.is-on img, [data-skin='light'] .hero-photo .hp-slide.is-off img { animation: hero-drift 14s cubic-bezier(0.2, 0.6, 0.2, 1) both; }
+/* the later photographs fill the hero, cropped on Ambedkar */
+[data-skin='light'] .hero-photo .hp-framed img { inset: 0; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: var(--mpos); transform-origin: 50% 30%; }
+/* desktop: they take the right part of the hero, beside the words, and fade out on their left edge */
+@media (min-width: 1000px) {
+  [data-skin='light'] .hp-framed { left: 36%; -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 22%); mask-image: linear-gradient(90deg, transparent 0%, #000 22%); }
+  [data-skin='light'] .hero-photo .hp-framed img { object-position: var(--pos); }
+}
+@media (prefers-reduced-motion: reduce) { [data-skin='light'] .hp-slide { transition: none; } [data-skin='light'] .hero-photo .hp-slide img { animation: none !important; } }
+@media (min-width: 1000px) {
+  [data-skin='light'] .hp-framed.hp-narrow { left: 22%; right: 22%; -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 22%, #000 78%, transparent 100%); mask-image: linear-gradient(90deg, transparent 0%, #000 22%, #000 78%, transparent 100%); }
+}
+/* every background photograph moved 20% of the hero's width to the right: Ambedkar stands at about 75% across */
+@media (min-width: 1000px) {
+  [data-skin='light'] .hero-photo img { left: calc(75cqw - 0.455 * max(118cqw, 178cqh)); transform-origin: 75% 30%; }
+  [data-skin='light'] .hp-framed { left: 56%; right: -20%; }
+  [data-skin='light'] .hp-framed.hp-narrow { left: 42%; right: 2%; }
+}
+/* desktop: the later photographs are shown whole, scaled to fit the hero's right part, their edges fading into the dark */
+@media (min-width: 1000px) {
+  [data-skin='light'] .hp-framed, [data-skin='light'] .hp-framed.hp-narrow { left: 46%; right: 3%; top: 6%; bottom: 6%; display: flex; align-items: center; justify-content: center; -webkit-mask-image: none; mask-image: none; }
+  [data-skin='light'] .hero-photo .hp-framed img { position: relative; inset: auto; top: auto; left: auto; width: auto; height: auto; max-width: 100%; max-height: 100%; object-fit: contain; transform-origin: 50% 50%;
+    -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 16%, #000 90%, transparent 100%), linear-gradient(180deg, transparent 0%, #000 10%, #000 90%, transparent 100%);
+    -webkit-mask-composite: source-in; mask-image: linear-gradient(90deg, transparent 0%, #000 16%, #000 90%, transparent 100%), linear-gradient(180deg, transparent 0%, #000 10%, #000 90%, transparent 100%); mask-composite: intersect; }
+}
+@media (min-width: 1000px) {
+  [data-skin='light'] .hp-framed { container-type: size; }
+  [data-skin='light'] .hero-photo .hp-framed img { width: min(100cqw, 100cqh * var(--ar)); height: auto; max-width: none; max-height: none; }
+}
+/* desktop: each later photograph fills the whole hero again. It is at least as tall as the hero and wide enough to
+   reach its right edge, placed so Ambedkar stands at --at; any gap on the left lies under the dark behind the words,
+   and the photograph's left edge fades into it. */
+@media (min-width: 1000px) {
+  [data-skin='light'] .hp-framed, [data-skin='light'] .hp-framed.hp-narrow { inset: 0; display: block; container-type: size; -webkit-mask-image: none; mask-image: none; }
+  [data-skin='light'] .hero-photo .hp-framed img { --w: max(100cqh * var(--ar), (100cqw - var(--at)) / (1 - var(--fx)));
+    position: absolute; width: var(--w); height: auto; max-width: none; max-height: none; object-fit: fill;
+    left: calc(var(--at) - var(--fx) * var(--w)); top: calc((100cqh - var(--w) / var(--ar)) * 0.3); transform-origin: calc(var(--fx) * 100%) 30%;
+    -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 22%); mask-image: linear-gradient(90deg, transparent 0%, #000 22%); -webkit-mask-composite: source-over; mask-composite: add; }
+}

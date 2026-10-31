@@ -92,3 +92,39 @@
 /* the Preamble box kept its light-design ink (#2b2410): light text on the dark page */
 [data-skin='light'][data-theme='dark'] .preamble { color: var(--ink); background: var(--surface); border-color: var(--line); }
 [data-skin='light'][data-theme='dark'] .preamble .caps, [data-skin='light'][data-theme='dark'] .preamble strong { color: #fff; }
+
+/* Hero and band ghost buttons: a blue-glass hover instead of white (dark ink on a white fill was unreadable here). */
+[data-skin='light'][data-theme='dark'] .hero-full .btn-ghost:hover,
+[data-skin='light'][data-theme='dark'] .band .btn-ghost:hover { background: rgb(96 165 250 / 14%); color: #fff; border-color: #93c5fd; box-shadow: 0 0 24px rgb(59 130 246 / 30%); }
+
+/* ---------- Footer: white logo mark, white text that reads clearly on the blue, and a calmer layout ---------- */
+[data-skin='light'] .site-footer { color: rgb(255 255 255 / 92%); padding-block: 64px 28px; font-size: 0.95rem; }
+[data-skin='light'] .site-footer .footer-grid { grid-template-columns: minmax(0, 1.35fr) minmax(0, 1.25fr) minmax(0, 0.9fr); gap: 40px clamp(32px, 5vw, 80px); align-items: start; }
+[data-skin='light'] .site-footer .footer-brand { display: flex; align-items: center; gap: 14px; margin: 0 0 24px; color: #fff; font-size: 1.3rem; font-weight: 700; line-height: 1.2; text-decoration: none; }
+[data-skin='light'] .site-footer .footer-brand .brand-mark { width: 52px; height: 52px; flex: none; }
+[data-skin='light'] .site-footer .footer-brand small { display: block; margin-top: 4px; font-size: 0.86rem; font-weight: 400; color: rgb(255 255 255 / 80%); }
+[data-skin='light'] .site-footer h2 { margin: 0 0 14px; font-size: 0.74rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: rgb(255 255 255 / 72%); }
+[data-skin='light'] .site-footer p { margin: 0 0 16px; max-width: 44ch; line-height: 1.65; color: rgb(255 255 255 / 92%); }
+[data-skin='light'] .site-footer a, [data-skin='light'][data-theme='dark'] .site-footer a { color: #fff; text-decoration: none; }
+[data-skin='light'] .site-footer a:hover, [data-skin='light'] .site-footer a:focus-visible { color: #fff; text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px; }
+[data-skin='light'] .site-footer p a { text-decoration: underline; text-decoration-color: rgb(255 255 255 / 55%); text-underline-offset: 3px; }
+[data-skin='light'] .site-footer .footer-more { font-weight: 600; }
+[data-skin='light'] .site-footer .footer-grid ul { gap: 10px; }
+[data-skin='light'] .site-footer .footer-grid li a { color: rgb(255 255 255 / 92%); }
+/* the nine Explore links in two short columns */
+@media (min-width: 700px) { [data-skin='light'] .site-footer .footer-grid > div:nth-child(2) ul { grid-template-columns: 1fr 1fr; column-gap: 24px; } }
+[data-skin='light'] .site-footer .footer-bottom { margin-top: 48px; padding-top: 20px; border-top: 1px solid rgb(255 255 255 / 22%); align-items: center; font-size: 0.85rem; color: rgb(255 255 255 / 78%); }
+[data-skin='light'] .site-footer .footer-bottom span a { text-decoration: underline; text-decoration-color: rgb(255 255 255 / 45%); text-underline-offset: 3px; }
+[data-skin='light'] .site-footer .footer-top { white-space: nowrap; font-weight: 600; }
+@media (max-width: 899px) {
+  [data-skin='light'] .site-footer .footer-grid { grid-template-columns: 1fr 1fr; }
+  [data-skin='light'] .site-footer .footer-about { grid-column: 1 / -1; }
+}
+@media (max-width: 520px) {
+  [data-skin='light'] .site-footer .footer-grid { grid-template-columns: 1fr; }
+  [data-skin='light'] .site-footer .footer-bottom { flex-direction: column; align-items: flex-start; }
+}
+@media (min-width: 700px) {
+  [data-skin='light'] .site-footer .footer-grid > div:nth-child(2) ul { display: block; columns: 2; column-gap: 28px; }
+  [data-skin='light'] .site-footer .footer-grid > div:nth-child(2) li { break-inside: avoid; margin-bottom: 10px; }
+}

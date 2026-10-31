@@ -6,15 +6,15 @@ const year = new Date().getFullYear();
 ---
 <footer class="site-footer">
   <div class="wrap">
-    <a class="footer-brand" href={url('/')}>
-      <img class="brand-mark" src={url('/images/brand/reader-mark.svg')} alt="" width="44" height="44" />
-      <span>{t(SITE.name, SITE.mrName)}<small>{t(SITE.tagline, SITE.mrTagline)}</small></span>
-    </a>
     <div class="footer-grid">
-      <div>
+      <div class="footer-about">
+        <a class="footer-brand" href={url('/')}>
+          <img class="brand-mark" src={url('/images/brand/reader-mark-white.svg')} alt="" width="52" height="52" />
+          <span>{t(SITE.name, SITE.mrName)}<small>{t(SITE.tagline, SITE.mrTagline)}</small></span>
+        </a>
         <h2>{t('About this initiative', 'या उपक्रमाविषयी')}</h2>
         <p>{t("An open, independent effort to bring Dr. B. R. Ambedkar's life and work together in one place — from authoritative sources, explained simply, and free for everyone. Built by", 'डॉ. बाबासाहेब आंबेडकर यांचे जीवन आणि कार्य एकाच ठिकाणी आणण्याचा एक खुला, स्वतंत्र प्रयत्न — विश्वसनीय संदर्भांतून, सोप्या भाषेत आणि सर्वांसाठी मोफत. निर्मिती:')} <a href="https://www.sidhantsardar.com/" target="_blank" rel="noopener noreferrer">{t('Sidhant Sardar', 'सिद्धांत सरदार')}</a>.</p>
-        <p><a href={url('/about/')}>{t('Read our mission and source policy →', 'आमचे ध्येय आणि संदर्भ धोरण वाचा →')}</a></p>
+        <p><a class="footer-more" href={url('/about/')}>{t('Read our mission and source policy →', 'आमचे ध्येय आणि संदर्भ धोरण वाचा →')}</a></p>
       </div>
       <div>
         <h2>{t('Explore', 'पाहा')}</h2>
@@ -45,7 +45,7 @@ const year = new Date().getFullYear();
     </div>
     <div class="footer-bottom">
       <span>© {year} {SITE.domain}. {t('Original writing is shared under', 'मूळ लेखन या परवान्याखाली उपलब्ध आहे:')} <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer">CC BY-SA 4.0</a>. {t('Images and documents keep their own licences, shown with each one.', 'छायाचित्रे आणि दस्तऐवजांचे परवाने त्यांच्यासोबत दिलेले आहेत.')}</span>
-      <a href="#top">{t('Back to top ↑', 'वर जा ↑')}</a>
+      <a class="footer-top" href="#top">{t('Back to top ↑', 'वर जा ↑')}</a>
     </div>
   </div>
 </footer>
