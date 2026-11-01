@@ -4444,6 +4444,82 @@
     "edition": "first edition 1947"
   },
   {
+    "id": "cover-annihilation-of-caste-third-edition",
+    "file": "/images/archive/cover-annihilation-of-caste-third-edition.jpg",
+    "title": "Annihilation of Caste, third edition (1945)",
+    "caption": "Title page of Annihilation of Caste with A Reply to Mahatma Gandhi, Tracts for the Times No. 2, third edition. Its edition notice reads First Edition 1936, Second Edition 1937, Third Edition 1945; Ambedkar's preface to it is dated 1 December 1944, and this edition was published by the Ambedkar School of Thoughts, Amritsar. Digital Library of India scan of a University of Rajasthan copy.",
+    "date": "1945",
+    "people": [
+      "B. R. Ambedkar"
+    ],
+    "place": "",
+    "author": "B. R. Ambedkar (Ambedkar School of Thoughts, Amritsar)",
+    "license": "Public domain (PD-India)",
+    "licenseUrl": "https://commons.wikimedia.org/wiki/Template:PD-India",
+    "sourceUrl": "https://archive.org/details/in.ernet.dli.2015.71655",
+    "sourceName": "Internet Archive",
+    "kind": "title page",
+    "work": "annihilation-of-caste",
+    "edition": "third edition 1945"
+  },
+  {
+    "id": "cover-federation-versus-freedom",
+    "file": "/images/archive/cover-federation-versus-freedom.jpg",
+    "title": "Federation versus Freedom (1939)",
+    "caption": "Title page of Federation versus Freedom, Tracts for the Times No. 3, 1939: Ambedkar's Kale Memorial Lecture at the Gokhale Institute of Politics and Economics, Poona. Digital Library of India scan of an Osmania University Library copy.",
+    "date": "1939",
+    "people": [
+      "B. R. Ambedkar"
+    ],
+    "place": "",
+    "author": "B. R. Ambedkar",
+    "license": "Public domain (PD-India)",
+    "licenseUrl": "https://commons.wikimedia.org/wiki/Template:PD-India",
+    "sourceUrl": "https://archive.org/details/in.ernet.dli.2015.83949",
+    "sourceName": "Internet Archive",
+    "kind": "title page",
+    "work": "federation-versus-freedom",
+    "edition": "1939"
+  },
+  {
+    "id": "cover-thoughts-on-pakistan",
+    "file": "/images/archive/cover-thoughts-on-pakistan.jpg",
+    "title": "Thoughts on Pakistan (1941)",
+    "caption": "Title page of Thoughts on Pakistan, Thacker and Company, Bombay, dated 1941; the book was first published in December 1940. Digital Library of India scan of the copy in the library of the Lal Bahadur Shastri National Academy of Administration, Mussoorie.",
+    "date": "1941",
+    "people": [
+      "B. R. Ambedkar"
+    ],
+    "place": "",
+    "author": "B. R. Ambedkar (Thacker & Co.)",
+    "license": "Public domain (PD-India)",
+    "licenseUrl": "https://commons.wikimedia.org/wiki/Template:PD-India",
+    "sourceUrl": "https://archive.org/details/dli.ernet.1802",
+    "sourceName": "Internet Archive",
+    "kind": "title page",
+    "work": "pakistan-or-the-partition-of-india",
+    "edition": "Thacker, 1941"
+  },
+  {
+    "id": "cover-pakistan-or-the-partition-of-india-1945",
+    "file": "/images/archive/cover-pakistan-or-the-partition-of-india-1945.jpg",
+    "title": "Pakistan or the Partition of India, second edition (1945)",
+    "caption": "Title page of Pakistan or Partition of India, Thacker and Company, Bombay, 1945: the second edition (February 1945) of Thoughts on Pakistan, under its new title. Digital Library of India scan of the copy in the Ramakrishna Mission Institute of Culture library, Kolkata.",
+    "date": "1945",
+    "people": [
+      "B. R. Ambedkar"
+    ],
+    "place": "",
+    "author": "B. R. Ambedkar (Thacker & Co.)",
+    "license": "Public domain (PD-India)",
+    "licenseUrl": "https://commons.wikimedia.org/wiki/Template:PD-India",
+    "sourceUrl": "https://archive.org/details/in.ernet.dli.2015.514118",
+    "sourceName": "Internet Archive",
+    "kind": "title page",
+    "work": "pakistan-or-the-partition-of-india",
+    "edition": "second edition 1945"
+  },
+  {
     "id": "cover-mooknayak",
     "file": "/images/archive/cover-mooknayak.jpg",
     "title": "Mooknayak, 31 January 1920",

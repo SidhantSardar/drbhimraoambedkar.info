@@ -1,6 +1,9 @@
 ---
 import Base from '../../layouts/Base.astro';
 import { volumes, tocOf, firstChapter, coverOf, volLabelIn, volTitleIn, translatedCount } from '../../lib/library';
+import Picture from '../../components/Picture.astro';
+import { FIRST_EDITIONS, firstEditionHref } from '../../lib/first-editions';
+import { images, type Img } from '../../lib/data';
 import { url } from '../../lib/site';
 import { getLang, translator } from '../../i18n';
 const lang = getLang(Astro);
@@ -8,6 +11,7 @@ const t = translator(lang);
 const vols = volumes();
 const totalPages = vols.reduce((s, v) => s + v.pages, 0);
 const totalDone = vols.reduce((s, v) => s + translatedCount(v), 0);
+const pictures = images(lang);
 ---
 <Base title={t('Library — Writings and Speeches', 'ग्रंथालय — लेखन आणि भाषणे')} description={t('Read every volume of Dr. Babasaheb Ambedkar: Writings and Speeches online, chapter by chapter, word for word from the official edition, first published by the Government of Maharashtra and reprinted by the Government of India.', 'डॉ. बाबासाहेब आंबेडकर: लेखन आणि भाषणे यांचे प्रत्येक खंड ऑनलाइन, प्रकरणानुसार वाचा — महाराष्ट्र शासनाच्या अधिकृत आवृत्तीतून (भारत सरकारचे पुनर्मुद्रण) मूळ इंग्रजी मजकूर, आणि AI च्या मदतीने केलेला, अजून न तपासलेला मराठी अनुवाद-मसुदा.')}>
   <section class="hero">
@@ -22,7 +26,7 @@ const totalDone = vols.reduce((s, v) => s + translatedCount(v), 0);
       ) : (
         <p class="lede" style="max-width:64ch">The complete English edition — {vols.length} books, {totalPages.toLocaleString('en-IN')} pages — to read here, chapter by chapter. The text is taken word for word from the official volumes, first published by the Government of Maharashtra and reprinted by the Government of India, and every page links to the original.</p>
       )}
-      <div class="btn-row" style="margin-top:20px"><a class="btn btn-ghost" href={url('/ask/')}>{t('Search all volumes →', 'सर्व खंडांत शोधा →')}</a></div>
+      <div class="btn-row" style="margin-top:20px"><a class="btn btn-ghost" href={url('/ask/')}>{t('Search all volumes →', 'सर्व खंडांत शोधा →')}</a><a class="btn btn-ghost" href="#first-editions">{t('First editions ↓', 'पहिल्या आवृत्त्या ↓')}</a></div>
     </div>
   </section>
   <div class="wrap section">
@@ -53,9 +57,40 @@ const totalDone = vols.reduce((s, v) => s + translatedCount(v), 0);
         );
       })}
     </ul>
+    <section id="first-editions" class="fe-shelf" aria-labelledby="fe-h">
+      <h2 id="fe-h">{t('First editions', 'पहिल्या आवृत्त्या')}</h2>
+      <p class="lede">{t(`His books as they came off the press: ${FIRST_EDITIONS.length} scans, page by page. Most are first editions. Where no first edition is online, this is the earliest printing we could find, and each book says which one it is. The scans were made by the Digital Library of India from copies in Indian libraries; they open here in the Internet Archive's viewer.`, `त्यांचे ग्रंथ छापखान्यातून बाहेर पडले तसे: ${FIRST_EDITIONS.length} स्कॅन, पान न् पान. यांपैकी बहुतेक पहिल्या आवृत्त्या आहेत. जिथे पहिली आवृत्ती ऑनलाइन उपलब्ध नाही, तिथे आम्हाला सापडलेली सर्वांत जुनी छपाई दिली आहे, आणि प्रत्येक ग्रंथावर ती कोणती आवृत्ती आहे हे लिहिले आहे. हे स्कॅन डिजिटल लायब्ररी ऑफ इंडियाने भारतातील ग्रंथालयांतील प्रतींवरून केले आहेत; ते येथे इंटरनेट आर्काइव्हच्या वाचकात उघडतात.`)}</p>
+      <ul class="shelf">
+        {FIRST_EDITIONS.map((fe) => {
+          const img = pictures.find((i) => i.id === fe.cover) as Img | undefined;
+          const href = firstEditionHref(fe);
+          return (
+            <li class="book">
+              <a class="book-cover fe-page" href={href} tabindex="-1" aria-hidden="true">
+                {img && <Picture img={img} sizes="(max-width: 520px) 50vw, 240px" alt="" />}
+              </a>
+              <div class="book-body">
+                <span class="book-vol">{t(...fe.edition)}</span>
+                <h3 class="book-title"><a href={href} title={lang === 'mr' ? fe.title[0] : undefined}>{t(...fe.title)}</a></h3>
+                <p class="book-meta">{t(...fe.imprint)}</p>
+                <div class="book-actions"><a class="read-now" href={href}>{t('See the pages →', 'पाने पाहा →')}</a></div>
+              </div>
+            </li>
+          );
+        })}
+      </ul>
+    </section>
     <div class="callout" style="margin-top:40px">
       <h2 style="font-size:var(--step-1)">{t('In Hindi — सम्पूर्ण वाङ्मय', 'हिंदीत — सम्पूर्ण वाङ्मय')}</h2>
       <p>{t('The Government of India also publishes the collected works in Hindi, in 40 volumes. They are available as PDFs from the Ministry of External Affairs:', 'भारत सरकार हे समग्र साहित्य हिंदीत 40 खंडांतही प्रकाशित करते. ते परराष्ट्र मंत्रालयाकडून PDF स्वरूपात उपलब्ध आहेत:')} <a href="https://www.mea.gov.in/books-writings-of-ambedkar" target="_blank" rel="noopener noreferrer">Books &amp; Writings of Ambedkar ↗</a>. {t('A readable Hindi library is planned.', 'हिंदी ग्रंथालयही नियोजित आहे.')}</p>
     </div>
   </div>
 </Base>
+
+<style>
+  .fe-shelf { margin-top: 80px; padding-top: 48px; border-top: 1px solid var(--line); scroll-margin-top: 90px; }
+  .fe-shelf h2 { font-size: var(--step-2); margin: 0 0 10px; }
+  .fe-shelf .lede { max-width: 64ch; margin-bottom: 36px; }
+  .fe-page { background: #fff; }
+  .fe-page :global(picture) { display: block; height: 100%; }
+</style>

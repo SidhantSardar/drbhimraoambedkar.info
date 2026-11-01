@@ -6,8 +6,9 @@ import HomePeople from '../components/HomePeople.astro';
 import { url, SHOW_NEWS } from '../lib/site';
 import { chapters, themes, images, loadJSON, type Img, type Work, type Speech } from '../lib/data';
 import { originalFor, credit, inLang } from '../lib/images-core.mjs';
-import { volumes, leafForPage, volLabelIn } from '../lib/library';
+import { volumes, leafForPage, volLabelIn, coverOf } from '../lib/library';
 import { SHELF_BOOKS, EDITION, bookHref } from '../lib/books';
+import { FIRST_EDITIONS, firstEditionHref } from '../lib/first-editions';
 import { loadNews, mixed, catOf as category, thumbFor, fallbackFor, ONERROR, isHindi, cleanTitle } from '../lib/news';
 import { getLang, translator } from '../i18n';
 const lang = getLang(Astro);
@@ -56,7 +57,7 @@ const readAt = (b?: { volume?: string; url?: string }) => {
 };
 const workById = Object.fromEntries(allWorks.map((w: any) => [w.id, w]));
 const speechById = Object.fromEntries(loadJSON<any[]>('speeches', []).map((s: any) => [s.id, s]));
-type Shelf = { id: string; title: string; year: string; desc: string; img?: Img; href: string; where: string; edition?: string };
+type Shelf = { id: string; title: string; year: string; desc: string; img?: Img; cover?: string; href: string; where: string; edition?: string };
 const BOOKS = SHELF_BOOKS;
 const SPEECHES: [string, string, string, string, string, string, string][] = [
   ['mahad-satyagraha-december-1927', 'chavdar-tale-mahad-1927', 'Mahad Satyagraha', 'महाड सत्याग्रह', '1927', 'For the right to drink from a public water tank.', 'सार्वजनिक तळ्याचे पाणी पिण्याच्या हक्कासाठी.'],
@@ -79,8 +80,9 @@ const shelf = {
   books: BOOKS.map(([id, en, mr, year, den, dmr]): Shelf | null => {
     const at = readAt(workById[id]?.baws?.[0]);
     if (!at) return null;
-    const img = byId('cover-' + id) ?? (id === 'annihilation-of-caste' ? byId('annihilation-of-caste-first-edition') : undefined);
-    return { id, title: t(en, mr), year, desc: t(den, dmr), img, edition: editionOf(id, img), href: bookHref(id, volById[volKey(workById[id].baws[0].volume)]), where: at.vol };
+    // the cover of the volume it is read in: the first printings have their own section, so none is shown here
+    const vol = volById[volKey(workById[id].baws[0].volume)];
+    return { id, title: t(en, mr), year, desc: t(den, dmr), cover: url(coverOf(vol)), href: bookHref(id, vol), where: at.vol };
   }).filter(Boolean) as Shelf[],
   speeches: SPEECHES.map(([id, img, en, mr, year, den, dmr]): Shelf | null => {
     const at = readAt(speechById[id]?.baws);
@@ -95,6 +97,8 @@ const shelf = {
     return { id, title: t(en, mr), year, desc: t(den, dmr), img, edition: editionOf(id, img), href: url('/works/journals/'), where };
   }),
 };
+// ---------- First editions: the books as they were first printed, each opening in the Internet Archive's page viewer ----------
+const originals = FIRST_EDITIONS.map((fe) => ({ fe, img: byId(fe.cover), href: firstEditionHref(fe) }));
 const shelfTabs = [
   { key: 'books', label: t('Books', 'ग्रंथ'), n: shelf.books.length },
   { key: 'speeches', label: t('Speeches', 'भाषणे'), n: speeches },
@@ -199,7 +203,7 @@ const cats = [...new Set(updates.map((n) => n.category))];
               <li>
                 <a class="shelf-card" href={b.href}>
                   <span class:list={['shelf-cover', { photo: tab.key === 'speeches' }]}>
-                    {b.img ? <Picture img={b.img} sizes="(max-width: 600px) 45vw, 220px" alt="" /> : (
+                    {b.img ? <Picture img={b.img} sizes="(max-width: 600px) 45vw, 220px" alt="" /> : b.cover ? <img src={b.cover} alt="" width="707" height="1100" loading="lazy" decoding="async" style="transform:scale(1.05)" /> : (
                       <span class="shelf-plain" aria-hidden="true"><b>{b.title}</b><small>B. R. Ambedkar · {b.year}</small></span>
                     )}
                   </span>
@@ -229,7 +233,43 @@ const cats = [...new Set(updates.map((n) => n.category))];
     </div>
   </section>
 
-  <!-- 3. WHY THIS EXISTS -->
+  <!-- 3. FIRST EDITIONS: the books as they were first printed -->
+  <section class="home-shelf home-originals" id="first-editions" aria-labelledby="home-fe-h">
+    <div class="wrap">
+      <div class="shelf-head" data-reveal style="margin-bottom:34px">
+        <span class="eyebrow">{t(`First editions · ${originals.length} original books`, `पहिल्या आवृत्त्या · ${originals.length} मूळ ग्रंथ`)}</span>
+        <h2 id="home-fe-h">{t('See his books as they were first printed', 'त्यांचे ग्रंथ, जसे प्रथम छापले गेले')}</h2>
+        <p class="lede">{t('Before they were collected in the volumes, his books came out one by one. Here are the original printed copies, scanned page by page from Indian libraries. Most are first editions; where none is online, the card names the earliest printing we found.', 'खंडांत संकलित होण्याआधी त्यांचे ग्रंथ एकेक करून प्रसिद्ध झाले. या त्या मूळ छापील प्रती आहेत, भारतातील ग्रंथालयांतून पान न् पान स्कॅन केलेल्या. यांपैकी बहुतेक पहिल्या आवृत्त्या आहेत; जिथे पहिली आवृत्ती ऑनलाइन नाही, तिथे आम्हाला सापडलेली सर्वांत जुनी छपाई कोणती, हे कार्डवर लिहिले आहे.')}</p>
+      </div>
+      <div class="shelf-row">
+        <button class="shelf-arrow prev" type="button" data-shelf-go="-1" aria-label={t('Previous', 'मागे')} disabled>←</button>
+        <ul class="shelf-grid" tabindex="-1">
+          {originals.map(({ fe, img, href }) => (
+            <li>
+              <a class="shelf-card" href={href}>
+                <span class="shelf-cover">
+                  {img ? <Picture img={img} sizes="(max-width: 600px) 45vw, 220px" alt="" /> : (
+                    <span class="shelf-plain" aria-hidden="true"><b>{t(...fe.title)}</b><small>B. R. Ambedkar · {fe.year}</small></span>
+                  )}
+                </span>
+                <span class="shelf-body">
+                  <span class="shelf-year">{fe.year}</span>
+                  <span class="shelf-ed">{t(...fe.edition)}</span>
+                  <strong>{t(...fe.title)}</strong>
+                  <span class="shelf-desc">{t(...fe.imprint)}</span>
+                  <span class="shelf-vol">{t('See the original pages', 'मूळ पाने पाहा')} <i aria-hidden="true">→</i></span>
+                </span>
+              </a>
+            </li>
+          ))}
+        </ul>
+        <button class="shelf-arrow next" type="button" data-shelf-go="1" aria-label={t('Next', 'पुढे')}>→</button>
+      </div>
+      <p class="shelf-note">{t('Scans by the Digital Library of India, kept on the Internet Archive. His writings are in the public domain in India.', 'डिजिटल लायब्ररी ऑफ इंडियाने केलेले स्कॅन, इंटरनेट आर्काइव्हवर उपलब्ध. त्यांचे लेखन भारतात सार्वजनिक क्षेत्रात (public domain) आहे.')}</p>
+    </div>
+  </section>
+
+  <!-- 4. WHY THIS EXISTS -->
   <section class="home-why" aria-labelledby="home-why-h">
     <div class="wrap">
       <div class="why-lead" data-reveal>
@@ -263,7 +303,7 @@ const cats = [...new Set(updates.map((n) => n.category))];
     </div>
   </section>
 
-  <!-- 4. ASK HIM -->
+  <!-- 5. ASK HIM -->
   <section class="home-ask" aria-labelledby="home-ask-h">
     <div class="wrap" data-reveal>
       <span class="eyebrow">{t('For people and for AI', 'माणसांसाठी आणि AI साठी')}</span>
@@ -282,7 +322,7 @@ const cats = [...new Set(updates.map((n) => n.category))];
     </div>
   </section>
 
-  <!-- 5. PEOPLE OF THE MOVEMENT -->
+  <!-- 6. PEOPLE OF THE MOVEMENT -->
   <HomePeople />
 
   <FilmGrain />
@@ -307,7 +347,7 @@ const cats = [...new Set(updates.map((n) => n.category))];
         });
       }
 
-      /* ---------- Inside the volumes: Books / Speeches / Newspapers tabs ---------- */
+      /* ---------- Inside the volumes (Books / Speeches / Newspapers tabs) and First editions ---------- */
       var tabs = Array.prototype.slice.call(document.querySelectorAll('[data-shelf-tab]'));
       var pick = function (b, focus) {
         tabs.forEach(function (x) {

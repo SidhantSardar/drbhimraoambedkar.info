@@ -1,0 +1,73 @@
+---
+// One book as it was first printed: the scan's title page, which printing it is, and every page in the
+// Internet Archive's viewer. The scan stays on the Archive; nothing is copied to this site.
+import Base from '../../../layouts/Base.astro';
+import Picture from '../../../components/Picture.astro';
+import { FIRST_EDITIONS, firstEditionHref, archiveUrl, embedUrl, textOf, type FirstEdition } from '../../../lib/first-editions';
+import { images, type Img } from '../../../lib/data';
+import { url } from '../../../lib/site';
+import { getLang, translator } from '../../../i18n';
+
+export function getStaticPaths() {
+  return FIRST_EDITIONS.map((fe, i) => ({ params: { book: fe.slug }, props: { fe, prev: FIRST_EDITIONS[i - 1], next: FIRST_EDITIONS[i + 1] } }));
+}
+const { fe, prev, next } = Astro.props as { fe: FirstEdition; prev?: FirstEdition; next?: FirstEdition };
+const lang = getLang(Astro);
+const t = translator(lang);
+const [en, mr] = fe.title;
+const edition = t(...fe.edition);
+const imprint = t(...fe.imprint);
+const img = images(lang).find((i) => i.id === fe.cover) as Img | undefined;
+const text = textOf(fe, lang);
+const credit = fe.library
+  ? t(`Scan by the Digital Library of India, from the copy in the ${fe.library[0]}.`, `डिजिटल लायब्ररी ऑफ इंडियाने केलेला स्कॅन (प्रत: ${fe.library[1]}).`)
+  : t('Scan by the Digital Library of India.', 'डिजिटल लायब्ररी ऑफ इंडियाने केलेला स्कॅन.');
+---
+<Base title={t(`${en} (${fe.year}) — the original pages`, `${mr} (${fe.year}) — मूळ छापील पाने`)} description={t(`Every page of ${en} as it was printed — ${fe.edition[0]}, ${fe.imprint[0]} — from the Digital Library of India scan on the Internet Archive.`, `${mr} ची छापील पाने — ${fe.edition[1]}, ${fe.imprint[1]} — इंटरनेट आर्काइव्हवरील डिजिटल लायब्ररी ऑफ इंडियाच्या स्कॅनमधून.`)} image={img?.file}>
+  <section class="hero">
+    <div class="wrap section-tight fe-head">
+      {img && <figure class="fe-cover"><Picture img={img} sizes="200px" alt={t(`Title page of ${en}, ${fe.edition[0].toLowerCase()}`, `${mr}: शीर्षक पान, ${fe.edition[1]}`)} eager /></figure>}
+      <div>
+        <a class="eyebrow fe-back" href={url('/library/#first-editions')}>{t('← First editions', '← पहिल्या आवृत्त्या')}</a>
+        <h1>{t(en, mr)}</h1>
+        {lang === 'mr' && <p class="docs-orig-title"><span>मूळ इंग्रजी शीर्षक:</span> <span lang="en">{en}</span></p>}
+        <p class="lede">{edition} · {imprint}</p>
+        {fe.note && <p class="fe-note">{t(...fe.note)}</p>}
+        <div class="btn-row" style="margin-top:22px">
+          {text && <a class="btn btn-primary btn-beam" href={text.href}><span>{t(`Read the text in ${text.vol} →`, `${text.vol} मध्ये मजकूर वाचा →`)}</span></a>}
+          <a class="btn btn-ghost" href={archiveUrl(fe)} target="_blank" rel="noopener noreferrer">{t('Open on the Internet Archive ↗', 'इंटरनेट आर्काइव्हवर उघडा ↗')}</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="wrap section-tight">
+    <div class="fe-viewer">
+      <iframe src={embedUrl(fe)} title={t(`${en}, ${fe.edition[0].toLowerCase()}: every page, in the Internet Archive's viewer`, `${mr}, ${fe.edition[1]}: इंटरनेट आर्काइव्हवरील सर्व पाने`)} loading="lazy" allowfullscreen></iframe>
+    </div>
+    <p class="source-link fe-credit">
+      {credit} {t('Kept on the Internet Archive; in the public domain in India.', 'इंटरनेट आर्काइव्हवर उपलब्ध; भारतात सार्वजनिक क्षेत्रात (public domain).')}
+      {' '}{t('If the pages do not load,', 'पाने दिसत नसल्यास')} <a href={archiveUrl(fe)} target="_blank" rel="noopener noreferrer">{t('open the scan on the Internet Archive ↗', 'स्कॅन इंटरनेट आर्काइव्हवर उघडा ↗')}</a>
+    </p>
+    <nav class="fe-pager" aria-label={t('More first editions', 'आणखी पहिल्या आवृत्त्या')}>
+      {prev ? <a href={firstEditionHref(prev)}><small>{t('Earlier', 'आधीचा')} · {prev.year}</small>← {t(...prev.title)}</a> : <span></span>}
+      {next && <a class="next" href={firstEditionHref(next)}><small>{t('Later', 'नंतरचा')} · {next.year}</small>{t(...next.title)} →</a>}
+    </nav>
+  </div>
+</Base>
+
+<style>
+  .fe-head { display: grid; gap: 28px; align-items: start; }
+  @media (min-width: 760px) { .fe-head { grid-template-columns: 200px 1fr; } }
+  .fe-cover { margin: 0; width: min(200px, 52vw); }
+  .fe-cover :global(img) { display: block; width: 100%; height: auto; background: #fff; border: 1px solid var(--line); box-shadow: 0 16px 34px -16px rgb(11 18 32 / 40%); }
+  .fe-back { text-decoration: none; }
+  .fe-head h1 { font-size: var(--step-3); margin: 0 0 8px; }
+  .fe-note { max-width: 64ch; color: var(--ink-2); }
+  .fe-viewer { height: clamp(480px, 82vh, 960px); border: 1px solid var(--line); background: #1c1c1c; }
+  .fe-viewer iframe { display: block; width: 100%; height: 100%; border: 0; }
+  .fe-credit { margin-top: 14px; max-width: 80ch; }
+  .fe-pager { display: flex; justify-content: space-between; gap: 16px; margin-top: 36px; padding-top: 20px; border-top: 1px solid var(--line); }
+  .fe-pager a { display: flex; flex-direction: column; gap: 4px; max-width: 46%; text-decoration: none; font-weight: 600; }
+  .fe-pager a.next { text-align: right; margin-left: auto; }
+  .fe-pager small { font-size: 0.74rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+</style>
