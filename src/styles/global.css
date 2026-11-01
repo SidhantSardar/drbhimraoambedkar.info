@@ -104,7 +104,7 @@ hr { border: 0; border-top: 1px solid var(--line); margin: 2.5rem 0; }
 .section { padding-block: clamp(56px, 8vw, 120px); }
 .section-tight { padding-block: clamp(32px, 5vw, 64px); }
 .eyebrow { font-family: var(--font-sans); font-size: 0.74rem; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem; display: inline-flex; align-items: center; gap: 12px; }
-.lede { font-size: var(--step-1); color: var(--ink-2); line-height: 1.5; font-weight: 400; }
+.lede { font-size: 1rem; color: var(--ink-2); line-height: 1.65; font-weight: 400; }
 .muted { color: var(--muted); }
 .center { text-align: center; }
 /* ---------- Buttons & chips ---------- */
@@ -190,7 +190,7 @@ a.card:hover { transform: translateY(-3px); text-decoration: none; }
 .story-hero .chakra-bg { position: absolute; right: -20%; bottom: -40%; width: 640px; color: var(--blue-700); opacity: 0.06; z-index: -1; }
 .story-hero-inner { padding-block: clamp(36px, 7vw, 80px) clamp(28px, 5vw, 56px); }
 .story-hero h1 { color: var(--ink); margin-bottom: 0.2em; }
-.story-hero .subtitle { font-size: var(--step-1); color: var(--ink-2); font-family: var(--font-sans); font-weight: 400; line-height: 1.45; }
+.story-hero .subtitle { font-size: 1rem; color: var(--ink-2); font-family: var(--font-sans); font-weight: 400; line-height: 1.65; }
 .story-hero .period { display: inline-block; margin-bottom: 14px; }
 .story-hero-img { margin: 0; max-height: 70vh; overflow: hidden; background: var(--blue-950); }
 .story-hero-img img { width: auto; max-width: 100%; max-height: 70vh; object-fit: contain; margin-inline: auto; }
@@ -257,7 +257,7 @@ a.src:hover { background: var(--primary); color: var(--primary-ink); }
 .tl-item { position: relative; padding: 4px 0 26px 26px; }
 .tl-item::before { content: ''; position: absolute; left: -9px; top: 12px; width: 15px; height: 15px; border-radius: 50%; background: var(--surface); border: 3px solid var(--primary); }
 .tl-item time { font-weight: 800; color: var(--accent); font-size: 0.92rem; }
-.tl-item p { margin: 2px 0 6px; font-size: 1.05rem; }
+.tl-item p { margin: 2px 0 6px; font-size: 1rem; }
 .tl-item .tl-links { display: flex; flex-wrap: wrap; gap: 8px; font-size: 0.85rem; }
 
 /* ---------- Data lists (works, speeches) ---------- */
@@ -1310,7 +1310,7 @@ html.lt-lock, html.lt-lock body { overflow: hidden; overscroll-behavior: none; }
 .jr-hero::before { content: ''; position: absolute; inset: 0; z-index: -1; background: radial-gradient(35% 60% at 15% 20%, rgb(29 78 216 / 14%), transparent 70%), radial-gradient(35% 60% at 85% 60%, rgb(56 189 248 / 16%), transparent 70%); }
 .jr-hero-in { display: grid; grid-template-columns: 1fr minmax(0, 400px); gap: clamp(24px, 4vw, 56px); align-items: center; }
 .jr-hero h1 { font-size: var(--step-4); margin: 6px 0 12px; }
-.jr-hero .lede { max-width: 58ch; font-size: 1.05rem; }
+.jr-hero .lede { max-width: 58ch; font-size: 1rem; }
 .jr-hero-img { margin: 0; }
 .jr-hero-img img { width: 100%; height: auto; display: block; box-shadow: 0 24px 50px -24px rgb(11 18 32 / 45%); }
 .jr-hero-img figcaption { font-size: 0.72rem; color: var(--muted); margin-top: 8px; }
@@ -1572,3 +1572,9 @@ html[data-skin] .st .st-sun { border-radius: 50% !important; filter: none; }
 .cf-card .src { justify-self: start; margin-top: auto; }
 @media (max-width: 960px) { .cf-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 600px) { .cf-grid { grid-template-columns: 1fr; } }
+
+/* Descriptions are 16px across the site, never larger: page and section introductions (.lede above, and the
+   paragraph under a section heading), and the text of callouts, cards and lists. Long reading text (.prose, .reader),
+   the Preamble and the home page hero keep their own sizes. */
+.narrow > h2 + p, .callout p, .res-group > p, .work-body p, .pc-work, .people-blurb, .vid-lede, .jr-meaning,
+.why-lead p, .home-people-head p, .docs-overview p.muted { font-size: 1rem; }

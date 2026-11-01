@@ -60,7 +60,7 @@ const pictures = images(lang);
     <section id="first-editions" class="fe-shelf" aria-labelledby="fe-h">
       <h2 id="fe-h">{t('First editions', 'पहिल्या आवृत्त्या')}</h2>
       <p class="lede">{t(`His books as they came off the press: ${FIRST_EDITIONS.length} scans, page by page. Most are first editions. Where no first edition is online, this is the earliest printing we could find, and each book says which one it is. The scans were made by the Digital Library of India from copies in Indian libraries; they open here in the Internet Archive's viewer.`, `त्यांचे ग्रंथ छापखान्यातून बाहेर पडले तसे: ${FIRST_EDITIONS.length} स्कॅन, पान न् पान. यांपैकी बहुतेक पहिल्या आवृत्त्या आहेत. जिथे पहिली आवृत्ती ऑनलाइन उपलब्ध नाही, तिथे आम्हाला सापडलेली सर्वांत जुनी छपाई दिली आहे, आणि प्रत्येक ग्रंथावर ती कोणती आवृत्ती आहे हे लिहिले आहे. हे स्कॅन डिजिटल लायब्ररी ऑफ इंडियाने भारतातील ग्रंथालयांतील प्रतींवरून केले आहेत; ते येथे इंटरनेट आर्काइव्हच्या वाचकात उघडतात.`)}</p>
-      <div class="btn-row" style="margin:-16px 0 36px"><a class="btn btn-ghost" href={url('/library/first-editions/')}>{t('Open the bookshelf →', 'ग्रंथांचे कपाट उघडा →')}</a></div>
+      <div class="btn-row" style="margin:-16px 0 36px"><a class="btn btn-ghost" href={url('/library/first-editions/')}>{t('See all original editions →', 'सर्व मूळ आवृत्त्या पाहा →')}</a></div>
       <ul class="shelf">
         {FIRST_EDITIONS.map((fe) => {
           const img = pictures.find((i) => i.id === fe.cover) as Img | undefined;

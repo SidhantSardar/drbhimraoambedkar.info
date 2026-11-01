@@ -28,7 +28,7 @@ const credit = fe.library
     <div class="wrap section-tight fe-head">
       {img && <figure class="fe-cover"><Picture img={img} sizes="200px" alt={t(`Title page of ${en}, ${fe.edition[0].toLowerCase()}`, `${mr}: शीर्षक पान, ${fe.edition[1]}`)} eager /></figure>}
       <div>
-        <a class="eyebrow fe-back" href={url('/library/first-editions/')}>{t('← The bookshelf', '← ग्रंथांचे कपाट')}</a>
+        <a class="eyebrow fe-back" href={url('/library/first-editions/')}>{t('← Original editions', '← मूळ आवृत्त्या')}</a>
         <h1>{t(en, mr)}</h1>
         {lang === 'mr' && <p class="docs-orig-title"><span>मूळ इंग्रजी शीर्षक:</span> <span lang="en">{en}</span></p>}
         <p class="lede">{edition} · {imprint}</p>
@@ -62,7 +62,7 @@ const credit = fe.library
   .fe-cover :global(img) { display: block; width: 100%; height: auto; background: #fff; border: 1px solid var(--line); box-shadow: 0 16px 34px -16px rgb(11 18 32 / 40%); }
   .fe-back { text-decoration: none; }
   .fe-head h1 { font-size: var(--step-3); margin: 0 0 8px; }
-  .fe-note { max-width: 64ch; color: var(--ink-2); }
+  .fe-note { max-width: 64ch; font-size: 1rem; color: var(--ink-2); }
   .fe-viewer { height: clamp(480px, 82vh, 960px); border: 1px solid var(--line); background: #1c1c1c; }
   .fe-viewer iframe { display: block; width: 100%; height: 100%; border: 0; }
   .fe-credit { margin-top: 14px; max-width: 80ch; }

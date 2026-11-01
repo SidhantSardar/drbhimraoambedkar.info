@@ -18,6 +18,10 @@ export type FirstEdition = {
   /** Leaf of the scan where the title page is (n0 is the first image), so the viewer opens there. */
   start: number;
   title: Two;
+  /** The book's own subtitle, when it has one. */
+  subtitle?: Two;
+  /** One line about the book. */
+  desc: Two;
   /** Year printed on the scanned copy's title page. */
   year: string;
   /** Which printing the scan is. */
@@ -35,6 +39,8 @@ export const FIRST_EDITIONS: FirstEdition[] = [
   {
     slug: 'problem-of-the-rupee', work: 'problem-of-the-rupee', ia: 'in.ernet.dli.2015.84521', start: 6, cover: 'cover-problem-of-the-rupee',
     title: ['The Problem of the Rupee', 'रुपयाचा प्रश्न'], year: '1923',
+    subtitle: ['Its Origin and Its Solution', 'त्याचा उगम आणि त्यावरील उपाय'],
+    desc: ['His economics thesis on India’s currency.', 'भारतीय चलनावरील त्यांचा अर्थशास्त्रीय प्रबंध.'],
     edition: ['First edition, 1923', 'पहिली आवृत्ती, 1923'],
     imprint: ['P. S. King & Son, London', 'पी. एस. किंग अँड सन, लंडन'],
     library: ['Osmania University Library, Hyderabad', 'उस्मानिया विद्यापीठ ग्रंथालय, हैदराबाद'],
@@ -42,12 +48,16 @@ export const FIRST_EDITIONS: FirstEdition[] = [
   {
     slug: 'evolution-of-provincial-finance', work: 'evolution-of-provincial-finance', ia: 'dli.ministry.12679', start: 7, cover: 'cover-evolution-of-provincial-finance',
     title: ['The Evolution of Provincial Finance in British India', 'ब्रिटिश भारतातील प्रांतिक अर्थव्यवस्थेची उत्क्रांती'], year: '1925',
+    subtitle: ['A Study in the Provincial Decentralization of Imperial Finance', 'साम्राज्य-वित्ताच्या प्रांतिक विकेंद्रीकरणाचा अभ्यास'],
+    desc: ['His Columbia doctorate on how British India was financed.', 'ब्रिटिश भारताच्या वित्तव्यवस्थेवरील त्यांचा कोलंबिया विद्यापीठातील डॉक्टरेट प्रबंध.'],
     edition: ['First edition, 1925', 'पहिली आवृत्ती, 1925'],
     imprint: ['P. S. King & Son, London', 'पी. एस. किंग अँड सन, लंडन'],
   },
   {
     slug: 'federation-versus-freedom', work: 'federation-versus-freedom', ia: 'in.ernet.dli.2015.83949', start: 7, cover: 'cover-federation-versus-freedom',
     title: ['Federation versus Freedom', 'संघराज्य विरुद्ध स्वातंत्र्य'], year: '1939',
+    subtitle: ['Kale Memorial Lecture, 1939', 'काळे स्मृती व्याख्यान, 1939'],
+    desc: ['Why the federation planned in the Government of India Act, 1935 would not bring India freedom.', 'भारत सरकार कायदा, 1935 मधील संघराज्य योजनेमुळे भारताला स्वातंत्र्य का मिळणार नाही, याची चिकित्सा.'],
     edition: ['Published 1939', '1939 मध्ये प्रकाशित'],
     imprint: ['Tracts for the Times No. 3 · Kale Memorial Lecture, Gokhale Institute of Politics and Economics', 'ट्रॅक्ट्स फॉर द टाइम्स क्र. 3 · काळे स्मृती व्याख्यान, गोखले इन्स्टिट्यूट ऑफ पॉलिटिक्स अँड इकॉनॉमिक्स'],
     library: ['Osmania University Library, Hyderabad', 'उस्मानिया विद्यापीठ ग्रंथालय, हैदराबाद'],
@@ -55,6 +65,7 @@ export const FIRST_EDITIONS: FirstEdition[] = [
   {
     slug: 'thoughts-on-pakistan', work: 'pakistan-or-the-partition-of-india', ia: 'dli.ernet.1802', start: 2, cover: 'cover-thoughts-on-pakistan',
     title: ['Thoughts on Pakistan', 'पाकिस्तानविषयी विचार'], year: '1941',
+    desc: ['The case for and against partition, written after the Muslim League’s 1940 Lahore resolution.', 'मुस्लिम लीगच्या 1940 च्या लाहोर ठरावानंतर लिहिलेले, फाळणीच्या बाजूचे आणि विरोधातले मुद्दे.'],
     edition: ['Title page dated 1941', 'शीर्षक पानावर 1941'],
     imprint: ['Thacker & Co., Bombay', 'थॅकर अँड कंपनी, मुंबई'],
     library: ['Lal Bahadur Shastri National Academy of Administration, Mussoorie', 'लालबहादूर शास्त्री राष्ट्रीय प्रशासन अकादमी, मसुरी'],
@@ -66,6 +77,8 @@ export const FIRST_EDITIONS: FirstEdition[] = [
   {
     slug: 'annihilation-of-caste', work: 'annihilation-of-caste', ia: 'in.ernet.dli.2015.71655', start: 1, cover: 'cover-annihilation-of-caste-third-edition',
     title: ['Annihilation of Caste', 'जातिनिर्मूलन'], year: '1945',
+    subtitle: ['With a Reply to Mahatma Gandhi', 'महात्मा गांधींना दिलेल्या उत्तरासह'],
+    desc: ['The speech he was not allowed to give, so he printed it himself.', 'जे भाषण त्यांना देऊ दिले गेले नाही, ते त्यांनी स्वतः छापले.'],
     edition: ['Third edition, 1945', 'तिसरी आवृत्ती, 1945'],
     imprint: ['Ambedkar School of Thoughts, Amritsar', 'आंबेडकर स्कूल ऑफ थॉट्स, अमृतसर'],
     library: ['University of Rajasthan', 'राजस्थान विद्यापीठ'],
@@ -77,6 +90,7 @@ export const FIRST_EDITIONS: FirstEdition[] = [
   {
     slug: 'pakistan-or-the-partition-of-india', work: 'pakistan-or-the-partition-of-india', ia: 'in.ernet.dli.2015.514118', start: 7, cover: 'cover-pakistan-or-the-partition-of-india-1945',
     title: ['Pakistan or the Partition of India', 'पाकिस्तान अथवा भारताची फाळणी'], year: '1945',
+    desc: ['The same study, published in 1945 under a new title.', 'हाच अभ्यास, 1945 मध्ये नव्या नावाने प्रसिद्ध झालेला.'],
     edition: ['Second edition, 1945', 'दुसरी आवृत्ती, 1945'],
     imprint: ['Thacker & Co., Bombay', 'थॅकर अँड कंपनी, मुंबई'],
     library: ['Ramakrishna Mission Institute of Culture, Kolkata', 'रामकृष्ण मिशन इन्स्टिट्यूट ऑफ कल्चर, कोलकाता'],
@@ -88,6 +102,7 @@ export const FIRST_EDITIONS: FirstEdition[] = [
   {
     slug: 'what-congress-and-gandhi-have-done-to-the-untouchables', work: 'what-congress-and-gandhi-have-done-to-the-untouchables', ia: 'dli.csl.7774', start: 2, cover: 'cover-what-congress-and-gandhi-have-done-to-the-untouchables',
     title: ['What Congress and Gandhi Have Done to the Untouchables', 'काँग्रेस आणि गांधी यांनी अस्पृश्यांचे काय केले?'], year: '1945',
+    desc: ['A record of how the untouchables were treated.', 'अस्पृश्यांना कशी वागणूक मिळाली याचा लेखाजोखा.'],
     edition: ['First edition, 1945', 'पहिली आवृत्ती, 1945'],
     imprint: ['Thacker & Co., Bombay', 'थॅकर अँड कंपनी, मुंबई'],
     library: ['Central Secretariat Library, New Delhi', 'केंद्रीय सचिवालय ग्रंथालय, नवी दिल्ली'],
@@ -95,6 +110,8 @@ export const FIRST_EDITIONS: FirstEdition[] = [
   {
     slug: 'who-were-the-shudras', work: 'who-were-the-shudras', ia: 'dli.ernet.522953', start: 5, cover: 'cover-who-were-the-shudras',
     title: ['Who Were the Shudras?', 'शूद्र पूर्वी कोण होते?'], year: '1946',
+    subtitle: ['How They Came to Be the Fourth Varna in the Indo-Aryan Society', 'इंडो-आर्य समाजात ते चौथा वर्ण कसे बनले'],
+    desc: ['He argues the Shudras were once Kshatriyas, pushed down after conflicts with the Brahmins.', 'शूद्र मूळचे क्षत्रिय होते आणि ब्राह्मणांशी झालेल्या संघर्षांनंतर त्यांना खाली ढकलले गेले, असे ते मांडतात.'],
     edition: ['First edition, 1946', 'पहिली आवृत्ती, 1946'],
     imprint: ['Thacker & Co., Bombay', 'थॅकर अँड कंपनी, मुंबई'],
     library: ['Durga Shah Municipal Public Library, Nainital', 'दुर्गा शाह नगरपालिका सार्वजनिक ग्रंथालय, नैनिताल'],
@@ -102,12 +119,16 @@ export const FIRST_EDITIONS: FirstEdition[] = [
   {
     slug: 'states-and-minorities', work: 'states-and-minorities', ia: 'dli.ministry.06488', start: 1, cover: 'cover-states-and-minorities',
     title: ['States and Minorities', 'राज्ये आणि अल्पसंख्याक'], year: '1947',
+    subtitle: ['What Are Their Rights and How to Secure Them in the Constitution of Free India', 'त्यांचे हक्क कोणते आणि स्वतंत्र भारताच्या संविधानात ते कसे सुरक्षित करावेत'],
+    desc: ['A model constitution, with rights for every citizen.', 'प्रत्येक नागरिकाच्या हक्कांसह एका आदर्श संविधानाचा आराखडा.'],
     edition: ['First edition, 1947', 'पहिली आवृत्ती, 1947'],
     imprint: ['Thacker & Co., Bombay', 'थॅकर अँड कंपनी, मुंबई'],
   },
   {
     slug: 'the-untouchables-who-were-they', work: 'the-untouchables-who-were-they', ia: 'dli.ernet.238047', start: 1, cover: 'cover-the-untouchables-who-were-they',
     title: ['The Untouchables', 'अस्पृश्य मूळचे कोण?'], year: '1948',
+    subtitle: ['Who Were They and Why They Became Untouchables?', 'ते अस्पृश्य का बनले?'],
+    desc: ['He traces untouchability to the “Broken Men” who lived outside the villages and stayed Buddhists.', 'गावाबाहेर राहणाऱ्या आणि बौद्धच राहिलेल्या “छिन्नविछिन्न लोकां”मध्ये (Broken Men) ते अस्पृश्यतेचा उगम शोधतात.'],
     edition: ['First edition, 1948', 'पहिली आवृत्ती, 1948'],
     imprint: ['Amrit Book Co., New Delhi', 'अमृत बुक कंपनी, नवी दिल्ली'],
     library: ['Lal Bahadur Shastri National Academy of Administration, Mussoorie', 'लालबहादूर शास्त्री राष्ट्रीय प्रशासन अकादमी, मसुरी'],
@@ -115,6 +136,7 @@ export const FIRST_EDITIONS: FirstEdition[] = [
   {
     slug: 'the-buddha-and-his-dhamma', work: 'the-buddha-and-his-dhamma', ia: 'in.gov.ignca.15980', start: 5, cover: 'cover-the-buddha-and-his-dhamma',
     title: ['The Buddha and His Dhamma', 'बुद्ध आणि त्यांचा धम्म'], year: '1957',
+    desc: ['His last book: the life and teaching of the Buddha.', 'त्यांचा शेवटचा ग्रंथ: बुद्धांचे जीवन आणि शिकवण.'],
     edition: ['First edition, 1957', 'पहिली आवृत्ती, 1957'],
     imprint: ['Siddharth College Publication No. 1 · People’s Education Society, Bombay', 'सिद्धार्थ कॉलेज पब्लिकेशन क्र. 1 · पीपल्स एज्युकेशन सोसायटी, मुंबई'],
     library: ['Central Archaeological Library, New Delhi', 'केंद्रीय पुरातत्त्व ग्रंथालय, नवी दिल्ली'],
