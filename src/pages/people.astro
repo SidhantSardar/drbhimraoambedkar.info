@@ -108,21 +108,28 @@ const blurbs = {
       });
       // "Read full story": show a copy of the card, with the story and sources, in a dialog.
       var dlg = document.getElementById('person-dialog'), dlgBody = dlg.querySelector('[data-dialog-body]');
-      root.addEventListener('click', function (e) {
-        var btn = e.target.closest('[data-read]');
-        if (!btn) return;
-        var copy = btn.closest('.person-card').cloneNode(true);
+      function openStory(card) {
+        var copy = card.cloneNode(true);
         copy.hidden = false;
         copy.querySelector('.pc-more').hidden = false;
         copy.querySelectorAll('img').forEach(function (i) { i.loading = 'eager'; });
         dlgBody.replaceChildren(copy);
         dlg.showModal();
         dlg.scrollTop = 0;
+      }
+      root.addEventListener('click', function (e) {
+        var btn = e.target.closest('[data-read]');
+        if (btn) openStory(btn.closest('.person-card'));
       });
       dlg.querySelector('[data-close]').addEventListener('click', function () { dlg.close(); });
       dlg.addEventListener('click', function (e) { if (e.target === dlg) dlg.close(); });
       [q, state, field, quiet].forEach(function (el) { el.addEventListener('input', render); el.addEventListener('change', render); });
+      // /people/?story=<slug> (from the home page cards): show that person's group and open their story.
+      var asked = new URLSearchParams(location.search).get('story');
+      var card = asked && root.querySelector('.person-card[data-slug="' + asked.replace(/[^a-z0-9-]/g, '') + '"]');
+      if (card) group = card.dataset.group;
       render();
+      if (card) { card.scrollIntoView({ block: 'center' }); openStory(card); }
     })();
   </script>
 </Base>

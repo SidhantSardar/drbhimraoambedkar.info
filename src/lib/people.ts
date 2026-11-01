@@ -34,6 +34,17 @@ export function stateOf(p: Person): string {
   return STATE_ALIAS[last] || last;
 }
 
+/** A person's address on the people page (/people/?story=<slug>), from the name without accents. */
+export const slugOf = (p: Person) =>
+  p.name.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+
+/** One colour per kind of work, spread around the colour wheel: the card's tag, hover edge, quote bar and initials. */
+export const FIELD_ACCENT: Record<string, string> = {
+  'Grassroots organising': '#fb923c', 'Dhamma & community': '#facc15', 'Policy & politics': '#a3e635', 'Education': '#34d399',
+  'Publishing & media': '#22d3ee', 'Law & rights': '#60a5fa', 'Scholarship & archives': '#a78bfa', "Women's leadership": '#e879f9',
+  'Music, film & arts': '#f472b6', 'Enterprise': '#d6b37a',
+};
+
 export const initials = (name: string) =>
   name.replace(/\(.*?\)/g, '').replace(/\b(Dr|Bhadant|Thol|Shahir)\.?\s+/g, '').split(/\s+/).filter((w) => /^[A-Za-z]/.test(w))
     .slice(0, 2).map((w) => w[0].toUpperCase()).join('');

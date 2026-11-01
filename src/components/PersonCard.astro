@@ -1,18 +1,22 @@
 ---
 // One person in the Ambedkarite movement directory (src/data/people.json): a horizontal card with the photo
-// (or initials) filling the left side, the kind of work tagged in its top corner, and name, links and text beside it.
+// (or initials) filling the left side and the kind of work tagged in its top corner; beside it the place, the name,
+// what they do (set like a pull quote), and a footer with their links. Each kind of work has its own colour.
 // `full` (the /people/ page) adds a short story preview and a "Read full story" button; the full story and its
-// sources sit in .pc-more, which the page opens in a dialog so every card keeps the same height.
+// sources sit in .pc-more, which the page opens in a dialog so every card keeps the same height. On the home page
+// the footer links to the story instead (/people/?story=<slug> opens it there).
 import { url } from '../lib/site';
 import { getLang, translator } from '../i18n';
 import type { Person } from '../lib/people';
-import { initials, isIndian, stateOf } from '../lib/people';
+import { initials, isIndian, stateOf, slugOf, FIELD_ACCENT } from '../lib/people';
 
 interface Props { p: Person; full?: boolean }
 const { p, full = false } = Astro.props;
 const t = translator(getLang(Astro));
 const group = isIndian(p) ? 'india' : 'global';
 const img = p.image ? url(p.image) : '';
+const slug = slugOf(p);
+const accent = FIELD_ACCENT[p.field] || '#60a5fa';
 // The site's fonts cover Latin and Devanagari only, so show the native-script name only when it is in Devanagari
 // (other scripts would show as empty boxes on many devices).
 const native = /^[ऀ-ॿ\s.()-]+$/.test(p.nameLocal) ? p.nameLocal : '';
@@ -29,7 +33,7 @@ const storyHtml = p.story
 // A plain preview of the story for the card itself (markers removed).
 const preview = p.story.replace(/\s*(?:\[\d+\])+/g, '');
 ---
-<article class:list={['person-card', { 'is-quiet': p.silent, 'is-full': full, 'has-photo': !!img }]} data-group={group} data-state={isIndian(p) ? stateOf(p) : ''} data-field={p.field} data-quiet={p.silent ? '1' : ''}
+<article class:list={['person-card', { 'is-quiet': p.silent, 'is-full': full, 'has-photo': !!img }]} style={`--pc-accent:${accent}`} data-slug={slug} data-group={group} data-state={isIndian(p) ? stateOf(p) : ''} data-field={p.field} data-quiet={p.silent ? '1' : ''}
   data-search={[p.name, p.nameLocal, p.place, p.work, p.field].join(' ').toLowerCase()}>
   <figure class="pc-photo">
     {img ? <img src={img} alt={p.name} loading="lazy" decoding="async" /> : <span class="pc-initials" aria-hidden="true">{initials(p.name)}</span>}
@@ -40,21 +44,28 @@ const preview = p.story.replace(/\s*(?:\[\d+\])+/g, '');
     {img && p.imageCredit && <figcaption class="pc-credit">{t('Photo:', 'छायाचित्र:')} {p.imageCredit}</figcaption>}
   </figure>
   <div class="pc-body">
-    <span class="pc-where">{p.place.replace(/, India$/, '')}{p.status !== 'Active' && <span class="pc-status"> · {p.status}</span>}</span>
+    <span class="pc-where">
+      <svg viewBox="0 0 12 16" width="10" height="13" aria-hidden="true"><path fill="currentColor" d="M6 0a6 6 0 0 0-6 6c0 4.5 6 10 6 10s6-5.5 6-10a6 6 0 0 0-6-6Zm0 8.4A2.4 2.4 0 1 1 6 3.6a2.4 2.4 0 0 1 0 4.8Z" /></svg>
+      {p.place.replace(/, India$/, '')}{p.status !== 'Active' && <span class="pc-status"> · {p.status}</span>}
+    </span>
     <h3>{p.name}{native && <span class="pc-native" lang="mr">{native}</span>}</h3>
-    {p.links.length > 0 && (
-      <ul class="pc-links" aria-label={t('Official links', 'अधिकृत दुवे')}>
-        {p.links.map((l) => <li><a href={l.url} target="_blank" rel="noopener">{l.label}</a></li>)}
-      </ul>
-    )}
     <p class="pc-work">{p.work}</p>
     {full && <p class="pc-preview">{preview}</p>}
-    {full && (
-      <div class="pc-actions">
-        <button type="button" class="pc-read" data-read>{t('Read full story', 'संपूर्ण कथा वाचा')} <span aria-hidden="true">→</span></button>
-        <span class="pc-srcn">{t(`${p.sources.length} sources`, `${p.sources.length} संदर्भ`)}</span>
-      </div>
-    )}
+    <div class="pc-foot">
+      {p.links.length > 0 && (
+        <ul class="pc-links" aria-label={t('Official links', 'अधिकृत दुवे')}>
+          {p.links.map((l) => <li><a href={l.url} target="_blank" rel="noopener">{l.label}</a></li>)}
+        </ul>
+      )}
+      {full ? (
+        <div class="pc-actions">
+          <span class="pc-srcn">{t(`${p.sources.length} sources`, `${p.sources.length} संदर्भ`)}</span>
+          <button type="button" class="pc-read" data-read>{t('Read full story', 'संपूर्ण कथा वाचा')} <span aria-hidden="true">→</span></button>
+        </div>
+      ) : (
+        <a class="pc-story-link" href={url(`/people/?story=${slug}`)}>{t('Read their story', 'त्यांची कथा वाचा')} <span aria-hidden="true">→</span></a>
+      )}
+    </div>
     {full && (
       <div class="pc-more" hidden>
         <p class="pc-story" set:html={storyHtml} />
