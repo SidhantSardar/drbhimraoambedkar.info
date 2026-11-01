@@ -23,6 +23,10 @@ jobs:
       SITE_URL: https://prabuddhapathak.com
       BASE_PATH: /
       PUBLIC_SKIN: light
+      # Google Analytics 4: property "Prabuddha Pathak" in the Sidhant Sardar account, web stream for
+      # prabuddhapathak.com. Counted only with the visitor's consent (src/components/Analytics.astro); the
+      # noindex classic preview below never loads it.
+      PUBLIC_GA_ID: G-X1SNDMVJ7N
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4

@@ -31,6 +31,12 @@ export const mailto = (subject = 'Feedback on Prabuddha Pathak') => `mailto:${SI
 
 export const ASK_ENDPOINT: string = import.meta.env.PUBLIC_ASK_ENDPOINT || '';
 
+/** Google Analytics 4 Measurement ID (G-…), set by the deploy workflow. Empty in local builds and in the
+ *  noindex classic preview, so only real visits to the live site are counted. */
+export const GA_ID: string = import.meta.env.PUBLIC_NOINDEX === '1' ? '' : import.meta.env.PUBLIC_GA_ID || '';
+/** Where a visitor's choice about analytics is kept in their browser: 'granted' or 'denied'. */
+export const CONSENT_KEY = 'pp-analytics';
+
 /** Prefix a site path with the deploy base (/ on prabuddhapathak.com; a sub-path when deployed elsewhere). */
 export function url(path = '/'): string {
   const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : import.meta.env.BASE_URL + '/';

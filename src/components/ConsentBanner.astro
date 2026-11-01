@@ -1,0 +1,55 @@
+---
+// Asks once whether visits may be counted with Google Analytics (see Analytics.astro). Shown until the visitor
+// chooses; the choice is kept in their browser and can be changed on the privacy page, which calls window.ppConsent.
+import { GA_ID, CONSENT_KEY, url } from '../lib/site';
+import { getLang, translator } from '../i18n';
+const t = translator(getLang(Astro));
+---
+{GA_ID && (
+  <>
+    <div class="consent" role="region" aria-label={t('Counting visits', 'भेटींची मोजणी')} data-consent hidden>
+      <p>
+        <strong>{t('May we count your visit?', 'आपली भेट मोजू का?')}</strong>
+        {t('We use Google Analytics to see how many people come and which pages they read. No ads, and nothing is sold.', 'किती लोक येतात आणि कोणती पाने वाचतात हे पाहण्यासाठी आम्ही Google Analytics वापरतो. जाहिराती नाहीत, आणि कोणतीही माहिती विकली जात नाही.')}{' '}
+        <a href={url('/privacy/')}>{t('Read more', 'अधिक वाचा')}</a>
+      </p>
+      <div class="consent-actions">
+        <button type="button" class="btn btn-primary" data-consent-choice="granted">{t('Allow', 'परवानगी द्या')}</button>
+        <button type="button" class="btn btn-ghost" data-consent-choice="denied">{t('No thanks', 'नको')}</button>
+      </div>
+    </div>
+    <script is:inline define:vars={{ key: CONSENT_KEY }}>
+      (function () {
+        var box = document.querySelector('[data-consent]');
+        var stored = null;
+        try { stored = localStorage.getItem(key); } catch (e) {}
+        window.ppConsent = function (choice) {
+          try { localStorage.setItem(key, choice); } catch (e) {}
+          if (window.gtag) window.gtag('consent', 'update', { analytics_storage: choice });
+          if (box) box.hidden = true;
+          document.dispatchEvent(new CustomEvent('pp-consent', { detail: choice }));
+        };
+        if (!box) return;
+        if (!stored) box.hidden = false;
+        box.addEventListener('click', function (e) {
+          var b = e.target.closest('[data-consent-choice]');
+          if (b) window.ppConsent(b.dataset.consentChoice);
+        });
+      })();
+    </script>
+  </>
+)}
+
+<style>
+  .consent {
+    position: fixed; z-index: 60; left: 16px; bottom: 16px; width: min(460px, calc(100vw - 32px));
+    display: grid; gap: 12px; padding: 16px 18px; border: 1px solid var(--line); border-radius: 12px;
+    background: var(--surface-2, #0f1626); color: var(--ink); box-shadow: 0 18px 50px -18px rgb(0 0 0 / 70%);
+  }
+  .consent[hidden] { display: none; }
+  .consent p { margin: 0; font-size: 0.9rem; line-height: 1.55; color: var(--ink-2, var(--ink)); }
+  .consent strong { display: block; margin-bottom: 4px; font-size: 1rem; color: var(--ink); }
+  .consent a { white-space: nowrap; }
+  .consent-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+  .consent-actions .btn { padding: 8px 18px; min-height: 0; font-size: 0.9rem; }
+</style>

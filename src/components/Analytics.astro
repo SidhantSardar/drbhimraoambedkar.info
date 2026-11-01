@@ -1,0 +1,21 @@
+---
+// Google Analytics 4 with Consent Mode. Nothing is stored on the visitor's device until they choose "Allow" in the
+// consent banner; until then (or after "No thanks") Google receives only cookie-free signals. Advertising storage
+// is always off. The choice is kept in localStorage and can be changed on the privacy page.
+import { GA_ID, CONSENT_KEY } from '../lib/site';
+---
+{GA_ID && (
+  <script is:inline define:vars={{ id: GA_ID, key: CONSENT_KEY }}>
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function () { window.dataLayer.push(arguments); };
+    var choice = null;
+    try { choice = localStorage.getItem(key); } catch (e) {}
+    gtag('consent', 'default', { ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied', analytics_storage: choice === 'granted' ? 'granted' : 'denied' });
+    gtag('js', new Date());
+    gtag('config', id);
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(id);
+    document.head.appendChild(s);
+  </script>
+)}

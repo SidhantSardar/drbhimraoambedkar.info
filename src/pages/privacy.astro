@@ -1,0 +1,68 @@
+---
+// What the site measures and what other services some pages load, with the visitor's analytics choice
+// (kept by ConsentBanner.astro) shown and changeable here.
+import Base from '../layouts/Base.astro';
+import { SITE, GA_ID, CONSENT_KEY, mailto } from '../lib/site';
+import { getLang, translator } from '../i18n';
+const lang = getLang(Astro);
+const t = translator(lang);
+---
+<Base title={t('Privacy', 'गोपनीयता')} description={t('What Prabuddha Pathak measures and why: no accounts, no ads, nothing sold. Visits are counted with Google Analytics only with your permission.', 'प्रबुद्ध पाठक काय मोजते आणि का: खाती नाहीत, जाहिराती नाहीत, काहीही विकले जात नाही. आपल्या परवानगीनेच Google Analytics द्वारे भेटी मोजल्या जातात.')}>
+  <div class="narrow section">
+    <span class="eyebrow">{t('Privacy', 'गोपनीयता')}</span>
+    <h1>{t('Privacy', 'गोपनीयता')}</h1>
+    <div class="prose">
+      <p class="lede">{t('This site has no accounts and no ads, and it sells nothing. The only thing it measures is how many people visit and what they read, and only with your permission.', 'या संकेतस्थळावर खाती नाहीत, जाहिराती नाहीत, आणि काहीही विकले जात नाही. किती लोक भेट देतात आणि काय वाचतात, एवढेच ते मोजते — आणि तेही आपल्या परवानगीनेच.')}</p>
+
+      <h2>{t('Counting visits', 'भेटींची मोजणी')}</h2>
+      <p>{t('We use Google Analytics 4 to see how many people visit, which pages they read, which countries and devices they come from, and which sites sent them here. It shows us what readers find useful.', 'किती लोक भेट देतात, कोणती पाने वाचतात, कोणत्या देशांतून आणि कोणत्या उपकरणांवरून येतात, आणि कोणत्या संकेतस्थळांवरून इथे पोहोचतात, हे पाहण्यासाठी आम्ही Google Analytics 4 वापरतो. वाचकांना काय उपयोगी वाटते, हे त्यावरून कळते.')}</p>
+      <ul>
+        <li><strong>{t('Only with your permission.', 'फक्त आपल्या परवानगीने.')}</strong> {t('A small box asks once. Until you choose “Allow”, nothing is stored on your device; Google receives only cookie-free signals that a page was viewed, which it uses to estimate totals.', 'एक छोटी चौकट एकदाच विचारते. आपण “परवानगी द्या” निवडेपर्यंत आपल्या उपकरणावर काहीही साठवले जात नाही; पान पाहिले गेले एवढाच cookie-विरहित संकेत Google ला मिळतो, ज्यावरून ते एकूण संख्येचा अंदाज बांधते.')}</li>
+        <li><strong>{t('If you allow it,', 'आपण परवानगी दिल्यास,')}</strong> {t('Google Analytics stores cookies in your browser to tell one visit from another. Google Analytics 4 does not log or store IP addresses.', 'एक भेट दुसरीपासून वेगळी ओळखण्यासाठी Google Analytics आपल्या ब्राउझरमध्ये cookies साठवते. Google Analytics 4 IP पत्ते नोंदवत किंवा साठवत नाही.')}</li>
+        <li><strong>{t('No advertising.', 'जाहिराती नाहीत.')}</strong> {t('Advertising storage and ad personalisation are switched off.', 'जाहिरातींसाठीची साठवण आणि वैयक्तिकृत जाहिराती बंद आहेत.')}</li>
+        <li>{t('Google handles this data under its own policy:', 'ही माहिती Google आपल्या धोरणानुसार हाताळते:')} <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">{t('Google Privacy Policy ↗', 'Google गोपनीयता धोरण ↗')}</a></li>
+      </ul>
+
+      <h2 id="choice">{t('Your choice', 'आपली निवड')}</h2>
+      {GA_ID ? (
+        <div class="privacy-choice" data-privacy-choice>
+          <p data-choice-status>{t('You have not chosen yet.', 'आपण अजून निवड केलेली नाही.')}</p>
+          <div class="btn-row">
+            <button type="button" class="btn btn-primary" data-set="granted">{t('Allow counting', 'मोजणीस परवानगी द्या')}</button>
+            <button type="button" class="btn btn-ghost" data-set="denied">{t('Don’t count me', 'माझी भेट मोजू नका')}</button>
+          </div>
+        </div>
+      ) : (
+        <p>{t('Visit counting is not switched on in this version of the site.', 'संकेतस्थळाच्या या आवृत्तीत भेटींची मोजणी सुरू नाही.')}</p>
+      )}
+
+      <h2>{t('Other services on some pages', 'काही पानांवरील इतर सेवा')}</h2>
+      <p>{t('A few pages show things from other services. When you use them, your browser connects to that service, and its own privacy policy applies.', 'काही पानांवर इतर सेवांमधील मजकूर दिसतो. आपण तो वापरता तेव्हा आपला ब्राउझर त्या सेवेशी जोडला जातो, आणि त्या सेवेचे स्वतःचे गोपनीयता धोरण लागू होते.')}</p>
+      <ul>
+        <li><strong>Internet Archive</strong> — {t('the page viewer on the original editions pages.', 'मूळ आवृत्त्यांच्या पानांवरील पान-दर्शक.')} <a href="https://archive.org/about/terms" target="_blank" rel="noopener noreferrer">{t('Terms and privacy ↗', 'अटी आणि गोपनीयता ↗')}</a></li>
+        <li><strong>YouTube</strong> — {t('the videos page, in YouTube’s privacy-enhanced mode. A video loads only when you press play.', 'व्हिडिओंचे पान, YouTube च्या गोपनीयता-वर्धित पद्धतीत. आपण play दाबल्यावरच व्हिडिओ लोड होतो.')} <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">{t('Policy ↗', 'धोरण ↗')}</a></li>
+        <li><strong>GitHub</strong> ({t('through giscus', 'giscus द्वारे')}) — {t('the comments under blog posts.', 'ब्लॉग लेखांखालील प्रतिक्रिया.')} <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener noreferrer">{t('Policy ↗', 'धोरण ↗')}</a></li>
+        <li><strong>cdnjs (Cloudflare)</strong> — {t('the PDF viewer in the library, loaded only when you open a chapter’s original pages.', 'ग्रंथालयातील PDF दर्शक, एखाद्या प्रकरणाची मूळ पाने उघडल्यावरच लोड होणारा.')} <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener noreferrer">{t('Policy ↗', 'धोरण ↗')}</a></li>
+      </ul>
+
+      <h2>{t('Questions', 'प्रश्न')}</h2>
+      <p>{t('Write to', 'लिहा:')} <a href={mailto('Privacy question')}>{SITE.email}</a>. {t('Last updated 1 November 2026.', 'शेवटचा बदल: 1 नोव्हेंबर 2026.')}</p>
+    </div>
+  </div>
+
+  {GA_ID && (
+    <script is:inline define:vars={{ key: CONSENT_KEY, said: { granted: t('You have allowed visit counting.', 'आपण भेटींच्या मोजणीस परवानगी दिली आहे.'), denied: t('You have chosen not to be counted.', 'आपण मोजणी न करण्याचे निवडले आहे.') } }}>
+      (function () {
+        var box = document.querySelector('[data-privacy-choice]');
+        var status = box.querySelector('[data-choice-status]');
+        var show = function (c) { if (said[c]) status.textContent = said[c]; };
+        try { show(localStorage.getItem(key)); } catch (e) {}
+        box.addEventListener('click', function (e) {
+          var b = e.target.closest('[data-set]');
+          if (b && window.ppConsent) window.ppConsent(b.dataset.set);
+        });
+        document.addEventListener('pp-consent', function (e) { show(e.detail); });
+      })();
+    </script>
+  )}
+</Base>
