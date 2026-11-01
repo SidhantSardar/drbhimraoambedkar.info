@@ -1,0 +1,150 @@
+---
+// The bookshelf: the original printed editions standing face out on wooden shelves, oldest first. Each book is tilted
+// to show a cloth spine with its title, lifts when pointed at, and opens its page-by-page scan. A plain list follows
+// for phones and screen readers.
+import Base from '../../../layouts/Base.astro';
+import Picture from '../../../components/Picture.astro';
+import { FIRST_EDITIONS, firstEditionHref } from '../../../lib/first-editions';
+import { images, type Img } from '../../../lib/data';
+import { url } from '../../../lib/site';
+import { getLang, translator } from '../../../i18n';
+const lang = getLang(Astro);
+const t = translator(lang);
+const pictures = images(lang);
+// Book-cloth colours for the spines, in turn.
+const CLOTH = ['#6e2a26', '#1f3658', '#2e4636', '#6a4b26', '#46304c', '#24414a'];
+const books = FIRST_EDITIONS.map((fe, i) => ({ fe, img: pictures.find((p) => p.id === fe.cover) as Img | undefined, href: firstEditionHref(fe), cloth: CLOTH[i % CLOTH.length] }));
+const first = FIRST_EDITIONS[0].year;
+const last = FIRST_EDITIONS[FIRST_EDITIONS.length - 1].year;
+---
+<Base title={t('The bookshelf — his books as first printed', 'ग्रंथांचे कपाट — प्रथम छापले तसे त्यांचे ग्रंथ')} description={t(`${books.length} of Dr. B. R. Ambedkar's books as they were first printed, ${first} to ${last}, on one bookshelf. Open any book to turn its original pages.`, `डॉ. बाबासाहेब आंबेडकर यांचे ${books.length} ग्रंथ प्रथम छापले तसे, ${first} ते ${last}, एकाच कपाटात. कोणताही ग्रंथ उघडा आणि त्याची मूळ पाने पाहा.`)}>
+  <section class="hero">
+    <div class="wrap section-tight">
+      <a class="eyebrow" href={url('/library/')} style="text-decoration:none">{t('← Library', '← ग्रंथालय')}</a>
+      <h1 style="font-size:var(--step-3)">{t('The bookshelf', 'ग्रंथांचे कपाट')}</h1>
+      <p class="lede" style="max-width:62ch">{t(`His books as they first came off the press: ${books.length} original copies, from ${first} to ${last}. Pick a book to turn its pages.`, `त्यांचे ग्रंथ छापखान्यातून प्रथम बाहेर पडले तसे: ${books.length} मूळ प्रती, ${first} ते ${last}. ग्रंथ निवडा आणि त्याची पाने पाहा.`)}</p>
+      <p class="muted" style="max-width:62ch">{t('Most are first editions. Where no first edition is online, the shelf holds the earliest printing we could find, and each book says which one it is.', 'यांपैकी बहुतेक पहिल्या आवृत्त्या आहेत. जिथे पहिली आवृत्ती ऑनलाइन उपलब्ध नाही, तिथे आम्हाला सापडलेली सर्वांत जुनी छपाई ठेवली आहे, आणि प्रत्येक ग्रंथावर ती कोणती आवृत्ती आहे हे लिहिले आहे.')}</p>
+    </div>
+  </section>
+
+  <div class="wrap section-tight">
+    <div class="bookcase">
+      <ul class="shelf-books">
+        {books.map(({ fe, img, href, cloth }) => (
+          <li style={`--cloth:${cloth}`}>
+            <a class="book3d" href={href} aria-label={`${t(...fe.title)}, ${t(...fe.edition)}`}>
+              <span class="spine" aria-hidden="true"><span>{t(...fe.title)}</span></span>
+              <span class="face">{img ? <Picture img={img} sizes="160px" alt="" /> : <span class="plain">{t(...fe.title)}</span>}</span>
+            </a>
+            <span class="tag" aria-hidden="true">
+              <small>{t(...fe.edition)}</small>
+              <b>{t(...fe.title)}</b>
+              <em>{t('See the pages →', 'पाने पाहा →')}</em>
+            </span>
+          </li>
+        ))}
+      </ul>
+    </div>
+    <p class="source-link case-credit">{t('Scans by the Digital Library of India from copies in Indian libraries, kept on the Internet Archive. His writings are in the public domain in India.', 'डिजिटल लायब्ररी ऑफ इंडियाने भारतातील ग्रंथालयांतील प्रतींवरून केलेले स्कॅन, इंटरनेट आर्काइव्हवर उपलब्ध. त्यांचे लेखन भारतात सार्वजनिक क्षेत्रात (public domain) आहे.')}</p>
+
+    <h2 class="case-list-h">{t('Every book on the shelf', 'कपाटातील सर्व ग्रंथ')}</h2>
+    <ol class="case-list">
+      {books.map(({ fe, href }) => (
+        <li>
+          <span class="y">{fe.year}</span>
+          <span>
+            <a href={href}>{t(...fe.title)}</a>
+            <small>{t(...fe.edition)} · {t(...fe.imprint)}{fe.library && <> · {t('copy:', 'प्रत:')} {t(...fe.library)}</>}</small>
+          </span>
+        </li>
+      ))}
+    </ol>
+  </div>
+</Base>
+
+<style>
+  /* Each shelf line is one row of books with a wooden plank under it, drawn by a background that repeats every row,
+     so the planks follow the books however many rows they wrap into. */
+  .bookcase {
+    --bh: 210px;      /* book height: eleven books stand on two shelves on a laptop screen */
+    --t: 28px;        /* book thickness (spine width) */
+    --plank: 26px;
+    --row: calc(var(--bh) + 58px + var(--plank));
+    position: relative; padding: 18px clamp(12px, 3vw, 40px) 0;
+    background: linear-gradient(180deg, #0c1322, #0a101d 60%, #080d18);
+    border: 14px solid #3a2616; border-bottom-width: 18px; border-radius: 6px;
+    border-image: linear-gradient(180deg, #5a3c24, #3a2616) 1;
+    box-shadow: inset 0 0 60px rgb(0 0 0 / 55%), 0 30px 60px -30px rgb(0 0 0 / 80%);
+  }
+  .shelf-books {
+    list-style: none; margin: 0; padding: 0;
+    display: flex; flex-wrap: wrap; justify-content: center; column-gap: clamp(22px, 2.8vw, 38px);
+    background-image: linear-gradient(180deg,
+      transparent 0, transparent calc(var(--row) - var(--plank) - 14px),
+      rgb(0 0 0 / 35%) calc(var(--row) - var(--plank)),
+      #9a6f47 calc(var(--row) - var(--plank)), #7e5734 calc(var(--row) - var(--plank) + 9px),
+      #5a3b22 calc(var(--row) - var(--plank) + 9px), #3d2715 var(--row));
+    background-size: 100% var(--row);
+  }
+  .shelf-books > li {
+    position: relative; height: var(--row); padding-bottom: var(--plank);
+    display: flex; align-items: flex-end; justify-content: center;
+    perspective: 1000px;
+  }
+  /* soft shadow where the book stands on the plank */
+  .shelf-books > li::after {
+    content: ''; position: absolute; left: 4%; right: 4%; bottom: calc(var(--plank) - 6px); height: 12px;
+    background: radial-gradient(closest-side, rgb(0 0 0 / 55%), transparent); z-index: 0;
+  }
+  .book3d {
+    position: relative; z-index: 1; display: block; height: var(--bh);
+    margin-left: calc(var(--t) * 0.45);
+    transform-style: preserve-3d; transform-origin: 50% 100%;
+    transform: rotateY(26deg);
+    transition: transform 0.45s cubic-bezier(.2, .7, .2, 1), filter 0.3s ease;
+    text-decoration: none;
+  }
+  .face { position: relative; display: block; height: 100%; box-shadow: 6px 6px 18px rgb(0 0 0 / 45%); }
+  .face :global(picture), .face :global(img) { display: block; height: var(--bh); width: auto; background: #f4efe4; }
+  /* light falling from the left across the board */
+  .face::after { content: ''; position: absolute; inset: 0; background: linear-gradient(100deg, rgb(255 255 255 / 10%), transparent 30%, rgb(0 0 0 / 12%)); pointer-events: none; }
+  .plain { display: grid; place-items: center; height: var(--bh); width: calc(var(--bh) * 0.65); padding: 14px; background: var(--cloth); color: #e8d6a8; font-family: var(--font-read, Georgia, serif); text-align: center; }
+  .spine {
+    position: absolute; top: 0; left: calc(-1 * var(--t)); width: var(--t); height: 100%;
+    transform-origin: right center; transform: rotateY(-90deg);
+    background: linear-gradient(90deg, rgb(0 0 0 / 30%), transparent 25%, rgb(255 255 255 / 8%) 50%, transparent 75%, rgb(0 0 0 / 30%)), var(--cloth);
+    display: flex; align-items: center; justify-content: center; overflow: hidden;
+  }
+  .spine span {
+    writing-mode: vertical-rl; transform: rotate(180deg);
+    font-family: var(--font-read, Georgia, serif); font-size: 0.68rem; letter-spacing: 0.06em; line-height: 1.1;
+    color: #e3cf9c; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-height: 86%;
+  }
+  .book3d:hover, .book3d:focus-visible { transform: rotateY(6deg) translateY(-14px); filter: brightness(1.04); }
+  .book3d:focus-visible { outline: 2px solid var(--accent-blue, #3a6bf2); outline-offset: 6px; }
+  .tag {
+    position: absolute; z-index: 3; top: 4px; left: 50%; translate: -50% 0; width: max-content; max-width: 220px;
+    display: grid; gap: 2px; padding: 8px 12px; border-radius: 8px; text-align: center;
+    background: rgb(10 16 30 / 92%); border: 1px solid rgb(255 255 255 / 14%); box-shadow: 0 12px 28px -12px rgb(0 0 0 / 80%);
+    opacity: 0; transform: translateY(6px); transition: opacity 0.2s ease, transform 0.2s ease; pointer-events: none;
+  }
+  .tag small { font-size: 0.68rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+  .tag b { font-size: 0.86rem; line-height: 1.25; color: var(--ink); }
+  .tag em { font-style: normal; font-size: 0.74rem; font-weight: 700; color: var(--accent-blue, #3a6bf2); }
+  li:hover .tag, li:focus-within .tag { opacity: 1; transform: none; }
+  @media (hover: none) { .tag { display: none; } }
+  @media (max-width: 640px) {
+    .bookcase { --bh: 150px; --t: 22px; --plank: 20px; --row: calc(var(--bh) + 34px + var(--plank)); border-width: 9px; border-bottom-width: 12px; }
+    .shelf-books { column-gap: 22px; }
+    .spine span { font-size: 0.56rem; }
+  }
+  @media (prefers-reduced-motion: reduce) { .book3d, .tag { transition: none; } }
+
+  .case-credit { margin-top: 14px; text-align: center; }
+  .case-list-h { font-size: var(--step-1); margin: 56px 0 14px; }
+  .case-list { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
+  .case-list li { display: grid; grid-template-columns: 64px 1fr; gap: 14px; padding: 14px 0; border-bottom: 1px solid var(--line); }
+  .case-list .y { font-weight: 700; color: var(--accent-blue, var(--accent)); font-variant-numeric: tabular-nums; }
+  .case-list a { font-weight: 600; }
+  .case-list small { display: block; margin-top: 3px; color: var(--muted); font-size: 0.84rem; line-height: 1.45; }
+</style>

@@ -1,11 +1,9 @@
 ---
-// A book inside a volume: its first-edition cover, where it sits in the volume, and its own chapters.
+// A book inside a volume: the cover of the government volume it is printed in, where it sits there, and its own
+// chapters. The original printed editions have their own pages, under /library/first-editions/.
 import DocsShell from '../../../../components/DocsShell.astro';
-import Picture from '../../../../components/Picture.astro';
 import { volLabelIn, coverOf } from '../../../../lib/library';
-import { SHELF_BOOKS, EDITION, bookOf, type Book } from '../../../../lib/books';
-import { images, type Img } from '../../../../lib/data';
-import { credit } from '../../../../lib/images-core.mjs';
+import { SHELF_BOOKS, bookOf, type Book } from '../../../../lib/books';
 import { url } from '../../../../lib/site';
 import { getLang, translator } from '../../../../i18n';
 
@@ -21,17 +19,14 @@ const t = translator(lang);
 const vol = book.vol;
 const label = volLabelIn(vol, lang);
 const title = t(en, mrTitle);
-const all = images(lang);
-const img = (all.find((i) => i.id === 'cover-' + id) ?? (id === 'annihilation-of-caste' ? all.find((i) => i.id === 'annihilation-of-caste-first-edition') : undefined)) as Img | undefined;
-const edition = img && EDITION[id] && img.id === 'cover-' + id ? t(EDITION[id][0], EDITION[id][1]) : '';
 const first = book.entries[0];
 const pdf = `${vol.officialUrl}#page=${book.start}`;
 ---
 <DocsShell vol={vol} title={`${title} — ${label}`} description={t(`Read ${en} (${year}) by Dr. B. R. Ambedkar online, where it appears in Writings and Speeches, ${vol.label}: printed pages ${book.printed}.`, `डॉ. बाबासाहेब आंबेडकर यांचा ${mrTitle} (${year}) ऑनलाइन वाचा: लेखन आणि भाषणे, ${label}, छापील पृष्ठे ${book.printed}.`)} here={title}>
   <div class="docs-overview book-overview">
-    <figure class="book-first">
-      {img ? <Picture img={img} sizes="260px" alt={img.caption || title} eager /> : <span class="shelf-plain" aria-hidden="true"><b>{title}</b><small>B. R. Ambedkar · {year}</small></span>}
-      {edition && <figcaption>{edition}{img && <> · {credit(img)} · <a href={img.sourceUrl} target="_blank" rel="noopener noreferrer">{img.sourceName}</a></>}</figcaption>}
+    <figure class="book-first book-gov">
+      <a href={url(`/library/${vol.id}/`)} tabindex="-1"><img src={url(coverOf(vol))} alt={t(`Cover of Writings and Speeches, ${vol.label}`, `लेखन आणि भाषणे, ${label} चे मुखपृष्ठ`)} width="707" height="1100" decoding="async" /></a>
+      <figcaption>{t(`Writings and Speeches, ${vol.label} · Dr. Ambedkar Foundation, Government of India`, `लेखन आणि भाषणे, ${label} · डॉ. आंबेडकर प्रतिष्ठान, भारत सरकार`)}</figcaption>
     </figure>
     <div>
       <span class="eyebrow">{t(`Book · ${year}`, `ग्रंथ · ${year}`)}</span>
@@ -39,7 +34,6 @@ const pdf = `${vol.officialUrl}#page=${book.start}`;
       {lang === 'mr' && <p class="docs-orig-title"><span>मूळ इंग्रजी शीर्षक:</span> <span lang="en">{en}</span></p>}
       <p class="lede">{t(den, dmr)}</p>
       <a class="book-in-vol" href={url(`/library/${vol.id}/`)}>
-        <img src={url(coverOf(vol))} alt="" width="48" height="74" loading="lazy" decoding="async" />
         <span>
           <small>{t('Inside the volume', 'या खंडात')}</small>
           <strong>{t(`Writings and Speeches, ${vol.label}`, `लेखन आणि भाषणे, ${label}`)}</strong>
@@ -64,3 +58,8 @@ const pdf = `${vol.officialUrl}#page=${book.start}`;
     ))}
   </ol>
 </DocsShell>
+
+<style>
+  /* the whole government cover, down to its imprint, not cropped to the 3:4 frame used for photographs */
+  .book-gov img { aspect-ratio: auto; height: auto; }
+</style>
