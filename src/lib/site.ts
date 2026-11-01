@@ -38,6 +38,13 @@ export function url(path = '/'): string {
   return base + path.replace(/^\//, '');
 }
 
+/** A volume PDF's path. PUBLIC_PDF_BASE lets a build use another build's copy: the classic preview reads the main site's /pdf/ and ships none of its own. */
+export function pdfUrl(path: string): string {
+  const base = import.meta.env.PUBLIC_PDF_BASE;
+  if (!base) return url(path);
+  return (base.endsWith('/') ? base : base + '/') + path.replace(/^\//, '');
+}
+
 export type NavItem = { href: string; label: string; hint?: string; mr: string; mrHint?: string; enOnly?: boolean };
 export type NavGroup = { label: string; mr: string; href?: string; items?: NavItem[] };
 

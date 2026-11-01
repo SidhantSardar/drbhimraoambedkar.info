@@ -2,7 +2,7 @@
 import DocsShell from '../../../components/DocsShell.astro';
 import ReaderBlocks from '../../../components/ReaderBlocks.astro';
 import { volumes, leavesOf, pagesOf, formatPage, chapterBlocks, marathiOf, titleIn, volLabelIn, type Volume, type Leaf } from '../../../lib/library';
-import { url } from '../../../lib/site';
+import { url, pdfUrl } from '../../../lib/site';
 import { getLang, translator } from '../../../i18n';
 
 export function getStaticPaths() {
@@ -127,7 +127,7 @@ const here = partLabel ? `${chapterTitle} · ${partLabel}` : chapterTitle;
       </p>
     </header>
 
-    <section class="rm-pdf" data-rm-pdf data-src={url(`/pdf/${vol.id}/${leaf.slug}.pdf`)} data-start={leaf.start} data-end={leaf.end} data-pagefind-ignore aria-label={t('Official PDF', 'मूळ PDF')}>
+    <section class="rm-pdf" data-rm-pdf data-src={pdfUrl(`/pdf/${vol.id}/${leaf.slug}.pdf`)} data-start={leaf.start} data-end={leaf.end} data-pagefind-ignore aria-label={t('Official PDF', 'मूळ PDF')}>
       <div class="rm-pdf-bar">
         <span class="rm-pdf-src">{t(`Original · pp. ${leaf.start}–${leaf.end}`, `मूळ · पृ. ${leaf.start}–${leaf.end}`)}</span>
         <span class="rm-zoom">
@@ -135,7 +135,7 @@ const here = partLabel ? `${chapterTitle} · ${partLabel}` : chapterTitle;
           <button type="button" data-rm-zoom="0" aria-label={t('Fit', 'बसवा')}>{t('Fit', 'बसवा')}</button>
           <button type="button" data-rm-zoom="1" aria-label={t('Zoom in', 'मोठे करा')}>+</button>
         </span>
-        <a href={url(`/pdf/${vol.id}/${leaf.slug}.pdf`)} target="_blank" rel="noopener" data-rm-open>{t('Open in a new tab ↗', 'नवीन टॅबमध्ये उघडा ↗')}</a>
+        <a href={pdfUrl(`/pdf/${vol.id}/${leaf.slug}.pdf`)} target="_blank" rel="noopener" data-rm-open>{t('Open in a new tab ↗', 'नवीन टॅबमध्ये उघडा ↗')}</a>
       </div>
       <div class="rm-pages" data-rm-pages tabindex="0" data-l-page={t('PDF page', 'PDF पृष्ठ')} data-l-fail={t('The PDF could not be shown here. Use “Open in a new tab”.', 'PDF येथे दाखवता आले नाही. “नवीन टॅबमध्ये उघडा” वापरा.')}>
         <p class="rm-loading">{t('Loading the original pages…', 'मूळ पाने उघडत आहे…')}</p>
