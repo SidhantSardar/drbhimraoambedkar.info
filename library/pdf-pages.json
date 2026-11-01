@@ -1,0 +1,4470 @@
+{
+ "volume-1": {
+  "01-front-matter": {
+   "start": 1,
+   "end": 17
+  },
+  "02-1-castes-in-india": {
+   "start": 18,
+   "end": 37
+  },
+  "03-2-annihilation-of-caste-1": {
+   "start": 38,
+   "end": 56
+  },
+  "03-2-annihilation-of-caste-2": {
+   "start": 57,
+   "end": 75
+  },
+  "03-2-annihilation-of-caste-3": {
+   "start": 76,
+   "end": 94
+  },
+  "03-2-annihilation-of-caste-4": {
+   "start": 95,
+   "end": 113
+  },
+  "04-3-maharashtra-as-a-linguistic-province-1": {
+   "start": 114,
+   "end": 128
+  },
+  "04-3-maharashtra-as-a-linguistic-province-2": {
+   "start": 129,
+   "end": 143
+  },
+  "05-4-need-for-checks-and-balances": {
+   "start": 144,
+   "end": 151
+  },
+  "06-5-thoughts-on-linguistic-states-1": {
+   "start": 152,
+   "end": 174
+  },
+  "06-5-thoughts-on-linguistic-states-2": {
+   "start": 175,
+   "end": 197
+  },
+  "06-5-thoughts-on-linguistic-states-3": {
+   "start": 198,
+   "end": 219
+  },
+  "07-6-ranade-gandhi-and-jinnah-1": {
+   "start": 220,
+   "end": 238
+  },
+  "07-6-ranade-gandhi-and-jinnah-2": {
+   "start": 239,
+   "end": 257
+  },
+  "08-7-evidence-before-the-southborough-committee-1": {
+   "start": 258,
+   "end": 275
+  },
+  "08-7-evidence-before-the-southborough-committee-2": {
+   "start": 276,
+   "end": 293
+  },
+  "09-8-federation-versus-freedom-1": {
+   "start": 294,
+   "end": 312
+  },
+  "09-8-federation-versus-freedom-2": {
+   "start": 313,
+   "end": 331
+  },
+  "09-8-federation-versus-freedom-3": {
+   "start": 332,
+   "end": 350
+  },
+  "09-8-federation-versus-freedom-4": {
+   "start": 351,
+   "end": 369
+  },
+  "10-9-communal-deadlock-and-a-way-to-solve-it-1": {
+   "start": 370,
+   "end": 382
+  },
+  "10-9-communal-deadlock-and-a-way-to-solve-it-2": {
+   "start": 383,
+   "end": 395
+  },
+  "11-10-states-and-minorities-1": {
+   "start": 396,
+   "end": 419
+  },
+  "11-10-states-and-minorities-2": {
+   "start": 420,
+   "end": 443
+  },
+  "11-10-states-and-minorities-3": {
+   "start": 444,
+   "end": 467
+  },
+  "12-11-small-holdings-in-india-1": {
+   "start": 468,
+   "end": 481
+  },
+  "12-11-small-holdings-in-india-2": {
+   "start": 482,
+   "end": 495
+  },
+  "13-12-mr-russell-and-the-reconstruction-of-society": {
+   "start": 496,
+   "end": 507
+  },
+  "14-index": {
+   "start": 508,
+   "end": 516
+  }
+ },
+ "volume-2": {
+  "01-front-matter": {
+   "start": 1,
+   "end": 19
+  },
+  "02-dr-ambedkar-in-the-bombay-legislature-1-on-budge": {
+   "start": 20,
+   "end": 24
+  },
+  "03-2-on-budget-2-21st-february-1928": {
+   "start": 25,
+   "end": 27
+  },
+  "04-3-on-budget-3-2nd-march-1938": {
+   "start": 28,
+   "end": 39
+  },
+  "05-4-on-budget-4-21st-february-1939": {
+   "start": 40,
+   "end": 53
+  },
+  "06-5-on-the-finance-act-amendment-bill-28th-august": {
+   "start": 54,
+   "end": 57
+  },
+  "07-6-on-grants-for-education-12th-march-1927": {
+   "start": 58,
+   "end": 63
+  },
+  "08-7-on-the-bombay-university-act-amendment-bill-1": {
+   "start": 64,
+   "end": 72
+  },
+  "09-8-on-the-bombay-university-act-amendment-bill-2": {
+   "start": 73,
+   "end": 77
+  },
+  "10-9-on-the-bombay-university-act-amendment-bill-3": {
+   "start": 78,
+   "end": 79
+  },
+  "11-10-on-the-bombay-university-act-amendment-bill-4": {
+   "start": 80,
+   "end": 82
+  },
+  "12-11-on-the-bombay-primary-education-act-amendment": {
+   "start": 83,
+   "end": 83
+  },
+  "13-12-on-the-bombay-primary-education-act-amendment": {
+   "start": 84,
+   "end": 85
+  },
+  "14-13-on-the-bombay-primary-education-act-amendment": {
+   "start": 86,
+   "end": 90
+  },
+  "15-14-bill-no-xii-of-1928-to-amend-the-bombay-hered": {
+   "start": 91,
+   "end": 93
+  },
+  "16-15-on-the-hereditary-offices-act-amendment-bill": {
+   "start": 94,
+   "end": 106
+  },
+  "17-16-on-the-hereditary-offices-act-amendment-bill": {
+   "start": 107,
+   "end": 108
+  },
+  "18-17-bill-no-xxiii-of-1937-to-amend-the-bombay-her": {
+   "start": 109,
+   "end": 112
+  },
+  "19-18-on-the-hereditary-offices-act-amedment-bill-n": {
+   "start": 113,
+   "end": 114
+  },
+  "20-19-bill-no-xx-of-1937-to-abolish-the-khoti-syste": {
+   "start": 115,
+   "end": 119
+  },
+  "21-20-on-a-bill-to-abolish-the-khoti-system-17th-se": {
+   "start": 120,
+   "end": 122
+  },
+  "22-21-on-village-panchayats-bill-1-6th-october-1932": {
+   "start": 123,
+   "end": 131
+  },
+  "23-22-on-village-panchayats-bill-2-10th-february-19": {
+   "start": 132,
+   "end": 136
+  },
+  "24-23-on-village-panchayats-bill-3-13th-february-19": {
+   "start": 137,
+   "end": 139
+  },
+  "25-24-on-village-panchayats-bill-4-24th-march-1933": {
+   "start": 140,
+   "end": 141
+  },
+  "26-25-on-local-boards-act-amendment-bill-1-18th-jan": {
+   "start": 142,
+   "end": 144
+  },
+  "27-26-on-local-boards-act-amendment-bill-2-22nd-jan": {
+   "start": 145,
+   "end": 147
+  },
+  "28-27-on-small-holders-relief-bill-1-10th-october-1": {
+   "start": 148,
+   "end": 150
+  },
+  "29-minute-of-dissent-from-the-report-of-the-select": {
+   "start": 151,
+   "end": 153
+  },
+  "30-29-on-small-holders-relief-bill-3-24th-january-1": {
+   "start": 154,
+   "end": 156
+  },
+  "31-30-on-the-bombay-police-act-amendment-bill-1-27t": {
+   "start": 157,
+   "end": 166
+  },
+  "32-31-on-the-bombay-police-act-amendment-bill-2-28t": {
+   "start": 167,
+   "end": 172
+  },
+  "33-32-on-the-bombay-police-act-amendment-bill-3-29t": {
+   "start": 173,
+   "end": 179
+  },
+  "34-33-on-the-city-of-bombay-municipal-act-amendment": {
+   "start": 180,
+   "end": 181
+  },
+  "35-34-on-prohibition-10th-march-1927": {
+   "start": 182,
+   "end": 184
+  },
+  "36-35-on-maternity-benefit-bill-28th-july-1928": {
+   "start": 185,
+   "end": 186
+  },
+  "37-36-on-punishment-of-whipping-18th-february-1933": {
+   "start": 187,
+   "end": 188
+  },
+  "38-37-on-ministers-salaries-bill-23rd-august-1937": {
+   "start": 189,
+   "end": 197
+  },
+  "39-38-on-probation-of-offenders-bill-20th-january-j": {
+   "start": 198,
+   "end": 199
+  },
+  "40-39-on-tobacco-duty-act-amendment-bill-5th-march": {
+   "start": 200,
+   "end": 201
+  },
+  "41-40-on-independence-of-judiciary-7th-march-1938": {
+   "start": 202,
+   "end": 206
+  },
+  "42-41-on-creation-of-a-separate-karnatak-province-4": {
+   "start": 207,
+   "end": 215
+  },
+  "43-42-on-the-assembly-procedure-10th-september-1938": {
+   "start": 216,
+   "end": 219
+  },
+  "44-43-on-the-industrial-disputes-bill-15th-septembe-1": {
+   "start": 220,
+   "end": 235
+  },
+  "44-43-on-the-industrial-disputes-bill-15th-septembe-2": {
+   "start": 236,
+   "end": 251
+  },
+  "45-44-on-disturbances-enquiry-committees-report-17t": {
+   "start": 252,
+   "end": 256
+  },
+  "46-45-on-participation-in-the-war-1-25th-october-19": {
+   "start": 257,
+   "end": 260
+  },
+  "47-46-on-participation-in-the-war-2-26th-october-19": {
+   "start": 261,
+   "end": 279
+  },
+  "48-47-on-participation-in-the-war-3-27th-october-19": {
+   "start": 280,
+   "end": 281
+  },
+  "49-appendices-i-speech-by-p-j-roham-on-birth-contro": {
+   "start": 282,
+   "end": 295
+  },
+  "50-ii-questions-asked-by-dr-ambedkar-and-replies-gi": {
+   "start": 296,
+   "end": 310
+  },
+  "51-iii-questionnaire-of-university-reforms-committe": {
+   "start": 311,
+   "end": 334
+  },
+  "52-section-i-redistribution-of-the-area-of-the-prov": {
+   "start": 335,
+   "end": 340
+  },
+  "53-chapter-1-dual-versus-unified-government": {
+   "start": 341,
+   "end": 349
+  },
+  "54-chapter-2-the-executive-in-working": {
+   "start": 350,
+   "end": 353
+  },
+  "55-chapter-3-the-position-and-powers-of-the-governo": {
+   "start": 354,
+   "end": 355
+  },
+  "56-chapter-1-franchise": {
+   "start": 356,
+   "end": 362
+  },
+  "57-chapter-2-electorates": {
+   "start": 363,
+   "end": 375
+  },
+  "58-chapter-3-distribution-of-seats": {
+   "start": 376,
+   "end": 388
+  },
+  "59-chapter-4-lucknow-pact": {
+   "start": 389,
+   "end": 392
+  },
+  "60-chapter-5-second-chamber": {
+   "start": 393,
+   "end": 394
+  },
+  "61-chapter-6-powers-of-the-legislature": {
+   "start": 395,
+   "end": 400
+  },
+  "62-chapter-1-provincial-government-in-relation-to-t": {
+   "start": 401,
+   "end": 404
+  },
+  "63-government-of-india-chapter-2-provincial-governm": {
+   "start": 405,
+   "end": 407
+  },
+  "64-section-v-public-services": {
+   "start": 408,
+   "end": 418
+  },
+  "65-section-vi-summary-of-recommendations": {
+   "start": 419,
+   "end": 425
+  },
+  "66-b-statement-concerning-the-state-of-education-of": {
+   "start": 426,
+   "end": 447
+  },
+  "67-c-statement-concerning-the-safeguards-for-the-pr-1": {
+   "start": 448,
+   "end": 462
+  },
+  "67-c-statement-concerning-the-safeguards-for-the-pr-2": {
+   "start": 463,
+   "end": 477
+  },
+  "68-d-evidence-of-dr-ambedkar-before-the-indian-stat-1": {
+   "start": 478,
+   "end": 493
+  },
+  "68-d-evidence-of-dr-ambedkar-before-the-indian-stat-2": {
+   "start": 494,
+   "end": 509
+  },
+  "69-e-note-submitted-to-the-indian-franchise-committ-1": {
+   "start": 510,
+   "end": 532
+  },
+  "69-e-note-submitted-to-the-indian-franchise-committ-2": {
+   "start": 533,
+   "end": 554
+  },
+  "70-5th-sitting-14-1-1931": {
+   "start": 555,
+   "end": 555
+  },
+  "71-6th-sitting-16-1-1931": {
+   "start": 556,
+   "end": 566
+  },
+  "72-bahadur-r-srinivasan-appendix-to-sub-committees": {
+   "start": 567,
+   "end": 574
+  },
+  "73-appendix-ii-relevant-paragraphs-of-the-report-of": {
+   "start": 575,
+   "end": 591
+  },
+  "74-4th-sitting-1-1-1931": {
+   "start": 592,
+   "end": 599
+  },
+  "75-committee-of-the-whole-conference-summary-of-the": {
+   "start": 600,
+   "end": 601
+  },
+  "76-defence-7-in-sub-committee-no-viii-services-2nd": {
+   "start": 602,
+   "end": 604
+  },
+  "77-3rd-sitting-8-1-1931": {
+   "start": 605,
+   "end": 610
+  },
+  "78-4th-sitting-9-1-1931": {
+   "start": 611,
+   "end": 612
+  },
+  "79-5th-sitting-12-1-1931": {
+   "start": 613,
+   "end": 613
+  },
+  "80-6th-sitting-13-1-1931": {
+   "start": 614,
+   "end": 616
+  },
+  "81-8-in-the-plenary-session-general-review-8th-sitt": {
+   "start": 617,
+   "end": 620
+  },
+  "82-9-in-the-federal-structure-committee-pages-23rd": {
+   "start": 621,
+   "end": 632
+  },
+  "83-25th-sitting-18-9-1931": {
+   "start": 633,
+   "end": 635
+  },
+  "84-26th-sitting-21-9-1931": {
+   "start": 636,
+   "end": 642
+  },
+  "85-28th-sitting-23-9-1931": {
+   "start": 643,
+   "end": 644
+  },
+  "86-30th-sitting-25-9-1931-1": {
+   "start": 645,
+   "end": 658
+  },
+  "86-30th-sitting-25-9-1931-2": {
+   "start": 659,
+   "end": 672
+  },
+  "87-10-in-the-minorities-committee-7th-sitting-28-9": {
+   "start": 673,
+   "end": 684
+  },
+  "88-appendix-i-claims-of-minority-communities-joint": {
+   "start": 685,
+   "end": 689
+  },
+  "89-appendix-ii-supplementary-memorandum-by-dr-ambed": {
+   "start": 690,
+   "end": 693
+  },
+  "90-1-sir-patrick-james-fagan-and-others-13-6-1933": {
+   "start": 694,
+   "end": 696
+  },
+  "91-2-mr-sachchidananda-sinha-22-6-1933": {
+   "start": 697,
+   "end": 700
+  },
+  "92-3-mir-maqbool-mahmood-and-others-27-6-1933": {
+   "start": 701,
+   "end": 706
+  },
+  "93-4-sir-michael-odwyer-29-6-1933": {
+   "start": 707,
+   "end": 709
+  },
+  "94-5-mr-f-e-james-and-others-4-7-1933": {
+   "start": 710,
+   "end": 711
+  },
+  "95-6-sir-john-perronet-thompson-and-others-6-7-1933": {
+   "start": 712,
+   "end": 713
+  },
+  "96-8-sir-edward-benthall-and-others-13-7-1933": {
+   "start": 714,
+   "end": 716
+  },
+  "97-9-lady-layton-and-others-26-7-1933": {
+   "start": 717,
+   "end": 719
+  },
+  "98-10-rajkumari-amrit-kaur-and-mrs-hamid-ali-29-7-1": {
+   "start": 720,
+   "end": 724
+  },
+  "99-11-mrs-p-k-sen-and-mrs-l-mukerji-29-7-1933": {
+   "start": 725,
+   "end": 727
+  },
+  "100-12-discussion-on-poona-pact-31-7-1933": {
+   "start": 728,
+   "end": 735
+  },
+  "101-13-dr-b-s-moonje-and-others-31-7-1933": {
+   "start": 736,
+   "end": 751
+  },
+  "102-14-mr-m-k-acharya-and-others-2-8-1933-1": {
+   "start": 752,
+   "end": 771
+  },
+  "102-14-mr-m-k-acharya-and-others-2-8-1933-2": {
+   "start": 772,
+   "end": 791
+  },
+  "102-14-mr-m-k-acharya-and-others-2-8-1933-3": {
+   "start": 792,
+   "end": 811
+  },
+  "102-14-mr-m-k-acharya-and-others-2-8-1933-4": {
+   "start": 812,
+   "end": 830
+  }
+ },
+ "volume-3": {
+  "01-front-matter": {
+   "start": 1,
+   "end": 15
+  },
+  "02-chapter-1-philosophy-of-hinduism-1": {
+   "start": 16,
+   "end": 38
+  },
+  "02-chapter-1-philosophy-of-hinduism-2": {
+   "start": 39,
+   "end": 61
+  },
+  "02-chapter-1-philosophy-of-hinduism-3": {
+   "start": 62,
+   "end": 84
+  },
+  "02-chapter-1-philosophy-of-hinduism-4": {
+   "start": 85,
+   "end": 107
+  },
+  "03-chapter-2-the-hindu-social-order-its-eseential-p": {
+   "start": 108,
+   "end": 128
+  },
+  "04-chapter-3-the-hindu-social-order-its-unique-feat": {
+   "start": 129,
+   "end": 142
+  },
+  "05-chapter-4-symbols-of-hinduism": {
+   "start": 143,
+   "end": 163
+  },
+  "06-chapter-5-ancient-india-on-exhumation": {
+   "start": 164,
+   "end": 165
+  },
+  "07-chapter-6-the-ancient-regime": {
+   "start": 166,
+   "end": 170
+  },
+  "08-chapter-7-a-sunken-priesthood": {
+   "start": 171,
+   "end": 177
+  },
+  "09-chapter-8-reformers-and-their-fate-1": {
+   "start": 178,
+   "end": 199
+  },
+  "09-chapter-8-reformers-and-their-fate-2": {
+   "start": 200,
+   "end": 221
+  },
+  "09-chapter-8-reformers-and-their-fate-3": {
+   "start": 222,
+   "end": 241
+  },
+  "10-chapter-9-the-decline-and-fall-of-buddhism": {
+   "start": 242,
+   "end": 251
+  },
+  "11-chapter-10-the-literature-of-brahminism-1": {
+   "start": 252,
+   "end": 265
+  },
+  "11-chapter-10-the-literature-of-brahminism-2": {
+   "start": 266,
+   "end": 278
+  },
+  "12-chapter-11-the-triumph-of-brahminism-1": {
+   "start": 279,
+   "end": 300
+  },
+  "12-chapter-11-the-triumph-of-brahminism-2": {
+   "start": 301,
+   "end": 322
+  },
+  "12-chapter-11-the-triumph-of-brahminism-3": {
+   "start": 323,
+   "end": 344
+  },
+  "13-chapter-12-the-morals-of-the-house-1": {
+   "start": 345,
+   "end": 357
+  },
+  "13-chapter-12-the-morals-of-the-house-2": {
+   "start": 358,
+   "end": 369
+  },
+  "14-chapter-13-krishna-and-his-gita": {
+   "start": 370,
+   "end": 393
+  },
+  "15-chapter-14-analytical-notes-of-virat-parva-and-u": {
+   "start": 394,
+   "end": 404
+  },
+  "16-chapter-15-brahmins-venus-kshatriyas": {
+   "start": 405,
+   "end": 428
+  },
+  "17-chapter-16-shudras-and-the-counter-revolution": {
+   "start": 429,
+   "end": 441
+  },
+  "18-chapter-17-the-woman-and-the-counter-revolution": {
+   "start": 442,
+   "end": 453
+  },
+  "19-chapter-18-buddha-or-karl-marx": {
+   "start": 454,
+   "end": 477
+  },
+  "20-chapter-19-schemes-of-books-1": {
+   "start": 478,
+   "end": 494
+  },
+  "20-chapter-19-schemes-of-books-2": {
+   "start": 495,
+   "end": 510
+  }
+ },
+ "volume-4": {
+  "01-front-matter": {
+   "start": 1,
+   "end": 15
+  },
+  "02-1-introduction": {
+   "start": 16,
+   "end": 23
+  },
+  "03-2-riddle-no-1-the-difficulty-of-knowing-why-one": {
+   "start": 24,
+   "end": 26
+  },
+  "04-3-riddle-no-2-the-origin-of-the-vedas-the-brahmi": {
+   "start": 27,
+   "end": 29
+  },
+  "05-4-riddle-no-3-the-testimony-of-other-shastras-on": {
+   "start": 30,
+   "end": 35
+  },
+  "06-5-riddle-no-4-why-suddenly-the-brahmins-declare": {
+   "start": 36,
+   "end": 38
+  },
+  "07-6-riddle-no-5-why-did-the-brahmins-go-further-an": {
+   "start": 39,
+   "end": 47
+  },
+  "08-moral-or-spiritual-value": {
+   "start": 48,
+   "end": 63
+  },
+  "09-8-riddle-no-7-the-turn-of-the-tide-or-how-did-th": {
+   "start": 64,
+   "end": 72
+  },
+  "10-9-riddle-no-8-how-the-upanishads-declared-war-on": {
+   "start": 73,
+   "end": 77
+  },
+  "11-10-riddle-no-9-how-the-upanishads-came-to-be-mad": {
+   "start": 78,
+   "end": 81
+  },
+  "12-11-riddle-no-10-why-did-the-brahmins-make-the-hi": {
+   "start": 82,
+   "end": 90
+  },
+  "13-12-riddle-no-11-why-did-the-brahmins-make-the-hi": {
+   "start": 91,
+   "end": 109
+  },
+  "14-13-riddle-no-12-why-did-the-brahmins-dethrone-th": {
+   "start": 110,
+   "end": 118
+  },
+  "15-14-riddle-no-13-the-riddle-of-the-ahimsa": {
+   "start": 119,
+   "end": 123
+  },
+  "16-15-riddle-no-14-from-ahimsa-back-to-himsa": {
+   "start": 124,
+   "end": 127
+  },
+  "17-16-riddle-no-15-how-did-the-brahmins-wed-an-ahim": {
+   "start": 128,
+   "end": 138
+  },
+  "18-17-appendix-i-the-riddle-of-the-vedas": {
+   "start": 139,
+   "end": 161
+  },
+  "19-18-appendix-ii-the-riddle-of-the-vedanta": {
+   "start": 162,
+   "end": 171
+  },
+  "20-19-appendix-iii-the-riddle-of-the-trimurti": {
+   "start": 172,
+   "end": 186
+  },
+  "21-20-appendix-iv-smarth-dharma-and-tantrik-dharma": {
+   "start": 187,
+   "end": 193
+  },
+  "22-21-appendix-v-the-infallibility-of-the-vedas": {
+   "start": 194,
+   "end": 199
+  },
+  "23-22-riddle-no-16-the-four-varnas-are-the-brahmins": {
+   "start": 200,
+   "end": 215
+  },
+  "24-23-riddle-no-17-the-four-ashramas-the-why-and-ho": {
+   "start": 216,
+   "end": 225
+  },
+  "25-24-riddle-no-18-manus-madness-or-the-brahmanic-e": {
+   "start": 226,
+   "end": 236
+  },
+  "26-25-riddle-no-19-the-change-from-paternity-to-mat": {
+   "start": 237,
+   "end": 243
+  },
+  "27-26-riddle-no-20-kali-varjya-or-the-brahmanic-art": {
+   "start": 244,
+   "end": 246
+  },
+  "28-27-appendix-i-the-riddle-of-the-varnashram-dharm-1": {
+   "start": 247,
+   "end": 259
+  },
+  "28-27-appendix-i-the-riddle-of-the-varnashram-dharm-2": {
+   "start": 260,
+   "end": 272
+  },
+  "29-28-appendix-ii-compulsory-matrimony": {
+   "start": 273,
+   "end": 285
+  },
+  "30-29-riddle-no-21-the-theory-of-manvantara": {
+   "start": 286,
+   "end": 291
+  },
+  "31-30-riddle-no-22-brahma-is-not-dharma-what-good-i": {
+   "start": 292,
+   "end": 298
+  },
+  "32-31-riddle-no-23-kali-yuga-why-have-the-brahmins": {
+   "start": 299,
+   "end": 317
+  },
+  "33-32-riddle-no-24-the-riddle-of-the-kali-yuga": {
+   "start": 318,
+   "end": 333
+  },
+  "34-33-appendix-i-the-riddle-of-rama-and-krishna-1": {
+   "start": 334,
+   "end": 356
+  },
+  "34-33-appendix-i-the-riddle-of-rama-and-krishna-2": {
+   "start": 357,
+   "end": 378
+  }
+ },
+ "volume-5": {
+  "01-front-matter": {
+   "start": 1,
+   "end": 23
+  },
+  "02-chapter-1-untouchability-its-source": {
+   "start": 24,
+   "end": 33
+  },
+  "03-chapter-4-outside-the-fold": {
+   "start": 34,
+   "end": 41
+  },
+  "04-chapter-5-unfit-for-human-association": {
+   "start": 42,
+   "end": 49
+  },
+  "05-chapter-6-untouchability-and-lawlessness-1": {
+   "start": 50,
+   "end": 63
+  },
+  "05-chapter-6-untouchability-and-lawlessness-2": {
+   "start": 64,
+   "end": 76
+  },
+  "06-chapter-7-why-lawlessness-is-lawful": {
+   "start": 77,
+   "end": 89
+  },
+  "07-chapter-8-parallel-cases": {
+   "start": 90,
+   "end": 103
+  },
+  "08-chapter-9-hindus-and-want-of-public-conscience": {
+   "start": 104,
+   "end": 108
+  },
+  "09-chapter-10-hindus-and-their-want-of-social-consc": {
+   "start": 109,
+   "end": 114
+  },
+  "10-chapter-11-the-hindu-and-his-belief-in-caste": {
+   "start": 115,
+   "end": 117
+  },
+  "11-chapter-12-antagonism-of-the-administration": {
+   "start": 118,
+   "end": 122
+  },
+  "12-chapter-13-problem-of-discrimination": {
+   "start": 123,
+   "end": 126
+  },
+  "13-chapter-14-problem-of-isolation": {
+   "start": 127,
+   "end": 141
+  },
+  "14-chapter-15-civilization-or-felony": {
+   "start": 142,
+   "end": 159
+  },
+  "15-chapter-16-the-house-the-hindus-have-built-1": {
+   "start": 160,
+   "end": 172
+  },
+  "15-chapter-16-the-house-the-hindus-have-built-2": {
+   "start": 173,
+   "end": 184
+  },
+  "16-chapter-17-the-rock-on-which-it-is-built": {
+   "start": 185,
+   "end": 206
+  },
+  "17-chapter-18-touchables-versus-untouchables": {
+   "start": 207,
+   "end": 225
+  },
+  "18-chapter-19-the-curse-of-caste": {
+   "start": 226,
+   "end": 243
+  },
+  "19-chapter-20-from-millions-to-fractions": {
+   "start": 244,
+   "end": 261
+  },
+  "20-chapter-21-the-revolt-of-the-untouchables": {
+   "start": 262,
+   "end": 273
+  },
+  "21-chapter-22-held-at-bay": {
+   "start": 274,
+   "end": 286
+  },
+  "22-chapter-23-their-wishes-are-laws-unto-us": {
+   "start": 287,
+   "end": 301
+  },
+  "23-chapter-24-under-the-providence-of-mr-gandhi-1": {
+   "start": 302,
+   "end": 322
+  },
+  "23-chapter-24-under-the-providence-of-mr-gandhi-2": {
+   "start": 323,
+   "end": 343
+  },
+  "24-chapter-25-gandhi-and-his-fast-1": {
+   "start": 344,
+   "end": 366
+  },
+  "24-chapter-25-gandhi-and-his-fast-2": {
+   "start": 367,
+   "end": 389
+  },
+  "24-chapter-25-gandhi-and-his-fast-3": {
+   "start": 390,
+   "end": 410
+  },
+  "25-chapter-26-a-warning-to-the-untouchables": {
+   "start": 411,
+   "end": 417
+  },
+  "26-chapter-27-away-from-the-hindus": {
+   "start": 418,
+   "end": 436
+  },
+  "27-chapter-28-caste-and-conversion": {
+   "start": 437,
+   "end": 440
+  },
+  "28-chapter-29-christianising-the-untouchables": {
+   "start": 441,
+   "end": 459
+  },
+  "29-chapter-30-the-condition-of-the-convert-1": {
+   "start": 460,
+   "end": 477
+  },
+  "29-chapter-30-the-condition-of-the-convert-2": {
+   "start": 478,
+   "end": 495
+  },
+  "29-chapter-30-the-condition-of-the-convert-3": {
+   "start": 496,
+   "end": 512
+  }
+ },
+ "volume-6": {
+  "01-front-matter": {
+   "start": 1,
+   "end": 19
+  },
+  "02-administration-and-finance-of-the-east-india-1": {
+   "start": 20,
+   "end": 42
+  },
+  "02-administration-and-finance-of-the-east-india-2": {
+   "start": 43,
+   "end": 65
+  },
+  "03-the-evolution-of-provincial-finance-in-1": {
+   "start": 66,
+   "end": 89
+  },
+  "03-the-evolution-of-provincial-finance-in-2": {
+   "start": 90,
+   "end": 113
+  },
+  "03-the-evolution-of-provincial-finance-in-3": {
+   "start": 114,
+   "end": 137
+  },
+  "03-the-evolution-of-provincial-finance-in-4": {
+   "start": 138,
+   "end": 161
+  },
+  "03-the-evolution-of-provincial-finance-in-5": {
+   "start": 162,
+   "end": 185
+  },
+  "03-the-evolution-of-provincial-finance-in-6": {
+   "start": 186,
+   "end": 209
+  },
+  "03-the-evolution-of-provincial-finance-in-7": {
+   "start": 210,
+   "end": 233
+  },
+  "03-the-evolution-of-provincial-finance-in-8": {
+   "start": 234,
+   "end": 257
+  },
+  "03-the-evolution-of-provincial-finance-in-9": {
+   "start": 258,
+   "end": 281
+  },
+  "03-the-evolution-of-provincial-finance-in-10": {
+   "start": 282,
+   "end": 305
+  },
+  "03-the-evolution-of-provincial-finance-in-11": {
+   "start": 306,
+   "end": 327
+  },
+  "04-british-india-review-in-the-journal-of-the-royal": {
+   "start": 328,
+   "end": 331
+  },
+  "05-the-problem-of-the-rupee-1": {
+   "start": 332,
+   "end": 355
+  },
+  "05-the-problem-of-the-rupee-2": {
+   "start": 356,
+   "end": 379
+  },
+  "05-the-problem-of-the-rupee-3": {
+   "start": 380,
+   "end": 403
+  },
+  "05-the-problem-of-the-rupee-4": {
+   "start": 404,
+   "end": 427
+  },
+  "05-the-problem-of-the-rupee-5": {
+   "start": 428,
+   "end": 451
+  },
+  "05-the-problem-of-the-rupee-6": {
+   "start": 452,
+   "end": 475
+  },
+  "05-the-problem-of-the-rupee-7": {
+   "start": 476,
+   "end": 499
+  },
+  "05-the-problem-of-the-rupee-8": {
+   "start": 500,
+   "end": 523
+  },
+  "05-the-problem-of-the-rupee-9": {
+   "start": 524,
+   "end": 547
+  },
+  "05-the-problem-of-the-rupee-10": {
+   "start": 548,
+   "end": 571
+  },
+  "05-the-problem-of-the-rupee-11": {
+   "start": 572,
+   "end": 595
+  },
+  "05-the-problem-of-the-rupee-12": {
+   "start": 596,
+   "end": 619
+  },
+  "05-the-problem-of-the-rupee-13": {
+   "start": 620,
+   "end": 635
+  },
+  "06-miscellaneous-essays": {
+   "start": 636,
+   "end": 639
+  },
+  "07-1-statement-of-evidence": {
+   "start": 640,
+   "end": 648
+  },
+  "08-2-copy-of-the-memorandum-circulated-to": {
+   "start": 649,
+   "end": 650
+  },
+  "09-witnesses-in-india-by-the-commission-3-evidence-1": {
+   "start": 651,
+   "end": 668
+  },
+  "09-witnesses-in-india-by-the-commission-3-evidence-2": {
+   "start": 669,
+   "end": 685
+  },
+  "10-4-the-present-problem-in-indian-currency-i": {
+   "start": 686,
+   "end": 691
+  },
+  "11-5-the-present-problem-in-indian-currency-ii": {
+   "start": 692,
+   "end": 697
+  },
+  "12-reviews-on-6-currency-and-exchange": {
+   "start": 698,
+   "end": 703
+  },
+  "13-7-report-of-the-taxation-enquiry-committee-1926": {
+   "start": 704,
+   "end": 706
+  },
+  "14-forewords-to-8-commodity-exchange": {
+   "start": 707,
+   "end": 707
+  },
+  "15-9-social-insurance-and-india": {
+   "start": 708,
+   "end": 720
+  }
+ },
+ "volume-7": {
+  "01-front-matter-1": {
+   "start": 1,
+   "end": 13
+  },
+  "01-front-matter-2": {
+   "start": 14,
+   "end": 25
+  },
+  "02-preface-dr-br-ambedkar": {
+   "start": 26,
+   "end": 39
+  },
+  "03-chapter-i-the-riddle-of-the-shudras": {
+   "start": 40,
+   "end": 55
+  },
+  "04-ii-the-brahmanic-theory-of-the-origin-of-the-shu": {
+   "start": 56,
+   "end": 60
+  },
+  "05-iii-the-brahmanic-theory-of-the-status-of-the-sh": {
+   "start": 61,
+   "end": 83
+  },
+  "06-iv-shudras-versus-aryans": {
+   "start": 84,
+   "end": 104
+  },
+  "07-v-aryans-against-aryans": {
+   "start": 105,
+   "end": 119
+  },
+  "08-vi-shudras-and-dasas": {
+   "start": 120,
+   "end": 132
+  },
+  "09-vii-the-shudras-were-kshatriyas": {
+   "start": 133,
+   "end": 150
+  },
+  "10-viii-the-number-of-varnas-three-or-four": {
+   "start": 151,
+   "end": 158
+  },
+  "11-ix-brahmins-versus-shudras": {
+   "start": 159,
+   "end": 174
+  },
+  "12-x-the-degradation-of-the-shudras-1": {
+   "start": 175,
+   "end": 189
+  },
+  "12-x-the-degradation-of-the-shudras-2": {
+   "start": 190,
+   "end": 204
+  },
+  "13-xi-the-story-of-reconciliation": {
+   "start": 205,
+   "end": 222
+  },
+  "14-xii-the-theory-in-the-crucible-1": {
+   "start": 223,
+   "end": 235
+  },
+  "14-xii-the-theory-in-the-crucible-2": {
+   "start": 236,
+   "end": 247
+  },
+  "15-title-pages-and-contents": {
+   "start": 248,
+   "end": 257
+  },
+  "16-preface": {
+   "start": 258,
+   "end": 267
+  },
+  "17-chapter-i-untouchability-among-non-hindus": {
+   "start": 268,
+   "end": 274
+  },
+  "18-chapter-ii-untouchability-among-hindus": {
+   "start": 275,
+   "end": 289
+  },
+  "19-chapter-iii-why-do-the-untouchables-live-outside": {
+   "start": 290,
+   "end": 296
+  },
+  "20-chapter-iv-are-the-untouchables-broken-men": {
+   "start": 297,
+   "end": 299
+  },
+  "21-chapter-v-are-there-parallel-cases": {
+   "start": 300,
+   "end": 302
+  },
+  "22-chapter-vi-how-did-separate-settlements-for-brok": {
+   "start": 303,
+   "end": 307
+  },
+  "23-chapter-vii-racial-difference-as-the-origin-of-u": {
+   "start": 308,
+   "end": 323
+  },
+  "24-chapter-viii-occupational-origin-of-untouchabili": {
+   "start": 324,
+   "end": 329
+  },
+  "25-chapter-ix-contempt-for-buddhists-as-the-root-of": {
+   "start": 330,
+   "end": 336
+  },
+  "26-chapter-x-beef-eating-as-the-root-of-untouchabil": {
+   "start": 337,
+   "end": 341
+  },
+  "27-chapter-xi-did-the-hindus-never-eat-beef": {
+   "start": 342,
+   "end": 347
+  },
+  "28-chapter-xii-why-did-non-brahmins-give-up-beef-ea": {
+   "start": 348,
+   "end": 352
+  },
+  "29-chapter-xiii-what-made-the-brahmins-become-veget": {
+   "start": 353,
+   "end": 368
+  },
+  "30-chapter-xiv-why-should-beef-eating-make-broken-m": {
+   "start": 369,
+   "end": 377
+  },
+  "31-chapter-xv-the-impure-and-the-untouchables": {
+   "start": 378,
+   "end": 388
+  },
+  "32-chapter-xvi-when-did-broken-men-become-untouchab": {
+   "start": 389,
+   "end": 406
+  }
+ },
+ "volume-8": {
+  "01-front-matter-1": {
+   "start": 1,
+   "end": 13
+  },
+  "01-front-matter-2": {
+   "start": 14,
+   "end": 25
+  },
+  "02-preface-to-the-second-edition": {
+   "start": 26,
+   "end": 29
+  },
+  "03-prologue": {
+   "start": 30,
+   "end": 31
+  },
+  "04-introduction": {
+   "start": 32,
+   "end": 45
+  },
+  "05-chapter-i-what-does-the-league-demand": {
+   "start": 46,
+   "end": 53
+  },
+  "06-chapter-ii-a-nation-calling-for-a-home": {
+   "start": 54,
+   "end": 65
+  },
+  "07-chapter-iii-escape-from-degradation": {
+   "start": 66,
+   "end": 77
+  },
+  "08-chapter-iv-break-up-of-unity": {
+   "start": 78,
+   "end": 91
+  },
+  "09-chapter-v-weakening-of-the-defences-1": {
+   "start": 92,
+   "end": 109
+  },
+  "09-chapter-v-weakening-of-the-defences-2": {
+   "start": 110,
+   "end": 127
+  },
+  "10-chapter-vi-pakistan-and-communal-peace-1": {
+   "start": 128,
+   "end": 140
+  },
+  "10-chapter-vi-pakistan-and-communal-peace-2": {
+   "start": 141,
+   "end": 153
+  },
+  "11-chapter-vii-hindu-alternative-to-pakistan-1": {
+   "start": 154,
+   "end": 175
+  },
+  "11-chapter-vii-hindu-alternative-to-pakistan-2": {
+   "start": 176,
+   "end": 197
+  },
+  "11-chapter-vii-hindu-alternative-to-pakistan-3": {
+   "start": 198,
+   "end": 219
+  },
+  "12-chapter-viii-muslim-alternative-to-pakistan": {
+   "start": 220,
+   "end": 229
+  },
+  "13-chapter-ix-lessons-from-abroad": {
+   "start": 230,
+   "end": 249
+  },
+  "14-chapter-x-social-stagnation": {
+   "start": 250,
+   "end": 273
+  },
+  "15-chapter-xi-communal-aggression": {
+   "start": 274,
+   "end": 295
+  },
+  "16-chapter-xii-national-frustration-1": {
+   "start": 296,
+   "end": 314
+  },
+  "16-chapter-xii-national-frustration-2": {
+   "start": 315,
+   "end": 333
+  },
+  "16-chapter-xii-national-frustration-3": {
+   "start": 334,
+   "end": 352
+  },
+  "16-chapter-xii-national-frustration-4": {
+   "start": 353,
+   "end": 371
+  },
+  "17-chapter-xiii-must-there-be-pakistan": {
+   "start": 372,
+   "end": 393
+  },
+  "18-chapter-xiv-the-problems-of-pakistan": {
+   "start": 394,
+   "end": 409
+  },
+  "19-chapter-xv-who-can-decide": {
+   "start": 410,
+   "end": 429
+  },
+  "20-epilogue": {
+   "start": 430,
+   "end": 441
+  },
+  "21-appendices-1": {
+   "start": 442,
+   "end": 463
+  },
+  "21-appendices-2": {
+   "start": 464,
+   "end": 485
+  },
+  "21-appendices-3": {
+   "start": 486,
+   "end": 505
+  },
+  "22-index": {
+   "start": 506,
+   "end": 512
+  }
+ },
+ "volume-9": {
+  "01-front-matter-1": {
+   "start": 1,
+   "end": 15
+  },
+  "01-front-matter-2": {
+   "start": 16,
+   "end": 29
+  },
+  "02-chapter-i-a-strange-event-congress-takes-cogniza": {
+   "start": 30,
+   "end": 47
+  },
+  "03-chapter-ii-a-shabby-show-congress-abandons-its-p": {
+   "start": 48,
+   "end": 68
+  },
+  "04-chapter-iii-a-mean-deal-congress-refuses-to-part-1": {
+   "start": 69,
+   "end": 89
+  },
+  "04-chapter-iii-a-mean-deal-congress-refuses-to-part-2": {
+   "start": 90,
+   "end": 110
+  },
+  "04-chapter-iii-a-mean-deal-congress-refuses-to-part-3": {
+   "start": 111,
+   "end": 131
+  },
+  "05-chapter-iv-an-abject-surrender-congress-bets-an": {
+   "start": 132,
+   "end": 154
+  },
+  "06-chapter-v-a-political-charity-congress-plan-to-k": {
+   "start": 155,
+   "end": 174
+  },
+  "07-chapter-vi-a-false-claim-does-congress-represent": {
+   "start": 175,
+   "end": 194
+  },
+  "08-chapter-vii-a-false-charge-are-untouchables-tool": {
+   "start": 195,
+   "end": 209
+  },
+  "09-chapter-viii-the-real-issue-what-the-untouchable": {
+   "start": 210,
+   "end": 227
+  },
+  "10-chapter-ix-a-plea-to-the-foreigners-let-not-tyra-1": {
+   "start": 228,
+   "end": 247
+  },
+  "10-chapter-ix-a-plea-to-the-foreigners-let-not-tyra-2": {
+   "start": 248,
+   "end": 267
+  },
+  "11-chapter-x-what-do-the-untouchables-say-beware-of-1": {
+   "start": 268,
+   "end": 285
+  },
+  "11-chapter-x-what-do-the-untouchables-say-beware-of-2": {
+   "start": 286,
+   "end": 302
+  },
+  "12-chapter-xi-gandhism-the-doom-of-the-untouchables": {
+   "start": 303,
+   "end": 326
+  },
+  "13-appendices-1": {
+   "start": 327,
+   "end": 348
+  },
+  "13-appendices-2": {
+   "start": 349,
+   "end": 370
+  },
+  "13-appendices-3": {
+   "start": 371,
+   "end": 392
+  },
+  "13-appendices-4": {
+   "start": 393,
+   "end": 412
+  },
+  "14-index-1": {
+   "start": 413,
+   "end": 430
+  },
+  "14-index-2": {
+   "start": 431,
+   "end": 448
+  },
+  "14-index-3": {
+   "start": 449,
+   "end": 465
+  },
+  "15-note-on-the-annexure-added-by-the-editor-1": {
+   "start": 466,
+   "end": 485
+  },
+  "15-note-on-the-annexure-added-by-the-editor-2": {
+   "start": 486,
+   "end": 505
+  },
+  "15-note-on-the-annexure-added-by-the-editor-3": {
+   "start": 506,
+   "end": 524
+  }
+ },
+ "volume-10": {
+  "01-front-matter": {
+   "start": 1,
+   "end": 19
+  },
+  "02-1-dr-b-r-ambedkar-a-biographical-sketch": {
+   "start": 20,
+   "end": 26
+  },
+  "03-2-appointment-as-labour-member-of-the-viceroys-c": {
+   "start": 27,
+   "end": 27
+  },
+  "04-3-the-need-for-uniformity-in-labour-legislation": {
+   "start": 28,
+   "end": 35
+  },
+  "05-4-election-of-a-member-to-the-advisory-committee": {
+   "start": 36,
+   "end": 37
+  },
+  "06-5-the-situation-in-india": {
+   "start": 38,
+   "end": 46
+  },
+  "07-6-election-of-a-member-to-the-advisory-committee": {
+   "start": 47,
+   "end": 52
+  },
+  "08-7-why-indian-labour-is-determined-to-win-the-war": {
+   "start": 53,
+   "end": 60
+  },
+  "09-8-the-paper-control-order": {
+   "start": 61,
+   "end": 66
+  },
+  "10-9-announcement-re-grant-of-inadequate-dearness-a": {
+   "start": 67,
+   "end": 69
+  },
+  "11-10-the-indian-finance-bill": {
+   "start": 70,
+   "end": 75
+  },
+  "12-11-election-of-members-to-the-standing-committee": {
+   "start": 76,
+   "end": 79
+  },
+  "13-12-the-indian-tea-control-amendment-bill": {
+   "start": 80,
+   "end": 85
+  },
+  "14-13-the-war-injuries-compensation-insurance-bill": {
+   "start": 86,
+   "end": 94
+  },
+  "15-14-employment-exchanges-for-skilled-and-semi-ski": {
+   "start": 95,
+   "end": 97
+  },
+  "16-15-the-indian-boilers-amendment-bill": {
+   "start": 98,
+   "end": 100
+  },
+  "17-16-the-motor-vehicles-drivers-amendment-bill": {
+   "start": 101,
+   "end": 103
+  },
+  "18-17-the-mines-maternity-benefit-amendment-bill": {
+   "start": 104,
+   "end": 105
+  },
+  "19-18-the-war-injuries-compensation-insurance-bill": {
+   "start": 106,
+   "end": 116
+  },
+  "20-19-first-session-of-plenary-labour-conference": {
+   "start": 117,
+   "end": 122
+  },
+  "21-20-labour-and-parliamentary-democracy": {
+   "start": 123,
+   "end": 129
+  },
+  "22-21-the-indian-trade-unions-amendment-bill": {
+   "start": 130,
+   "end": 136
+  },
+  "23-22-post-war-development-of-electric-power-in-ind": {
+   "start": 137,
+   "end": 145
+  },
+  "24-23-labour-members-visit-to-jharia-coalfields": {
+   "start": 146,
+   "end": 146
+  },
+  "25-24-labour-member-visits-coalmines": {
+   "start": 147,
+   "end": 151
+  },
+  "26-25-promotion-of-labour-welfare-in-india": {
+   "start": 152,
+   "end": 155
+  },
+  "27-26-lifting-of-ban-on-employment-of-women-on-unde": {
+   "start": 156,
+   "end": 161
+  },
+  "28-27-the-coalmines-safety-stowing-amendment-bill": {
+   "start": 162,
+   "end": 165
+  },
+  "29-28-government-policy-towards-labour": {
+   "start": 166,
+   "end": 175
+  },
+  "30-29-miscellaneous-departments": {
+   "start": 176,
+   "end": 177
+  },
+  "31-30-protection-of-mosques-in-new-delhi": {
+   "start": 178,
+   "end": 181
+  },
+  "32-31-the-factories-amendment-bill": {
+   "start": 182,
+   "end": 185
+  },
+  "33-32-advisory-committee-on-coalmines-welfare-fund": {
+   "start": 186,
+   "end": 188
+  },
+  "34-33-mica-industry-to-be-placed-on-a-sound-and-sta": {
+   "start": 189,
+   "end": 194
+  },
+  "35-34-standing-labour-committee-discusses-recogniti": {
+   "start": 195,
+   "end": 197
+  },
+  "36-35-post-war-employment-of-skilled-workers": {
+   "start": 198,
+   "end": 204
+  },
+  "37-36-plenary-session-of-tripartite-labour-conferen": {
+   "start": 205,
+   "end": 217
+  },
+  "38-37-the-factories-second-amendment-bill": {
+   "start": 218,
+   "end": 227
+  },
+  "39-38-the-payment-of-wages-amendment-bill": {
+   "start": 228,
+   "end": 236
+  },
+  "40-39-damodar-valley-scheme-calcutta-conference": {
+   "start": 237,
+   "end": 242
+  },
+  "41-40-post-war-electric-power-development": {
+   "start": 243,
+   "end": 253
+  },
+  "42-41-government-policy-re-mineral-resources-of-ind": {
+   "start": 254,
+   "end": 259
+  },
+  "43-42-labour-policy-of-government-of-india": {
+   "start": 260,
+   "end": 269
+  },
+  "44-43-need-for-immediate-re-imposition-of-ban-on-em": {
+   "start": 270,
+   "end": 276
+  },
+  "45-44-department-of-labour-demand-for-supplementary": {
+   "start": 277,
+   "end": 280
+  },
+  "46-45-the-mines-maternity-benefit-amendment-bill": {
+   "start": 281,
+   "end": 283
+  },
+  "47-46-the-factories-second-amendment-bill": {
+   "start": 284,
+   "end": 290
+  },
+  "48-47-the-mines-maternity-benefit-amendment-bill": {
+   "start": 291,
+   "end": 293
+  },
+  "49-48-health-insurance-for-industrial-workers": {
+   "start": 294,
+   "end": 295
+  },
+  "50-49-war-work-of-national-service-labour-tribunals": {
+   "start": 296,
+   "end": 300
+  },
+  "51-50-multi-purpose-development-of-damodar-valley": {
+   "start": 301,
+   "end": 307
+  },
+  "52-51-housing-of-indias-industrial-workers": {
+   "start": 308,
+   "end": 309
+  },
+  "53-52-states-obligations-to-labour": {
+   "start": 310,
+   "end": 318
+  },
+  "54-53-multi-purpose-plan-for-development-of-orissas": {
+   "start": 319,
+   "end": 328
+  },
+  "55-54-rejection-of-railwaymens-federation-demands": {
+   "start": 329,
+   "end": 333
+  },
+  "56-55-proposed-evacuation-of-villages-in-the-prosec": {
+   "start": 334,
+   "end": 336
+  },
+  "57-56-workmens-compensation-amendment-bill": {
+   "start": 337,
+   "end": 339
+  },
+  "58-57-indian-mines-amendment-bill": {
+   "start": 340,
+   "end": 342
+  },
+  "59-58-factories-amendment-bill": {
+   "start": 343,
+   "end": 350
+  },
+  "60-59-rehabilitation-plans": {
+   "start": 351,
+   "end": 355
+  },
+  "61-60-welfare-and-social-security-of-workers": {
+   "start": 356,
+   "end": 360
+  },
+  "62-61-muslims-have-fared-much-better-in-labour-depa": {
+   "start": 361,
+   "end": 370
+  },
+  "63-62-the-indian-finance-bill": {
+   "start": 371,
+   "end": 380
+  },
+  "64-63-strike-by-workers-of-government-of-india-pres": {
+   "start": 381,
+   "end": 383
+  },
+  "65-64-factories-amendment-bill": {
+   "start": 384,
+   "end": 389
+  },
+  "66-65-mica-mines-labour-welfare-fund-bill": {
+   "start": 390,
+   "end": 401
+  },
+  "67-66-industrial-employment-standing-orders-bill": {
+   "start": 402,
+   "end": 406
+  },
+  "68-67-mica-mines-labour-welfare-fund-bill": {
+   "start": 407,
+   "end": 408
+  },
+  "69-68-miscellaneous": {
+   "start": 409,
+   "end": 423
+  },
+  "70-1-grievances-of-the-scheduled-castes-by-dr-ambed-1": {
+   "start": 424,
+   "end": 444
+  },
+  "70-1-grievances-of-the-scheduled-castes-by-dr-ambed-2": {
+   "start": 445,
+   "end": 465
+  },
+  "71-1-note-by-sir-s-cripps": {
+   "start": 466,
+   "end": 467
+  },
+  "72-2-dr-ambedkar-and-mr-s-rajah-to-sir-s-cripps": {
+   "start": 468,
+   "end": 469
+  },
+  "73-3-sir-r-lumley-bombay-to-the-marquess-of-linlith": {
+   "start": 470,
+   "end": 472
+  },
+  "74-4-cripps-proposals": {
+   "start": 473,
+   "end": 475
+  },
+  "75-5-statement-of-dr-ambedkar-on-the-cripps-proposa": {
+   "start": 476,
+   "end": 483
+  },
+  "76-6-the-marquess-of-linlithgow-to-mr-amery": {
+   "start": 484,
+   "end": 485
+  },
+  "77-7-war-cabinet-paper-wp-42-283-memorandum-by-the": {
+   "start": 486,
+   "end": 487
+  },
+  "78-8-the-marquess-of-linlithgow-to-mr-amery": {
+   "start": 488,
+   "end": 488
+  },
+  "79-9-the-marquess-of-linlithgow-to-mr-amery": {
+   "start": 489,
+   "end": 490
+  },
+  "80-10-dr-ambedkar-to-the-marquess-of-linlithgow": {
+   "start": 491,
+   "end": 493
+  },
+  "81-11-precis-of-discussion-in-the-viceroys-executiv": {
+   "start": 494,
+   "end": 495
+  },
+  "82-12-field-marshal-viscount-wavell-to-mr-amery-spe": {
+   "start": 496,
+   "end": 496
+  },
+  "83-13-dr-ambedkar-to-field-marshal-viscount-wavell": {
+   "start": 497,
+   "end": 500
+  },
+  "84-14-field-marshal-viscount-wavell-to-lord-pethick": {
+   "start": 501,
+   "end": 502
+  },
+  "85-15-note-of-meeting-between-cabinet-delegation-lo": {
+   "start": 503,
+   "end": 507
+  },
+  "86-16-dr-ambedkar-to-lord-wavell": {
+   "start": 508,
+   "end": 511
+  },
+  "87-17-members-of-the-executive-council-to-field-mar": {
+   "start": 512,
+   "end": 512
+  },
+  "88-18-dr-ambedkar-to-rt-honble-mr-a-v-alexander": {
+   "start": 513,
+   "end": 520
+  },
+  "89-19-dr-ambedkar-to-lord-pethick-lawrence": {
+   "start": 521,
+   "end": 522
+  },
+  "90-20-lord-pethick-lawrence-to-dr-ambedkar": {
+   "start": 523,
+   "end": 523
+  },
+  "91-21-rao-bahadur-sivaraj-to-field-marshal-viscount": {
+   "start": 524,
+   "end": 529
+  },
+  "92-22-mr-attlee-to-dr-ambedkar": {
+   "start": 530,
+   "end": 532
+  },
+  "93-23-dr-ambedkar-to-mr-attlee": {
+   "start": 533,
+   "end": 535
+  },
+  "94-24-lord-pethick-lawrence-to-mr-attlee": {
+   "start": 536,
+   "end": 537
+  },
+  "95-25-lord-pethick-lawrence-to-mr-attlee": {
+   "start": 538,
+   "end": 541
+  },
+  "96-1-a-critique-of-the-proposals-of-the-cabinet-mis": {
+   "start": 542,
+   "end": 557
+  },
+  "97-2-the-cabinet-mission-and-the-untouchables-by-dr-1": {
+   "start": 558,
+   "end": 581
+  },
+  "97-2-the-cabinet-mission-and-the-untouchables-by-dr-2": {
+   "start": 582,
+   "end": 605
+  },
+  "97-2-the-cabinet-mission-and-the-untouchables-by-dr-3": {
+   "start": 606,
+   "end": 629
+  },
+  "97-2-the-cabinet-mission-and-the-untouchables-by-dr-4": {
+   "start": 630,
+   "end": 653
+  },
+  "97-2-the-cabinet-mission-and-the-untouchables-by-dr-5": {
+   "start": 654,
+   "end": 677
+  },
+  "97-2-the-cabinet-mission-and-the-untouchables-by-dr-6": {
+   "start": 678,
+   "end": 701
+  },
+  "97-2-the-cabinet-mission-and-the-untouchables-by-dr-7": {
+   "start": 702,
+   "end": 725
+  },
+  "97-2-the-cabinet-mission-and-the-untouchables-by-dr-8": {
+   "start": 726,
+   "end": 749
+  },
+  "97-2-the-cabinet-mission-and-the-untouchables-by-dr-9": {
+   "start": 750,
+   "end": 773
+  },
+  "97-2-the-cabinet-mission-and-the-untouchables-by-dr-10": {
+   "start": 774,
+   "end": 797
+  },
+  "97-2-the-cabinet-mission-and-the-untouchables-by-dr-11": {
+   "start": 798,
+   "end": 821
+  },
+  "97-2-the-cabinet-mission-and-the-untouchables-by-dr-12": {
+   "start": 822,
+   "end": 845
+  },
+  "97-2-the-cabinet-mission-and-the-untouchables-by-dr-13": {
+   "start": 846,
+   "end": 869
+  },
+  "97-2-the-cabinet-mission-and-the-untouchables-by-dr-14": {
+   "start": 870,
+   "end": 893
+  },
+  "97-2-the-cabinet-mission-and-the-untouchables-by-dr-15": {
+   "start": 894,
+   "end": 917
+  },
+  "97-2-the-cabinet-mission-and-the-untouchables-by-dr-16": {
+   "start": 918,
+   "end": 941
+  },
+  "97-2-the-cabinet-mission-and-the-untouchables-by-dr-17": {
+   "start": 942,
+   "end": 965
+  },
+  "97-2-the-cabinet-mission-and-the-untouchables-by-dr-18": {
+   "start": 966,
+   "end": 989
+  },
+  "97-2-the-cabinet-mission-and-the-untouchables-by-dr-19": {
+   "start": 990,
+   "end": 1013
+  },
+  "97-2-the-cabinet-mission-and-the-untouchables-by-dr-20": {
+   "start": 1014,
+   "end": 1037
+  },
+  "97-2-the-cabinet-mission-and-the-untouchables-by-dr-21": {
+   "start": 1038,
+   "end": 1061
+  },
+  "97-2-the-cabinet-mission-and-the-untouchables-by-dr-22": {
+   "start": 1062,
+   "end": 1085
+  },
+  "97-2-the-cabinet-mission-and-the-untouchables-by-dr-23": {
+   "start": 1086,
+   "end": 1091
+  },
+  "98-1-to-questions-and-answers-551472": {
+   "start": 1092,
+   "end": 1099
+  },
+  "99-index-1073": {
+   "start": 1100,
+   "end": 1100
+  },
+  "100-errata": {
+   "start": 1101,
+   "end": 1106
+  }
+ },
+ "volume-11": {
+  "01-front-matter": {
+   "start": 1,
+   "end": 19
+  },
+  "02-prologue-book-i-1": {
+   "start": 20,
+   "end": 41
+  },
+  "02-prologue-book-i-2": {
+   "start": 42,
+   "end": 63
+  },
+  "02-prologue-book-i-3": {
+   "start": 64,
+   "end": 85
+  },
+  "02-prologue-book-i-4": {
+   "start": 86,
+   "end": 107
+  },
+  "02-prologue-book-i-5": {
+   "start": 108,
+   "end": 129
+  },
+  "03-book-ii-1": {
+   "start": 130,
+   "end": 150
+  },
+  "03-book-ii-2": {
+   "start": 151,
+   "end": 171
+  },
+  "03-book-ii-3": {
+   "start": 172,
+   "end": 192
+  },
+  "03-book-ii-4": {
+   "start": 193,
+   "end": 213
+  },
+  "03-book-ii-5": {
+   "start": 214,
+   "end": 233
+  },
+  "04-book-iii-1": {
+   "start": 234,
+   "end": 253
+  },
+  "04-book-iii-2": {
+   "start": 254,
+   "end": 273
+  },
+  "04-book-iii-3": {
+   "start": 274,
+   "end": 293
+  },
+  "04-book-iii-4": {
+   "start": 294,
+   "end": 313
+  },
+  "04-book-iii-5": {
+   "start": 314,
+   "end": 333
+  },
+  "05-book-iv-1": {
+   "start": 334,
+   "end": 353
+  },
+  "05-book-iv-2": {
+   "start": 354,
+   "end": 373
+  },
+  "05-book-iv-3": {
+   "start": 374,
+   "end": 393
+  },
+  "05-book-iv-4": {
+   "start": 394,
+   "end": 413
+  },
+  "05-book-iv-5": {
+   "start": 414,
+   "end": 433
+  },
+  "06-book-v-1": {
+   "start": 434,
+   "end": 453
+  },
+  "06-book-v-2": {
+   "start": 454,
+   "end": 473
+  },
+  "06-book-v-3": {
+   "start": 474,
+   "end": 491
+  },
+  "07-book-vi-1": {
+   "start": 492,
+   "end": 511
+  },
+  "07-book-vi-2": {
+   "start": 512,
+   "end": 531
+  },
+  "07-book-vi-3": {
+   "start": 532,
+   "end": 551
+  },
+  "08-book-vii-1": {
+   "start": 552,
+   "end": 568
+  },
+  "08-book-vii-2": {
+   "start": 569,
+   "end": 585
+  },
+  "09-book-viii-1": {
+   "start": 586,
+   "end": 598
+  },
+  "09-book-viii-2": {
+   "start": 599,
+   "end": 611
+  },
+  "10-epilogue-1": {
+   "start": 612,
+   "end": 630
+  },
+  "10-epilogue-2": {
+   "start": 631,
+   "end": 649
+  },
+  "10-epilogue-3": {
+   "start": 650,
+   "end": 668
+  },
+  "10-epilogue-4": {
+   "start": 669,
+   "end": 684
+  }
+ },
+ "volume-12": {
+  "01-front-matter": {
+   "start": 1,
+   "end": 19
+  },
+  "02-chapter-1-ancient-indian-commerce-1": {
+   "start": 20,
+   "end": 35
+  },
+  "02-chapter-1-ancient-indian-commerce-2": {
+   "start": 36,
+   "end": 51
+  },
+  "03-chapter-2-commercial-relations-of-india-in-the-m": {
+   "start": 52,
+   "end": 73
+  },
+  "04-chapter-3-india-on-the-eve-of-the-crown-governme": {
+   "start": 74,
+   "end": 95
+  },
+  "05-chapter-1-the-untouchables-and-the-pax-britannic-1": {
+   "start": 96,
+   "end": 116
+  },
+  "05-chapter-1-the-untouchables-and-the-pax-britannic-2": {
+   "start": 117,
+   "end": 137
+  },
+  "05-chapter-1-the-untouchables-and-the-pax-britannic-3": {
+   "start": 138,
+   "end": 158
+  },
+  "05-chapter-1-the-untouchables-and-the-pax-britannic-4": {
+   "start": 159,
+   "end": 177
+  },
+  "06-i-principles-underlying-the-english-constitution": {
+   "start": 178,
+   "end": 185
+  },
+  "07-ii-what-is-parliament": {
+   "start": 186,
+   "end": 191
+  },
+  "08-iii-the-crown": {
+   "start": 192,
+   "end": 199
+  },
+  "09-iv-the-house-of-lords": {
+   "start": 200,
+   "end": 205
+  },
+  "10-v-the-powers-and-privileges-of-the-lords-and-the": {
+   "start": 206,
+   "end": 217
+  },
+  "11-chapter-2-paramountcy-and-the-claim-of-the-india": {
+   "start": 218,
+   "end": 229
+  },
+  "12-chapter-1-the-common-law-1": {
+   "start": 230,
+   "end": 246
+  },
+  "12-chapter-1-the-common-law-2": {
+   "start": 247,
+   "end": 263
+  },
+  "12-chapter-1-the-common-law-3": {
+   "start": 264,
+   "end": 279
+  },
+  "13-chapter-2-the-dominion-status": {
+   "start": 280,
+   "end": 295
+  },
+  "14-chapter-3-the-law-of-specific-relief-1": {
+   "start": 296,
+   "end": 315
+  },
+  "14-chapter-3-the-law-of-specific-relief-2": {
+   "start": 316,
+   "end": 335
+  },
+  "15-chapter-4-the-law-of-trust-1": {
+   "start": 336,
+   "end": 354
+  },
+  "15-chapter-4-the-law-of-trust-2": {
+   "start": 355,
+   "end": 373
+  },
+  "15-chapter-4-the-law-of-trust-3": {
+   "start": 374,
+   "end": 391
+  },
+  "16-sr-chapter-5-the-law-of-limitation-1": {
+   "start": 392,
+   "end": 405
+  },
+  "16-sr-chapter-5-the-law-of-limitation-2": {
+   "start": 406,
+   "end": 419
+  },
+  "17-chapter-6-the-law-of-criminal-procedure-1": {
+   "start": 420,
+   "end": 439
+  },
+  "17-chapter-6-the-law-of-criminal-procedure-2": {
+   "start": 440,
+   "end": 459
+  },
+  "17-chapter-6-the-law-of-criminal-procedure-3": {
+   "start": 460,
+   "end": 479
+  },
+  "17-chapter-6-the-law-of-criminal-procedure-4": {
+   "start": 480,
+   "end": 497
+  },
+  "18-chapter-7-the-transfer-of-property-act-1": {
+   "start": 498,
+   "end": 515
+  },
+  "18-chapter-7-the-transfer-of-property-act-2": {
+   "start": 516,
+   "end": 533
+  },
+  "18-chapter-7-the-transfer-of-property-act-3": {
+   "start": 534,
+   "end": 551
+  },
+  "19-chapter-8-the-law-of-evidence-1": {
+   "start": 552,
+   "end": 573
+  },
+  "19-chapter-8-the-law-of-evidence-2": {
+   "start": 574,
+   "end": 595
+  },
+  "19-chapter-8-the-law-of-evidence-3": {
+   "start": 596,
+   "end": 617
+  },
+  "19-chapter-8-the-law-of-evidence-4": {
+   "start": 618,
+   "end": 639
+  },
+  "19-chapter-8-the-law-of-evidence-5": {
+   "start": 640,
+   "end": 661
+  },
+  "19-chapter-8-the-law-of-evidence-6": {
+   "start": 662,
+   "end": 681
+  },
+  "20-chapter-1-waiting-for-a-visa-1": {
+   "start": 682,
+   "end": 697
+  },
+  "20-chapter-1-waiting-for-a-visa-2": {
+   "start": 698,
+   "end": 713
+  },
+  "21-miscellaneous-notes": {
+   "start": 714,
+   "end": 717
+  },
+  "22-1-the-constitution-of-british-india": {
+   "start": 718,
+   "end": 721
+  },
+  "23-2-notes-on-parliamentary-procedure": {
+   "start": 722,
+   "end": 729
+  },
+  "24-3-notes-on-history-of-india": {
+   "start": 730,
+   "end": 747
+  },
+  "25-5-preservation-of-social-order": {
+   "start": 748,
+   "end": 751
+  },
+  "26-6-with-the-hindus": {
+   "start": 752,
+   "end": 753
+  },
+  "27-7-frustration": {
+   "start": 754,
+   "end": 757
+  },
+  "28-8-the-problem-of-political-suppression": {
+   "start": 758,
+   "end": 761
+  },
+  "29-9-which-is-worse-slavery-or-untouchability-1": {
+   "start": 762,
+   "end": 785
+  },
+  "29-9-which-is-worse-slavery-or-untouchability-2": {
+   "start": 786,
+   "end": 808
+  }
+ },
+ "volume-13": {
+  "01-front-matter-1": {
+   "start": 1,
+   "end": 19
+  },
+  "01-front-matter-2": {
+   "start": 20,
+   "end": 37
+  },
+  "02-1-resolution-re-aims-and-objects": {
+   "start": 38,
+   "end": 47
+  },
+  "03-2-interim-report-on-fundamental-rights": {
+   "start": 48,
+   "end": 53
+  },
+  "04-3-report-of-the-union-constitution-committee": {
+   "start": 54,
+   "end": 61
+  },
+  "05-4-committee-to-scrutinise-draft-constitution": {
+   "start": 62,
+   "end": 69
+  },
+  "06-6-additional-representation-to-east-punjab": {
+   "start": 70,
+   "end": 70
+  },
+  "07-7-addition-of-new-rules-38-a-to-38-v-to-the-cons": {
+   "start": 71,
+   "end": 81
+  },
+  "08-8-motion-re-draft-constitution-1": {
+   "start": 82,
+   "end": 104
+  },
+  "08-8-motion-re-draft-constitution-2": {
+   "start": 105,
+   "end": 127
+  },
+  "09-9-draft-constitution-as-published-in-the-gazette-1": {
+   "start": 128,
+   "end": 151
+  },
+  "09-9-draft-constitution-as-published-in-the-gazette-2": {
+   "start": 152,
+   "end": 175
+  },
+  "09-9-draft-constitution-as-published-in-the-gazette-3": {
+   "start": 176,
+   "end": 199
+  },
+  "09-9-draft-constitution-as-published-in-the-gazette-4": {
+   "start": 200,
+   "end": 223
+  },
+  "09-9-draft-constitution-as-published-in-the-gazette-5": {
+   "start": 224,
+   "end": 247
+  },
+  "09-9-draft-constitution-as-published-in-the-gazette-6": {
+   "start": 248,
+   "end": 271
+  },
+  "09-9-draft-constitution-as-published-in-the-gazette-7": {
+   "start": 272,
+   "end": 295
+  },
+  "09-9-draft-constitution-as-published-in-the-gazette-8": {
+   "start": 296,
+   "end": 319
+  },
+  "09-9-draft-constitution-as-published-in-the-gazette-9": {
+   "start": 320,
+   "end": 343
+  },
+  "09-9-draft-constitution-as-published-in-the-gazette-10": {
+   "start": 344,
+   "end": 367
+  },
+  "09-9-draft-constitution-as-published-in-the-gazette-11": {
+   "start": 368,
+   "end": 391
+  },
+  "09-9-draft-constitution-as-published-in-the-gazette-12": {
+   "start": 392,
+   "end": 415
+  },
+  "09-9-draft-constitution-as-published-in-the-gazette-13": {
+   "start": 416,
+   "end": 439
+  },
+  "09-9-draft-constitution-as-published-in-the-gazette-14": {
+   "start": 440,
+   "end": 463
+  },
+  "09-9-draft-constitution-as-published-in-the-gazette-15": {
+   "start": 464,
+   "end": 487
+  },
+  "09-9-draft-constitution-as-published-in-the-gazette-16": {
+   "start": 488,
+   "end": 511
+  },
+  "09-9-draft-constitution-as-published-in-the-gazette-17": {
+   "start": 512,
+   "end": 535
+  },
+  "09-9-draft-constitution-as-published-in-the-gazette-18": {
+   "start": 536,
+   "end": 559
+  },
+  "09-9-draft-constitution-as-published-in-the-gazette-19": {
+   "start": 560,
+   "end": 583
+  },
+  "09-9-draft-constitution-as-published-in-the-gazette-20": {
+   "start": 584,
+   "end": 607
+  },
+  "09-9-draft-constitution-as-published-in-the-gazette-21": {
+   "start": 608,
+   "end": 631
+  },
+  "09-9-draft-constitution-as-published-in-the-gazette-22": {
+   "start": 632,
+   "end": 655
+  },
+  "09-9-draft-constitution-as-published-in-the-gazette-23": {
+   "start": 656,
+   "end": 679
+  },
+  "09-9-draft-constitution-as-published-in-the-gazette-24": {
+   "start": 680,
+   "end": 703
+  },
+  "09-9-draft-constitution-as-published-in-the-gazette-25": {
+   "start": 704,
+   "end": 727
+  },
+  "09-9-draft-constitution-as-published-in-the-gazette-26": {
+   "start": 728,
+   "end": 751
+  },
+  "09-9-draft-constitution-as-published-in-the-gazette-27": {
+   "start": 752,
+   "end": 775
+  },
+  "09-9-draft-constitution-as-published-in-the-gazette-28": {
+   "start": 776,
+   "end": 799
+  },
+  "09-9-draft-constitution-as-published-in-the-gazette-29": {
+   "start": 800,
+   "end": 823
+  },
+  "09-9-draft-constitution-as-published-in-the-gazette-30": {
+   "start": 824,
+   "end": 847
+  },
+  "09-9-draft-constitution-as-published-in-the-gazette-31": {
+   "start": 848,
+   "end": 871
+  },
+  "09-9-draft-constitution-as-published-in-the-gazette-32": {
+   "start": 872,
+   "end": 895
+  },
+  "09-9-draft-constitution-as-published-in-the-gazette-33": {
+   "start": 896,
+   "end": 919
+  },
+  "09-9-draft-constitution-as-published-in-the-gazette-34": {
+   "start": 920,
+   "end": 935
+  },
+  "10-entry-no-page-entry-no-page-26-870-86-1": {
+   "start": 936,
+   "end": 955
+  },
+  "10-entry-no-page-entry-no-page-26-870-86-2": {
+   "start": 956,
+   "end": 975
+  },
+  "10-entry-no-page-entry-no-page-26-870-86-3": {
+   "start": 976,
+   "end": 995
+  },
+  "10-entry-no-page-entry-no-page-26-870-86-4": {
+   "start": 996,
+   "end": 1015
+  },
+  "10-entry-no-page-entry-no-page-26-870-86-5": {
+   "start": 1016,
+   "end": 1034
+  },
+  "11-33-b-article-34-937-38-250": {
+   "start": 1035,
+   "end": 1041
+  },
+  "12-263-a-schedule-112-b": {
+   "start": 1042,
+   "end": 1060
+  },
+  "13-schedule-209-a": {
+   "start": 1061,
+   "end": 1064
+  },
+  "14-article-215": {
+   "start": 1065,
+   "end": 1082
+  },
+  "15-300-a-1048-50of-privy-300-b-council-eighth-1050j-1": {
+   "start": 1083,
+   "end": 1105
+  },
+  "15-300-a-1048-50of-privy-300-b-council-eighth-1050j-2": {
+   "start": 1106,
+   "end": 1128
+  },
+  "15-300-a-1048-50of-privy-300-b-council-eighth-1050j-3": {
+   "start": 1129,
+   "end": 1151
+  },
+  "15-300-a-1048-50of-privy-300-b-council-eighth-1050j-4": {
+   "start": 1152,
+   "end": 1174
+  },
+  "15-300-a-1048-50of-privy-300-b-council-eighth-1050j-5": {
+   "start": 1175,
+   "end": 1193
+  },
+  "16-adoption-of-the-constitution-1": {
+   "start": 1194,
+   "end": 1213
+  },
+  "16-adoption-of-the-constitution-2": {
+   "start": 1214,
+   "end": 1233
+  },
+  "16-adoption-of-the-constitution-3": {
+   "start": 1234,
+   "end": 1252
+  },
+  "17-tabular-statement-showing-article-of-the-constit": {
+   "start": 1253,
+   "end": 1263
+  },
+  "18-index": {
+   "start": 1264,
+   "end": 1278
+  }
+ },
+ "volume-14-part-1": {
+  "01-front-matter": {
+   "start": 1,
+   "end": 18
+  },
+  "02-hindu-code-bill-referred-to-select-committee-17t-1": {
+   "start": 19,
+   "end": 39
+  },
+  "02-hindu-code-bill-referred-to-select-committee-17t-2": {
+   "start": 40,
+   "end": 60
+  },
+  "03-the-draft-hindu-code-bill-by-dr-b-r-ambedkar-alo-1": {
+   "start": 61,
+   "end": 83
+  },
+  "03-the-draft-hindu-code-bill-by-dr-b-r-ambedkar-alo-2": {
+   "start": 84,
+   "end": 106
+  },
+  "03-the-draft-hindu-code-bill-by-dr-b-r-ambedkar-alo-3": {
+   "start": 107,
+   "end": 129
+  },
+  "03-the-draft-hindu-code-bill-by-dr-b-r-ambedkar-alo-4": {
+   "start": 130,
+   "end": 152
+  },
+  "03-the-draft-hindu-code-bill-by-dr-b-r-ambedkar-alo-5": {
+   "start": 153,
+   "end": 175
+  },
+  "03-the-draft-hindu-code-bill-by-dr-b-r-ambedkar-alo-6": {
+   "start": 176,
+   "end": 198
+  },
+  "03-the-draft-hindu-code-bill-by-dr-b-r-ambedkar-alo-7": {
+   "start": 199,
+   "end": 221
+  },
+  "03-the-draft-hindu-code-bill-by-dr-b-r-ambedkar-alo-8": {
+   "start": 222,
+   "end": 244
+  },
+  "04-discussion-on-the-hindu-code-after-return-of-the-1": {
+   "start": 245,
+   "end": 268
+  },
+  "04-discussion-on-the-hindu-code-after-return-of-the-2": {
+   "start": 269,
+   "end": 292
+  },
+  "04-discussion-on-the-hindu-code-after-return-of-the-3": {
+   "start": 293,
+   "end": 316
+  },
+  "04-discussion-on-the-hindu-code-after-return-of-the-4": {
+   "start": 317,
+   "end": 340
+  },
+  "04-discussion-on-the-hindu-code-after-return-of-the-5": {
+   "start": 341,
+   "end": 364
+  },
+  "04-discussion-on-the-hindu-code-after-return-of-the-6": {
+   "start": 365,
+   "end": 388
+  },
+  "04-discussion-on-the-hindu-code-after-return-of-the-7": {
+   "start": 389,
+   "end": 412
+  },
+  "04-discussion-on-the-hindu-code-after-return-of-the-8": {
+   "start": 413,
+   "end": 436
+  },
+  "04-discussion-on-the-hindu-code-after-return-of-the-9": {
+   "start": 437,
+   "end": 460
+  },
+  "04-discussion-on-the-hindu-code-after-return-of-the-10": {
+   "start": 461,
+   "end": 484
+  },
+  "04-discussion-on-the-hindu-code-after-return-of-the-11": {
+   "start": 485,
+   "end": 508
+  },
+  "04-discussion-on-the-hindu-code-after-return-of-the-12": {
+   "start": 509,
+   "end": 532
+  },
+  "04-discussion-on-the-hindu-code-after-return-of-the-13": {
+   "start": 533,
+   "end": 556
+  },
+  "04-discussion-on-the-hindu-code-after-return-of-the-14": {
+   "start": 557,
+   "end": 580
+  },
+  "04-discussion-on-the-hindu-code-after-return-of-the-15": {
+   "start": 581,
+   "end": 604
+  },
+  "04-discussion-on-the-hindu-code-after-return-of-the-16": {
+   "start": 605,
+   "end": 628
+  },
+  "04-discussion-on-the-hindu-code-after-return-of-the-17": {
+   "start": 629,
+   "end": 652
+  },
+  "04-discussion-on-the-hindu-code-after-return-of-the-18": {
+   "start": 653,
+   "end": 676
+  },
+  "04-discussion-on-the-hindu-code-after-return-of-the-19": {
+   "start": 677,
+   "end": 700
+  },
+  "04-discussion-on-the-hindu-code-after-return-of-the-20": {
+   "start": 701,
+   "end": 724
+  },
+  "04-discussion-on-the-hindu-code-after-return-of-the-21": {
+   "start": 725,
+   "end": 748
+  },
+  "04-discussion-on-the-hindu-code-after-return-of-the-22": {
+   "start": 749,
+   "end": 772
+  },
+  "04-discussion-on-the-hindu-code-after-return-of-the-23": {
+   "start": 773,
+   "end": 796
+  },
+  "04-discussion-on-the-hindu-code-after-return-of-the-24": {
+   "start": 797,
+   "end": 806
+  },
+  "05-hindu-code-bill-clause-by-clause-discussion": {
+   "start": 807,
+   "end": 807
+  }
+ },
+ "volume-14-part-2": {
+  "01-pages-1-20": {
+   "start": 1,
+   "end": 20
+  },
+  "02-pages-21-40": {
+   "start": 21,
+   "end": 40
+  },
+  "03-pages-41-60": {
+   "start": 41,
+   "end": 60
+  },
+  "04-pages-61-80": {
+   "start": 61,
+   "end": 80
+  },
+  "05-pages-81-100": {
+   "start": 81,
+   "end": 100
+  },
+  "06-pages-101-120": {
+   "start": 101,
+   "end": 120
+  },
+  "07-pages-121-140": {
+   "start": 121,
+   "end": 140
+  },
+  "08-pages-141-160": {
+   "start": 141,
+   "end": 160
+  },
+  "09-pages-161-180": {
+   "start": 161,
+   "end": 180
+  },
+  "10-pages-181-200": {
+   "start": 181,
+   "end": 200
+  },
+  "11-pages-201-220": {
+   "start": 201,
+   "end": 220
+  },
+  "12-pages-221-240": {
+   "start": 221,
+   "end": 240
+  },
+  "13-pages-241-260": {
+   "start": 241,
+   "end": 260
+  },
+  "14-pages-261-280": {
+   "start": 261,
+   "end": 280
+  },
+  "15-pages-281-300": {
+   "start": 281,
+   "end": 300
+  },
+  "16-pages-301-320": {
+   "start": 301,
+   "end": 320
+  },
+  "17-pages-321-340": {
+   "start": 321,
+   "end": 340
+  },
+  "18-pages-341-360": {
+   "start": 341,
+   "end": 360
+  },
+  "19-pages-361-380": {
+   "start": 361,
+   "end": 380
+  },
+  "20-pages-381-400": {
+   "start": 381,
+   "end": 400
+  },
+  "21-pages-401-420": {
+   "start": 401,
+   "end": 420
+  },
+  "22-pages-421-440": {
+   "start": 421,
+   "end": 440
+  },
+  "23-pages-441-460": {
+   "start": 441,
+   "end": 460
+  },
+  "24-pages-461-480": {
+   "start": 461,
+   "end": 480
+  },
+  "25-pages-481-500": {
+   "start": 481,
+   "end": 500
+  },
+  "26-pages-501-520": {
+   "start": 501,
+   "end": 520
+  },
+  "27-pages-521-540": {
+   "start": 521,
+   "end": 540
+  },
+  "28-pages-541-560": {
+   "start": 541,
+   "end": 560
+  },
+  "29-pages-561-580": {
+   "start": 561,
+   "end": 580
+  },
+  "30-pages-581-600": {
+   "start": 581,
+   "end": 600
+  },
+  "31-pages-601-611": {
+   "start": 601,
+   "end": 611
+  }
+ },
+ "volume-15": {
+  "01-front-matter": {
+   "start": 1,
+   "end": 17
+  },
+  "02-section-i-1": {
+   "start": 18,
+   "end": 41
+  },
+  "02-section-i-2": {
+   "start": 42,
+   "end": 65
+  },
+  "03-section-ii-1": {
+   "start": 66,
+   "end": 89
+  },
+  "03-section-ii-2": {
+   "start": 90,
+   "end": 113
+  },
+  "03-section-ii-3": {
+   "start": 114,
+   "end": 137
+  },
+  "03-section-ii-4": {
+   "start": 138,
+   "end": 161
+  },
+  "03-section-ii-5": {
+   "start": 162,
+   "end": 183
+  },
+  "04-section-iii-1": {
+   "start": 184,
+   "end": 204
+  },
+  "04-section-iii-2": {
+   "start": 205,
+   "end": 225
+  },
+  "04-section-iii-3": {
+   "start": 226,
+   "end": 246
+  },
+  "04-section-iii-4": {
+   "start": 247,
+   "end": 267
+  },
+  "05-section-iv-1": {
+   "start": 268,
+   "end": 289
+  },
+  "05-section-iv-2": {
+   "start": 290,
+   "end": 311
+  },
+  "05-section-iv-3": {
+   "start": 312,
+   "end": 333
+  },
+  "05-section-iv-4": {
+   "start": 334,
+   "end": 355
+  },
+  "05-section-iv-5": {
+   "start": 356,
+   "end": 377
+  },
+  "05-section-iv-6": {
+   "start": 378,
+   "end": 399
+  },
+  "05-section-iv-7": {
+   "start": 400,
+   "end": 421
+  },
+  "05-section-iv-8": {
+   "start": 422,
+   "end": 439
+  },
+  "06-section-v-1": {
+   "start": 440,
+   "end": 463
+  },
+  "06-section-v-2": {
+   "start": 464,
+   "end": 487
+  },
+  "06-section-v-3": {
+   "start": 488,
+   "end": 511
+  },
+  "06-section-v-4": {
+   "start": 512,
+   "end": 535
+  },
+  "06-section-v-5": {
+   "start": 536,
+   "end": 559
+  },
+  "06-section-v-6": {
+   "start": 560,
+   "end": 583
+  },
+  "06-section-v-7": {
+   "start": 584,
+   "end": 607
+  },
+  "06-section-v-8": {
+   "start": 608,
+   "end": 631
+  },
+  "06-section-v-9": {
+   "start": 632,
+   "end": 655
+  },
+  "06-section-v-10": {
+   "start": 656,
+   "end": 679
+  },
+  "06-section-v-11": {
+   "start": 680,
+   "end": 703
+  },
+  "06-section-v-12": {
+   "start": 704,
+   "end": 721
+  },
+  "07-section-vi-1": {
+   "start": 722,
+   "end": 743
+  },
+  "07-section-vi-2": {
+   "start": 744,
+   "end": 765
+  },
+  "07-section-vi-3": {
+   "start": 766,
+   "end": 787
+  },
+  "07-section-vi-4": {
+   "start": 788,
+   "end": 809
+  },
+  "07-section-vi-5": {
+   "start": 810,
+   "end": 831
+  },
+  "07-section-vi-6": {
+   "start": 832,
+   "end": 849
+  },
+  "08-section-vii-1": {
+   "start": 850,
+   "end": 871
+  },
+  "08-section-vii-2": {
+   "start": 872,
+   "end": 893
+  },
+  "08-section-vii-3": {
+   "start": 894,
+   "end": 915
+  },
+  "08-section-vii-4": {
+   "start": 916,
+   "end": 937
+  },
+  "08-section-vii-5": {
+   "start": 938,
+   "end": 959
+  },
+  "08-section-vii-6": {
+   "start": 960,
+   "end": 981
+  },
+  "08-section-vii-7": {
+   "start": 982,
+   "end": 1002
+  },
+  "09-section-viii-1": {
+   "start": 1003,
+   "end": 1025
+  },
+  "09-section-viii-2": {
+   "start": 1026,
+   "end": 1048
+  },
+  "09-section-viii-3": {
+   "start": 1049,
+   "end": 1071
+  },
+  "09-section-viii-4": {
+   "start": 1072,
+   "end": 1094
+  },
+  "09-section-viii-5": {
+   "start": 1095,
+   "end": 1113
+  },
+  "10-anexure": {
+   "start": 1114,
+   "end": 1119
+  },
+  "11-index": {
+   "start": 1120,
+   "end": 1134
+  }
+ },
+ "volume-16": {
+  "01-front-matter": {
+   "start": 1,
+   "end": 24
+  },
+  "02-book-i-1": {
+   "start": 25,
+   "end": 47
+  },
+  "02-book-i-2": {
+   "start": 48,
+   "end": 70
+  },
+  "02-book-i-3": {
+   "start": 71,
+   "end": 93
+  },
+  "02-book-i-4": {
+   "start": 94,
+   "end": 116
+  },
+  "02-book-i-5": {
+   "start": 117,
+   "end": 139
+  },
+  "02-book-i-6": {
+   "start": 140,
+   "end": 162
+  },
+  "02-book-i-7": {
+   "start": 163,
+   "end": 185
+  },
+  "02-book-i-8": {
+   "start": 186,
+   "end": 208
+  },
+  "02-book-i-9": {
+   "start": 209,
+   "end": 231
+  },
+  "02-book-i-10": {
+   "start": 232,
+   "end": 254
+  },
+  "02-book-i-11": {
+   "start": 255,
+   "end": 277
+  },
+  "02-book-i-12": {
+   "start": 278,
+   "end": 300
+  },
+  "02-book-i-13": {
+   "start": 301,
+   "end": 323
+  },
+  "02-book-i-14": {
+   "start": 324,
+   "end": 346
+  },
+  "02-book-i-15": {
+   "start": 347,
+   "end": 369
+  },
+  "02-book-i-16": {
+   "start": 370,
+   "end": 392
+  },
+  "02-book-i-17": {
+   "start": 393,
+   "end": 415
+  },
+  "02-book-i-18": {
+   "start": 416,
+   "end": 438
+  },
+  "02-book-i-19": {
+   "start": 439,
+   "end": 460
+  },
+  "03-book-ii-1": {
+   "start": 461,
+   "end": 482
+  },
+  "03-book-ii-2": {
+   "start": 483,
+   "end": 504
+  },
+  "03-book-ii-3": {
+   "start": 505,
+   "end": 526
+  },
+  "03-book-ii-4": {
+   "start": 527,
+   "end": 548
+  },
+  "03-book-ii-5": {
+   "start": 549,
+   "end": 570
+  },
+  "03-book-ii-6": {
+   "start": 571,
+   "end": 592
+  },
+  "03-book-ii-7": {
+   "start": 593,
+   "end": 614
+  },
+  "03-book-ii-8": {
+   "start": 615,
+   "end": 636
+  },
+  "03-book-ii-9": {
+   "start": 637,
+   "end": 654
+  },
+  "04-book-iii-1": {
+   "start": 655,
+   "end": 676
+  },
+  "04-book-iii-2": {
+   "start": 677,
+   "end": 698
+  },
+  "04-book-iii-3": {
+   "start": 699,
+   "end": 720
+  },
+  "04-book-iii-4": {
+   "start": 721,
+   "end": 741
+  },
+  "05-title-pages-and-contents-1": {
+   "start": 742,
+   "end": 757
+  },
+  "05-title-pages-and-contents-2": {
+   "start": 758,
+   "end": 773
+  }
+ },
+ "volume-17-part-1": {
+  "01-front-matter": {
+   "start": 1,
+   "end": 23
+  },
+  "02-editorial-xvii-section-i-mahad-satyagraha-mahad-1": {
+   "start": 24,
+   "end": 41
+  },
+  "02-editorial-xvii-section-i-mahad-satyagraha-mahad-2": {
+   "start": 42,
+   "end": 59
+  },
+  "02-editorial-xvii-section-i-mahad-satyagraha-mahad-3": {
+   "start": 60,
+   "end": 75
+  },
+  "03-1-i-have-no-homeland": {
+   "start": 76,
+   "end": 81
+  },
+  "04-2-why-i-should-be-proud-of-that-religion": {
+   "start": 82,
+   "end": 83
+  },
+  "05-3-what-more-gandhi-expected-from-the-sanatanists": {
+   "start": 84,
+   "end": 84
+  },
+  "06-4-to-take-legal-steps-against-high-caste-hindus": {
+   "start": 85,
+   "end": 87
+  },
+  "07-section-iii-role-of-dr-b-r-ambedkar-in-bringing-1": {
+   "start": 88,
+   "end": 111
+  },
+  "07-section-iii-role-of-dr-b-r-ambedkar-in-bringing-2": {
+   "start": 112,
+   "end": 135
+  },
+  "07-section-iii-role-of-dr-b-r-ambedkar-in-bringing-3": {
+   "start": 136,
+   "end": 159
+  },
+  "07-section-iii-role-of-dr-b-r-ambedkar-in-bringing-4": {
+   "start": 160,
+   "end": 183
+  },
+  "07-section-iii-role-of-dr-b-r-ambedkar-in-bringing-5": {
+   "start": 184,
+   "end": 205
+  },
+  "08-section-iv-kalaram-temple-entry-satyagraha-nasik-1": {
+   "start": 206,
+   "end": 220
+  },
+  "08-section-iv-kalaram-temple-entry-satyagraha-nasik-2": {
+   "start": 221,
+   "end": 235
+  },
+  "09-1-i-am-a-man-of-character": {
+   "start": 236,
+   "end": 242
+  },
+  "10-2-instead-of-a-statue-a-public-library-will-be-t": {
+   "start": 243,
+   "end": 245
+  },
+  "11-3-public-bodies-should-help-canvasser": {
+   "start": 246,
+   "end": 246
+  },
+  "12-4-bhaurao-patils-institution-deserves-support": {
+   "start": 247,
+   "end": 247
+  },
+  "13-5-complaint-against-me-is-absolutely-unfounded": {
+   "start": 248,
+   "end": 251
+  },
+  "14-6-forwarding-letter": {
+   "start": 252,
+   "end": 252
+  },
+  "15-7-pay-more-attention-to-economic-educational-and": {
+   "start": 253,
+   "end": 254
+  },
+  "16-8-nothing-can-emancipate-the-outcastes-except-th": {
+   "start": 255,
+   "end": 255
+  },
+  "17-9-depressed-classes-against-second-chambers": {
+   "start": 256,
+   "end": 259
+  },
+  "18-10-remove-basis-of-smriti-religion": {
+   "start": 260,
+   "end": 263
+  },
+  "19-11-hindus-should-not-be-indifferent-to-conversio": {
+   "start": 264,
+   "end": 268
+  },
+  "20-12-rights-not-affected-in-the-event-of-conversio": {
+   "start": 269,
+   "end": 274
+  },
+  "21-13-conversion-movement-sans-selfish-motive": {
+   "start": 275,
+   "end": 278
+  },
+  "22-14-the-independent-labour-party-a-source-for-bet": {
+   "start": 279,
+   "end": 279
+  },
+  "23-15-civil-liberties-of-indians": {
+   "start": 280,
+   "end": 280
+  },
+  "24-16-in-any-other-country-such-a-minister-would-ha": {
+   "start": 281,
+   "end": 282
+  },
+  "25-17-socialists-now-inactive": {
+   "start": 283,
+   "end": 283
+  },
+  "26-18-let-such-institutions-grow-in-to-big-librarie": {
+   "start": 284,
+   "end": 284
+  },
+  "27-19-a-bill-to-control-and-regulate-money-lending": {
+   "start": 285,
+   "end": 308
+  },
+  "28-20-i-shall-stand-for-principle-and-will-fight-al": {
+   "start": 309,
+   "end": 309
+  },
+  "29-21-ministry-seems-to-be-intoxicated-with-power": {
+   "start": 310,
+   "end": 312
+  },
+  "30-22-injustice-to-tillers-of-soil": {
+   "start": 313,
+   "end": 314
+  },
+  "31-23-dr-ambedkar-challenges-gwyer-award": {
+   "start": 315,
+   "end": 324
+  },
+  "32-24-i-am-anxious-more-than-mr-jinnah": {
+   "start": 325,
+   "end": 326
+  },
+  "33-25-when-buddha-stopped-animal-sacrifices-cows-we": {
+   "start": 327,
+   "end": 330
+  },
+  "34-26-mahars-have-been-martial-people": {
+   "start": 331,
+   "end": 332
+  },
+  "35-27-representation-relating-to-the-grievances-of-1": {
+   "start": 333,
+   "end": 348
+  },
+  "35-27-representation-relating-to-the-grievances-of-2": {
+   "start": 349,
+   "end": 363
+  },
+  "36-28-i-shall-be-more-deadly-against-the-britishers": {
+   "start": 364,
+   "end": 364
+  },
+  "37-29-exclusion-of-depressed-classes-from-viceroys": {
+   "start": 365,
+   "end": 365
+  },
+  "38-30-conference-of-all-leaders-of-the-depressed-cl": {
+   "start": 366,
+   "end": 366
+  },
+  "39-31-dr-ambedkar-and-the-jewish-people": {
+   "start": 367,
+   "end": 369
+  },
+  "40-32-i-am-not-least-interested-in-formation-of-min": {
+   "start": 370,
+   "end": 370
+  },
+  "41-33-hinduism-is-political-ideology-as-the-same-ch": {
+   "start": 371,
+   "end": 373
+  },
+  "42-34-we-are-a-separate-element-in-the-national-lif": {
+   "start": 374,
+   "end": 375
+  },
+  "43-35-scheduled-castes-settlement-be-made-at-par-wi": {
+   "start": 376,
+   "end": 376
+  },
+  "44-36-hindus-always-regarded-scheduled-castes-as-ou": {
+   "start": 377,
+   "end": 382
+  },
+  "45-37-scheduled-castes-case-to-be-presented-before": {
+   "start": 383,
+   "end": 385
+  },
+  "46-38-i-fail-to-understand-attlees-statement": {
+   "start": 386,
+   "end": 386
+  },
+  "47-39-secure-adequate-safeguards-for-the-untouchabl": {
+   "start": 387,
+   "end": 389
+  },
+  "48-40-indian-census": {
+   "start": 390,
+   "end": 390
+  },
+  "49-41-scheduled-castes-in-pakistan-should-come-over": {
+   "start": 391,
+   "end": 393
+  },
+  "50-42-scheduled-caste-refugees-neglected": {
+   "start": 394,
+   "end": 400
+  },
+  "51-43-government-should-be-impartial": {
+   "start": 401,
+   "end": 402
+  },
+  "52-44-be-your-own-light": {
+   "start": 403,
+   "end": 407
+  },
+  "53-45-hinduism-is-the-latest-development-of-social": {
+   "start": 408,
+   "end": 409
+  },
+  "54-46-scheduled-castes-emancipation-draft-manifesto": {
+   "start": 410,
+   "end": 428
+  },
+  "55-47-resignation-not-due-to-illness": {
+   "start": 429,
+   "end": 430
+  },
+  "56-48-alliances-with-other-parties-whose-objectives": {
+   "start": 431,
+   "end": 431
+  },
+  "57-49-no-man-should-be-the-judge-in-his-own-case": {
+   "start": 432,
+   "end": 432
+  },
+  "58-50-election-petition": {
+   "start": 433,
+   "end": 449
+  },
+  "59-51-communists-in-maharashtra": {
+   "start": 450,
+   "end": 450
+  },
+  "60-52-starving-people-ask-for-bread": {
+   "start": 451,
+   "end": 452
+  },
+  "61-53-buddhist-seminary-to-be-started-in-bangalore": {
+   "start": 453,
+   "end": 454
+  },
+  "62-54-buddhism-disappeared-from-india-due-to-waveri": {
+   "start": 455,
+   "end": 455
+  },
+  "63-55-im-prepared-to-save-your-life-provided": {
+   "start": 456,
+   "end": 459
+  },
+  "64-56-the-political-party-does-not-exist-for-winnin": {
+   "start": 460,
+   "end": 468
+  },
+  "65-57-a-letter-to-jawaharlal-nehru-regarding-the-bo": {
+   "start": 469,
+   "end": 470
+  },
+  "66-58-bhikhus-should-serve-the-buddha-by-becoming-p": {
+   "start": 471,
+   "end": 473
+  },
+  "67-59-i-believe-my-people-will-sacrifice-everything": {
+   "start": 474,
+   "end": 477
+  },
+  "68-appendices-appendix-i-brute-force-will-not-susta": {
+   "start": 478,
+   "end": 480
+  },
+  "69-appendix-ii-mans-inhumanity-to-man": {
+   "start": 481,
+   "end": 483
+  },
+  "70-appendix-iii-orthodoxy-run-mad": {
+   "start": 484,
+   "end": 485
+  },
+  "71-appendix-iv-gandhi-vallabhbhai-meeting-on-eve-of": {
+   "start": 486,
+   "end": 488
+  },
+  "72-appendix-v-comments-on-round-table-conference-an": {
+   "start": 489,
+   "end": 494
+  },
+  "73-appendix-vi-dr-ambedkar-is-now-putting-mr-gandhi": {
+   "start": 495,
+   "end": 496
+  },
+  "74-appendix-vii-dr-ambedkar-wanted-an-extension-in": {
+   "start": 497,
+   "end": 497
+  },
+  "75-appendix-viii-for-the-present-dr-ambedkar-must-w": {
+   "start": 498,
+   "end": 499
+  },
+  "76-appendix-ix-take-early-action-to-repay-your-debt": {
+   "start": 500,
+   "end": 500
+  },
+  "77-appendix-x-reaction-on-the-statement-dated-19-6": {
+   "start": 501,
+   "end": 514
+  }
+ },
+ "volume-17-part-2": {
+  "01-front-matter": {
+   "start": 1,
+   "end": 23
+  },
+  "02-section-i-articles-messages-prefaces-etc-1-relig": {
+   "start": 24,
+   "end": 27
+  },
+  "03-2-thoughts-on-the-reform-of-legal-education-in-t": {
+   "start": 28,
+   "end": 41
+  },
+  "04-3-dr-ambedkars-reply-to-sir-s-radhakrishnan": {
+   "start": 42,
+   "end": 42
+  },
+  "05-4-and-the-lord-said-unto-1": {
+   "start": 43,
+   "end": 64
+  },
+  "05-4-and-the-lord-said-unto-2": {
+   "start": 65,
+   "end": 86
+  },
+  "06-5-untouchable-workers-of-bombay-city": {
+   "start": 87,
+   "end": 88
+  },
+  "07-6-is-gandhi-a-mahatma": {
+   "start": 89,
+   "end": 93
+  },
+  "08-7-appeal-for-purse-to-marathi-scholar": {
+   "start": 94,
+   "end": 94
+  },
+  "09-8-knowledge-is-power-in-every-field-of-life": {
+   "start": 95,
+   "end": 95
+  },
+  "10-9-congress-attempts-to-bypass-untouchables": {
+   "start": 96,
+   "end": 100
+  },
+  "11-10-i-do-not-share-defeatist-mentality": {
+   "start": 101,
+   "end": 101
+  },
+  "12-11-our-students-should-learn-and-lead-mandir": {
+   "start": 102,
+   "end": 105
+  },
+  "13-13-not-to-stop-until-the-untouchables-recover-ma": {
+   "start": 106,
+   "end": 108
+  },
+  "14-14-preface-to-the-essence-of-buddhism-third-edit": {
+   "start": 109,
+   "end": 111
+  },
+  "15-15-indias-ancient-past-gave-place-to-pessimism": {
+   "start": 112,
+   "end": 112
+  },
+  "16-16-the-meaning-of-the-word-receipt-section-i-art": {
+   "start": 113,
+   "end": 119
+  },
+  "17-17-buddha-and-future-of-his-religion": {
+   "start": 120,
+   "end": 131
+  },
+  "18-18-the-rise-and-fall-of-the-hindu-woman-who-was": {
+   "start": 132,
+   "end": 152
+  },
+  "19-19-saints-literature-can-help-to-moral-rearmamen": {
+   "start": 153,
+   "end": 153
+  },
+  "20-20-out-line-a-people-at-bay": {
+   "start": 154,
+   "end": 159
+  },
+  "21-21-the-mahars-who-were-they-and-how-they-became": {
+   "start": 160,
+   "end": 173
+  },
+  "22-22-republican-party-stands-for-liberty-equality": {
+   "start": 174,
+   "end": 180
+  },
+  "23-23-buddha-and-his-dhamma-one-of-the-three": {
+   "start": 181,
+   "end": 181
+  },
+  "24-24-training-school-for-entrance-to-politics": {
+   "start": 182,
+   "end": 187
+  },
+  "25-section-ii-dr-b-r-ambedkar-on-cabinet-mission-an": {
+   "start": 188,
+   "end": 189
+  },
+  "26-1-proposal-for-representation-of-scheduled-caste": {
+   "start": 190,
+   "end": 193
+  },
+  "27-2-memorandum-submitted-to-the-cabinet-mission": {
+   "start": 194,
+   "end": 209
+  },
+  "28-3-dr-ambedkars-interview-with-cabinet-mission": {
+   "start": 210,
+   "end": 211
+  },
+  "29-4-a-note-on-the-meeting-between-dr-b-r-ambedkar": {
+   "start": 212,
+   "end": 216
+  },
+  "30-5-separate-settlements-for-untouchables": {
+   "start": 217,
+   "end": 217
+  },
+  "31-6-protest-letter-against-the-proposals-of-cabine": {
+   "start": 218,
+   "end": 221
+  },
+  "32-mission-7-letter-to-a-v-alexander-about-the-prop": {
+   "start": 222,
+   "end": 229
+  },
+  "33-8-letter-to-lord-pethick-lawrence-regarding-stat": {
+   "start": 230,
+   "end": 231
+  },
+  "34-9-clarification-by-lord-pethick-lawrence-to-dr-b": {
+   "start": 232,
+   "end": 232
+  },
+  "35-10-ambedkar-finds-champion-in-churchill": {
+   "start": 233,
+   "end": 233
+  },
+  "36-11-hindu-scheduled-castes-clashes-in-bombay": {
+   "start": 234,
+   "end": 237
+  },
+  "37-12-federation-executive-resolves-on-direct-actio": {
+   "start": 238,
+   "end": 245
+  },
+  "38-13-reactions-to-the-british-cabinet-plan-dr-ambe": {
+   "start": 246,
+   "end": 246
+  },
+  "39-14-i-am-fighting-for-rights-of-scheduled-castes": {
+   "start": 247,
+   "end": 247
+  },
+  "40-15-does-the-indian-national-congress-represent-t": {
+   "start": 248,
+   "end": 260
+  },
+  "41-16-i-am-a-greater-nationalist-than-anybody-else": {
+   "start": 261,
+   "end": 272
+  },
+  "42-17-letter-by-mr-attlee-to-dr-b-r-ambedkar": {
+   "start": 273,
+   "end": 275
+  },
+  "43-18-protest-letter-of-dr-ambedkar-to-mr-attlee": {
+   "start": 276,
+   "end": 278
+  },
+  "44-19-we-may-be-conquered-but-we-shall-not-capitula": {
+   "start": 279,
+   "end": 280
+  },
+  "45-20-letters-by-lord-pethick-lawrence-to-mr-attlee": {
+   "start": 281,
+   "end": 285
+  },
+  "46-21-the-cabinet-mission-and-the-untouchables": {
+   "start": 286,
+   "end": 299
+  },
+  "47-22-dr-ambedkars-memorandum": {
+   "start": 300,
+   "end": 300
+  },
+  "48-23-demand-for-political-independence": {
+   "start": 301,
+   "end": 301
+  },
+  "49-24-churchill-ambedkar-talks": {
+   "start": 302,
+   "end": 302
+  },
+  "50-25-restore-the-separate-electorates": {
+   "start": 303,
+   "end": 303
+  },
+  "51-26-dr-ambedkar-feels-british-will-do-justice": {
+   "start": 304,
+   "end": 305
+  },
+  "52-27-ascertain-wishes-of-minorities": {
+   "start": 306,
+   "end": 307
+  },
+  "53-28-dawn-on-ambedkars-political-mission-to-englan": {
+   "start": 308,
+   "end": 311
+  },
+  "54-1-provincial-autonomy-without-responsibility-wou": {
+   "start": 312,
+   "end": 312
+  },
+  "55-2-joint-vs-separate-electorates-dr-ambedkars-via": {
+   "start": 313,
+   "end": 316
+  },
+  "56-3-assurance-will-not-be-loss-to-governor-nor-it": {
+   "start": 317,
+   "end": 321
+  },
+  "57-4-it-is-purely-a-party-move-no-national-purpose": {
+   "start": 322,
+   "end": 322
+  },
+  "58-5-we-shall-wage-relentless-war-to-introduce-adul": {
+   "start": 323,
+   "end": 326
+  },
+  "59-6-mobilise-against-federation-turning-point-in-h": {
+   "start": 327,
+   "end": 329
+  },
+  "60-7-distributive-system-of-voting": {
+   "start": 330,
+   "end": 330
+  },
+  "61-8-great-britain-must-be-supported": {
+   "start": 331,
+   "end": 338
+  },
+  "62-9-wisdom-and-statesmanship-will-dawn-to-prevent": {
+   "start": 339,
+   "end": 340
+  },
+  "63-10-very-nebulous-plan": {
+   "start": 341,
+   "end": 342
+  },
+  "64-11-we-can-be-a-nation-only-through-social-amalag": {
+   "start": 343,
+   "end": 343
+  },
+  "65-12-subhas-chandra-bose-meets-dr-b-r-ambedkar": {
+   "start": 344,
+   "end": 344
+  },
+  "66-13-meaning-of-the-congress-decision": {
+   "start": 345,
+   "end": 349
+  },
+  "67-14-dr-ambedkars-plan-to-solve-indian-crisis-musl": {
+   "start": 350,
+   "end": 352
+  },
+  "68-15-indians-destiny-is-bound-up-with-the-victory": {
+   "start": 353,
+   "end": 357
+  },
+  "69-16-how-to-end-indian-political-impasse": {
+   "start": 358,
+   "end": 359
+  },
+  "70-17-jinnahs-fears-will-have-to-be-allayed": {
+   "start": 360,
+   "end": 361
+  },
+  "71-18-first-proposal-on-central-irrigation-and-wate": {
+   "start": 362,
+   "end": 363
+  },
+  "72-19-both-are-making-serious-mistake": {
+   "start": 364,
+   "end": 367
+  },
+  "73-20-sapru-in-the-wrong": {
+   "start": 368,
+   "end": 369
+  },
+  "74-21-control-and-utilise-the-mahanadi-to-the-best": {
+   "start": 370,
+   "end": 371
+  },
+  "75-22-we-must-work-in-india-for-creating-co-operati": {
+   "start": 372,
+   "end": 373
+  },
+  "76-23-unless-these-points-were-cleared-no-lead-on-p": {
+   "start": 374,
+   "end": 374
+  },
+  "77-24-government-of-india-will-not-recognise-any-pr": {
+   "start": 375,
+   "end": 377
+  },
+  "78-25-berar-will-revert-to-nizam-on-august-15": {
+   "start": 378,
+   "end": 379
+  },
+  "79-26-if-boundary-drawn-is-not-natural-it-will-put": {
+   "start": 380,
+   "end": 382
+  },
+  "80-27-indian-citizens-have-equal-rights-before-the": {
+   "start": 383,
+   "end": 384
+  },
+  "81-28-one-official-language-for-centre-and-province": {
+   "start": 385,
+   "end": 385
+  },
+  "82-29-india-and-the-british-commonwealth": {
+   "start": 386,
+   "end": 398
+  },
+  "83-30-constitution-and-constitutionalism": {
+   "start": 399,
+   "end": 402
+  },
+  "84-31-people-in-india-would-know-their-fundamental": {
+   "start": 403,
+   "end": 405
+  },
+  "85-32-what-i-say-is-that-be-firm-and-sincere": {
+   "start": 406,
+   "end": 407
+  },
+  "86-33-no-use-about-independent-foreign-policy-witho": {
+   "start": 408,
+   "end": 408
+  },
+  "87-34-u-s-a-inclined-towards-pakistan": {
+   "start": 409,
+   "end": 409
+  },
+  "88-35-retain-english-at-any-cost": {
+   "start": 410,
+   "end": 410
+  },
+  "89-36-one-mans-traffic-in-public-affairs": {
+   "start": 411,
+   "end": 411
+  },
+  "90-37-flood-control-use-of-atomic-power": {
+   "start": 412,
+   "end": 414
+  },
+  "91-38-strongly-object-creation-of-monolithic-monstr": {
+   "start": 415,
+   "end": 415
+  },
+  "92-39-ambedkars-recipe-for-maharashtra-section-iv-i": {
+   "start": 416,
+   "end": 419
+  },
+  "93-1-bahishkrit-hitkarini-sabha": {
+   "start": 420,
+   "end": 431
+  },
+  "94-2-depressed-classes-institute": {
+   "start": 432,
+   "end": 437
+  },
+  "95-3-independent-labour-party": {
+   "start": 438,
+   "end": 444
+  },
+  "96-4-independent-labour-party-wide-support": {
+   "start": 445,
+   "end": 447
+  },
+  "97-5-i-have-chosen-bombay-as-a-place-for-the-colleg": {
+   "start": 448,
+   "end": 453
+  },
+  "98-6-the-peoples-education-society-mumbai": {
+   "start": 454,
+   "end": 466
+  },
+  "99-7-appeal-by-the-honble-dr-b-r-ambedkar-on-behalf": {
+   "start": 467,
+   "end": 469
+  },
+  "100-8-a-social-centre-for-the-untouchables-in-bombay": {
+   "start": 470,
+   "end": 479
+  },
+  "101-9-constitution-of-all-india-scheduled-castes-fed": {
+   "start": 480,
+   "end": 502
+  },
+  "102-10-the-buddhist-society-of-india": {
+   "start": 503,
+   "end": 511
+  },
+  "103-1-2-3-appendices-appendix-i-constitution-of-the": {
+   "start": 512,
+   "end": 517
+  },
+  "104-scheduled-castes-students-federation-appendix-ii": {
+   "start": 518,
+   "end": 523
+  },
+  "105-hinduism-and-buddhism-appendix-iii-the-cabinet-m": {
+   "start": 524,
+   "end": 529
+  },
+  "106-appendix-iv-interviews-of-jagjiwan-ram": {
+   "start": 530,
+   "end": 544
+  },
+  "107-appendix-vi-gandhi-dis-franchised": {
+   "start": 545,
+   "end": 553
+  },
+  "108-to-oppressors-appendix-viii-the-bihar-provincial": {
+   "start": 554,
+   "end": 557
+  },
+  "109-depressed-classes-league-appendix-ix-what-about": {
+   "start": 558,
+   "end": 560
+  },
+  "110-appendix-x-ambedkar-urges-states-to-join": {
+   "start": 561,
+   "end": 564
+  },
+  "111-indian-union-appendix-xi-activities-of-the-bahis": {
+   "start": 565,
+   "end": 568
+  },
+  "112-hitkarini-sabha-at-bombay-appendix-xii-peoples-e": {
+   "start": 569,
+   "end": 571
+  },
+  "113-institutions-appendix-xiii-a-letter-to-h-h-sayaj": {
+   "start": 572,
+   "end": 578
+  }
+ },
+ "volume-17-part-3": {
+  "01-front-matter-1": {
+   "start": 1,
+   "end": 16
+  },
+  "01-front-matter-2": {
+   "start": 17,
+   "end": 31
+  },
+  "02-1-1-1-1927-great-fight": {
+   "start": 32,
+   "end": 36
+  },
+  "03-2-18-1-1928-the-value-of-a-man-is-axiomatic-self": {
+   "start": 37,
+   "end": 38
+  },
+  "04-3-13-4-1929-we-are-a-warrior-clan": {
+   "start": 39,
+   "end": 40
+  },
+  "05-4-14-4-1929-send-right-type-of-men-to-legislatur": {
+   "start": 41,
+   "end": 41
+  },
+  "06-5-8-8-1930-people-cemented-by-feeling-of-one-cou-1": {
+   "start": 42,
+   "end": 65
+  },
+  "06-5-8-8-1930-people-cemented-by-feeling-of-one-cou-2": {
+   "start": 66,
+   "end": 88
+  },
+  "07-6-2-9-1930-secure-constitutional-safeguards": {
+   "start": 89,
+   "end": 89
+  },
+  "08-times-of-and-guarantees-india-7-27-9-1930-agitat": {
+   "start": 90,
+   "end": 93
+  },
+  "09-9-14-8-1931-power-and-prestige-will-come-to-you": {
+   "start": 94,
+   "end": 94
+  },
+  "10-10-29-1-1932-future-generations-of-hindus-will-a": {
+   "start": 95,
+   "end": 103
+  },
+  "11-11-28-2-1932-keep-before-your-eyes-the-struggle": {
+   "start": 104,
+   "end": 104
+  },
+  "12-12-7-5-1932-untouchables-must-have-political-pow": {
+   "start": 105,
+   "end": 108
+  },
+  "13-13-21-5-1932-i-would-not-budge-an-inch-from-my-r": {
+   "start": 109,
+   "end": 110
+  },
+  "14-14-24-5-1932-political-reform-must-precede-socia": {
+   "start": 111,
+   "end": 111
+  },
+  "15-15-28-9-1932-care-more-for-material-good-than-fo": {
+   "start": 112,
+   "end": 114
+  },
+  "16-18-18-2-1933-do-not-believe-in-fate-believe-in-y": {
+   "start": 115,
+   "end": 115
+  },
+  "17-19-feb1933-they-alone-rise-who-strive": {
+   "start": 116,
+   "end": 116
+  },
+  "18-20-4-3-1933-do-not-depend-upon-god-or-superman": {
+   "start": 117,
+   "end": 118
+  },
+  "19-21-23-4-1933-i-will-wrest-as-much-power-for-the": {
+   "start": 119,
+   "end": 129
+  },
+  "20-25-1112-1-1936-go-anywhere-we-have-to-fight-for": {
+   "start": 130,
+   "end": 131
+  },
+  "21-26-1314-4-1936-decided-to-renounce-hinduism": {
+   "start": 132,
+   "end": 133
+  },
+  "22-27-1-5-1936-i-cannot-sacrifice-my-conscience-for": {
+   "start": 134,
+   "end": 135
+  },
+  "23-28-17-5-1936-conversion-is-necessary-for-your-em": {
+   "start": 136,
+   "end": 141
+  },
+  "24-29-31-5-1936-what-way-emancipation-1": {
+   "start": 142,
+   "end": 159
+  },
+  "24-29-31-5-1936-what-way-emancipation-2": {
+   "start": 160,
+   "end": 176
+  },
+  "25-30-2-6-1936-there-will-be-no-distinction-between": {
+   "start": 177,
+   "end": 178
+  },
+  "26-31-16-6-1936-you-must-give-up-your-disgraceful-p": {
+   "start": 179,
+   "end": 185
+  },
+  "27-33-30-5-1937-we-cannot-allow-our-grievances-to-c": {
+   "start": 186,
+   "end": 186
+  },
+  "28-34-31-7-1937-there-are-no-depressed-class-minist": {
+   "start": 187,
+   "end": 187
+  },
+  "29-35-28-8-1937-do-not-worship-god-in-hindu-religio": {
+   "start": 188,
+   "end": 191
+  },
+  "30-36-sept-1937-communists-exploited-the-labourers": {
+   "start": 192,
+   "end": 194
+  },
+  "31-39-1-1-1938-christians-lagged-behind-politically": {
+   "start": 195,
+   "end": 195
+  },
+  "32-40-1-1-1938-work-for-uplift-of-untouchables": {
+   "start": 196,
+   "end": 196
+  },
+  "33-41-1-1-1938-democracy-must-give-respectful-heari": {
+   "start": 197,
+   "end": 198
+  },
+  "34-42-10-1-1938-peasants-and-workers-should-think-o": {
+   "start": 199,
+   "end": 200
+  },
+  "35-43-15-1-1938-guard-the-interests-of-the-depresse": {
+   "start": 201,
+   "end": 201
+  },
+  "36-44-13-2-1938-trade-unions-must-enter-politics-to": {
+   "start": 202,
+   "end": 221
+  },
+  "37-45-12-2-1938-educated-man-without-character-and": {
+   "start": 222,
+   "end": 222
+  },
+  "38-46-19-3-1938-untouchables-have-to-strive-themsel": {
+   "start": 223,
+   "end": 223
+  },
+  "39-47-14-5-1938-lead-decent-life": {
+   "start": 224,
+   "end": 224
+  },
+  "40-48-2223-10-government-did-not-care-1938-depresse": {
+   "start": 225,
+   "end": 229
+  },
+  "41-51-8-1-1939-be-men-of-sterling-character": {
+   "start": 230,
+   "end": 231
+  },
+  "42-52-29-1-1939-what-is-the-goal-of-indias-politica": {
+   "start": 232,
+   "end": 236
+  },
+  "43-53-12-2-1939-gandhi-prepared-to-accept-federatio": {
+   "start": 237,
+   "end": 237
+  },
+  "44-54-26-2-1939-save-your-children-from-harrowing-l": {
+   "start": 238,
+   "end": 238
+  },
+  "45-55-2-7-1939-i-worked-for-benefit-of-whole-commun": {
+   "start": 239,
+   "end": 240
+  },
+  "46-56-july-1939-taxes-must-be-utilised-for-farmers": {
+   "start": 241,
+   "end": 246
+  },
+  "47-60-28-1-1940-regain-past-position-in-army": {
+   "start": 247,
+   "end": 247
+  },
+  "48-61-4-2-1940-safeguards-under-government-of-india": {
+   "start": 248,
+   "end": 248
+  },
+  "49-62-19-3-1940-hindu-society-must-organise-on-mode": {
+   "start": 249,
+   "end": 249
+  },
+  "50-63-23-2-1941-gandhis-efforts-are-inadequate": {
+   "start": 250,
+   "end": 250
+  },
+  "51-64-28-3-1941-without-strenuous-efforts-our-socia": {
+   "start": 251,
+   "end": 252
+  },
+  "52-65-13-7-1941-you-have-not-realised-what-tremendo": {
+   "start": 253,
+   "end": 255
+  },
+  "53-66-16-8-1941-watandari-a-curse-to-mahars": {
+   "start": 256,
+   "end": 258
+  },
+  "54-67-august-1941-remarkable-change-under-gone": {
+   "start": 259,
+   "end": 259
+  },
+  "55-68-24-9-1941-educated-persons-should-join-milita": {
+   "start": 260,
+   "end": 261
+  },
+  "56-69-feb-1942-i-shall-lay-down-my-life-in-defence": {
+   "start": 262,
+   "end": 262
+  },
+  "57-70-26-4-1942-your-salvation-must-lie-in-your-own": {
+   "start": 263,
+   "end": 266
+  },
+  "58-71-2-7-1942-the-doors-of-my-house-would-always-r": {
+   "start": 267,
+   "end": 267
+  },
+  "59-72-12-7-1942-struggle-of-lowest-strata-of-societ": {
+   "start": 268,
+   "end": 268
+  },
+  "60-73-15-7-1942-if-the-bottom-most-stone-is-shifted": {
+   "start": 269,
+   "end": 270
+  },
+  "61-74-1819-7-if-democracy-dies-it-will-be-our-1942-1": {
+   "start": 271,
+   "end": 286
+  },
+  "61-74-1819-7-if-democracy-dies-it-will-be-our-1942-2": {
+   "start": 287,
+   "end": 301
+  },
+  "62-75-20-7-1942-educate-agitate-organize-have-faith": {
+   "start": 302,
+   "end": 305
+  },
+  "63-76-20-7-1942-progress-of-the-community-is-measur": {
+   "start": 306,
+   "end": 312
+  },
+  "64-77-20-7-1942-i-make-distinction-between-ahimsa-a": {
+   "start": 313,
+   "end": 319
+  },
+  "65-78-21-7-1942-i-will-stand-by-you": {
+   "start": 320,
+   "end": 320
+  },
+  "66-79-22-7-1942-i-yield-to-none-in-my-desire-for-th": {
+   "start": 321,
+   "end": 322
+  },
+  "67-80-23-8-1942-i-want-the-reins-of-government-in-y": {
+   "start": 323,
+   "end": 326
+  },
+  "68-82-12-1-1943-non-brahmin-party-should-rebuild-it": {
+   "start": 327,
+   "end": 327
+  },
+  "69-83-17-1-1943-join-army-navy-and-air-forces": {
+   "start": 328,
+   "end": 328
+  },
+  "70-84-2-5-1943-gandhi-and-jinnah-should-retire": {
+   "start": 329,
+   "end": 331
+  },
+  "71-85-10-5-1943-poverty-will-not-be-tolerated-in-po": {
+   "start": 332,
+   "end": 332
+  },
+  "72-86-10-5-1943-swaraj-could-be-in-hands-of-labour": {
+   "start": 333,
+   "end": 334
+  },
+  "73-88-31-1-1944-scheduled-castes-must-discard-hindu": {
+   "start": 335,
+   "end": 336
+  },
+  "74-89-26-8-1944-now-or-never-is-the-question-before": {
+   "start": 337,
+   "end": 338
+  },
+  "75-90-20-9-1944-depressed-classes-are-not-a-part-of": {
+   "start": 339,
+   "end": 342
+  },
+  "76-91-22-9-1944-i-am-no-opponent-of-nationalism-but": {
+   "start": 343,
+   "end": 347
+  },
+  "77-92-23-9-1944-unity-is-of-supreme-importance": {
+   "start": 348,
+   "end": 350
+  },
+  "78-93-24-9-1944-i-was-far-ahead-of-patriots-of-indi": {
+   "start": 351,
+   "end": 362
+  },
+  "79-94-24-9-1944-indian-history-is-nothing-but-strug": {
+   "start": 363,
+   "end": 365
+  },
+  "80-95-24-9-1944-gandhi-was-contented-with-provincia": {
+   "start": 366,
+   "end": 367
+  },
+  "81-96-28-9-1944-we-are-the-makers-of-the-destiny-of": {
+   "start": 368,
+   "end": 369
+  },
+  "82-97-2-1-1945-students-should-see-that-degree-carr": {
+   "start": 370,
+   "end": 372
+  },
+  "83-98-3-1-1945-lay-the-foundation-for-a-regime-of-p": {
+   "start": 373,
+   "end": 374
+  },
+  "84-99-3-1-1945-news-paper-in-a-modern-democratic-sy": {
+   "start": 375,
+   "end": 379
+  },
+  "85-100-7-4-1945-scheduled-castes-must-organise-peop": {
+   "start": 380,
+   "end": 380
+  },
+  "86-101-6-5-1945-there-should-be-statutory-commissio": {
+   "start": 381,
+   "end": 385
+  },
+  "87-102-20-5-1945-no-dispute-over-indias-goal-of-fre": {
+   "start": 386,
+   "end": 390
+  },
+  "88-105-16-1-1946-gandhiji-declined": {
+   "start": 391,
+   "end": 391
+  },
+  "89-106-17-2-1946-scheduled-castes-demands-be-referr": {
+   "start": 392,
+   "end": 395
+  },
+  "90-107-12-3-1946-depressed-classes-neglected": {
+   "start": 396,
+   "end": 396
+  },
+  "91-108-13-8-1946-the-scheduled-castes-had-been-jai": {
+   "start": 397,
+   "end": 397
+  },
+  "92-109-14-4-1947-i-have-loyalty-to-our-people-also": {
+   "start": 398,
+   "end": 402
+  },
+  "93-110-25-9-1947-the-minority-must-always-be-won-ov": {
+   "start": 403,
+   "end": 412
+  },
+  "94-111-14-1-1948-art-of-public-speaking-could-be-de": {
+   "start": 413,
+   "end": 413
+  },
+  "95-112-10-4-1948-because-of-divine-law-of-manu-or-1": {
+   "start": 414,
+   "end": 436
+  },
+  "95-112-10-4-1948-because-of-divine-law-of-manu-or-2": {
+   "start": 437,
+   "end": 459
+  },
+  "95-112-10-4-1948-because-of-divine-law-of-manu-or-3": {
+   "start": 460,
+   "end": 482
+  },
+  "95-112-10-4-1948-because-of-divine-law-of-manu-or-4": {
+   "start": 483,
+   "end": 505
+  },
+  "95-112-10-4-1948-because-of-divine-law-of-manu-or-5": {
+   "start": 506,
+   "end": 528
+  },
+  "95-112-10-4-1948-because-of-divine-law-of-manu-or-6": {
+   "start": 529,
+   "end": 551
+  },
+  "95-112-10-4-1948-because-of-divine-law-of-manu-or-7": {
+   "start": 552,
+   "end": 574
+  },
+  "95-112-10-4-1948-because-of-divine-law-of-manu-or-8": {
+   "start": 575,
+   "end": 597
+  },
+  "95-112-10-4-1948-because-of-divine-law-of-manu-or-9": {
+   "start": 598,
+   "end": 620
+  },
+  "95-112-10-4-1948-because-of-divine-law-of-manu-or-10": {
+   "start": 621,
+   "end": 642
+  }
+ }
+}

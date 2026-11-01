@@ -38,6 +38,7 @@ npm run preview    # http://localhost:4321
 .venv/bin/python -I scripts/extract-baws.py       # page text into archive/baws-text/
 node scripts/build-library.mjs                    # cleaned text into library/ (committed)
 node scripts/build-toc.mjs                        # chapters from each volume's printed CONTENTS into library/toc.json
+.venv/bin/python -I scripts/split-pdfs.py         # one PDF per reader page into public/pdf/ (committed); again after every build-toc
 .venv/bin/python -I scripts/build-covers.py       # front covers into public/images/covers/
 ```
 

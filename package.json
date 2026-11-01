@@ -9,7 +9,7 @@
     "dev": "astro dev",
     "images": "node scripts/build-images.mjs",
     "library": "node scripts/build-library.mjs",
-    "prebuild": "node scripts/gen-locale-pages.mjs && node scripts/build-images.mjs",
+    "prebuild": "node scripts/check-pdfs.mjs && node scripts/gen-locale-pages.mjs && node scripts/build-images.mjs",
     "build": "astro build && pagefind --site dist",
     "preview": "astro preview",
     "news": "node scripts/fetch-news.mjs",
