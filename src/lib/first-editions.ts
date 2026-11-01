@@ -123,7 +123,8 @@ export const FIRST_EDITIONS: FirstEdition[] = [
 
 export const firstEditionHref = (fe: FirstEdition) => url(`/library/first-editions/${fe.slug}/`);
 export const archiveUrl = (fe: FirstEdition) => `https://archive.org/details/${fe.ia}/page/n${fe.start}`;
-export const embedUrl = (fe: FirstEdition) => `https://archive.org/embed/${fe.ia}/page/n${fe.start}`;
+// one page at a time: the two-page spread opens with an empty left page beside the title page
+export const embedUrl = (fe: FirstEdition) => `https://archive.org/embed/${fe.ia}/page/n${fe.start}/mode/1up`;
 
 /** The earliest printing on the shelf for a work in works.json, if there is one. */
 export const firstEditionOf = (work: string) => FIRST_EDITIONS.find((fe) => fe.work === work);
