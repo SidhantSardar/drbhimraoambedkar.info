@@ -1,0 +1,440 @@
+# Page breaks inside a sentence — Marathi Volumes 1–3
+
+Every Marathi page now holds what that page of the official PDF holds. Where a sentence runs over a page break, the Marathi was cut at the matching point without changing a word (`node scripts/translate-library.mjs breaks` / `resplit`, `i18n/PAGE-BREAK-BRIEF.md`). Marathi word order often differs from the English (the verb comes last, a relative clause comes before its noun), so at the breaks below a few words sit on the other page from their English. Each note names them. Check these before quoting a sentence that runs over a page, and when reviewing a page against the PDF.
+
+## Volume 1 (130 breaks)
+
+- **p. 23 → 24.** 'tribal groups' (जमाती) sits inside the Marathi clause that renders 'wholly absent in the situation constituted by the mere propinquity of endogamous social or', which is p. 23, so the whole sentence stays on p. 23 and p. 24 begins at 'Caste in India means'.
+- **p. 24 → 25.** 'make itself endogamous' (स्वतःला अंतर्विवाही बनवण्यासाठी) comes before 'what means it will have to adopt' and 'analyse' in the Marathi, so the whole sentence stays on p. 24.
+- **p. 27 → 28.** 'according to our analysis of the various definitions of caste' comes before 'caste and endogamy' in the Marathi, so the cut is at the semicolon and 'while caste and' goes to p. 28.
+- **p. 28 → 29.** 'to whom she might be married' opens the Marathi sentence (ज्याच्याशी तिचा विवाह होणार असेल), so the whole sentence 'No maiden could be considered pure…' stays on p. 28.
+- **p. 30 → 31.** 'by a law-giver as a divine dispensation' and 'population of India' come before the verb 'imposed' in the Marathi, so the whole first alternative stays on p. 30; p. 31 starts at 'or that it has grown' (किंवा).
+- **p. 36 → 37.** 'importance' (महत्त्वाचा) comes before the verb in the Marathi, so the end of Ketkar's quotation, with its note 6, stays on p. 36.
+- **p. 40 → 41.** 'must give to its rebels' sits in the relative clause before 'I do not care for the credit' in the Marathi, so the whole sentence stays on p. 40.
+- **p. 42 → 43.** 'on account of our differences of opinion' comes first in the Marathi sentence, before 'their company quite uncongenial', so only 'Indeed' (किंबहुना,) stays on p. 42 and 'I find their company quite' goes to p. 43.
+- **p. 44 → 45.** 'train' (आगगाडीत) comes before '5-6 nights' in the Marathi, so the whole sentence stays on p. 44.
+- **p. 47 → 48.** 'It was in response to' (प्रतिसाद म्हणूनच) follows 'this invitation from Mr. Sant Ram' in the Marathi, so the cut is at the start of that sentence and 'It was in response to' goes to p. 48.
+- **p. 49 → 50.** 'an association with your Conference' (आपल्या परिषदेशी फार जवळचा संबंध) comes inside the Marathi aside before 'entangled', so the whole aside stays on p. 49 and p. 50 starts at 'I suggested to you'.
+- **p. 57 → 58.** 'common to the whole of Ireland' comes before 'Home Rule Constitution' and 'Mr. Redmond' in the Marathi, so it stays on p. 57; p. 58 starts at 'said to the representatives of Ulster'.
+- **p. 61 → 62.** 'How' (कशी) comes at the end of the Marathi question, so the cut is at the start of that question and 'How' goes to p. 62.
+- **p. 63 → 64.** 'What racial affinity' (कोणते वांशिक नाते) comes at the end of the Marathi question, so the cut is at the start of that question and 'What racial affinity' goes to p. 64.
+- **p. 65 → 66.** 'similarity' (साम्य आढळते) comes at the end of the Marathi clause, after 'all over the continent of India' and 'habits and customs, beliefs and thoughts', so the cut is before कारण and 'in as much as there is a similarity of' goes to p. 66.
+- **p. 68 → 69.** 'caste' (जातीची) comes before 'custom' at the end of the Marathi sentence, so the whole sentence stays on p. 68.
+- **p. 70 → 71.** 'oppressed among the Hindus' (हिंदूंमधील … पीडित) comes before 'pitiable condition' and 'imagine' in the Marathi, so the whole sentence stays on p. 70.
+- **p. 73 → 74.** 'Chaturvarnya' (या चातुर्वर्ण्याचा) comes before 'worth-basis' in the Marathi, so it stays on p. 73; p. 74 starts at 'it is an ideal'.
+- **p. 74 → 75.** 'How are you going' (तुम्ही कसे आणणार) comes at the end of the Marathi question, so the cut is at the start of that question and 'How are you going' goes to p. 75.
+- **p. 78 → 79.** 'of the Kshatriyas' (क्षत्रियांचे) comes before 'the seed' in the Marathi, so the whole exclamation stays on p. 78.
+- **p. 80 → 81.** The Marathi turns the sentence around: 'organic filaments, which subordinate the feeling of caste to the feeling of community' comes in the middle, before 'without caring to know' and 'a dangerous delusion', so the whole sentence stays on p. 80.
+- **p. 87 → 88.** 'they have given a positive injunction' (निश्चित आज्ञा दिलेली आहे) opens the Marathi sentence, before 'a conflict', so it stays on p. 87; p. 88 starts at 'the solution is not left to reason' (तरीसुद्धा …).
+- **p. 89 → 90.** 'in the system' (या व्यवस्थेला) comes before 'a breach' in the Marathi, so it stays on p. 89; p. 90 starts at 'then you have got to apply the dynamite' (तर …).
+- **p. 91 → 92.** The cut matches 'religious or | social', but 'contained in these books' (या ग्रंथांत असलेल्या) comes earlier in the Marathi clause, so it stays on p. 91, and 'the preaching of any doctrine' (सिद्धांताचा प्रचार) goes to p. 92.
+- **p. 93 → 94.** 'therefore' (म्हणून) comes first in the Marathi sentence, so it stays on p. 93 with 'Morality'.
+- **p. 97 → 98.** 'When all the' (सर्व … जेव्हा) is spread through the Marathi clause after 'of the scriptures', so the cut is at the start of that sentence and 'When all the' goes to p. 98.
+- **p. 101 → 102.** 'Caste and Varna' (जात आणि वर्ण यांच्यामागील) comes before 'the sense of religious sanctity behind' in the Marathi, so it stays on p. 101; p. 102 starts at 'must be destroyed'.
+- **p. 105 → 106.** The Marathi turns the sentence around ('freely given' opens the quotation, and 'real Brahmins' and 'He is satisfied' close it), so the sentence and its quotation stay whole on p. 105, and 'freely given to them and giving freely what they have of spiritual treasures' stays there too.
+- **p. 107 → 108.** 'the place of an individual in society' (समाजातील व्यक्तीचे स्थान) opens the Marathi sentence, before 'birth as a determining factor' and 'did not admit', so the whole sentence stays on p. 107.
+- **p. 118 → 119.** 'the situation as it existed in the old Turkish Empire or in the old Austro-Hungarian Empire' comes before 'is in no way different' in the Marathi, so the cut is before आणि and 'and is in no way different from the' goes to p. 119.
+- **p. 119 → 120.** 'Nor is it necessary' (आवश्यकही नाही) comes at the end of the Marathi sentence, after 'its official language', so the whole sentence stays on p. 119, with 'Province its official language'.
+- **p. 120 → 121.** 'may try to' (प्रयत्न करू शकेल) comes after 'oust the other' in the Marathi, so only 'One' (एक भाषा) stays on p. 120 and 'may try to' goes to p. 121.
+- **p. 124 → 125.** 'Every attempt must be' (प्रत्येक प्रयत्न झाला पाहिजे) comes after 'to create larger provincial units' in the Marathi, so the cut is at the start of that sentence and 'Every attempt must be' goes to p. 125.
+- **p. 127 → 128.** 'Karnatak Province' (कर्नाटक प्रांताचा) comes before 'Karwar' and '250 miles North' in the Marathi, so the whole sentence stays on p. 127.
+- **p. 135 → 136.** 'they have' (त्यांनी … करू दिली आहे) sits inside the Marathi clause after 'all other communities coming from outside Maharashtra', so only 'That is why' (म्हणूनच) stays on p. 135.
+- **p. 138 → 139.** 'subjection' (अंकित स्थितीला) comes before the verb and 'It is quite likely' in the Marathi, so the whole sentence stays on p. 138.
+- **p. 141 → 142.** 'it will take a long time to make' (बराच काळ लागेल) comes at the end of the Marathi sentence, after 'Maharashtrians part with their territory to make Bombay greater and viable', so the cut is at the clause edge before तर and 'it will take a long time to make' goes to p. 142.
+- **p. 147 → 148.** The Marathi turns the sentence around: 'during the making of the Constitution' and 'the merger of the Indian States was under consideration' come first and 'This rule was accepted as absolute' last, so the whole sentence goes to p. 148.
+- **p. 148 → 149.** 'a linguistic State' (भाषिक राज्याच्या आत) comes before 'what is likely to happen' in the Marathi, so the whole sentence stays on p. 148.
+- **p. 158 → 159.** 'a feeling of' (भावना असते) comes after 'fellowship for one’s own kith and kin' in the Marathi, so only 'It is at once' (ती एकाच वेळी) stays on p. 158.
+- **p. 161 → 162.** 'cause' is part of होऊ शकणारा ('it might cause'), which comes before 'the mischief' in the Marathi, so it stays on p. 161.
+- **p. 164 → 165.** 'representation for all areas' (सर्व प्रदेशांना समान प्रतिनिधित्व असलेले) comes before 'One federation for the whole of India' in the Marathi, so it stays on p. 164; p. 165 starts at 'will not work'.
+- **p. 179 → 180.** The Marathi turns the sentence around: 'I summarize below' (त्यांचा सारांश मी खाली देत आहे) closes it, so it moves to p. 180; the cut is before पण ('but which lie about scattered'), so 'the foregoing pages' stays on p. 179.
+- **p. 183 → 184.** 'effected' is the verb at the end of the Marathi clause (घडवून आणला), so it goes to p. 184 with 'a complete change'.
+- **p. 185 → 186.** 'for its location' (आपल्या कारभारासाठी) comes before 'find another place' in the Marathi, so it stays on p. 185; p. 186 starts with the next sentence.
+- **p. 226 → 227.** The Marathi puts 'about his work' first and 'It is derived from' (त्यातून ते आलेले आहे) last; the cut is before आणि, so 'his work' stays on p. 226 and 'It is derived from' goes to p. 227.
+- **p. 227 → 228.** 'the past' (भूतकाळच) comes before 'tries to perpetuate' in the Marathi, so it stays on p. 227.
+- **p. 232 → 233.** 'when' is तेव्हा at the end of the Marathi clause, so it goes to p. 233; 'But' (पण) stays on p. 232.
+- **p. 233 → 234.** 'them' (त्यांची) comes before 'serve' in the Marathi, so it stays on p. 233.
+- **p. 235 → 236.** 'it was common practice' (ही सर्रास प्रथा होती) closes the Marathi clause, so it goes to p. 236 with 'among husbands and fathers'.
+- **p. 236 → 237.** The Marathi puts the 'unless' clause first, so 'who have none' (ज्यांना ते नाहीत) sits early in the sentence; the whole sentence stays on p. 236.
+- **p. 239 → 240.** 'in foreign lands' (परदेशी) comes before 'travel' and stays on p. 239; 'liberty' (स्वातंत्र्य) closes item (3) and goes to p. 240.
+- **p. 240 → 241.** 'of politics' (राजकारणाची) comes before 'the method' and stays on p. 240; 'both' (दोन्ही येतात) closes the Marathi clause and goes to p. 241.
+- **p. 245 → 246.** The Marathi puts the relative clauses first and 'He refused to be a party to' (सहभागी होण्यास त्यांनी नकार दिला) last, so that goes to p. 246; 'methods which' stays on p. 245.
+- **p. 247 → 248.** The Marathi turns the sentence around: 'were most deficient' (सर्वाधिक उणे होते) sits in the middle and 'It cannot be easily assumed' closes it, so the whole sentence stays on p. 247.
+- **p. 250 → 251.** 'It mattered very little to him' (याला त्यांच्या दृष्टीने फारसे महत्त्व नव्हते) closes the Marathi sentence, so it goes to p. 251.
+- **p. 253 → 254.** 'public opinion' (लोकमत) comes before the verbs in the Marathi, so it stays on p. 253.
+- **p. 254 → 255.** The Marathi turns the sentence around ('as a plant needs watering' first, 'an idea needs propagation' last), so the whole sentence goes to p. 255.
+- **p. 262 → 263.** 'of our Indian cosmos' (आपल्या भारतीय विश्वाचे) comes before 'the most patent characteristic' in the Marathi, so it stays on p. 262.
+- **p. 264 → 265.** 'runs through the whole' wraps around 'gamut of the caste system' in the Marathi (संपूर्ण ... चालत आलेला आहे), so it goes to p. 265.
+- **p. 265 → 266.** 'affairs of men' (मानवी व्यवहारात) comes early in the Marathi clause, so it stays on p. 265.
+- **p. 271 → 272.** 'produces' (निर्माण होतो) comes after 'theological basis' in the Marathi, so it goes to p. 272.
+- **p. 284 → 285.** 'by their ancestors' (त्यांच्या पूर्वजांनी) comes before 'perfected' in the Marathi, so it stays on p. 284.
+- **p. 296 → 297.** 'is concerned' is part of the Marathi phrase प्रश्न घेतला तर, so it stays on p. 296.
+- **p. 301 → 302.** 'must take' (घेतल्या पाहिजेत) closes the Marathi sentence after 'two things', so it goes to p. 302 with 'note of two things'.
+- **p. 305 → 306.** 'arising out of the necessities of a federal constitution' comes before 'circumstances', and 'I am not saying' closes the Marathi sentence, so the whole sentence stays on p. 305.
+- **p. 306 → 307.** 'Cases relating to' (यासंबंधीची प्रकरणे) follows 'acting after consultation' in the Marathi, so it goes to p. 307.
+- **p. 309 → 310.** The English page turns inside 'com-mercial', so the cut is before व्यापारी; 'depends upon the view adopted ... as to what' closes the Marathi sentence, so it goes to p. 310.
+- **p. 310 → 311.** 'on the point' and 'now' come before 'section 107' in the Marathi, so the cut is before आणि and 'and section 107 is' goes to p. 311.
+- **p. 314 → 315.** The Marathi puts 'so long as the Federation ... is in existence' at the start of the sentence, so 'existence' stays on p. 314.
+- **p. 317 → 318.** 'to enter the Federation' (संघराज्यात प्रवेश करू) opens the Marathi sentence, so it stays on p. 317.
+- **p. 318 → 319.** 'has power to make laws for that State' sits inside the Marathi relative clause before 'continue to be exercisable', so it stays on p. 318; the cut is before मात्र ('except').
+- **p. 321 → 322.** 'in the matter of the exercise of their executive authority' comes first in the Marathi clause, so the whole sentence stays on p. 321.
+- **p. 324 → 325.** 'discriminates between' (यांच्यात भेदभाव करतो) closes the Marathi clause, so it goes to p. 325.
+- **p. 325 → 326.** 'The moment an attempt is' (प्रयत्न होताच) comes after 'to define the status of a person' in the Marathi, so the whole sentence goes to p. 326.
+- **p. 326 → 327.** 'the injustice' (अन्याय) comes after 'against British Indians' in the Marathi, so it goes to p. 327.
+- **p. 328 → 329.** 'of the treasury department at Washington' comes before 'orders' in the Marathi, so it stays on p. 328.
+- **p. 330 → 331.** 'What is the position of' (स्थिती काय आहे) follows 'these excluded States' in the Marathi, so it goes to p. 331.
+- **p. 332 → 333.** 'of United States' (संयुक्त राज्यांच्या) comes before 'a mere body' in the Marathi, so it stays on p. 332.
+- **p. 333 → 334.** 'other than a matter' (ती बाब वगळून) closes the Marathi clause, so it goes to p. 334.
+- **p. 337 → 338.** 'Governmental Authority' (शासकीय अधिकाराच्या दृष्टिकोनातून) comes before the verb 'classifies' in the Marathi, so it stays on p. 337; the cut is at the comma before 'and that this classification'.
+- **p. 339 → 340.** 'of which the grant is composed' is a relative clause placed before 'any of the items' inside the quotation, so the whole of section 72D stays on p. 339; p. 340 starts at 'Compare with this section 34'.
+- **p. 340 → 341.** 'is supreme' (सर्वश्रेष्ठ आहे) sits inside 'another way of stating that ...' in the Marathi, so it stays on p. 340.
+- **p. 345 → 346.** 'in the way' is part of the verb 'आडवे येऊ शकत नाही' (can stand in the way), so it stays on p. 345.
+- **p. 346 → 347.** 'by enacting a preamble' (प्रस्तावना अधिनियमित करून) comes before 'did not promise Dominion Status' in the Marathi, so it stays on p. 346.
+- **p. 347 → 348.** '(solely in) connection with the exercise of the functions of the Crown in its relations with Indian States' comes before 'by or on behalf of the Secretary of State in Council' in the Marathi, so it stays on p. 347; p. 348 starts at 'shall, as from the commencement of Part III'.
+- **p. 348 → 349.** 'for entering into this subject at such great length' comes before 'must be my excuse' in the Marathi, so it stays on p. 348.
+- **p. 351 → 352.** 'it would be very unreasonable' (तर ते अत्यंत अवाजवी ठरेल) closes the Marathi sentence after the 'if' clause, so it moves to p. 352.
+- **p. 355 → 356.** 'you' (तुमच्यासमोर) sits inside 'the question that I want to place before you', so it stays on p. 355.
+- **p. 357 → 358.** 'of India including the Indian States' (भारतीय संस्थानांसह संपूर्ण भारतासाठी) comes before 'can justify a Central Government' in the Marathi, so it stays on p. 357.
+- **p. 358 → 359.** 'Powers of the Federation' (संघराज्याच्या ... अधिकारांमध्ये) wraps around 'Legislative' at the head of the Marathi question, so the whole question stays on p. 358.
+- **p. 362 → 363.** The English page turns inside the name 'British India' (ब्रिटिश भारत), which is not split; the cut is at the comma before 'तोपर्यंत ब्रिटिश भारत', so 'British' moves to p. 363.
+- **p. 363 → 364.** '(limit the scope of) Paramountcy to the rights referable to the treaties' comes before 'the Princes had hoped' in the Marathi, so it stays on p. 363.
+- **p. 364 → 365.** 'a minority' belongs to 'Hindus as a majority and Muslims as a minority' (हिंदू बहुसंख्य आणि मुसलमान अल्पसंख्य), which the Marathi moves to the head of the sentence, so it stays on p. 364.
+- **p. 365 → 366.** The cut is after 'नसून' (was not ... but). 'he forgot altogether' (पूर्णपणे विसरून गेले) closes the Marathi sentence, so it moves to p. 366; 'with whom the settlement should be made' comes before 'the important question was not', so it stays on p. 365.
+- **p. 366 → 367.** 'time' is part of 'अशा क्षणी' (at the point of time), so it stays on p. 366.
+- **p. 367 → 368.** The Marathi puts 'in order to make it alive to the dangers arising from the inauguration of the Federal Scheme' at the head of the sentence and 'It needed a treatment' at its end, so the whole sentence, including 'complete though not exhaustive', goes to p. 368.
+- **p. 373 → 374.** 'a Constitution for India' (भारतासाठी संविधान) comes before 'who still rely on the British' in the Marathi, so it stays on p. 373.
+- **p. 375 → 376.** 'bothering about' is part of 'डोकेदुखी करून घेण्याजोगा' (worth bothering about), so it stays on p. 375.
+- **p. 376 → 377.** 'proportions' is part of 'ठरावीक प्रमाणात' (in prescribed proportions), which comes before the verb, so it stays on p. 376.
+- **p. 377 → 378.** 'it is necessary' (आवश्यक आहे) closes the Marathi sentence, so it moves to p. 378 with 'to know the communal distribution'.
+- **p. 379 → 380.** 'This' (हेच) sits inside 'आयरिश तहाचे नेमके हेच झाले', so it moves to p. 380.
+- **p. 381 → 382.** 'not' (नव्हे) comes after 'because it has no case for safeguards' in the Marathi, so it moves to p. 382; the cut is at the dash.
+- **p. 383 → 384.** 'Legislature' is part of 'कायदेमंडळाच्या सदस्यांमधूनच' (from the members of the Legislature), so it stays on p. 383.
+- **p. 391 → 392.** The Marathi turns this sentence around ('on which the Hindu has been insisting' first, 'he is not aware' last), so the whole sentence goes to p. 392, including 'He is not aware that even the constitution of the United States'.
+- **p. 392 → 393.** 'have' is part of 'त्यांच्याकडे असलेल्या' (which they have) at the head of the Marathi sentence, so it stays on p. 392.
+- **p. 393 → 394.** 'Constitution' is part of 'स्वतःचे संविधान लिहिण्यात' (write out their own Constitution), which comes before 'failed', so it stays on p. 393.
+- **p. 398 → 399.** '(against) the tyranny and discrimination of the majority' (बहुसंख्याकांच्या जुलमापासून आणि भेदभावापासून) comes before 'would require special safeguards' in the Marathi, so it stays on p. 398.
+- **p. 399 → 400.** 'for placing my views for the consideration of the Committee' (समितीच्या विचारार्थ माझी मते मांडण्याची) comes before 'an opportunity to which I was looking forward' in the Marathi, so it stays on p. 399.
+- **p. 404 → 405.** Cut after the margin note 'For explanation, see page 405', as in the English. 'mutually agreed upon' (परस्पर मान्य केलेल्या) comes before 'terms' in the Marathi, so it stays on p. 404; 'may admit into the Union' (संघात प्रवेश देऊ शकतील) closes the sentence, so it moves to p. 405.
+- **p. 414 → 415.** 'Whoever' (जो कोणी) comes after the 'in consequence of ... / with intent ...' clauses in the Marathi, so it moves to p. 415.
+- **p. 421 → 422.** 'who do not belong to their community' (आपल्या समाजाचे नसलेल्यांना) comes before 'will give equal treatment' in the Marathi, so it stays on p. 421.
+- **p. 422 → 423.** The Marathi turns the sentence around ('to ensure that all citizens shall have equal benefit of Laws, Rules and Regulations' first, 'it is therefore necessary to have such a provision' last), so the whole sentence goes to p. 423, including 'It is therefore necessary to have'.
+- **p. 423 → 424.** 'plan' comes first in 'योजनेचे दुसरे खास वैशिष्ट्य' (the second special feature of the plan), so it stays on p. 423; the cut is before 'is that it does not leave'.
+- **p. 424 → 425.** The list of fears keeps the English order, but each 'the fear' (भीती) follows its 'of ...' phrase, so the 'the fear' that ends p. 424 in the English moves to p. 425 with 'of having to be a burden on public charity'.
+- **p. 425 → 426.** 'Considered' (विचार केला) comes after 'in the light of these observations' in the Marathi, so it moves to p. 426.
+- **p. 426 → 427.** 'without Dictatorship' (हुकूमशाहीशिवाय) comes before 'State Socialism' in the Marathi, so it stays on p. 426; the cut is at the comma before 'to have State Socialism with Parliamentary Democracy'.
+- **p. 427 → 428.** 'in the Centre' (केंद्रातील) comes before 'the Executive' in the Marathi, so it stays on p. 427 with 'the model that was adopted'; p. 428 starts at 'was of the British type'.
+- **p. 429 → 430.** 'adverse vote in the Legislature' (विधिमंडळात विरोधी मतदान) comes at the head of the relative clause in the Marathi, so it stays on p. 429; 'it is possible, nay certain' (शक्य आहे, किंबहुना निश्चित आहे) closes the sentence, so it moves to p. 430.
+- **p. 432 → 433.** 'school' is part of 'शाळेत जाताना' (while going to the school), so it stays on p. 432; the cut is at the clause edge before 'the children were even beaten'.
+- **p. 434 → 435.** 'and to claim the privileges of a political majority which it is not' is inside the 'in view of the insistence' clause at the head of the Marathi sentence, so it stays on p. 434.
+- **p. 437 → 438.** 'Musalmans' (मुसलमान) comes before 'the social relations' in the Marathi ('between the Hindus and the Musalmans'), so it stays on p. 437.
+- **p. 441 → 442.** 'for each new House of Commons' (प्रत्येक नव्या हाउस ऑफ कॉमन्ससाठी) comes before 'a new speaker' in the Marathi, so it stays on p. 441.
+- **p. 442 → 443.** 'is not prepared to' (तयार नाहीत) follows 'allow the minorities to share political power' in the Marathi, so it moves to p. 443; the cut is after the subject 'the majority'.
+- **p. 446 → 447.** 'was one' (उमेदवार होता) comes after 'who had failed in the Primary election' in the Marathi, so it moves to p. 447.
+- **p. 470 → 471.** 'According to' is part of 'ॲडम स्मिथ यांच्या मते' (according to Adam Smith), which is not split, so it moves to p. 471.
+- **p. 478 → 479.** 'the consolidated holding' (एकत्रित जमीनधारणा) comes before 'to preserve' in the Marathi, so it stays on p. 478.
+- **p. 490 → 491.** 'of consolidated holdings' (एकत्रित जमीनधारणांची) comes before 'sub-division and fragmentation' in the Marathi, so it stays on p. 490.
+- **p. 491 → 492.** 'what we cannot, atleast by this means' (जे आपण बरे करू शकत नाही—निदान या मार्गाने तरी नाही) comes before 'we must know' and 'fail to cure' in the Marathi, so it stays on p. 491; p. 492 starts at 'but will help to create a register'.
+- **p. 501 → 502.** The Marathi puts 'that of its being free from the extreme materialism of the West leading to war and devastation' between dashes before 'the East is ever eager to give prominence', so the whole sentence, including 'materialism of the West leading to war and devastation', stays on p. 501.
+
+## Volume 2 (245 breaks)
+
+- **p. 20 → 21.** The Marathi turns the sentence around: 'that would follow if these two items ... varied in the same direction' comes before 'I invite the attention of my friend', so the whole sentence stays on p. 20; p. 21 starts at 'If they did'.
+- **p. 21 → 22.** 'The first' is rendered after 'of such measures' (अशा उपायांपैकी पहिला), so it moves to p. 22 with the rest of its sentence.
+- **p. 26 → 27.** 'have been committed' (बांधील आहेत) comes at the end of the Marathi sentence, after 'primary education', so it moves to p. 27.
+- **p. 29 → 30.** The Marathi puts 'any particular law that this House may have passed' at the start of the clause, before 'rules ... no right ... insisted', so it stays on p. 29; p. 30 starts at 'Sir, I say'.
+- **p. 31 → 32.** 'can' is part of the Marathi verb करू शकतात, so it moves with 'do ?' to p. 32.
+- **p. 32 → 33.** 'is nothing else but the paltry sum of' (क्षुल्लक रक्कम; याहून दुसरे काही नाही) comes at the end of the Marathi sentence, after '8 lakhs ... tobacco taxation', so it moves to p. 33.
+- **p. 33 → 34.** The Marathi puts 'It is quite essential, quite necessary, that we ought to know' at the end of the sentence, after 'the liability in which we will be involved ultimately', so the whole sentence stays on p. 33; p. 34 starts at 'Now, Sir'.
+- **p. 34 → 35.** 'in the different provinces of India between 1922 and 1935' comes before 'figures' and 'gave us' in the Marathi, so it stays on p. 34; p. 35 starts at 'The increases were'.
+- **p. 35 → 36.** 'of this province' (या प्रांताच्या हितासाठी) comes before 'greater resources' in the Marathi, so it stays on p. 35.
+- **p. 36 → 37.** 'taxes' is part of 'प्रांतिक करांचा' and the poorer classes come after it in the Marathi, so it stays on p. 36; 'Between' (यांच्या दरम्यान) comes later in the sentence and moves to p. 37.
+- **p. 37 → 38.** 'needs no' (गरज नसते) comes after 'school' in the Marathi, so it moves to p. 38.
+- **p. 38 → 39.** 'Finance Minister' is one word (अर्थमंत्र्यांचे) inside a reordered parenthesis, and नाही—की is one token, so 'Minister—that' stays on p. 38.
+- **p. 41 → 42.** 'theatre' (नाट्यगृहे) is followed by 'I should have thought' (असे मला वाटले असते) in the Marathi, so the sentence stays whole on p. 41; p. 42 starts at 'Because'.
+- **p. 43 → 44.** 'services rendered' (दिलेल्या सेवांचे) comes before 'charge' (शुल्क) in the Marathi, so it stays on p. 43; p. 44 starts at 'but'.
+- **p. 44 → 45.** The Marathi puts 'from the year 1894' first and 'the excise duty on cotton manufactures' before 'smacks of', so the whole sentence stays on p. 44; p. 45 starts at 'It cannot be anything else'.
+- **p. 45 → 46.** The Marathi puts 'to wipe out a deficit arising from what they call their Prohibition Policy' before 'for no other purpose than', so it stays on p. 45; p. 46 starts at 'and therefore, the question'.
+- **p. 47 → 48.** 'Surely' is rendered as निश्चितच near the end of the next Marathi sentence, so it moves to p. 48.
+- **p. 48 → 49.** 'the male population' (पुरुष लोकसंख्येतील) comes before 'only 14.3 per cent.' in the Marathi, so it stays on p. 48; only 'is literate' moves to p. 49.
+- **p. 51 → 52.** 'the best way in which agriculture ought to be run' comes before 'our village folks have no capital' in the Marathi, so the whole sentence stays on p. 51; p. 52 starts at 'Population is increasing'.
+- **p. 52 → 53.** 'to spend' (खर्च करण्यासाठी) comes before 'we have really very little' in the Marathi, so it stays on p. 52.
+- **p. 66 → 67.** The Marathi has 'but, Sir, I submit that' (तर, महोदय, माझे म्हणणे असे आहे की), so 'Sir, that' stays on p. 66 with 'I submit'.
+- **p. 68 → 69.** Cut between 'honestly' and 'admit' as in the English, but 'look at' (पाहतो) comes after the parenthesis in the Marathi, so it moves to p. 69.
+- **p. 70 → 71.** 'Syndicate or on the Academic Council' (सिंडिकेटवर किंवा अकॅडेमिक कौन्सिलवर) comes before 'special representation ... asked for' in the Marathi, so it stays on p. 70; p. 71 starts at 'I recognise ... these two bodies'.
+- **p. 74 → 75.** 'The University,' (विद्यापीठाला) comes at the end of the next Marathi sentence, so it moves to p. 75 with the rest of that sentence.
+- **p. 88 → 89.** 'they protested that' (असा त्यांचा निषेध होता) comes at the end of the Marathi sentence, after 'could not subject themselves to any control by ministers', so it moves to p. 89.
+- **p. 95 → 96.** 'the amount paid in the Poona' and 'district is Rs. 1-1-4' are one Marathi clause (पुणे जिल्ह्यात दिली जाणारी रक्कम ...), and the district name is not split, so it moves to p. 96.
+- **p. 96 → 97.** 'for them' (आपल्यासाठी) comes before 'work' in the Marathi, so it stays on p. 96.
+- **p. 97 → 98.** 'of the other classes' (इतर वर्गांच्या मुलांबरोबर) sits inside the Marathi clause before 'the House will not probably believe it', so it stays on p. 97; p. 98 starts at 'although this Council has passed'.
+- **p. 98 → 99.** 'before the introduction' (येण्यापूर्वी) comes after 'British Government in this country' in the Marathi, so it moves to p. 99.
+- **p. 101 → 102.** 'be converted into a money cess' (रोख करात रूपांतर करावे) comes before 'the first provision' in the Marathi, so it stays on p. 101; p. 102 starts at 'will be found already existing in section 19'.
+- **p. 102 → 103.** 'to serve or not to serve' (सेवा करण्याचे किंवा न करण्याचे) comes before 'freedom' in the Marathi, so it stays on p. 102; p. 103 starts at 'But under the existing law'.
+- **p. 103 → 104.** 'on the part of both the sides' (दोन्ही बाजूंनी) comes before 'a great agitation' in the Marathi, so it stays on p. 103; 'was carried on' moves to p. 104.
+- **p. 105 → 106.** 'therefore' (म्हणून) opens the Marathi sentence, so it stays on p. 105 with 'The Mahars'; 'have not ... objected to this bill' moves to p. 106.
+- **p. 111 → 112.** The Marathi puts 'in cases where ... joint payment for services to Government as well as to the ryots' first and 'Section 19C gives the Collector the power' last, so 'as well as to the ryots' stays on p. 111 and 'Section 19C gives the Collector the power' moves to p. 112.
+- **p. 124 → 125.** 'Local Self-Government' is not split, so 'Government' stays on p. 124; 'I am certain that' (याची मला खात्री आहे) comes at the end of the Marathi sentence, so it moves to p. 125.
+- **p. 128 → 129.** 'by the non-Brahmins' (ब्राह्मणेतरांनी) comes before 'a complete boycott' in the Marathi, so it stays on p. 128; p. 129 starts at 'They could not get a barber'.
+- **p. 129 → 130.** 'depressed classes' is one Marathi phrase (दलित वर्गांच्या), and 'I am bound to say' comes after it, so 'classes' stays on p. 129; p. 130 starts at 'so far as we are concerned'.
+- **p. 130 → 131.** 'I cannot' (मी ... देऊ शकत नाही) comes at the end of the Marathi sentence, so it moves to p. 131 with 'and'.
+- **p. 133 → 134.** 'Indian Constitution' is one phrase (भारतीय राज्यघटनेच्या) that comes before 'one of the best parts' in the Marathi, so 'Constitution' stays on p. 133.
+- **p. 138 → 139.** 'element in its composition' (रचनेतील ... घटकाचा) comes before 'I speak of the judiciary in general' in the Marathi, so it stays on p. 138; p. 139 starts at 'What is therefore important'.
+- **p. 149 → 150.** 'in many ways' (अनेक बाबतींत) comes before 'very defective' in the Marathi, so it stays on p. 149; p. 150 starts at 'yet the Hindu law of inheritance'.
+- **p. 155 → 156.** The Marathi puts 'against a debtor or any other person as a result of a decree' before 'whatever rights that person may have acquired', so that relative clause moves whole to p. 156.
+- **p. 159 → 160.** 'of the people' (लोकांच्या) comes before 'the large mass' in the Marathi, so it stays on p. 159.
+- **p. 162 → 163.** In the quoted section the Marathi puts the condition ('if the Governor-General has ... declared ...') first and 'the Federal Legislature shall ... have power to' at the very end, so that main clause moves to p. 163 with 'make laws ... Provincial Legislative List'.
+- **p. 163 → 164.** In the dash parenthesis the Marathi puts 'every word' (प्रत्येक शब्दाचा, joined to मूलतः— with no space) before 'the extended use ... apart from', so 'every word' stays on p. 163 and 'apart from the extended use to which' moves to p. 164.
+- **p. 165 → 166.** 'residents of the city' is शहराच्या रहिवाशांना, with 'city' first, so 'city' stays on p. 165; p. 166 starts at 'and who is so desperate'.
+- **p. 168 → 169.** The Marathi puts 'I gave the honourable member' (मी माननीय सदस्यांना दिले) at the end of the sentence, so it moves to p. 169; only the speaker's name stays on p. 168.
+- **p. 169 → 170.** Cut between 'the amendment and' and 'the amendments to the amendment' as in the English, but 'I have now to put' (मतास टाकायच्या आहेत) comes at the end of the Marathi sentence, so it moves to p. 170.
+- **p. 176 → 177.** Inside the quoted words the Marathi puts 'conflicts between communities and sections thereof, or gangs or factions' before 'preventing disturbance of public peace', so the quotation is kept whole on p. 176; p. 177 starts at 'The Honourable Mr.' (Munshi).
+- **p. 183 → 184.** 'more or less' is one Marathi word (कमी-अधिक), so 'are more' moves with it to p. 184.
+- **p. 190 → 191.** 'I have no doubt in my mind' (याविषयी माझ्या मनात शंका नाही) comes after 'main spring of action' in the Marathi, so the whole sentence stays on p. 190; p. 191 starts at 'It is the executive'.
+- **p. 191 → 192.** 'We want that the' (असे आपल्याला वाटते) comes at the end of the Marathi sentence, so it moves to p. 192.
+- **p. 193 → 194.** The Marathi puts 'on the other hand that they should be ruined in its service' before 'it is neither for the interest nor for the honour of the country', so 'it is neither for the interest nor for' moves to p. 194.
+- **p. 194 → 195.** 'in the administration' (प्रशासनावर) comes before 'create confidence' in the Marathi, so it stays on p. 194; p. 195 starts at 'then, I submit'.
+- **p. 205 → 206.** 'reference and ask these questions' (हा उल्लेख करणे आणि हे प्रश्न विचारणे) comes before 'I am particularly bound' in the Marathi, so it stays on p. 205; p. 206 starts at 'because I treat this'.
+- **p. 208 → 209.** 'comparing' (तुलना केली) comes after 'section 52A ... with section 290' in the Marathi, so it moves to p. 209.
+- **p. 210 → 211.** 'entitled to' (हक्काचे) comes before 'less representation' in the Marathi, so the whole question stays on p. 210; p. 211 starts at 'Now, Sir, I take these figures'.
+- **p. 211 → 212.** In 'these are figures quoted from official data' the Marathi puts 'figures ... are' (आकडे आहेत) after 'quoted from official data', so 'these are figures' moves to p. 212.
+- **p. 212 → 213.** 'in saying this' (हे सांगताना) comes before 'I am very serious' in the Marathi, so it stays on p. 212; p. 213 starts at 'whether this is no consideration'.
+- **p. 214 → 215.** 'I can quite understand' (हे मी समजू शकतो) comes after the 'where ...' clauses in the Marathi, so 'a German to tolerate anything that is of a separatistic character' stays on p. 214; p. 215 starts at 'but where the feeling that we are Indians'.
+- **p. 217 → 218.** The Marathi puts 'why there is a necessity of making this rule 103' before 'I have not heard any particular reason', so that whole sentence moves to p. 218.
+- **p. 218 → 219.** 'during two complete sessions' (दोन पूर्ण अधिवेशनांच्या काळात) comes before 'makes no motion with regard to the same' in the Marathi, so it stays on p. 218; p. 219 starts at 'the Bill shall lapse'.
+- **p. 222 → 223.** 'before the' is the postposition पूर्वी at the end of 'expiry of one year' (पूर्ण होण्यापूर्वी), so it moves to p. 223.
+- **p. 223 → 224.** 'in this speech' (या भाषणातील) comes before 'my first' in the Marathi, so it stays on p. 223; p. 224 starts at 'concern' (काम).
+- **p. 225 → 226.** 'himself' (स्वतःची) comes early in the Marathi clause, so it stays on p. 225 and the sentence ends there; p. 226 starts at 'That was section 491'.
+- **p. 227 → 228.** 'on the ground that it was a conspiracy' (संप हा कट होता या कारणावरून) opens the Marathi sentence, so the whole sentence stays on p. 227.
+- **p. 228 → 229.** The Marathi puts 'combination' before 'object' (संघटनेचा उद्देश), so the cut is at the comma inside the quotation and 'when the object of the' moves to p. 229.
+- **p. 229 → 230.** 'labour field' (कामगार क्षेत्रात) comes before 'active worker' in the Marathi, so that sentence stays whole on p. 229.
+- **p. 231 → 232.** The Marathi puts 'some of the minutes which members of the Congress wrote' before 'I want to read from the report of the select committee', so the whole sentence stays on p. 231.
+- **p. 232 → 233.** 'to proclaim to the world that' (असे जगाला जाहीर करणे होय) comes at the end of the Marathi sentence, so it moves to p. 233.
+- **p. 233 → 234.** 'of such a nature and on so extensive a scale' (अशा स्वरूपाची आणि इतक्या व्यापक प्रमाणावर) comes before 'action has been taken or threatened' in the Marathi, so it stays on p. 233.
+- **p. 239 → 240.** 'Act of 1926' is fused with 'under the Central' (1926 च्या केंद्रीय कायद्याखालीही) and the verb comes last, so the question stays whole on p. 239.
+- **p. 240 → 241.** 'less than slavery' (गुलामगिरीपेक्षा कमी) comes before 'nothing' in the Marathi, so the sentence ends on p. 240.
+- **p. 241 → 242.** 'that exist in Ahmedabad' (अहमदाबादेत असलेल्या) comes before 'the most propitious conditions' in the Marathi, so it stays on p. 241.
+- **p. 243 → 244.** 'one occupation' (एका व्यवसायातील) sits before 'all labourers' in the Marathi question, so the question stays whole on p. 243.
+- **p. 246 → 247.** Cut after 'under a mistake' as in the English; 'was obtained' (मिळवली गेली होती) and 'the Industrial Court finds that' (असे औद्योगिक न्यायालयास आढळले) follow the list in the Marathi, so they move to p. 247.
+- **p. 247 → 248.** 'It may be within the knowledge' (ठाऊक असेल) comes at the end of the Marathi sentence, so 'It may be within' moves to p. 248.
+- **p. 249 → 250.** 'From the little' is fused into उरलेल्या थोड्याशा शिल्लकीतून ('from the little balance that is left'), so the cut is at the sentence boundary and it moves to p. 250.
+- **p. 254 → 255.** 'it reminds me of what was' (त्याची ते मला आठवण करून देते) comes at the end of the Marathi sentence, so it moves to p. 255.
+- **p. 255 → 256.** 'And if home rule means nothing' is joined to the aside by a dash (म्हणजे—मला) and its 'nothing … than' (एवढाच असेल) comes at the end of the Marathi sentence, so it moves to p. 256.
+- **p. 263 → 264.** 'very human document which embodied the principles of democracy' sits inside the Marathi sentence before the verb 'commended' (शिफारस केली), so the sentence stays whole on p. 263.
+- **p. 264 → 265.** 'suit' (अनुरूप ठरेल) comes after 'people of India' in the Marathi, so the short question stays whole on p. 264.
+- **p. 265 → 266.** 'committee' (समितीचे) comes before 'member' in the Marathi, so it stays on p. 265.
+- **p. 266 → 267.** 'to the Legislative Council' (विधान परिषदेची) comes before 'the election of 1932' in the Marathi, so the sentence stays whole on p. 266.
+- **p. 267 → 268.** 'against the assailant' is one word (हल्लेखोराविरुद्ध) early in the Marathi clause, so the sentence stays whole on p. 267.
+- **p. 268 → 269.** Cut after 'Similarly,'; 'I did not know' (मला माहीत नव्हते) comes at the end of the Marathi sentence, so 'I did' moves to p. 269.
+- **p. 269 → 270.** 'the village office' (गावकचेरी) comes before 'sweepers who sweep' in the Marathi, so it stays on p. 269.
+- **p. 270 → 271.** 'their homes' (त्यांच्या घरांत) comes before 'beat' in the Marathi, so it stays on p. 270.
+- **p. 273 → 274.** 'Akushi' (आकुशी) comes before 'a village called' in the Marathi, so the sentence stays whole on p. 273.
+- **p. 274 → 275.** 'by the Honourable the Home Minister' (माननीय गृहमंत्र्यांनी) opens the Marathi sentence, so it stays on p. 274.
+- **p. 275 → 276.** The Marathi opens with 'which the Hindu exercises over me' (हिंदू माझ्यावर गाजवत असलेल्या) and ends with 'I will not tolerate it'; cut after 'religious dominance', so the former stays on p. 275 and 'I will not tolerate it' moves to p. 276 with 'is added the political dominance'.
+- **p. 277 → 278.** 'I would … request' wraps around the object in the Marathi (मी … विनंती करीन), so the cut is after 'With regard to that amendment,' and 'I would' moves to p. 278.
+- **p. 278 → 279.** 'the House to decide' (सभागृहाने ठरवण्याचा) comes before 'is not a matter' in the Marathi, so the short sentence stays whole on p. 278.
+- **p. 283 → 284.** 'it must be remembered that' is one phrase in the Marathi (हे लक्षात ठेवले पाहिजे की), so 'remembered that' stays on p. 283.
+- **p. 284 → 285.** 'caste-people is out-casted' stays on p. 284 with its clause (जातभाईंना … जातिबहिष्कृत केले जाते). The Marathi moves the main clause 'I am completely at a loss to understand how a society can be called spiritualistic' to the end of the sentence, so it goes to p. 285.
+- **p. 285 → 286.** 'Of what' (काय) comes after 'such conduct' in the short Marathi question, so the whole question moves to p. 286.
+- **p. 289 → 290.** Cut between Italy and France as in the English; 'the birth-rates of' (यांचे जन्मदर) follows the list in the Marathi, so it moves to p. 290.
+- **p. 294 → 295.** The Marathi puts 'retired Agricultural Chemist to the Government of Bombay' before the name, so the whole title stays on p. 294; the cut is after the name and degrees.
+- **p. 296 → 297.** The Marathi sentence opens with 'to enable new members like myself understand the exact purpose of this amount' and ends with 'certainly no information given', so it moves whole to p. 297, where most of its English is.
+- **p. 297 → 298.** 'consistent with' (सुसंगत आहे काय) comes at the end of the Marathi question, so it moves to p. 298.
+- **p. 300 → 301.** 'the extracts of statements' (निवेदनांतील उताऱ्यांकडे) comes after 'the people of Badlapur', and 'whether their attention has been drawn' (सरकारचे लक्ष वेधले गेले आहे काय) comes last in the Marathi, so both move to p. 301; the cut is after the first article.
+- **p. 301 → 302.** 'would have to be sent to' (पाठवावा लागेल) comes at the end of the Marathi clause, so it moves to p. 302.
+- **p. 316 → 317.** 'With the first' is fused into पहिल्या प्रश्नाचा ('the first problem'), so the whole sentence moves to p. 317.
+- **p. 318 → 319.** 'at Oxford, Cambridge and London' (ऑक्सफर्ड, केंब्रिज आणि लंडन येथील) comes before 'the men at the head of post-graduate departments' in the Marathi, so it stays on p. 318.
+- **p. 320 → 321.** 'to those centres' (अशाच केंद्रांना) comes before 'applies' in the Marathi, so it stays on p. 320; the cut is before the relative clause 'where the colleges are situated in close proximity'.
+- **p. 323 → 324.** 'important branch of knowledge' is interleaved with 'another equally' (ज्ञानाच्या तितक्याच महत्त्वाच्या दुसऱ्या शाखेत) and the Marathi ends with 'might find itself' (असे होऊ शकते), so the sentence stays whole on p. 323.
+- **p. 324 → 325.** Cut after 'so as to' as in the English; 'bring about' (घडून येईल) and 'for a body which' (अशा मंडळाची) close the Marathi clause, so they move to p. 325.
+- **p. 326 → 327.** 'numbers' (संख्येने) comes before 'too bulky' in the Marathi, so it stays on p. 326.
+- **p. 327 → 328.** Cut after 'in a so-called executive' as in the English; 'concentrates' (एकवटते) closes the Marathi sentence, so it moves to p. 328.
+- **p. 328 → 329.** 'the centre of' comes after 'academic power' (शैक्षणिक अधिकाराचे केंद्र) in the Marathi, so it moves to p. 329 with it.
+- **p. 329 → 330.** The Marathi turns the sentence around: 'both under-graduate and post-graduate' comes first and stays on p. 329, while 'The Syndicate shall not make any decision' comes last and moves to p. 330; cut at the comma after 'in regard to any matter'.
+- **p. 330 → 331.** Cut between 'oral' and 'examination' as in the English; 'would include' (समावेश असेल) closes the Marathi sentence, so it moves to p. 331.
+- **p. 335 → 336.** 'even if' (तरी) follows 'that be the consequence' in the Marathi, so only 'But' (पण) stays on p. 335.
+- **p. 337 → 338.** 'the same footing as other provinces' (इतर प्रांतांच्या बरोबरीने) comes before 'treated' in the Marathi, so item (2) stays whole on p. 337.
+- **p. 339 → 340.** 'rather than as citizens' (नागरिक म्हणून नव्हे) comes before 'as hostages' in the Marathi, so it stays on p. 339; 'A system must stand self-condemned' (ती व्यवस्था स्वतःच स्वतःला दोषी ठरवते) closes the sentence, so it moves to p. 340.
+- **p. 341 → 342.** 'of the Government' (सरकारच्या) comes before 'both sides' in the Marathi, so it stays on p. 341.
+- **p. 345 → 346.** Cut between 'the Governor' and 'be a constitutional head' as in the English; the closing 'implying … though' (असा होता, तरीही) moves to p. 346 with it.
+- **p. 346 → 347.** 'a possible recourse to such a system' (अशा पद्धतीचा संभाव्य अवलंब करण्याविषयी) comes before 'refrain from saying anything' in the Marathi, so the sentence stays whole on p. 346.
+- **p. 348 → 349.** 'of the classes who will be represented in the Legislature' (विधिमंडळात ज्यांना प्रतिनिधित्व मिळेल त्या वर्गांच्या) comes before 'rather than … the masses' in the Marathi, so it stays on p. 348; 'the argument that' (हा युक्तिवाद) comes after the parenthesis and moves to p. 349.
+- **p. 351 → 352.** 'against wrongful acts of ministers' (मंत्र्यांच्या चुकीच्या कृत्यांविरुद्ध) comes before 'no remedy either immediate or remote' in the Marathi, so the sentence stays whole on p. 351.
+- **p. 352 → 353.** 'Second' (दुसरे) is placed after 'why I recommend joint responsibility' in the Marathi, so it moves to p. 353 with its sentence.
+- **p. 354 → 355.** Cut after 'the constitution of every responsible government' as in the English; 'permits' (मुभा देते) closes the Marathi sentence, so it moves to p. 355.
+- **p. 356 → 357.** 'every individual must' (प्रत्येक व्यक्तीला असलाच पाहिजे) comes after 'the right to settle its terms' in the Marathi, so it moves to p. 357 with its clause.
+- **p. 360 → 361.** Cut after 'On the Printed Page'; the Marathi puts 'except with those who read widely…' before 'Truth' (सत्याला), so 'Truth' moves to p. 361.
+- **p. 364 → 365.** 'the situation of those whom he is nominated to represent' comes before 'is helpless to effect any change' (कोणताही बदल घडवून आणण्यास असहाय्य ठरतो) in the Marathi, so the cut is after 'the nominated member,' and 'is helpless to effect any change in' moves to p. 365.
+- **p. 365 → 366.** 'in accordance with public opinion' (लोकमतानुसार) comes before 'are decided' in the Marathi, so it stays on p. 365.
+- **p. 366 → 367.** 'than his constituency' (आपल्या मतदारसंघापेक्षा) opens the Marathi sentence and 'It is in the nature of things' closes it, so the sentence stays whole on p. 366.
+- **p. 368 → 369.** 'There is no doubt' (यात शंका नाही) closes the Marathi sentence, so 'There' moves to p. 369 with the whole sentence.
+- **p. 373 → 374.** 'canon' (नियमाचे) comes before 'violation' in the Marathi, so the sentence ends on p. 373.
+- **p. 374 → 375.** 'must be able to plan' (आखता आला पाहिजे) comes at the end of the Marathi sentence, so it moves to p. 375 with 'its way continuously to an ordered scheme of policy'; only 'An executive' (कार्यपालिकेला) stays on p. 374.
+- **p. 380 → 381.** 'community is above the rest' (समाज इतरांच्या वर आहे) comes inside the clause that ends 'ही दुष्ट गोष्ट आहे;' (it is an evil), so it stays on p. 380; cut at that semicolon, before 'that it is a still greater evil'.
+- **p. 382 → 383.** The Marathi puts 'appointed to devise franchise ... in India' before 'the Southborough Committee threw this promise to the wind', so 'this promise was thrown to the wind by the Southborough Committee which was subsequently' moves to p. 383 with it; only 'But' (पण) stays on p. 382.
+- **p. 384 → 385.** 'in pursuance of the Lucknow pact' (हे लखनौ करारानुसार आहे) is embedded before 'it would be better if they stated in their report', so it stays on p. 384; cut at the end of that sentence.
+- **p. 385 → 386.** 'by reason of their numbers' (आपल्या संख्येच्या आधारावर) comes near the start of the Marathi sentence, so it stays on p. 385; cut at the end of that sentence.
+- **p. 387 → 388.** 'to ensure' (याची खात्री करणे) follows its object in the Marathi, so it moves to p. 388.
+- **p. 390 → 391.** 'when there is one near at hand' (जवळच दाखला उपलब्ध असताना) opens the Marathi sentence, so it stays on p. 390; cut at the end of that sentence.
+- **p. 391 → 392.** 'the Government of India or any other authority held the view' (असे मत भारत सरकारचे किंवा इतर कोणत्याही अधिकारसंस्थेचे होते) closes the Marathi sentence, so it moves to p. 392.
+- **p. 396 → 397.** 'of the Governor' (गव्हर्नरच्या) comes before 'concurrence' (संमतीच्या) in the Marathi, so it stays on p. 396; cut at the end of that sentence.
+- **p. 397 → 398.** 'India Act' is part of the name भारत सरकार कायद्याचे, which cannot be split, and the Marathi sentence ends with 'this difficulty can be easily avoided', so the whole sentence stays on p. 397.
+- **p. 398 → 399.** 'which do not' (ज्यांच्यावर … नसते) belongs to the relative clause, whose negation comes at its end, so it moves to p. 399.
+- **p. 401 → 402.** The Marathi ends the quoted sentence with 'the Governor-General in Council shall be the sole judge' (याचा एकमेव निर्णायक सपरिषद गव्हर्नर-जनरल असेल), so 'comes within the purposes so specified' stays on p. 401; cut at the close of the quotation.
+- **p. 403 → 404.** 'the clauses in the Government' cannot be split from 'of India Act' (भारत सरकार कायद्यातील कलमे), and the Marathi puts 'which define the responsibilities of the Central Government' before it, so it moves to p. 404; 'and I suggest that' stays on p. 403.
+- **p. 406 → 407.** 'the possibilities of serious conflict' (गंभीर संघर्षाच्या शक्यतांनी भरलेली) comes before 'system of double government' in the Marathi, so it stays on p. 406; cut at the end of that sentence.
+- **p. 408 → 409.** 'to it by the Government of India' (भारत सरकारने केंद्र सरकारकडे सोपवलेली) opens the Marathi sentence, so it stays on p. 408; cut after the comma, before 'without imposing upon its members ...'.
+- **p. 411 → 412.** 'consideration of service matters' (सेवाविषयक बाबींचा विचार करण्याची) comes early in the Marathi sentence, which ends with 'I agree with the suggestion', so it stays on p. 411; cut at the end of that sentence.
+- **p. 412 → 413.** 'this difference' (हा फरक) follows 'between personal risk and sacrifices ...' in the Marathi, so 'If this difference' moves to p. 413 with the rest of its sentence.
+- **p. 415 → 416.** 'The struggles between the' (… यांच्यात चाललेले संघर्ष) follows the list of groups in the Marathi, so it moves to p. 416 with its sentence.
+- **p. 416 → 417.** Cut at 'and that their | administrative talents'; but 'Can they not lament' (असा विलाप ते करू शकत नाहीत का ?) closes the Marathi question, so it moves to p. 417.
+- **p. 422 → 423.** Cut at 'the former | feudatories' (पूर्वीचे | मांडलिक); 'representatives of' (यांचे प्रतिनिधी) follows the whole phrase in the Marathi, so it moves to p. 423.
+- **p. 423 → 424.** Cut after 'proper in itself —'; 'We may see, then, how hopeless it is to enforce' (ते अमलात आणणे किती निराशाजनक आहे, हे आपण पाहू शकतो) closes the Marathi sentence, so it moves to p. 424.
+- **p. 424 → 425.** 'great divisions of society' (समाजाच्या मोठ्या विभागांपैकी) comes before 'among the least numerous' in the Marathi, so it stays on p. 424; cut at the comma before 'and it is to be feared'.
+- **p. 428 → 429.** 'attention is' (लक्ष वेधले जात आहे) closes the Marathi sentence, so it moves to p. 429.
+- **p. 442 → 443.** The Marathi puts both qualifiers before 'every institution' and 'be applied with due caution' (प्रत्येक संस्थेला ते योग्य सावधगिरीने लागू करावे), so those words move to p. 443; 'races' (वंशांसाठी) stays on p. 442 with 'not reserved for special'. Cut at the comma between the two qualifiers.
+- **p. 443 → 444.** 'education among the Mahomedans' (मुसलमानांमध्ये शिक्षणाला) comes before 'appointed a Mahomedan Education Committee' in the Marathi, so it stays on p. 443; cut at the end of that sentence.
+- **p. 445 → 446.** 'special objections were' (विशेष आक्षेप होता) follows 'by the rural communities to the instruction of low castes' in the Marathi, so it moves to p. 446.
+- **p. 449 → 450.** Cut at 'in his | own hands' (सुरक्षितपणे | त्याच्याच हाती); 'can be left' (सोपवता येतील) and 'until it is clear that' (हे स्पष्ट होईपर्यंत) come later in the Marathi, so they move to p. 450.
+- **p. 455 → 456.** The Marathi puts 'most recently absorbed in Hinduism' (अगदी अलीकडे हिंदू धर्मात सामावून घेतलेले) before 'tribal aborigines', so it stays on p. 455; 'does not include' (यांचा समावेश नाही) comes after 'many of whom are considered impure', so it moves to p. 456. Cut before the dash that opens 'many of whom ...'.
+- **p. 456 → 457.** The Marathi turns the sentence round: 'There can be no two opinions' (याविषयी दुमत असू शकत नाही) comes last, so the whole sentence, including 'There can be no two opinions that the standing', moves to p. 457.
+- **p. 457 → 458.** 'political importance' (राजकीय महत्त्वाच्या आधारावर) comes before 'The Sabha protests' in the Marathi, so it stays on p. 457; cut at the end of that sentence.
+- **p. 458 → 459.** Cut at 'aesthetic sense | and undertook'; but 'when it found impossible to form symmetrical ones' (सुडौल मतदारसंघ तयार करणे अशक्य आहे असे आढळल्यावर) opens the Marathi sentence, so it stays on p. 458.
+- **p. 460 → 461.** 'the Sabha would claim' (असा दावा सभा करते) closes the Marathi sentence, so 'and the Sabha would, therefore, claim that three members' moves to p. 461 with the clause it introduces; cut at the comma before आणि म्हणून.
+- **p. 463 → 464.** 'who number' (त्यांची संख्या … आहे) comes after 'in this Presidency [i.e. Madras]' in the Marathi, so it moves to p. 464; cut at the semicolon.
+- **p. 471 → 472.** 'and recommended that action be taken against' (… कारवाई करावी, अशी शिफारस केली) closes the Marathi sentence, after the sections and parties, so it moves to p. 472; cut at the comma after 'made inquiries at the village'.
+- **p. 472 → 473.** 'away from him' (त्याच्याकडून … काढून घेऊन) is part of 'forcibly taken' in the Marathi, so it stays on p. 472; 'sold for Rs. 11' starts p. 473.
+- **p. 476 → 477.** The Marathi turns the sentence round ('use the common pots in the schools' comes before 'nobody is under an obligation'), so only 'But' (पण) stays on p. 476 and the rest moves to p. 477.
+- **p. 489 → 490.** 'there are various minorities' (विविध अल्पसंख्याक आहेत) follows 'even amongst the backward classes' in the Marathi, so it moves to p. 490.
+- **p. 494 → 495.** 'issued a circular' (परिपत्रक काढले) comes after its content ('no distinction as to drinking pots in their schools') in the Marathi, so 'and they issued a circular' moves to p. 495; cut at the comma before आणि.
+- **p. 504 → 505.** The Marathi turns the sentence round: 'I know of instances' (उदाहरणे मला माहीत आहेत) comes last, so the whole sentence, including 'I know of instances where doctors have actually', moves to p. 505.
+- **p. 512 → 513.** 'there is no doubt that' (यात शंका नाही) closes the Marathi sentence and 'in adopting' (वर्तन करताना) follows 'towards untouchables', so both move to p. 513; 'and' (आणि) stays on p. 512.
+- **p. 514 → 515.** 'statement' is fused into विधानानुसार ('according to … statement'), so it stays on p. 514; 'they have invented' (शोधून काढली आहेत) comes at the end of the Marathi sentence, so it moves to p. 515.
+- **p. 515 → 516.** 'on which the memorandum was submitted' (ज्या दिवशी हे निवेदन सादर करण्यात आले) comes before the date in the Marathi, so 'submitted' stays on p. 515; cut after the date's comma.
+- **p. 517 → 518.** 'in some parts of the' cannot be separated from 'Punjab' (पंजाबच्या काही भागांत), and 'led' is the closing verb (दंगली झाल्या), so they move to p. 518; only 'This' (यामुळे) stays on p. 517.
+- **p. 518 → 519.** 'have given expression to this sentiment' is one verb phrase in the Marathi (ही भावना व्यक्त केली आहे) at the end of a short sentence, so 'expression to this sentiment' stays on p. 518.
+- **p. 525 → 526.** 'The depressed classes find' (दलित वर्गांना आढळते) comes after 'limitations' (मर्यादा) in the Marathi, so the cut is at the end of that sentence and 'limitations' stays on p. 525.
+- **p. 526 → 527.** 'on one question and one question alone' (एका प्रश्नावर, आणि केवळ एकाच प्रश्नावर) comes before 'wish to lay all the emphasis they can' (शक्य तितका भर द्यायचा आहे) in the Marathi, so the main clause moves to p. 527; the concessive 'while they stand for Dominion Status with safeguards' stays on p. 526.
+- **p. 529 → 530.** The Marathi turns the short sentence round ('with logic and logicians' first, 'I have no quarrel' last), so 'I have no' moves to p. 530 with its sentence.
+- **p. 535 → 536.** 'Although I am very desirous that' (अशी माझी तीव्र इच्छा असली तरी) comes after the wish itself in the Marathi, so it moves to p. 536; 'the Chief Minister, whoever he is,' stays on p. 535.
+- **p. 536 → 537.** 'in administrating matters which are left to their charge' comes before 'will cease to look at problems from a communal point of view' (… पाहणे थांबवतील) in the Marathi, so 'will cease to look at problems from a communal' moves to p. 537.
+- **p. 539 → 540.** Cut at 'the point which | (it is) necessary to emphasize'; 'it is' (आवश्यक आहे) follows 'necessary' in the Marathi, so it moves to p. 540.
+- **p. 540 → 541.** 'the necessity which … may feel of' (असण्याची जी गरज वाटू शकेल) wraps round 'having a non-official, I mean an outsider, in his Cabinet' in the Marathi, so it moves to p. 541; 'or that … Prime Minister' (किंवा पंतप्रधानाला) stays on p. 540.
+- **p. 541 → 542.** 'the Governor may have fixed' (गव्हर्नरवर टाकलेली असू शकते) follows 'specific responsibility as apart from the responsibility of the whole of the Executive' in the Marathi, so it moves to p. 542.
+- **p. 542 → 543.** 'Province' (प्रांताच्या) comes early in the Marathi clause, so it stays on p. 542; cut at the end of that sentence.
+- **p. 543 → 544.** The Marathi puts 'that people are not transferred ... when a riot is actually proceeding' before 'it is very necessary that an impartial officer like the Governor ... should have the ultimate power to see', so that main clause moves to p. 544; 'Not in normal times ... when a riot has taken place or a disturbance has occurred' stays on p. 543.
+- **p. 544 → 545.** Cut at 'joint responsibility | will consent'; 'I do not think' (असे मला वाटत नाही) closes the Marathi sentence, so it moves to p. 545.
+- **p. 550 → 551.** 'of India' (भारताच्या) comes before 'future' (भावी), and 'there shall be imposed' (घातल्या जातील) closes the clause, so 'there shall be imposed on the future' moves to p. 551; cut at the clause edge after की.
+- **p. 551 → 552.** List: 'when travelling from one place to another' (एका ठिकाणाहून दुसऱ्या ठिकाणी प्रवास करताना) comes before 'omnibus' inside the same item in the Marathi, so it stays on p. 551; cut after the omnibus item.
+- **p. 559 → 560.** 'Depressed Classes on this Sub-Committee' (या उपसमितीवर दलित वर्गाच्या) opens the Marathi clause, before 'what I have said' and 'the constitution should be made complete', so the whole clause after 'What I want is that' goes to p. 560.
+- **p. 560 → 561.** '“free exercise” etc.' (“मुक्त वापर” इत्यादींच्या) comes before 'not satisfied merely with the declaration' and 'definite statement' in the Marathi, so it stays on p. 560; the cut is at the sentence end.
+- **p. 561 → 562.** 'but it does put obstacles' (पण ... ते अडथळे निर्माण करते) is split around the 'unless everybody says' clause in the Marathi, so the whole 'but' clause goes to p. 562.
+- **p. 563 → 564.** 'Federal Executive' (संघराज्य कार्यकारी मंडळावर) comes before the verb in the Chairman's Marathi sentence, so it stays on p. 563; the cut is at the sentence end.
+- **p. 571 → 572.** The Marathi puts 'so as to give them' and 'in the electoral law' before 'they demand that the following provisions shall', so 'they demand that the following provisions shall' goes to p. 572 with the rest of the sentence.
+- **p. 576 → 577.** 'Cabinet' (प्रत्येक मंत्रिमंडळात) comes inside the 'if this should be found impossible' clause in the Marathi, so it stays on p. 576.
+- **p. 579 → 580.** 'The only argument' (एकमेव युक्तिवाद) comes after 'in favour of responsible Government and Dominion Status' in the Marathi, so it goes to p. 580.
+- **p. 588 → 589.** The Marathi puts 'not possible or practicable' before 'certain members of this Committee' inside the 'although' clause, so the whole clause, including 'the question of universal adult suffrage has been pointed out by certain members', goes to p. 589.
+- **p. 594 → 595.** 'you can hardly shut out of your mind' (तुम्ही मनातून क्वचितच बाजूला ठेवू शकता) comes after 'the extent to which the thing is practicable' in the Marathi, so it goes to p. 595.
+- **p. 598 → 599.** 'wives of those who are enfranchised' (ज्यांना मताधिकार मिळाला आहे त्यांच्या पत्नींना) opens the 'if' clause in the Marathi, before 'the principle of giving votes', so it stays on p. 598.
+- **p. 603 → 604.** The Marathi turns the sentence around ('the one is a corollary of the other, in this I agree with Lord Zetland'), so 'a corollary of the other' stays on p. 603; the cut is at the sentence end.
+- **p. 606 → 607.** 'living and working' (राहतात आणि काम करतात) comes after 'their native country' (आपल्याच जन्मभूमीत) in the Marathi, so it goes to p. 607.
+- **p. 622 → 623.** 'it is a great advantage' (हा मोठा फायदा आहे) comes after the 'in a country like India, where…' clause in the Marathi, and 'like India' is one word (भारतासारख्या), so 'it is a great advantage in a country like' goes to p. 623.
+- **p. 623 → 624.** 'to the Sub-Committee' (उपसमितीबद्दल) comes before 'With all respect' (संपूर्ण आदर राखून) in the Marathi, so 'With all respect' goes to p. 624.
+- **p. 624 → 625.** 'only some 30' (फक्त सुमारे 30) comes after 'among the 562 States' (562 संस्थानांपैकी) in the Marathi, so it goes to p. 625; only 'Yet' (तरीही) stays on p. 624.
+- **p. 625 → 626.** 'whether his people can benefit by it' (त्याच्या प्रजेला त्याचा लाभ होऊ शकतो की नाही) sits in the middle of the Marathi sentence, before 'by letting his State be a separate entity' and 'it is no use trying to please the fancy', so those words go to p. 626 with it; any later cut would leave none of p. 626's English on p. 626.
+- **p. 626 → 627.** 'the Bundesrat had the power to' (अधिकारही बुंडेसराटला होता) comes after 'enquire into dynastic matters' at the end of the Marathi clause, so it goes to p. 627.
+- **p. 640 → 641.** 'not' (नाही) comes after 'a federation' (संघराज्य) in the Marathi, so 'England is not a federation' stays whole on p. 640; the cut is before 'and Ireland'.
+- **p. 646 → 647.** 'was exercised' (वापरला) comes at the end of the Marathi sentence, after 'and also in 1894', so it goes to p. 647.
+- **p. 648 → 649.** The Marathi puts 'I want that Government to take' (त्या सरकारने ... घ्यावीत, अशी माझी इच्छा आहे) after 'certain functions in respect of the backward tracts', so the whole sentence goes to p. 649.
+- **p. 649 → 650.** 'one thing' (एका गोष्टीचे) comes before 'surely indicative of' in the Marathi, so it stays on p. 649; p. 650 starts at 'namely' (ती म्हणजे).
+- **p. 653 → 654.** 'the Commonwealth Power' (कॉमनवेल्थचा अधिकार) comes after 'to make laws with respect to Taxation' in the Marathi, so it goes to p. 654.
+- **p. 655 → 656.** 'Federal Government' is one phrase at the start of the Marathi clause (संघराज्य सरकारची), so 'Government' stays on p. 655; the cut is before 'nor' (किंवा).
+- **p. 657 → 658.** 'property' (मालमत्तेविरुद्ध) sits in the middle of the long Marathi sentence, before 'would not invoke the authority' and 'strange anomaly', so it stays on p. 657; the cut is at the sentence end.
+- **p. 660 → 661.** 'we must assume that' (असे गृहीत धरावे) comes at the end of the Marathi sentence, after 'give effect to them', so it goes to p. 661.
+- **p. 664 → 665.** 'Government on the other hand' (दुसऱ्या बाजूला प्रांतिक सरकार) comes before 'if you are dividing functions' (कार्यांची विभागणी करत असाल) in the Marathi, so it stays on p. 664 with the whole 'if' clause.
+- **p. 665 → 666.** 'You assume that' (असे तुम्ही गृहीत धरता) comes at the end of the Marathi sentence, so the whole sentence goes to p. 666.
+- **p. 668 → 669.** 'Presidency of Bengal' (बंगाल इलाख्यासाठीचे) comes before 'a Court ... not' (न्यायालय नाही) in the Marathi, so it stays on p. 668; the cut is at the sentence end.
+- **p. 676 → 677.** 'I do not know whether it will serve any purpose for' (काही हेतू साध्य होईल की नाही हे मला माहीत नाही) comes at the end of the Marathi main clause, after 'me to join the particular committee ... to go into this matter', so it goes to p. 677.
+- **p. 677 → 678.** 'for considering this question' (या प्रश्नाचा विचार करण्यासाठी) comes first in the Marathi clause, before 'I have no objection to the proposal of adjourning', so the whole clause goes to p. 678.
+- **p. 678 → 679.** 'if I may say so' is one Marathi phrase (मला म्हणू द्या), so 'say so' stays on p. 678 with it; p. 679 starts with 'His Highness The Aga Khan'.
+- **p. 679 → 680.** 'I have no authority' (अधिकार मला नाही) comes at the end of the Marathi sentence, after 'to bring into being', so it goes to p. 680.
+- **p. 681 → 682.** 'It is impossible to conceive that' (याची कल्पनाही करता येत नाही) comes at the end of the Marathi clause, so it goes to p. 682 with the rest of the sentence.
+- **p. 682 → 683.** In the quoted resolution the Marathi puts 'which has been carried on in and outside the country' before 'This Meeting declares its no-confidence in the Congress movement', so the cut is before the quotation and the whole resolution goes to p. 683.
+- **p. 699 → 700.** 'I again say' (असे मी पुन्हा म्हणतो) comes at the end of the Marathi sentence, so it goes to p. 700.
+- **p. 701 → 702.** The Marathi puts 'those States which did not enter, but whose votes were used' before 'Would Federal Legislation be operative in', so the whole question goes to p. 702.
+- **p. 703 → 704.** 'in evidence' (साक्षीत) sits inside the Marathi clause, before 'a definite answer ... hardly possible', so it stays on p. 703; the cut is at the sentence end.
+- **p. 705 → 706.** The Marathi turns the sentence around: 'as representative of the paramount power, to bring it into effect, that particular relationship of control' comes first and 'We apprehend that it would be the Viceroy' last, so the whole sentence goes to p. 706.
+- **p. 707 → 708.** 'transfer Law and Order' (कायदा व सुव्यवस्था हस्तांतरित करण्यापूर्वी) comes at the start of the Marathi sentence, before 'You would transfer all the other', so it stays on p. 707.
+- **p. 710 → 711.** '(which gave) rise to that Act' (जिच्यामुळे तो कायदा झाला) sits inside the Marathi clause, before 'a case arose which is similar', so it stays on p. 710; the cut is at the semicolon.
+- **p. 714 → 715.** The Marathi puts the 'if the Province is not to be free...' clause first and 'it would be very difficult to realise this Autonomy in practice' last, so 'it would be very difficult to realise this' goes to p. 715.
+- **p. 729 → 730.** 'found' (आढळली) comes at the end of the Marathi sentence and 'general' (सर्वसाधारण) sits next to 'Hindu feeling', so 'found general' goes to p. 730.
+- **p. 733 → 734.** 'Bengal' (बंगालचे) comes before 'these representatives' (हे प्रतिनिधी) in the Marathi, so 'these representatives of' goes to p. 734.
+- **p. 737 → 738.** The Marathi turns Dr. Moonje's first sentence around ('when the meeting took place in Bombay and discussions were going on, Pandit Malaviya called me to that meeting'), so 'Malviya when the meeting took place and when the discussions were going on' stays on p. 737 with its main clause; p. 738 starts at 'I got up, Dr. [Ambedkar will remember]'.
+- **p. 741 → 742.** 'of the Amrita Samaj' (अमृत समाजाचे) comes before the name in the Marathi, so it stays on p. 741; the cut follows the English, between the name and 'M.A., B.L.'.
+- **p. 742 → 743.** The Marathi puts 'express purpose of attending the Malaviya Conference' in the middle of the sentence, before 'had left Calcutta' and 'it was well known', so it stays on p. 742; the cut is at the sentence end.
+- **p. 746 → 747.** 'I want to know whether there was' (होता का, हे मला जाणून घ्यायचे आहे) comes at the end of the Marathi sentence, so the whole sentence goes to p. 747.
+- **p. 755 → 756.** 'prevailing there' (तिथे प्रचलित असलेल्या) comes before 'social customs' (सामाजिक रूढींनुसार) in the Marathi, so it stays on p. 755.
+- **p. 760 → 761.** 'the fear, that' (ही भीती) comes after the 'one or two ... representatives ... will feel overwhelmed' clause in the Marathi, so it goes to p. 761.
+- **p. 761 → 762.** 'would not it be desirable' (हे इष्ट ठरणार नाही का) comes at the very end of the Marathi question, so it goes to p. 762.
+- **p. 764 → 765.** 'that day in the House of Commons' (त्या दिवशी हाउस ऑफ कॉमन्समध्ये) comes before 'the amendment which you proposed to move' in the Marathi, so it stays on p. 764.
+- **p. 765 → 766.** The English page turns inside the word 'bica-meral'; the Marathi 'आमची संसद अजूनही द्विसदनी आहे' ('meral Parliament') stays whole on p. 765, and p. 766 starts at 'and that the debates in the House of Lords'.
+- **p. 775 → 776.** 'it is really a great mistake' (ही खरोखर मोठी चूक आहे) comes at the end of the Marathi sentence, so it goes to p. 776.
+- **p. 780 → 781.** 'Mr. Gandhi expressed his intention to fast' (श्री. गांधी यांनी ... उपोषण करण्याचा आपला इरादा व्यक्त केला) comes at the end of the Marathi sentence, after 'his objection to the provisions...', so it goes to p. 781; only 'On the issue of the Award' (निवाडा जाहीर होताच) stays on p. 780.
+- **p. 784 → 785.** 'Pact by His Majesty’s Government' (हिज मॅजेस्टींच्या सरकारने करार) comes before 'announced the acceptance' (स्वीकारल्याचे जाहीर केले) in the Marathi, so it stays on p. 784; p. 785 starts at 'and he said'.
+- **p. 799 → 800.** 'expression “religion and religious usages”' (“धर्म आणि धार्मिक रूढी” या शब्दप्रयोगाच्या) comes at the start of the Marathi sentence, so it stays on p. 799; p. 800 starts at 'because' (कारण).
+- **p. 803 → 804.** 'Government and its Province' (सरकार व त्याचा प्रांत यांच्याशी) comes before 'shall be under the superintendence or the control in all matters' in the Marathi, so it stays on p. 803; p. 804 starts at 'and will also'.
+- **p. 804 → 805.** 'we must consider' (आपल्याला ... विचार करावा लागेल) is split around 'the point of All-India statistics generally' in the Marathi, so 'we must consider the' goes to p. 805.
+- **p. 810 → 811.** The Marathi turns the clause around: 'that would appear to permit discussions that we think would be harmful to the area' comes first and 'we do not want to take any action' (अशी कोणतीही कृती आम्हाला करायची नाही) last, so 'we do not want to take any action' goes to p. 811.
+
+## Volume 3 (53 breaks)
+
+- **p. 18 → 19.** 'the State Calendar' (राज्याच्या दिनदर्शिकेतील) comes before 'feasts and fasts' in the Marathi, so 'Calendar' stays on p. 18; 'the knowledge of' (यांचे ज्ञान) closes the Marathi sentence, so it goes to p. 19 with 'the ritual appropriate to them'.
+- **p. 20 → 21.** 'of the Hindus' (हिंदूंच्या) comes before 'religious, ritualistic and social life', and 'in minute detail' before 'lays down', in the Marathi, so both stay on p. 20; p. 21 begins at 'and which must be regarded as the Bible of the Hindus'.
+- **p. 22 → 23.** 'it has brought about a complete' (तिने आमूलाग्र परिवर्तन घडवून आणले आहे) comes after 'the nature of Religion as taken by savage and civilized society' in the Marathi, so it goes to p. 23.
+- **p. 28 → 29.** 'Edom' (अदोम) comes after 'for example, the progenitor of the Edomites' in the Marathi, so it goes to p. 29 with its sentence. The p. 28 footnote '1 स्मिथ, उपरोक्त (Ibid)' sits inside that Marathi sentence (after मानले होते,) and moves to p. 29 with it.
+- **p. 30 → 31.** 'piety' (धार्मिकतेची) comes before 'proper attitude' in the Marathi, so it stays on p. 30; p. 31 begins at कारण ('for no amount of discussion').
+- **p. 32 → 33.** 'possible needs and desires' (शक्य असलेल्या गरजांचा आणि इच्छांचा) comes before 'a whole region' in the Marathi, so it stays on p. 32; p. 33 begins at the relative clause ज्यासाठी ('for which religion could and would do nothing').
+- **p. 34 → 35.** 'We began with the distinction' (भेदापासून सुरुवात केली) closes the Marathi clause after 'antique society and modern society', so 'modern society' stays on p. 34; p. 35 begins at 'as has been pointed out'.
+- **p. 36 → 37.** The Marathi turns the sentence around ('so long as there is faith in a religious ideal, it never fails to work'), with 'A religious ideal' inside the opening clause, so the whole sentence goes to p. 37 and only 'A religious ideal' leaves p. 36.
+- **p. 44 → 45.** The Marathi puts 'that Manu has also ordained Religious inequality' before 'I now propose to take other matters', so that sentence stays whole on p. 44 and only 'ordained Religious inequality' leaves p. 45; p. 45 begins with the sacraments and Ashrams sentence.
+- **p. 54 → 55.** 'Vedas' (वेदांच्या) comes before 'the study of' in the Marathi, so the sentence ends on p. 54; p. 55 begins at 'That was only natural'.
+- **p. 62 → 63.** 'became' (झाला) follows 'his Purohita' in the Marathi, so 'Purohita' stays on p. 62; p. 63 begins at 'the Balakhilyas and Sarasvatyas his ministers'.
+- **p. 64 → 65.** The Marathi puts 'the destruction of the oppressor and the discovery of Indra's lurking place' before 'he will himself perform a sacrifice ... promises', so the whole promise clause goes to p. 65, including 'and promises that he will himself perform a sacrifice' from p. 64.
+- **p. 66 → 67.** 'is not' (नाही) closes the Marathi sentence, so it goes to p. 67 with 'more powerful than thou'.
+- **p. 72 → 73.** 'begged' (याचना केली) closes the Marathi sentence, after 'that he would give him', so it goes to p. 73.
+- **p. 74 → 75.** 'justice' (न्यायाने) comes before 'rule' and 'disposition' in the Marathi, so it stays on p. 74; p. 75 begins at 'and the promise of instruction from the virtuous'.
+- **p. 80 → 81.** Cut between 'choose and' | 'make', as in the English, but 'his own career' (आपला व्यवसाय) comes before 'choose' in the Marathi, so it stays on p. 80, and 'competency' (सक्षम होईल) closes the sentence, so it goes to p. 81.
+- **p. 82 → 83.** 'there is no doubt' (याविषयी शंका नाही) closes the Marathi sentence, so it goes to p. 83 with 'the relation was that of master and servant'.
+- **p. 100 → 101.** 'has been marked by' (चिन्हांकित झाले आहे) comes after 'some discovery or invention in some department of knowledge or Art' in the Marathi, so it goes to p. 101.
+- **p. 102 → 103.** The Marathi puts 'whether the animal has died a natural death or has been killed ... by a tiger' (p. 103) before 'there is very little meat that they will not eat', so 'there is very little meat that they will' goes to p. 103 with it. The p. 102 footnote '1 ही आणि इतर माहिती Census of India ...' stands at the very end of the Marathi paragraph, so no cut can keep it on p. 102; it goes to p. 103. That footnote is why the cut sits well before the 67% mark.
+- **p. 110 → 111.** 'interest in practically consulting the welfare of others' (इतरांच्या कल्याणाचा प्रत्यक्ष व्यवहारात विचार करण्यात) comes before 'gives to each individual a stronger personal' in the Marathi, so that whole clause goes to p. 111.
+- **p. 120 → 121.** Cut between 'a Shudra and' | 'an Ati-Shudra', as in the English, but 'can hold' (ठेवू शकतो) closes the Marathi clause, so it goes to p. 121.
+- **p. 140 → 141.** The Marathi puts 'the task to him' (ते काम आपल्यावर सोपवावे) before 'He asks them', so the whole sentence stays on p. 140; p. 141 begins at 'This is evident from the following admonition'.
+- **p. 148 → 149.** 'their houses of prayer and idol-worship' (त्यांच्या प्रार्थनेच्या आणि मूर्तिपूजेच्या घरांचा) comes before 'manage' in the Marathi, so the whole clause 'and persons who manage and rule their houses' goes to p. 149; only 'and persons who manage' leaves p. 148.
+- **p. 150 → 151.** Cut between 'music and singing, and' | 'a great assembly of people', as in the English, but 'making great rejoicings' (मोठा आनंदोत्सव केला जातो) closes the Marathi sentence, so it goes to p. 151.
+- **p. 152 → 153.** The Marathi puts 'when the Royal State moves from one place to another' (राजदरबार ... जातो तेव्हा) before 'they work as carriers of all things', so it stays on p. 152; p. 153 begins at 'but there are very few of them in this land'.
+- **p. 158 → 159.** 'its internal affairs' (आपल्या अंतर्गत बाबींची) comes before 'the disposal of' in the Marathi, so it stays on p. 158; 'It is independent and sovereign' (ती स्वतंत्र आणि सार्वभौम आहे) closes the Marathi sentence, so it goes to p. 159. Cut before 'and the enforcement of caste regulations'.
+- **p. 160 → 161.** 'what is their' (त्यांचे ... काय आहे) is spread through the Marathi clause 'हिंदू समाजात त्यांचे स्थान काय आहे', so that whole clause goes to p. 161; p. 160 ends at 'Who are these Avarna Hindus,'.
+- **p. 178 → 179.** Cut between 'his own' | 'Dhamma', as in the English, but 'formulated' (मांडला) follows 'Dhamma' in the Marathi, so it goes to p. 179.
+- **p. 188 → 189.** The Marathi turns the sentence around: 'of the absence of any spiritual basis for the Aryan religion' comes first and 'The hymns of the Rig Veda furnish very good evidence' last, so the whole sentence goes to p. 189 and only 'The hymns of the Rig Veda furnish very' leaves p. 188.
+- **p. 204 → 205.** The Marathi puts 'with the charge of laying hold of the evil doers' (दुष्कर्मी लोकांना पकडण्याची जबाबदारी देऊन) before 'dispersed ... officers', and 'appearance to the people' inside the officers clause, so both stay on p. 204; p. 205 begins at 'and everywhere he ordered proclamations to be made by beat of drum'.
+- **p. 214 → 215.** 'drinks, the root of carelessness' is inside the last item of the Marathi list (बेफिकिरीचे मूळ असलेल्या ... पेयांपासून दूर राहणे), which is kept whole on p. 214; p. 215 starts at 'that is a sacrifice better...'.
+- **p. 216 → 217.** 'Kutadanta the Brahman with religious discourse' comes before the verbs in the Marathi, so it stays on p. 216; the cut falls between 'aroused' and 'incited' as in the English.
+- **p. 234 → 235.** 'twice-born' (द्विज) sits in the middle of the Marathi sentence, whose main verb comes last, so the whole sentence stays on p. 234; p. 235 starts at 'Buddha repudiated this Aryan doctrine'.
+- **p. 240 → 241.** 'is a teacher' (शिक्षक आहे) comes at the end of the Marathi clause after 'not open to blame in the world', so it moves to p. 241 with it.
+- **p. 286 → 287.** 'fought' (लढले) comes at the end of the Marathi sentence, so it moves to p. 287.
+- **p. 294 → 295.** 'may sell' (विकू शकतो) closes the Marathi sentence, so it moves to p. 295 together with 'in order to increase his wealth'.
+- **p. 298 → 299.** 'differ' (भिन्न आहेत) ends the Marathi sentence, so it moves to p. 299.
+- **p. 310 → 311.** 'in every group' (प्रत्येक गटात) comes before 'he is a dominant' in the Marathi, so it stays on p. 310; the cut falls between 'dominant' and 'figure' as in the English.
+- **p. 316 → 317.** The Marathi puts 'in case the apostle endeavoured to pervert others' before 'Emperors Theodosius and Valentinian added capital punishment', so that whole clause goes to p. 317, which then opens as the English p. 317 does.
+- **p. 336 → 337.** 'progress of science' (विज्ञानाच्या प्रगतीपेक्षा) opens the Marathi sentence, so the sentence stays whole on p. 336.
+- **p. 338 → 339.** The Marathi puts 'by the views of one single educated class drawn from one single class of society ... before the interests of the country' before the verb 'misdirected' and before the p. 338 footnote (Gazetteer ... I. p. 95), so it stays on p. 338; the cut follows the footnote, and p. 339 starts at 'misdirected' (दिशाभूल).
+- **p. 354 → 355.** 'who has amassed riches' (संपत्ती जमवलेला) comes before 'servile man' in the Marathi, so it stays on p. 354.
+- **p. 376 → 377.** 'dogmas resting on' (पायावर उभे असलेले मताग्रह) comes after 'such silly ... fragile foundations' in the Marathi, so it moves to p. 377.
+- **p. 378 → 379.** 'is posterior' and 'I am assuming' (नंतरची आहे असे मी गृहीत धरत आहे) come after 'Buddhism and Jaimini's Purva Mimansa' in the Marathi, so they move to p. 379.
+- **p. 388 → 389.** The Marathi puts 'as a token of their view that the charges contained the whole truth...' before 'showered flowers' and moves 'the Mahabharata itself in the Gada Parva records' to the end of the sentence, so 'showered flowers' and that attribution go to p. 389.
+- **p. 408 → 409.** 'of the Brahmans' (ब्राह्मणांचा) comes before 'enemy' (शत्रू) in the Marathi, so it stays on p. 408; p. 409 starts at 'has been smitten'.
+- **p. 410 → 411.** The Marathi opens the sentence with the list (nooses of Brahma, Kala and Varuna, discus of Vishnu, trident of Shiva) and puts 'many and various other celestial missiles' after it, so the whole sentence goes to p. 411.
+- **p. 414 → 415.** Cut between 'spotless' and 'Brahmanhood' as in the English, but 'the transcendent power' and 'thou shalt behold' (अलौकिक सामर्थ्य दिसेल) close the Marathi sentence, so they move to p. 415.
+- **p. 420 → 421.** 'and revelled in drinking to satiety' (मनसोक्त पान करत त्यांनी मौज केली) comes at the end of the Marathi sentence, after 'as if they had conquered heaven', so it moves to p. 421.
+- **p. 438 → 439.** The Marathi puts 'the three Vidyas, Sama, Rk, and Yajus' before 'were taught', so 'They were taught all' goes with the whole sentence to p. 439.
+- **p. 444 → 445.** 'such as Buddhism' (बौद्ध धर्मासारख्या) opens the Marathi sentence, so 'Buddhism' stays on p. 444 with the rest of the sentence.
+- **p. 464 → 465.** 'on Vaishali' (वैशालीकडे) comes before the verb 'looked' (पाहिले) in the Marathi, so it stays on p. 464; p. 465 starts at 'and said to Ananda'.
+- **p. 472 → 473.** 'than the question when the State will wither away' (राज्यसंस्था केव्हा लोप पावेल, या प्रश्नापेक्षा) comes before 'this question is more important' in the Marathi, so it stays on p. 472; p. 473 starts at 'Will it be succeeded by Anarchy?'.

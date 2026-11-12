@@ -151,9 +151,16 @@ export function formatPage(text: string): Block[] {
 /* ---------- Chapters as aligned paragraphs (the unit of translation) ---------- */
 export type PageBlocks = { p: number; n: number | null; blocks: Block[] };
 
+/** Where a paragraph runs over a page break, the translation source marks the place where the printed page turns. */
+export const pageMark = (p: number) => `[[page ${p}]]`;
+export const PAGE_MARK = /\[\[page (\d+)\]\]/;
+
 /**
- * The pages of a chapter as paragraphs, with a paragraph that runs over a page break kept whole on the
- * page where it starts, so that a translation can follow it sentence by sentence.
+ * The pages of a chapter as paragraphs, for translation. A paragraph that runs over a page break is kept
+ * whole on the page where it starts, so that a translator can follow it sentence by sentence, with the
+ * place where the page turns marked "[[page N]]". The translator puts the same mark in the translation,
+ * and it is split there again when it is published, so that every page of the translation holds what
+ * that page of the PDF holds (formatPage of that page, block for block).
  */
 export function chapterBlocks(rows: Page[]): PageBlocks[] {
   const out = rows.map((r) => ({ p: r.p, n: r.n, blocks: formatPage(r.t) }));
@@ -161,7 +168,7 @@ export function chapterBlocks(rows: Page[]): PageBlocks[] {
     const last = out[i].blocks[out[i].blocks.length - 1];
     const next = out[i + 1].blocks[0];
     if (last && next && last.type === 'p' && next.type === 'p' && !/[.?!:"”’)\]]$/.test(last.text)) {
-      last.text = `${last.text} ${next.text}`;
+      last.text = `${last.text} ${pageMark(out[i + 1].p)} ${next.text}`;
       out[i + 1].blocks.shift();
     }
   }

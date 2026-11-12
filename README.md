@@ -55,7 +55,7 @@ Translated content lives next to the English, with the same file names and struc
 | `src/content/life/`, `themes/`, `blog/` | `src/content/mr/…` | `node scripts/check-mr-md.mjs <files>` |
 | `src/data/<name>.json` | `src/data/mr/<name>.json` | `node scripts/check-mr-json.mjs <name>` |
 | `research/works/`, `research/constitution/` | `research/mr/…` | — |
-| `library/baws-en/` (the 17 volumes) | `library/baws-mr/` + `library/toc-mr.json` | `node scripts/translate-library.mjs status` |
+| `library/baws-en/` (the 17 volumes) | `library/baws-mr/` + `library/toc-mr.json` | `node scripts/translate-library.mjs status`, `… align` |
 
 Every translation follows **`i18n/marathi-style-guide.md`**: the meaning and intent of the original must never change. Passages flagged for a human reviewer are listed in `i18n/review/`.
 
@@ -66,7 +66,7 @@ node scripts/translate-library.mjs api volume-1          # every chapter of Volu
 node scripts/translate-library.mjs status                # progress for all volumes
 ```
 
-Translations are checked before they are published (same pages, same paragraphs, nothing left untranslated or dropped), and each reader page shows the original English beside the Marathi.
+Translations are checked before they are published (same pages, same paragraphs, nothing left untranslated or dropped), and each reader page shows the original English beside the Marathi. Every Marathi page holds what that page of the official PDF holds: a paragraph that runs over a page break is translated whole with a `[[page N]]` mark where the page turns, and split there when it is merged. `node scripts/translate-library.mjs align` lists pages whose Marathi does not line up with the English; chapters translated before page marks existed are split with `breaks` and `resplit` (`i18n/PAGE-BREAK-BRIEF.md`).
 
 ## Branches and deploys
 

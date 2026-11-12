@@ -1,7 +1,7 @@
 ---
 import DocsShell from '../../../components/DocsShell.astro';
 import ReaderBlocks from '../../../components/ReaderBlocks.astro';
-import { volumes, leavesOf, pagesOf, formatPage, chapterBlocks, marathiOf, titleIn, volLabelIn, type Volume, type Leaf } from '../../../lib/library';
+import { volumes, leavesOf, pagesOf, formatPage, marathiOf, titleIn, volLabelIn, type Volume, type Leaf } from '../../../lib/library';
 import { url, pdfUrl } from '../../../lib/site';
 import { getLang, translator } from '../../../i18n';
 
@@ -23,16 +23,16 @@ const mr = lang === 'mr';
 const rows = pagesOf(vol).filter((r) => r.p >= leaf.start && r.p <= leaf.end);
 const hasText = rows.some((r) => r.t.length > 40);
 
-// Marathi: the translation is stored as aligned paragraphs (chapterBlocks), so the English shown beside it uses the same paragraphs.
+// Marathi: each PDF page's translation is stored on that page, paragraph for paragraph (a paragraph that runs over
+// a page break is split where the page turns), so the English shown beside it is that page's own text.
 const marathi = marathiOf(vol);
 const translated = mr && rows.length > 0 && rows.every((r) => marathi.pages.has(r.p));
-const aligned = translated ? chapterBlocks(rows) : [];
 const reviewed = translated && rows.every((r) => /reviewed: yes/.test(marathi.pages.get(r.p)?.by || ''));
 const summary = translated ? marathi.summaries[leaf.slug] : undefined;
-const pagesShown = rows.map((r, i) => ({
+const pagesShown = rows.map((r) => ({
   ...r,
   blocks: translated ? marathi.pages.get(r.p)!.b : formatPage(r.t),
-  english: translated ? aligned[i].blocks : [],
+  english: translated ? formatPage(r.t) : [],
 }));
 
 const name = (s: string) => titleIn(vol, s, lang);
@@ -180,7 +180,7 @@ const here = partLabel ? `${chapterTitle} · ${partLabel}` : chapterTitle;
     ))}
 
     <p class="docs-note" data-pagefind-ignore>{translated
-      ? 'मूळ इंग्रजी मजकूर भारत सरकारने प्रकाशित केलेल्या अधिकृत PDF मधून शब्दशः घेतला आहे. पानांच्या सीमेवर तुटलेला परिच्छेद अनुवादात तो सुरू होणाऱ्या पानावर पूर्ण दिला आहे. उद्धृत करण्यापूर्वी मूळ पान तपासा.'
+      ? 'मूळ इंग्रजी मजकूर भारत सरकारने प्रकाशित केलेल्या अधिकृत PDF मधून शब्दशः घेतला आहे. प्रत्येक पानावरचा मराठी मजकूर मूळ PDF च्या त्याच पानावरील मजकुराचा अनुवाद आहे; पानाच्या सीमेवर तुटलेला परिच्छेद अनुवादातही तिथेच विभागला आहे. उद्धृत करण्यापूर्वी मूळ पान तपासा.'
       : t('Text taken word for word from the official PDF published by the Government of India. Line breaks have been joined into paragraphs; automatic extraction can still leave small errors, so check the original page before quoting.', 'मजकूर भारत सरकारने प्रकाशित केलेल्या अधिकृत PDF मधून शब्दशः घेतला आहे. ओळी जोडून परिच्छेद केले आहेत; स्वयंचलित प्रक्रियेत लहान चुका राहू शकतात, म्हणून उद्धृत करण्यापूर्वी मूळ पान तपासा.')}</p>
 
     <nav class="docs-pager" aria-label={t('Chapters', 'प्रकरणे')} data-pagefind-ignore>
