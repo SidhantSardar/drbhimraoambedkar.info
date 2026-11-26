@@ -26,6 +26,12 @@ export const GISCUS = {
 };
 
 /** Where the AI answer service lives. On GitHub Pages there is none, so the page falls back to search results. */
+/** The feedback Google Form (owned by SITE.email; new responses are emailed there). Shown on the About page. */
+export const FEEDBACK_FORM = {
+  url: 'https://docs.google.com/forms/d/e/1FAIpQLSc1QhLD_AML4woJSkV3FjBbTWPjrnesM-Q66GE3iSEoLU2Y1Q/viewform',
+  embed: 'https://docs.google.com/forms/d/e/1FAIpQLSc1QhLD_AML4woJSkV3FjBbTWPjrnesM-Q66GE3iSEoLU2Y1Q/viewform?embedded=true',
+};
+
 /** A mailto link with the subject filled in. */
 export const mailto = (subject = 'Feedback on Prabuddha Pathak') => `mailto:${SITE.email}?subject=${encodeURIComponent(subject)}`;
 

@@ -1,6 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
-import { url, SITE, SHOW_NEWS, mailto } from '../lib/site';
+import { url, SITE, SHOW_NEWS, mailto, FEEDBACK_FORM } from '../lib/site';
 import { getLang, translator } from '../i18n';
 const lang = getLang(Astro);
 const t = translator(lang);
@@ -15,112 +15,101 @@ const guide = `${SITE.repoUrl}/blob/main/i18n/marathi-style-guide.md`;
       <div class="prose">
         <p class="lede">मी <strong>सिद्धांत सरदार</strong> — एक आंबेडकरवादी आणि वेब डेव्हलपर.</p>
 
-        <p>बाबासाहेबांचे जीवन आणि कार्य सर्वांचे आहे. तरीही त्यांचे लेखन, भाषणे, नोंदी आणि छायाचित्रे सरकारी PDF, विद्यापीठांचे संग्रह, संग्रहालये आणि स्मारकांमध्ये विखुरलेली आहेत. भारत सरकारच्या सामाजिक न्याय आणि अधिकारिता मंत्रालयानेच ती “ग्रंथालये, स्मारके, अभिलेखागारे आणि तुटक डिजिटल स्रोतांमध्ये विखुरलेली” आहेत असे म्हटले आहे <a class="src" href="https://zaidsayyed.in/tools/sih-problem-statements/sih26096" target="_blank" rel="noopener noreferrer">SIH 2026 brief SIH26096</a>.</p>
+        <p>बाबासाहेबांचे लेखन, भाषणे, नोंदी आणि छायाचित्रे सरकारी PDF, विद्यापीठांचे संग्रह, संग्रहालये आणि स्मारकांमध्ये विखुरलेली आहेत. भारत सरकारच्या सामाजिक न्याय आणि अधिकारिता मंत्रालयानेच ती “ग्रंथालये, स्मारके, अभिलेखागारे आणि तुटक डिजिटल स्रोतांमध्ये विखुरलेली” आहेत असे म्हटले आहे <a class="src" href="https://zaidsayyed.in/tools/sih-problem-statements/sih26096" target="_blank" rel="noopener noreferrer">SIH 2026 brief SIH26096</a>.</p>
 
-        <p>म्हणून हे संकेतस्थळ ते सर्व एकत्र आणण्यासाठी मी बनवत आहे: त्यांचे संपूर्ण जीवन सोप्या भाषेत, त्यांनी लिहिलेले सर्व काही सूचीबद्ध आणि शोधण्याजोगे, संविधानाचे स्पष्टीकरण, आणि त्यांचे कार्य आजही पुढे नेणाऱ्या घटना, बातम्या आणि लेख — सर्व एकाच ठिकाणी, सर्वांसाठी खुले आणि मोफत.</p>
+        <p>हे संकेतस्थळ ते सर्व एकाच ठिकाणी आणते: त्यांचे संपूर्ण जीवन सोप्या भाषेत, त्यांनी लिहिलेले सर्व काही सूचीबद्ध आणि शोधण्याजोगे, आणि संविधानाचे स्पष्टीकरण — सर्वांसाठी खुले आणि मोफत. हा इतिहास कसा सांगितला जातो, यात अधिक आंबेडकरवादी दृष्टिकोनाची गरज आहे, आणि त्याची सुरुवात ही साधने एकत्र, संदर्भांसहित आणि खुली असण्यापासून होते.</p>
 
-        <p>हा इतिहास कसा सांगितला जातो आणि कसा पोहोचवला जातो, यात आपल्याला अधिक आंबेडकरवादी दृष्टिकोनाची गरज आहे. त्याची सुरुवात ही साधने एकत्र, संदर्भांसहित आणि खुली असण्यापासून होते. म्हणूनच मी हे काम करत आहे.</p>
-
-        <p><a class="btn btn-primary" href="https://www.sidhantsardar.com/" target="_blank" rel="noopener noreferrer">माझ्याविषयी आणि माझ्या कामाविषयी →</a></p>
+        <p class="about-actions"><a class="btn btn-primary" href="https://www.sidhantsardar.com/" target="_blank" rel="noopener noreferrer">माझ्याविषयी आणि माझ्या कामाविषयी →</a> <a class="btn btn-ghost" href="#feedback">संपर्क करा ↓</a></p>
 
         <h2>हे संकेतस्थळ कसे काम करते</h2>
         <ul>
-          <li><strong>प्रत्येक तथ्याला संदर्भ आहे.</strong> प्रत्येक प्रकरणातील क्रमांकित टिपा नेमक्या दस्तऐवज, संग्रह किंवा पुस्तकाकडे नेतात. संदर्भ त्यांच्याच <em>लेखन आणि भाषणे</em> खंडांतील असेल, तर ती टीप ते पान याच संकेतस्थळावर उघडते.</li>
-          <li><strong>आधी मूळ स्रोत:</strong> त्यांचे स्वतःचे शब्द, संविधान सभेतील चर्चा आणि विद्यापीठांचे संग्रह — त्यानंतर मान्यताप्राप्त चरित्रे आणि पत्रकारिता.</li>
-          <li><strong>मतभेदांबद्दल प्रामाणिकपणा.</strong> एखाद्या तारखेबद्दल किंवा तपशिलाबद्दल स्रोतांमध्ये मतभेद असल्यास आम्ही तसे स्पष्ट सांगतो आणि प्रत्येक स्रोत दाखवतो.</li>
-          <li><strong>बनावट अवतरणे नाहीत.</strong> मूळ स्रोतात सापडलेले अवतरणच येथे दिले जाते.</li>
+          <li><strong>प्रत्येक तथ्याला संदर्भ आहे.</strong> क्रमांकित टिपा नेमक्या दस्तऐवजाकडे किंवा पुस्तकाकडे नेतात, आणि मूळ स्रोतांना प्राधान्य दिले जाते: त्यांचे स्वतःचे शब्द, संविधान सभेतील चर्चा आणि विद्यापीठांचे संग्रह.</li>
+          <li><strong>प्रामाणिकपणा.</strong> बनावट अवतरणे नाहीत. एखाद्या तारखेबद्दल किंवा तपशिलाबद्दल स्रोतांमध्ये मतभेद असल्यास आम्ही तसे स्पष्ट सांगतो आणि प्रत्येक स्रोत दाखवतो.</li>
+          <li><strong>अर्थ न बदलणारा मराठी अनुवाद.</strong> पहिला मसुदा AI (Claude) च्या मदतीने, एका <a href={guide} target="_blank" rel="noopener noreferrer">सार्वजनिक अनुवाद-मार्गदर्शिकेनुसार</a> तयार केला जातो: काहीही वगळायचे नाही, काहीही जोडायचे नाही, त्यांची धार कमी करायची नाही. प्रत्येक पानासोबत मूळ इंग्रजी मजकूर आणि अधिकृत PDF एका क्लिकवर दिसते.</li>
           <li><strong>खुले आणि दुरुस्त करता येण्याजोगे.</strong> संशोधनाच्या नोंदी <a href={SITE.repoUrl} target="_blank" rel="noopener noreferrer">GitHub</a> वर सार्वजनिक आहेत आणि कोणीही <a href={url('/contribute/')}>दुरुस्ती सुचवू</a> शकते.</li>
-        </ul>
-
-        <h2>मराठी अनुवाद कसा केला जातो</h2>
-        <p>बाबासाहेबांचे बहुतेक लेखन इंग्रजीत आहे. ते प्रत्येक मराठी वाचकापर्यंत पोहोचावे म्हणून आम्ही ते मराठीत आणत आहोत. त्यासाठी एक नियम सर्वात महत्त्वाचा आहे: <strong>मूळ इंग्रजी वाक्यांचा अर्थ आणि हेतू कधीही बदलायचा नाही.</strong></p>
-        <ul>
-          <li>अनुवादाचा पहिला मसुदा AI (Claude) च्या मदतीने, एका <a href={guide} target="_blank" rel="noopener noreferrer">सार्वजनिक अनुवाद-मार्गदर्शिकेनुसार</a> तयार केला जातो: काहीही वगळायचे नाही, काहीही जोडायचे नाही, त्यांची धार कमी करायची नाही, आणि त्यांनी वापरलेले शब्द (उदा. “अस्पृश्य”) तसेच ठेवायचे.</li>
-          <li>प्रत्येक पानासोबत मूळ इंग्रजी मजकूर एका क्लिकवर दिसतो, आणि मूळ सरकारी PDF चे पानही — म्हणजे कोणताही वाचक अनुवाद तपासू शकतो.</li>
-          <li>समजण्यासाठी दिलेले “सोप्या शब्दांत” सारांश वेगळे दाखवले जातात; ते बाबासाहेबांचा मूळ मजकूर नाहीत.</li>
-          <li>अनुवादात चूक आढळल्यास कृपया <a href={url('/contribute/')}>कळवा</a>. मराठी अभ्यासकांनी तपासलेली पाने तसे स्पष्टपणे दाखवली जातील.</li>
         </ul>
 
         {SHOW_NEWS && <>
           <h2>या संकेतस्थळावरील बातम्या</h2>
-          <p>बातम्या विभाग दर सहा तासांनी अनेक माध्यमांमधून जात, न्याय, संविधान आणि आंबेडकरी चळवळीविषयीच्या बातम्या गोळा करतो. एकाच घटनेच्या बातम्या एकत्र दाखवल्या जातात, म्हणजे ती कोणी दिली — स्थानिक, राष्ट्रीय किंवा आंतरराष्ट्रीय — हे दिसते, आणि प्रत्येक बातमी स्रोत म्हणून दिली जाते. बातम्यांचे मथळे मूळ भाषेतच दिले जातात. छोटे सारांश AI च्या मदतीने, फक्त त्या बातम्यांच्या आधारे लिहिले जाऊ शकतात आणि तसे नेहमी नमूद केले जाते.</p>
+          <p>बातम्या विभाग दर सहा तासांनी अनेक माध्यमांमधून जात, न्याय, संविधान आणि आंबेडकरी चळवळीविषयीच्या बातम्या गोळा करतो. प्रत्येक बातमी स्रोत म्हणून दिली जाते, आणि AI च्या मदतीने लिहिलेले सारांश तसे नेहमी नमूद केले जातात.</p>
         </>}
 
         <h2>या संकेतस्थळाचे रूप</h2>
-        <p>या संकेतस्थळावरील रेषांची नक्षी <strong>गोदना</strong> चित्रकलेपासून प्रेरित आहे — बिहारमधील मिथिला भागातील दलित (दुसाध) स्त्रियांनी त्यांच्या समाजातील गोंदणाच्या परंपरेतून निर्माण केलेली, हाताने बनवलेल्या कागदावर बारीक काळ्या रेषांनी काढलेली कला <a class="src" href="https://behanbox.com/2023/05/25/an-art-form-of-bihars-dalit-women-asserts-its-unique-identity/" target="_blank" rel="noopener noreferrer">Behanbox</a> <a class="src" href="https://sarmaya.in/tag/godna-painting/" target="_blank" rel="noopener noreferrer">Sarmaya</a>. 2024 मध्ये गोदना कलाकार शांती देवी पासवान यांना पद्मश्री मिळाली <a class="src" href="https://en.wikipedia.org/wiki/Shanti_Devi_Paswan" target="_blank" rel="noopener noreferrer">Wikipedia</a>. येथील नक्षी त्या प्रेरणेतून आम्ही स्वतः काढलेली साधी चित्रे आहेत, कोणत्याही कलाकाराच्या कामाची नक्कल नाही. कलाकारांच्या परवानगीने आणि श्रेयासह खरी गोदना चित्रे येथे दाखवायला आम्हाला आवडेल.</p>
+        <p>येथील रेषांची नक्षी <strong>गोदना</strong> चित्रकलेपासून प्रेरित आहे — बिहारमधील मिथिला भागातील दलित (दुसाध) स्त्रियांनी त्यांच्या समाजातील गोंदणाच्या परंपरेतून निर्माण केलेली कला <a class="src" href="https://behanbox.com/2023/05/25/an-art-form-of-bihars-dalit-women-asserts-its-unique-identity/" target="_blank" rel="noopener noreferrer">Behanbox</a> <a class="src" href="https://sarmaya.in/tag/godna-painting/" target="_blank" rel="noopener noreferrer">Sarmaya</a>. येथील नक्षी त्या प्रेरणेतून आम्ही स्वतः काढलेली साधी चित्रे आहेत, कोणत्याही कलाकाराच्या कामाची नक्कल नाही.</p>
 
         <h2>प्रताधिकार आणि पुनर्वापर</h2>
         <ul>
-          <li>डॉ. आंबेडकर यांचे 1956 मध्ये निधन झाले. भारतीय प्रताधिकार कायद्यानुसार त्यांनी हयातीत प्रकाशित केलेले लेखन 2017 मध्ये भारतात सार्वजनिक क्षेत्रात (public domain) आले. त्यांच्या निधनानंतर प्रथम प्रकाशित झालेले लेखन (<em>लेखन आणि भाषणे</em> खंडांतील अनेक लेख) पहिल्या प्रकाशनापासून 60 वर्षे संरक्षित असते; हे खंड महाराष्ट्र शासनाने प्रकाशित केले असून भारत सरकारने ते ऑनलाइन मोफत उपलब्ध करून दिले आहेत. हे संकेतस्थळ ते मोफत, ना-नफा शिक्षणासाठी, नेहमी अधिकृत फाइल्सच्या दुव्यासह, पुनःप्रकाशित आणि अनुवादित करते.</li>
-          <li>छायाचित्रे आणि दस्तऐवजांचे परवाने त्यांच्यासोबत दिलेले आहेत. आम्ही फक्त सार्वजनिक क्षेत्रातील किंवा मुक्त परवान्याची छायाचित्रे वापरतो.</li>
-          <li>या संकेतस्थळासाठी लिहिलेला मूळ मजकूर <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer">Creative Commons BY-SA 4.0</a> परवान्याखाली उपलब्ध आहे.</li>
+          <li>डॉ. आंबेडकर यांनी हयातीत प्रकाशित केलेले लेखन 2017 पासून भारतात सार्वजनिक क्षेत्रात (public domain) आहे. महाराष्ट्र शासनाने प्रकाशित केलेले आणि भारत सरकारने ऑनलाइन मोफत उपलब्ध करून दिलेले <em>लेखन आणि भाषणे</em> खंड हे संकेतस्थळ मोफत, ना-नफा शिक्षणासाठी, नेहमी अधिकृत फाइल्सच्या दुव्यासह, पुनःप्रकाशित आणि अनुवादित करते.</li>
+          <li>छायाचित्रे आणि दस्तऐवजांचे परवाने त्यांच्यासोबत दिलेले आहेत. या संकेतस्थळासाठी लिहिलेला मूळ मजकूर <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer">Creative Commons BY-SA 4.0</a> परवान्याखाली उपलब्ध आहे.</li>
           <li>येथे वापरलेल्या एखाद्या गोष्टीचे हक्क तुमच्याकडे असतील आणि ती बदलावी किंवा काढावी असे वाटत असेल, तर कृपया <a href={mailto('Rights request: Prabuddha Pathak')}>{SITE.email}</a> वर ईमेल करा.</li>
         </ul>
-
-        <h2>पुढे काय</h2>
-        <ul>
-          <li>लेखन आणि भाषणे यांच्या सर्व 17 खंडांचा मराठी अनुवाद, खंडानुसार.</li>
-          <li>त्यांचे मूळ मराठी लेखन आणि भाषणे (मूकनायक, बहिष्कृत भारत, जनता) मूळ स्वरूपात.</li>
-          <li>हिंदीतील 40 खंडांच्या सम्पूर्ण वाङ्मयाचे शोधण्याजोगे ग्रंथालय.</li>
-          <li>भारत आणि जगभरातील आंबेडकरी कार्यक्रमांची दिनदर्शिका.</li>
-        </ul>
-        <p><a href={url('/contribute/')}>हे घडवण्यात मदत करा →</a></p>
       </div>
     ) : (
       <div class="prose">
         <p class="lede">I am <strong>Sidhant Sardar</strong> — an Ambedkarite and a web developer.</p>
 
-        <p>Babasaheb's life and work belong to everyone. Yet his writings, speeches, records and photographs are spread across government PDFs, university archives, museums and memorials. India's Ministry of Social Justice and Empowerment itself describes them as "spread across libraries, memorials, archives, and fragmented digital sources" <a class="src" href="https://zaidsayyed.in/tools/sih-problem-statements/sih26096" target="_blank" rel="noopener noreferrer">SIH 2026 brief SIH26096</a>.</p>
+        <p>Babasaheb's writings, speeches, records and photographs are spread across government PDFs, university archives, museums and memorials. India's Ministry of Social Justice and Empowerment itself describes them as "spread across libraries, memorials, archives, and fragmented digital sources" <a class="src" href="https://zaidsayyed.in/tools/sih-problem-statements/sih26096" target="_blank" rel="noopener noreferrer">SIH 2026 brief SIH26096</a>.</p>
 
-        <p>So I am building this website to bring them together: his whole life told simply, everything he wrote catalogued and searchable, the Constitution explained, and the events, news and articles that carry his work forward today — all in one place, publicly available and free for everyone.</p>
+        <p>This website brings them together in one place: his whole life told simply, everything he wrote catalogued and searchable, and the Constitution explained — open and free for everyone. We need a more Ambedkarite approach to how this history is told, and that starts with the resources being gathered, sourced and open.</p>
 
-        <p>Going forward, we need a more Ambedkarite approach to how this history is told and shared. That starts with the resources being gathered, sourced and open. That is why I am doing this work.</p>
-
-        <p><a class="btn btn-primary" href="https://www.sidhantsardar.com/" target="_blank" rel="noopener noreferrer">More about me and my work →</a></p>
+        <p class="about-actions"><a class="btn btn-primary" href="https://www.sidhantsardar.com/" target="_blank" rel="noopener noreferrer">More about me and my work →</a> <a class="btn btn-ghost" href="#feedback">Contact us ↓</a></p>
 
         <h2>How this website works</h2>
         <ul>
-          <li><strong>Every fact has a source.</strong> Numbered notes in each chapter lead to the exact document, archive or book. Where the source is his own <em>Writings and Speeches</em>, the note opens that page on this website.</li>
-          <li><strong>Primary sources first:</strong> his own words, the Constituent Assembly Debates and university archives — then respected biographies and journalism.</li>
-          <li><strong>Honest about disagreements.</strong> When sources disagree about a date or detail, we say so and show each one.</li>
-          <li><strong>No invented quotes.</strong> A quote appears only if it was found in a primary source.</li>
+          <li><strong>Every fact has a source.</strong> Numbered notes lead to the exact document or book, and primary sources come first: his own words, the Constituent Assembly Debates and university archives.</li>
+          <li><strong>Honest.</strong> No invented quotes. When sources disagree about a date or detail, we say so and show each one.</li>
+          <li><strong>Marathi that keeps his meaning.</strong> First drafts are made with the help of AI (Claude), following a <a href={guide} target="_blank" rel="noopener noreferrer">public translation guide</a>: nothing left out, nothing added, nothing softened. Every page has the original English and the official PDF one click away.</li>
           <li><strong>Open and correctable.</strong> The research notes are public on <a href={SITE.repoUrl} target="_blank" rel="noopener noreferrer">GitHub</a>, and anyone can <a href={url('/contribute/')}>suggest a correction</a>.</li>
-        </ul>
-
-        <h2>The Marathi translation</h2>
-        <p>Most of Babasaheb's writing is in English. We are bringing it into Marathi so that every Marathi reader can read what he actually wrote. One rule comes before everything else: <strong>the meaning and intent of his original sentences must never change.</strong></p>
-        <ul>
-          <li>First drafts are made with the help of AI (Claude), following a <a href={guide} target="_blank" rel="noopener noreferrer">public translation guide</a>: nothing left out, nothing added, nothing softened, and his own words (such as "Untouchables") kept as he used them.</li>
-          <li>Every translated page shows the original English one click away, and links to the same page of the official PDF, so any reader can check the translation.</li>
-          <li>"In simple words" summaries are shown separately and are never part of his text.</li>
-          <li>If you find a mistake in a translation, please <a href={url('/contribute/')}>tell us</a>. Pages checked by Marathi scholars will be marked as reviewed.</li>
         </ul>
 
         {SHOW_NEWS && <>
           <h2>News on this website</h2>
-          <p>The news section gathers reports on caste, justice, the Constitution and the Ambedkarite movement from many outlets every six hours. Reports about the same event are grouped together, so you can see who reported it — local, national or international — and every report is listed as a source. Short summaries may be written with the help of AI, using only those reports, and are always labelled.</p>
+          <p>The news section gathers reports on caste, justice, the Constitution and the Ambedkarite movement from many outlets every six hours. Every report is listed as a source, and summaries written with the help of AI are always labelled.</p>
         </>}
 
         <h2>The look of this website</h2>
-        <p>The line patterns on this website are inspired by <strong>Godna</strong> painting — an art form created by Dalit (Dusadh) women of Mithila, Bihar, from the tattoo traditions of their community, drawn in fine black lines on handmade paper <a class="src" href="https://behanbox.com/2023/05/25/an-art-form-of-bihars-dalit-women-asserts-its-unique-identity/" target="_blank" rel="noopener noreferrer">Behanbox</a> <a class="src" href="https://sarmaya.in/tag/godna-painting/" target="_blank" rel="noopener noreferrer">Sarmaya</a>. In 2024 the Godna artist Shanti Devi Paswan received the Padma Shri <a class="src" href="https://en.wikipedia.org/wiki/Shanti_Devi_Paswan" target="_blank" rel="noopener noreferrer">Wikipedia</a>. The patterns here are our own simple drawings in that spirit, not copies of any artist's work. We would love to feature real Godna artworks with the artists' permission and credit.</p>
+        <p>The line patterns here are inspired by <strong>Godna</strong> painting — an art form created by Dalit (Dusadh) women of Mithila, Bihar, from the tattoo traditions of their community <a class="src" href="https://behanbox.com/2023/05/25/an-art-form-of-bihars-dalit-women-asserts-its-unique-identity/" target="_blank" rel="noopener noreferrer">Behanbox</a> <a class="src" href="https://sarmaya.in/tag/godna-painting/" target="_blank" rel="noopener noreferrer">Sarmaya</a>. The patterns are our own simple drawings in that spirit, not copies of any artist's work.</p>
 
         <h2>Copyright and reuse</h2>
         <ul>
-          <li>Dr. Ambedkar died in 1956. Under Indian copyright law, the works he published in his lifetime entered the public domain in India in 2017. Writings first published after his death (many papers in the <em>Writings and Speeches</em> volumes) are protected for 60 years from their first publication; the volumes are published by the Government of Maharashtra and made freely available online by the Government of India. This site reproduces and translates them for free, non-commercial education, always linking to the official files.</li>
-          <li>Photographs and documents keep their own licences, shown with each one. We only use images that are public domain or freely licensed.</li>
-          <li>Original text written for this website is shared under <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer">Creative Commons BY-SA 4.0</a>.</li>
+          <li>The works Dr. Ambedkar published in his lifetime have been in the public domain in India since 2017. The <em>Writings and Speeches</em> volumes, published by the Government of Maharashtra and made freely available online by the Government of India, are reproduced and translated here for free, non-commercial education, always linking to the official files.</li>
+          <li>Photographs and documents keep their own licences, shown with each one. Original text written for this website is shared under <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer">Creative Commons BY-SA 4.0</a>.</li>
           <li>If you hold rights to something used here and want it changed or removed, please email <a href={mailto('Rights request: Prabuddha Pathak')}>{SITE.email}</a>.</li>
         </ul>
-
-        <h2>What's next</h2>
-        <ul>
-          <li>Marathi translations of all 17 volumes of Writings and Speeches, volume by volume.</li>
-          <li>His original Marathi writings and speeches (Mooknayak, Bahishkrit Bharat, Janata) in their original form.</li>
-          <li>A searchable Hindi library of the 40-volume सम्पूर्ण वाङ्मय.</li>
-          <li>An events calendar for Ambedkarite events across India and the world.</li>
-        </ul>
-        <p><a href={url('/contribute/')}>Help build it →</a></p>
       </div>
     )}
+
+    <section id="feedback" class="prose feedback">
+      <h2>{t('Contact and feedback', 'संपर्क आणि अभिप्राय')}</h2>
+      <p>{t('Send a comment, a correction, a source or a question. No sign-in needed, and your message is not published.', 'अभिप्राय, दुरुस्ती, संदर्भ किंवा प्रश्न पाठवा. साइन इन करण्याची गरज नाही, आणि तुमचा संदेश प्रसिद्ध केला जात नाही.')}</p>
+      <div class="callout feedback-box" data-form-src={FEEDBACK_FORM.embed} data-form-title={t('Feedback form', 'अभिप्राय फॉर्म')}>
+        <button class="btn btn-primary" type="button">{t('Open the feedback form', 'अभिप्राय फॉर्म उघडा')}</button>
+        <p class="muted">{t('The form is a Google Form and loads only when you press the button.', 'हा Google Form आहे, आणि बटण दाबल्यावरच तो लोड होतो.')}</p>
+      </div>
+      <p class="muted feedback-note">{t('Form not working?','फॉर्म चालत नाही?')} <a href={FEEDBACK_FORM.url} target="_blank" rel="noopener noreferrer">{t('Open it in a new tab', 'तो नवीन टॅबमध्ये उघडा')}</a> {t('or email', 'किंवा')} <a href={mailto()}>{SITE.email}</a>{t('.', ' वर ईमेल करा.')}</p>
+    </section>
   </div>
+
+  <script is:inline>
+    document.querySelectorAll('[data-form-src]').forEach(function (box) {
+      box.querySelector('button').addEventListener('click', function () {
+        var frame = document.createElement('iframe');
+        frame.src = box.dataset.formSrc;
+        frame.title = box.dataset.formTitle;
+        frame.className = 'feedback-frame';
+        box.replaceWith(frame);
+      });
+    });
+  </script>
 </Base>
+
+<style>
+  .about-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+  .feedback { margin-top: 48px; scroll-margin-top: 96px; }
+  .feedback-box { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; }
+  .feedback-box p { margin: 0; font-size: 0.88rem; }
+  .feedback .feedback-note { margin-top: 12px; font-size: 0.9rem; }
+  /* Heights measured from the form itself: about 1270px at the page's full width, 1570px on a phone. */
+  .feedback :global(.feedback-frame) { display: block; width: 100%; height: 1290px; border: 1px solid var(--line); border-radius: var(--radius); background: #fff; }
+  @media (max-width: 640px) { .feedback :global(.feedback-frame) { height: 1600px; } }
+</style>
